@@ -1,6 +1,6 @@
 <template>
-  <div class="col-md-12">
-        <!-- 최상단 시작 -->
+  <div>
+    <!-- 최상단 시작 -->
     <section class="py-5 overflow-hidden bg-warning" id="home">
       <div class="container">
         <div class="row flex-center">
@@ -14,7 +14,7 @@
           </div>
           <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
             <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">
-              여기는 로그인 <br />
+              여기는 회원가입 <br />
               페이지 입니다
             </h1>
             <h1 class="text-800 mb-5 fs-4">최상단만 제작</h1>
@@ -144,7 +144,8 @@ export default {
 
         // 공통함수 register 호출 :
         // this.$store.dispatch("모듈명/함수명", 매개변수)
-        this.$store.dispatch("auth/register", this.user)
+        this.$store
+          .dispatch("auth/register", this.user)
           .then((response) => {
             this.message = response.message;
             this.successful = true; // "회원가입이 성공했습니다." 화면 출력
