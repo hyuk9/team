@@ -101,6 +101,14 @@
             </div>
             <!-- 검색창 끝 -->
 
+            <!-- 회원가입 시작 -->
+            <button
+              class="btn btn-white shadow-warning text-warning"
+            >
+              <i class="fas fa-user me-2"></i><router-link to="/login">회원가입</router-link> 
+            </button>
+            <!-- 회원가입 끝 -->
+
             <!-- 로그인 시작 -->
             <button
               class="btn btn-white shadow-warning text-warning"
