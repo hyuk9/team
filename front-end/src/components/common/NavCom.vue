@@ -31,11 +31,11 @@
           <span class="navbar-toggler-icon"> </span>
         </button> -->
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
+          <ul class="navbar-nav ">
             <li class="nav-item dropdown">
-              <router-link
-                to=""
+              <router-link to = ""
                 class="nav-link dropdown-toggle"
+                
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
@@ -43,32 +43,20 @@
                 음식점 리스트
               </router-link>
               <ul class="dropdown-menu">
+                <li><router-link to="/local" class="dropdown-item">지역별</router-link></li>
+                <li><router-link to="/menu" class="dropdown-item">메뉴별</router-link></li>
                 <li>
-                  <router-link to="/local" class="dropdown-item"
-                    >지역별</router-link
-                  >
+                  <router-link to = "/score" class="dropdown-item" >평점별</router-link>
                 </li>
                 <li>
-                  <router-link to="/menu" class="dropdown-item"
-                    >메뉴별</router-link
-                  >
-                </li>
-                <li>
-                  <router-link to="/score" class="dropdown-item"
-                    >평점별</router-link
-                  >
-                </li>
-                <li>
-                  <router-link to="/review" class="dropdown-item"
-                    >리뷰많은순</router-link
-                  >
+                  <router-link to = "/review" class="dropdown-item" >리뷰많은순</router-link>
                 </li>
               </ul>
             </li>
             <li class="nav-item dropdown">
-              <router-link
-                to=""
+              <router-link to = ""
                 class="nav-link dropdown-toggle"
+                
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
@@ -76,32 +64,20 @@
                 게시판
               </router-link>
               <ul class="dropdown-menu">
+                <li><router-link to = "" class="dropdown-item" >공지사항</router-link></li>
+                <li><router-link to = "" class="dropdown-item" >자주묻는질문</router-link></li>
                 <li>
-                  <router-link to="" class="dropdown-item"
-                    >공지사항</router-link
-                  >
+                  <router-link to = "" class="dropdown-item" >질문과답변</router-link>
                 </li>
                 <li>
-                  <router-link to="" class="dropdown-item"
-                    >자주묻는질문</router-link
-                  >
-                </li>
-                <li>
-                  <router-link to="" class="dropdown-item"
-                    >질문과답변</router-link
-                  >
-                </li>
-                <li>
-                  <router-link to="" class="dropdown-item"
-                    >자유게시판</router-link
-                  >
+                  <router-link to = "" class="dropdown-item" >자유게시판</router-link>
                 </li>
               </ul>
             </li>
           </ul>
         </div>
         <div
-          class="collapse navbar-collapse border-top border-lg-0 my-2 mt-lg-0"
+          class="collapse navbar-collapse  border-lg-0 my-2 mt-lg-0"
           id="navbarSupportedContent"
         >
           <div class="mx-auto pt-5 pt-lg-0 d-block d-lg-none d-xl-block">
@@ -125,34 +101,20 @@
             </div>
             <!-- 검색창 끝 -->
 
-            <div v-if="!currentUser">
-              <!-- 회원가입 시작 -->
-              <button class="btn btn-white shadow-warning text-warning">
-                <i class="fas fa-user me-2"></i
-                ><router-link to="/register">회원가입</router-link>
-              </button>
-              <!-- 회원가입 끝 -->
+            <!-- 회원가입 시작 -->
+            <button
+              class="btn btn-white shadow-warning text-warning"
+            >
+              <i class="fas fa-user me-2"></i><router-link to="/login">회원가입</router-link> 
+            </button>
+            <!-- 회원가입 끝 -->
 
-              <!-- 로그인 시작 -->
-              <button class="btn btn-white shadow-warning text-warning">
-                <i class="fas fa-user me-2"></i
-                ><router-link to="/login">로그인</router-link>
-              </button>
-            </div>
-            <div v-if="currentUser">
-              <button class="btn btn-white shadow-warning text-warning">
-                <i class="fas fa-user me-2"></i
-                ><router-link to="/profile">프로필</router-link>
-              </button>
-              <!-- 회원가입 끝 -->
-
-              <!-- 로그인 시작 -->
-              <button class="btn btn-white shadow-warning text-warning">
-                <i class="fas fa-user me-2"></i
-                ><a href="#" @click.prevent="logout">로그아웃</a>
-              </button>
-            </div>
-
+            <!-- 로그인 시작 -->
+            <button
+              class="btn btn-white shadow-warning text-warning"
+            >
+              <i class="fas fa-user me-2"></i><router-link to="/login">로그인</router-link> 
+            </button>
             <!-- 로그인 끝 -->
           </form>
         </div>
@@ -163,23 +125,7 @@
 </template>
 
 <script>
-export default {
-  computed: {
-    currentUser() {
-      // 모듈 저장소 : this.$store.state.모듈명.state값
-      // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
-      return this.$store.state.auth.user;
-    }
-  },
-  methods: {
-    // 로그아웃 함수 -> 공통함수 호출
-    logout() {
-      // this.$store.dispatch("모듈명/함수명")
-      this.$store.dispatch("auth/logout"); // 공통함수 logout 호출
-      this.$router.push("/login"); // 강제 /login 페이지로 이동
-    },
-  },
-};
+export default {};
 </script>
 
 <style>
