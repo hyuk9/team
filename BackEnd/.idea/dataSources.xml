@@ -1,28 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="Oracle" uuid="03f39ab9-9d5b-4a06-883c-08143bf953e0">
+    <data-source source="LOCAL" name="Oracle" uuid="1566907b-c2fe-4bf1-9353-2e432e28348b">
       <driver-ref>oracle.19</driver-ref>
       <synchronize>true</synchronize>
       <auto-commit>false</auto-commit>
       <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
-      <jdbc-url>jdbc:oracle:thin:@DsCloud95_high?TNS_ADMIN=$USER_HOME$/04_SQL/Wallet_DsCloud95</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="@localhost" uuid="18d6c3ee-6ba5-4e34-a361-371b4e70d1f7">
-      <driver-ref>oracle.19</driver-ref>
-      <synchronize>true</synchronize>
-      <auto-commit>false</auto-commit>
-      <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
-      <jdbc-url>jdbc:oracle:thin:@localhost:1521:XE</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="Oracle [2]" uuid="a677c280-a72a-4553-8762-30970ce694a4">
-      <driver-ref>oracle.19</driver-ref>
-      <synchronize>true</synchronize>
-      <auto-commit>false</auto-commit>
-      <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
-      <jdbc-url>jdbc:oracle:thin:@DsCloud95_high?TNS_ADMIN=$PROJECT_DIR$/../../cloud_wallet/Wallet_DONGSUNGTEAMPROJECT</jdbc-url>
+      <jdbc-url>jdbc:oracle:thin:@dongsungteamproject_high?TNS_ADMIN=$PROJECT_DIR$/../../cloud_wallet/Wallet_DONGSUNGTEAMPROJECT</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

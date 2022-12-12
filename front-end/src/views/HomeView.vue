@@ -9,45 +9,6 @@
             <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
               <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light"> 여기에 어떤걸 넣을지는 한번 봐야할듯? </h1>
               <h1 class="text-800 mb-5 fs-4">검색창을 여기에도 둘지 고민 중입니다<br class="d-none d-xxl-block" />대충 있어보이는 말2</h1>
-              <!-- 밑에는 배송지 지정하는 공간인데 굳이 필요없을듯? -->
-              <!-- <div class="card w-xxl-75">
-                <div class="card-body">
-                  <nav>
-                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                      <button class="nav-link active mb-3" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fas fa-motorcycle me-2"></i>Delivery</button>
-                      <button class="nav-link mb-3" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fas fa-shopping-bag me-2"></i>Pickup</button>
-                    </div>
-                  </nav>
-                  <div class="tab-content mt-3" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                      <form class="row gx-2 gy-2 align-items-center">
-                        <div class="col">
-                          <div class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
-                            <label class="visually-hidden" for="inputDelivery">Address</label>
-                            <input class="form-control input-box form-foodwagon-control" id="inputDelivery" type="text" placeholder="Enter Your Address" />
-                          </div>
-                        </div>
-                        <div class="d-grid gap-3 col-sm-auto">
-                          <button class="btn btn-danger" type="submit">Find Food</button>
-                        </div>
-                      </form>
-                    </div>
-                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                      <form class="row gx-4 gy-2 align-items-center">
-                        <div class="col">
-                          <div class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
-                            <label class="visually-hidden" for="inputPickup">Address</label>
-                            <input class="form-control input-box form-foodwagon-control" id="inputPickup" type="text" placeholder="Enter Your Address" />
-                          </div>
-                        </div>
-                        <div class="d-grid gap-3 col-sm-auto">
-                          <button class="btn btn-danger" type="submit">Find Food</button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
             </div>
           </div>
         </div>
@@ -438,12 +399,13 @@
       <!-- 인기 순 정렬 끝 ============================-->
       <!-- ============================================-->
 
-
+      <!-- ============================================-->
+      <!-- 할인 중인 식당 순 정렬 시작 ============================-->
       <section id="testimonial">
         <div class="container">
           <div class="row h-100">
             <div class="col-lg-7 mx-auto text-center mb-6">
-              <h5 class="fw-bold fs-3 fs-lg-5 lh-sm mb-3">Featured Restaurants</h5>
+              <h5 class="fw-bold fs-3 fs-lg-5 lh-sm mb-3">할인 중인 식당</h5>
             </div>
           </div>
           <div class="row gx-2">
@@ -547,7 +509,8 @@
           </div>
         </div>
       </section>
-
+      <!-- 할인 중인 식당 순 정렬 끝 ============================-->
+      <!-- ============================================-->
 
       <!-- ============================================-->
       <!-- 음식별로 모아보기 시작 ============================-->

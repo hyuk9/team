@@ -33,44 +33,44 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ">
             <li class="nav-item dropdown">
-              <a
+              <router-link to = ""
                 class="nav-link dropdown-toggle"
-                href="#"
+                
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
                 음식점 리스트
-              </a>
+              </router-link>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">지역별</a></li>
-                <li><a class="dropdown-item" href="#">메뉴별</a></li>
+                <li><router-link to="/local" class="dropdown-item">지역별</router-link></li>
+                <li><router-link to="/menu" class="dropdown-item">메뉴별</router-link></li>
                 <li>
-                  <a class="dropdown-item" href="#">평점별</a>
+                  <router-link to = "/score" class="dropdown-item" >평점별</router-link>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#">리뷰많은순</a>
+                  <router-link to = "/review" class="dropdown-item" >리뷰많은순</router-link>
                 </li>
               </ul>
             </li>
             <li class="nav-item dropdown">
-              <a
+              <router-link to = ""
                 class="nav-link dropdown-toggle"
-                href="#"
+                
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
                 게시판
-              </a>
+              </router-link>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">공지사항</a></li>
-                <li><a class="dropdown-item" href="#">자주묻는질문</a></li>
+                <li><router-link to = "" class="dropdown-item" >공지사항</router-link></li>
+                <li><router-link to = "" class="dropdown-item" >자주묻는질문</router-link></li>
                 <li>
-                  <a class="dropdown-item" href="#">질문과답변</a>
+                  <router-link to = "" class="dropdown-item" >질문과답변</router-link>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#">자유게시판</a>
+                  <router-link to = "" class="dropdown-item" >자유게시판</router-link>
                 </li>
               </ul>
             </li>
@@ -104,9 +104,8 @@
             <!-- 로그인 시작 -->
             <button
               class="btn btn-white shadow-warning text-warning"
-              type="submit"
             >
-              <i class="fas fa-user me-2"></i>로그인
+              <i class="fas fa-user me-2"></i><router-link to="/login">로그인</router-link> 
             </button>
             <!-- 로그인 끝 -->
           </form>
