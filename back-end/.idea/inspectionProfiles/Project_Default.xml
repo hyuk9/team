@@ -1,0 +1,33 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="IncorrectHttpHeaderInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="customHeaders">
+        <set>
+          <option value="    &quot;loc&quot;" />
+          <option value="    &quot;dname&quot;" />
+          <option value="  {" />
+          <option value="  }" />
+          <option value="    &quot;dno&quot;" />
+          <option value="    &quot;commission&quot;" />
+          <option value="    &quot;salary&quot;" />
+          <option value="    &quot;hiredate&quot;" />
+          <option value="    &quot;manager&quot;" />
+          <option value="    &quot;insertTime&quot;" />
+          <option value="    &quot;updateTime&quot;" />
+          <option value="    &quot;deleteYn&quot;" />
+          <option value="    &quot;deleteTime&quot;" />
+          <option value="    &quot;ename&quot;" />
+          <option value="    &quot;job&quot;" />
+          <option value="  &quot;dno&quot;" />
+          <option value="&quot;dname&quot;" />
+          <option value="&quot;loc&quot;" />
+          <option value="}" />
+          <option value="{" />
+          <option value="  &quot;dname&quot;" />
+          <option value="  &quot;loc&quot;" />
+        </set>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
