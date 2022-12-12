@@ -1,29 +1,8 @@
 <template>
   <div>
-    <!-- 최상단 시작 -->
-    <section class="py-5 overflow-hidden bg-warning" id="home">
-      <div class="container">
-        <div class="row flex-center">
-          <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0">
-            <!-- <a class="img-landing-banner" href="#!"
-              ><img
-                class="img-fluid"
-                src="@/assets/img/species/korean.jpg"
-                alt="hero-header"
-            /></a> -->
-          </div>
-          <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
-            <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">
-              여기는 로그인 <br />
-              페이지 입니다
-            </h1>
-            <h1 class="text-800 mb-5 fs-4">최상단만 제작</h1>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- 최상단 끝 -->
-
+    <!-- 홈페이지 로고 시작 -->
+    <div class="container logo">임시로고</div>
+    <!-- 홈페이지 로고 끝 -->
     <!-- 로그인 페이지 시작 -->
     <div class="col-md-12">
       <div class="card card-container">
@@ -93,6 +72,39 @@
       </div>
     </div>
     <!-- 로그인 페이지 끝 -->
+
+    <!-- 푸터 마지막 한줄 -->
+    <div class="row flex-center pb-3 loginfooter">
+      <div class="col-md-6 order-0">
+        <p class="text-center text-md-start">
+          All rights Reserved &copy; Your Company, 2021
+        </p>
+      </div>
+      <div class="col-md-6 order-1">
+        <p class="text-center text-md-end">
+          Made with&nbsp;
+          <svg
+            class="bi bi-suit-heart-fill"
+            xmlns="http://www.w3.org/2000/svg"
+            width="15"
+            height="15"
+            fill="#FFB30E"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z"
+            ></path></svg
+          >&nbsp;by&nbsp;<router-link
+            to=""
+            class="fw-bold"
+            href="https://themewagon.com/"
+            target="_blank"
+            >ThemeWagon
+          </router-link>
+        </p>
+      </div>
+    </div>
+    <!-- 푸터 마지막 끝 -->
   </div>
 </template>
 
@@ -194,5 +206,18 @@ label {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
+}
+
+.logo {
+  width: 350px;
+  text-align: center;
+  margin-top: 100px;
+  background-color: aqua;
+}
+
+.loginfooter {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 </style>
