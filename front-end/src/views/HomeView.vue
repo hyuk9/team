@@ -2011,29 +2011,29 @@
 </template>
 
 <script>
-import Darkmode from "darkmode-js";
+// import Darkmode from "darkmode-js";
 
-export default {
-  data() {
-    return {
-      options: {
-        bottom: "64px", // default: '32px'
-        right: "unset", // default: '32px'
-        left: "32px", // default: 'unset'
-        time: "0.5s", // default: '0.3s'
-        mixColor: "#fff", // default: '#fff'
-        backgroundColor: "#fff", // default: '#fff'
-        buttonColorDark: "#100f2c", // default: '#100f2c'
-        buttonColorLight: "#fff", // default: '#fff'
-        saveInCookies: false, // default: true,
-        label: "🌓", // default: ''
-        autoMatchOsTheme: true, // default: true
-      },
-    };
-  },
-  mounted() {
-    const darkmode = new Darkmode(this.options);
-    darkmode.showWidget();
-  },
-};
+// export default {
+//   data() {
+//     return {
+//       options: {
+//         bottom: "64px", // default: '32px'
+//         right: "unset", // default: '32px'
+//         left: "32px", // default: 'unset'
+//         time: "0.5s", // default: '0.3s'
+//         mixColor: "#fff", // default: '#fff'
+//         backgroundColor: "#fff", // default: '#fff'
+//         buttonColorDark: "#100f2c", // default: '#100f2c'
+//         buttonColorLight: "#fff", // default: '#fff'
+//         saveInCookies: false, // default: true,
+//         label: "🌓", // default: ''
+//         autoMatchOsTheme: true, // default: true
+//       },
+//     };
+//   },
+//   mounted() {
+//     const darkmode = new Darkmode(this.options);
+//     darkmode.showWidget();
+//   },
+// };
 </script>
