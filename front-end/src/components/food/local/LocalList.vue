@@ -9,7 +9,7 @@
               <a class="img-landing-banner" href="#!"
                 ><img
                   class="img-fluid"
-                  src="@/assets/img/species/korean.jpg"
+                  src="assets/img/gallery/hero-header.png"
                   alt="hero-header"
               /></a>
             </div>

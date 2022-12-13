@@ -1,15 +1,22 @@
 <template>
+<<<<<<< Updated upstream
   <div>
     <NavCom v-if="wantToShow()"/>
     <router-view />
     <FooterCom v-if="wantToShow()" />
+=======
+  <div id="app">
+    <NavCom />
+    <router-view/>
+    <FooterCom />
+>>>>>>> Stashed changes
   </div>
 </template>
+
 
 <script>
 import NavCom from "@/components/common/NavCom.vue";
 import FooterCom from "@/components/common/FooterCom.vue";
-
 export default {
   methods: {
     wantToShow() {
@@ -23,10 +30,9 @@ export default {
   components: {
     NavCom,
     FooterCom
-  },
-};
+  }
+}
 </script>
 
 <style lang="scss">
-
 </style>

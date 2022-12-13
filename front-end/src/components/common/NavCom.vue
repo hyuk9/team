@@ -64,13 +64,13 @@
                 게시판
               </router-link>
               <ul class="dropdown-menu">
-                <li><router-link to = "" class="dropdown-item" >공지사항</router-link></li>
-                <li><router-link to = "" class="dropdown-item" >자주묻는질문</router-link></li>
+                <li><router-link to = "/announce" class="dropdown-item" >공지사항</router-link></li>
+                <li><router-link to = "/faq" class="dropdown-item" >자주묻는질문</router-link></li>
                 <li>
-                  <router-link to = "" class="dropdown-item" >질문과답변</router-link>
+                  <router-link to = "/qna" class="dropdown-item" >질문과답변</router-link>
                 </li>
                 <li>
-                  <router-link to = "" class="dropdown-item" >자유게시판</router-link>
+                  <router-link to = "/board" class="dropdown-item" >자유게시판</router-link>
                 </li>
               </ul>
             </li>
@@ -105,7 +105,7 @@
             <button
               class="btn btn-white shadow-warning text-warning"
             >
-              <i class="fas fa-user me-2"></i><router-link to="/login">회원가입</router-link> 
+              <i class="fas fa-user me-2"></i><router-link to="/register">회원가입</router-link> 
             </button>
             <!-- 회원가입 끝 -->
 
