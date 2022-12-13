@@ -9,7 +9,7 @@
               <a class="img-landing-banner" href="#!"
                 ><img
                   class="img-fluid"
-                  src="assets/img/gallery/hero-header.png"
+                  src="@/assets/img/gallery/hero-header.png"
                   alt="hero-header"
               /></a>
             </div>
@@ -254,7 +254,7 @@
                         <div class="card card-span h-100 rounded-3">
                           <img
                             class="img-fluid rounded-3 h-100"
-                            src="assets/img/gallery/cheese-burger.png"
+                            src="@/assets/img/gallery/cheese-burger.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -282,7 +282,7 @@
                         <div class="card card-span h-100 rounded-3">
                           <img
                             class="img-fluid rounded-3 h-100"
-                            src="assets/img/gallery/toffes-cake.png"
+                            src="@/assets/img/gallery/toffes-cake.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -310,7 +310,7 @@
                         <div class="card card-span h-100 rounded-3">
                           <img
                             class="img-fluid rounded-3 h-100"
-                            src="assets/img/gallery/dancake.png"
+                            src="@/assets/img/gallery/dancake.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -338,7 +338,7 @@
                         <div class="card card-span h-100 rounded-3">
                           <img
                             class="img-fluid rounded-3 h-100"
-                            src="assets/img/gallery/crispy-sandwitch.png"
+                            src="@/assets/img/gallery/crispy-sandwitch.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -366,7 +366,7 @@
                         <div class="card card-span h-100 rounded-3">
                           <img
                             class="img-fluid rounded-3 h-100"
-                            src="assets/img/gallery/thai-soup.png"
+                            src="@/assets/img/gallery/thai-soup.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -399,7 +399,7 @@
                         <div class="card card-span h-100 rounded-3">
                           <img
                             class="img-fluid rounded-3 h-100"
-                            src="assets/img/gallery/cheese-burger.png"
+                            src="@/assets/img/gallery/cheese-burger.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -427,7 +427,7 @@
                         <div class="card card-span h-100 rounded-3">
                           <img
                             class="img-fluid rounded-3 h-100"
-                            src="assets/img/gallery/toffes-cake.png"
+                            src="@/assets/img/gallery/toffes-cake.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -455,7 +455,7 @@
                         <div class="card card-span h-100 rounded-3">
                           <img
                             class="img-fluid rounded-3 h-100"
-                            src="assets/img/gallery/dancake.png"
+                            src="@/assets/img/gallery/dancake.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -483,7 +483,7 @@
                         <div class="card card-span h-100 rounded-3">
                           <img
                             class="img-fluid rounded-3 h-100"
-                            src="assets/img/gallery/crispy-sandwitch.png"
+                            src="@/assets/img/gallery/crispy-sandwitch.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -511,7 +511,7 @@
                         <div class="card card-span h-100 rounded-3">
                           <img
                             class="img-fluid rounded-3 h-100"
-                            src="assets/img/gallery/thai-soup.png"
+                            src="@/assets/img/gallery/thai-soup.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -544,7 +544,7 @@
                         <div class="card card-span h-100 rounded-3">
                           <img
                             class="img-fluid rounded-3 h-100"
-                            src="assets/img/gallery/cheese-burger.png"
+                            src="@/assets/img/gallery/cheese-burger.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -572,7 +572,7 @@
                         <div class="card card-span h-100 rounded-3">
                           <img
                             class="img-fluid rounded-3 h-100"
-                            src="assets/img/gallery/toffes-cake.png"
+                            src="@/assets/img/gallery/toffes-cake.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -600,7 +600,7 @@
                         <div class="card card-span h-100 rounded-3">
                           <img
                             class="img-fluid rounded-3 h-100"
-                            src="assets/img/gallery/dancake.png"
+                            src="@/assets/img/gallery/dancake.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -628,7 +628,7 @@
                         <div class="card card-span h-100 rounded-3">
                           <img
                             class="img-fluid rounded-3 h-100"
-                            src="assets/img/gallery/crispy-sandwitch.png"
+                            src="@/assets/img/gallery/crispy-sandwitch.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -656,7 +656,7 @@
                         <div class="card card-span h-100 rounded-3">
                           <img
                             class="img-fluid rounded-3 h-100"
-                            src="assets/img/gallery/thai-soup.png"
+                            src="@/assets/img/gallery/thai-soup.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -689,7 +689,7 @@
                         <div class="card card-span h-100 rounded-3">
                           <img
                             class="img-fluid rounded-3 h-100"
-                            src="assets/img/gallery/cheese-burger.png"
+                            src="@/assets/img/gallery/cheese-burger.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -717,7 +717,7 @@
                         <div class="card card-span h-100 rounded-3">
                           <img
                             class="img-fluid rounded-3 h-100"
-                            src="assets/img/gallery/toffes-cake.png"
+                            src="@/assets/img/gallery/toffes-cake.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -745,7 +745,7 @@
                         <div class="card card-span h-100 rounded-3">
                           <img
                             class="img-fluid rounded-3 h-100"
-                            src="assets/img/gallery/dancake.png"
+                            src="@/assets/img/gallery/dancake.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -773,7 +773,7 @@
                         <div class="card card-span h-100 rounded-3">
                           <img
                             class="img-fluid rounded-3 h-100"
-                            src="assets/img/gallery/crispy-sandwitch.png"
+                            src="@/assets/img/gallery/crispy-sandwitch.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -801,7 +801,7 @@
                         <div class="card card-span h-100 rounded-3">
                           <img
                             class="img-fluid rounded-3 h-100"
-                            src="assets/img/gallery/thai-soup.png"
+                            src="@/assets/img/gallery/thai-soup.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -876,7 +876,7 @@
               <div class="card card-span h-100 text-white rounded-3">
                 <img
                   class="img-fluid rounded-3 h-100"
-                  src="assets/img/gallery/food-world.png"
+                  src="@/assets/img/gallery/food-world.png"
                   alt="..."
                 />
                 <div class="card-img-overlay ps-0">
@@ -892,7 +892,7 @@
                   <div class="d-flex align-items-center mb-3">
                     <img
                       class="img-fluid"
-                      src="assets/img/gallery/food-world-logo.png"
+                      src="@/assets/img/gallery/food-world-logo.png"
                       alt=""
                     />
                     <div class="flex-1 ms-3">
@@ -914,7 +914,7 @@
               <div class="card card-span h-100 text-white rounded-3">
                 <img
                   class="img-fluid rounded-3 h-100"
-                  src="assets/img/gallery/pizza-hub.png"
+                  src="@/assets/img/gallery/pizza-hub.png"
                   alt="..."
                 />
                 <div class="card-img-overlay ps-0">
@@ -930,7 +930,7 @@
                   <div class="d-flex align-items-center mb-3">
                     <img
                       class="img-fluid"
-                      src="assets/img/gallery/pizzahub-logo.png"
+                      src="@/assets/img/gallery/pizzahub-logo.png"
                       alt=""
                     />
                     <div class="flex-1 ms-3">
@@ -952,7 +952,7 @@
               <div class="card card-span h-100 text-white rounded-3">
                 <img
                   class="img-fluid rounded-3 h-100"
-                  src="assets/img/gallery/donuts-hut.png"
+                  src="@/assets/img/gallery/donuts-hut.png"
                   alt="..."
                 />
                 <div class="card-img-overlay ps-0">
@@ -968,7 +968,7 @@
                   <div class="d-flex align-items-center mb-3">
                     <img
                       class="img-fluid"
-                      src="assets/img/gallery/donuts-hut-logo.png"
+                      src="@/assets/img/gallery/donuts-hut-logo.png"
                       alt=""
                     />
                     <div class="flex-1 ms-3">
@@ -990,7 +990,7 @@
               <div class="card card-span h-100 text-white rounded-3">
                 <img
                   class="img-fluid rounded-3 h-100"
-                  src="assets/img/gallery/donuthut.png"
+                  src="@/assets/img/gallery/donuthut.png"
                   alt="..."
                 />
                 <div class="card-img-overlay ps-0">
@@ -1006,7 +1006,7 @@
                   <div class="d-flex align-items-center mb-3">
                     <img
                       class="img-fluid"
-                      src="assets/img/gallery/donut-hut-logo.png"
+                      src="@/assets/img/gallery/donut-hut-logo.png"
                       alt=""
                     />
                     <div class="flex-1 ms-3">
@@ -1028,7 +1028,7 @@
               <div class="card card-span h-100 text-white rounded-3">
                 <img
                   class="img-fluid rounded-3 h-100"
-                  src="assets/img/gallery/ruby-tuesday.png"
+                  src="@/assets/img/gallery/ruby-tuesday.png"
                   alt="..."
                 />
                 <div class="card-img-overlay ps-0">
@@ -1044,7 +1044,7 @@
                   <div class="d-flex align-items-center mb-3">
                     <img
                       class="img-fluid"
-                      src="assets/img/gallery/ruby-tuesday-logo.png"
+                      src="@/assets/img/gallery/ruby-tuesday-logo.png"
                       alt=""
                     />
                     <div class="flex-1 ms-3">
@@ -1066,7 +1066,7 @@
               <div class="card card-span h-100 text-white rounded-3">
                 <img
                   class="img-fluid rounded-3 h-100"
-                  src="assets/img/gallery/kuakata.png"
+                  src="@/assets/img/gallery/kuakata.png"
                   alt="..."
                 />
                 <div class="card-img-overlay ps-0">
@@ -1082,7 +1082,7 @@
                   <div class="d-flex align-items-center mb-3">
                     <img
                       class="img-fluid"
-                      src="assets/img/gallery/kuakata-logo.png"
+                      src="@/assets/img/gallery/kuakata-logo.png"
                       alt=""
                     />
                     <div class="flex-1 ms-3">
@@ -1106,7 +1106,7 @@
               <div class="card card-span h-100 text-white rounded-3">
                 <img
                   class="img-fluid rounded-3 h-100"
-                  src="assets/img/gallery/red-square.png"
+                  src="@/assets/img/gallery/red-square.png"
                   alt="..."
                 />
                 <div class="card-img-overlay ps-0">
@@ -1122,7 +1122,7 @@
                   <div class="d-flex align-items-center mb-3">
                     <img
                       class="img-fluid"
-                      src="assets/img/gallery/red-square-logo.png"
+                      src="@/assets/img/gallery/red-square-logo.png"
                       alt=""
                     />
                     <div class="flex-1 ms-3">
@@ -1146,7 +1146,7 @@
               <div class="card card-span h-100 text-white rounded-3">
                 <img
                   class="img-fluid rounded-3 h-100"
-                  src="assets/img/gallery/taco-bell.png"
+                  src="@/assets/img/gallery/taco-bell.png"
                   alt="..."
                 />
                 <div class="card-img-overlay ps-0">
@@ -1162,7 +1162,7 @@
                   <div class="d-flex align-items-center mb-3">
                     <img
                       class="img-fluid"
-                      src="assets/img/gallery/taco-bell-logo.png"
+                      src="@/assets/img/gallery/taco-bell-logo.png"
                       alt=""
                     />
                     <div class="flex-1 ms-3">
@@ -1248,7 +1248,7 @@
                         <div class="card card-span h-100 rounded-circle">
                           <img
                             class="img-fluid rounded-circle h-100"
-                            src="assets/img/gallery/search-pizza.png"
+                            src="@/assets/img/gallery/search-pizza.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -1269,7 +1269,7 @@
                         <div class="card card-span h-100 rounded-circle">
                           <img
                             class="img-fluid rounded-circle h-100"
-                            src="assets/img/gallery/burger.png"
+                            src="@/assets/img/gallery/burger.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -1290,7 +1290,7 @@
                         <div class="card card-span h-100 rounded-circle">
                           <img
                             class="img-fluid rounded-circle h-100"
-                            src="assets/img/gallery/noodles.png"
+                            src="@/assets/img/gallery/noodles.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -1311,7 +1311,7 @@
                         <div class="card card-span h-100 rounded-circle">
                           <img
                             class="img-fluid rounded-circle h-100"
-                            src="assets/img/gallery/sub-sandwich.png"
+                            src="@/assets/img/gallery/sub-sandwich.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -1332,7 +1332,7 @@
                         <div class="card card-span h-100 rounded-circle">
                           <img
                             class="img-fluid rounded-circle h-100"
-                            src="assets/img/gallery/chowmein.png"
+                            src="@/assets/img/gallery/chowmein.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -1353,7 +1353,7 @@
                         <div class="card card-span h-100 rounded-circle">
                           <img
                             class="img-fluid rounded-circle h-100"
-                            src="assets/img/gallery/steak.png"
+                            src="@/assets/img/gallery/steak.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -1378,7 +1378,7 @@
                         <div class="card card-span h-100 rounded-circle">
                           <img
                             class="img-fluid rounded-circle h-100"
-                            src="assets/img/gallery/search-pizza.png"
+                            src="@/assets/img/gallery/search-pizza.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -1399,7 +1399,7 @@
                         <div class="card card-span h-100 rounded-circle">
                           <img
                             class="img-fluid rounded-circle h-100"
-                            src="assets/img/gallery/burger.png"
+                            src="@/assets/img/gallery/burger.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -1420,7 +1420,7 @@
                         <div class="card card-span h-100 rounded-circle">
                           <img
                             class="img-fluid rounded-circle h-100"
-                            src="assets/img/gallery/noodles.png"
+                            src="@/assets/img/gallery/noodles.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -1441,7 +1441,7 @@
                         <div class="card card-span h-100 rounded-circle">
                           <img
                             class="img-fluid rounded-circle h-100"
-                            src="assets/img/gallery/sub-sandwich.png"
+                            src="@/assets/img/gallery/sub-sandwich.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -1462,7 +1462,7 @@
                         <div class="card card-span h-100 rounded-circle">
                           <img
                             class="img-fluid rounded-circle h-100"
-                            src="assets/img/gallery/chowmein.png"
+                            src="@/assets/img/gallery/chowmein.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -1483,7 +1483,7 @@
                         <div class="card card-span h-100 rounded-circle">
                           <img
                             class="img-fluid rounded-circle h-100"
-                            src="assets/img/gallery/steak.png"
+                            src="@/assets/img/gallery/steak.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -1508,7 +1508,7 @@
                         <div class="card card-span h-100 rounded-circle">
                           <img
                             class="img-fluid rounded-circle h-100"
-                            src="assets/img/gallery/search-pizza.png"
+                            src="@/assets/img/gallery/search-pizza.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -1529,7 +1529,7 @@
                         <div class="card card-span h-100 rounded-circle">
                           <img
                             class="img-fluid rounded-circle h-100"
-                            src="assets/img/gallery/burger.png"
+                            src="@/assets/img/gallery/burger.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -1550,7 +1550,7 @@
                         <div class="card card-span h-100 rounded-circle">
                           <img
                             class="img-fluid rounded-circle h-100"
-                            src="assets/img/gallery/noodles.png"
+                            src="@/assets/img/gallery/noodles.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -1571,7 +1571,7 @@
                         <div class="card card-span h-100 rounded-circle">
                           <img
                             class="img-fluid rounded-circle h-100"
-                            src="assets/img/gallery/sub-sandwich.png"
+                            src="@/assets/img/gallery/sub-sandwich.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -1592,7 +1592,7 @@
                         <div class="card card-span h-100 rounded-circle">
                           <img
                             class="img-fluid rounded-circle h-100"
-                            src="assets/img/gallery/chowmein.png"
+                            src="@/assets/img/gallery/chowmein.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -1613,7 +1613,7 @@
                         <div class="card card-span h-100 rounded-circle">
                           <img
                             class="img-fluid rounded-circle h-100"
-                            src="assets/img/gallery/steak.png"
+                            src="@/assets/img/gallery/steak.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -1638,7 +1638,7 @@
                         <div class="card card-span h-100 rounded-circle">
                           <img
                             class="img-fluid rounded-circle h-100"
-                            src="assets/img/gallery/search-pizza.png"
+                            src="@/assets/img/gallery/search-pizza.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -1659,7 +1659,7 @@
                         <div class="card card-span h-100 rounded-circle">
                           <img
                             class="img-fluid rounded-circle h-100"
-                            src="assets/img/gallery/burger.png"
+                            src="@/assets/img/gallery/burger.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -1680,7 +1680,7 @@
                         <div class="card card-span h-100 rounded-circle">
                           <img
                             class="img-fluid rounded-circle h-100"
-                            src="assets/img/gallery/noodles.png"
+                            src="@/assets/img/gallery/noodles.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -1701,7 +1701,7 @@
                         <div class="card card-span h-100 rounded-circle">
                           <img
                             class="img-fluid rounded-circle h-100"
-                            src="assets/img/gallery/sub-sandwich.png"
+                            src="@/assets/img/gallery/sub-sandwich.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -1722,7 +1722,7 @@
                         <div class="card card-span h-100 rounded-circle">
                           <img
                             class="img-fluid rounded-circle h-100"
-                            src="assets/img/gallery/chowmein.png"
+                            src="@/assets/img/gallery/chowmein.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -1743,7 +1743,7 @@
                         <div class="card card-span h-100 rounded-circle">
                           <img
                             class="img-fluid rounded-circle h-100"
-                            src="assets/img/gallery/steak.png"
+                            src="@/assets/img/gallery/steak.png"
                             alt="..."
                           />
                           <div class="card-body ps-0">
@@ -1775,7 +1775,7 @@
       <!-- ============================================-->
       <!-- 어플 안내창 시작 ============================-->
       <!-- <section>
-        <div class="bg-holder" style="background-image:url(assets/img/gallery/cta-one-bg.png);background-position:center;background-size:cover;">
+        <div class="bg-holder" style="background-image:url(@/assets/img/gallery/cta-one-bg.png);background-position:center;background-size:cover;">
         </div>
 
         <div class="container">
@@ -1842,7 +1842,7 @@
                           h-100
                           rounded-top rounded-md-end rounded-md-top-0
                         "
-                        src="assets/img/gallery/crispy-sandwiches.png"
+                        src="@/assets/img/gallery/crispy-sandwiches.png"
                         alt="..."
                       />
                     </div>
@@ -1891,7 +1891,7 @@
                           h-100
                           rounded-top rounded-md-start rounded-md-top-0
                         "
-                        src="assets/img/gallery/fried-chicken.png"
+                        src="@/assets/img/gallery/fried-chicken.png"
                         alt="..."
                       />
                     </div>
@@ -1944,7 +1944,7 @@
                           h-100
                           rounded-top rounded-md-end rounded-md-top-0
                         "
-                        src="assets/img/gallery/pizza.png"
+                        src="@/assets/img/gallery/pizza.png"
                         alt="..."
                       />
                     </div>
@@ -1983,7 +1983,7 @@
         <div
           class="bg-holder"
           style="
-            background-image: url(assets/img/gallery/cta-two-bg.png);
+            background-image: url(@/assets/img/gallery/cta-two-bg.png);
             background-position: center;
             background-size: cover;
           "

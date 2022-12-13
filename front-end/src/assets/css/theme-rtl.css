@@ -17441,7 +17441,7 @@ pre, code {
 }
 
 section {
-  position: relative;
+  /* position: relative; */
   padding-top: 4rem;
   padding-bottom: 4rem;
 }
