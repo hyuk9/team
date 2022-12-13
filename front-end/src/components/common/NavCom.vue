@@ -9,8 +9,8 @@
         <!-- 로고명과 이미지 시작 -->
         <router-link to="/" class="navbar-brand d-inline-flex">
           <!-- <img
-            class="d-inline-block"
-            src="assets/img/gallery/logo.svg"
+            class="h-25 d-inline-block"
+            src="assets/img/gallery/tomato.png"
             alt="logo"/> -->
             <span class="text-1000 fs-3 fw-bold ms-2 text-gradient"
             >맛있는 토마토</span
@@ -35,7 +35,6 @@
             <li class="nav-item dropdown">
               <router-link to = ""
                 class="nav-link dropdown-toggle"
-                
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
@@ -105,7 +104,7 @@
             <button
               class="btn btn-white shadow-warning text-warning"
             >
-              <i class="fas fa-user me-2"></i><router-link to="/register">회원가입</router-link> 
+              <i class="fas fa-user me-2"></i><router-link to="/register" class="register">회원가입</router-link> 
             </button>
             <!-- 회원가입 끝 -->
 
@@ -113,7 +112,7 @@
             <button
               class="btn btn-white shadow-warning text-warning"
             >
-              <i class="fas fa-user me-2"></i><router-link to="/login">로그인</router-link> 
+              <i class="fas fa-user me-2"></i><router-link to="/login" class="login">로그인</router-link> 
             </button>
             <!-- 로그인 끝 -->
           </form>
@@ -129,5 +128,9 @@ export default {};
 </script>
 
 <style>
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+}
 </style>
 

@@ -9,13 +9,13 @@
               <a class="img-landing-banner" href="#!"
                 ><img
                   class="img-fluid"
-                  src="assets/img/gallery/hero-header.png"
+                  src="assets/img/gallery/hero-tomato.png"
                   alt="hero-header"
               /></a>
             </div>
             <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
               <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">
-                여기에 어떤걸 넣을지는 한번 봐야할듯?
+                여기에 어떤걸 넣을지는 <br> 한번 봐야할듯?
               </h1>
               <h1 class="text-800 mb-5 fs-4">
                 검색창을 여기에도 둘지 고민 중입니다<br
@@ -32,7 +32,7 @@
       <!-- 음식점 리스트 표시 시작 -->
       <section class="py-0">
         <div class="container">
-          <div class="col-lg-7 mx-auto text-center mt-7 mb-5">
+          <div class="col-lg-7 mx-auto text-center mt-7">
             <h5 class="fw-bold fs-3 fs-lg-5 lh-sm">메뉴별 모아보기</h5>
           </div>
           <div class="row h-100 gx-2 mt-7">
@@ -48,7 +48,7 @@
                   <div class="card-actions">
                     <div class="badge badge-foodwagon bg-primary p-4">
                       <div class="d-flex flex-between-center">
-                        <div class="text-white fs-7">한식</div>
+                        <div class="text-white fs-7" id="menu">한식</div>
                       </div>
                     </div>
                   </div>
@@ -80,7 +80,7 @@
                   <div class="card-actions">
                     <div class="badge badge-foodwagon bg-primary p-4">
                       <div class="d-flex flex-between-center">
-                        <div class="text-white fs-7">중식</div>
+                        <div class="text-white fs-7" id="menu">중식</div>
                       </div>
                     </div>
                   </div>
@@ -112,7 +112,7 @@
                   <div class="card-actions">
                     <div class="badge badge-foodwagon bg-primary p-4">
                       <div class="d-flex flex-between-center">
-                        <div class="text-white fs-7">양식</div>
+                        <div class="text-white fs-7" id="menu">양식</div>
                       </div>
                     </div>
                   </div>
@@ -144,7 +144,7 @@
                   <div class="card-actions">
                     <div class="badge badge-foodwagon bg-primary p-4">
                       <div class="d-flex flex-between-center">
-                        <div class="text-white fs-7">일식</div>
+                        <div class="text-white fs-7" id="menu">일식</div>
                       </div>
                     </div>
                   </div>
@@ -2011,4 +2011,29 @@
 </template>
 
 <script>
+import Darkmode from "darkmode-js";
+
+export default {
+  data() {
+    return {
+      options: {
+        bottom: "64px", // default: '32px'
+        right: "unset", // default: '32px'
+        left: "32px", // default: 'unset'
+        time: "0.5s", // default: '0.3s'
+        mixColor: "#fff", // default: '#fff'
+        backgroundColor: "#fff", // default: '#fff'
+        buttonColorDark: "#100f2c", // default: '#100f2c'
+        buttonColorLight: "#fff", // default: '#fff'
+        saveInCookies: false, // default: true,
+        label: "🌓", // default: ''
+        autoMatchOsTheme: true, // default: true
+      },
+    };
+  },
+  mounted() {
+    const darkmode = new Darkmode(this.options);
+    darkmode.showWidget();
+  },
+};
 </script>
