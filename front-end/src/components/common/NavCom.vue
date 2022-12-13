@@ -8,12 +8,12 @@
       <div class="container">
         <!-- 로고명과 이미지 시작 -->
         <router-link to="/" class="navbar-brand d-inline-flex">
-          <img
+          <!-- <img
             class="d-inline-block"
             src="assets/img/gallery/logo.svg"
-            alt="logo"
-          /><span class="text-1000 fs-3 fw-bold ms-2 text-gradient"
-            >여기엔 사이트 명</span
+            alt="logo"/> -->
+            <span class="text-1000 fs-3 fw-bold ms-2 text-gradient"
+            >맛있는 토마토</span
           >
         </router-link>
         <!-- 로고명과 이미지 끝 -->
@@ -70,7 +70,7 @@
                   <router-link to = "/qna" class="dropdown-item" >질문과답변</router-link>
                 </li>
                 <li>
-                  <router-link to = "/board" class="dropdown-item" >자유게시판</router-link>
+                  <router-link to = "/free" class="dropdown-item" >자유게시판</router-link>
                 </li>
               </ul>
             </li>

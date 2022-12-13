@@ -31,6 +31,27 @@ const routes = [
     name: 'review',
     component: () => import('@/components/food/review/ReviewList.vue')
   },
+  // TODO: 분류별 게시판 구현
+  {
+    path: '/free',
+    name: 'free',
+    component: () => import('@/components/board/FreeList.vue')
+  },
+  {
+    path: '/announce',
+    name: 'announce',
+    component: () => import('@/components/board/AnnounceList.vue')
+  },
+  {
+    path: '/faq',
+    name: 'faq',
+    component: () => import('@/components/board/FaqList.vue')
+  },
+  {
+    path: '/qna',
+    name: 'qna',
+    component: () => import('@/components/board/QnaList.vue')
+  },
   // TODO: 로그인 메뉴 달기
   {
     path: '/login',

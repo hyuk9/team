@@ -278,12 +278,12 @@
         <div class="row flex-center pb-3">
           <div class="col-md-6 order-0">
             <p class="text-200 text-center text-md-start">
-              All rights Reserved &copy; Your Company, 2021
+              All rights Reserved &copy; DD Company, 2022
             </p>
           </div>
           <div class="col-md-6 order-1">
             <p class="text-200 text-center text-md-end">
-              Made with&nbsp;
+              만든 이&nbsp;
               <svg
                 class="bi bi-suit-heart-fill"
                 xmlns="http://www.w3.org/2000/svg"
@@ -299,7 +299,7 @@
                 class="text-200 fw-bold"
                 href="https://themewagon.com/"
                 target="_blank"
-                >ThemeWagon
+                >D조
               </router-link>
             </p>
           </div>

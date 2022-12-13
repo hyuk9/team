@@ -78,6 +78,24 @@ hr:not([size]) {
   height: 1px;
 }
 
+.h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-family: "Source Sans Pro", "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-weight: 700;
+  line-height: 1.2;
+  color: #212121;
+}
+
+.h1 {
+  font-size: calc(1.37383rem + 1.48598vw);
+}
+
+@media (min-width: 1200px) {
+  .h1 {
+    font-size: 2.48832rem;
+  }
+/* }
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   margin-top: 0;
   margin-bottom: 0.5rem;
@@ -95,7 +113,7 @@ h1, .h1 {
   h1, .h1 {
     font-size: 2.48832rem;
   }
-}
+} */
 
 h2, .h2 {
   font-size: calc(1.33236rem + 0.98832vw);
@@ -18473,3 +18491,18 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 -----------------------------------------------*/
 
 /*# sourceMappingURL=theme-rtl.css.map */
+
+/* 폰트설정 */
+
+h1 {
+
+}
+
+@font-face {
+  font-family: 'ONE-Mobile-POP';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+}
