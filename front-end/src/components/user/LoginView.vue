@@ -109,6 +109,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import User from "@/model/user";
 
 export default {
@@ -154,6 +155,7 @@ export default {
           this.$store
             .dispatch("auth/login", this.user)
             .then(() => {
+              alert("로그인 성공");
               this.$router.push("/profile"); // 로그인 성공하면 강제 /profile 페이지 이동
             })
             // 참고) if/else 문 대신에 -> or(||) and(&&) 연산자를 사용할때도 있음
@@ -170,6 +172,15 @@ export default {
         }
       });
     },
+  },
+  sweetalert() {
+    $(document).on("click", "#success", function (e) {
+      swal(
+        "Success",
+        'You clicked the <b style="color:green;">Success</b> button!',
+        "success"
+      );
+    });
   },
 };
 </script>

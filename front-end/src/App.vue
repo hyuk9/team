@@ -57,6 +57,8 @@ span,
 #menu,
 .login,
 .register,
+.profile,
+.logout,
 #navbarNavDropdown {
   font-family: ONE-Mobile-POP;
 }
