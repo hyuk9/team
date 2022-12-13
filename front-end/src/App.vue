@@ -1,15 +1,13 @@
 <template>
-<<<<<<< Updated upstream
-  <div>
-    <NavCom v-if="wantToShow()"/>
+  <div id="app">
+    <NavCom v-if="wantToShow()" />
     <router-view />
     <FooterCom v-if="wantToShow()" />
-=======
-  <div id="app">
-    <NavCom />
-    <router-view/>
-    <FooterCom />
->>>>>>> Stashed changes
+    <!-- <div id="app">
+      <NavCom />
+      <router-view />
+      <FooterCom />
+    </div> -->
   </div>
 </template>
 
@@ -20,18 +18,18 @@ import FooterCom from "@/components/common/FooterCom.vue";
 export default {
   methods: {
     wantToShow() {
-      if(this.$route.name == "login") {
+      if (this.$route.name == "login") {
         return false;
       } else {
         return true;
       }
-    }
+    },
   },
   components: {
     NavCom,
-    FooterCom
-  }
-}
+    FooterCom,
+  },
+};
 </script>
 
 <style lang="scss">
