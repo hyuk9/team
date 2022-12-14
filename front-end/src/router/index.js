@@ -55,7 +55,21 @@ const routes = [
   {
     path: '/qna',
     name: 'qna',
-    component: () => import('@/components/board/QnaList.vue')
+    component: () => import('@/components/board/qna/QnaList.vue')
+  },
+  // TODO: qna 디테일,add 추가
+   // AddQna 
+   {
+    path: '/add-qna',
+    name: 'add-qna',
+    component: () => import('../components/board/qna/AddQnaView.vue')
+  },
+
+  // QnaDetail 
+  {
+    path: '/qna/:qno',
+    name: 'qna-detail',
+    component: () => import('../components/board/qna/QnaDetailView.vue')
   },
   // TODO: 로그인 메뉴 달기
   {

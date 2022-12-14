@@ -54,7 +54,8 @@ retrieveQna();
       <div class="col-md-12">
         <div style="width: 11%" class="mb-3">
           Items per Page:
-          <select style="vertical-align: middle; text-align-last: left;"  class="form-select " aria-label="Default select example" v-model="pageSize" @change="handlePageSizeChange($event)">
+          <select style="vertical-align: middle; text-align-last: left;" class="form-select "
+            aria-label="Default select example" v-model="pageSize" @change="handlePageSizeChange($event)">
             <option v-for="size in pageSizes" :key="size" :value="size">
               <!-- <!—            size : 3, 6, 9 —> -->
               {{ size }}
