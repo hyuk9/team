@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 홈페이지 로고 시작 -->
-    <div class="container logo">임시로고</div>
+    <div class="container logo"><router-link to="/">임시로고(누르면 홈으로)</router-link></div>
     <!-- 홈페이지 로고 끝 -->
     <!-- 로그인 페이지 시작 -->
     <div class="col-md-12">
