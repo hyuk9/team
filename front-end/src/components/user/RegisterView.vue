@@ -1,101 +1,125 @@
 <template>
   <div>
-    <!-- 최상단 시작 -->
-    <section class="py-5 overflow-hidden bg-warning" id="home">
-      <div class="container">
-        <div class="row flex-center">
-          <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0">
-            <!-- <a class="img-landing-banner" href="#!"
-              ><img
-                class="img-fluid"
-                src="@/assets/img/species/korean.jpg"
-                alt="hero-header"
-            /></a> -->
-          </div>
-          <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
-            <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">
-              여기는 회원가입 <br />
-              페이지 입니다
-            </h1>
-            <h1 class="text-800 mb-5 fs-4">최상단만 제작</h1>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- 최상단 끝 -->
-    <div class="card card-container">
-      <img
-        id="profile-img"
-        src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-        class="profile-img-card"
-      />
-      <form name="form" @submit.prevent="handleRegister">
-        <div v-if="!successful">
-          <div class="form-group">
-            <label for="username">아이디</label>
-            <!-- v-validate : 유효성 체크 -->
-            <!-- v-validate="'required|min:3|max:20'" 체크함 -->
-            <!-- errors.has('username') : 에러 발생했는지 검사 -->
-            <!-- {{errors.first('username')}} : 에러 있으면 화면 출력됨, 없으면 안됨 -->
-            <input
-              v-model="user.username"
-              v-validate="'required|min:3|max:20'"
-              type="text"
-              class="form-control"
-              name="username"
-            />
-            <!-- 유효성 체크 후 에러 체크 : errors.hat(체크대상) -->
-            <!-- errors.first(체크대상) : 에러 내용 출력 -->
-            <div
-              v-if="submitted && errors.has('username')"
-              class="alert-danger"
-            >
-              {{ errors.first("username") }}
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="email">이메일</label>
-            <input
-              v-model="user.email"
-              v-validate="'required|email|max:50'"
-              type="email"
-              class="form-control"
-              name="email"
-            />
-            <div v-if="submitted && errors.has('email')" class="alert-danger">
-              {{ errors.first("email") }}
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="password">비밀번호</label>
-            <input
-              v-model="user.password"
-              v-validate="'required|min:6|max:40'"
-              type="password"
-              class="form-control"
-              name="password"
-            />
-            <div
-              v-if="submitted && errors.has('password')"
-              class="alert-danger"
-            >
-              {{ errors.first("password") }}
-            </div>
-          </div>
-          <!-- 회원 가입 버튼 시작 -->
-          <div class="form-group mt-3">
-            <button class="btn btn-primary btn-block">회원가입</button>
-          </div>
-          <!-- 회원 가입 버튼 끝 -->
-        </div>
-      </form>
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
 
-      <div
-        v-if="message"
-        class="alert"
-        :class="successful ? 'alert-success' : 'alert-danger'"
-      >
-        {{ message }}
+    <div class="login">
+      <div class="login__content">
+        <div class="login__img">
+          <img
+            src="assets/img/gallery/hero-header.png"
+            alt="user login"
+          />
+        </div>
+        <div class="login__forms">
+          <!--         create account form -->
+          <form
+            action=""
+            class="login__create"
+            id="login-up"
+            name="form"
+            @submit.prevent="handleRegister"
+          >
+            <div v-if="!successful">
+              <h1 class="login__title">회원가입</h1>
+              <div>
+                <div class="login__box">
+                  <i class="bx bx-user login__icon"></i>
+                  <input
+                    v-model="user.username"
+                    v-validate="'required|min:3|max:20'"
+                    type="text"
+                    placeholder="아이디"
+                    class="login__input"
+                    name="username"
+                  />
+                </div>
+                <div
+                  v-if="submitted && errors.has('username')"
+                  class="alert-danger"
+                >
+                  {{ errors.first("username") }}
+                </div>
+              </div>
+
+              <div>
+                <div class="login__box">
+                  <i class="bx bx-at login__icon"></i>
+                  <input
+                    v-model="user.email"
+                    v-validate="'required|email|max:50'"
+                    type="email"
+                    placeholder="이메일"
+                    class="login__input"
+                    name="email"
+                  />
+                </div>
+                <div
+                  v-if="submitted && errors.has('email')"
+                  class="alert-danger"
+                >
+                  {{ errors.first("email") }}
+                </div>
+              </div>
+
+              <div>
+                <div class="login__box">
+                  <i class="bx bx-lock login__icon"></i>
+                  <input
+                    v-model="user.password"
+                    v-validate="'required|min:6|max:40'"
+                    type="password"
+                    placeholder="비밀번호"
+                    class="login__input"
+                    name="password"
+                  />
+                </div>
+                <div
+                  v-if="submitted && errors.has('password')"
+                  class="alert-danger"
+                >
+                  {{ errors.first("password") }}
+                </div>
+              </div>
+
+              <button class="login__button">가입하기</button>
+
+              <div
+                v-if="message"
+                class="alert"
+                :class="successful ? 'alert-success' : 'alert-danger'"
+              >
+                {{ message }}
+              </div>
+              <div>
+                <span class="login__account login__account--account"
+                  >이미 회원이신가요?</span
+                >
+                &nbsp;
+                <router-link to="/login" class="login__signup login__signup--signup" id="sign-in"
+                  >로그인 하기</router-link
+                >
+              </div>
+
+              <div class="login__social">
+                <a href="#" class="login__social--icon"
+                  ><i class="bx bxl-facebook"></i
+                ></a>
+                <a href="#" class="login__social--icon"
+                  ><i class="bx bxl-twitter"></i
+                ></a>
+                <a href="#" class="login__social--icon"
+                  ><i class="bx bxl-google"></i
+                ></a>
+                <a href="#" class="login__social--icon"
+                  ><i class="bx bxl-github"></i
+                ></a>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
@@ -164,40 +188,236 @@ export default {
       });
     },
   },
+  mounted() {
+    const signup = document.getElementById("sign-up");
+    const signin = document.getElementById("sign-in");
+    const loginin = document.getElementById("login-in");
+    const loginup = document.getElementById("login-up");
+
+    signup.addEventListener("click", () => {
+      loginin.classList.remove("block");
+      loginup.classList.remove("none");
+
+      loginin.classList.add("none");
+      loginup.classList.add("block");
+    });
+
+    signin.addEventListener("click", () => {
+      loginin.classList.remove("none");
+      loginup.classList.remove("block");
+
+      loginin.classList.add("block");
+      loginup.classList.add("none");
+    });
+  },
 };
 </script>
 
 <style scoped>
-label {
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.938rem;
+  color: #23004d;
+}
+
+h1 {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
   display: block;
-  margin-top: 10px;
 }
 
-.card-container.card {
-  max-width: 350px !important;
-  padding: 40px 40px;
+.login {
+  display: grid;
+  grid-template-columns: 100%;
+  height: 100vh;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
 }
-
-.card {
-  background-color: #f7f7f7;
-  padding: 20px 25px 30px;
-  margin: 0 auto 25px;
-  margin-top: 50px;
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
-  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+.login__content {
+  display: grid;
 }
-
-.profile-img-card {
-  width: 96px;
-  height: 96px;
-  margin: 0 auto 10px;
+.login__img {
+  justify-self: center;
+}
+.login__img img {
+  width: 310px;
+  margin-top: 1.5rem;
+}
+.login__forms {
+  position: relative;
+  height: 368px;
+}
+.login__register,
+.login__create {
+  position: absolute;
+  bottom: 1rem;
+  width: 100%;
+  background-color: #f2f2f2;
+  padding: 2rem 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(35, 0, 77, 0.2);
+  animation-duration: 0.4s;
+  animation-name: animateLogin;
+}
+.login__title {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+.login__box {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 0.5rem;
+  padding: 1.125rem 1rem;
+  background-color: #fff;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+}
+.login__icon {
+  font-size: 1.5rem;
+  color: #FFB30E;
+}
+.login__input {
+  border: none;
+  outline: none;
+  font-size: 0.938rem;
+  font-weight: 700;
+  color: #23004d;
+  width: 100%;
+}
+.login__input::placeholder {
+  font-size: 0.938rem;
+  font-family: "Open Sans", sans-serif;
+  color: #a49eac;
+}
+.login__forgot {
   display: block;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
+  width: max-content;
+  margin-left: auto;
+  margin-top: 0.5rem;
+  font-size: 0.813rem;
+  font-weight: 600;
+  color: #a49eac;
+}
+.login__button {
+  width: 316px;
+  padding: 1rem;
+  margin: 2rem 0;
+  background-color: #FFB30E;
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 0.5rem;
+  transition: 0.3s;
+  border: 0;
+}
+.login__button:hover {
+  background-color: #ffb30ea8;
+}
+.login__account,
+.login__signin,
+.login__signup {
+  font-weight: 600;
+  font-size: 0.813rem;
+}
+.login__account--account,
+.login__signin--account,
+.login__signup--account {
+  color: #23004d;
+}
+.login__account--signin,
+.login__account--signup,
+.login__signin--signin,
+.login__signin--signup,
+.login__signup--signin,
+.login__signup--signup {
+  color: #FFB30E;
+  cursor: pointer;
+}
+.login__social {
+  margin-top: 2rem;
+}
+.login__social--icon {
+  font-size: 1.5rem;
+  color: #23004d;
+  margin: 0 1rem;
+}
+
+.block {
+  display: block;
+}
+
+.none {
+  display: none;
+}
+
+@keyframes animateLogin {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.1, 1.1);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+@media screen and (min-width: 576px) {
+  .login__forms {
+    width: 348px;
+    justify-self: center;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .login {
+    height: 100vh;
+    overflow: hidden;
+  }
+  .login__content {
+    grid-template-columns: repeat(2, max-content);
+    justify-content: center;
+    align-items: center;
+    margin-left: 10rem;
+  }
+  .login__img {
+    display: flex;
+    width: 600px;
+    height: 588px;
+    background-color: #fff;
+    border-radius: 1rem;
+    padding-left: 1rem;
+  }
+  .login__img img {
+    width: 80%;
+    margin-top: 0;
+  }
+  .login__register,
+  .login__create {
+    left: -11rem;
+  }
+  .login__register {
+    bottom: -2rem;
+  }
+  .login__create {
+    bottom: -5.5rem;
+  }
 }
 </style>
