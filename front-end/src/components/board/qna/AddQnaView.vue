@@ -46,14 +46,10 @@
                 <button @click="saveQna" class="btn btn-primary">Submit</button>
             </div>
         </div>
-        <div v-else>
-            <div class="alert alert-success" role="alert">Save qna successfully!</div>
-            <button @click="newQna" class="btn btn-primary">Add New Qna</button>
-            <button @click="returnQna" class="btn btn-primary ms-3">Return QnaList</button>
-        </div>
         <!-- AddQna End -->
     </div>
 </template>
+
 
 <script>
 import QnaDataService from "../../../services/QnaDataService";
@@ -91,6 +87,8 @@ export default {
                     console.log(response.data);
                     // 변수 submitted
                     this.submitted = true;
+                    alert("성공했습니다.")
+                    location.href = "/qna";
                 })
                 // 실패하면 .catch() 결과가 전송됨
                 .catch((e) => {
@@ -106,6 +104,7 @@ export default {
         returnQna() {
             location.href = "/qna";
         }
+     
     },
 
 };
