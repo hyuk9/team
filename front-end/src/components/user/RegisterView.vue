@@ -32,7 +32,7 @@
       <form name="form" @submit.prevent="handleRegister">
         <div v-if="!successful">
           <div class="form-group">
-            <label for="username">아이디</label>
+            <label for="username">Username</label>
             <!-- v-validate : 유효성 체크 -->
             <!-- v-validate="'required|min:3|max:20'" 체크함 -->
             <!-- errors.has('username') : 에러 발생했는지 검사 -->
@@ -54,7 +54,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="email">이메일</label>
+            <label for="email">Email</label>
             <input
               v-model="user.email"
               v-validate="'required|email|max:50'"
@@ -67,7 +67,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="password">비밀번호</label>
+            <label for="password">Password</label>
             <input
               v-model="user.password"
               v-validate="'required|min:6|max:40'"
@@ -84,7 +84,7 @@
           </div>
           <!-- 회원 가입 버튼 시작 -->
           <div class="form-group mt-3">
-            <button class="btn btn-primary btn-block">회원가입</button>
+            <button class="btn btn-primary btn-block">Sign Up</button>
           </div>
           <!-- 회원 가입 버튼 끝 -->
         </div>

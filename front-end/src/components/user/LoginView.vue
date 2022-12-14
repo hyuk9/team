@@ -5,42 +5,70 @@
     <!-- 홈페이지 로고 끝 -->
     <!-- 로그인 페이지 시작 -->
     <div class="col-md-12">
-      <div class="form-structor container">
-        <form name="form" @submit.prevent="handleLogin" class="signup">
-          <h2 class="form-title" id="signup">로그인</h2>
-
-          <div class="form-holder">
+      <div class="card card-container">
+        <img
+          id="profile-img"
+          src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+          class="profile-img-card"
+        />
+        <form name="form" @submit.prevent="handleLogin">
+          <div class="form-group">
+            <label for="username">아이디</label>
+            <!-- v-validate : vee-validate 라이브러리 제공하는 속성 -->
+            <!-- vee-validate : vue 전용 유효성 체크 라이브러리 -->
+            <!-- v-validate="유효성속성1 | 유효성속성2 | ..."  -->
+            <!--    에러발생시 : errors.has('username') -> true 아래 메세지가 보임 -->
             <input
               v-model="user.username"
               v-validate="'required'"
               type="text"
-              class="input"
+              class="form-control"
               name="username"
               placeholder="아이디를 입력해주세요."
             />
+            <div
+              v-if="errors.has('username')"
+              class="alert alert-danger"
+              role="alert"
+            >
+              아이디가 필요합니다.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">비밀번호</label>
             <input
               v-model="user.password"
               v-validate="'required'"
               type="password"
-              class="input"
+              class="form-control"
               name="password"
               placeholder="비밀번호를 입력해주세요"
             />
+            <div
+              v-if="errors.has('password')"
+              class="alert alert-danger"
+              role="alert"
+            >
+              비밀번호가 필요합니다.
+            </div>
           </div>
-          <button class="submit-btn">로그인</button>
+          <!-- 버튼 시작 -->
+          <div class="form-group mt-3">
+            <button class="btn btn-primary btn-block" :disabled="loading">
+              <span
+                v-show="loading"
+                class="spinner-border spinner-border-sm"
+              ></span>
+              <span>Login</span>
+            </button>
+          </div>
+          <!-- 버튼 끝 -->
           <div class="form-group">
             <div v-if="message" class="alert alert-danger" role="alert">
               {{ message }}
             </div>
           </div>
         </form>
-        <div class="login slide-up">
-          <div class="center">
-            <h2 class="form-title" id="login">
-              <router-link to="/register">회원가입</router-link>
-            </h2>
-          </div>
-        </div>
       </div>
     </div>
     <!-- 로그인 페이지 끝 -->
@@ -77,15 +105,10 @@
       </div>
     </div>
     <!-- 푸터 마지막 끝 -->
-
-    <!-- 새 로그인 양식 임시 -->
-
-    <!-- 새 로그인 양식 임시 끝-->
   </div>
 </template>
 
 <script>
-/* eslint-disable */
 import User from "@/model/user";
 
 export default {
@@ -113,9 +136,6 @@ export default {
   methods: {
     // 로그인 버튼 클릭시 실행되는 함수
     handleLogin() {
-      // ==========================================================================================================================
-      //아이디나 비밀번호가 입력되지 않았다면 알림창을 띄우는 함수 실행
-      this.alertLoginError();
       // 로그인 로직 처리
       this.loading = true;
       // vee-validate 함수 처리 방법
@@ -134,13 +154,6 @@ export default {
           this.$store
             .dispatch("auth/login", this.user)
             .then(() => {
-              // alert 라이브러리 효과
-              this.$swal({
-                icon: "success",
-                title: "로그인 성공",
-                showConfirmButton: false,
-                timer: 1000,
-              });
               this.$router.push("/profile"); // 로그인 성공하면 강제 /profile 페이지 이동
             })
             // 참고) if/else 문 대신에 -> or(||) and(&&) 연산자를 사용할때도 있음
@@ -157,36 +170,44 @@ export default {
         }
       });
     },
-    // 아이디나 비밀번호가 입력되지 않았다면 알림창을 띄우는 함수
-    alertLoginError() {
-      if (this.errors.has("username") && this.errors.has("password")) {
-        // alert 라이브러리 효과
-        this.$swal({
-          icon: "error",
-          title: "로그인 실패",
-          text: "아이디와 비밀번호가 필요합니다",
-        });
-      } else if (this.errors.has("username")) {
-        // alert 라이브러리 효과
-        this.$swal({
-          icon: "error",
-          title: "로그인 실패",
-          text: "아이디가 필요합니다",
-        });
-      } else if (this.errors.has("password")) {
-        // alert 라이브러리 효과
-        this.$swal({
-          icon: "error",
-          title: "로그인 실패",
-          text: "비밀번호가 필요합니다",
-        });
-      }
-    },
   },
 };
 </script>
 
 <style scoped>
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+.card-container.card {
+  max-width: 350px !important;
+  padding: 40px 40px;
+}
+
+.card {
+  background-color: #f7f7f7;
+  padding: 20px 25px 30px;
+  margin: 0 auto 25px;
+  margin-top: 50px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.profile-img-card {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 10px;
+  display: block;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+
 .logo {
   width: 350px;
   text-align: center;
@@ -198,248 +219,5 @@ export default {
   position: fixed;
   bottom: 0;
   width: 100%;
-}
-
-/* 임시 로그인 css */
-@import url("https://fonts.googleapis.com/css?family=Fira+Sans");
-html,
-body {
-  position: relative;
-  min-height: 100vh;
-  background-color: #e1e8ee;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "Fira Sans", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.form-structor {
-  background-color: #222;
-  border-radius: 15px;
-  height: 550px;
-  width: 350px;
-  position: relative;
-  overflow: hidden;
-}
-.form-structor::after {
-  content: "";
-  opacity: 0.8;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-repeat: no-repeat;
-  background-position: left bottom;
-  background-size: 500px;
-  background-image: url("https://images.unsplash.com/photo-1503602642458-232111445657?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bf884ad570b50659c5fa2dc2cfb20ecf&auto=format&fit=crop&w=1000&q=100");
-}
-.form-structor .signup {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  width: 65%;
-  z-index: 5;
-  -webkit-transition: all 0.3s ease;
-}
-.form-structor .signup.slide-up {
-  top: 5%;
-  -webkit-transform: translate(-50%, 0%);
-  -webkit-transition: all 0.3s ease;
-}
-.form-structor .signup.slide-up .form-holder,
-.form-structor .signup.slide-up .submit-btn {
-  opacity: 0;
-  visibility: hidden;
-}
-.form-structor .signup.slide-up .form-title {
-  font-size: 1em;
-  cursor: pointer;
-}
-.form-structor .signup.slide-up .form-title span {
-  margin-right: 5px;
-  opacity: 1;
-  visibility: visible;
-  -webkit-transition: all 0.3s ease;
-}
-.form-structor .signup .form-title {
-  color: #fff;
-  font-size: 1.7em;
-  text-align: center;
-}
-.form-structor .signup .form-title span {
-  color: rgba(0, 0, 0, 0.4);
-  opacity: 0;
-  visibility: hidden;
-  -webkit-transition: all 0.3s ease;
-}
-.form-structor .signup .form-holder {
-  border-radius: 15px;
-  background-color: #fff;
-  overflow: hidden;
-  margin-top: 50px;
-  opacity: 1;
-  visibility: visible;
-  -webkit-transition: all 0.3s ease;
-}
-.form-structor .signup .form-holder .input {
-  border: 0;
-  outline: none;
-  box-shadow: none;
-  display: block;
-  height: 30px;
-  line-height: 30px;
-  padding: 8px 15px;
-  border-bottom: 1px solid #eee;
-  width: 100%;
-  font-size: 12px;
-}
-.form-structor .signup .form-holder .input:last-child {
-  border-bottom: 0;
-}
-.form-structor .signup .form-holder .input::-webkit-input-placeholder {
-  color: rgba(0, 0, 0, 0.4);
-}
-.form-structor .signup .submit-btn {
-  background-color: rgba(0, 0, 0, 0.4);
-  color: rgba(255, 255, 255, 0.7);
-  border: 0;
-  border-radius: 15px;
-  display: block;
-  margin: 15px auto;
-  padding: 15px 45px;
-  width: 100%;
-  font-size: 13px;
-  font-weight: bold;
-  cursor: pointer;
-  opacity: 1;
-  visibility: visible;
-  -webkit-transition: all 0.3s ease;
-}
-.form-structor .signup .submit-btn:hover {
-  transition: all 0.3s ease;
-  background-color: rgba(0, 0, 0, 0.8);
-}
-.form-structor .login {
-  position: absolute;
-  top: 20%;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #fff;
-  z-index: 5;
-  -webkit-transition: all 0.3s ease;
-}
-.form-structor .login::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: -20px;
-  -webkit-transform: translate(-50%, 0);
-  background-color: #fff;
-  width: 200%;
-  height: 250px;
-  border-radius: 50%;
-  z-index: 4;
-  -webkit-transition: all 0.3s ease;
-}
-.form-structor .login .center {
-  position: absolute;
-  top: calc(50% - 10%);
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  width: 65%;
-  z-index: 5;
-  -webkit-transition: all 0.3s ease;
-}
-.form-structor .login .center .form-title {
-  color: #000;
-  font-size: 1.7em;
-  text-align: center;
-}
-.form-structor .login .center .form-title span {
-  color: rgba(0, 0, 0, 0.4);
-  opacity: 0;
-  visibility: hidden;
-  -webkit-transition: all 0.3s ease;
-}
-.form-structor .login .center .form-holder {
-  border-radius: 15px;
-  background-color: #fff;
-  border: 1px solid #eee;
-  overflow: hidden;
-  margin-top: 50px;
-  opacity: 1;
-  visibility: visible;
-  -webkit-transition: all 0.3s ease;
-}
-.form-structor .login .center .form-holder .input {
-  border: 0;
-  outline: none;
-  box-shadow: none;
-  display: block;
-  height: 30px;
-  line-height: 30px;
-  padding: 8px 15px;
-  border-bottom: 1px solid #eee;
-  width: 100%;
-  font-size: 12px;
-}
-.form-structor .login .center .form-holder .input:last-child {
-  border-bottom: 0;
-}
-.form-structor .login .center .form-holder .input::-webkit-input-placeholder {
-  color: rgba(0, 0, 0, 0.4);
-}
-.form-structor .login .center .submit-btn {
-  background-color: #6b92a4;
-  color: rgba(255, 255, 255, 0.7);
-  border: 0;
-  border-radius: 15px;
-  display: block;
-  margin: 15px auto;
-  padding: 15px 45px;
-  width: 100%;
-  font-size: 13px;
-  font-weight: bold;
-  cursor: pointer;
-  opacity: 1;
-  visibility: visible;
-  -webkit-transition: all 0.3s ease;
-}
-.form-structor .login .center .submit-btn:hover {
-  transition: all 0.3s ease;
-  background-color: rgba(0, 0, 0, 0.8);
-}
-.form-structor .login.slide-up {
-  top: 90%;
-  -webkit-transition: all 0.3s ease;
-}
-.form-structor .login.slide-up .center {
-  top: 10%;
-  -webkit-transform: translate(-50%, 0%);
-  -webkit-transition: all 0.3s ease;
-}
-.form-structor .login.slide-up .form-holder,
-.form-structor .login.slide-up .submit-btn {
-  opacity: 0;
-  visibility: hidden;
-  -webkit-transition: all 0.3s ease;
-}
-.form-structor .login.slide-up .form-title {
-  font-size: 1em;
-  margin: 0;
-  padding: 0;
-  cursor: pointer;
-  -webkit-transition: all 0.3s ease;
-}
-.form-structor .login.slide-up .form-title span {
-  margin-right: 5px;
-  opacity: 1;
-  visibility: visible;
-  -webkit-transition: all 0.3s ease;
 }
 </style>

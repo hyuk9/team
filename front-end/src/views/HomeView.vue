@@ -2,30 +2,26 @@
   <div>
     <main class="main" id="top">
       <!-- 최상단 시작 -->
-      <section class="py-5 overflow-hidden bg-danger" id="home">
+      <section class="py-5 overflow-hidden bg-primary" id="home">
         <div class="container">
           <div class="row flex-center">
             <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0">
               <a class="img-landing-banner" href="#!"
                 ><img
                   class="img-fluid"
-                  src="assets/img/gallery/hero-tomato.png"
+                  src="assets/img/gallery/hero-header.png"
                   alt="hero-header"
               /></a>
             </div>
-            <div class="col-md-7 col-lg-6 py-8 text-md-start text-center" id="typed">
-              <!-- <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">
-                지금 찾고있는 맛집을 <br> 쉽고 빠르게
+            <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
+              <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">
+                여기에 어떤걸 넣을지는 한번 봐야할듯?
               </h1>
-              <p class="fs-md-5 fs-lg-6 fs-xl-8 text-light font-italic fw-900">
-                지금 찾고있는 맛집을 <br> 쉽고 빠르게
-              </p> -->
-              <span class="typed-words fs-md-5 fs-lg-6 fs-xl-8 text-light font-italic fw-900"></span>
-              <br />
-              <span
-                class="fs-md-5 fs-lg-6 fs-xl-8 text-light font-italic fw-900"
-                >쉽고 빠르게😋</span
-              >
+              <h1 class="text-800 mb-5 fs-4">
+                검색창을 여기에도 둘지 고민 중입니다<br
+                  class="d-none d-xxl-block"
+                />대충 있어보이는 말2
+              </h1>
             </div>
           </div>
         </div>
@@ -36,7 +32,7 @@
       <!-- 음식점 리스트 표시 시작 -->
       <section class="py-0">
         <div class="container">
-          <div class="col-lg-7 mx-auto text-center mt-7">
+          <div class="col-lg-7 mx-auto text-center mt-7 mb-5">
             <h5 class="fw-bold fs-3 fs-lg-5 lh-sm">메뉴별 모아보기</h5>
           </div>
           <div class="row h-100 gx-2 mt-7">
@@ -52,7 +48,7 @@
                   <div class="card-actions">
                     <div class="badge badge-foodwagon bg-primary p-4">
                       <div class="d-flex flex-between-center">
-                        <div class="text-white fs-7" id="menu">한식</div>
+                        <div class="text-white fs-7">한식</div>
                       </div>
                     </div>
                   </div>
@@ -84,7 +80,7 @@
                   <div class="card-actions">
                     <div class="badge badge-foodwagon bg-primary p-4">
                       <div class="d-flex flex-between-center">
-                        <div class="text-white fs-7" id="menu">중식</div>
+                        <div class="text-white fs-7">중식</div>
                       </div>
                     </div>
                   </div>
@@ -116,7 +112,7 @@
                   <div class="card-actions">
                     <div class="badge badge-foodwagon bg-primary p-4">
                       <div class="d-flex flex-between-center">
-                        <div class="text-white fs-7" id="menu">양식</div>
+                        <div class="text-white fs-7">양식</div>
                       </div>
                     </div>
                   </div>
@@ -148,7 +144,7 @@
                   <div class="card-actions">
                     <div class="badge badge-foodwagon bg-primary p-4">
                       <div class="d-flex flex-between-center">
-                        <div class="text-white fs-7" id="menu">일식</div>
+                        <div class="text-white fs-7">일식</div>
                       </div>
                     </div>
                   </div>
@@ -2015,34 +2011,4 @@
 </template>
 
 <script>
-/* eslint-disable */
-export default {
-  mounted() {
-    $(function () {
-      let typed2 = new Typed(".typed-words", {
-        strings: [
-          "지금 찾고있는 맛집을",
-          "송년회 하기 좋은 맛집을",
-          "크리스마스 파티 맛집을",
-          "데이트코스로 딱인 맛집을",
-          "가성비 좋은 맛집을",
-        ],
-        typeSpeed: 80,
-        backSpeed: 80,
-        backDelay: 4000,
-        startDelay: 1000,
-        loop: true,
-        showCursor: true,
-      });
-    });
-  },
-};
 </script>
-
-<style>
-    .typed-cursor {
-        opacity: 0;
-        font-size: 70px;
-        color: rgb(255, 215, 53);
-    }
-</style>

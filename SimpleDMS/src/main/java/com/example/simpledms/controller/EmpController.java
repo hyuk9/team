@@ -1,8 +1,9 @@
 package com.example.simpledms.controller;
 
-import com.example.simpledms.model.Faq;
-import com.example.simpledms.service.FaqService;
-import com.example.simpledms.service.FaqService;
+import com.example.simpledms.model.Dept;
+import com.example.simpledms.model.Emp;
+import com.example.simpledms.service.DeptService;
+import com.example.simpledms.service.EmpService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,10 +17,10 @@ import java.util.*;
 
 /**
  * packageName : com.example.jpaexam.controller.exam07
- * fileName : Faq07Controller
+ * fileName : Dept07Controller
  * author : ds
  * date : 2022-10-21
- * description : 부서 컨트롤러 @RestController, ResponseEntity, getFaqAll()
+ * description : 부서 컨트롤러 @RestController, ResponseEntity, getDeptAll()
  * ===========================================================
  * DATE            AUTHOR             NOTE
  * —————————————————————————————
@@ -32,17 +33,15 @@ import java.util.*;
 //@CrossOrigin(origins = "http://localhost")
 @RestController
 @RequestMapping("/api")
-public class FaqController {
+public class EmpController {
 
     //    스프링부트 : DI(의존성 주입) ( @Autowired )
     @Autowired
-    FaqService faqService; // @Autowired : 스프링부트가 가동될때 생성된 객체를 하나 받아오기
+    EmpService empService; // @Autowired : 스프링부트가 가동될때 생성된 객체를 하나 받아오기
 
-//    ✅ frontend url(쿼리스트링방식) : ? 매개변수 전송방식 사용했으면 ----> backend @RequestParam
-//    ✅ frontend url(파라매터방식) : /{} 매개변수 전송방식 사용했으면 ----> backend @PathVariable
-
-    @GetMapping("/faq")
-    public ResponseEntity<Object> getFaqAll(@RequestParam(required = false) String title,
+    //  *1) 클라이언트 : (form태그) Get 방식(url) -> 2) 서버 : @GetMapping("url") -> 3) DB: select 요청,
+    @GetMapping("/emp")
+    public ResponseEntity<Object> getEmpAll(@RequestParam(required = false) String ename,
                                             @RequestParam(defaultValue = "0") int page,
                                             @RequestParam(defaultValue = "3") int size
     ) {
@@ -51,18 +50,18 @@ public class FaqController {
 
             Pageable pageable = PageRequest.of(page, size);
 
-            Page<Faq> faqPage;
+            Page<Emp> empPage;
 
-            faqPage = faqService.findAllByTitleContaining(title, pageable);
+            empPage = empService.findAllByEnameContaining(ename, pageable);
 
             Map<String, Object> response = new HashMap<>();
-            response.put("faq", faqPage.getContent());
-            response.put("currentPage", faqPage.getNumber());
-            response.put("totalItems", faqPage.getTotalElements());
-            response.put("totalPages", faqPage.getTotalPages());
+            response.put("emp", empPage.getContent());
+            response.put("currentPage", empPage.getNumber());
+            response.put("totalItems", empPage.getTotalElements());
+            response.put("totalPages", empPage.getTotalPages());
 
 
-            if (faqPage.isEmpty() == false) {
+            if (empPage.isEmpty() == false) {
 //                데이터 + 성공 메세지 전송
                 return new ResponseEntity<>(response, HttpStatus.OK);
             } else {
@@ -77,16 +76,15 @@ public class FaqController {
         }
     }
 
-
-    @GetMapping("/faq/{no}")
-    public ResponseEntity<Object> getFaqId(@PathVariable int no) {
+    @GetMapping("/emp/{eno}")
+    public ResponseEntity<Object> getEmpID(@PathVariable int eno) {
 
         try {
-            Optional<Faq> optionalFaq = faqService.findById(no);
+            Optional<Emp> optionalEmp = empService.findById(eno);
 
-            if (optionalFaq.isPresent() == true) {
+            if (optionalEmp.isPresent() == true) {
 //                데이터 + 성공 메세지 전송
-                return new ResponseEntity<>(optionalFaq.get(), HttpStatus.OK);
+                return new ResponseEntity<>(optionalEmp.get(), HttpStatus.OK);
             } else {
 //                데이터 없음 메세지 전송(클라이언트)
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -100,11 +98,11 @@ public class FaqController {
     }
 
     //  *1) 클라이언트 : (form태그) Get 방식(url) -> 2) 서버 : @GetMapping("url") -> 3) DB: select 요청,
-    @DeleteMapping("/faq/all")
+    @DeleteMapping("/emp/all")
     public ResponseEntity<Object> removeAll() {
 
         try {
-            faqService.removeAll();
+            empService.removeAll();
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             log.debug(e.getMessage());
@@ -113,14 +111,15 @@ public class FaqController {
         }
     }
 
+
     //  *1) 클라이언트 : (form태그) Get 방식(url) -> 2) 서버 : @GetMapping("url") -> 3) DB: select 요청,
-    @PostMapping("/faq")
-    public ResponseEntity<Object> createFaq(@RequestBody Faq faq) {
+    @PostMapping("/emp")
+    public ResponseEntity<Object> createEmp(@RequestBody Emp emp) {
 
         try {
-            Faq faq2 = faqService.save(faq);
+            Emp emp2 = empService.save(emp);
 
-            return new ResponseEntity<>(faq2, HttpStatus.OK);
+            return new ResponseEntity<>(emp2, HttpStatus.OK);
         } catch (Exception e) {
             log.debug(e.getMessage());
             // 서버에러 발생 메세지 전송(클라이언트)
@@ -128,13 +127,14 @@ public class FaqController {
         }
     }
 
-    @PutMapping("/faq/{no}")
-    public ResponseEntity<Object> updateFaq(@PathVariable int no, @RequestBody Faq faq) {
+
+    @PutMapping("/emp/{eno}")
+    public ResponseEntity<Object> updateEmp(@PathVariable int eno, @RequestBody Emp emp) {
 
         try {
-            Faq faq2 = faqService.save(faq);
+            Emp emp2 = empService.save(emp);
 
-            return new ResponseEntity<>(faq2, HttpStatus.OK);
+            return new ResponseEntity<>(emp2, HttpStatus.OK);
         } catch (Exception e) {
             log.debug(e.getMessage());
             // 서버에러 발생 메세지 전송(클라이언트)
@@ -142,11 +142,12 @@ public class FaqController {
         }
     }
 
-    @DeleteMapping("/faq/deletion/{no}")
-    public ResponseEntity<Object> deleteId(@PathVariable int no) {
+
+    @DeleteMapping("/emp/deletion/{eno}")
+    public ResponseEntity<Object> deleteId(@PathVariable int eno) {
 
         try {
-             boolean bSuccess = faqService.removeById(no);
+            boolean bSuccess = empService.removeById(eno);
 
             if (bSuccess == true) {
 //                데이터 + 성공 메세지 전송
@@ -162,29 +163,6 @@ public class FaqController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-//    like 검색
-//    @GetMapping("/Faq/dname/{dname}")
-//    public ResponseEntity<Object> findAllByDnameContaining(@PathVariable String dname) {
-//
-//        try {
-//            List<Faq> list = FaqService.findAllByDnameContaining(dname);
-//
-//            if (list.isEmpty() == false) {
-////                데이터 + 성공 메세지 전송
-//                return new ResponseEntity<>(list, HttpStatus.OK);
-//            } else {
-////                데이터 없음 메세지 전송(클라이언트)
-//                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//            }
-//
-//        } catch (Exception e) {
-//            log.debug(e.getMessage());
-//            // 서버에러 발생 메세지 전송(클라이언트)
-//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//    }
-
 
 }
 

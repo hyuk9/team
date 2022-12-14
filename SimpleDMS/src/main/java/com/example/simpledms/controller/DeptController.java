@@ -1,8 +1,7 @@
 package com.example.simpledms.controller;
 
-import com.example.simpledms.model.Faq;
-import com.example.simpledms.service.FaqService;
-import com.example.simpledms.service.FaqService;
+import com.example.simpledms.model.Dept;
+import com.example.simpledms.service.DeptService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,10 +15,10 @@ import java.util.*;
 
 /**
  * packageName : com.example.jpaexam.controller.exam07
- * fileName : Faq07Controller
+ * fileName : Dept07Controller
  * author : ds
  * date : 2022-10-21
- * description : 부서 컨트롤러 @RestController, ResponseEntity, getFaqAll()
+ * description : 부서 컨트롤러 @RestController, ResponseEntity, getDeptAll()
  * ===========================================================
  * DATE            AUTHOR             NOTE
  * —————————————————————————————
@@ -32,61 +31,63 @@ import java.util.*;
 //@CrossOrigin(origins = "http://localhost")
 @RestController
 @RequestMapping("/api")
-public class FaqController {
+public class DeptController {
 
     //    스프링부트 : DI(의존성 주입) ( @Autowired )
     @Autowired
-    FaqService faqService; // @Autowired : 스프링부트가 가동될때 생성된 객체를 하나 받아오기
+    DeptService deptService; // @Autowired : 스프링부트가 가동될때 생성된 객체를 하나 받아오기
 
 //    ✅ frontend url(쿼리스트링방식) : ? 매개변수 전송방식 사용했으면 ----> backend @RequestParam
 //    ✅ frontend url(파라매터방식) : /{} 매개변수 전송방식 사용했으면 ----> backend @PathVariable
-
-    @GetMapping("/faq")
-    public ResponseEntity<Object> getFaqAll(@RequestParam(required = false) String title,
-                                            @RequestParam(defaultValue = "0") int page,
-                                            @RequestParam(defaultValue = "3") int size
+//    ✅ @RequestParam(required = false) : false 매개변수에 값이 없어도 애러가 발생하지 않음
+//                                         기본값은 required = true
+//    ✅ @RequestParam(defaultValue = "값") : 매개변수에 값이 없으면 기본값을 설정함
+    @GetMapping("/dept")
+    public ResponseEntity<Object> getDeptAll(@RequestParam(required = false) String dname,
+                                             @RequestParam(defaultValue = "0") int page,
+                                             @RequestParam(defaultValue = "3") int size
     ) {
 
         try {
-
+    //            Pageable 객체 정의 ( page, size 값 설정 )
             Pageable pageable = PageRequest.of(page, size);
 
-            Page<Faq> faqPage;
+    //            Page 객체 정의
+            Page<Dept> deptPage;
 
-            faqPage = faqService.findAllByTitleContaining(title, pageable);
+//            findAll() 생략 해도 전체 검색이 됨 :
+//            why? like 검색시 부서명 매개변수가 ""이더라도 전체 검색이 됨
+            deptPage = deptService.findAllByDnameContaining(dname, pageable);
 
+    //            맵 자료구조에 넣어서 전송
             Map<String, Object> response = new HashMap<>();
-            response.put("faq", faqPage.getContent());
-            response.put("currentPage", faqPage.getNumber());
-            response.put("totalItems", faqPage.getTotalElements());
-            response.put("totalPages", faqPage.getTotalPages());
+            response.put("dept", deptPage.getContent());
+            response.put("currentPage", deptPage.getNumber());
+            response.put("totalItems", deptPage.getTotalElements());
+            response.put("totalPages", deptPage.getTotalPages());
 
-
-            if (faqPage.isEmpty() == false) {
-//                데이터 + 성공 메세지 전송
+            if (deptPage.isEmpty() == false) {
                 return new ResponseEntity<>(response, HttpStatus.OK);
             } else {
-//                데이터 없음 메세지 전송(클라이언트)
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
 
         } catch (Exception e) {
             log.debug(e.getMessage());
-            // 서버에러 발생 메세지 전송(클라이언트)
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
 
-    @GetMapping("/faq/{no}")
-    public ResponseEntity<Object> getFaqId(@PathVariable int no) {
+    @GetMapping("/dept/{dno}")
+    public ResponseEntity<Object> getDeptId(@PathVariable int dno) {
 
         try {
-            Optional<Faq> optionalFaq = faqService.findById(no);
+            Optional<Dept> optionalDept = deptService.findById(dno);
 
-            if (optionalFaq.isPresent() == true) {
+            if (optionalDept.isPresent() == true) {
 //                데이터 + 성공 메세지 전송
-                return new ResponseEntity<>(optionalFaq.get(), HttpStatus.OK);
+                return new ResponseEntity<>(optionalDept.get(), HttpStatus.OK);
             } else {
 //                데이터 없음 메세지 전송(클라이언트)
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -100,11 +101,11 @@ public class FaqController {
     }
 
     //  *1) 클라이언트 : (form태그) Get 방식(url) -> 2) 서버 : @GetMapping("url") -> 3) DB: select 요청,
-    @DeleteMapping("/faq/all")
+    @DeleteMapping("/dept/all")
     public ResponseEntity<Object> removeAll() {
 
         try {
-            faqService.removeAll();
+            deptService.removeAll();
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             log.debug(e.getMessage());
@@ -114,13 +115,13 @@ public class FaqController {
     }
 
     //  *1) 클라이언트 : (form태그) Get 방식(url) -> 2) 서버 : @GetMapping("url") -> 3) DB: select 요청,
-    @PostMapping("/faq")
-    public ResponseEntity<Object> createFaq(@RequestBody Faq faq) {
+    @PostMapping("/dept")
+    public ResponseEntity<Object> createDept(@RequestBody Dept dept) {
 
         try {
-            Faq faq2 = faqService.save(faq);
+            Dept dept2 = deptService.save(dept);
 
-            return new ResponseEntity<>(faq2, HttpStatus.OK);
+            return new ResponseEntity<>(dept2, HttpStatus.OK);
         } catch (Exception e) {
             log.debug(e.getMessage());
             // 서버에러 발생 메세지 전송(클라이언트)
@@ -128,13 +129,13 @@ public class FaqController {
         }
     }
 
-    @PutMapping("/faq/{no}")
-    public ResponseEntity<Object> updateFaq(@PathVariable int no, @RequestBody Faq faq) {
+    @PutMapping("/dept/{dno}")
+    public ResponseEntity<Object> updateDept(@PathVariable int dno, @RequestBody Dept dept) {
 
         try {
-            Faq faq2 = faqService.save(faq);
+            Dept dept2 = deptService.save(dept);
 
-            return new ResponseEntity<>(faq2, HttpStatus.OK);
+            return new ResponseEntity<>(dept2, HttpStatus.OK);
         } catch (Exception e) {
             log.debug(e.getMessage());
             // 서버에러 발생 메세지 전송(클라이언트)
@@ -142,11 +143,11 @@ public class FaqController {
         }
     }
 
-    @DeleteMapping("/faq/deletion/{no}")
-    public ResponseEntity<Object> deleteId(@PathVariable int no) {
+    @DeleteMapping("/dept/deletion/{dno}")
+    public ResponseEntity<Object> deleteId(@PathVariable int dno) {
 
         try {
-             boolean bSuccess = faqService.removeById(no);
+             boolean bSuccess = deptService.removeById(dno);
 
             if (bSuccess == true) {
 //                데이터 + 성공 메세지 전송
@@ -164,11 +165,11 @@ public class FaqController {
     }
 
 //    like 검색
-//    @GetMapping("/Faq/dname/{dname}")
+//    @GetMapping("/dept/dname/{dname}")
 //    public ResponseEntity<Object> findAllByDnameContaining(@PathVariable String dname) {
 //
 //        try {
-//            List<Faq> list = FaqService.findAllByDnameContaining(dname);
+//            List<Dept> list = deptService.findAllByDnameContaining(dname);
 //
 //            if (list.isEmpty() == false) {
 ////                데이터 + 성공 메세지 전송
