@@ -25,7 +25,7 @@ export default {
         buttonColorDark: "#100f2c", // default: '#100f2c'
         buttonColorLight: "#fff", // default: '#fff'
         saveInCookies: false, // default: true,
-        label: "🌓", // default: ''
+        label: "🍅", // default: ''
         autoMatchOsTheme: true, // default: true
       },
     };
@@ -53,6 +53,7 @@ export default {
 <style lang="scss">
 h1,
 h5,
+.dropdown-header,
 p,
 span,
 #menu,
@@ -74,17 +75,4 @@ span,
   font-weight: lighter;
   font-style: normal;
 }
-
-
-// #typed .typed-words {
-//       position: relative; }
-//       #typed .typed-words:before {
-//         position: absolute;
-//         height: 5px;
-//         background-color: #ffd75f;
-//         bottom: 0;
-//         left: 0;
-//         right: 0;
-//         content: ""; 
-//         }
 </style>

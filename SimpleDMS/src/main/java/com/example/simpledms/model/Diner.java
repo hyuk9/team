@@ -42,10 +42,10 @@ public class Diner extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE
             , generator = "SQ_DINNER_GENERATOR"
     )
-    private Integer sno;
+    private Integer dno;
 
     @Column
-    private String sname;
+    private String dname;
 
     @Column
     private String score;
@@ -61,6 +61,9 @@ public class Diner extends BaseTimeEntity {
 
     @Column
     private String review;
+
+    @Column
+    private String photo;
 }
 
 

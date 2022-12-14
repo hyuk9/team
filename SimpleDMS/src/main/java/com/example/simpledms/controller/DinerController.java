@@ -54,7 +54,7 @@ public class DinerController {
 
 //            findAll() 생략 해도 전체 검색이 됨 :
 //            why? like 검색시 부서명 매개변수가 ""이더라도 전체 검색이 됨
-            dinerPage = dinerService.findAllBySnameContaining(sname, pageable);
+            dinerPage = dinerService.findAllByDnameContaining(sname, pageable);
 
     //            맵 자료구조에 넣어서 전송
             Map<String, Object> response = new HashMap<>();
@@ -76,11 +76,11 @@ public class DinerController {
     }
 
 
-    @GetMapping("/diner/{sno}")
-    public ResponseEntity<Object> getDinerId(@PathVariable int sno) {
+    @GetMapping("/diner/{dno}")
+    public ResponseEntity<Object> getDinerId(@PathVariable int dno) {
 
         try {
-            Optional<Diner> optionalDiner = dinerService.findById(sno);
+            Optional<Diner> optionalDiner = dinerService.findById(dno);
 
             if (optionalDiner.isPresent() == true) {
 //                데이터 + 성공 메세지 전송
@@ -126,8 +126,8 @@ public class DinerController {
         }
     }
 
-    @PutMapping("/diner/{sno}")
-    public ResponseEntity<Object> updateDiner(@PathVariable int sno, @RequestBody Diner diner) {
+    @PutMapping("/diner/{dno}")
+    public ResponseEntity<Object> updateDiner(@PathVariable int dno, @RequestBody Diner diner) {
 
         try {
             Diner diner2 = dinerService.save(diner);
@@ -140,11 +140,11 @@ public class DinerController {
         }
     }
 
-    @DeleteMapping("/diner/deletion/{sno}")
-    public ResponseEntity<Object> deleteId(@PathVariable int sno) {
+    @DeleteMapping("/diner/deletion/{dno}")
+    public ResponseEntity<Object> deleteId(@PathVariable int dno) {
 
         try {
-             boolean bSuccess = dinerService.removeById(sno);
+             boolean bSuccess = dinerService.removeById(dno);
 
             if (bSuccess == true) {
 //                데이터 + 성공 메세지 전송

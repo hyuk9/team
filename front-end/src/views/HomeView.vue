@@ -2016,6 +2016,7 @@
 
 <script>
 /* eslint-disable */
+
 export default {
   mounted() {
     $(function () {
