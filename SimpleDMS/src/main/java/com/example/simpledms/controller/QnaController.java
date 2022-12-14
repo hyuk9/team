@@ -1,9 +1,7 @@
 package com.example.simpledms.controller;
 
-import com.example.simpledms.model.Dept;
-import com.example.simpledms.model.Emp;
-import com.example.simpledms.service.DeptService;
-import com.example.simpledms.service.EmpService;
+import com.example.simpledms.model.Qna;
+import com.example.simpledms.service.QnaService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,14 +11,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
 /**
  * packageName : com.example.jpaexam.controller.exam07
- * fileName : Dept07Controller
+ * fileName : Faq07Controller
  * author : ds
  * date : 2022-10-21
- * description : 부서 컨트롤러 @RestController, ResponseEntity, getDeptAll()
+ * description : 부서 컨트롤러 @RestController, ResponseEntity, getFaqAll()
  * ===========================================================
  * DATE            AUTHOR             NOTE
  * —————————————————————————————
@@ -33,15 +33,17 @@ import java.util.*;
 //@CrossOrigin(origins = "http://localhost")
 @RestController
 @RequestMapping("/api")
-public class EmpController {
+public class QnaController {
 
     //    스프링부트 : DI(의존성 주입) ( @Autowired )
     @Autowired
-    EmpService empService; // @Autowired : 스프링부트가 가동될때 생성된 객체를 하나 받아오기
+    QnaService qnaService; // @Autowired : 스프링부트가 가동될때 생성된 객체를 하나 받아오기
 
-    //  *1) 클라이언트 : (form태그) Get 방식(url) -> 2) 서버 : @GetMapping("url") -> 3) DB: select 요청,
-    @GetMapping("/emp")
-    public ResponseEntity<Object> getEmpAll(@RequestParam(required = false) String ename,
+//    ✅ frontend url(쿼리스트링방식) : ? 매개변수 전송방식 사용했으면 ----> backend @RequestParam
+//    ✅ frontend url(파라매터방식) : /{} 매개변수 전송방식 사용했으면 ----> backend @PathVariable
+
+    @GetMapping("/qna")
+    public ResponseEntity<Object> getQnaAll(@RequestParam(required = false) String email,
                                             @RequestParam(defaultValue = "0") int page,
                                             @RequestParam(defaultValue = "3") int size
     ) {
@@ -50,18 +52,18 @@ public class EmpController {
 
             Pageable pageable = PageRequest.of(page, size);
 
-            Page<Emp> empPage;
+            Page<Qna> qnaPage;
 
-            empPage = empService.findAllByEnameContaining(ename, pageable);
+            qnaPage = qnaService.findAllByEmailContaining(email, pageable);
 
             Map<String, Object> response = new HashMap<>();
-            response.put("emp", empPage.getContent());
-            response.put("currentPage", empPage.getNumber());
-            response.put("totalItems", empPage.getTotalElements());
-            response.put("totalPages", empPage.getTotalPages());
+            response.put("qna", qnaPage.getContent());
+            response.put("currentPage", qnaPage.getNumber());
+            response.put("totalItems", qnaPage.getTotalElements());
+            response.put("totalPages", qnaPage.getTotalPages());
 
 
-            if (empPage.isEmpty() == false) {
+            if (qnaPage.isEmpty() == false) {
 //                데이터 + 성공 메세지 전송
                 return new ResponseEntity<>(response, HttpStatus.OK);
             } else {
@@ -76,15 +78,16 @@ public class EmpController {
         }
     }
 
-    @GetMapping("/emp/{eno}")
-    public ResponseEntity<Object> getEmpID(@PathVariable int eno) {
+
+    @GetMapping("/qna/{qno}")
+    public ResponseEntity<Object> getQnaId(@PathVariable int qno) {
 
         try {
-            Optional<Emp> optionalEmp = empService.findById(eno);
+            Optional<Qna> optionalQna = qnaService.findById(qno);
 
-            if (optionalEmp.isPresent() == true) {
+            if (optionalQna.isPresent() == true) {
 //                데이터 + 성공 메세지 전송
-                return new ResponseEntity<>(optionalEmp.get(), HttpStatus.OK);
+                return new ResponseEntity<>(optionalQna.get(), HttpStatus.OK);
             } else {
 //                데이터 없음 메세지 전송(클라이언트)
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -98,11 +101,11 @@ public class EmpController {
     }
 
     //  *1) 클라이언트 : (form태그) Get 방식(url) -> 2) 서버 : @GetMapping("url") -> 3) DB: select 요청,
-    @DeleteMapping("/emp/all")
+    @DeleteMapping("/qna/all")
     public ResponseEntity<Object> removeAll() {
 
         try {
-            empService.removeAll();
+            qnaService.removeAll();
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             log.debug(e.getMessage());
@@ -111,15 +114,14 @@ public class EmpController {
         }
     }
 
-
     //  *1) 클라이언트 : (form태그) Get 방식(url) -> 2) 서버 : @GetMapping("url") -> 3) DB: select 요청,
-    @PostMapping("/emp")
-    public ResponseEntity<Object> createEmp(@RequestBody Emp emp) {
+    @PostMapping("/qna")
+    public ResponseEntity<Object> createQna(@RequestBody Qna qna) {
 
         try {
-            Emp emp2 = empService.save(emp);
+            Qna qna2 = qnaService.save(qna);
 
-            return new ResponseEntity<>(emp2, HttpStatus.OK);
+            return new ResponseEntity<>(qna2, HttpStatus.OK);
         } catch (Exception e) {
             log.debug(e.getMessage());
             // 서버에러 발생 메세지 전송(클라이언트)
@@ -127,14 +129,13 @@ public class EmpController {
         }
     }
 
-
-    @PutMapping("/emp/{eno}")
-    public ResponseEntity<Object> updateEmp(@PathVariable int eno, @RequestBody Emp emp) {
+    @PutMapping("/qna/{qno}")
+    public ResponseEntity<Object> updateQna(@PathVariable int qno, @RequestBody Qna qna) {
 
         try {
-            Emp emp2 = empService.save(emp);
+            Qna qna2 = qnaService.save(qna);
 
-            return new ResponseEntity<>(emp2, HttpStatus.OK);
+            return new ResponseEntity<>(qna2, HttpStatus.OK);
         } catch (Exception e) {
             log.debug(e.getMessage());
             // 서버에러 발생 메세지 전송(클라이언트)
@@ -142,12 +143,11 @@ public class EmpController {
         }
     }
 
-
-    @DeleteMapping("/emp/deletion/{eno}")
-    public ResponseEntity<Object> deleteId(@PathVariable int eno) {
+    @DeleteMapping("/qna/deletion/{qno}")
+    public ResponseEntity<Object> deleteId(@PathVariable int qno) {
 
         try {
-            boolean bSuccess = empService.removeById(eno);
+             boolean bSuccess = qnaService.removeById(qno);
 
             if (bSuccess == true) {
 //                데이터 + 성공 메세지 전송
@@ -163,6 +163,29 @@ public class EmpController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+//    like 검색
+//    @GetMapping("/Qna/dname/{dname}")
+//    public ResponseEntity<Object> findAllByDnameContaining(@PathVariable String dname) {
+//
+//        try {
+//            List<Qna> list = QnaService.findAllByDnameContaining(dname);
+//
+//            if (list.isEmpty() == false) {
+////                데이터 + 성공 메세지 전송
+//                return new ResponseEntity<>(list, HttpStatus.OK);
+//            } else {
+////                데이터 없음 메세지 전송(클라이언트)
+//                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//            }
+//
+//        } catch (Exception e) {
+//            log.debug(e.getMessage());
+//            // 서버에러 발생 메세지 전송(클라이언트)
+//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
+
 
 }
 

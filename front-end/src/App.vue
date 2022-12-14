@@ -53,6 +53,7 @@ export default {
 <style lang="scss">
 h1,
 h5,
+p,
 span,
 #menu,
 .login,
@@ -67,7 +68,20 @@ span,
   font-family: "ONE-Mobile-POP";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff")
     format("woff");
-  font-weight: normal;
+  font-weight: lighter;
   font-style: normal;
 }
+
+
+// #typed .typed-words {
+//       position: relative; }
+//       #typed .typed-words:before {
+//         position: absolute;
+//         height: 5px;
+//         background-color: #ffd75f;
+//         bottom: 0;
+//         left: 0;
+//         right: 0;
+//         content: ""; 
+//         }
 </style>

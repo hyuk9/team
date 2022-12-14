@@ -1,20 +1,18 @@
 package com.example.simpledms.repository;
 
-import com.example.simpledms.model.Dept;
-import com.example.simpledms.model.Emp;
+
+import com.example.simpledms.model.Qna;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 /**
  * packageName : com.example.jpaexam.repository
- * fileName : EmpRepository
+ * fileName : DeptRepository
  * author : ds
  * date : 2022-10-20
- * description : Emp 리파지토리(== DAO ) CRUD 용 함수가 있는 인터페이스
+ * description : JPA CRUD를 위한 인터페이스(==DAO)
  * ===========================================================
  * DATE            AUTHOR             NOTE
  * —————————————————————————————
@@ -22,10 +20,10 @@ import java.util.List;
  */
 
 @Repository
-public interface EmpRepository extends JpaRepository<Emp, Integer> {
-
-    Page<Emp> findAllByEnameContaining(String ename, Pageable pageable);
-
+public interface QnaRepository extends JpaRepository<Qna, Integer> {
+//    부서명으로(email) 조회하는 like 검색 함수
+//    1) 쿼리메소드 방식으로 사용자 정의 함수 정의
+    Page<Qna> findAllByEmailContaining(String email, Pageable pageable);
 }
 
 

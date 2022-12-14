@@ -1,7 +1,7 @@
 package com.example.simpledms.controller;
 
-import com.example.simpledms.model.Dept;
-import com.example.simpledms.service.DeptService;
+import com.example.simpledms.model.Diner;
+import com.example.simpledms.service.DinerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -11,7 +11,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
 /**
  * packageName : com.example.jpaexam.controller.exam07
@@ -24,49 +26,44 @@ import java.util.*;
  * —————————————————————————————
  * 2022-10-21         ds          최초 생성
  */
-// @RestController : return 값이 json 데이터 형태로 출력됨
 @Slf4j
-// CORS 보안 : 기본적으로 한사이트에서 포트를 달리 사용 못함
-// @CrossOrigin(허용할_사이트주소(vue 사이트주소 : 포트)) : CORS 보안을 허용해주는 어노테이션
-//@CrossOrigin(origins = "http://localhost")
 @RestController
 @RequestMapping("/api")
-public class DeptController {
+public class DinerController {
 
     //    스프링부트 : DI(의존성 주입) ( @Autowired )
     @Autowired
-    DeptService deptService; // @Autowired : 스프링부트가 가동될때 생성된 객체를 하나 받아오기
+    DinerService dinerService; // @Autowired : 스프링부트가 가동될때 생성된 객체를 하나 받아오기
 
 //    ✅ frontend url(쿼리스트링방식) : ? 매개변수 전송방식 사용했으면 ----> backend @RequestParam
 //    ✅ frontend url(파라매터방식) : /{} 매개변수 전송방식 사용했으면 ----> backend @PathVariable
 //    ✅ @RequestParam(required = false) : false 매개변수에 값이 없어도 애러가 발생하지 않음
 //                                         기본값은 required = true
 //    ✅ @RequestParam(defaultValue = "값") : 매개변수에 값이 없으면 기본값을 설정함
-    @GetMapping("/dept")
-    public ResponseEntity<Object> getDeptAll(@RequestParam(required = false) String dname,
+    @GetMapping("/diner")
+    public ResponseEntity<Object> getDinerAll(@RequestParam(required = false) String sname,
                                              @RequestParam(defaultValue = "0") int page,
                                              @RequestParam(defaultValue = "3") int size
     ) {
-
         try {
     //            Pageable 객체 정의 ( page, size 값 설정 )
             Pageable pageable = PageRequest.of(page, size);
 
     //            Page 객체 정의
-            Page<Dept> deptPage;
+            Page<Diner> dinerPage;
 
 //            findAll() 생략 해도 전체 검색이 됨 :
 //            why? like 검색시 부서명 매개변수가 ""이더라도 전체 검색이 됨
-            deptPage = deptService.findAllByDnameContaining(dname, pageable);
+            dinerPage = dinerService.findAllBySnameContaining(sname, pageable);
 
     //            맵 자료구조에 넣어서 전송
             Map<String, Object> response = new HashMap<>();
-            response.put("dept", deptPage.getContent());
-            response.put("currentPage", deptPage.getNumber());
-            response.put("totalItems", deptPage.getTotalElements());
-            response.put("totalPages", deptPage.getTotalPages());
+            response.put("diner", dinerPage.getContent());
+            response.put("currentPage", dinerPage.getNumber());
+            response.put("totalItems", dinerPage.getTotalElements());
+            response.put("totalPages", dinerPage.getTotalPages());
 
-            if (deptPage.isEmpty() == false) {
+            if (dinerPage.isEmpty() == false) {
                 return new ResponseEntity<>(response, HttpStatus.OK);
             } else {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -79,15 +76,15 @@ public class DeptController {
     }
 
 
-    @GetMapping("/dept/{dno}")
-    public ResponseEntity<Object> getDeptId(@PathVariable int dno) {
+    @GetMapping("/diner/{sno}")
+    public ResponseEntity<Object> getDinerId(@PathVariable int sno) {
 
         try {
-            Optional<Dept> optionalDept = deptService.findById(dno);
+            Optional<Diner> optionalDiner = dinerService.findById(sno);
 
-            if (optionalDept.isPresent() == true) {
+            if (optionalDiner.isPresent() == true) {
 //                데이터 + 성공 메세지 전송
-                return new ResponseEntity<>(optionalDept.get(), HttpStatus.OK);
+                return new ResponseEntity<>(optionalDiner.get(), HttpStatus.OK);
             } else {
 //                데이터 없음 메세지 전송(클라이언트)
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -101,11 +98,11 @@ public class DeptController {
     }
 
     //  *1) 클라이언트 : (form태그) Get 방식(url) -> 2) 서버 : @GetMapping("url") -> 3) DB: select 요청,
-    @DeleteMapping("/dept/all")
+    @DeleteMapping("/diner/all")
     public ResponseEntity<Object> removeAll() {
 
         try {
-            deptService.removeAll();
+            dinerService.removeAll();
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             log.debug(e.getMessage());
@@ -115,13 +112,13 @@ public class DeptController {
     }
 
     //  *1) 클라이언트 : (form태그) Get 방식(url) -> 2) 서버 : @GetMapping("url") -> 3) DB: select 요청,
-    @PostMapping("/dept")
-    public ResponseEntity<Object> createDept(@RequestBody Dept dept) {
+    @PostMapping("/diner")
+    public ResponseEntity<Object> createDiner(@RequestBody Diner diner) {
 
         try {
-            Dept dept2 = deptService.save(dept);
+            Diner diner2 = dinerService.save(diner);
 
-            return new ResponseEntity<>(dept2, HttpStatus.OK);
+            return new ResponseEntity<>(diner2, HttpStatus.OK);
         } catch (Exception e) {
             log.debug(e.getMessage());
             // 서버에러 발생 메세지 전송(클라이언트)
@@ -129,13 +126,13 @@ public class DeptController {
         }
     }
 
-    @PutMapping("/dept/{dno}")
-    public ResponseEntity<Object> updateDept(@PathVariable int dno, @RequestBody Dept dept) {
+    @PutMapping("/diner/{sno}")
+    public ResponseEntity<Object> updateDiner(@PathVariable int sno, @RequestBody Diner diner) {
 
         try {
-            Dept dept2 = deptService.save(dept);
+            Diner diner2 = dinerService.save(diner);
 
-            return new ResponseEntity<>(dept2, HttpStatus.OK);
+            return new ResponseEntity<>(diner2, HttpStatus.OK);
         } catch (Exception e) {
             log.debug(e.getMessage());
             // 서버에러 발생 메세지 전송(클라이언트)
@@ -143,11 +140,11 @@ public class DeptController {
         }
     }
 
-    @DeleteMapping("/dept/deletion/{dno}")
-    public ResponseEntity<Object> deleteId(@PathVariable int dno) {
+    @DeleteMapping("/diner/deletion/{sno}")
+    public ResponseEntity<Object> deleteId(@PathVariable int sno) {
 
         try {
-             boolean bSuccess = deptService.removeById(dno);
+             boolean bSuccess = dinerService.removeById(sno);
 
             if (bSuccess == true) {
 //                데이터 + 성공 메세지 전송
@@ -165,11 +162,11 @@ public class DeptController {
     }
 
 //    like 검색
-//    @GetMapping("/dept/dname/{dname}")
-//    public ResponseEntity<Object> findAllByDnameContaining(@PathVariable String dname) {
+//    @GetMapping("/diner/email/{email}")
+//    public ResponseEntity<Object> findAllByDnameContaining(@PathVariable String email) {
 //
 //        try {
-//            List<Dept> list = deptService.findAllByDnameContaining(dname);
+//            List<Diner> list = dinerService.findAllByDnameContaining(email);
 //
 //            if (list.isEmpty() == false) {
 ////                데이터 + 성공 메세지 전송

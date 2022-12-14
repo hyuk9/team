@@ -113,12 +113,9 @@ export default {
   methods: {
     // 로그인 버튼 클릭시 실행되는 함수
     handleLogin() {
-
-      // alert 라이브러리 효과
-       this.$swal('Hello Vue world!!!');
+      // ==========================================================================================================================
       //아이디나 비밀번호가 입력되지 않았다면 알림창을 띄우는 함수 실행
       this.alertLoginError();
-        
       // 로그인 로직 처리
       this.loading = true;
       // vee-validate 함수 처리 방법
@@ -137,7 +134,13 @@ export default {
           this.$store
             .dispatch("auth/login", this.user)
             .then(() => {
-              alert("로그인 성공");
+              // alert 라이브러리 효과
+              this.$swal({
+                icon: "success",
+                title: "로그인 성공",
+                showConfirmButton: false,
+                timer: 1000,
+              });
               this.$router.push("/profile"); // 로그인 성공하면 강제 /profile 페이지 이동
             })
             // 참고) if/else 문 대신에 -> or(||) and(&&) 연산자를 사용할때도 있음
@@ -157,28 +160,33 @@ export default {
     // 아이디나 비밀번호가 입력되지 않았다면 알림창을 띄우는 함수
     alertLoginError() {
       if (this.errors.has("username") && this.errors.has("password")) {
-        alert("아이디와 비밀번호가 필요합니다.");
+        // alert 라이브러리 효과
+        this.$swal({
+          icon: "error",
+          title: "로그인 실패",
+          text: "아이디와 비밀번호가 필요합니다",
+        });
       } else if (this.errors.has("username")) {
-        alert("아이디가 필요합니다.");
+        // alert 라이브러리 효과
+        this.$swal({
+          icon: "error",
+          title: "로그인 실패",
+          text: "아이디가 필요합니다",
+        });
       } else if (this.errors.has("password")) {
-        alert("비밀번호가 필요합니다.");
+        // alert 라이브러리 효과
+        this.$swal({
+          icon: "error",
+          title: "로그인 실패",
+          text: "비밀번호가 필요합니다",
+        });
       }
     },
-  },
-  sweetalert() {
-    $(document).on("click", "#success", function (e) {
-      swal(
-        "Success",
-        'You clicked the <b style="color:green;">Success</b> button!',
-        "success"
-      );
-    });
   },
 };
 </script>
 
 <style scoped>
-
 .logo {
   width: 350px;
   text-align: center;

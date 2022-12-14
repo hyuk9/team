@@ -1,14 +1,11 @@
 package com.example.simpledms.repository;
 
 
-import com.example.simpledms.model.Dept;
 import com.example.simpledms.model.Faq;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 /**
  * packageName : com.example.jpaexam.repository

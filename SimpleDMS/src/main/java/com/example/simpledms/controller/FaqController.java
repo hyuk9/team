@@ -78,11 +78,11 @@ public class FaqController {
     }
 
 
-    @GetMapping("/faq/{no}")
-    public ResponseEntity<Object> getFaqId(@PathVariable int no) {
+    @GetMapping("/faq/{fno}")
+    public ResponseEntity<Object> getFaqId(@PathVariable int fno) {
 
         try {
-            Optional<Faq> optionalFaq = faqService.findById(no);
+            Optional<Faq> optionalFaq = faqService.findById(fno);
 
             if (optionalFaq.isPresent() == true) {
 //                데이터 + 성공 메세지 전송
@@ -128,8 +128,8 @@ public class FaqController {
         }
     }
 
-    @PutMapping("/faq/{no}")
-    public ResponseEntity<Object> updateFaq(@PathVariable int no, @RequestBody Faq faq) {
+    @PutMapping("/faq/{fno}")
+    public ResponseEntity<Object> updateFaq(@PathVariable int fno, @RequestBody Faq faq) {
 
         try {
             Faq faq2 = faqService.save(faq);
@@ -142,11 +142,11 @@ public class FaqController {
         }
     }
 
-    @DeleteMapping("/faq/deletion/{no}")
-    public ResponseEntity<Object> deleteId(@PathVariable int no) {
+    @DeleteMapping("/faq/deletion/{fno}")
+    public ResponseEntity<Object> deleteId(@PathVariable int fno) {
 
         try {
-             boolean bSuccess = faqService.removeById(no);
+             boolean bSuccess = faqService.removeById(fno);
 
             if (bSuccess == true) {
 //                데이터 + 성공 메세지 전송

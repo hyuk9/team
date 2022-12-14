@@ -2,7 +2,7 @@
   <div>
     <main class="main" id="top">
       <!-- 최상단 시작 -->
-      <section class="py-5 overflow-hidden bg-primary" id="home">
+      <section class="py-5 overflow-hidden bg-danger" id="home">
         <div class="container">
           <div class="row flex-center">
             <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0">
@@ -13,15 +13,19 @@
                   alt="hero-header"
               /></a>
             </div>
-            <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
-              <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">
-                여기에 어떤걸 넣을지는 <br> 한번 봐야할듯?
+            <div class="col-md-7 col-lg-6 py-8 text-md-start text-center" id="typed">
+              <!-- <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">
+                지금 찾고있는 맛집을 <br> 쉽고 빠르게
               </h1>
-              <h1 class="text-800 mb-5 fs-4">
-                검색창을 여기에도 둘지 고민 중입니다<br
-                  class="d-none d-xxl-block"
-                />대충 있어보이는 말2
-              </h1>
+              <p class="fs-md-5 fs-lg-6 fs-xl-8 text-light font-italic fw-900">
+                지금 찾고있는 맛집을 <br> 쉽고 빠르게
+              </p> -->
+              <span class="typed-words fs-md-5 fs-lg-6 fs-xl-8 text-light font-italic fw-900"></span>
+              <br />
+              <span
+                class="fs-md-5 fs-lg-6 fs-xl-8 text-light font-italic fw-900"
+                >쉽고 빠르게😋</span
+              >
             </div>
           </div>
         </div>
@@ -2011,29 +2015,34 @@
 </template>
 
 <script>
-// import Darkmode from "darkmode-js";
-
-// export default {
-//   data() {
-//     return {
-//       options: {
-//         bottom: "64px", // default: '32px'
-//         right: "unset", // default: '32px'
-//         left: "32px", // default: 'unset'
-//         time: "0.5s", // default: '0.3s'
-//         mixColor: "#fff", // default: '#fff'
-//         backgroundColor: "#fff", // default: '#fff'
-//         buttonColorDark: "#100f2c", // default: '#100f2c'
-//         buttonColorLight: "#fff", // default: '#fff'
-//         saveInCookies: false, // default: true,
-//         label: "🌓", // default: ''
-//         autoMatchOsTheme: true, // default: true
-//       },
-//     };
-//   },
-//   mounted() {
-//     const darkmode = new Darkmode(this.options);
-//     darkmode.showWidget();
-//   },
-// };
+/* eslint-disable */
+export default {
+  mounted() {
+    $(function () {
+      let typed2 = new Typed(".typed-words", {
+        strings: [
+          "지금 찾고있는 맛집을",
+          "송년회 하기 좋은 맛집을",
+          "크리스마스 파티 맛집을",
+          "데이트코스로 딱인 맛집을",
+          "가성비 좋은 맛집을",
+        ],
+        typeSpeed: 80,
+        backSpeed: 80,
+        backDelay: 4000,
+        startDelay: 1000,
+        loop: true,
+        showCursor: true,
+      });
+    });
+  },
+};
 </script>
+
+<style>
+    .typed-cursor {
+        opacity: 0;
+        font-size: 70px;
+        color: rgb(255, 215, 53);
+    }
+</style>

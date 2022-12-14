@@ -1,14 +1,13 @@
 package com.example.simpledms.service;
 
-import com.example.simpledms.model.Dept;
-import com.example.simpledms.repository.DeptRepository;
+import com.example.simpledms.model.Diner;
+import com.example.simpledms.repository.DinerRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -24,52 +23,44 @@ import java.util.Optional;
  */
 @Service
 @Slf4j
-public class DeptService {
+public class DinerService {
 
     @Autowired
-    DeptRepository deptRepository; // JPA CRUD 함수가 있는 인터페이스
+    DinerRepository dinerRepository; // JPA CRUD 함수가 있는 인터페이스
 
     //    ✅ 전체 조회 함수 findAll() 👉 변경 findAll(Pageable pageable)
-    public Page<Dept> findAll(Pageable pageable) {
-        Page<Dept> page = deptRepository.findAll(pageable);
+    public Page<Diner> findAll(Pageable pageable) {
+        Page<Diner> page = dinerRepository.findAll(pageable);
 
         return page;
     }
 
 //    ✅ id로 조회하는 함수
-
-    public Optional<Dept> findById(int dno) {
+    public Optional<Diner> findById(int sno) {
 //        findById(기본키)
-        Optional<Dept> optionalDept = deptRepository.findById(dno);
+        Optional<Diner> optionalDinner = dinerRepository.findById(sno);
 
-//        데이터 가공
-        Dept dept = optionalDept.get();
-        dept.setDname(dept.getDname() + "_해킹");
-
-//        가공 데이터를 다시 optional 넣기
-        optionalDept = Optional.ofNullable(dept);
-        log.debug(optionalDept.get().toString());
-        return optionalDept;
+        return optionalDinner;
     }
 
 
     //    ✅ 전체 삭제 함수
     public void removeAll() {
-        deptRepository.deleteAll();
+        dinerRepository.deleteAll();
     }
 
 
     //       ✅ 부서 정보 저장 함수
-    public Dept save(Dept dept) {
-        Dept dept2 = deptRepository.save(dept);
-        return dept2;
+    public Diner save(Diner diner) {
+        Diner diner2 = dinerRepository.save(diner);
+        return diner2;
     }
 
     //       ✅ 부서 정보 삭제 함수
-    public boolean removeById(int dno) {
+    public boolean removeById(int sno) {
 //        existById(기본키) 있으면 삭제 실행 + true 리턴
-        if (deptRepository.existsById(dno) == true) {
-            deptRepository.deleteById(dno);
+        if (dinerRepository.existsById(sno) == true) {
+            dinerRepository.deleteById(sno);
             return true;
         }
 //        없으면 그냥 false 리턴
@@ -77,8 +68,8 @@ public class DeptService {
     }
 
     //    ✅ dname like 검색 함수 ( 페이징 처리 추가 )
-    public Page<Dept> findAllByDnameContaining(String dname, Pageable pageable) {
-        Page<Dept> list = deptRepository.findAllByDnameContaining(dname, pageable);
+    public Page<Diner> findAllBySnameContaining(String sname, Pageable pageable) {
+        Page<Diner> list = dinerRepository.findAllBySnameContaining(sname, pageable);
 
         return list;
     }

@@ -127,35 +127,34 @@
 
             <div v-if="!currentUser">
               <!-- 회원가입 시작 -->
-              <button class="btn btn-white shadow-warning text-warning">
+              <div class="btn btn-white shadow-warning text-warning">
                 <i class="fas fa-user me-2"></i
                 ><router-link to="/register" class="register"
                   >회원가입</router-link
                 >
-              </button>
+              </div>
               <!-- 회원가입 끝 -->
 
               <!-- 로그인 시작 -->
-              <button class="btn btn-white shadow-warning text-warning">
+              <div class="btn btn-white shadow-warning text-warning">
                 <i class="fas fa-user me-2"></i
                 ><router-link to="/login" class="login">로그인</router-link>
-              </button>
+              </div>
               <!-- 로그인 끝 -->
             </div>
             <div v-if="currentUser">
               <!-- 프로필 시작 -->
-              <button class="btn btn-white shadow-warning text-warning">
+              <div class="btn btn-white shadow-warning text-warning">
                 <i class="fas fa-user me-2"></i
                 ><router-link to="/profile" class="profile">프로필</router-link>
-              </button>
+              </div>
               <!-- 프로필 끝 -->
 
               <!-- 로그아웃 시작 -->
-              <button class="btn btn-white shadow-warning text-warning">
-                <i class="fas fa-user me-2"></i
-                >
+              <div class="btn btn-white shadow-warning text-warning">
+                <i class="fas fa-user me-2"></i>
                 <a @click.prevent="logout" class="logout">로그아웃</a>
-              </button>
+              </div>
               <!-- 로그아웃 끝 -->
             </div>
           </form>
@@ -181,7 +180,14 @@ export default {
     logout() {
       // this.$store.dispatch("모듈명/함수명")
       this.$store.dispatch("auth/logout"); // 공통함수 logout 호출
-      this.$router.push("/login"); // 강제 /login 페이지로 이동
+      // alert 라이브러리 효과
+      this.$swal({
+        icon: "success",
+        title: "로그아웃 성공",
+        showConfirmButton: false,
+        timer: 1000,
+      });
+      this.$router.push("/"); // 강제 홈페이지로 이동
     },
   },
 };

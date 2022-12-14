@@ -1,13 +1,12 @@
 package com.example.simpledms.service;
 
-import com.example.simpledms.model.Faq;
-import com.example.simpledms.repository.FaqRepository;
+import com.example.simpledms.model.Qna;
+import com.example.simpledms.repository.QnaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -22,44 +21,44 @@ import java.util.Optional;
  * 2022-10-20         ds          최초 생성
  */
 @Service
-public class FaqService {
+public class QnaService {
 
     @Autowired
-    FaqRepository faqRepository; // JPA CRUD 함수가 있는 인터페이스
+    QnaRepository qnaRepository; // JPA CRUD 함수가 있는 인터페이스
 
     //    ✅ 전체 조회 함수
-    public Page<Faq> findAll(Pageable pageable) {
-        Page<Faq> page = faqRepository.findAll(pageable);
+    public Page<Qna> findAll(Pageable pageable) {
+        Page<Qna> page = qnaRepository.findAll(pageable);
 
         return page;
     }
 
 //    ✅ id로 조회하는 함수
 
-    public Optional<Faq> findById(int fno) {
+    public Optional<Qna> findById(int dno) {
 //        findById(기본키)
-        Optional<Faq> optionalFaq = faqRepository.findById(fno);
-        return optionalFaq;
+        Optional<Qna> optionalQna = qnaRepository.findById(dno);
+        return optionalQna;
     }
 
 
     //    ✅ 전체 삭제 함수
     public void removeAll() {
-        faqRepository.deleteAll();
+        qnaRepository.deleteAll();
     }
 
 
     //       ✅ 부서 정보 저장 함수
-    public Faq save(Faq faq) {
-        Faq faq2 = faqRepository.save(faq);
-        return faq2;
+    public Qna save(Qna qna) {
+        Qna qna2 = qnaRepository.save(qna);
+        return qna2;
     }
 
     //       ✅ 부서 정보 삭제 함수
-    public boolean removeById(int fno) {
+    public boolean removeById(int no) {
 //        existById(기본키) 있으면 삭제 실행 + true 리턴
-        if (faqRepository.existsById(fno) == true) {
-            faqRepository.deleteById(fno);
+        if (qnaRepository.existsById(no) == true) {
+            qnaRepository.deleteById(no);
             return true;
         }
 //        없으면 그냥 false 리턴
@@ -67,8 +66,8 @@ public class FaqService {
     }
 
     //    ✅ dname like 검색 함수
-    public Page<Faq> findAllByTitleContaining(String title, Pageable pageable) {
-        Page<Faq> page = faqRepository.findAllByTitleContaining(title, pageable);
+    public Page<Qna> findAllByEmailContaining(String email, Pageable pageable) {
+        Page<Qna> page = qnaRepository.findAllByEmailContaining(email, pageable);
 
         return page;
     }
