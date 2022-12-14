@@ -9,7 +9,7 @@
       <div class="login__content">
         <div class="login__img">
           <img
-            src="assets/img/gallery/hero-header.png"
+            src="assets/img/gallery/hero-tomato.png"
             alt="user login"
           />
         </div>
@@ -406,7 +406,7 @@ img {
     padding-left: 1rem;
   }
   .login__img img {
-    width: 80%;
+    width: 100%;
     margin-top: 0;
   }
   .login__register,

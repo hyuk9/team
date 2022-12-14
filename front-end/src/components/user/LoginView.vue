@@ -113,7 +113,6 @@ export default {
   methods: {
     // 로그인 버튼 클릭시 실행되는 함수
     handleLogin() {
-      // ==========================================================================================================================
       //아이디나 비밀번호가 입력되지 않았다면 알림창을 띄우는 함수 실행
       this.alertLoginError();
       // 로그인 로직 처리
@@ -165,6 +164,8 @@ export default {
           icon: "error",
           title: "로그인 실패",
           text: "아이디와 비밀번호가 필요합니다",
+          confirmButtonColor: "#E1793D",
+          confirmButtonText: "확인",
         });
       } else if (this.errors.has("username")) {
         // alert 라이브러리 효과
@@ -172,6 +173,8 @@ export default {
           icon: "error",
           title: "로그인 실패",
           text: "아이디가 필요합니다",
+          confirmButtonColor: "#E1793D",
+          confirmButtonText: "확인",
         });
       } else if (this.errors.has("password")) {
         // alert 라이브러리 효과
@@ -179,6 +182,8 @@ export default {
           icon: "error",
           title: "로그인 실패",
           text: "비밀번호가 필요합니다",
+          confirmButtonColor: "#E1793D",
+          confirmButtonText: "확인",
         });
       }
     },
