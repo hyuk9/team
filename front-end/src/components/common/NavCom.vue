@@ -54,6 +54,11 @@
                   >
                 </li>
                 <li>
+                  <router-link to="/theme" class="dropdown-item"
+                    >테마별</router-link
+                  >
+                </li>
+                <!-- <li>
                   <router-link to="/score" class="dropdown-item"
                     >평점별</router-link
                   >
@@ -62,7 +67,7 @@
                   <router-link to="/review" class="dropdown-item"
                     >리뷰많은순</router-link
                   >
-                </li>
+                </li> -->
               </ul>
             </li>
             <li class="nav-item dropdown">

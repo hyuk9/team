@@ -22,15 +22,20 @@ const routes = [
     component: () => import('@/components/food/menu/MenuList.vue')
   },
   {
-    path: '/score',
-    name: 'score',
-    component: () => import('@/components/food/score/ScoreList.vue')
+    path: '/theme',
+    name: 'theme',
+    component: () => import('@/components/food/theme/ThemeList.vue')
   },
-  {
-    path: '/review',
-    name: 'review',
-    component: () => import('@/components/food/review/ReviewList.vue')
-  },
+  // {
+  //   path: '/score',
+  //   name: 'score',
+  //   component: () => import('@/components/food/score/ScoreList.vue')
+  // },
+  // {
+  //   path: '/review',
+  //   name: 'review',
+  //   component: () => import('@/components/food/review/ReviewList.vue')
+  // },
   // TODO: 분류별 게시판 구현
   {
     path: '/free',

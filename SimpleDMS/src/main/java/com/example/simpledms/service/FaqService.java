@@ -36,9 +36,9 @@ public class FaqService {
 
 //    ✅ id로 조회하는 함수
 
-    public Optional<Faq> findById(int fno) {
+    public Optional<Faq> findById(int dno) {
 //        findById(기본키)
-        Optional<Faq> optionalFaq = faqRepository.findById(fno);
+        Optional<Faq> optionalFaq = faqRepository.findById(dno);
         return optionalFaq;
     }
 
@@ -56,10 +56,10 @@ public class FaqService {
     }
 
     //       ✅ 부서 정보 삭제 함수
-    public boolean removeById(int fno) {
+    public boolean removeById(int no) {
 //        existById(기본키) 있으면 삭제 실행 + true 리턴
-        if (faqRepository.existsById(fno) == true) {
-            faqRepository.deleteById(fno);
+        if (faqRepository.existsById(no) == true) {
+            faqRepository.deleteById(no);
             return true;
         }
 //        없으면 그냥 false 리턴
