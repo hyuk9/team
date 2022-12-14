@@ -132,34 +132,32 @@
 
             <div v-if="!currentUser">
               <!-- 회원가입 시작 -->
-              <div class="btn btn-white shadow-warning text-warning">
+              <router-link to="/register" class="btn btn-white shadow-warning text-warning register">
                 <i class="fas fa-user me-2"></i
-                ><router-link to="/register" class="register"
-                  >회원가입</router-link
-                >
-              </div>
+                >회원가입
+              </router-link>
               <!-- 회원가입 끝 -->
 
               <!-- 로그인 시작 -->
-              <div class="btn btn-white shadow-warning text-warning">
+              <router-link to="/login" class="btn btn-white shadow-warning text-warning login">
                 <i class="fas fa-user me-2"></i
-                ><router-link to="/login" class="login">로그인</router-link>
-              </div>
+                >로그인
+              </router-link>
               <!-- 로그인 끝 -->
             </div>
             <div v-if="currentUser">
               <!-- 프로필 시작 -->
-              <div class="btn btn-white shadow-warning text-warning">
+              <router-link to="/profile" class="btn btn-white shadow-warning text-warning profile">
                 <i class="fas fa-user me-2"></i
-                ><router-link to="/profile" class="profile">프로필</router-link>
-              </div>
+                >프로필
+              </router-link>
               <!-- 프로필 끝 -->
 
               <!-- 로그아웃 시작 -->
-              <div class="btn btn-white shadow-warning text-warning">
+              <a @click.prevent="logout"  class="btn btn-white shadow-warning text-warning logout">
                 <i class="fas fa-user me-2"></i>
-                <a @click.prevent="logout" class="logout">로그아웃</a>
-              </div>
+                로그아웃
+              </a>
               <!-- 로그아웃 끝 -->
             </div>
           </form>
