@@ -60,6 +60,9 @@ span,
 .register,
 .profile,
 .logout,
+.swal2-title,
+.swal2-container,
+.swal2-confirm,
 #navbarNavDropdown {
   font-family: ONE-Mobile-POP;
 }
