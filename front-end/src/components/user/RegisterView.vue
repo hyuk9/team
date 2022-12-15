@@ -5,7 +5,7 @@
 
     <!-- Form -->
     <form action="" name="form" @submit.prevent="handleRegister">
-      <div v-if="!successful">
+      <div >
         <!-- username input -->
         <div class="input__block">
           <input
@@ -15,10 +15,10 @@
             placeholder="아이디"
             class="input"
             id="text"
-            name="username"
+            name="아이디 "
           />
-          <div v-if="submitted && errors.has('username')" class="alert-danger">
-            {{ errors.first("username") }}
+          <div v-if="submitted && errors.has('아이디 ')" class="register-alert">
+            <p>{{ errors.first("아이디 ") }}</p>
           </div>
         </div>
         <!-- email input -->
@@ -30,10 +30,10 @@
             placeholder="이메일"
             class="input"
             id="email"
-            name="email"
+            name="이메일 "
           />
-          <div v-if="submitted && errors.has('email')" class="alert-danger">
-            {{ errors.first("email") }}
+          <div v-if="submitted && errors.has('이메일 ')" class="register-alert">
+            <p>{{ errors.first("이메일 ") }}</p>
           </div>
         </div>
         <!-- password input -->
@@ -45,10 +45,13 @@
             placeholder="비밀번호"
             class="input"
             id="password"
-            name="password"
+            name="비밀번호 "
           />
-          <div v-if="submitted && errors.has('password')" class="alert-danger">
-            {{ errors.first("password") }}
+          <div
+            v-if="submitted && errors.has('비밀번호 ')"
+            class="register-alert"
+          >
+            <p>{{ errors.first("비밀번호 ") }}</p>
           </div>
         </div>
         <!-- repeat password input -->
@@ -62,13 +65,6 @@
         </div>
         <!-- sign in button -->
         <button class="signin__btn">회원가입하기</button>
-        <div
-          v-if="message"
-          class="alert"
-          :class="successful ? 'alert-success' : 'alert-danger'"
-        >
-          {{ message }}
-        </div>
       </div>
     </form>
 
@@ -137,6 +133,15 @@ export default {
           .then((response) => {
             this.message = response.message;
             this.successful = true; // "회원가입이 성공했습니다." 화면 출력
+            // 성공알림 띄우기
+            this.$swal({
+              icon: "success",
+              title: "로그인 성공",
+              showConfirmButton: false,
+              timer: 1000,
+            });
+            // 로그인 화면으로 이동
+            this.$router.push("/login")
           })
           // 참고) if/else 문 대신에 -> or(||) and(&&) 연산자를 사용할때도 있음
           // 로직체크 순서 : true || false, false && true
@@ -148,6 +153,14 @@ export default {
                 error.response.data.message) ||
               error.message ||
               error.toString();
+            // 실패알림 띄우기
+            this.$swal({
+              icon: "error",
+              title: "로그인 실패",
+              text: this.message,
+              confirmButtonColor: "#E1793D",
+              confirmButtonText: "확인",
+            });
           });
       });
     },
@@ -224,8 +237,8 @@ form .input__block input {
   border-radius: 8px;
   border: none;
   background: rgba(15, 19, 42, 0.1);
-  /* color: rgba(15, 19, 42); */
   padding: 0 0 0 15px;
+  color: #23004d;
   font-size: 14px;
   font-family: "Montserrat", sans-serif;
 }
@@ -264,6 +277,28 @@ form .signin__btn:hover {
 
 ::placeholder {
   color: rgb(128, 128, 128, 0.6) !important;
+}
+
+.register-alert {
+  display: block;
+  width: 90%;
+  max-width: 680px;
+  height: 30px;
+  margin: 10px auto 0 auto;
+  border-radius: 8px;
+  border: none;
+  background: #ffb30e5c;
+  padding: 0 0 0 15px;
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.register-alert p {
+  line-height: 30px;
+}
+
+button {
+   font-family: ONE-Mobile-POP !important;
 }
 
 .separator {

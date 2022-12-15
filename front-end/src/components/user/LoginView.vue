@@ -1,5 +1,4 @@
 <template>
-  <!-- 새 로그인 양식 임시 -->
   <div>
     <link
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
@@ -52,11 +51,6 @@
 
               <button class="login__button">로그인</button>
 
-              <div class="form-group">
-                <div v-if="message" class="alert alert-danger" role="alert">
-                  {{ message }}
-                </div>
-              </div>
               <div>
                 <span class="login__account login__account--account"
                   >회원이 아직 아니신가요?</span
@@ -90,7 +84,6 @@
       </div>
     </div>
   </div>
-  <!-- 새 로그인 양식 임시 끝-->
 </template>
 
 <script>
@@ -161,6 +154,13 @@ export default {
                   error.response.data.message) ||
                 error.message ||
                 error.toString();
+              //        this.$swal({
+              //   icon: "error",
+              //   title: "로그인 실패",
+              //   text: "",
+              //   confirmButtonColor: "#E1793D",
+              //   confirmButtonText: "확인",
+              // });
             });
         }
       });
@@ -194,6 +194,15 @@ export default {
           confirmButtonColor: "#E1793D",
           confirmButtonText: "확인",
         });
+      } else if (this.message) {
+        // alert 라이브러리 효과
+        this.$swal({
+          icon: "error",
+          title: "로그인 실패",
+          text: this.message,
+          confirmButtonColor: "#E1793D",
+          confirmButtonText: "확인",
+        });
       }
     },
   },
@@ -201,21 +210,6 @@ export default {
 </script>
 
 <style scoped>
-.logo {
-  width: 350px;
-  text-align: center;
-  margin-top: 100px;
-  background-color: aqua;
-}
-
-.loginfooter {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
-
-/* 임시 로그인 css */
-
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
 *,
 ::before,
@@ -331,6 +325,7 @@ img {
   border-radius: 0.5rem;
   transition: 0.3s;
   border: 0;
+  font-family: ONE-Mobile-POP !important;
 }
 .login__button:hover {
   background-color: #ffb30ea8;
