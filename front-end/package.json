@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "^1.2.1",
+    "bootstrap-vue": "^2.23.1",
     "core-js": "^3.8.3",
     "darkmode-js": "^1.5.7",
     "jquery": "^3.6.1",

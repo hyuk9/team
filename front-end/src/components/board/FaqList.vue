@@ -5,8 +5,12 @@
       <div class="container">
         <div class="row flex-center">
           <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0">
-            <a class="img-landing-banner" href="#!"><img class="img-fluid" src="assets/img/gallery/hero-header.png"
-                alt="hero-header" /></a>
+            <a class="img-landing-banner" href="#!"
+              ><img
+                class="img-fluid"
+                src="assets/img/gallery/hero-header.png"
+                alt="hero-header"
+            /></a>
           </div>
           <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
             <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">
@@ -34,14 +38,23 @@
 
           <!-- searchDname -> searchKeyword 변경 -->
           <div class="col-7 ms-2">
-            <input type="text" class="form-control" placeholder="Search by Question" v-model="searchKeyword" />
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search by Question"
+              v-model="searchKeyword"
+            />
           </div>
 
           <div class="input-group-append col-1 ms-2">
-            <button type="button" class="btn btn-warning" @click="
-  page = 1;
-retrieveQna();
-            ">
+            <button
+              type="button"
+              class="btn btn-warning"
+              @click="
+                page = 1;
+                retrieveQna();
+              "
+            >
               Search
             </button>
           </div>
@@ -54,8 +67,13 @@ retrieveQna();
       <div class="col-md-12">
         <div style="width: 11%" class="mb-3">
           Items per Page:
-          <select style="vertical-align: middle; text-align-last: left;" class="form-select "
-            aria-label="Default select example" v-model="pageSize" @change="handlePageSizeChange($event)">
+          <select
+            style="vertical-align: middle; text-align-last: left"
+            class="form-select"
+            aria-label="Default select example"
+            v-model="pageSize"
+            @change="handlePageSizeChange($event)"
+          >
             <option v-for="size in pageSizes" :key="size" :value="size">
               <!-- <!—            size : 3, 6, 9 —> -->
               {{ size }}
@@ -63,15 +81,21 @@ retrieveQna();
           </select>
         </div>
 
-        <b-pagination v-model="page" :total-rows="count" :per-page="pageSize" prev-text="Prev" next-text="Next"
-          @change="handlePageChange"></b-pagination>
+        <b-pagination
+          v-model="page"
+          :total-rows="count"
+          :per-page="pageSize"
+          prev-text="Prev"
+          next-text="Next"
+          @change="handlePageChange"
+        ></b-pagination>
       </div>
       <!-- <!—    Todo : page 바 끝 —> -->
 
       <table class="table table-bordered border-dark">
         <colgroup>
-          <col style="width: 24%">
-          <col style="width: 76%">
+          <col style="width: 24%" />
+          <col style="width: 76%" />
         </colgroup>
         <thead>
           <tr>
@@ -81,7 +105,9 @@ retrieveQna();
         </thead>
         <tbody>
           <tr>
-            <td rowspan="4" class="align-middle" style="text-align: center;">일반문의 사항</td>
+            <td rowspan="4" class="align-middle" style="text-align: center">
+              일반문의 사항
+            </td>
             <td>일반문의1</td>
           </tr>
           <tr>
@@ -94,7 +120,9 @@ retrieveQna();
             <td>일반문의4</td>
           </tr>
           <tr>
-            <td rowspan="3" class="align-middle" style="text-align: center;">자주묻는 질문 사항</td>
+            <td rowspan="3" class="align-middle" style="text-align: center">
+              자주묻는 질문 사항
+            </td>
             <td>자주묻는 질문1</td>
           </tr>
           <tr>
@@ -113,7 +141,6 @@ retrieveQna();
 <script>
 import QnaDataService from "../../services/QnaDataService";
 export default {
-
   data() {
     return {
       qna: [],
@@ -168,13 +195,8 @@ export default {
   mounted() {
     this.retrieveQna(); // 화면 로딩시 전체 조회함수 실행
   },
-
-
 };
-
-
 </script>
 
 <style>
-
 </style>
