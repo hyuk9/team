@@ -24,23 +24,14 @@
         <!-- AddQna Start -->
         <div class="container" v-if="!submitted">
             <div class="mb-3">
-                <label for="question" class="form-label">question</label>
-                <textarea class="form-control form-control-lg " id="question" rows="3" required name="question"
-                    v-model="qna.question"></textarea>
-            </div>
-            <div class="mb-3">
                 <label for="questioner" class="form-label">questioner</label>
-                <input type="questioner" class="form-control" id="questioner" required name="questioner"
-                    v-model="qna.questioner" />
+                <textarea class="form-control form-control-lg " id="questioner" rows="3" required name="questioner"
+                    v-model="qna.questioner"></textarea>
             </div>
             <div class="mb-3">
-                <label for="answer" class="form-label">answer</label>
-                <textarea class="form-control form-control-lg" id="answer" rows="3" required name="answer"
-                    v-model="qna.answer"></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="answerer" class="form-label">answerer</label>
-                <input type="text" class="form-control" id="answerer" name="answerer" v-model="qna.answerer" />
+                <label for="title" class="form-label">title</label>
+                <input type="title" class="form-control" id="title" required name="title"
+                    v-model="qna.title" />
             </div>
             <div class="mb-3">
                 <button @click="saveQna" class="btn btn-primary">Submit</button>
@@ -58,10 +49,8 @@ export default {
         return {
             qna: {
                 qno: null,
-                question: "",
                 questioner: "",
-                answer: "",
-                answerer: "",
+                title: ""
             },
             // submit 버튼을 클릭하면 true 가 되고, You submitted successfully! 화면에 출력됨
             submitted: false,
@@ -72,10 +61,9 @@ export default {
             // 임시 객체 변수 -> springboot 전송
             // 부서번호는(no) 자동생성되므로 빼고 전송함
             let data = {
-                question: this.qna.question,
+                
                 questioner: this.qna.questioner,
-                answer: this.qna.answer,
-                answerer: this.qna.answerer,
+                title: this.qna.title
             };
 
             // insert 요청 함수 호출(axios 공통함수 호출)

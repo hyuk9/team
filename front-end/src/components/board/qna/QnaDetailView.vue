@@ -23,21 +23,13 @@
     <!-- detali Start -->
     <div class="container" v-if="currentQna">
       <div class="mb-3">
-        <label for="question" class="form-label">Question</label>
-        <input type="text" class="form-control" id="question" required name="question" v-model="currentQna.question" />
-      </div>
-      <div class="mb-3">
         <label for="questioner" class="form-label">Questioner</label>
         <input type="questioner" class="form-control" id="questioner" required name="questioner"
           v-model="currentQna.questioner" />
       </div>
       <div class="mb-3">
-        <label for="answer" class="form-label">Answer</label>
-        <input type="text" class="form-control" id="answer" required name="answer" v-model="currentQna.answer" />
-      </div>
-      <div class="mb-3">
-        <label for="answerer" class="form-label">Answerer</label>
-        <input type="text" class="form-control" id="answerer" required name="answerer" v-model="currentQna.answerer" />
+        <label for="title" class="form-label">title</label>
+        <input type="text" class="form-control" id="title" required name="title" v-model="currentQna.title" />
       </div>
       <div class="mb-3">
         <button @click="updateQna" class="btn btn-primary me-3">Update</button>

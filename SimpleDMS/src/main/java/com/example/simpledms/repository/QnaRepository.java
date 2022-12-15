@@ -1,6 +1,5 @@
 package com.example.simpledms.repository;
 
-
 import com.example.simpledms.model.Qna;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,9 +20,10 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface QnaRepository extends JpaRepository<Qna, Integer> {
-//    부서명으로(email) 조회하는 like 검색 함수
-//    1) 쿼리메소드 방식으로 사용자 정의 함수 정의
-    Page<Qna> findAllByEmailContaining(String email, Pageable pageable);
+//    question 조회하는 like 검색 함수
+//    1) 쿼리메소드 방식으로 함수 정의
+    Page<Qna> findAllByQuestionerContaining(String questioner, Pageable pageable);
+    Page<Qna> findAllByTitleContaining(String title, Pageable pageable);
 }
 
 
