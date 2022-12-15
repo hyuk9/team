@@ -147,7 +147,7 @@
               <!-- 회원가입 시작 -->
               <router-link
                 to="/register"
-                class="btn btn-white shadow-warning text-warning register"
+                class="btn btn-white text-warning register"
               >
                 <i class="fas fa-user me-2"></i>회원가입
               </router-link>
@@ -156,7 +156,7 @@
               <!-- 로그인 시작 -->
               <router-link
                 to="/login"
-                class="btn btn-white shadow-warning text-warning login"
+                class="btn btn-white text-warning login"
               >
                 <i class="fas fa-user me-2"></i>로그인
               </router-link>
@@ -166,7 +166,7 @@
               <!-- 프로필 시작 -->
               <router-link
                 to="/profile"
-                class="btn btn-white shadow-warning text-warning profile"
+                class="btn btn-white text-warning profile"
               >
                 <i class="fas fa-user me-2"></i>프로필
               </router-link>
@@ -175,7 +175,7 @@
               <!-- 로그아웃 시작 -->
               <a
                 @click.prevent="logout"
-                class="btn btn-white shadow-warning text-warning logout"
+                class="btn btn-white text-warning logout"
               >
                 <i class="fas fa-user me-2"></i>
                 로그아웃

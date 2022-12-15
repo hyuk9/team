@@ -281,6 +281,7 @@ img {
   animation-name: animateLogin;
 }
 .login__title {
+  color: #ffb30e;
   font-size: 1.5rem;
   margin-bottom: 2rem;
 }
