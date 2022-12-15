@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <NavCom v-if="wantToShow()" />
+    <NavCom />
     <router-view />
-    <FooterCom v-if="wantToShow()" />
+    <FooterCom />
   </div>
 </template>
 
@@ -31,13 +31,13 @@ export default {
     };
   },
   methods: {
-    wantToShow() {
-      if (this.$route.name == "login") {
-        return false;
-      } else {
-        return true;
-      }
-    },
+    // wantToShow() {
+    //   if (this.$route.name == "login") {
+    //     return false;
+    //   } else {
+    //     return true;
+    //   }
+    // },
   },
   components: {
     NavCom,
