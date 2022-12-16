@@ -27,7 +27,10 @@ const routes = [
     component: () => import('@/components/food/theme/ThemeList.vue')
   },
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
   // TODO: 분류별 게시판 구현
