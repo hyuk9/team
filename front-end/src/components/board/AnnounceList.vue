@@ -51,7 +51,7 @@
           @change="handlePageChange"
         ></b-pagination>
       </div> -->
-      <!-- <!—    Todo : page 바 끝 —> -->
+      <!-- Todo : page 바 끝 —> -->
 
       <table class="table">
         <thead>
@@ -107,7 +107,7 @@
             검색
           </button>
         </div>
-        <!--            Todo : 수정 끝 -->
+        <!--   Todo : 수정 끝 -->
       </div>
     </div>
     <!-- search 관련 div 끝 -->

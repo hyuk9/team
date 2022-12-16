@@ -23,17 +23,17 @@
     <!-- detali Start -->
     <div class="container" v-if="currentQna">
       <div class="mb-3">
-        <label for="questioner" class="form-label">Questioner</label>
+        <label for="questioner" class="form-label">작성자</label>
         <input type="questioner" class="form-control" id="questioner" required name="questioner"
           v-model="currentQna.questioner" />
       </div>
       <div class="mb-3">
-        <label for="title" class="form-label">title</label>
+        <label for="title" class="form-label">제목</label>
         <input type="text" class="form-control" id="title" required name="title" v-model="currentQna.title" />
       </div>
       <div class="mb-3">
-        <button @click="updateQna" class="btn btn-primary me-3">Update</button>
-        <button @click="deleteQna" class="btn btn-danger">Delete</button>
+        <button @click="updateQna" class="btn btn-primary me-3">수정</button>
+        <button @click="deleteQna" class="btn btn-danger">삭제</button>
       </div>
       <div class="alert alert-success" role="alert" v-if="message">
         {{ message }}

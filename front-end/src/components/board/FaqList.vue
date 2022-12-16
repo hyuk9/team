@@ -5,12 +5,8 @@
       <div class="container">
         <div class="row flex-center">
           <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0">
-            <a class="img-landing-banner" href="#!"
-              ><img
-                class="img-fluid"
-                src="assets/img/gallery/hero-header.png"
-                alt="hero-header"
-            /></a>
+            <a class="img-landing-banner" href="#!"><img class="img-fluid" src="assets/img/gallery/hero-header.png"
+                alt="hero-header" /></a>
           </div>
           <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
             <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">
@@ -38,33 +34,24 @@
 
           <!-- searchDname -> searchKeyword 변경 -->
           <div class="col-7 ms-2">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Search by Question"
-              v-model="searchKeyword"
-            />
+            <input type="text" class="form-control" placeholder="Search by Question" v-model="searchKeyword" />
           </div>
 
           <div class="input-group-append col-1 ms-2">
-            <button
-              type="button"
-              class="btn btn-warning"
-              @click="
-                page = 1;
-                retrieveQna();
-              "
-            >
+            <button type="button" class="btn btn-warning" @click="
+  page = 1;
+retrieveQna();
+            ">
               Search
             </button>
           </div>
-          <!--            Todo : 수정 끝 -->
+          <!--  Todo : 수정 끝 -->
         </div>
       </div>
       <!-- search 관련 div 끝 -->
 
       <!--    Todo : page 바 시작 -->
-      <div class="col-md-12">
+      <!-- <div class="col-md-12">
         <div style="width: 11%" class="mb-3">
           Items per Page:
           <select
@@ -75,7 +62,7 @@
             @change="handlePageSizeChange($event)"
           >
             <option v-for="size in pageSizes" :key="size" :value="size">
-              <!-- <!—            size : 3, 6, 9 —> -->
+                size : 3, 6, 9 
               {{ size }}
             </option>
           </select>
@@ -89,10 +76,10 @@
           next-text="Next"
           @change="handlePageChange"
         ></b-pagination>
-      </div>
-      <!-- <!—    Todo : page 바 끝 —> -->
+      </div> -->
+      <!--   Todo : page 바 끝 —> -->
 
-      <table class="table table-bordered border-dark">
+      <table class="table">
         <colgroup>
           <col style="width: 24%" />
           <col style="width: 76%" />
@@ -131,8 +118,37 @@
           <tr>
             <td>자주묻는 질문3</td>
           </tr>
+          <tr>
+            <td colspan="4">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 10%" scope="col">#</th>
+                    <th style="width: 25%" scope="col">작성자</th>
+                    <th style="width: 55%" scope="col">제목</th>
+                    <th style="width: 10%" scope="col">수정/삭제</th>
+                  </tr>
+                </thead>
+                <tbody v-for="(data, index) in qna" :key="index">
+                  <tr>
+                    <td>{{ data.qno }}</td>
+                    <td>{{ data.questioner }}</td>
+                    <td>{{ data.title }}</td>
+                    <td>
+                      <router-link :to="'/qna/' + data.qno"><span
+                          class="badge rounded-pill bg-warning text-dark">수정</span></router-link>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
         </tbody>
       </table>
+    </div>
+    <div class="offset-9">
+      <b-pagination v-model="page" :total-rows="count" :per-page="pageSize" prev-text="Prev" next-text="Next"
+        @change="handlePageChange"></b-pagination>
     </div>
     <!-- TODO FAQ리스트 끝 -->
   </div>
@@ -199,4 +215,5 @@ export default {
 </script>
 
 <style>
+
 </style>
