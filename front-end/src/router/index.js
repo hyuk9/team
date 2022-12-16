@@ -26,16 +26,10 @@ const routes = [
     name: 'theme',
     component: () => import('@/components/food/theme/ThemeList.vue')
   },
-  // {
-  //   path: '/score',
-  //   name: 'score',
-  //   component: () => import('@/components/food/score/ScoreList.vue')
-  // },
-  // {
-  //   path: '/review',
-  //   name: 'review',
-  //   component: () => import('@/components/food/review/ReviewList.vue')
-  // },
+<<<<<<< Updated upstream
+
+=======
+>>>>>>> Stashed changes
   // TODO: 분류별 게시판 구현
   {
     path: '/free',
@@ -64,7 +58,6 @@ const routes = [
     name: 'add-qna',
     component: () => import('../components/board/qna/AddQnaView.vue')
   },
-
   // QnaDetail 
   {
     path: '/qna/:qno',
