@@ -33,17 +33,17 @@
               <ul class="dropdown-menu">
                 <li class="dropdown-header">지역별</li>
                 <li>
-                  <router-link to="/local/seoul" class="dropdown-item"
+                  <router-link to="/local" class="dropdown-item"
                     >서울</router-link
                   >
                 </li>
                 <li>
-                  <router-link to="/local/gyeongi" class="dropdown-item"
+                  <router-link to="/local" class="dropdown-item"
                     >경기</router-link
                   >
                 </li>
                 <li>
-                  <router-link to="/local/busan" class="dropdown-item"
+                  <router-link to="/local" class="dropdown-item"
                     >부산</router-link
                   >
                 </li>
