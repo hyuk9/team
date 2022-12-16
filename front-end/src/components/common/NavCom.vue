@@ -55,6 +55,7 @@
                   >
                 </li>
                 <li>
+<<<<<<< Updated upstream
                   <router-link to="/" class="dropdown-item"
                     >중식</router-link
                   >
@@ -84,6 +85,15 @@
                 <li>
                   <router-link to="/" class="dropdown-item"
                     >회식</router-link
+=======
+                  <router-link to="/score" class="dropdown-item"
+                    >테마별</router-link
+                  >
+                </li>
+                <li>
+                  <router-link to="/review" class="dropdown-item"
+                    >리뷰많은순</router-link
+>>>>>>> Stashed changes
                   >
                 </li>
               </ul>
@@ -123,13 +133,18 @@
             </li>
           </ul>
         </div>
+
         <div
           class="collapse navbar-collapse border-lg-0 my-2 mt-lg-0"
           id="navbarSupportedContent"
         >
+<<<<<<< Updated upstream
           <div class="mx-auto pt-5 pt-lg-0 d-block d-lg-none d-xl-block">
             <!-- 공간을 위한 안보이는 div -->
           </div>
+=======
+          <div class="mx-auto pt-5 pt-lg-0 d-block d-lg-none d-xl-block"></div>
+>>>>>>> Stashed changes
           <form class="d-flex mt-4 mt-lg-0 ms-lg-auto ms-xl-0">
             <!-- 검색창 시작 -->
             <div class="input-group-icon pe-2">
@@ -187,6 +202,8 @@
       </div>
     </nav>
     <!-- 네비게이션 바 끝 -->
+
+    
   </div>
 </template>
 
@@ -219,9 +236,9 @@ export default {
 </script>
 
 <style>
-.dropdown:hover .dropdown-menu {
+/* .dropdown:hover .dropdown-menu {
   display: block;
   margin-top: 0;
-}
+} */
 </style>
 
