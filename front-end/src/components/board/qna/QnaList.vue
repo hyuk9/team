@@ -77,8 +77,8 @@
           <thead>
             <tr>
               <th class="table-active" style="width: 10%" scope="col">#</th>
-              <th class="table-active" style="width: 20%" scope="col">작성자</th>
               <th class="table-active" style="width: 40%" scope="col">제목</th>
+              <th class="table-active" style="width: 20%" scope="col">작성자</th>
               <th class="table-active" style="width: 20%" scope="col">작성일</th>
               <th class="table-active" style="width: 10%" scope="col">수정/삭제</th>
             </tr>
@@ -86,8 +86,8 @@
           <tbody v-for="(data, index) in qna" :key="index">
             <tr>
               <td>{{ data.qno }}</td>
-              <td>{{ data.questioner }}</td>
               <td>{{ data.title }}</td>
+              <td>{{ data.questioner }}</td>
               <td>{{ data.insertTime }}</td>
               <td>
                 <router-link :to="'/qna/' + data.qno"><span
