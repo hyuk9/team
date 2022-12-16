@@ -26,7 +26,10 @@ const routes = [
     name: 'theme',
     component: () => import('@/components/food/theme/ThemeList.vue')
   },
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
   // TODO: 분류별 게시판 구현
   {
     path: '/free',
@@ -55,7 +58,6 @@ const routes = [
     name: 'add-qna',
     component: () => import('../components/board/qna/AddQnaView.vue')
   },
-
   // QnaDetail 
   {
     path: '/qna/:qno',
