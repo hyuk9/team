@@ -24,12 +24,12 @@
         <!-- AddQna Start -->
         <div class="container" v-if="!submitted">
             <div class="mb-3">
-                <label for="questioner" class="form-label">questioner</label>
+                <label for="questioner" class="form-label">작성자</label>
                 <textarea class="form-control form-control-lg " id="questioner" rows="3" required name="questioner"
                     v-model="qna.questioner"></textarea>
             </div>
             <div class="mb-3">
-                <label for="title" class="form-label">title</label>
+                <label for="title" class="form-label">제목</label>
                 <input type="title" class="form-control" id="title" required name="title"
                     v-model="qna.title" />
             </div>
