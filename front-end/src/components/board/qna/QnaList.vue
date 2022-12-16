@@ -5,12 +5,8 @@
       <div class="container">
         <div class="row flex-center">
           <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0">
-            <a class="img-landing-banner" href="#!"
-              ><img
-                class="img-fluid"
-                src="assets/img/gallery/hero-header.png"
-                alt="hero-header"
-            /></a>
+            <a class="img-landing-banner" href="#!"><img class="img-fluid" src="assets/img/gallery/hero-header.png"
+                alt="hero-header" /></a>
           </div>
           <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
             <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">
@@ -27,6 +23,7 @@
     <!-- TODO: qna 시작 -->
     <!-- Contact Start -->
     <div class="container mt-2 mb-2">
+      <h1>1:1 문의 게시판</h1>
       <!-- search 관련 div 시작 -->
       <div class="col-md-8 offset-2">
         <div class="input-group mb-3">
@@ -41,23 +38,14 @@
 
           <!-- searchDname -> searchKeyword 변경 -->
           <div class="col-8">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Search by Question"
-              v-model="searchKeyword"
-            />
+            <input type="text" class="form-control" placeholder="Search by Question" v-model="searchKeyword" />
           </div>
 
           <div class="input-group-append col-1">
-            <button
-              class="btn btn-warning"
-              type="button"
-              @click="
-                page = 1;
-                retrieveQna();
-              "
-            >
+            <button class="btn btn-warning" type="button" @click="
+              page = 1;
+            retrieveQna();
+            ">
               Search
             </button>
           </div>
@@ -88,41 +76,40 @@
         <table class="table table-hover">
           <thead>
             <tr>
-              <th style="width: 10%" scope="col">#</th>
-              <th style="width: 25%" scope="col">작성자</th>
-              <th style="width: 55%" scope="col">제목</th>
-              <th style="width: 10%" scope="col">수정/삭제</th>
+              <th class="table-active" style="width: 10%" scope="col">#</th>
+              <th class="table-active" style="width: 40%" scope="col">제목</th>
+              <th class="table-active" style="width: 20%" scope="col">작성자</th>
+              <th class="table-active" style="width: 20%" scope="col">작성일</th>
+              <th class="table-active" style="width: 10%" scope="col">수정/삭제</th>
             </tr>
           </thead>
           <tbody v-for="(data, index) in qna" :key="index">
             <tr>
               <td>{{ data.qno }}</td>
-              <td>{{ data.questioner }}</td>
               <td>{{ data.title }}</td>
+              <td>{{ data.questioner }}</td>
+              <td>{{ data.insertTime }}</td>
               <td>
-                <router-link :to="'/qna/' + data.qno"
-                  ><span class="badge rounded-pill bg-warning text-dark"
-                    >수정</span
-                  ></router-link
-                >
+                <router-link :to="'/qna/' + data.qno"><span
+                    class="badge rounded-pill bg-warning text-dark">수정</span></router-link>
               </td>
             </tr>
           </tbody>
         </table>
 
-        <router-link to="/add-qna/">
-          <span class="badge rounded-pill bg-warning text-dark">추가</span>
+        <!-- <router-link to="/add-qna/">
+          <span class="badge bg-warning text-dark">추가</span>
+        </router-link> -->
+        <!-- TODO: badge를 버튼으로 교체 -->
+        <router-link class="offset-11" to="/add-qna/">
+          <button type="button" class="btn btn-warning btn-sm">
+            글쓰기
+          </button>
         </router-link>
       </div>
-      <div class="overflow-auto offset-9">
-        <b-pagination
-          v-model="page"
-          :total-rows="count"
-          :per-page="pageSize"
-          prev-text="Prev"
-          next-text="Next"
-          @change="handlePageChange"
-        ></b-pagination>
+      <div class="overflow-auto offset-5">
+        <b-pagination v-model="page" :total-rows="count" :per-page="pageSize" first-text="<<" last-text=">>" prev-text="Prev" next-text="Next"
+          @change="handlePageChange"></b-pagination>
       </div>
     </div>
     <!-- Contact End -->
@@ -142,7 +129,7 @@ export default {
       // 페이징을 위한 변수 정의
       page: 1, // 현재 페이지
       count: 0, // 전체 데이터 건수
-      pageSize: 5, // 한페이지당 몇개를 화면에 보여줄지 결정하는 변수
+      pageSize: 10, // 한페이지당 몇개를 화면에 보여줄지 결정하는 변수
 
       pageSizes: [3, 6, 9], // select box 에 넣을 기본 데이터
     };
@@ -191,4 +178,5 @@ export default {
 </script>
 
 <style>
+
 </style>
