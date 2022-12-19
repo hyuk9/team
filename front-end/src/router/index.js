@@ -65,6 +65,12 @@ const routes = [
     name: 'qna-detail',
     component: () => import('../components/board/qna/QnaDetailView.vue')
   },
+    // TODO: diner 디테일
+    {
+      path: "/diner",
+      name: "diner",
+      component: () => import("@/components/food/detail/DinerDetail.vue"),
+    },
   // TODO: 로그인 메뉴 달기
   {
     path: '/login',
