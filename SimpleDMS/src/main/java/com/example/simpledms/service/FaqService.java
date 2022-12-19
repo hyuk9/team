@@ -73,6 +73,13 @@ public class FaqService {
         return page;
     }
 
+    //    ✅ dname like 검색 함수
+    public Page<Faq> findAllByContentContaining(String content, Pageable pageable) {
+        Page<Faq> page = faqRepository.findAllByTitleContaining(content, pageable);
+
+        return page;
+    }
+
 }
 
 

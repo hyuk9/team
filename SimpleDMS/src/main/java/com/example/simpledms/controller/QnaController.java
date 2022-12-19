@@ -30,13 +30,15 @@ import java.util.Optional;
 @Slf4j
 // CORS 보안 : 기본적으로 한사이트에서 포트를 달리 사용못함
 // @CrossOrigin(허용할_사이트주소(Vue 사이트주소:포트)) : CORS 보안을 허용해주는 어노테이션
-//@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "http://localhost:8081")
 @RestController
 @RequestMapping("/api")
 public class QnaController {
 
     @Autowired
     QnaService qnaService; // @Autowired : 스프링부트가 가동될때 생성된 객체를 하나 받아오기
+    Qna qna;
+
 
 //    frontend url(쿼리스트링방식) : ? 매개변수 전송방식 사용했으면 ------> backend @RequestParam
 //    frontend url(파라메터방식) : /{} 매개변수 전송방식 사용했으면 ------> backend @PathVariable
@@ -52,9 +54,8 @@ public class QnaController {
             Pageable pageable = PageRequest.of(page, size);
 
             Page<Qna> qnaPage;
-
 //            Page 객체 정의
-            if( searchSelect.equals("question")) {
+            if( searchSelect.equals("작성자")) {
                 qnaPage = qnaService.findAllByQuestionerContaining(searchKeyword, pageable);
             } else {
                 qnaPage = qnaService.findAllByTitleContaining(searchKeyword, pageable);
