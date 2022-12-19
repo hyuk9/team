@@ -21,10 +21,14 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface FaqRepository extends JpaRepository<Faq, Integer> {
-//    부서명으로(dname) 조회하는 like 검색 함수
+    //    부서명으로(dname) 조회하는 like 검색 함수
 //    1) 쿼리메소드 방식으로 사용자 정의 함수 정의
     Page<Faq> findAllByTitleContaining(String title, Pageable pageable);
+    Page<Faq> findAllByContentContaining(String content, Pageable pageable);
 }
+
+
+
 
 
 
