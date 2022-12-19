@@ -1,103 +1,87 @@
 <template>
-  <div>
-    <!-- 최상단 시작 -->
-    <section class="py-5 overflow-hidden bg-warning" id="home">
-      <div class="container">
-        <div class="row flex-center">
-          <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0">
-            <!-- <a class="img-landing-banner" href="#!"
-              ><img
-                class="img-fluid"
-                src="@/assets/img/species/korean.jpg"
-                alt="hero-header"
-            /></a> -->
-          </div>
-          <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
-            <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">
-              여기는 회원가입 <br />
-              페이지 입니다
-            </h1>
-            <h1 class="text-800 mb-5 fs-4">최상단만 제작</h1>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- 최상단 끝 -->
-    <div class="card card-container">
-      <img
-        id="profile-img"
-        src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-        class="profile-img-card"
-      />
-      <form name="form" @submit.prevent="handleRegister">
-        <div v-if="!successful">
-          <div class="form-group">
-            <label for="username">아이디</label>
-            <!-- v-validate : 유효성 체크 -->
-            <!-- v-validate="'required|min:3|max:20'" 체크함 -->
-            <!-- errors.has('username') : 에러 발생했는지 검사 -->
-            <!-- {{errors.first('username')}} : 에러 있으면 화면 출력됨, 없으면 안됨 -->
-            <input
-              v-model="user.username"
-              v-validate="'required|min:3|max:20'"
-              type="text"
-              class="form-control"
-              name="username"
-            />
-            <!-- 유효성 체크 후 에러 체크 : errors.hat(체크대상) -->
-            <!-- errors.first(체크대상) : 에러 내용 출력 -->
-            <div
-              v-if="submitted && errors.has('username')"
-              class="alert-danger"
-            >
-              {{ errors.first("username") }}
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="email">이메일</label>
-            <input
-              v-model="user.email"
-              v-validate="'required|email|max:50'"
-              type="email"
-              class="form-control"
-              name="email"
-            />
-            <div v-if="submitted && errors.has('email')" class="alert-danger">
-              {{ errors.first("email") }}
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="password">비밀번호</label>
-            <input
-              v-model="user.password"
-              v-validate="'required|min:6|max:40'"
-              type="password"
-              class="form-control"
-              name="password"
-            />
-            <div
-              v-if="submitted && errors.has('password')"
-              class="alert-danger"
-            >
-              {{ errors.first("password") }}
-            </div>
-          </div>
-          <!-- 회원 가입 버튼 시작 -->
-          <div class="form-group mt-3">
-            <button class="btn btn-primary btn-block">회원가입</button>
-          </div>
-          <!-- 회원 가입 버튼 끝 -->
-        </div>
-      </form>
+  <div class="container">
+    <!-- Heading -->
+    <h1>회원가입</h1>
 
-      <div
-        v-if="message"
-        class="alert"
-        :class="successful ? 'alert-success' : 'alert-danger'"
-      >
-        {{ message }}
+    <!-- Form -->
+    <form action="" name="form" @submit.prevent="handleRegister">
+      <div >
+        <!-- username input -->
+        <div class="input__block">
+          <input
+            v-model="user.username"
+            v-validate="'required|min:3|max:20'"
+            type="text"
+            placeholder="아이디"
+            class="input"
+            id="text"
+            name="아이디 "
+          />
+          <div v-if="submitted && errors.has('아이디 ')" class="register-alert">
+            <p>{{ errors.first("아이디 ") }}</p>
+          </div>
+        </div>
+        <!-- email input -->
+        <div class="input__block">
+          <input
+            v-model="user.email"
+            v-validate="'required|email|max:50'"
+            type="email"
+            placeholder="이메일"
+            class="input"
+            id="email"
+            name="이메일 "
+          />
+          <div v-if="submitted && errors.has('이메일 ')" class="register-alert">
+            <p>{{ errors.first("이메일 ") }}</p>
+          </div>
+        </div>
+        <!-- password input -->
+        <div class="input__block">
+          <input
+            v-model="user.password"
+            v-validate="'required|min:6|max:40'"
+            type="password"
+            placeholder="비밀번호"
+            class="input"
+            id="password"
+            name="비밀번호 "
+          />
+          <div
+            v-if="submitted && errors.has('비밀번호 ')"
+            class="register-alert"
+          >
+            <p>{{ errors.first("비밀번호 ") }}</p>
+          </div>
+        </div>
+        <!-- repeat password input -->
+        <div class="input__block">
+          <input
+            type="password"
+            placeholder="Repeat password"
+            class="input repeat__password"
+            id="repeat__password"
+          />
+        </div>
+        <!-- sign in button -->
+        <button class="signin__btn">회원가입하기</button>
       </div>
+    </form>
+
+    <!-- separator -->
+    <div class="separator">
+      <p>또는</p>
     </div>
+    <!-- google button -->
+    <button class="google__btn">
+      <i class="fab fa-google"></i>
+      구글로 가입하기
+    </button>
+    <!-- google button -->
+    <button class="github__btn">
+      <i class="fab fa-github"></i>
+      깃허브로 가입하기
+    </button>
   </div>
 </template>
 
@@ -149,6 +133,15 @@ export default {
           .then((response) => {
             this.message = response.message;
             this.successful = true; // "회원가입이 성공했습니다." 화면 출력
+            // 성공알림 띄우기
+            this.$swal({
+              icon: "success",
+              title: "로그인 성공",
+              showConfirmButton: false,
+              timer: 1000,
+            });
+            // 로그인 화면으로 이동
+            this.$router.push("/login")
           })
           // 참고) if/else 문 대신에 -> or(||) and(&&) 연산자를 사용할때도 있음
           // 로직체크 순서 : true || false, false && true
@@ -160,6 +153,14 @@ export default {
                 error.response.data.message) ||
               error.message ||
               error.toString();
+            // 실패알림 띄우기
+            this.$swal({
+              icon: "error",
+              title: "로그인 실패",
+              text: this.message,
+              confirmButtonColor: "#E1793D",
+              confirmButtonText: "확인",
+            });
           });
       });
     },
@@ -168,36 +169,213 @@ export default {
 </script>
 
 <style scoped>
-label {
+body {
+  font-family: "Montserrat", sans-serif;
+  background: white;
+}
+
+.container {
   display: block;
-  margin-top: 10px;
+  max-width: 680px;
+  width: 80%;
+  margin: 120px auto;
 }
 
-.card-container.card {
-  max-width: 350px !important;
-  padding: 40px 40px;
+h1 {
+  color: #ffb30e;
+  font-size: 48px;
+  letter-spacing: -3px;
+  text-align: center;
+  margin: 120px 0 80px 0;
+  transition: 0.2s linear;
 }
 
-.card {
-  background-color: #f7f7f7;
-  padding: 20px 25px 30px;
-  margin: 0 auto 25px;
-  margin-top: 50px;
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
-  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+form {
+  width: 100%;
+  max-width: 680px;
+  margin: 40px auto 10px;
 }
-
-.profile-img-card {
-  width: 96px;
-  height: 96px;
-  margin: 0 auto 10px;
+form .input__block {
+  margin: 20px auto;
   display: block;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
+  position: relative;
+}
+form .input__block.first-input__block::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: 50px;
+  display: block;
+  width: 0;
+  height: 0;
+  background: transparent;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid rgba(15, 19, 42, 0.1);
+  transition: 0.2s linear;
+}
+form .input__block.signup-input__block::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: 150px;
+  display: block;
+  width: 0;
+  height: 0;
+  background: transparent;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid rgba(15, 19, 42, 0.1);
+  transition: 0.2s linear;
+}
+form .input__block input {
+  display: block;
+  width: 90%;
+  max-width: 680px;
+  height: 50px;
+  margin: 0 auto;
+  border-radius: 8px;
+  border: none;
+  background: rgba(15, 19, 42, 0.1);
+  padding: 0 0 0 15px;
+  color: #23004d;
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+}
+
+form .input__block input:focus,
+form .input__block input:active {
+  outline: none;
+  border: none;
+  color: #0f132a;
+}
+form .input__block input.repeat__password {
+  opacity: 0;
+  display: none;
+  transition: 0.2s linear;
+}
+
+form .signin__btn {
+  background: #ffb30e;
+  color: white;
+  display: block;
+  width: 92.5%;
+  max-width: 680px;
+  height: 50px;
+  border-radius: 8px;
+  margin: 0 auto;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+  box-shadow: 0 15px 30px #ffb30e5c;
+  transition: 0.2s linear;
+}
+form .signin__btn:hover {
+  box-shadow: 0 0 0 rgba(233, 30, 99, 0);
+}
+
+::placeholder {
+  color: rgb(128, 128, 128, 0.6) !important;
+}
+
+.register-alert {
+  display: block;
+  width: 90%;
+  max-width: 680px;
+  height: 30px;
+  margin: 10px auto 0 auto;
+  border-radius: 8px;
+  border: none;
+  background: #ffb30e5c;
+  padding: 0 0 0 15px;
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.register-alert p {
+  line-height: 30px;
+}
+
+button {
+   font-family: ONE-Mobile-POP !important;
+}
+
+.separator {
+  display: block;
+  margin: 30px auto 10px;
+  text-align: center;
+  height: 40px;
+  position: relative;
+  background: transparent;
+  color: rgba(15, 19, 42, 0.4);
+  font-size: 13px;
+  width: 90%;
+  max-width: 680px;
+}
+.separator::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 0;
+  background: rgba(15, 19, 42, 0.2);
+  height: 1px;
+  width: 45%;
+}
+.separator::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  right: 0;
+  background: rgba(15, 19, 42, 0.2);
+  height: 1px;
+  width: 45%;
+}
+
+.google__btn,
+.github__btn {
+  display: block;
+  width: 90%;
+  max-width: 680px;
+  margin: 20px auto;
+  height: 50px;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+  border-radius: 8px;
+  border: none;
+  line-height: 40px;
+}
+.google__btn.google__btn,
+.github__btn.google__btn {
+  background: #5b90f0;
+  color: white;
+  box-shadow: 0 15px 30px rgba(91, 144, 240, 0.36);
+  transition: 0.2s linear;
+}
+.google__btn.google__btn .fa,
+.github__btn.google__btn .fa {
+  font-size: 20px;
+  padding: 0 5px 0 0;
+}
+.google__btn.google__btn:hover,
+.github__btn.google__btn:hover {
+  box-shadow: 0 0 0 rgba(91, 144, 240, 0);
+}
+.google__btn.github__btn,
+.github__btn.github__btn {
+  background: #25282d;
+  color: white;
+  box-shadow: 0 15px 30px rgba(37, 40, 45, 0.36);
+  transition: 0.2s linear;
+}
+.google__btn.github__btn .fa,
+.github__btn.github__btn .fa {
+  font-size: 20px;
+  padding: 0 5px 0 0;
+}
+.google__btn.github__btn:hover,
+.github__btn.github__btn:hover {
+  box-shadow: 0 0 0 rgba(37, 40, 45, 0);
 }
 </style>

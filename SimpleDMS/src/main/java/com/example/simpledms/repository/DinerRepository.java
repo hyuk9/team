@@ -21,7 +21,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DinerRepository extends JpaRepository<Diner, Integer> {
-    Page<Diner> findAllBySnameContaining(String sname, Pageable pageable);
+    Page<Diner> findAllByDnameContaining(String dname, Pageable pageable);
 
 }
 

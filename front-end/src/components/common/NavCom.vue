@@ -18,18 +18,6 @@
         </router-link>
         <!-- 로고명과 이미지 끝 -->
 
-        <!-- 밑에 버튼 뭔지 모르겠어서 일단 주석처리 해놨음 -->
-        <!-- <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"> </span>
-        </button> -->
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item dropdown">
@@ -43,24 +31,59 @@
                 음식점 리스트
               </router-link>
               <ul class="dropdown-menu">
+                <li class="dropdown-header">지역별</li>
                 <li>
                   <router-link to="/local" class="dropdown-item"
-                    >지역별</router-link
+                    >서울</router-link
                   >
                 </li>
                 <li>
-                  <router-link to="/menu" class="dropdown-item"
-                    >메뉴별</router-link
+                  <router-link to="/local" class="dropdown-item"
+                    >경기</router-link
                   >
                 </li>
                 <li>
-                  <router-link to="/score" class="dropdown-item"
-                    >평점별</router-link
+                  <router-link to="/local" class="dropdown-item"
+                    >부산</router-link
+                  >
+                </li>
+                <li><hr class="dropdown-divider"></li>
+                <li class="dropdown-header">메뉴별</li>
+                <li>
+                  <router-link to="/" class="dropdown-item"
+                    >한식</router-link
                   >
                 </li>
                 <li>
-                  <router-link to="/review" class="dropdown-item"
-                    >리뷰많은순</router-link
+                  <router-link to="/" class="dropdown-item"
+                    >중식</router-link
+                  >
+                </li>
+                <li>
+                  <router-link to="/" class="dropdown-item"
+                    >일식</router-link
+                  >
+                </li>
+                <li>
+                  <router-link to="/" class="dropdown-item"
+                    >양식</router-link
+                  >
+                </li>
+                <li><hr class="dropdown-divider"></li>
+                <li class="dropdown-header">테마별</li>
+                <li>
+                  <router-link to="/" class="dropdown-item"
+                    >데이트</router-link
+                  >
+                </li>
+                <li>
+                  <router-link to="/" class="dropdown-item"
+                    >모임</router-link
+                  >
+                </li>
+                <li>
+                  <router-link to="/" class="dropdown-item"
+                    >회식</router-link
                   >
                 </li>
               </ul>
@@ -100,17 +123,13 @@
             </li>
           </ul>
         </div>
+
         <div
           class="collapse navbar-collapse border-lg-0 my-2 mt-lg-0"
           id="navbarSupportedContent"
         >
           <div class="mx-auto pt-5 pt-lg-0 d-block d-lg-none d-xl-block">
-            <!-- 여기부분은 필요 없는거 같아서 일단 주석처리 해놨음 -->
-            <!-- <p class="mb-0 fw-bold text-lg-center">
-              Deliver to: <i class="fas fa-map-marker-alt text-warning mx-2"></i
-              ><span class="fw-normal">Current Location </span
-              ><span>Mirpur 1 Bus Stand, Dhaka</span>
-            </p> -->
+            <!-- 공간을 위한 안보이는 div -->
           </div>
           <form class="d-flex mt-4 mt-lg-0 ms-lg-auto ms-xl-0">
             <!-- 검색창 시작 -->
@@ -127,34 +146,41 @@
 
             <div v-if="!currentUser">
               <!-- 회원가입 시작 -->
-              <div class="btn btn-white shadow-warning text-warning">
-                <i class="fas fa-user me-2"></i
-                ><router-link to="/register" class="register"
-                  >회원가입</router-link
-                >
-              </div>
+              <router-link
+                to="/register"
+                class="btn btn-white text-warning register"
+              >
+                <i class="fas fa-user me-2"></i>회원가입
+              </router-link>
               <!-- 회원가입 끝 -->
 
               <!-- 로그인 시작 -->
-              <div class="btn btn-white shadow-warning text-warning">
-                <i class="fas fa-user me-2"></i
-                ><router-link to="/login" class="login">로그인</router-link>
-              </div>
+              <router-link
+                to="/login"
+                class="btn btn-white text-warning login"
+              >
+                <i class="fas fa-user me-2"></i>로그인
+              </router-link>
               <!-- 로그인 끝 -->
             </div>
             <div v-if="currentUser">
               <!-- 프로필 시작 -->
-              <div class="btn btn-white shadow-warning text-warning">
-                <i class="fas fa-user me-2"></i
-                ><router-link to="/profile" class="profile">프로필</router-link>
-              </div>
+              <router-link
+                to="/profile"
+                class="btn btn-white text-warning profile"
+              >
+                <i class="fas fa-user me-2"></i>프로필
+              </router-link>
               <!-- 프로필 끝 -->
 
               <!-- 로그아웃 시작 -->
-              <div class="btn btn-white shadow-warning text-warning">
+              <a
+                @click.prevent="logout"
+                class="btn btn-white text-warning logout"
+              >
                 <i class="fas fa-user me-2"></i>
-                <a @click.prevent="logout" class="logout">로그아웃</a>
-              </div>
+                로그아웃
+              </a>
               <!-- 로그아웃 끝 -->
             </div>
           </form>
@@ -162,6 +188,8 @@
       </div>
     </nav>
     <!-- 네비게이션 바 끝 -->
+
+    
   </div>
 </template>
 
@@ -194,9 +222,9 @@ export default {
 </script>
 
 <style>
-.dropdown:hover .dropdown-menu {
+/* .dropdown:hover .dropdown-menu {
   display: block;
   margin-top: 0;
-}
+} */
 </style>
 

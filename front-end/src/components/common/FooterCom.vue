@@ -3,7 +3,7 @@
     <footer class="py-0 pt-7 bg-1000">
       <div class="container">
         <!-- 푸터 첫 단락 가로로 한 줄 -->
-        <div class="row justify-content-lg-between">
+        <!-- <div class="row justify-content-lg-between">
           <h5 class="lh-lg fw-bold text-white">지역별 맛집 한번에 바로보기</h5>
           <div class="col-6 col-md-4 col-lg-auto mb-3">
             <ul class="list-unstyled mb-md-4 mb-lg-0">
@@ -113,11 +113,11 @@
               </li>
             </ul>
           </div>
-        </div>
+        </div> -->
         <!-- 푸터 첫 단락 끝 -->
 
 
-        <hr class="text-900" />
+        <!-- <hr class="text-900" /> -->
 
 
         <!-- 푸터 두번째 단락 -->

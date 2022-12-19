@@ -20,10 +20,10 @@ import javax.persistence.*;
  * 2022-10-19         ds          최초 생성
  */
 @Entity
-@Table(name = "TB_DINNER")
+@Table(name = "TB_DINER")
 @SequenceGenerator(
-        name= "SQ_DINNER_GENERATOR"
-        , sequenceName = "SQ_DINNER"
+        name= "SQ_DINER_GENERATOR"
+        , sequenceName = "SQ_DINER"
         , initialValue = 1
         , allocationSize = 1
 )
@@ -36,16 +36,16 @@ import javax.persistence.*;
 @DynamicUpdate
 @ToString
 @Where(clause = "DELETE_YN = 'N'")
-@SQLDelete(sql="UPDATE TB_DINNER SET DELETE_YN = 'Y', DELETE_TIME = TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') WHERE SNO = ?")
+@SQLDelete(sql="UPDATE TB_DINER SET DELETE_YN = 'Y', DELETE_TIME = TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') WHERE DNO = ?")
 public class Diner extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE
-            , generator = "SQ_DINNER_GENERATOR"
+            , generator = "SQ_DINER_GENERATOR"
     )
-    private Integer sno;
+    private Integer dno;
 
     @Column
-    private String sname;
+    private String dname;
 
     @Column
     private String score;
@@ -61,6 +61,9 @@ public class Diner extends BaseTimeEntity {
 
     @Column
     private String review;
+
+    @Column
+    private String photo;
 }
 
 

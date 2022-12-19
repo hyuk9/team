@@ -2,7 +2,6 @@ package com.example.simpledms.controller;
 
 import com.example.simpledms.model.Faq;
 import com.example.simpledms.service.FaqService;
-import com.example.simpledms.service.FaqService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,7 +11,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
 /**
  * packageName : com.example.jpaexam.controller.exam07
@@ -78,11 +79,11 @@ public class FaqController {
     }
 
 
-    @GetMapping("/faq/{fno}")
-    public ResponseEntity<Object> getFaqId(@PathVariable int fno) {
+    @GetMapping("/faq/{no}")
+    public ResponseEntity<Object> getFaqId(@PathVariable int no) {
 
         try {
-            Optional<Faq> optionalFaq = faqService.findById(fno);
+            Optional<Faq> optionalFaq = faqService.findById(no);
 
             if (optionalFaq.isPresent() == true) {
 //                데이터 + 성공 메세지 전송
@@ -128,8 +129,8 @@ public class FaqController {
         }
     }
 
-    @PutMapping("/faq/{fno}")
-    public ResponseEntity<Object> updateFaq(@PathVariable int fno, @RequestBody Faq faq) {
+    @PutMapping("/faq/{no}")
+    public ResponseEntity<Object> updateFaq(@PathVariable int no, @RequestBody Faq faq) {
 
         try {
             Faq faq2 = faqService.save(faq);
@@ -142,11 +143,11 @@ public class FaqController {
         }
     }
 
-    @DeleteMapping("/faq/deletion/{fno}")
-    public ResponseEntity<Object> deleteId(@PathVariable int fno) {
+    @DeleteMapping("/faq/deletion/{no}")
+    public ResponseEntity<Object> deleteId(@PathVariable int no) {
 
         try {
-             boolean bSuccess = faqService.removeById(fno);
+             boolean bSuccess = faqService.removeById(no);
 
             if (bSuccess == true) {
 //                데이터 + 성공 메세지 전송

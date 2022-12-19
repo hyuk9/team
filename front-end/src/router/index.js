@@ -22,14 +22,14 @@ const routes = [
     component: () => import('@/components/food/menu/MenuList.vue')
   },
   {
-    path: '/score',
-    name: 'score',
-    component: () => import('@/components/food/score/ScoreList.vue')
+    path: '/theme',
+    name: 'theme',
+    component: () => import('@/components/food/theme/ThemeList.vue')
   },
   {
-    path: '/review',
-    name: 'review',
-    component: () => import('@/components/food/review/ReviewList.vue')
+    path: '/detail', // 음식점 상세페이지 샘플
+    name: 'detail',
+    component: () => import('@/components/food/detail/DinerDetail.vue')
   },
   // TODO: 분류별 게시판 구현
   {
@@ -50,7 +50,20 @@ const routes = [
   {
     path: '/qna',
     name: 'qna',
-    component: () => import('@/components/board/QnaList.vue')
+    component: () => import('@/components/board/qna/QnaList.vue')
+  },
+  // TODO: qna 디테일,add 추가
+   // AddQna 
+   {
+    path: '/add-qna',
+    name: 'add-qna',
+    component: () => import('../components/board/qna/AddQnaView.vue')
+  },
+  // QnaDetail 
+  {
+    path: '/qna/:qno',
+    name: 'qna-detail',
+    component: () => import('../components/board/qna/QnaDetailView.vue')
   },
   // TODO: 로그인 메뉴 달기
   {

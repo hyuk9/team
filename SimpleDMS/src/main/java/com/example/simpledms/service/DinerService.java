@@ -36,11 +36,11 @@ public class DinerService {
     }
 
 //    ✅ id로 조회하는 함수
-    public Optional<Diner> findById(int sno) {
+    public Optional<Diner> findById(int dno) {
 //        findById(기본키)
-        Optional<Diner> optionalDinner = dinerRepository.findById(sno);
+        Optional<Diner> optionalDiner = dinerRepository.findById(dno);
 
-        return optionalDinner;
+        return optionalDiner;
     }
 
 
@@ -57,10 +57,10 @@ public class DinerService {
     }
 
     //       ✅ 부서 정보 삭제 함수
-    public boolean removeById(int sno) {
+    public boolean removeById(int dno) {
 //        existById(기본키) 있으면 삭제 실행 + true 리턴
-        if (dinerRepository.existsById(sno) == true) {
-            dinerRepository.deleteById(sno);
+        if (dinerRepository.existsById(dno) == true) {
+            dinerRepository.deleteById(dno);
             return true;
         }
 //        없으면 그냥 false 리턴
@@ -68,8 +68,8 @@ public class DinerService {
     }
 
     //    ✅ dname like 검색 함수 ( 페이징 처리 추가 )
-    public Page<Diner> findAllBySnameContaining(String sname, Pageable pageable) {
-        Page<Diner> list = dinerRepository.findAllBySnameContaining(sname, pageable);
+    public Page<Diner> findAllByDnameContaining(String sname, Pageable pageable) {
+        Page<Diner> list = dinerRepository.findAllByDnameContaining(sname, pageable);
 
         return list;
     }

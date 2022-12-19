@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <NavCom v-if="wantToShow()" />
+    <NavCom />
     <router-view />
-    <FooterCom v-if="wantToShow()" />
+    <FooterCom />
   </div>
 </template>
 
@@ -25,19 +25,19 @@ export default {
         buttonColorDark: "#100f2c", // default: '#100f2c'
         buttonColorLight: "#fff", // default: '#fff'
         saveInCookies: false, // default: true,
-        label: "🌓", // default: ''
+        label: "🍅", // default: ''
         autoMatchOsTheme: true, // default: true
       },
     };
   },
   methods: {
-    wantToShow() {
-      if (this.$route.name == "login") {
-        return false;
-      } else {
-        return true;
-      }
-    },
+    // wantToShow() {
+    //   if (this.$route.name == "login") {
+    //     return false;
+    //   } else {
+    //     return true;
+    //   }
+    // },
   },
   components: {
     NavCom,
@@ -53,6 +53,7 @@ export default {
 <style lang="scss">
 h1,
 h5,
+.dropdown-header,
 p,
 span,
 #menu,
@@ -60,6 +61,9 @@ span,
 .register,
 .profile,
 .logout,
+.swal2-title,
+.swal2-container,
+.swal2-confirm,
 #navbarNavDropdown {
   font-family: ONE-Mobile-POP;
 }
@@ -71,17 +75,4 @@ span,
   font-weight: lighter;
   font-style: normal;
 }
-
-
-// #typed .typed-words {
-//       position: relative; }
-//       #typed .typed-words:before {
-//         position: absolute;
-//         height: 5px;
-//         background-color: #ffd75f;
-//         bottom: 0;
-//         left: 0;
-//         right: 0;
-//         content: ""; 
-//         }
 </style>
