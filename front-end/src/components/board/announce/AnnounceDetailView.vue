@@ -19,7 +19,7 @@
       </div>
     </section>
     <!-- 최상단 끝 -->
-
+    
     <!-- detali Start -->
     <div class="container" v-if="currentQna">
       <div class="mb-3">
@@ -30,11 +30,6 @@
       <div class="mb-3">
         <label for="title" class="form-label">title</label>
         <input type="text" class="form-control" id="title" required name="title" v-model="currentQna.title" />
-      </div>
-      <div class="mb-3">
-        <label for="content" class="form-label">content</label>
-        <textarea class="form-control form-control-lg " id="content" rows="8" required name="content"
-          v-model="currentQna.content"></textarea>
       </div>
       <div class="mb-3">
         <button @click="updateQna" class="btn btn-primary me-3">Update</button>

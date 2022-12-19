@@ -1,88 +1,86 @@
 <template>
   <div>
-    <link
-      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
-      rel="stylesheet"
-    />
+    <!-- 홈페이지 로고 시작 -->
+    <div class="container logo"><router-link to="/">임시로고(누르면 홈으로)</router-link></div>
+    <!-- 홈페이지 로고 끝 -->
+    <!-- 로그인 페이지 시작 -->
+    <div class="col-md-12">
+      <div class="form-structor container">
+        <form name="form" @submit.prevent="handleLogin" class="signup">
+          <h2 class="form-title" id="signup">로그인</h2>
 
-    <div class="login">
-      <div class="login__content">
-        <div class="login__img">
-          <img src="assets/img/gallery/hero-tomato.png" alt="user login" />
-        </div>
-        <div class="login__forms">
-          <!--         create account form -->
-          <form
-            action=""
-            class="login__create"
-            id="login-up"
-            name="form"
-            @submit.prevent="handleLogin"
-          >
-            <div v-if="!successful">
-              <h1 class="login__title">로그인</h1>
-              <div>
-                <div class="login__box">
-                  <i class="bx bx-user login__icon"></i>
-                  <input
-                    v-model="user.username"
-                    v-validate="'required'"
-                    type="text"
-                    placeholder="아이디를 입력해주세요."
-                    class="login__input"
-                    name="username"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <div class="login__box">
-                  <i class="bx bx-lock login__icon"></i>
-                  <input
-                    v-model="user.password"
-                    v-validate="'required'"
-                    type="password"
-                    placeholder="비밀번호를 입력해주세요"
-                    class="login__input"
-                    name="password"
-                  />
-                </div>
-              </div>
-
-              <button class="login__button">로그인</button>
-
-              <div>
-                <span class="login__account login__account--account"
-                  >회원이 아직 아니신가요?</span
-                >
-                &nbsp;
-                <router-link
-                  to="/register"
-                  class="login__signup login__signup--signup"
-                  id="sign-in"
-                  >회원가입 하기</router-link
-                >
-              </div>
-
-              <div class="login__social">
-                <a href="#" class="login__social--icon"
-                  ><i class="bx bxl-facebook"></i
-                ></a>
-                <a href="#" class="login__social--icon"
-                  ><i class="bx bxl-twitter"></i
-                ></a>
-                <a href="#" class="login__social--icon"
-                  ><i class="bx bxl-google"></i
-                ></a>
-                <a href="#" class="login__social--icon"
-                  ><i class="bx bxl-github"></i
-                ></a>
-              </div>
+          <div class="form-holder">
+            <input
+              v-model="user.username"
+              v-validate="'required'"
+              type="text"
+              class="input"
+              name="username"
+              placeholder="아이디를 입력해주세요."
+            />
+            <input
+              v-model="user.password"
+              v-validate="'required'"
+              type="password"
+              class="input"
+              name="password"
+              placeholder="비밀번호를 입력해주세요"
+            />
+          </div>
+          <button class="submit-btn">로그인</button>
+          <div class="form-group">
+            <div v-if="message" class="alert alert-danger" role="alert">
+              {{ message }}
             </div>
-          </form>
+          </div>
+        </form>
+        <div class="login slide-up">
+          <div class="center">
+            <h2 class="form-title" id="login">
+              <router-link to="/register">회원가입</router-link>
+            </h2>
+          </div>
         </div>
       </div>
     </div>
+    <!-- 로그인 페이지 끝 -->
+
+    <!-- 푸터 마지막 한줄 -->
+    <div class="row flex-center pb-3 loginfooter">
+      <div class="col-md-6 order-0">
+        <p class="text-center text-md-start">
+          All rights Reserved &copy; Your Company, 2021
+        </p>
+      </div>
+      <div class="col-md-6 order-1">
+        <p class="text-center text-md-end">
+          Made with&nbsp;
+          <svg
+            class="bi bi-suit-heart-fill"
+            xmlns="http://www.w3.org/2000/svg"
+            width="15"
+            height="15"
+            fill="#FFB30E"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z"
+            ></path></svg
+          >&nbsp;by&nbsp;<router-link
+            to=""
+            class="fw-bold"
+            href="https://themewagon.com/"
+            target="_blank"
+            >ThemeWagon
+          </router-link>
+        </p>
+      </div>
+    </div>
+    <!-- 푸터 마지막 끝 -->
+
+    <!-- 새 로그인 양식 임시 -->
+
+    <!-- 새 로그인 양식 임시 끝-->
   </div>
 </template>
 
@@ -154,13 +152,6 @@ export default {
                   error.response.data.message) ||
                 error.message ||
                 error.toString();
-              //        this.$swal({
-              //   icon: "error",
-              //   title: "로그인 실패",
-              //   text: "",
-              //   confirmButtonColor: "#E1793D",
-              //   confirmButtonText: "확인",
-              // });
             });
         }
       });
@@ -194,15 +185,6 @@ export default {
           confirmButtonColor: "#E1793D",
           confirmButtonText: "확인",
         });
-      } else if (this.message) {
-        // alert 라이브러리 효과
-        this.$swal({
-          icon: "error",
-          title: "로그인 실패",
-          text: this.message,
-          confirmButtonColor: "#E1793D",
-          confirmButtonText: "확인",
-        });
       }
     },
   },
@@ -210,212 +192,259 @@ export default {
 </script>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
-*,
-::before,
-::after {
-  box-sizing: border-box;
+.logo {
+  width: 350px;
+  text-align: center;
+  margin-top: 100px;
+  background-color: aqua;
 }
 
+.loginfooter {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* 임시 로그인 css */
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans");
+html,
 body {
-  margin: 0;
-  padding: 0;
-  font-family: "Open Sans", sans-serif;
-  font-size: 0.938rem;
-  color: #23004d;
-}
-
-h1 {
-  margin: 0;
-}
-
-a {
-  text-decoration: none;
-}
-
-img {
-  max-width: 100%;
-  max-height: 100%;
-  height: auto;
-  display: block;
-}
-
-.login {
-  display: grid;
-  grid-template-columns: 100%;
-  height: 100vh;
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
-}
-.login__content {
-  display: grid;
-}
-.login__img {
-  justify-self: center;
-}
-.login__img img {
-  width: 310px;
-  margin-top: 1.5rem;
-}
-.login__forms {
   position: relative;
-  height: 368px;
+  min-height: 100vh;
+  background-color: #e1e8ee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Fira Sans", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-.login__register,
-.login__create {
+
+.form-structor {
+  background-color: #222;
+  border-radius: 15px;
+  height: 550px;
+  width: 350px;
+  position: relative;
+  overflow: hidden;
+}
+.form-structor::after {
+  content: "";
+  opacity: 0.8;
   position: absolute;
-  bottom: 1rem;
-  width: 100%;
-  background-color: #f2f2f2;
-  padding: 2rem 1rem;
-  border-radius: 1rem;
-  text-align: center;
-  box-shadow: 0 8px 20px rgba(35, 0, 77, 0.2);
-  animation-duration: 0.4s;
-  animation-name: animateLogin;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 500px;
+  background-image: url("https://images.unsplash.com/photo-1503602642458-232111445657?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bf884ad570b50659c5fa2dc2cfb20ecf&auto=format&fit=crop&w=1000&q=100");
 }
-.login__title {
-  color: #ffb30e;
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
+.form-structor .signup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  width: 65%;
+  z-index: 5;
+  -webkit-transition: all 0.3s ease;
 }
-.login__box {
-  display: grid;
-  grid-template-columns: max-content 1fr;
-  column-gap: 0.5rem;
-  padding: 1.125rem 1rem;
-  background-color: #fff;
-  margin-top: 1rem;
-  border-radius: 0.5rem;
+.form-structor .signup.slide-up {
+  top: 5%;
+  -webkit-transform: translate(-50%, 0%);
+  -webkit-transition: all 0.3s ease;
 }
-.login__icon {
-  font-size: 1.5rem;
-  color: #ffb30e;
+.form-structor .signup.slide-up .form-holder,
+.form-structor .signup.slide-up .submit-btn {
+  opacity: 0;
+  visibility: hidden;
 }
-.login__input {
-  border: none;
-  outline: none;
-  font-size: 0.938rem;
-  font-weight: 700;
-  color: #23004d;
-  width: 100%;
-}
-.login__input::placeholder {
-  font-size: 0.938rem;
-  font-family: "Open Sans", sans-serif;
-  color: #a49eac;
-}
-.login__forgot {
-  display: block;
-  width: max-content;
-  margin-left: auto;
-  margin-top: 0.5rem;
-  font-size: 0.813rem;
-  font-weight: 600;
-  color: #a49eac;
-}
-.login__button {
-  width: 316px;
-  padding: 1rem;
-  margin: 2rem 0;
-  background-color: #ffb30e;
-  color: #fff;
-  font-weight: 600;
-  text-align: center;
-  border-radius: 0.5rem;
-  transition: 0.3s;
-  border: 0;
-  font-family: ONE-Mobile-POP !important;
-}
-.login__button:hover {
-  background-color: #ffb30ea8;
-}
-.login__account,
-.login__signin,
-.login__signup {
-  font-weight: 600;
-  font-size: 0.813rem;
-}
-.login__account--account,
-.login__signin--account,
-.login__signup--account {
-  color: #23004d;
-}
-.login__account--signin,
-.login__account--signup,
-.login__signin--signin,
-.login__signin--signup,
-.login__signup--signin,
-.login__signup--signup {
-  color: #ffb30e;
+.form-structor .signup.slide-up .form-title {
+  font-size: 1em;
   cursor: pointer;
 }
-.login__social {
-  margin-top: 2rem;
+.form-structor .signup.slide-up .form-title span {
+  margin-right: 5px;
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: all 0.3s ease;
 }
-.login__social--icon {
-  font-size: 1.5rem;
-  color: #23004d;
-  margin: 0 1rem;
+.form-structor .signup .form-title {
+  color: #fff;
+  font-size: 1.7em;
+  text-align: center;
 }
-
-.block {
+.form-structor .signup .form-title span {
+  color: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 0.3s ease;
+}
+.form-structor .signup .form-holder {
+  border-radius: 15px;
+  background-color: #fff;
+  overflow: hidden;
+  margin-top: 50px;
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: all 0.3s ease;
+}
+.form-structor .signup .form-holder .input {
+  border: 0;
+  outline: none;
+  box-shadow: none;
   display: block;
+  height: 30px;
+  line-height: 30px;
+  padding: 8px 15px;
+  border-bottom: 1px solid #eee;
+  width: 100%;
+  font-size: 12px;
 }
-
-.none {
-  display: none;
+.form-structor .signup .form-holder .input:last-child {
+  border-bottom: 0;
 }
-
-@keyframes animateLogin {
-  0% {
-    transform: scale(1, 1);
-  }
-  50% {
-    transform: scale(1.1, 1.1);
-  }
-  100% {
-    transform: scale(1, 1);
-  }
+.form-structor .signup .form-holder .input::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.4);
 }
-@media screen and (min-width: 576px) {
-  .login__forms {
-    width: 348px;
-    justify-self: center;
-  }
+.form-structor .signup .submit-btn {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: rgba(255, 255, 255, 0.7);
+  border: 0;
+  border-radius: 15px;
+  display: block;
+  margin: 15px auto;
+  padding: 15px 45px;
+  width: 100%;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: all 0.3s ease;
 }
-@media screen and (min-width: 1024px) {
-  .login {
-    height: 100vh;
-    overflow: hidden;
-  }
-  .login__content {
-    grid-template-columns: repeat(2, max-content);
-    justify-content: center;
-    align-items: center;
-    margin-left: 10rem;
-  }
-  .login__img {
-    display: flex;
-    width: 600px;
-    height: 588px;
-    background-color: #fff;
-    border-radius: 1rem;
-    padding-left: 1rem;
-  }
-  .login__img img {
-    width: 100%;
-    margin-top: 0;
-  }
-  .login__register,
-  .login__create {
-    left: -11rem;
-  }
-  .login__register {
-    bottom: -2rem;
-  }
-  .login__create {
-    bottom: -5.5rem;
-  }
+.form-structor .signup .submit-btn:hover {
+  transition: all 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.form-structor .login {
+  position: absolute;
+  top: 20%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  z-index: 5;
+  -webkit-transition: all 0.3s ease;
+}
+.form-structor .login::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -20px;
+  -webkit-transform: translate(-50%, 0);
+  background-color: #fff;
+  width: 200%;
+  height: 250px;
+  border-radius: 50%;
+  z-index: 4;
+  -webkit-transition: all 0.3s ease;
+}
+.form-structor .login .center {
+  position: absolute;
+  top: calc(50% - 10%);
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  width: 65%;
+  z-index: 5;
+  -webkit-transition: all 0.3s ease;
+}
+.form-structor .login .center .form-title {
+  color: #000;
+  font-size: 1.7em;
+  text-align: center;
+}
+.form-structor .login .center .form-title span {
+  color: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 0.3s ease;
+}
+.form-structor .login .center .form-holder {
+  border-radius: 15px;
+  background-color: #fff;
+  border: 1px solid #eee;
+  overflow: hidden;
+  margin-top: 50px;
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: all 0.3s ease;
+}
+.form-structor .login .center .form-holder .input {
+  border: 0;
+  outline: none;
+  box-shadow: none;
+  display: block;
+  height: 30px;
+  line-height: 30px;
+  padding: 8px 15px;
+  border-bottom: 1px solid #eee;
+  width: 100%;
+  font-size: 12px;
+}
+.form-structor .login .center .form-holder .input:last-child {
+  border-bottom: 0;
+}
+.form-structor .login .center .form-holder .input::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+.form-structor .login .center .submit-btn {
+  background-color: #6b92a4;
+  color: rgba(255, 255, 255, 0.7);
+  border: 0;
+  border-radius: 15px;
+  display: block;
+  margin: 15px auto;
+  padding: 15px 45px;
+  width: 100%;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: all 0.3s ease;
+}
+.form-structor .login .center .submit-btn:hover {
+  transition: all 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.form-structor .login.slide-up {
+  top: 90%;
+  -webkit-transition: all 0.3s ease;
+}
+.form-structor .login.slide-up .center {
+  top: 10%;
+  -webkit-transform: translate(-50%, 0%);
+  -webkit-transition: all 0.3s ease;
+}
+.form-structor .login.slide-up .form-holder,
+.form-structor .login.slide-up .submit-btn {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 0.3s ease;
+}
+.form-structor .login.slide-up .form-title {
+  font-size: 1em;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+}
+.form-structor .login.slide-up .form-title span {
+  margin-right: 5px;
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: all 0.3s ease;
 }
 </style>

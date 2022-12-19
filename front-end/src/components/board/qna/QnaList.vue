@@ -43,8 +43,13 @@
 
                     <div class="input-group-append col-1">
                         <button class="btn btn-warning" type="button" @click="
+<<<<<<< Updated upstream
               page = 1;
           retrieveQna();
+=======
+    page = 1;
+retrieveQna();
+>>>>>>> Stashed changes
                         ">
                             Search
                         </button>
@@ -85,7 +90,9 @@
                     <tbody v-for="(data, index) in qna" :key="index">
                         <tr>
                             <td>{{ data.qno }}</td>
-                            <td>{{ data.title }}</td>
+                            <td>
+                                <router-link :to="'/qnaview/' + data.qno"><span>{{ data.title }}</span></router-link>
+                            </td>
                             <td>{{ data.questioner }}</td>
                             <td>{{ data.insertTime }}</td>
                             <td>
@@ -98,7 +105,10 @@
 
 
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
                 <!-- <router-link to="/add-qna/">
             <span class="badge bg-warning text-dark">추가</span>
           </router-link> -->
@@ -128,11 +138,19 @@ export default {
             searchKeyword: "",
             searchSelect: "작성자",
 
+<<<<<<< Updated upstream
 
             // 페이징을 위한 변수 정의
             page: 1, // 현재 페이지
             count: 0, // 전체 데이터 건수
             pageSize: 10, // 한페이지당 몇개를 화면에 보여줄지 결정하는 변수
+=======
+            // 페이징을 위한 변수 정의
+            page: 1, // 현재 페이지
+            count: 0, // 전체 데이터 건수
+            pageSize: 10, // 한페이지당 몇개를 화면에 보여줄지 결정하는 변수
+
+>>>>>>> Stashed changes
             pageSizes: [3, 6, 9], // select box 에 넣을 기본 데이터
         };
     },

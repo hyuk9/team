@@ -24,19 +24,14 @@
         <!-- AddQna Start -->
         <div class="container" v-if="!submitted">
             <div class="mb-3">
-                <label for="questioner" class="form-label">작성자</label>
-                <input type="questioner" class="form-control" id="questioner" required name="questioner"
-                    v-model="qna.questioner" />
+                <label for="questioner" class="form-label">questioner</label>
+                <textarea class="form-control form-control-lg " id="questioner" rows="3" required name="questioner"
+                    v-model="qna.questioner"></textarea>
             </div>
             <div class="mb-3">
-                <label for="title" class="form-label">제목</label>
+                <label for="title" class="form-label">title</label>
                 <input type="title" class="form-control" id="title" required name="title"
                     v-model="qna.title" />
-            </div>
-            <div class="mb-3">
-                <label for="content" class="form-label">내용</label>
-                <textarea class="form-control form-control-lg " id="content" rows="8" required name="content"
-                    v-model="qna.content"></textarea>
             </div>
             <div class="mb-3">
                 <button @click="saveQna" class="btn btn-primary">Submit</button>
@@ -55,8 +50,7 @@ export default {
             qna: {
                 qno: null,
                 questioner: "",
-                title: "",
-                content:""
+                title: ""
             },
             // submit 버튼을 클릭하면 true 가 되고, You submitted successfully! 화면에 출력됨
             submitted: false,
@@ -69,8 +63,7 @@ export default {
             let data = {
                 
                 questioner: this.qna.questioner,
-                title: this.qna.title,
-                content: this.qna.content
+                title: this.qna.title
             };
 
             // insert 요청 함수 호출(axios 공통함수 호출)

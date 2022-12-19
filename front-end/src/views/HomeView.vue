@@ -13,6 +13,7 @@
                   alt="hero-header"
               /></a>
             </div>
+<<<<<<< Updated upstream
             <div
               class="col-md-7 col-lg-6 py-8 text-md-start text-center"
               id="typed"
@@ -26,6 +27,16 @@
                   fw-900
                 "
               ></span>
+=======
+            <div class="col-md-7 col-lg-6 py-8 text-md-start text-center" id="typed">
+              <!-- <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">
+                지금 찾고있는 맛집을 <br> 쉽고 빠르게
+              </h1>
+              <p class="fs-md-5 fs-lg-6 fs-xl-8 text-light font-italic fw-900">
+                지금 찾고있는 맛집을 <br> 쉽고 빠르게
+              </p> -->
+              <span class="typed-words fs-md-5 fs-lg-6 fs-xl-8 text-light font-italic fw-900"></span>
+>>>>>>> Stashed changes
               <br />
               <span
                 class="fs-md-5 fs-lg-6 fs-xl-8 text-light font-italic fw-900"
@@ -36,6 +47,7 @@
         </div>
       </section>
       <!-- 최상단 끝 -->
+<<<<<<< Updated upstream
 
       <!-- ============================================-->
       <!-- 음식점 리스트 표시 시작 -->
@@ -56,6 +68,17 @@
             >
               메뉴별 모아보기
             </h5>
+          </div>
+          <div class="row h-100 gx-2 mt-7">
+            <!-- 한식 시작 -->
+=======
+
+      <!-- ============================================-->
+      <!-- 음식점 리스트 표시 시작 -->
+      <section class="py-0">
+        <div class="container">
+          <div class="col-lg-7 mx-auto text-center mt-7">
+            <h5 class="fw-bold fs-3 fs-lg-5 lh-sm">메뉴별 모아보기</h5>
           </div>
           <div class="row h-100 gx-2 mt-7">
             <!-- 한식 시작 -->
@@ -155,6 +178,112 @@
             <!-- 양식 끝 -->
 
             <!-- 일식 시작 -->
+>>>>>>> Stashed changes
+            <div class="col-sm-6 col-lg-3 mb-3 mb-md-0 h-100 pb-4">
+              <div class="card card-span h-100">
+                <div class="position-relative">
+                  <img
+                    class="img-fluid rounded-3 w-100"
+<<<<<<< Updated upstream
+                    src="assets/img/species/korean.jpg"
+=======
+                    src="assets/img/species/japan.jpg"
+>>>>>>> Stashed changes
+                    alt="..."
+                  />
+                  <div class="card-actions">
+                    <div class="badge badge-foodwagon bg-primary p-4">
+                      <div class="d-flex flex-between-center">
+<<<<<<< Updated upstream
+                        <div class="text-white fs-7" id="menu">한식</div>
+=======
+                        <div class="text-white fs-7" id="menu">일식</div>
+>>>>>>> Stashed changes
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body px-0">
+                  <h5 class="fw-bold text-1000 text-truncate">
+<<<<<<< Updated upstream
+                    한식에 대한 설명
+                  </h5>
+                  <span class="badge bg-soft-danger py-2 px-3"
+                    ><span class="fs-1 text-danger"
+                      >지금 바로 알아보기</span
+                    ></span
+                  >
+                </div>
+                <a class="stretched-link" href="#"></a>
+              </div>
+            </div>
+            <!-- 한식 끝 -->
+
+            <!-- 중식 시작 -->
+            <div class="col-sm-6 col-lg-3 mb-3 mb-md-0 h-100 pb-4">
+              <div class="card card-span h-100">
+                <div class="position-relative">
+                  <img
+                    class="img-fluid rounded-3 w-100"
+                    src="assets/img/species/chinese.jpg"
+                    alt="..."
+                  />
+                  <div class="card-actions">
+                    <div class="badge badge-foodwagon bg-primary p-4">
+                      <div class="d-flex flex-between-center">
+                        <div class="text-white fs-7" id="menu">중식</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body px-0">
+                  <h5 class="fw-bold text-1000 text-truncate">
+                    중식에 대한 설명
+                  </h5>
+                  <span class="badge bg-soft-danger py-2 px-3"
+                    ><span class="fs-1 text-danger"
+                      >지금 바로 알아보기</span
+                    ></span
+                  >
+                </div>
+                <a class="stretched-link" href="#"></a>
+              </div>
+            </div>
+            <!-- 중식 끝 -->
+
+            <!-- 양식 시작 -->
+            <div class="col-sm-6 col-lg-3 mb-3 mb-md-0 h-100 pb-4">
+              <div class="card card-span h-100">
+                <div class="position-relative">
+                  <img
+                    class="img-fluid rounded-3 w-100"
+                    src="assets/img/species/italy.jpg"
+                    alt="..."
+                  />
+                  <div class="card-actions">
+                    <div class="badge badge-foodwagon bg-primary p-4">
+                      <div class="d-flex flex-between-center">
+                        <div class="text-white fs-7" id="menu">양식</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body px-0">
+                  <h5 class="fw-bold text-1000 text-truncate">
+                    양식에 대한 설명
+                  </h5>
+                  <span class="badge bg-soft-danger py-2 px-3"
+                    ><span class="fs-1 text-danger"
+                      >지금 바로 알아보기</span
+                    ></span
+                  >
+                </div>
+                <a class="stretched-link" href="#"></a>
+              </div>
+            </div>
+            <!-- 양식 끝 -->
+
+            <!-- 일식 시작 -->
             <div class="col-sm-6 col-lg-3 mb-3 mb-md-0 h-100 pb-4">
               <div class="card card-span h-100">
                 <div class="position-relative">
@@ -173,6 +302,8 @@
                 </div>
                 <div class="card-body px-0">
                   <h5 class="fw-bold text-1000 text-truncate">
+=======
+>>>>>>> Stashed changes
                     일식에 대한 설명
                   </h5>
                   <span class="badge bg-soft-danger py-2 px-3"
@@ -211,6 +342,7 @@
       <!-- ============================================-->
 
       <!-- ============================================-->
+<<<<<<< Updated upstream
       <!-- 할인 중인 식당 순 정렬 시작 ============================-->
       <section id="testimonial">
         <div class="container">
@@ -553,6 +685,8 @@
       <!-- ============================================-->
 
       <!-- ============================================-->
+=======
+>>>>>>> Stashed changes
       <!-- 어떻게 작동하느냐인데 이건 굳이 없어도 될듯? -->
       <!-- <section class="py-0 bg-primary-gradient">
         <div class="container">
@@ -624,6 +758,8 @@
                           <div class="card-body ps-0">
                             <h5 class="fw-bold text-1000 text-truncate mb-1">
                               Cheese Burger
+<<<<<<< Updated upstream
+=======
                             </h5>
                             <div>
                               <span class="text-warning me-2"
@@ -736,10 +872,27 @@
                           <div class="card-body ps-0">
                             <h5 class="fw-bold text-1000 text-truncate mb-1">
                               Thai Soup
+>>>>>>> Stashed changes
                             </h5>
                             <div>
                               <span class="text-warning me-2"
                                 ><i class="fas fa-map-marker-alt"></i></span
+<<<<<<< Updated upstream
+                              ><span class="text-primary">Burger Arena</span>
+                            </div>
+                            <span class="text-1000 fw-bold">$3.88</span>
+                          </div>
+                        </div>
+                        <div class="d-grid gap-2">
+                          <a
+                            class="btn btn-lg btn-danger"
+                            href="#!"
+                            role="button"
+                            >Order now</a
+                          >
+                        </div>
+                      </div>
+=======
                               ><span class="text-primary">Foody Man</span>
                             </div>
                             <span class="text-1000 fw-bold">$2.79</span>
@@ -759,20 +912,36 @@
                   <!-- 두번째 -->
                   <div class="carousel-item" data-bs-interval="5000">
                     <div class="row gx-3 h-100 align-items-center">
+>>>>>>> Stashed changes
                       <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
                         <div class="card card-span h-100 rounded-3">
                           <img
                             class="img-fluid rounded-3 h-100"
+<<<<<<< Updated upstream
+                            src="assets/img/gallery/toffes-cake.png"
+=======
                             src="assets/img/gallery/cheese-burger.png"
+>>>>>>> Stashed changes
                             alt="..."
                           />
                           <div class="card-body ps-0">
                             <h5 class="fw-bold text-1000 text-truncate mb-1">
+<<<<<<< Updated upstream
+                              Toffe's Cake
+=======
                               Cheese Burger
+>>>>>>> Stashed changes
                             </h5>
                             <div>
                               <span class="text-warning me-2"
                                 ><i class="fas fa-map-marker-alt"></i></span
+<<<<<<< Updated upstream
+                              ><span class="text-primary">Top Sticks</span>
+                            </div>
+                            <span class="text-1000 fw-bold">$4.00</span>
+                          </div>
+                        </div>
+=======
                               ><span class="text-primary">Burger Arena</span>
                             </div>
                             <span class="text-1000 fw-bold">$3.88</span>
@@ -806,6 +975,7 @@
                             <span class="text-1000 fw-bold">$4.00</span>
                           </div>
                         </div>
+>>>>>>> Stashed changes
                         <div class="d-grid gap-2">
                           <a
                             class="btn btn-lg btn-danger"
@@ -858,6 +1028,21 @@
                               <span class="text-warning me-2"
                                 ><i class="fas fa-map-marker-alt"></i></span
                               ><span class="text-primary">Fastfood Dine</span>
+<<<<<<< Updated upstream
+                            </div>
+                            <span class="text-1000 fw-bold">$3.00</span>
+                          </div>
+                        </div>
+                        <div class="d-grid gap-2">
+                          <a
+                            class="btn btn-lg btn-danger"
+                            href="#!"
+                            role="button"
+                            >Order now</a
+                          >
+                        </div>
+                      </div>
+=======
                             </div>
                             <span class="text-1000 fw-bold">$3.00</span>
                           </div>
@@ -904,20 +1089,80 @@
                   <!-- 세번째 -->
                   <div class="carousel-item" data-bs-interval="3000">
                     <div class="row gx-3 h-100 align-items-center">
+>>>>>>> Stashed changes
                       <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
                         <div class="card card-span h-100 rounded-3">
                           <img
                             class="img-fluid rounded-3 h-100"
+<<<<<<< Updated upstream
+                            src="assets/img/gallery/thai-soup.png"
+=======
                             src="assets/img/gallery/cheese-burger.png"
+>>>>>>> Stashed changes
                             alt="..."
                           />
                           <div class="card-body ps-0">
                             <h5 class="fw-bold text-1000 text-truncate mb-1">
+<<<<<<< Updated upstream
+                              Thai Soup
+=======
                               Cheese Burger
+>>>>>>> Stashed changes
                             </h5>
                             <div>
                               <span class="text-warning me-2"
                                 ><i class="fas fa-map-marker-alt"></i></span
+<<<<<<< Updated upstream
+                              ><span class="text-primary">Foody Man</span>
+                            </div>
+                            <span class="text-1000 fw-bold">$2.79</span>
+=======
+                              ><span class="text-primary">Burger Arena</span>
+                            </div>
+                            <span class="text-1000 fw-bold">$3.88</span>
+>>>>>>> Stashed changes
+                          </div>
+                        </div>
+                        <div class="d-grid gap-2">
+                          <a
+                            class="btn btn-lg btn-danger"
+                            href="#!"
+                            role="button"
+                            >Order now</a
+                          >
+                        </div>
+                      </div>
+<<<<<<< Updated upstream
+                    </div>
+                  </div>
+                  <!-- 두번째 -->
+                  <div class="carousel-item" data-bs-interval="5000">
+                    <div class="row gx-3 h-100 align-items-center">
+=======
+>>>>>>> Stashed changes
+                      <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
+                        <div class="card card-span h-100 rounded-3">
+                          <img
+                            class="img-fluid rounded-3 h-100"
+<<<<<<< Updated upstream
+                            src="assets/img/gallery/cheese-burger.png"
+=======
+                            src="assets/img/gallery/toffes-cake.png"
+>>>>>>> Stashed changes
+                            alt="..."
+                          />
+                          <div class="card-body ps-0">
+                            <h5 class="fw-bold text-1000 text-truncate mb-1">
+<<<<<<< Updated upstream
+                              Cheese Burger
+=======
+                              Toffe's Cake
+>>>>>>> Stashed changes
+                            </h5>
+                            <div>
+                              <span class="text-warning me-2"
+                                ><i class="fas fa-map-marker-alt"></i></span
+<<<<<<< Updated upstream
                               ><span class="text-primary">Burger Arena</span>
                             </div>
                             <span class="text-1000 fw-bold">$3.88</span>
@@ -931,21 +1176,7 @@
                             >Order now</a
                           >
                         </div>
-                      </div>
-                      <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
-                        <div class="card card-span h-100 rounded-3">
-                          <img
-                            class="img-fluid rounded-3 h-100"
-                            src="assets/img/gallery/toffes-cake.png"
-                            alt="..."
-                          />
-                          <div class="card-body ps-0">
-                            <h5 class="fw-bold text-1000 text-truncate mb-1">
-                              Toffe's Cake
-                            </h5>
-                            <div>
-                              <span class="text-warning me-2"
-                                ><i class="fas fa-map-marker-alt"></i></span
+=======
                               ><span class="text-primary">Top Sticks</span>
                             </div>
                             <span class="text-1000 fw-bold">$4.00</span>
@@ -959,21 +1190,83 @@
                             >Order now</a
                           >
                         </div>
+>>>>>>> Stashed changes
                       </div>
                       <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
                         <div class="card card-span h-100 rounded-3">
                           <img
                             class="img-fluid rounded-3 h-100"
+<<<<<<< Updated upstream
+                            src="assets/img/gallery/toffes-cake.png"
+=======
                             src="assets/img/gallery/dancake.png"
+>>>>>>> Stashed changes
                             alt="..."
                           />
                           <div class="card-body ps-0">
                             <h5 class="fw-bold text-1000 text-truncate mb-1">
+<<<<<<< Updated upstream
+                              Toffe's Cake
+=======
                               Dancake
+>>>>>>> Stashed changes
                             </h5>
                             <div>
                               <span class="text-warning me-2"
                                 ><i class="fas fa-map-marker-alt"></i></span
+<<<<<<< Updated upstream
+                              ><span class="text-primary">Top Sticks</span>
+                            </div>
+                            <span class="text-1000 fw-bold">$4.00</span>
+                          </div>
+                        </div>
+                        <div class="d-grid gap-2">
+                          <a
+                            class="btn btn-lg btn-danger"
+                            href="#!"
+                            role="button"
+                            >Order now</a
+                          >
+                        </div>
+=======
+                              ><span class="text-primary">Cake World</span>
+                            </div>
+                            <span class="text-1000 fw-bold">$1.99</span>
+                          </div>
+                        </div>
+                        <div class="d-grid gap-2">
+                          <a
+                            class="btn btn-lg btn-danger"
+                            href="#!"
+                            role="button"
+                            >Order now</a
+                          >
+                        </div>
+>>>>>>> Stashed changes
+                      </div>
+                      <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
+                        <div class="card card-span h-100 rounded-3">
+                          <img
+                            class="img-fluid rounded-3 h-100"
+<<<<<<< Updated upstream
+                            src="assets/img/gallery/dancake.png"
+=======
+                            src="assets/img/gallery/crispy-sandwitch.png"
+>>>>>>> Stashed changes
+                            alt="..."
+                          />
+                          <div class="card-body ps-0">
+                            <h5 class="fw-bold text-1000 text-truncate mb-1">
+<<<<<<< Updated upstream
+                              Dancake
+=======
+                              Crispy Sandwitch
+>>>>>>> Stashed changes
+                            </h5>
+                            <div>
+                              <span class="text-warning me-2"
+                                ><i class="fas fa-map-marker-alt"></i></span
+<<<<<<< Updated upstream
                               ><span class="text-primary">Cake World</span>
                             </div>
                             <span class="text-1000 fw-bold">$1.99</span>
@@ -1007,6 +1300,13 @@
                             <span class="text-1000 fw-bold">$3.00</span>
                           </div>
                         </div>
+=======
+                              ><span class="text-primary">Fastfood Dine</span>
+                            </div>
+                            <span class="text-1000 fw-bold">$3.00</span>
+                          </div>
+                        </div>
+>>>>>>> Stashed changes
                         <div class="d-grid gap-2">
                           <a
                             class="btn btn-lg btn-danger"
@@ -1046,8 +1346,13 @@
                       </div>
                     </div>
                   </div>
+<<<<<<< Updated upstream
+                  <!-- 세번째 -->
+                  <div class="carousel-item" data-bs-interval="3000">
+=======
                   <!-- 네번째 -->
                   <div class="carousel-item">
+>>>>>>> Stashed changes
                     <div class="row gx-3 h-100 align-items-center">
                       <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
                         <div class="card card-span h-100 rounded-3">
@@ -1064,6 +1369,7 @@
                               <span class="text-warning me-2"
                                 ><i class="fas fa-map-marker-alt"></i></span
                               ><span class="text-primary">Burger Arena</span>
+<<<<<<< Updated upstream
                             </div>
                             <span class="text-1000 fw-bold">$3.88</span>
                           </div>
@@ -1178,6 +1484,10 @@
                               ><span class="text-primary">Foody Man</span>
                             </div>
                             <span class="text-1000 fw-bold">$2.79</span>
+=======
+                            </div>
+                            <span class="text-1000 fw-bold">$3.88</span>
+>>>>>>> Stashed changes
                           </div>
                         </div>
                         <div class="d-grid gap-2">
@@ -1189,6 +1499,216 @@
                           >
                         </div>
                       </div>
+<<<<<<< Updated upstream
+                    </div>
+                  </div>
+                  <!-- 네번째 -->
+                  <div class="carousel-item">
+                    <div class="row gx-3 h-100 align-items-center">
+=======
+>>>>>>> Stashed changes
+                      <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
+                        <div class="card card-span h-100 rounded-3">
+                          <img
+                            class="img-fluid rounded-3 h-100"
+<<<<<<< Updated upstream
+                            src="assets/img/gallery/cheese-burger.png"
+=======
+                            src="assets/img/gallery/toffes-cake.png"
+>>>>>>> Stashed changes
+                            alt="..."
+                          />
+                          <div class="card-body ps-0">
+                            <h5 class="fw-bold text-1000 text-truncate mb-1">
+<<<<<<< Updated upstream
+                              Cheese Burger
+=======
+                              Toffe's Cake
+>>>>>>> Stashed changes
+                            </h5>
+                            <div>
+                              <span class="text-warning me-2"
+                                ><i class="fas fa-map-marker-alt"></i></span
+<<<<<<< Updated upstream
+                              ><span class="text-primary">Burger Arena</span>
+                            </div>
+                            <span class="text-1000 fw-bold">$3.88</span>
+                          </div>
+                        </div>
+=======
+                              ><span class="text-primary">Top Sticks</span>
+                            </div>
+                            <span class="text-1000 fw-bold">$4.00</span>
+                          </div>
+                        </div>
+                        <div class="d-grid gap-2">
+                          <a
+                            class="btn btn-lg btn-danger"
+                            href="#!"
+                            role="button"
+                            >Order now</a
+                          >
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
+                        <div class="card card-span h-100 rounded-3">
+                          <img
+                            class="img-fluid rounded-3 h-100"
+                            src="assets/img/gallery/dancake.png"
+                            alt="..."
+                          />
+                          <div class="card-body ps-0">
+                            <h5 class="fw-bold text-1000 text-truncate mb-1">
+                              Dancake
+                            </h5>
+                            <div>
+                              <span class="text-warning me-2"
+                                ><i class="fas fa-map-marker-alt"></i></span
+                              ><span class="text-primary">Cake World</span>
+                            </div>
+                            <span class="text-1000 fw-bold">$1.99</span>
+                          </div>
+                        </div>
+>>>>>>> Stashed changes
+                        <div class="d-grid gap-2">
+                          <a
+                            class="btn btn-lg btn-danger"
+                            href="#!"
+                            role="button"
+                            >Order now</a
+                          >
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
+                        <div class="card card-span h-100 rounded-3">
+                          <img
+                            class="img-fluid rounded-3 h-100"
+<<<<<<< Updated upstream
+                            src="assets/img/gallery/toffes-cake.png"
+=======
+                            src="assets/img/gallery/crispy-sandwitch.png"
+>>>>>>> Stashed changes
+                            alt="..."
+                          />
+                          <div class="card-body ps-0">
+                            <h5 class="fw-bold text-1000 text-truncate mb-1">
+<<<<<<< Updated upstream
+                              Toffe's Cake
+=======
+                              Crispy Sandwitch
+>>>>>>> Stashed changes
+                            </h5>
+                            <div>
+                              <span class="text-warning me-2"
+                                ><i class="fas fa-map-marker-alt"></i></span
+<<<<<<< Updated upstream
+                              ><span class="text-primary">Top Sticks</span>
+                            </div>
+                            <span class="text-1000 fw-bold">$4.00</span>
+=======
+                              ><span class="text-primary">Fastfood Dine</span>
+                            </div>
+                            <span class="text-1000 fw-bold">$3.00</span>
+>>>>>>> Stashed changes
+                          </div>
+                        </div>
+                        <div class="d-grid gap-2">
+                          <a
+                            class="btn btn-lg btn-danger"
+                            href="#!"
+                            role="button"
+                            >Order now</a
+                          >
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
+                        <div class="card card-span h-100 rounded-3">
+                          <img
+                            class="img-fluid rounded-3 h-100"
+<<<<<<< Updated upstream
+                            src="assets/img/gallery/dancake.png"
+                            alt="..."
+                          />
+                          <div class="card-body ps-0">
+                            <h5 class="fw-bold text-1000 text-truncate mb-1">
+                              Dancake
+                            </h5>
+                            <div>
+                              <span class="text-warning me-2"
+                                ><i class="fas fa-map-marker-alt"></i></span
+                              ><span class="text-primary">Cake World</span>
+                            </div>
+                            <span class="text-1000 fw-bold">$1.99</span>
+                          </div>
+                        </div>
+                        <div class="d-grid gap-2">
+                          <a
+                            class="btn btn-lg btn-danger"
+                            href="#!"
+                            role="button"
+                            >Order now</a
+                          >
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
+                        <div class="card card-span h-100 rounded-3">
+                          <img
+                            class="img-fluid rounded-3 h-100"
+                            src="assets/img/gallery/crispy-sandwitch.png"
+                            alt="..."
+                          />
+                          <div class="card-body ps-0">
+                            <h5 class="fw-bold text-1000 text-truncate mb-1">
+                              Crispy Sandwitch
+                            </h5>
+                            <div>
+                              <span class="text-warning me-2"
+                                ><i class="fas fa-map-marker-alt"></i></span
+                              ><span class="text-primary">Fastfood Dine</span>
+                            </div>
+                            <span class="text-1000 fw-bold">$3.00</span>
+                          </div>
+                        </div>
+                        <div class="d-grid gap-2">
+                          <a
+                            class="btn btn-lg btn-danger"
+                            href="#!"
+                            role="button"
+                            >Order now</a
+                          >
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
+                        <div class="card card-span h-100 rounded-3">
+                          <img
+                            class="img-fluid rounded-3 h-100"
+=======
+>>>>>>> Stashed changes
+                            src="assets/img/gallery/thai-soup.png"
+                            alt="..."
+                          />
+                          <div class="card-body ps-0">
+                            <h5 class="fw-bold text-1000 text-truncate mb-1">
+                              Thai Soup
+                            </h5>
+                            <div>
+                              <span class="text-warning me-2"
+                                ><i class="fas fa-map-marker-alt"></i></span
+                              ><span class="text-primary">Foody Man</span>
+                            </div>
+                            <span class="text-1000 fw-bold">$2.79</span>
+                          </div>
+                        </div>
+                        <div class="d-grid gap-2">
+                          <a
+                            class="btn btn-lg btn-danger"
+                            href="#!"
+                            role="button"
+                            >Order now</a
+                          >
+                        </div>
+                      </div>
+<<<<<<< Updated upstream
                     </div>
                   </div>
                 </div>
@@ -1224,6 +1744,372 @@
         </div>
       </section>
       <!-- 인기 순 정렬 끝 ============================-->
+=======
+                    </div>
+                  </div>
+                </div>
+                <!-- 캐러셀 버튼 -->
+                <button
+                  class="carousel-control-prev carousel-icon"
+                  type="button"
+                  data-bs-target="#carouselPopularItems"
+                  data-bs-slide="prev"
+                >
+                  <span
+                    class="carousel-control-prev-icon hover-top-shadow"
+                    aria-hidden="true"
+                  ></span
+                  ><span class="visually-hidden">Previous</span>
+                </button>
+                <button
+                  class="carousel-control-next carousel-icon"
+                  type="button"
+                  data-bs-target="#carouselPopularItems"
+                  data-bs-slide="next"
+                >
+                  <span
+                    class="carousel-control-next-icon hover-top-shadow"
+                    aria-hidden="true"
+                  ></span
+                  ><span class="visually-hidden">Next </span>
+                </button>
+                <!-- 캐러셀 버튼 -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- 인기 순 정렬 끝 ============================-->
+      <!-- ============================================-->
+
+      <!-- ============================================-->
+      <!-- 할인 중인 식당 순 정렬 시작 ============================-->
+      <section id="testimonial">
+        <div class="container">
+          <div class="row h-100">
+            <div class="col-lg-7 mx-auto text-center mb-6">
+              <h5 class="fw-bold fs-3 fs-lg-5 lh-sm mb-3">할인 중인 식당</h5>
+            </div>
+          </div>
+          <div class="row gx-2">
+            <div class="col-sm-6 col-md-4 col-lg-3 h-100 mb-5">
+              <div class="card card-span h-100 text-white rounded-3">
+                <img
+                  class="img-fluid rounded-3 h-100"
+                  src="assets/img/gallery/food-world.png"
+                  alt="..."
+                />
+                <div class="card-img-overlay ps-0">
+                  <span class="badge bg-danger p-2 ms-3"
+                    ><i class="fas fa-tag me-2 fs-0"></i
+                    ><span class="fs-0">20% off</span></span
+                  ><span class="badge bg-primary ms-2 me-1 p-2"
+                    ><i class="fas fa-clock me-1 fs-0"></i
+                    ><span class="fs-0">Fast</span></span
+                  >
+                </div>
+                <div class="card-body ps-0">
+                  <div class="d-flex align-items-center mb-3">
+                    <img
+                      class="img-fluid"
+                      src="assets/img/gallery/food-world-logo.png"
+                      alt=""
+                    />
+                    <div class="flex-1 ms-3">
+                      <h5 class="mb-0 fw-bold text-1000">Food world</h5>
+                      <span class="text-primary fs--1 me-1"
+                        ><i class="fas fa-star"></i></span
+                      ><span class="mb-0 text-primary">46</span>
+                    </div>
+                  </div>
+                  <span class="badge bg-soft-danger p-2"
+                    ><span class="fw-bold fs-1 text-danger"
+                      >Opens Tomorrow</span
+                    ></span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 h-100 mb-5">
+              <div class="card card-span h-100 text-white rounded-3">
+                <img
+                  class="img-fluid rounded-3 h-100"
+                  src="assets/img/gallery/pizza-hub.png"
+                  alt="..."
+                />
+                <div class="card-img-overlay ps-0">
+                  <span class="badge bg-danger p-2 ms-3"
+                    ><i class="fas fa-tag me-2 fs-0"></i
+                    ><span class="fs-0">10% off</span></span
+                  ><span class="badge bg-primary ms-2 me-1 p-2"
+                    ><i class="fas fa-clock me-1 fs-0"></i
+                    ><span class="fs-0">Fast</span></span
+                  >
+                </div>
+                <div class="card-body ps-0">
+                  <div class="d-flex align-items-center mb-3">
+                    <img
+                      class="img-fluid"
+                      src="assets/img/gallery/pizzahub-logo.png"
+                      alt=""
+                    />
+                    <div class="flex-1 ms-3">
+                      <h5 class="mb-0 fw-bold text-1000">Pizza hub</h5>
+                      <span class="text-primary fs--1 me-1"
+                        ><i class="fas fa-star"></i></span
+                      ><span class="mb-0 text-primary">40</span>
+                    </div>
+                  </div>
+                  <span class="badge bg-soft-danger p-2"
+                    ><span class="fw-bold fs-1 text-danger"
+                      >Opens Tomorrow</span
+                    ></span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 h-100 mb-5">
+              <div class="card card-span h-100 text-white rounded-3">
+                <img
+                  class="img-fluid rounded-3 h-100"
+                  src="assets/img/gallery/donuts-hut.png"
+                  alt="..."
+                />
+                <div class="card-img-overlay ps-0">
+                  <span class="badge bg-danger p-2 ms-3"
+                    ><i class="fas fa-tag me-2 fs-0"></i
+                    ><span class="fs-0">15% off</span></span
+                  ><span class="badge bg-primary ms-2 me-1 p-2"
+                    ><i class="fas fa-clock me-1 fs-0"></i
+                    ><span class="fs-0">Fast</span></span
+                  >
+                </div>
+                <div class="card-body ps-0">
+                  <div class="d-flex align-items-center mb-3">
+                    <img
+                      class="img-fluid"
+                      src="assets/img/gallery/donuts-hut-logo.png"
+                      alt=""
+                    />
+                    <div class="flex-1 ms-3">
+                      <h5 class="mb-0 fw-bold text-1000">Donuts hut</h5>
+                      <span class="text-primary fs--1 me-1"
+                        ><i class="fas fa-star"></i></span
+                      ><span class="mb-0 text-primary">20</span>
+                    </div>
+                  </div>
+                  <span class="badge bg-soft-success p-2"
+                    ><span class="fw-bold fs-1 text-success"
+                      >Open Now</span
+                    ></span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 h-100 mb-5">
+              <div class="card card-span h-100 text-white rounded-3">
+                <img
+                  class="img-fluid rounded-3 h-100"
+                  src="assets/img/gallery/donuthut.png"
+                  alt="..."
+                />
+                <div class="card-img-overlay ps-0">
+                  <span class="badge bg-danger p-2 ms-3"
+                    ><i class="fas fa-tag me-2 fs-0"></i
+                    ><span class="fs-0">15% off</span></span
+                  ><span class="badge bg-primary ms-2 me-1 p-2"
+                    ><i class="fas fa-clock me-1 fs-0"></i
+                    ><span class="fs-0">Fast</span></span
+                  >
+                </div>
+                <div class="card-body ps-0">
+                  <div class="d-flex align-items-center mb-3">
+                    <img
+                      class="img-fluid"
+                      src="assets/img/gallery/donut-hut-logo.png"
+                      alt=""
+                    />
+                    <div class="flex-1 ms-3">
+                      <h5 class="mb-0 fw-bold text-1000">Donuts hut</h5>
+                      <span class="text-primary fs--1 me-1"
+                        ><i class="fas fa-star"></i></span
+                      ><span class="mb-0 text-primary">50</span>
+                    </div>
+                  </div>
+                  <span class="badge bg-soft-success p-2"
+                    ><span class="fw-bold fs-1 text-success"
+                      >Open Now</span
+                    ></span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 h-100 mb-5">
+              <div class="card card-span h-100 text-white rounded-3">
+                <img
+                  class="img-fluid rounded-3 h-100"
+                  src="assets/img/gallery/ruby-tuesday.png"
+                  alt="..."
+                />
+                <div class="card-img-overlay ps-0">
+                  <span class="badge bg-danger p-2 ms-3"
+                    ><i class="fas fa-tag me-2 fs-0"></i
+                    ><span class="fs-0">10% off</span></span
+                  ><span class="badge bg-primary ms-2 me-1 p-2"
+                    ><i class="fas fa-clock me-1 fs-0"></i
+                    ><span class="fs-0">Fast</span></span
+                  >
+                </div>
+                <div class="card-body ps-0">
+                  <div class="d-flex align-items-center mb-3">
+                    <img
+                      class="img-fluid"
+                      src="assets/img/gallery/ruby-tuesday-logo.png"
+                      alt=""
+                    />
+                    <div class="flex-1 ms-3">
+                      <h5 class="mb-0 fw-bold text-1000">Ruby tuesday</h5>
+                      <span class="text-primary fs--1 me-1"
+                        ><i class="fas fa-star"></i></span
+                      ><span class="mb-0 text-primary">50</span>
+                    </div>
+                  </div>
+                  <span class="badge bg-soft-success p-2"
+                    ><span class="fw-bold fs-1 text-success"
+                      >Open Now</span
+                    ></span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 h-100 mb-5">
+              <div class="card card-span h-100 text-white rounded-3">
+                <img
+                  class="img-fluid rounded-3 h-100"
+                  src="assets/img/gallery/kuakata.png"
+                  alt="..."
+                />
+                <div class="card-img-overlay ps-0">
+                  <span class="badge bg-danger p-2 ms-3"
+                    ><i class="fas fa-tag me-2 fs-0"></i
+                    ><span class="fs-0">10% off</span></span
+                  ><span class="badge bg-primary ms-2 me-1 p-2"
+                    ><i class="fas fa-clock me-1 fs-0"></i
+                    ><span class="fs-0">Fast</span></span
+                  >
+                </div>
+                <div class="card-body ps-0">
+                  <div class="d-flex align-items-center mb-3">
+                    <img
+                      class="img-fluid"
+                      src="assets/img/gallery/kuakata-logo.png"
+                      alt=""
+                    />
+                    <div class="flex-1 ms-3">
+                      <h5 class="mb-0 fw-bold text-1000">
+                        Kuakata Fried Chicken
+                      </h5>
+                      <span class="text-primary fs--1 me-1"
+                        ><i class="fas fa-star"></i></span
+                      ><span class="mb-0 text-primary">50</span>
+                    </div>
+                  </div>
+                  <span class="badge bg-soft-success p-2"
+                    ><span class="fw-bold fs-1 text-success"
+                      >Open Now</span
+                    ></span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 h-100 mb-5">
+              <div class="card card-span h-100 text-white rounded-3">
+                <img
+                  class="img-fluid rounded-3 h-100"
+                  src="assets/img/gallery/red-square.png"
+                  alt="..."
+                />
+                <div class="card-img-overlay ps-0">
+                  <span class="badge bg-danger p-2 ms-3"
+                    ><i class="fas fa-tag me-2 fs-0"></i
+                    ><span class="fs-0">10% off</span></span
+                  ><span class="badge bg-primary ms-2 me-1 p-2"
+                    ><i class="fas fa-clock me-1 fs-0"></i
+                    ><span class="fs-0">Fast</span></span
+                  >
+                </div>
+                <div class="card-body ps-0">
+                  <div class="d-flex align-items-center mb-3">
+                    <img
+                      class="img-fluid"
+                      src="assets/img/gallery/red-square-logo.png"
+                      alt=""
+                    />
+                    <div class="flex-1 ms-3">
+                      <h5 class="mb-0 fw-bold text-1000">
+                        Kuakata Fried Chicken
+                      </h5>
+                      <span class="text-primary fs--1 me-1"
+                        ><i class="fas fa-star"></i></span
+                      ><span class="mb-0 text-primary">50</span>
+                    </div>
+                  </div>
+                  <span class="badge bg-soft-success p-2"
+                    ><span class="fw-bold fs-1 text-success"
+                      >Open Now</span
+                    ></span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 h-100 mb-5">
+              <div class="card card-span h-100 text-white rounded-3">
+                <img
+                  class="img-fluid rounded-3 h-100"
+                  src="assets/img/gallery/taco-bell.png"
+                  alt="..."
+                />
+                <div class="card-img-overlay ps-0">
+                  <span class="badge bg-danger p-2 ms-3"
+                    ><i class="fas fa-tag me-2 fs-0"></i
+                    ><span class="fs-0">10% off</span></span
+                  ><span class="badge bg-primary ms-2 me-1 p-2"
+                    ><i class="fas fa-clock me-1 fs-0"></i
+                    ><span class="fs-0">Fast</span></span
+                  >
+                </div>
+                <div class="card-body ps-0">
+                  <div class="d-flex align-items-center mb-3">
+                    <img
+                      class="img-fluid"
+                      src="assets/img/gallery/taco-bell-logo.png"
+                      alt=""
+                    />
+                    <div class="flex-1 ms-3">
+                      <h5 class="mb-0 fw-bold text-1000">Taco bell</h5>
+                      <span class="text-primary fs--1 me-1"
+                        ><i class="fas fa-star"></i></span
+                      ><span class="mb-0 text-primary">50</span>
+                    </div>
+                  </div>
+                  <span class="badge bg-soft-success p-2"
+                    ><span class="fw-bold fs-1 text-success"
+                      >Open Now</span
+                    ></span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-12 d-flex justify-content-center mt-5">
+              <a class="btn btn-lg btn-primary" href="#!"
+                >View All <i class="fas fa-chevron-right ms-2"> </i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- 할인 중인 식당 순 정렬 끝 ============================-->
+>>>>>>> Stashed changes
       <!-- ============================================-->
 
       <!-- ============================================-->
@@ -1806,6 +2692,7 @@
       </section>
       <!-- 음식별로 모아보기 끝 ============================-->
       <!-- ============================================-->
+<<<<<<< Updated upstream
 
       <!-- ============================================-->
       <!-- 어플 안내창 시작 ============================-->
@@ -1857,6 +2744,59 @@
       <!-- 어플 안내창 끝 ============================-->
       <!-- ============================================-->
 
+=======
+
+      <!-- ============================================-->
+      <!-- 어플 안내창 시작 ============================-->
+      <!-- <section>
+        <div class="bg-holder" style="background-image:url(assets/img/gallery/cta-one-bg.png);background-position:center;background-size:cover;">
+        </div>
+
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-xxl-10">
+              <div class="card card-span shadow-warning" style="border-radius: 35px;">
+                <div class="card-body py-5">
+                  <div class="row justify-content-evenly">
+                    <div class="col-md-3">
+                      <div class="d-flex d-md-block d-xl-flex justify-content-evenly justify-content-lg-between"><img src="assets/img/icons/discounts.png" width="100" alt="..." />
+                        <div class="d-flex d-lg-block d-xl-flex flex-center">
+                          <h2 class="fw-bolder text-1000 mb-0 text-gradient">Daily<br class="d-none d-md-block" />Discounts </h2>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3 hr-vertical">
+                      <div class="d-flex d-md-block d-xl-flex justify-content-evenly justify-content-lg-between"><img src="assets/img/icons/live-tracking.png" width="100" alt="..." />
+                        <div class="d-flex d-lg-block d-xl-flex flex-center">
+                          <h2 class="fw-bolder text-1000 mb-0 text-gradient">Live Tracking</h2>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3 hr-vertical">
+                      <div class="d-flex d-md-block d-xl-flex justify-content-evenly justify-content-lg-between"><img src="assets/img/icons/quick-delivery.png" width="100" alt="..." />
+                        <div class="d-flex d-lg-block d-xl-flex flex-center">
+                          <h2 class="fw-bolder text-1000 mb-0 text-gradient">Quick Delivery </h2>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row flex-center mt-md-8">
+            <div class="col-lg-5 d-none d-lg-block" style="margin-bottom: -122px;"> <img class="w-100" src="assets/img/gallery/phone-cta-one.png" alt="..." /></div>
+            <div class="col-lg-5 mt-7 mt-md-0">
+              <h1 class="text-primary">Install the app</h1>
+              <p>It's never been easier to order food. Look for the finest <br class="d-none d-xl-block" />discounts and you'll be lost in a world of delectable food.</p><a class="pe-2" href="https://www.apple.com/app-store/" target="_blank"><img src="assets/img/gallery/app-store.svg" width="160" alt="" /></a><a href="https://play.google.com/store/apps" target="_blank"><img src="assets/img/gallery/google-play.svg" width="160" alt="" /></a>
+            </div>
+          </div>
+        </div>
+      </section> -->
+      <!-- 어플 안내창 끝 ============================-->
+      <!-- ============================================-->
+
+>>>>>>> Stashed changes
       <!-- ============================================-->
       <!-- 푸드컬럼1 시작 ============================-->
       <section class="pb-5 pt-8">

@@ -50,6 +50,8 @@ public class Qna extends BaseTimeEntity {
     @Column(columnDefinition = "VARCHAR2(255)")
     private String title;
 
+    @Column(columnDefinition = "VARCHAR2(3000)")
+    private String content;
 }
 
 

@@ -33,17 +33,17 @@
               <ul class="dropdown-menu">
                 <li class="dropdown-header">지역별</li>
                 <li>
-                  <router-link to="/local" class="dropdown-item"
+                  <router-link to="/local/seoul" class="dropdown-item"
                     >서울</router-link
                   >
                 </li>
                 <li>
-                  <router-link to="/local" class="dropdown-item"
+                  <router-link to="/local/gyeongi" class="dropdown-item"
                     >경기</router-link
                   >
                 </li>
                 <li>
-                  <router-link to="/local" class="dropdown-item"
+                  <router-link to="/local/busan" class="dropdown-item"
                     >부산</router-link
                   >
                 </li>
@@ -123,7 +123,6 @@
             </li>
           </ul>
         </div>
-
         <div
           class="collapse navbar-collapse border-lg-0 my-2 mt-lg-0"
           id="navbarSupportedContent"
@@ -148,7 +147,7 @@
               <!-- 회원가입 시작 -->
               <router-link
                 to="/register"
-                class="btn btn-white text-warning register"
+                class="btn btn-white shadow-warning text-warning register"
               >
                 <i class="fas fa-user me-2"></i>회원가입
               </router-link>
@@ -157,7 +156,7 @@
               <!-- 로그인 시작 -->
               <router-link
                 to="/login"
-                class="btn btn-white text-warning login"
+                class="btn btn-white shadow-warning text-warning login"
               >
                 <i class="fas fa-user me-2"></i>로그인
               </router-link>
@@ -167,7 +166,7 @@
               <!-- 프로필 시작 -->
               <router-link
                 to="/profile"
-                class="btn btn-white text-warning profile"
+                class="btn btn-white shadow-warning text-warning profile"
               >
                 <i class="fas fa-user me-2"></i>프로필
               </router-link>
@@ -176,7 +175,7 @@
               <!-- 로그아웃 시작 -->
               <a
                 @click.prevent="logout"
-                class="btn btn-white text-warning logout"
+                class="btn btn-white shadow-warning text-warning logout"
               >
                 <i class="fas fa-user me-2"></i>
                 로그아웃
@@ -188,8 +187,6 @@
       </div>
     </nav>
     <!-- 네비게이션 바 끝 -->
-
-    
   </div>
 </template>
 
@@ -222,9 +219,9 @@ export default {
 </script>
 
 <style>
-/* .dropdown:hover .dropdown-menu {
+.dropdown:hover .dropdown-menu {
   display: block;
   margin-top: 0;
-} */
+}
 </style>
 

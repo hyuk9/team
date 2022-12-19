@@ -23,8 +23,7 @@
       </div>
     </section>
     <!-- 최상단 끝 -->
-
-    <!-- <div class="container">
+    <div class="container">
       <header class="jumbotron">
         <h3>
           <strong>{{ currentUser.username }}</strong> Profile
@@ -51,6 +50,7 @@
           {{ role }}
         </li>
       </ul>
+<<<<<<< Updated upstream
     </div> -->
 
     <!-- 프로필, 예약, 찜, 리뷰 시작 -->
@@ -233,6 +233,9 @@
       </div>
     </section>
     <!-- 최근 본 가게 끝 -->
+=======
+    </div>
+>>>>>>> Stashed changes
   </div>
 </template>
 
@@ -254,6 +257,7 @@ export default {
 };
 </script>
 
+<<<<<<< Updated upstream
 <style>
 li {
   list-style-type: none;
@@ -268,3 +272,6 @@ li {
   height: 250px;
 }
 </style>
+=======
+<style></style>
+>>>>>>> Stashed changes
