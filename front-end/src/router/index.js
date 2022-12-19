@@ -26,16 +26,11 @@ const routes = [
     name: 'theme',
     component: () => import('@/components/food/theme/ThemeList.vue')
   },
-  // {
-  //   path: '/score',
-  //   name: 'score',
-  //   component: () => import('@/components/food/score/ScoreList.vue')
-  // },
-  // {
-  //   path: '/review',
-  //   name: 'review',
-  //   component: () => import('@/components/food/review/ReviewList.vue')
-  // },
+  {
+    path: '/detail', // 음식점 상세페이지 샘플
+    name: 'detail',
+    component: () => import('@/components/food/detail/DinerDetail.vue')
+  },
   // TODO: 분류별 게시판 구현
   {
     path: '/free',
@@ -64,7 +59,6 @@ const routes = [
     name: 'add-qna',
     component: () => import('../components/board/qna/AddQnaView.vue')
   },
-
   // QnaDetail 
   {
     path: '/qna/:qno',
