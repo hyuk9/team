@@ -52,11 +52,12 @@
             <button type="button" class="btn btn-warning" @click="
   page = 1;
 retrieveFaq();
+
             ">
               Search
             </button>
           </div>
-          <!--            Todo : 수정 끝 -->
+          <!--  Todo : 수정 끝 -->
         </div>
       </div>
       <!-- search 관련 div 끝 -->
@@ -73,6 +74,7 @@ retrieveFaq();
             </option>
           </select>
         </div>
+
 
         <b-pagination v-model="page" :total-rows="count" :per-page="pageSize" prev-text="Prev" next-text="Next"
           @change="handlePageChange"></b-pagination>
@@ -100,6 +102,10 @@ retrieveFaq();
         <b-pagination v-model="page" :total-rows="count" :per-page="pageSize" first-text="<<" last-text=">>"
           prev-text="Prev" next-text="Next" @change="handlePageChange"></b-pagination>
       </div>
+    </div>
+    <div class="offset-9">
+      <b-pagination v-model="page" :total-rows="count" :per-page="pageSize" prev-text="Prev" next-text="Next"
+        @change="handlePageChange"></b-pagination>
     </div>
     <!-- TODO FAQ리스트 끝 -->
   </div>

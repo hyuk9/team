@@ -38,9 +38,9 @@ public class DinerService {
 //    ✅ id로 조회하는 함수
     public Optional<Diner> findById(int dno) {
 //        findById(기본키)
-        Optional<Diner> optionalDinner = dinerRepository.findById(dno);
+        Optional<Diner> optionalDiner = dinerRepository.findById(dno);
 
-        return optionalDinner;
+        return optionalDiner;
     }
 
 

@@ -54,7 +54,6 @@ public class QnaController {
             Pageable pageable = PageRequest.of(page, size);
 
             Page<Qna> qnaPage;
-
 //            Page 객체 정의
             if( searchSelect.equals("작성자")) {
                 qnaPage = qnaService.findAllByQuestionerContaining(searchKeyword, pageable);

@@ -98,6 +98,7 @@
 
 
 
+
                 <!-- <router-link to="/add-qna/">
             <span class="badge bg-warning text-dark">추가</span>
           </router-link> -->
@@ -114,7 +115,7 @@
             </div>
         </div>
         <!-- Contact End -->
-        <!-- TODO: qna 끝 -->
+        <!-- TODO: qna 끝 -->   
     </div>
 </template>
   
@@ -127,11 +128,11 @@ export default {
             searchKeyword: "",
             searchSelect: "작성자",
 
+
             // 페이징을 위한 변수 정의
             page: 1, // 현재 페이지
             count: 0, // 전체 데이터 건수
             pageSize: 10, // 한페이지당 몇개를 화면에 보여줄지 결정하는 변수
-
             pageSizes: [3, 6, 9], // select box 에 넣을 기본 데이터
         };
     },
