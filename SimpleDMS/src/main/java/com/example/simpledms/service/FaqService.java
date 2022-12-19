@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -26,62 +27,60 @@ public class FaqService {
     @Autowired
     FaqRepository faqRepository; // JPA CRUD 함수가 있는 인터페이스
 
-    //    전체 조회 함수( 페이징 처리 )
+    //    ✅ 전체 조회 함수
     public Page<Faq> findAll(Pageable pageable) {
         Page<Faq> page = faqRepository.findAll(pageable);
 
         return page;
     }
 
-    //    전체 삭제 함수
-    public void removeAll() {
-        faqRepository.deleteAll(); // 전체 삭제
-    }
+//    ✅ id로 조회하는 함수
 
-    //   부서 정보 저장/수정 함수
-    public Faq save(Faq faq) {
-
-        Faq faq2 = faqRepository.save(faq);
-
-        return faq2;
-    }
-
-    //    부서번호로 조회하는 함수
-    public Optional<Faq> findById(int no) {
-//        findById(기본키속성)
-        Optional<Faq> optionalFaq = faqRepository.findById(no);
-
+    public Optional<Faq> findById(int fno) {
+//        findById(기본키)
+        Optional<Faq> optionalFaq = faqRepository.findById(fno);
         return optionalFaq;
     }
 
-    // 부서번호(no)로 삭제하는 함수
-    public boolean removeById(int no) {
-//        existsById(기본키) 있으면 삭제 실행 + true 리턴
-        if(faqRepository.existsById(no) == true) {
-            faqRepository.deleteById(no);
+
+    //    ✅ 전체 삭제 함수
+    public void removeAll() {
+        faqRepository.deleteAll();
+    }
+
+
+    //       ✅ 부서 정보 저장 함수
+    public Faq save(Faq faq) {
+        Faq faq2 = faqRepository.save(faq);
+        return faq2;
+    }
+
+    //       ✅ 부서 정보 삭제 함수
+    public boolean removeById(int fno) {
+//        existById(기본키) 있으면 삭제 실행 + true 리턴
+        if (faqRepository.existsById(fno) == true) {
+            faqRepository.deleteById(fno);
             return true;
         }
-
 //        없으면 그냥 false 리턴
         return false;
     }
 
-    //    questioner(질문자) like 검색 함수 ( 페이징 처리 )
+    //    ✅ dname like 검색 함수
     public Page<Faq> findAllByTitleContaining(String title, Pageable pageable) {
         Page<Faq> page = faqRepository.findAllByTitleContaining(title, pageable);
 
         return page;
     }
 
-    //    question(질문) like 검색 함수 ( 페이징 처리 )
+    //    ✅ dname like 검색 함수
     public Page<Faq> findAllByContentContaining(String content, Pageable pageable) {
-        Page<Faq> page = faqRepository.findAllByContentContaining(content, pageable);
+        Page<Faq> page = faqRepository.findAllByTitleContaining(content, pageable);
 
         return page;
     }
+
 }
-
-
 
 
 

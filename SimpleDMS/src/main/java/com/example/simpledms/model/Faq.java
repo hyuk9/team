@@ -40,7 +40,7 @@ import javax.persistence.*;
 //  사용법 1) @SQLDelete(sql="update문") : delete 문이 실행되지 않고, 매개변수의 update문이 실행되게함
 //       2) @Where(clause="조건") : 대상클래스 붙이면 sql문 실행 시 강제 조건을 부여함
 @Where(clause = "DELETE_YN = 'N'")
-@SQLDelete(sql="UPDATE TB_FAQ SET DELETE_YN = 'Y', DELETE_TIME = TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') WHERE NO = ?")
+@SQLDelete(sql="UPDATE TB_FAQ SET DELETE_YN = 'Y', DELETE_TIME = TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') WHERE FNO = ?")
 public class Faq extends BaseTimeEntity {
     //    부서 번호 : dno
 //    @Id : 기본키
@@ -48,15 +48,14 @@ public class Faq extends BaseTimeEntity {
 //    MYSQL /MARIA DB -> increment 이용
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE
-            , generator = "SQ_FAQ_GENERATOR"
+                   , generator = "SQ_FAQ_GENERATOR"
     )
-    private Integer no;
+    private Integer fno;
     @Column(columnDefinition = "VARCHAR2(255)")
     private String title;
-    @Column(columnDefinition = "VARCHAR2(3000)")
+    @Column(columnDefinition = "VARCHAR2(255)")
     private String content;
 }
-
 
 
 

@@ -27,7 +27,6 @@ import java.util.Optional;
  * 2022-10-21         ds          최초 생성
  */
 @Slf4j
-@CrossOrigin(origins = "http://localhost")
 @RestController
 @RequestMapping("/api")
 public class DinerController {
@@ -42,7 +41,7 @@ public class DinerController {
 //                                         기본값은 required = true
 //    ✅ @RequestParam(defaultValue = "값") : 매개변수에 값이 없으면 기본값을 설정함
     @GetMapping("/diner")
-    public ResponseEntity<Object> getDinerAll(@RequestParam(required = false) String dname,
+    public ResponseEntity<Object> getDinerAll(@RequestParam(required = false) String sname,
                                              @RequestParam(defaultValue = "0") int page,
                                              @RequestParam(defaultValue = "3") int size
     ) {
@@ -55,7 +54,7 @@ public class DinerController {
 
 //            findAll() 생략 해도 전체 검색이 됨 :
 //            why? like 검색시 부서명 매개변수가 ""이더라도 전체 검색이 됨
-            dinerPage = dinerService.findAllByDnameContaining(dname, pageable);
+            dinerPage = dinerService.findAllByDnameContaining(sname, pageable);
 
     //            맵 자료구조에 넣어서 전송
             Map<String, Object> response = new HashMap<>();

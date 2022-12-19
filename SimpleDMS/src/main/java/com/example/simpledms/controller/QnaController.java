@@ -1,8 +1,6 @@
 package com.example.simpledms.controller;
 
-import com.example.simpledms.model.Faq;
 import com.example.simpledms.model.Qna;
-import com.example.simpledms.service.FaqService;
 import com.example.simpledms.service.QnaService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,40 +33,42 @@ import java.util.Optional;
 @CrossOrigin(origins = "http://localhost:8081")
 @RestController
 @RequestMapping("/api")
-public class FaqController {
+public class QnaController {
 
     @Autowired
-    FaqService faqService; // @Autowired : 스프링부트가 가동될때 생성된 객체를 하나 받아오기
+    QnaService qnaService; // @Autowired : 스프링부트가 가동될때 생성된 객체를 하나 받아오기
+    Qna qna;
 
-    //    frontend url(쿼리스트링방식) : ? 매개변수 전송방식 사용했으면 ------> backend @RequestParam
+
+//    frontend url(쿼리스트링방식) : ? 매개변수 전송방식 사용했으면 ------> backend @RequestParam
 //    frontend url(파라메터방식) : /{} 매개변수 전송방식 사용했으면 ------> backend @PathVariable
-    @GetMapping("/faq")
-    public ResponseEntity<Object> getFaqAll(@RequestParam String searchSelect,
+    @GetMapping("/qna")
+    public ResponseEntity<Object> getQnaAll(@RequestParam String searchSelect,
                                             @RequestParam(required = false) String searchKeyword,
                                             @RequestParam(defaultValue = "0") int page,
-                                            @RequestParam(defaultValue = "3") int size) {
+                                            @RequestParam(defaultValue = "3") int size)
+    {
 
         try {
 //            Pageable 객체 정의 ( page, size 값 설정 )
             Pageable pageable = PageRequest.of(page, size);
 
-            Page<Faq> faqPage;
-
+            Page<Qna> qnaPage;
 //            Page 객체 정의
-            if (searchSelect.equals("제목")) {
-                faqPage = faqService.findAllByTitleContaining(searchKeyword, pageable);
+            if( searchSelect.equals("작성자")) {
+                qnaPage = qnaService.findAllByQuestionerContaining(searchKeyword, pageable);
             } else {
-                faqPage = faqService.findAllByContentContaining(searchKeyword, pageable);
+                qnaPage = qnaService.findAllByTitleContaining(searchKeyword, pageable);
             }
 
             //            맵 자료구조에 넣어서 전송
             Map<String, Object> response = new HashMap<>();
-            response.put("faq", faqPage.getContent());
-            response.put("currentPage", faqPage.getNumber());
-            response.put("totalItems", faqPage.getTotalElements());
-            response.put("totalPages", faqPage.getTotalPages());
+            response.put("qna", qnaPage.getContent());
+            response.put("currentPage", qnaPage.getNumber());
+            response.put("totalItems", qnaPage.getTotalElements());
+            response.put("totalPages", qnaPage.getTotalPages());
 
-            if (faqPage.isEmpty() == false) {
+            if (qnaPage.isEmpty() == false) {
 //                데이터 + 성공 메세지 전송
                 return new ResponseEntity<>(response, HttpStatus.OK);
             } else {
@@ -84,11 +84,11 @@ public class FaqController {
     }
 
 
-    @DeleteMapping("/faq/all")
+    @DeleteMapping("/qna/all")
     public ResponseEntity<Object> removeAll() {
 
         try {
-            faqService.removeAll();
+            qnaService.removeAll();
 
             return new ResponseEntity<>(HttpStatus.OK);
 
@@ -98,13 +98,13 @@ public class FaqController {
         }
     }
 
-    @PostMapping("/faq")
-    public ResponseEntity<Object> createFaq(@RequestBody Faq faq) {
+    @PostMapping("/qna")
+    public ResponseEntity<Object> createQna(@RequestBody Qna qna) {
 
         try {
-            Faq faq2 = faqService.save(faq);
+            Qna qna2 = qnaService.save(qna);
 
-            return new ResponseEntity<>(faq2, HttpStatus.OK);
+            return new ResponseEntity<>(qna2, HttpStatus.OK);
 
         } catch (Exception e) {
             log.debug(e.getMessage());
@@ -113,15 +113,15 @@ public class FaqController {
     }
 
 
-    @GetMapping("/faq/{no}")
-    public ResponseEntity<Object> getFaqId(@PathVariable int no) {
+    @GetMapping("/qna/{qno}")
+    public ResponseEntity<Object> getQnaId(@PathVariable int qno) {
 
         try {
-            Optional<Faq> optionalFaq = faqService.findById(no);
+            Optional<Qna> optionalQna = qnaService.findById(qno);
 
-            if (optionalFaq.isPresent() == true) {
+            if (optionalQna.isPresent() == true) {
 //                데이터 + 성공 메세지 전송
-                return new ResponseEntity<>(optionalFaq.get(), HttpStatus.OK);
+                return new ResponseEntity<>(optionalQna.get(), HttpStatus.OK);
             } else {
 //                데이터 없음 메세지 전송(클라이언트)
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -134,14 +134,14 @@ public class FaqController {
         }
     }
 
-    @PutMapping("/faq/{no}")
-    public ResponseEntity<Object> updateFaq(@PathVariable int no,
-                                            @RequestBody Faq faq) {
+    @PutMapping("/qna/{qno}")
+    public ResponseEntity<Object> updateQna(@PathVariable int qno,
+                                            @RequestBody Qna qna) {
 
         try {
-            Faq faq2 = faqService.save(faq);
+            Qna qna2 = qnaService.save(qna);
 
-            return new ResponseEntity<>(faq2, HttpStatus.OK);
+            return new ResponseEntity<>(qna2, HttpStatus.OK);
 
         } catch (Exception e) {
             log.debug(e.getMessage());
@@ -149,11 +149,11 @@ public class FaqController {
         }
     }
 
-    @DeleteMapping("/faq/deletion/{no}")
-    public ResponseEntity<Object> deleteFaq(@PathVariable int no) {
+    @DeleteMapping ("/qna/deletion/{qno}")
+    public ResponseEntity<Object> deleteQna(@PathVariable int qno) {
 
         try {
-            boolean bSuccess = faqService.removeById(no);
+            boolean bSuccess = qnaService.removeById(qno);
 
             if (bSuccess == true) {
 //                데이터 + 성공 메세지 전송
