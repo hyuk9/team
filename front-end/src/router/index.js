@@ -26,6 +26,11 @@ const routes = [
     name: 'theme',
     component: () => import('@/components/food/theme/ThemeList.vue')
   },
+  {
+    path: '/detail', // 음식점 상세페이지 샘플
+    name: 'detail',
+    component: () => import('@/components/food/detail/DinerDetail.vue')
+  },
   // TODO: 분류별 게시판 구현
   {
     path: '/free',
