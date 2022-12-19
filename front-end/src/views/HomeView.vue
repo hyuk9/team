@@ -18,13 +18,7 @@
               id="typed"
             >
               <span
-                class="
-                  typed-words
-                  fs-md-5 fs-lg-6 fs-xl-8
-                  text-light
-                  font-italic
-                  fw-900
-                "
+                class="typed-words fs-md-5 fs-lg-6 fs-xl-8 text-light font-italic fw-900"
               ></span>
               <br />
               <span
@@ -43,16 +37,7 @@
         <div class="container">
           <div class="col-lg-5 mx-auto text-center mt-7">
             <h5
-              class="
-                fw-light
-                fs-5 fs-lg-7
-                lh-sm
-                rounded-3
-                bg-primary
-                text-white
-                pt-2
-                pb-2
-              "
+              class="fw-light fs-5 fs-lg-7 lh-sm rounded-3 bg-primary text-white pt-2 pb-2"
             >
               메뉴별 모아보기
             </h5>
@@ -217,341 +202,162 @@
           <div class="row h-100">
             <div class="col-lg-5 mx-auto text-center mb-6">
               <h5
-                class="
-                  fw-light
-                  fs-5 fs-lg-7
-                  lh-sm
-                  rounded-3
-                  bg-primary
-                  text-white
-                  pt-2
-                  pb-2
-                "
+                class="fw-light fs-5 fs-lg-7 lh-sm rounded-3 bg-primary text-white pt-2 pb-2"
               >
                 지역별 맛집
               </h5>
             </div>
           </div>
           <div class="row gx-2">
-            <div class="col-sm-6 col-md-4 col-lg-3 h-100 mb-5" v-for="(data, index) in diner" :key="index">
-              <div class="card card-span h-100 text-white rounded-3">
-                <img
-                  class="img-fluid rounded-3 h-100"
-                  src="assets/img/gallery/food-world.png" 
-                  alt="..."
-                />
-                <div class="card-img-overlay ps-0">
-                  <span class="badge bg-danger p-2 ms-3"
-                    ><i class="fas fa-map-marker-alt me-2 fs-0"></i
-                    ><span class="fs-0">{{data.loc}}</span></span
-                  > <span class="badge bg-danger p-2 ms-3"
-                    ><i class="fas fa-ellipsis-h me-2 fs-0"></i
-                    ><span class="fs-0">{{data.theme}}</span></span
-                  > <span class="badge bg-danger p-2 ms-3"
-                    ><i class="fas fa-comment-dots me-2 fs-0"></i
-                    ><span class="fs-0">{{data.review_count}}</span></span
-                  ><span class="badge bg-primary ms-2 me-1 p-2"
-                    ><i class="fas fa-thumbs-up me-1 fs-0"></i
-                    ><span class="fs-0">{{data.like_count}}</span></span
-                  >
-                </div>
-                <div class="card-body ps-0">
-                  <div class="d-flex align-items-center mb-3">
-                    <img
-                      class="img-fluid"
-                      src="assets/img/gallery/food-world-logo.png"
-                      alt=""
-                    />
-                    <div class="flex-1 ms-3">
-                      <h5 class="mb-0 fw-bold text-1000">{{data.id}}</h5>
-                      <span class="text-primary fs--1 me-1"
-                        ><i class="fas fa-star"></i></span
-                      ><span class="mb-0 text-primary">{{data.score}}</span>
+            <div class="row gx-2">
+              <div
+                class="carousel slide"
+                id="carouselLocationItems"
+                data-bs-touch="false"
+                data-bs-interval="false"
+              >
+                <div class="carousel-inner">
+                  <!-- 첫번째 캐러셀 -->
+                  <div class="carousel-item active">
+                    <div
+                      v-for="(data, index) in diner.slice(0, 4)"
+                      :key="index"
+                      class="col-sm-6 col-md-4 col-lg-3 h-100 mb-5 p-1 d-inline-block"
+                    >
+                      <div class="card card-span h-100 text-white rounded-3">
+                        <img
+                          class="img-fluid rounded-3 h-100"
+                          src="assets/img/gallery/food-world.png"
+                          alt="..."
+                        />
+                        <div class="card-img-overlay ps-0">
+                          <span class="badge bg-danger p-2 mt-1 ms-3"
+                            ><i class="fas fa-map-marker-alt me-2 fs-0"></i
+                            ><span class="fs-0">{{ data.loc }}</span></span
+                          >
+                          <span class="badge bg-primary p-2 mt-1 ms-3"
+                            ><i class="fas fa-ellipsis-h me-2 fs-0"></i
+                            ><span class="fs-0">{{ data.menu }}</span></span
+                          >
+                          <span class="badge bg-danger p-2 mt-1 ms-3"
+                            ><i class="fas fa-comment-dots me-2 fs-0"></i
+                            ><span class="fs-0">{{
+                              data.review_count
+                            }}</span></span
+                          ><span class="badge bg-primary p-2 mt-1 ms-3"
+                            ><i class="fas fa-thumbs-up me-2 fs-0"></i
+                            ><span class="fs-0">{{
+                              data.like_count
+                            }}</span></span
+                          >
+                        </div>
+                        <div class="card-body ps-0">
+                          <div class="d-flex align-items-center mb-3">
+                            <div class="flex-1 ms-3">
+                              <h5 class="mb-0 fw-bold text-1000">
+                                {{ data.dname }}
+                              </h5>
+                              <span class="text-primary fs--1 me-1"
+                                ><i class="fas fa-star"></i></span
+                              ><span class="mb-0 text-primary">{{
+                                data.score
+                              }}</span>
+                            </div>
+                          </div>
+                          <span class="badge p-2"
+                            ><span class="fs-0 text-danger">{{
+                              data.phone
+                            }}</span></span
+                          >
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <span class="badge bg-soft-danger p-2"
-                    ><span class="fw-bold fs-1 text-danger"
-                      >{{data.phone}}</span
-                    ></span
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-3 h-100 mb-5">
-              <div class="card card-span h-100 text-white rounded-3">
-                <img
-                  class="img-fluid rounded-3 h-100"
-                  src="assets/img/gallery/pizza-hub.png"
-                  alt="..."
-                />
-                <div class="card-img-overlay ps-0">
-                  <span class="badge bg-danger p-2 ms-3"
-                    ><i class="fas fa-map-marker-alt me-2 fs-0"></i
-                    ><span class="fs-0">부산</span></span
-                  ><span class="badge bg-danger p-2 ms-3"
-                    ><i class="fas fa-ellipsis-h me-2 fs-0"></i
-                    ><span class="fs-0">양식</span></span
-                  ><span class="badge bg-danger p-2 ms-3"
-                    ><i class="fas fa-comment-dots me-2 fs-0"></i
-                    ><span class="fs-0">150</span></span
-                  ><span class="badge bg-danger ms-2 me-1 p-2"
-                    ><i class="fas fa-thumbs-up me-1 fs-0"></i
-                    ><span class="fs-0">30</span></span
-                  >
-                </div>
-                <div class="card-body ps-0">
-                  <div class="d-flex align-items-center mb-3">
-                    <!-- <img
-                      class="img-fluid"
-                      src="assets/img/gallery/pizzahub-logo.png"
-                      alt=""
-                    /> -->
-                    <div class="flex-1 ms-3">
-                      <h5 class="mb-0 fw-bold text-1000">김밥천국</h5>
-                      <span class="text-primary fs--1 me-1"
-                        ><i class="fas fa-star"></i></span
-                      ><span class="mb-0 text-primary">3.5</span>
+
+                  <!-- 다음 개러셀 -->
+                  <div class="carousel-item" >
+                    <div
+                      v-for="(data, index) in diner.slice(countCarousel() , countCarousel()+4 )"
+                      :key="index"
+                      class="col-sm-6 col-md-4 col-lg-3 h-100 mb-5 p-1 d-inline-block"
+                    >
+                      <div class="card card-span h-100 text-white rounded-3">
+                        <img
+                          class="img-fluid rounded-3 h-100"
+                          src="assets/img/gallery/food-world.png"
+                          alt="..."
+                        />
+                        <div class="card-img-overlay ps-0">
+                          <span class="badge bg-danger p-2 mt-1 ms-3"
+                            ><i class="fas fa-map-marker-alt me-2 fs-0"></i
+                            ><span class="fs-0">{{ data.loc }}</span></span
+                          >
+                          <span class="badge bg-primary p-2 mt-1 ms-3"
+                            ><i class="fas fa-ellipsis-h me-2 fs-0"></i
+                            ><span class="fs-0">{{ data.menu }}</span></span
+                          >
+                          <span class="badge bg-danger p-2 mt-1 ms-3"
+                            ><i class="fas fa-comment-dots me-2 fs-0"></i
+                            ><span class="fs-0">{{
+                              data.review_count
+                            }}</span></span
+                          ><span class="badge bg-primary p-2 mt-1 ms-3"
+                            ><i class="fas fa-thumbs-up me-2 fs-0"></i
+                            ><span class="fs-0">{{
+                              data.like_count
+                            }}</span></span
+                          >
+                        </div>
+                        <div class="card-body ps-0">
+                          <div class="d-flex align-items-center mb-3">
+                            <div class="flex-1 ms-3">
+                              <h5 class="mb-0 fw-bold text-1000">
+                                {{ data.dname }}
+                              </h5>
+                              <span class="text-primary fs--1 me-1"
+                                ><i class="fas fa-star"></i></span
+                              ><span class="mb-0 text-primary">{{
+                                data.score
+                              }}</span>
+                            </div>
+                          </div>
+                          <span class="badge p-2"
+                            ><span class="fs-0 text-danger">{{
+                              data.phone
+                            }}</span></span
+                          >
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <span class="badge bg-soft-danger p-2"
-                    ><span class="fw-bold fs-1 text-danger"
-                      >010-111-1111</span
-                    ></span
-                  >
                 </div>
+                <!-- 캐러셀 버튼 -->
+                <button
+                  class="carousel-control-prev carousel-icon"
+                  type="button"
+                  data-bs-target="#carouselLocationItems"
+                  data-bs-slide="prev"
+                >
+                  <span
+                    class="carousel-control-prev-icon hover-top-shadow"
+                    aria-hidden="true"
+                  ></span
+                  ><span class="visually-hidden">Previous</span>
+                </button>
+                <button
+                  class="carousel-control-next carousel-icon"
+                  type="button"
+                  data-bs-target="#carouselLocationItems"
+                  data-bs-slide="next"
+                >
+                  <span
+                    class="carousel-control-next-icon hover-top-shadow"
+                    aria-hidden="true"
+                  ></span
+                  ><span class="visually-hidden">Next </span>
+                </button>
               </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-3 h-100 mb-5">
-              <div class="card card-span h-100 text-white rounded-3">
-                <img
-                  class="img-fluid rounded-3 h-100"
-                  src="assets/img/gallery/donuts-hut.png"
-                  alt="..."
-                />
-                <div class="card-img-overlay ps-0">
-                  <span class="badge bg-danger p-2 ms-3"
-                    ><i class="fas fa-tag me-2 fs-0"></i
-                    ><span class="fs-0">15% off</span></span
-                  ><span class="badge bg-primary ms-2 me-1 p-2"
-                    ><i class="fas fa-clock me-1 fs-0"></i
-                    ><span class="fs-0">Fast</span></span
-                  >
-                </div>
-                <div class="card-body ps-0">
-                  <div class="d-flex align-items-center mb-3">
-                    <img
-                      class="img-fluid"
-                      src="assets/img/gallery/donuts-hut-logo.png"
-                      alt=""
-                    />
-                    <div class="flex-1 ms-3">
-                      <h5 class="mb-0 fw-bold text-1000">Donuts hut</h5>
-                      <span class="text-primary fs--1 me-1"
-                        ><i class="fas fa-star"></i></span
-                      ><span class="mb-0 text-primary">20</span>
-                    </div>
-                  </div>
-                  <span class="badge bg-soft-success p-2"
-                    ><span class="fw-bold fs-1 text-success"
-                      >Open Now</span
-                    ></span
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-3 h-100 mb-5">
-              <div class="card card-span h-100 text-white rounded-3">
-                <img
-                  class="img-fluid rounded-3 h-100"
-                  src="assets/img/gallery/donuthut.png"
-                  alt="..."
-                />
-                <div class="card-img-overlay ps-0">
-                  <span class="badge bg-danger p-2 ms-3"
-                    ><i class="fas fa-tag me-2 fs-0"></i
-                    ><span class="fs-0">15% off</span></span
-                  ><span class="badge bg-primary ms-2 me-1 p-2"
-                    ><i class="fas fa-clock me-1 fs-0"></i
-                    ><span class="fs-0">Fast</span></span
-                  >
-                </div>
-                <div class="card-body ps-0">
-                  <div class="d-flex align-items-center mb-3">
-                    <img
-                      class="img-fluid"
-                      src="assets/img/gallery/donut-hut-logo.png"
-                      alt=""
-                    />
-                    <div class="flex-1 ms-3">
-                      <h5 class="mb-0 fw-bold text-1000">Donuts hut</h5>
-                      <span class="text-primary fs--1 me-1"
-                        ><i class="fas fa-star"></i></span
-                      ><span class="mb-0 text-primary">50</span>
-                    </div>
-                  </div>
-                  <span class="badge bg-soft-success p-2"
-                    ><span class="fw-bold fs-1 text-success"
-                      >Open Now</span
-                    ></span
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-3 h-100 mb-5">
-              <div class="card card-span h-100 text-white rounded-3">
-                <img
-                  class="img-fluid rounded-3 h-100"
-                  src="assets/img/gallery/ruby-tuesday.png"
-                  alt="..."
-                />
-                <div class="card-img-overlay ps-0">
-                  <span class="badge bg-danger p-2 ms-3"
-                    ><i class="fas fa-tag me-2 fs-0"></i
-                    ><span class="fs-0">10% off</span></span
-                  ><span class="badge bg-primary ms-2 me-1 p-2"
-                    ><i class="fas fa-clock me-1 fs-0"></i
-                    ><span class="fs-0">Fast</span></span
-                  >
-                </div>
-                <div class="card-body ps-0">
-                  <div class="d-flex align-items-center mb-3">
-                    <img
-                      class="img-fluid"
-                      src="assets/img/gallery/ruby-tuesday-logo.png"
-                      alt=""
-                    />
-                    <div class="flex-1 ms-3">
-                      <h5 class="mb-0 fw-bold text-1000">Ruby tuesday</h5>
-                      <span class="text-primary fs--1 me-1"
-                        ><i class="fas fa-star"></i></span
-                      ><span class="mb-0 text-primary">50</span>
-                    </div>
-                  </div>
-                  <span class="badge bg-soft-success p-2"
-                    ><span class="fw-bold fs-1 text-success"
-                      >Open Now</span
-                    ></span
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-3 h-100 mb-5">
-              <div class="card card-span h-100 text-white rounded-3">
-                <img
-                  class="img-fluid rounded-3 h-100"
-                  src="assets/img/gallery/kuakata.png"
-                  alt="..."
-                />
-                <div class="card-img-overlay ps-0">
-                  <span class="badge bg-danger p-2 ms-3"
-                    ><i class="fas fa-tag me-2 fs-0"></i
-                    ><span class="fs-0">10% off</span></span
-                  ><span class="badge bg-primary ms-2 me-1 p-2"
-                    ><i class="fas fa-clock me-1 fs-0"></i
-                    ><span class="fs-0">Fast</span></span
-                  >
-                </div>
-                <div class="card-body ps-0">
-                  <div class="d-flex align-items-center mb-3">
-                    <img
-                      class="img-fluid"
-                      src="assets/img/gallery/kuakata-logo.png"
-                      alt=""
-                    />
-                    <div class="flex-1 ms-3">
-                      <h5 class="mb-0 fw-bold text-1000">
-                        Kuakata Fried Chicken
-                      </h5>
-                      <span class="text-primary fs--1 me-1"
-                        ><i class="fas fa-star"></i></span
-                      ><span class="mb-0 text-primary">50</span>
-                    </div>
-                  </div>
-                  <span class="badge bg-soft-success p-2"
-                    ><span class="fw-bold fs-1 text-success"
-                      >Open Now</span
-                    ></span
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-3 h-100 mb-5">
-              <div class="card card-span h-100 text-white rounded-3">
-                <img
-                  class="img-fluid rounded-3 h-100"
-                  src="assets/img/gallery/red-square.png"
-                  alt="..."
-                />
-                <div class="card-img-overlay ps-0">
-                  <span class="badge bg-danger p-2 ms-3"
-                    ><i class="fas fa-tag me-2 fs-0"></i
-                    ><span class="fs-0">10% off</span></span
-                  ><span class="badge bg-primary ms-2 me-1 p-2"
-                    ><i class="fas fa-clock me-1 fs-0"></i
-                    ><span class="fs-0">Fast</span></span
-                  >
-                </div>
-                <div class="card-body ps-0">
-                  <div class="d-flex align-items-center mb-3">
-                    <img
-                      class="img-fluid"
-                      src="assets/img/gallery/red-square-logo.png"
-                      alt=""
-                    />
-                    <div class="flex-1 ms-3">
-                      <h5 class="mb-0 fw-bold text-1000">
-                        Kuakata Fried Chicken
-                      </h5>
-                      <span class="text-primary fs--1 me-1"
-                        ><i class="fas fa-star"></i></span
-                      ><span class="mb-0 text-primary">50</span>
-                    </div>
-                  </div>
-                  <span class="badge bg-soft-success p-2"
-                    ><span class="fw-bold fs-1 text-success"
-                      >Open Now</span
-                    ></span
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-3 h-100 mb-5">
-              <div class="card card-span h-100 text-white rounded-3">
-                <img
-                  class="img-fluid rounded-3 h-100"
-                  src="assets/img/gallery/taco-bell.png"
-                  alt="..."
-                />
-                <div class="card-img-overlay ps-0">
-                  <span class="badge bg-danger p-2 ms-3"
-                    ><i class="fas fa-tag me-2 fs-0"></i
-                    ><span class="fs-0">10% off</span></span
-                  ><span class="badge bg-primary ms-2 me-1 p-2"
-                    ><i class="fas fa-clock me-1 fs-0"></i
-                    ><span class="fs-0">Fast</span></span
-                  >
-                </div>
-                <div class="card-body ps-0">
-                  <div class="d-flex align-items-center mb-3">
-                    <img
-                      class="img-fluid"
-                      src="assets/img/gallery/taco-bell-logo.png"
-                      alt=""
-                    />
-                    <div class="flex-1 ms-3">
-                      <h5 class="mb-0 fw-bold text-1000">Taco bell</h5>
-                      <span class="text-primary fs--1 me-1"
-                        ><i class="fas fa-star"></i></span
-                      ><span class="mb-0 text-primary">50</span>
-                    </div>
-                  </div>
-                  <span class="badge bg-soft-success p-2"
-                    ><span class="fw-bold fs-1 text-success"
-                      >Open Now</span
-                    ></span
-                  >
-                </div>
-              </div>
+              <!-- 캐러셀 버튼 -->
             </div>
             <div class="col-12 d-flex justify-content-center mt-5">
               <a class="btn btn-lg btn-primary" href="#!"
@@ -1300,12 +1106,7 @@
                           />
                           <div class="card-body ps-0">
                             <h5
-                              class="
-                                text-center
-                                fw-bold
-                                text-1000 text-truncate
-                                mb-2
-                              "
+                              class="text-center fw-bold text-1000 text-truncate mb-2"
                             >
                               pizza
                             </h5>
@@ -1321,12 +1122,7 @@
                           />
                           <div class="card-body ps-0">
                             <h5
-                              class="
-                                text-center
-                                fw-bold
-                                text-1000 text-truncate
-                                mb-2
-                              "
+                              class="text-center fw-bold text-1000 text-truncate mb-2"
                             >
                               Burger
                             </h5>
@@ -1342,12 +1138,7 @@
                           />
                           <div class="card-body ps-0">
                             <h5
-                              class="
-                                text-center
-                                fw-bold
-                                text-1000 text-truncate
-                                mb-2
-                              "
+                              class="text-center fw-bold text-1000 text-truncate mb-2"
                             >
                               Noodles
                             </h5>
@@ -1363,12 +1154,7 @@
                           />
                           <div class="card-body ps-0">
                             <h5
-                              class="
-                                text-center
-                                fw-bold
-                                text-1000 text-truncate
-                                mb-2
-                              "
+                              class="text-center fw-bold text-1000 text-truncate mb-2"
                             >
                               Sub-sandwiches
                             </h5>
@@ -1384,12 +1170,7 @@
                           />
                           <div class="card-body ps-0">
                             <h5
-                              class="
-                                text-center
-                                fw-bold
-                                text-1000 text-truncate
-                                mb-2
-                              "
+                              class="text-center fw-bold text-1000 text-truncate mb-2"
                             >
                               Chowmein
                             </h5>
@@ -1405,12 +1186,7 @@
                           />
                           <div class="card-body ps-0">
                             <h5
-                              class="
-                                text-center
-                                fw-bold
-                                text-1000 text-truncate
-                                mb-2
-                              "
+                              class="text-center fw-bold text-1000 text-truncate mb-2"
                             >
                               Steak
                             </h5>
@@ -1430,12 +1206,7 @@
                           />
                           <div class="card-body ps-0">
                             <h5
-                              class="
-                                text-center
-                                fw-bold
-                                text-1000 text-truncate
-                                mb-2
-                              "
+                              class="text-center fw-bold text-1000 text-truncate mb-2"
                             >
                               pizza
                             </h5>
@@ -1451,12 +1222,7 @@
                           />
                           <div class="card-body ps-0">
                             <h5
-                              class="
-                                text-center
-                                fw-bold
-                                text-1000 text-truncate
-                                mb-2
-                              "
+                              class="text-center fw-bold text-1000 text-truncate mb-2"
                             >
                               Burger
                             </h5>
@@ -1472,12 +1238,7 @@
                           />
                           <div class="card-body ps-0">
                             <h5
-                              class="
-                                text-center
-                                fw-bold
-                                text-1000 text-truncate
-                                mb-2
-                              "
+                              class="text-center fw-bold text-1000 text-truncate mb-2"
                             >
                               Noodles
                             </h5>
@@ -1493,12 +1254,7 @@
                           />
                           <div class="card-body ps-0">
                             <h5
-                              class="
-                                text-center
-                                fw-bold
-                                text-1000 text-truncate
-                                mb-2
-                              "
+                              class="text-center fw-bold text-1000 text-truncate mb-2"
                             >
                               Sub-sandwiches
                             </h5>
@@ -1514,12 +1270,7 @@
                           />
                           <div class="card-body ps-0">
                             <h5
-                              class="
-                                text-center
-                                fw-bold
-                                text-1000 text-truncate
-                                mb-2
-                              "
+                              class="text-center fw-bold text-1000 text-truncate mb-2"
                             >
                               Chowmein
                             </h5>
@@ -1535,12 +1286,7 @@
                           />
                           <div class="card-body ps-0">
                             <h5
-                              class="
-                                text-center
-                                fw-bold
-                                text-1000 text-truncate
-                                mb-2
-                              "
+                              class="text-center fw-bold text-1000 text-truncate mb-2"
                             >
                               Steak
                             </h5>
@@ -1560,12 +1306,7 @@
                           />
                           <div class="card-body ps-0">
                             <h5
-                              class="
-                                text-center
-                                fw-bold
-                                text-1000 text-truncate
-                                mb-2
-                              "
+                              class="text-center fw-bold text-1000 text-truncate mb-2"
                             >
                               pizza
                             </h5>
@@ -1581,12 +1322,7 @@
                           />
                           <div class="card-body ps-0">
                             <h5
-                              class="
-                                text-center
-                                fw-bold
-                                text-1000 text-truncate
-                                mb-2
-                              "
+                              class="text-center fw-bold text-1000 text-truncate mb-2"
                             >
                               Burger
                             </h5>
@@ -1602,12 +1338,7 @@
                           />
                           <div class="card-body ps-0">
                             <h5
-                              class="
-                                text-center
-                                fw-bold
-                                text-1000 text-truncate
-                                mb-2
-                              "
+                              class="text-center fw-bold text-1000 text-truncate mb-2"
                             >
                               Noodles
                             </h5>
@@ -1623,12 +1354,7 @@
                           />
                           <div class="card-body ps-0">
                             <h5
-                              class="
-                                text-center
-                                fw-bold
-                                text-1000 text-truncate
-                                mb-2
-                              "
+                              class="text-center fw-bold text-1000 text-truncate mb-2"
                             >
                               Sub-sandwiches
                             </h5>
@@ -1644,12 +1370,7 @@
                           />
                           <div class="card-body ps-0">
                             <h5
-                              class="
-                                text-center
-                                fw-bold
-                                text-1000 text-truncate
-                                mb-2
-                              "
+                              class="text-center fw-bold text-1000 text-truncate mb-2"
                             >
                               Chowmein
                             </h5>
@@ -1665,12 +1386,7 @@
                           />
                           <div class="card-body ps-0">
                             <h5
-                              class="
-                                text-center
-                                fw-bold
-                                text-1000 text-truncate
-                                mb-2
-                              "
+                              class="text-center fw-bold text-1000 text-truncate mb-2"
                             >
                               Steak
                             </h5>
@@ -1690,12 +1406,7 @@
                           />
                           <div class="card-body ps-0">
                             <h5
-                              class="
-                                text-center
-                                fw-bold
-                                text-1000 text-truncate
-                                mb-2
-                              "
+                              class="text-center fw-bold text-1000 text-truncate mb-2"
                             >
                               pizza
                             </h5>
@@ -1711,12 +1422,7 @@
                           />
                           <div class="card-body ps-0">
                             <h5
-                              class="
-                                text-center
-                                fw-bold
-                                text-1000 text-truncate
-                                mb-2
-                              "
+                              class="text-center fw-bold text-1000 text-truncate mb-2"
                             >
                               Burger
                             </h5>
@@ -1732,12 +1438,7 @@
                           />
                           <div class="card-body ps-0">
                             <h5
-                              class="
-                                text-center
-                                fw-bold
-                                text-1000 text-truncate
-                                mb-2
-                              "
+                              class="text-center fw-bold text-1000 text-truncate mb-2"
                             >
                               Noodles
                             </h5>
@@ -1753,12 +1454,7 @@
                           />
                           <div class="card-body ps-0">
                             <h5
-                              class="
-                                text-center
-                                fw-bold
-                                text-1000 text-truncate
-                                mb-2
-                              "
+                              class="text-center fw-bold text-1000 text-truncate mb-2"
                             >
                               Sub-sandwiches
                             </h5>
@@ -1774,12 +1470,7 @@
                           />
                           <div class="card-body ps-0">
                             <h5
-                              class="
-                                text-center
-                                fw-bold
-                                text-1000 text-truncate
-                                mb-2
-                              "
+                              class="text-center fw-bold text-1000 text-truncate mb-2"
                             >
                               Chowmein
                             </h5>
@@ -1795,12 +1486,7 @@
                           />
                           <div class="card-body ps-0">
                             <h5
-                              class="
-                                text-center
-                                fw-bold
-                                text-1000 text-truncate
-                                mb-2
-                              "
+                              class="text-center fw-bold text-1000 text-truncate mb-2"
                             >
                               Steak
                             </h5>
@@ -1882,13 +1568,7 @@
                       class="col-md-5 col-xl-7 col-xxl-8 g-0 order-0 order-md-1"
                     >
                       <img
-                        class="
-                          img-fluid
-                          w-100
-                          fit-cover
-                          h-100
-                          rounded-top rounded-md-end rounded-md-top-0
-                        "
+                        class="img-fluid w-100 fit-cover h-100 rounded-top rounded-md-end rounded-md-top-0"
                         src="assets/img/gallery/crispy-sandwiches.png"
                         alt="..."
                       />
@@ -1931,13 +1611,7 @@
                   <div class="row justify-content-center">
                     <div class="col-md-5 col-xl-7 col-xxl-8 g-0 order-md-0">
                       <img
-                        class="
-                          img-fluid
-                          w-100
-                          fit-cover
-                          h-100
-                          rounded-top rounded-md-start rounded-md-top-0
-                        "
+                        class="img-fluid w-100 fit-cover h-100 rounded-top rounded-md-start rounded-md-top-0"
                         src="assets/img/gallery/fried-chicken.png"
                         alt="..."
                       />
@@ -1984,13 +1658,7 @@
                       class="col-md-5 col-xl-7 col-xxl-8 g-0 order-0 order-md-1"
                     >
                       <img
-                        class="
-                          img-fluid
-                          w-100
-                          fit-cover
-                          h-100
-                          rounded-top rounded-md-end rounded-md-top-0
-                        "
+                        class="img-fluid w-100 fit-cover h-100 rounded-top rounded-md-end rounded-md-top-0"
                         src="assets/img/gallery/pizza.png"
                         alt="..."
                       />
@@ -2059,25 +1727,30 @@
 
 <script>
 /* eslint-disable */
+import DinerDataService from "../services/DinerDataService.js";
 
 export default {
-    data() {
+  data() {
     return {
       diner: [],
       // dname: "", ->(변경) searchUsername: "",
-  
-
+      searchDinername: "", // 부서명
       // 페이징을 위한 변수 정의
       page: 1, // 현재 페이지
       count: 0, // 전체 데이터 건수
-      pageSize: 9, // 한페이지당 몇개를 화면에 보여줄지 결정하는 변수
+      pageSize: 12, // 한페이지당 몇개를 화면에 보여줄지 결정하는 변수
 
       pageSizes: [3, 6, 9], // select box 에 넣을 기본 데이터
+      countCarouselNum : 4,
     };
   },
   methods: {
     retrieveDiner() {
-      DinerDataService.getAll( this.page - 1, this.pageSize)
+      DinerDataService.getAll(
+        this.searchDinername,
+        this.page - 1,
+        this.pageSize
+      )
         .then((response) => {
           const { diner, totalItems } = response.data;
           this.diner = diner;
@@ -2089,6 +1762,13 @@ export default {
           console.log(e);
         });
     },
+
+    countCarousel() {
+      let num = this.countCarouselNum
+      this.countCarouselNum= num+4;
+      return num;
+    },
+
 
     // handlePageSizeChange(event) {
     //   this.pageSize = event.target.value;
