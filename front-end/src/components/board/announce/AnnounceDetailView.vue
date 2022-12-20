@@ -10,7 +10,7 @@
           </div>
           <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
             <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">
-              여기는 질문과답변 <br />
+              여기는 공지사항 <br />
               페이지 입니다
             </h1>
             <h1 class="text-800 mb-5 fs-4">최상단만 제작</h1>
