@@ -1,11 +1,11 @@
 <template>
   <div>
     <!-- 최상단 시작 -->
-    <section class="py-5 overflow-hidden bg-danger" id="home">
+    <section class="py-5 overflow-hidden bg-warning" id="home">
       <div class="container">
         <div class="row flex-center">
           <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0">
-            <a class="img-landing-banner" href="#!"><img class="img-fluid" src="assets/img/gallery/hero-tomato.png"
+            <a class="img-landing-banner" href="#!"><img class="img-fluid" src="assets/img/gallery/hero-header.png"
                 alt="hero-header" /></a>
           </div>
           <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
@@ -52,12 +52,11 @@
             <button type="button" class="btn btn-warning" @click="
   page = 1;
 retrieveFaq();
-
             ">
               Search
             </button>
           </div>
-          <!--  Todo : 수정 끝 -->
+          <!--            Todo : 수정 끝 -->
         </div>
       </div>
       <!-- search 관련 div 끝 -->
@@ -74,7 +73,6 @@ retrieveFaq();
             </option>
           </select>
         </div>
-
 
         <b-pagination v-model="page" :total-rows="count" :per-page="pageSize" prev-text="Prev" next-text="Next"
           @change="handlePageChange"></b-pagination>
@@ -117,10 +115,11 @@ export default {
       searchKeyword: "",
       searchSelect: "제목",
 
+
       // 페이징을 위한 변수 정의
       page: 1, // 현재 페이지
       count: 0, // 전체 데이터 건수
-      pageSize: 5, // 한페이지당 몇개를 화면에 보여줄지 결정하는 변수
+      pageSize: 10, // 한페이지당 몇개를 화면에 보여줄지 결정하는 변수
 
       pageSizes: [3, 6, 9], // select box 에 넣을 기본 데이터전송됨
     };

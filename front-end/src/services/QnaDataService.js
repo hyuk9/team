@@ -13,7 +13,7 @@ class QnaDataService {
     // get 방식 통신 요청 -> @GetMapping("/api/qna/{qno}"), @PathVariable
     get(qno) {
         return http.get(`/qna/${qno}`)
-    } 
+    }
 
     // 부서정보 생성(insert) 요청 함수
     // post 방식 통신 요청 -> @PostMapping("/api/qna"), @RequestBody

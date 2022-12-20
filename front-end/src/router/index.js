@@ -40,7 +40,26 @@ const routes = [
   {
     path: '/announce',
     name: 'announce',
-    component: () => import('@/components/board/AnnounceList.vue')
+    component: () => import('@/components/board/announce/AnnounceList.vue')
+  },
+   // AddAnnounce 
+   {
+    path: '/add-announce',
+    name: 'add-announce',
+    component: () => import('../components/board/announce/AddAnnounceView.vue')
+  },
+
+  // AnnounceDetail 
+  {
+    path: '/announce/:ano',
+    name: 'announce-detail',
+    component: () => import('../components/board/announce/AnnounceDetailView.vue')
+  },
+  // AnnounceView
+  {
+    path: '/announceview/:ano',
+    name: 'announce-view',
+    component: () => import('../components/board/announce/AnnounceView.vue')
   },
   {
     path: '/faq',
@@ -59,11 +78,18 @@ const routes = [
     name: 'add-qna',
     component: () => import('../components/board/qna/AddQnaView.vue')
   },
+
   // QnaDetail 
   {
     path: '/qna/:qno',
     name: 'qna-detail',
     component: () => import('../components/board/qna/QnaDetailView.vue')
+  },
+  // QnaView
+  {
+    path: '/qnaview/:qno',
+    name: 'qna-view',
+    component: () => import('../components/board/qna/QnaView.vue')
   },
   // TODO: 로그인 메뉴 달기
   {
