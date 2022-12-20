@@ -1,6 +1,9 @@
 HELP.md
 .gradle
 build/
+application.properties
+log4jdbc.log4j2.properties
+logback-spring.xml
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
