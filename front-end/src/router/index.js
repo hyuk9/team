@@ -26,16 +26,11 @@ const routes = [
     name: 'theme',
     component: () => import('@/components/food/theme/ThemeList.vue')
   },
-  // {
-  //   path: '/score',
-  //   name: 'score',
-  //   component: () => import('@/components/food/score/ScoreList.vue')
-  // },
-  // {
-  //   path: '/review',
-  //   name: 'review',
-  //   component: () => import('@/components/food/review/ReviewList.vue')
-  // },
+  {
+    path: '/diner', // 음식점 상세페이지 샘플
+    name: 'diner',
+    component: () => import('@/components/food/detail/DinerDetail.vue')
+  },
   // TODO: 분류별 게시판 구현
   {
     path: '/free',
