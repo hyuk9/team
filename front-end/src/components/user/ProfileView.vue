@@ -325,7 +325,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 li {
   list-style-type: none;
 }
@@ -359,4 +359,4 @@ li {
 .bbb {
   background-color: tomato;
 } */
-</style>
+</style>>
