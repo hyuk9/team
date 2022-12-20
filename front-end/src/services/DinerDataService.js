@@ -1,11 +1,12 @@
-import http from "../http-common";
+import http from "@/http-common";
+import authHeader from "@/services/auth/auth-header";
 
 class DinerDataService {
-    // 모든 음식점 정보 조회 요청 함수
-    getAll(searchSelect, searchKeyword, page, size) {
-        // get 방식 통신 요청 -> @GetMapping("/api/")
-        return http.get(`/`); 
-    }
+  getAll(page, size) {
+    return http.get(`/diner?&page=${page}&size=${size}`, {
+      headers: authHeader(),
+    });
+  }
 }
 
 export default new DinerDataService();
