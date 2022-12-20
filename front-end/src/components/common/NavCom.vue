@@ -31,7 +31,7 @@
                 음식점 리스트
               </router-link>
               <ul class="dropdown-menu">
-                <li class="dropdown-header">지역별1111</li>
+                <li class="dropdown-header">지역별</li>
                 <li>
                   <router-link to="/local" class="dropdown-item"
                     >서울</router-link
@@ -117,6 +117,24 @@
                 <li>
                   <router-link to="/free" class="dropdown-item"
                     >자유게시판</router-link
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <router-link
+                to=""
+                class="nav-link dropdown-toggle"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                관리자용 게시판
+              </router-link>
+              <ul class="dropdown-menu">
+                <li>
+                  <router-link to="/user" class="dropdown-item"
+                    >회원관리</router-link
                   >
                 </li>
               </ul>

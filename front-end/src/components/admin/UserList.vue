@@ -1,24 +1,27 @@
 <template>
   <div>
-    <div id="hero">
-      <div class="hero hero-inner bg-dark">
-        <div
-          id="board"
-          class="container"
-          data-aos="fade-up"
-          data-aos-delay="100"
-        >
-          <div class="row align-items-center">
-            <div class="col-lg-6 mx-auto text-center">
-              <div class="intro-wrap">
-                <h1>게시판 이름 넣는 곳</h1>
-                <p class="text-white mb-5">쓰고 싶은 말을 쓰는 공간입니다</p>
-              </div>
+      <!-- 최상단 시작 -->
+      <section class="py-5 overflow-hidden bg-warning" id="home">
+        <div class="container">
+          <div class="row flex-center">
+            <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0">
+              <a class="img-landing-banner" href="#!"
+                ><img
+                  class="img-fluid"
+                  src="assets/img/gallery/hero-header.png"
+                  alt="hero-header"
+              /></a>
+            </div>
+            <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
+              <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">사이트</h1>
+              <h1 class="text-800 mb-5 fs-4">
+                <br />회원관리 게시판
+              </h1>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+      <!-- 최상단 끝 -->
     <!-- search 관련 div 시작 -->
     <div class="col-md-8">
       <div class="input-group mb-3">
