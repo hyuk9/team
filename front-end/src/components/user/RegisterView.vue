@@ -5,9 +5,10 @@
 
     <!-- Form -->
     <form action="" name="form" @submit.prevent="handleRegister">
-      <div >
+      <div>
         <!-- username input -->
         <div class="input__block">
+          <h5>아이디</h5>
           <input
             v-model="user.username"
             v-validate="'required|min:3|max:20'"
@@ -23,6 +24,7 @@
         </div>
         <!-- email input -->
         <div class="input__block">
+          <h5>이메일</h5>
           <input
             v-model="user.email"
             v-validate="'required|email|max:50'"
@@ -38,6 +40,7 @@
         </div>
         <!-- password input -->
         <div class="input__block">
+          <h5>비밀번호</h5>
           <input
             v-model="user.password"
             v-validate="'required|min:6|max:40'"
@@ -56,32 +59,68 @@
         </div>
         <!-- repeat password input -->
         <div class="input__block">
+          <h5>비밀번호 재확인</h5>
           <input
+            v-validate="'required|min:6|max:40'"
             type="password"
-            placeholder="Repeat password"
-            class="input repeat__password"
-            id="repeat__password"
+            placeholder="비밀번호 재확인"
+            class="input"
+            id="passwordRe"
           />
         </div>
+        <!-- 이름 -->
+        <div class="input__block">
+          <h5>이름</h5>
+          <input
+            v-validate="'required|min:6|max:40'"
+            type="password"
+            placeholder="비밀번호 재확인"
+            class="input"
+            id="passwordRe"
+          />
+        </div>
+        <!-- 생년월일 -->
+        <div class="input__block">
+          <h5>생년월일</h5>
+          <input type="date" class="input" id="date" />
+        </div>
+        <!-- 성별 -->
+        <div class="input__block gender">
+                      <h5>성별</h5>
+          <div class="col-6 d-inline-block">
+
+            <p class="d-inline-block col-6">남성</p>
+            <input
+              type="radio"
+              class="input d-inline-block"
+              id="gendermale"
+              name="gender"
+            />
+          </div> 
+          <div class="col-6  d-inline-block">
+            <p class="d-inline-block col-6">여성</p>
+            <input
+              type="radio"
+              class="input d-inline-block"
+              id="genderfemale"
+              name="gender"
+            />
+          </div>
+        </div>
+        <!-- 전화번호 -->
+        <div class="input__block">
+          <h5>전화번호</h5>
+          <input type="text" placeholder="전화번호" class="input" id="phone" />
+        </div>
+        <!-- 주소 -->
+        <div class="input__block">
+          <h5>주소</h5>
+          <input type="text" placeholder="주소" class="input" id="address" />
+        </div>
         <!-- sign in button -->
-        <button class="signin__btn">회원가입하기</button>
+        <button class="signin__btn mt-5">회원가입하기</button>
       </div>
     </form>
-
-    <!-- separator -->
-    <div class="separator">
-      <p>또는</p>
-    </div>
-    <!-- google button -->
-    <button class="google__btn">
-      <i class="fab fa-google"></i>
-      구글로 가입하기
-    </button>
-    <!-- google button -->
-    <button class="github__btn">
-      <i class="fab fa-github"></i>
-      깃허브로 가입하기
-    </button>
   </div>
 </template>
 
@@ -141,7 +180,7 @@ export default {
               timer: 1000,
             });
             // 로그인 화면으로 이동
-            this.$router.push("/login")
+            this.$router.push("/login");
           })
           // 참고) if/else 문 대신에 -> or(||) and(&&) 연산자를 사용할때도 있음
           // 로직체크 순서 : true || false, false && true
@@ -187,6 +226,12 @@ h1 {
   letter-spacing: -3px;
   text-align: center;
   margin: 120px 0 80px 0;
+  transition: 0.2s linear;
+}
+
+h5 {
+  color: #ffb30e;
+  margin: 30px 0 30px 30px;
   transition: 0.2s linear;
 }
 
@@ -237,10 +282,27 @@ form .input__block input {
   border-radius: 8px;
   border: none;
   background: rgba(15, 19, 42, 0.1);
-  padding: 0 0 0 15px;
   color: #23004d;
   font-size: 14px;
   font-family: "Montserrat", sans-serif;
+}
+
+form .gender {
+  margin: 0 0 0 30px;
+}
+
+form .gender h5 {
+  margin: 30px 0 30px 0px;
+}
+
+form .gender input {
+
+  width: 50%;
+  max-width: 680px;
+  height: 30px;
+  margin: 0 auto;
+  padding: 0 0 0 15px;
+    vertical-align:middle;
 }
 
 form .input__block input:focus,
@@ -298,7 +360,7 @@ form .signin__btn:hover {
 }
 
 button {
-   font-family: ONE-Mobile-POP !important;
+  font-family: ONE-Mobile-POP !important;
 }
 
 .separator {

@@ -208,6 +208,15 @@
               </h5>
             </div>
           </div>
+          <!-- 셀렉트 박스 일단 보류 -->
+          <!-- <div class="col-2 mb-3">
+            <select class="form-select" v-model="dinername" >
+              <option value="#" selected>전체</option>
+              <option value="DINER1" v-on:click="retrieveDiner()">서울</option>
+              <option value="#">경기</option>
+              <option value="#">부산</option>
+            </select>
+          </div> -->
           <div class="row gx-2">
             <div class="row gx-2">
               <div
@@ -277,7 +286,7 @@
                   <!-- 다음 개러셀 -->
                   <div
                     class="carousel-item"
-                    v-for="index in Math.ceil((diner.length / 4))- 1"
+                    v-for="index in Math.ceil(diner.length / 4) - 1"
                     :key="index"
                   >
                     <div
@@ -1730,6 +1739,22 @@
       </section>
       <!-- 광고배너 끝 ============================-->
       <!-- ============================================-->
+      <template>
+  <transition name="modal" appear>
+    <div class="modal modal-overlay">
+      <div class="modal-window">
+        <div class="modal-content">
+          <slot/>
+        </div>
+        <footer class="modal-footer">
+          <slot name="footer">
+            <button>Close</button>
+          </slot>
+        </footer>
+      </div>
+    </div>
+  </transition>
+</template>
     </main>
   </div>
 </template>
@@ -1743,11 +1768,11 @@ export default {
     return {
       diner: [],
       // dname: "", ->(변경) searchUsername: "",
-      searchDinername: "", // 부서명
+      dinername: "", // 부서명
       // 페이징을 위한 변수 정의
       page: 1, // 현재 페이지
       count: 0, // 전체 데이터 건수
-      pageSize: 16, // 한페이지당 몇개를 화면에 보여줄지 결정하는 변수
+      pageSize: 20, // 한페이지당 몇개를 화면에 보여줄지 결정하는 변수
 
       pageSizes: [3, 6, 9], // select box 에 넣을 기본 데이터
       countCarouselNum: 0,
@@ -1756,7 +1781,7 @@ export default {
   methods: {
     retrieveDiner() {
       DinerDataService.getAll(
-        this.searchDinername,
+        this.dinername,
         this.page - 1,
         this.pageSize
       )
@@ -1783,10 +1808,10 @@ export default {
       if (this.countCarouselNum >= 4) {
         this.countCarouselNum = this.countCarouselNum - 4;
       } else {
-        if(this.diner.length%4==0){
-        this.countCarouselNum = this.diner.length - 4;
+        if (this.diner.length % 4 == 0) {
+          this.countCarouselNum = this.diner.length - 4;
         } else {
-           this.countCarouselNum = this.diner.length - (this.diner.length)%4;
+          this.countCarouselNum = this.diner.length - (this.diner.length % 4);
         }
       }
     },

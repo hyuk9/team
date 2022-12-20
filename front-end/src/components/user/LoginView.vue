@@ -51,6 +51,29 @@
 
               <button class="login__button">로그인</button>
 
+              <div class="separator">
+                <p>또는</p>
+              </div>
+              <div class="mb-3">
+              <!-- 구글 로그인 -->
+              <a href="#" role="button"
+                ><img
+                  src="../../../public/assets/img/loginButton/google.png"
+                  class="img-fluid mb-2"
+              /></a> 
+              <!-- 네이버 로그인 -->
+              <a href="#" role="button"
+                ><img
+                  src="../../../public/assets/img/loginButton/naver.png"
+                  class="img-fluid mb-2"
+              /></a> 
+              <!-- 카카오 로그인 -->
+              <a href="#" role="button"
+                ><img
+                  src="../../../public/assets/img/loginButton/kakao.png"
+                  class="img-fluid mb-2"
+              /></a>
+              </div>
               <div>
                 <span class="login__account login__account--account"
                   >회원이 아직 아니신가요?</span
@@ -205,7 +228,7 @@ export default {
         });
       }
     },
-  },
+  }
 };
 </script>
 
@@ -317,7 +340,7 @@ img {
 .login__button {
   width: 316px;
   padding: 1rem;
-  margin: 2rem 0;
+  margin: 2rem 0 0 0;
   background-color: #ffb30e;
   color: #fff;
   font-weight: 600;
@@ -350,6 +373,39 @@ img {
   color: #ffb30e;
   cursor: pointer;
 }
+
+.separator {
+  display: block;
+  margin: 30px auto 10px;
+  text-align: center;
+  height: 40px;
+  position: relative;
+  background: transparent;
+  color: rgba(15, 19, 42, 0.4);
+  font-size: 13px;
+  width: 90%;
+  max-width: 680px;
+}
+
+.separator::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 0;
+  background: rgba(15, 19, 42, 0.2);
+  height: 1px;
+  width: 45%;
+}
+.separator::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  right: 0;
+  background: rgba(15, 19, 42, 0.2);
+  height: 1px;
+  width: 45%;
+}
+
 .login__social {
   margin-top: 2rem;
 }
