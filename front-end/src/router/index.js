@@ -27,9 +27,9 @@ const routes = [
     component: () => import("@/components/food/theme/ThemeList.vue"),
   },
   {
-    path: "/detail", // 음식점 상세페이지 샘플
-    name: "detail",
-    component: () => import("@/components/food/detail/DinerDetail.vue"),
+    path: '/diner', // 음식점 상세페이지 샘플
+    name: 'diner',
+    component: () => import('@/components/food/detail/DinerDetail.vue')
   },
   // TODO: 분류별 게시판 구현
   {
@@ -38,9 +38,28 @@ const routes = [
     component: () => import("@/components/board/FreeList.vue"),
   },
   {
-    path: "/announce",
-    name: "announce",
-    component: () => import("@/components/board/AnnounceList.vue"),
+    path: '/announce',
+    name: 'announce',
+    component: () => import('@/components/board/announce/AnnounceList.vue')
+  },
+   // AddAnnounce 
+   {
+    path: '/add-announce',
+    name: 'add-announce',
+    component: () => import('../components/board/announce/AddAnnounceView.vue')
+  },
+
+  // AnnounceDetail 
+  {
+    path: '/announce/:ano',
+    name: 'announce-detail',
+    component: () => import('../components/board/announce/AnnounceDetailView.vue')
+  },
+  // AnnounceView
+  {
+    path: '/announceview/:ano',
+    name: 'announce-view',
+    component: () => import('../components/board/announce/AnnounceView.vue')
   },
   {
     path: "/faq",
@@ -64,6 +83,12 @@ const routes = [
     path: "/qna/:qno",
     name: "qna-detail",
     component: () => import("../components/board/qna/QnaDetailView.vue"),
+  },
+  // QnaView
+  {
+    path: '/qnaview/:qno',
+    name: 'qna-view',
+    component: () => import('../components/board/qna/QnaView.vue')
   },
   // TODO: 로그인 메뉴 달기
   {
