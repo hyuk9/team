@@ -118,14 +118,11 @@ export default {
     return {
       reservation: {
         rid: null,
-        email: "",
-        firstName: "",
-        lastName: "",
-        sights: "",
-        startDate: "",
-        endDate: "",
-        address: "",
+        restaurant: "",
+        name: "",
         phone: "",
+        reservationDate: "",
+        reservationTime: "",
       },
       daterange: "",
       submitted: false,
@@ -139,18 +136,14 @@ export default {
       // 시작날짜 / 종료날짜 문자열 자르기
       let dateArr = this.daterange.split("-");
       // alert(dateArr)
-      this.reservation.startDate = dateArr[0];
-      this.reservation.endDate = dateArr[1];
+      this.reservation.reservationDate = dateArr[0];
 
       var data = {
-        email: this.reservation.email,
-        firstName: this.reservation.firstName,
-        lastName: this.reservation.lastName,
-        sights: this.reservation.sights,
-        startDate: this.reservation.startDate,
-        endDate: this.reservation.endDate,
-        address: this.reservation.address,
+        restaurant: this.reservation.restaurant,
+        name: this.reservation.name,
         phone: this.reservation.phone,
+        reservationDate: this.reservation.reservationDate,
+        reservationTime: this.reservation.reservationTime,
       };
 
       ReservationDataService.create(data)
