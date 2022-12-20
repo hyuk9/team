@@ -75,4 +75,8 @@ span,
   font-weight: lighter;
   font-style: normal;
 }
+// 다크모드 라이브러리 문제 해결
+.darkmode-toggle {
+  z-index: 500;
+}
 </style>

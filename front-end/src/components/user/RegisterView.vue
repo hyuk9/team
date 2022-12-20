@@ -57,32 +57,38 @@
             <p>{{ errors.first("비밀번호 ") }}</p>
           </div>
         </div>
-        <!-- repeat password input -->
+        <!-- 비밀번호 재확인 -->
         <div class="input__block">
           <h5>비밀번호 재확인</h5>
           <input
-            v-validate="'required|min:6|max:40'"
+            v-validate="'required|confirmed:password|min:6|max:40'"
             type="password"
             placeholder="비밀번호 재확인"
             class="input"
             id="passwordRe"
+            name="비밀번호 재확인 "
           />
+           <div
+            v-if="submitted && errors.has('비밀번호 재확인 ')"
+            class="register-alert"
+          >
+            <p>{{ errors.first("비밀번호 재확인 ") }}</p>
+          </div>
         </div>
         <!-- 이름 -->
         <div class="input__block">
           <h5>이름</h5>
           <input
-            v-validate="'required|min:6|max:40'"
-            type="password"
-            placeholder="비밀번호 재확인"
+            type="text"
+            placeholder="이름"
             class="input"
-            id="passwordRe"
+            id="username"
           />
         </div>
         <!-- 생년월일 -->
         <div class="input__block">
           <h5>생년월일</h5>
-          <input type="date" class="input" id="date" />
+          <input type="date" class="input" id="date" placeholder="날짜 선택" />
         </div>
         <!-- 성별 -->
         <div class="input__block gender">
@@ -204,6 +210,10 @@ export default {
       });
     },
   },
+  mounted() {
+    // 날짜에 현재날짜로 placeholder 표시하기
+     document.getElementById('date').value = new Date().toISOString().substring(0, 10);
+  },
 };
 </script>
 
@@ -285,6 +295,7 @@ form .input__block input {
   color: #23004d;
   font-size: 14px;
   font-family: "Montserrat", sans-serif;
+  padding: 0 10px;
 }
 
 form .gender {

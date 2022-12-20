@@ -208,7 +208,7 @@
               </h5>
             </div>
           </div>
-          <!-- 셀렉트 박스 일단 보류 -->
+          <!-- 셀렉트 박스 일단 주석처리 시작 -->
           <!-- <div class="col-2 mb-3">
             <select class="form-select" v-model="dinername" >
               <option value="#" selected>전체</option>
@@ -217,6 +217,7 @@
               <option value="#">부산</option>
             </select>
           </div> -->
+          <!-- 셀렉트 박스 일단 주석처리 종료 -->
           <div class="row gx-2">
             <div class="row gx-2">
               <div
@@ -227,7 +228,8 @@
               >
                 <div class="carousel-inner">
                   <!-- 첫번째 캐러셀 -->
-                  <div class="carousel-item active">
+                  <!-- 아래 주석 풀면 메인 전체를 볼 수 없음. db와 연결될 때 풀면 메인 볼 수 있음 -->
+                  <!-- <div class="carousel-item active">
                     <div
                       v-for="(data, index) in diner.slice(0, 4)"
                       :key="index"
@@ -281,10 +283,12 @@
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
+                  <!-- 첫 캐러셀 종료 -->
 
-                  <!-- 다음 개러셀 -->
-                  <div
+                  <!-- 첫번째를 제외한 나머지 캐러셀 -->
+                  <!-- 아래 주석 풀면 메인 전체를 볼 수 없음. db와 연결될 때 풀면 메인 볼 수 있음 -->
+                  <!-- <div
                     class="carousel-item"
                     v-for="index in Math.ceil(diner.length / 4) - 1"
                     :key="index"
@@ -345,9 +349,10 @@
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
+                  <!-- 첫번째를 제외한 나머지 캐러셀 종료 -->
                 </div>
-                <!-- 캐러셀 버튼 -->
+                <!-- 캐러셀 버튼 시작 -->
                 <button
                   class="carousel-control-prev carousel-icon"
                   type="button"
@@ -375,7 +380,7 @@
                   ><span class="visually-hidden">Next </span>
                 </button>
               </div>
-              <!-- 캐러셀 버튼 -->
+              <!-- 캐러셀 버튼 종료 -->
             </div>
             <div class="col-12 d-flex justify-content-center mt-5">
               <a class="btn btn-lg btn-primary" href="#!"
@@ -1739,22 +1744,6 @@
       </section>
       <!-- 광고배너 끝 ============================-->
       <!-- ============================================-->
-      <template>
-  <transition name="modal" appear>
-    <div class="modal modal-overlay">
-      <div class="modal-window">
-        <div class="modal-content">
-          <slot/>
-        </div>
-        <footer class="modal-footer">
-          <slot name="footer">
-            <button>Close</button>
-          </slot>
-        </footer>
-      </div>
-    </div>
-  </transition>
-</template>
     </main>
   </div>
 </template>
@@ -1780,11 +1769,7 @@ export default {
   },
   methods: {
     retrieveDiner() {
-      DinerDataService.getAll(
-        this.dinername,
-        this.page - 1,
-        this.pageSize
-      )
+      DinerDataService.getAll(this.dinername, this.page - 1, this.pageSize)
         .then((response) => {
           const { diner, totalItems } = response.data;
           this.diner = diner;
