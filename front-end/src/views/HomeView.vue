@@ -1764,7 +1764,7 @@ export default {
       pageSize: 20, // 한페이지당 몇개를 화면에 보여줄지 결정하는 변수
 
       pageSizes: [3, 6, 9], // select box 에 넣을 기본 데이터
-      countCarouselNum: 0,
+      countCarouselNum: 0, //'지역별 맛집'의 캐러셀 작동을 위한 변수
     };
   },
   methods: {
@@ -1782,6 +1782,7 @@ export default {
         });
     },
 
+// '지역별 맛집'의 캐러셀 버튼의 오른쪽을 눌렀을때 작동하는 함수
     countUp() {
       if (this.countCarouselNum + 4 < this.diner.length) {
         this.countCarouselNum = this.countCarouselNum + 4;
@@ -1789,6 +1790,8 @@ export default {
         this.countCarouselNum = 0;
       }
     },
+
+    // '지역별 맛집'의 캐러셀 버튼의 왼쪽을 눌렀을때 작동하는 함수
     countDown() {
       if (this.countCarouselNum >= 4) {
         this.countCarouselNum = this.countCarouselNum - 4;
