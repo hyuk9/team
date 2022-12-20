@@ -1,7 +1,6 @@
 package com.example.simpledms.repository;
 
-
-import com.example.simpledms.model.Reservation;
+import com.example.simpledms.model.Qna;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -20,13 +19,14 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-public interface ReservationRepository extends JpaRepository<Reservation, Integer> {
-//    부서명으로(dname) 조회하는 like 검색 함수 ( 페이징 처리 추가 )
-//    1) 쿼리메소드 방식으로 사용자 정의 함수 정의
-    Page<Reservation> findAllByRnameContaining(String rname, Pageable pageable);
-
-
+public interface QnaRepository extends JpaRepository<Qna, Integer> {
+    //    question 조회하는 like 검색 함수
+//    1) 쿼리메소드 방식으로 함수 정의
+    Page<Qna> findAllByQuestionerContainingOrderByInsertTimeDescQnoDesc(String questioner, Pageable pageable);
+    Page<Qna> findAllByTitleContainingOrderByInsertTimeDescQnoDesc(String title, Pageable pageable);
 }
+
+
 
 
 

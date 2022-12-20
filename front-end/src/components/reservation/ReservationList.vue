@@ -76,6 +76,7 @@
               <thead>
                 <tr>
                   <!-- <th scope="col">Last Name</th> -->
+                  <th scope="col">번호</th>
                   <th scope="col">식당</th>
                   <th scope="col">이름</th>
                   <th scope="col">전화번호</th>
@@ -85,9 +86,11 @@
                 </tr>
               </thead>
               <tbody v-for="(data, index) in reservation" :key="index">
-                <tr @click="setActive(data, index)">
+                <!-- <tr @click="setActive(data, index)"> -->
+                <tr>
+                  <td>{{ data.rid }}</td>
                   <td>{{ data.restaurant }}</td>
-                  <td>{{ data.name }}</td>
+                  <td>{{ data.rname }}</td>
                   <td>{{ data.phone }}</td>
                   <td>{{ data.reservationDate }}</td>
                   <td>{{ data.reservationTime }}</td>
