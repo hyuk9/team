@@ -277,66 +277,65 @@
                   <!-- 다음 개러셀 -->
                   <div
                     class="carousel-item"
-                 
+                    v-for="index in Math.ceil((diner.length / 4))- 1"
+                    :key="index"
                   >
-                
-                      <div
-                        v-for="(data, index) in diner.slice(
-                          countCarouselNum,
-                          countCarouselNum + 4
-                        )"
-                        :key="index"
-                        class="col-sm-6 col-md-4 col-lg-3 h-100 mb-5 p-1 d-inline-block"
-                      >
-                        <div class="card card-span h-100 text-white rounded-3">
-                          <img
-                            class="img-fluid rounded-3 h-100"
-                            src="assets/img/gallery/food-world.png"
-                            alt="..."
-                          />
-                          <div class="card-img-overlay ps-0">
-                            <span class="badge bg-danger p-2 mt-1 ms-3"
-                              ><i class="fas fa-map-marker-alt me-2 fs-0"></i
-                              ><span class="fs-0">{{ data.loc }}</span></span
-                            >
-                            <span class="badge bg-primary p-2 mt-1 ms-3"
-                              ><i class="fas fa-ellipsis-h me-2 fs-0"></i
-                              ><span class="fs-0">{{ data.menu }}</span></span
-                            >
-                            <span class="badge bg-danger p-2 mt-1 ms-3"
-                              ><i class="fas fa-comment-dots me-2 fs-0"></i
-                              ><span class="fs-0">{{
-                                data.review_count
-                              }}</span></span
-                            ><span class="badge bg-primary p-2 mt-1 ms-3"
-                              ><i class="fas fa-thumbs-up me-2 fs-0"></i
-                              ><span class="fs-0">{{
-                                data.like_count
-                              }}</span></span
-                            >
-                          </div>
-                          <div class="card-body ps-0">
-                            <div class="d-flex align-items-center mb-3">
-                              <div class="flex-1 ms-3">
-                                <h5 class="mb-0 fw-bold text-1000">
-                                  {{ data.dname }}
-                                </h5>
-                                <span class="text-primary fs--1 me-1"
-                                  ><i class="fas fa-star"></i></span
-                                ><span class="mb-0 text-primary">{{
-                                  data.score
-                                }}</span>
-                              </div>
+                    <div
+                      v-for="(data, index) in diner.slice(
+                        countCarouselNum,
+                        countCarouselNum + 4
+                      )"
+                      :key="index"
+                      class="col-sm-6 col-md-4 col-lg-3 h-100 mb-5 p-1 d-inline-block"
+                    >
+                      <div class="card card-span h-100 text-white rounded-3">
+                        <img
+                          class="img-fluid rounded-3 h-100"
+                          src="assets/img/gallery/food-world.png"
+                          alt="..."
+                        />
+                        <div class="card-img-overlay ps-0">
+                          <span class="badge bg-danger p-2 mt-1 ms-3"
+                            ><i class="fas fa-map-marker-alt me-2 fs-0"></i
+                            ><span class="fs-0">{{ data.loc }}</span></span
+                          >
+                          <span class="badge bg-primary p-2 mt-1 ms-3"
+                            ><i class="fas fa-ellipsis-h me-2 fs-0"></i
+                            ><span class="fs-0">{{ data.menu }}</span></span
+                          >
+                          <span class="badge bg-danger p-2 mt-1 ms-3"
+                            ><i class="fas fa-comment-dots me-2 fs-0"></i
+                            ><span class="fs-0">{{
+                              data.review_count
+                            }}</span></span
+                          ><span class="badge bg-primary p-2 mt-1 ms-3"
+                            ><i class="fas fa-thumbs-up me-2 fs-0"></i
+                            ><span class="fs-0">{{
+                              data.like_count
+                            }}</span></span
+                          >
+                        </div>
+                        <div class="card-body ps-0">
+                          <div class="d-flex align-items-center mb-3">
+                            <div class="flex-1 ms-3">
+                              <h5 class="mb-0 fw-bold text-1000">
+                                {{ data.dname }}
+                              </h5>
+                              <span class="text-primary fs--1 me-1"
+                                ><i class="fas fa-star"></i></span
+                              ><span class="mb-0 text-primary">{{
+                                data.score
+                              }}</span>
                             </div>
-                            <span class="badge p-2"
-                              ><span class="fs-0 text-danger">{{
-                                data.phone
-                              }}</span></span
-                            >
                           </div>
+                          <span class="badge p-2"
+                            ><span class="fs-0 text-danger">{{
+                              data.phone
+                            }}</span></span
+                          >
                         </div>
                       </div>
-                  
+                    </div>
                   </div>
                 </div>
                 <!-- 캐러셀 버튼 -->
@@ -345,7 +344,7 @@
                   type="button"
                   data-bs-target="#carouselLocationItems"
                   data-bs-slide="prev"
-                    v-on:click="countDown()"
+                  v-on:click="countDown()"
                 >
                   <span
                     class="carousel-control-prev-icon hover-top-shadow"
@@ -1748,7 +1747,7 @@ export default {
       // 페이징을 위한 변수 정의
       page: 1, // 현재 페이지
       count: 0, // 전체 데이터 건수
-      pageSize: 12, // 한페이지당 몇개를 화면에 보여줄지 결정하는 변수
+      pageSize: 16, // 한페이지당 몇개를 화면에 보여줄지 결정하는 변수
 
       pageSizes: [3, 6, 9], // select box 에 넣을 기본 데이터
       countCarouselNum: 0,
@@ -1773,16 +1772,24 @@ export default {
         });
     },
 
-countUp () {
-  if (this.countCarouselNum <= this.diner.length){
-  this.countCarouselNum = this.countCarouselNum+4;
-  }
-},
-countDown () {
-    if (this.countCarouselNum <= this.diner.length){
-  this.countCarouselNum = this.countCarouselNum-4;
-    }
-}
+    countUp() {
+      if (this.countCarouselNum + 4 < this.diner.length) {
+        this.countCarouselNum = this.countCarouselNum + 4;
+      } else {
+        this.countCarouselNum = 0;
+      }
+    },
+    countDown() {
+      if (this.countCarouselNum >= 4) {
+        this.countCarouselNum = this.countCarouselNum - 4;
+      } else {
+        if(this.diner.length%4==0){
+        this.countCarouselNum = this.diner.length - 4;
+        } else {
+           this.countCarouselNum = this.diner.length - (this.diner.length)%4;
+        }
+      }
+    },
   },
 
   // handlePageSizeChange(event) {
