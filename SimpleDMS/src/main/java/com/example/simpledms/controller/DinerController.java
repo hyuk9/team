@@ -30,7 +30,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api")
 public class DinerController {
-
     //    스프링부트 : DI(의존성 주입) ( @Autowired )
     @Autowired
     DinerService dinerService; // @Autowired : 스프링부트가 가동될때 생성된 객체를 하나 받아오기
@@ -41,7 +40,7 @@ public class DinerController {
 //                                         기본값은 required = true
 //    ✅ @RequestParam(defaultValue = "값") : 매개변수에 값이 없으면 기본값을 설정함
     @GetMapping("/diner")
-    public ResponseEntity<Object> getDinerAll(@RequestParam(required = false) String sname,
+    public ResponseEntity<Object> getDinerAll(@RequestParam(required = false) String dname,
                                              @RequestParam(defaultValue = "0") int page,
                                              @RequestParam(defaultValue = "3") int size
     ) {
@@ -54,7 +53,7 @@ public class DinerController {
 
 //            findAll() 생략 해도 전체 검색이 됨 :
 //            why? like 검색시 부서명 매개변수가 ""이더라도 전체 검색이 됨
-            dinerPage = dinerService.findAllByDnameContaining(sname, pageable);
+            dinerPage = dinerService.findAllByDnameContaining(dname, pageable);
 
     //            맵 자료구조에 넣어서 전송
             Map<String, Object> response = new HashMap<>();
