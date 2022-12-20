@@ -112,7 +112,7 @@
             <router-link to="">
               <div class="col text-center">
                 <i class="bi bi-chat-dots card-top"></i>
-                <p class="fs-1">리뷰 관리</p>
+                <p class="fs-1">내가 쓴 리뷰</p>
               </div>
             </router-link>
           </div>
