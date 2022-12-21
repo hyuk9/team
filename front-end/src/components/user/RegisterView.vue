@@ -2,6 +2,8 @@
   <div class="container">
     <!-- Heading -->
     <h1>회원가입</h1>
+    <!-- 필수 항목 안내 -->
+    <i class="fas fa-star-of-life ms-4"> </i><span>는 필수 항목입니다.</span>
 
     <!-- Form -->
     <form action="" name="form" @submit.prevent="handleRegister">
@@ -9,6 +11,7 @@
         <!-- username input -->
         <div class="input__block">
           <h5>아이디</h5>
+          <i class="fas fa-star-of-life ms-2"></i>
           <input
             v-model="user.username"
             v-validate="'required|min:3|max:20'"
@@ -25,6 +28,7 @@
         <!-- email input -->
         <div class="input__block">
           <h5>이메일</h5>
+          <i class="fas fa-star-of-life ms-2"></i>
           <input
             v-model="user.email"
             v-validate="'required|email|max:50'"
@@ -41,6 +45,7 @@
         <!-- password input -->
         <div class="input__block">
           <h5>비밀번호</h5>
+          <i class="fas fa-star-of-life ms-2"></i>
           <input
             v-model="user.password"
             v-validate="'required|min:6|max:40'"
@@ -60,6 +65,7 @@
         <!-- 비밀번호 재확인 -->
         <div class="input__block">
           <h5>비밀번호 재확인</h5>
+          <i class="fas fa-star-of-life ms-2"></i>
           <input
             v-validate="'required|confirmed:password|min:6|max:40'"
             type="password"
@@ -68,7 +74,7 @@
             id="passwordRe"
             name="비밀번호 재확인 "
           />
-           <div
+          <div
             v-if="submitted && errors.has('비밀번호 재확인 ')"
             class="register-alert"
           >
@@ -79,6 +85,7 @@
         <div class="input__block">
           <h5>이름</h5>
           <input
+            v-model="user.name"
             type="text"
             placeholder="이름"
             class="input"
@@ -88,40 +95,61 @@
         <!-- 생년월일 -->
         <div class="input__block">
           <h5>생년월일</h5>
-          <input type="date" class="input" id="date" placeholder="날짜 선택" />
+          <input
+            v-model="user.birthday"
+            type="date"
+            class="input"
+            id="date"
+            placeholder="날짜 선택"
+          />
         </div>
         <!-- 성별 -->
         <div class="input__block gender">
-                      <h5>성별</h5>
+          <h5 class="d-block">성별</h5>
           <div class="col-6 d-inline-block">
-
             <p class="d-inline-block col-6">남성</p>
             <input
+              v-model="user.gender"
               type="radio"
               class="input d-inline-block"
               id="gendermale"
               name="gender"
+              value="male"
             />
-          </div> 
-          <div class="col-6  d-inline-block">
+          </div>
+          <div class="col-6 d-inline-block">
             <p class="d-inline-block col-6">여성</p>
             <input
+              v-model="user.gender"
               type="radio"
               class="input d-inline-block"
               id="genderfemale"
               name="gender"
+              value="female"
             />
           </div>
         </div>
         <!-- 전화번호 -->
         <div class="input__block">
           <h5>전화번호</h5>
-          <input type="text" placeholder="전화번호" class="input" id="phone" />
+          <input
+            v-model="user.phone"
+            type="text"
+            placeholder="전화번호"
+            class="input"
+            id="phone"
+          />
         </div>
         <!-- 주소 -->
         <div class="input__block">
           <h5>주소</h5>
-          <input type="text" placeholder="주소" class="input" id="address" />
+          <input
+            v-model="user.address"
+            type="text"
+            placeholder="주소"
+            class="input"
+            id="address"
+          />
         </div>
         <!-- sign in button -->
         <button class="signin__btn mt-5">회원가입하기</button>
@@ -138,7 +166,7 @@ export default {
     return {
       // 기본적으로 ROLE_USER로 받고 ROLE 정보를 화면에서 수정할 수 있는 기능을 추가
       // TODO: user 객체 role 매개변수 추가
-      user: new User("", "", "", "ROLE_USER"),
+      user: new User("", "", "","","","","","", "ROLE_USER"),
       submitted: false,
       successful: false,
       message: "",
@@ -212,7 +240,9 @@ export default {
   },
   mounted() {
     // 날짜에 현재날짜로 placeholder 표시하기
-     document.getElementById('date').value = new Date().toISOString().substring(0, 10);
+    this.user.birthday = new Date()
+      .toISOString()
+      .substring(0, 10);
   },
 };
 </script>
@@ -240,6 +270,7 @@ h1 {
 }
 
 h5 {
+  display: inline-block;
   color: #ffb30e;
   margin: 30px 0 30px 30px;
   transition: 0.2s linear;
@@ -307,13 +338,12 @@ form .gender h5 {
 }
 
 form .gender input {
-
   width: 50%;
   max-width: 680px;
   height: 30px;
   margin: 0 auto;
   padding: 0 0 0 15px;
-    vertical-align:middle;
+  vertical-align: middle;
 }
 
 form .input__block input:focus,
