@@ -6,7 +6,7 @@
     />
 
     <div class="login">
-      <div class="">
+      <div class="login_middle">
         <!-- 토마토 사진 삭제 -->
         <!-- <div class="login__img">
           <img src="assets/img/gallery/hero-tomato.png" alt="user login" />
@@ -291,9 +291,9 @@ a {
   margin-left: 1.5rem;
   margin-right: 1.5rem;
 }
-.login__content {
-  /* display: grid; */
-}
+/* .login__content {
+  display: grid;
+} */
 /* .login__img {
   justify-self: center;
 }
@@ -303,13 +303,14 @@ a {
 } */
 .login__forms {
   /* position: relative; */
-  height: 368px;
+  /* height: 368px; */
 }
 .login__register,
 .login__create {
   /* position: absolute; */
   /* bottom: 1rem; */
   width: 100%;
+  max-height: 100%;
   /* background-color: #f2f2f2; */
   /* padding: 2rem 1rem; */
   /* border-radius: 1rem; */
@@ -326,6 +327,8 @@ a {
 
 .login__upperbox {
   width: 504px;
+  max-width: 100%;
+  display: inline-block;
 }
 
 .login__box {
@@ -367,7 +370,8 @@ a {
 }
 .login__button {
   width: 504px;
-  height: 109px;
+  max-width: 100%;
+  height: 93px;
   margin: 2rem 0 0 0;
   background-color: #ffb30e;
   color: #fff;
