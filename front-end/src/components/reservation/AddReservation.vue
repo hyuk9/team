@@ -23,90 +23,114 @@
       </div>
     </section>
     <!-- 최상단 끝 -->
-    <div class="untree_co-section">
-      <div class="container" data-aos="fade-left" data-aos-delay="200">
-        <div class="row">
-          <div class="col-lg-6 mx-auto">
-            <!-- TODO:  -->
-            <div class="submit-form">
-              <div v-if="!submitted">
-                <!-- <form> -->
-                <div class="form-group">
-                  <label for="restaurant">가게 이름</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="restaurant"
-                    required
-                    v-model="reservation.restaurant"
-                    name="restaurant"
-                  />
+    <section>
+      <div class="untree_co-section">
+        <div class="container" data-aos="fade-left" data-aos-delay="200">
+          <div class="row">
+            <div class="col-lg-6 mx-auto">
+              <!-- TODO:  -->
+              <div class="submit-form">
+                <div v-if="!submitted">
+                  <!-- <form> -->
+                  <div class="form-group">
+                    <label for="restaurant">가게 이름</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="restaurant"
+                      required
+                      v-model="reservation.restaurant"
+                      name="restaurant"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="rname">예약자 성함</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="rname"
+                      required
+                      v-model="reservation.rname"
+                      name="rname"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="rcount">인원수</label>
+                    <select
+                      class="form-control"
+                      required
+                      v-model="reservation.rcount"
+                    >
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="phone">연락처</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="phone"
+                      required
+                      v-model="reservation.phone"
+                      name="phone"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="reservationDate">예약 날짜</label>
+                    <input
+                      type="date"
+                      class="form-control"
+                      id="reservationDate"
+                      required
+                      v-model="reservation.reservationDate"
+                      name="reservationDate"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="reservationTime">예약 시간</label>
+                    <input
+                      type="time"
+                      class="form-control"
+                      id="reservationTime"
+                      required
+                      v-model="reservation.reservationTime"
+                      name="reservationTime"
+                    />
+                  </div>
+
+                  <div class="text-center mt-5">
+                    <button @click="saveReservation" class="btn btn-primary">
+                      확인
+                    </button>
+                  </div>
+                  <!-- </form> -->
                 </div>
 
-                <div class="form-group">
-                  <label for="name">예약자 성함</label>
-                  <input
-                    class="form-control"
-                    id="name"
-                    required
-                    v-model="reservation.name"
-                    name="name"
-                  />
-                </div>
-
-                <div class="form-group">
-                  <label for="phone">전화번호</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="phone"
-                    required
-                    v-model="reservation.phone"
-                    name="phone"
-                  />
-                </div>
-
-                <div class="form-group">
-                  <label for="reservationDate">예약 날짜</label>
-                  <input
-                    class="form-control"
-                    id="reservationDate"
-                    required
-                    v-model="reservation.reservationDate"
-                    name="reservationDate"
-                  />
-                </div>
-
-                <div class="form-group">
-                  <label for="reservationTime">예약 시간</label>
-                  <input
-                    class="form-control"
-                    id="reservationTime"
-                    required
-                    v-model="reservation.reservationTime"
-                    name="reservationTime"
-                  />
-                </div>
-
-                <div class="text-center">
-                  <button @click="saveReservation" class="btn btn-primary">
-                    확인
-                  </button>
-                </div>
-                <!-- </form> -->
-              </div>
-
-              <div v-else>
+                <!-- <div v-else>
                 <h4>You submitted successfully!</h4>
                 <button class="btn btn-success" @click.prevent="newReservation">
                   Add
                 </button>
+              </div> -->
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 </template>
 
@@ -119,7 +143,8 @@ export default {
       reservation: {
         rid: null,
         restaurant: "",
-        name: "",
+        rname: "",
+        rcount: "",
         phone: "",
         reservationDate: "",
         reservationTime: "",
@@ -131,31 +156,23 @@ export default {
   },
   methods: {
     saveReservation() {
-      // alert(this.reservation.sights);
-      // alert(this.$refs.daterange.value);
-      this.daterange = this.$refs.daterange.value;
-      // 시작날짜 / 종료날짜 문자열 자르기
-      let dateArr = this.daterange.split("-");
-      // alert(dateArr)
-      this.reservation.startDate = dateArr[0];
-      this.reservation.endDate = dateArr[1];
-
-      var data = {
-        email: this.reservation.email,
-        firstName: this.reservation.firstName,
-        lastName: this.reservation.lastName,
-        sights: this.reservation.sights,
-        startDate: this.reservation.startDate,
-        endDate: this.reservation.endDate,
-        address: this.reservation.address,
+      let data = {
+        restaurant: this.reservation.restaurant,
+        rname: this.reservation.rname,
+        rcount: this.reservation.rcount,
         phone: this.reservation.phone,
+        reservationDate: this.reservation.reservationDate,
+        reservationTime: this.reservation.reservationTime,
       };
 
       ReservationDataService.create(data)
         .then((response) => {
           this.reservation.rid = response.data.rid;
           console.log(response.data);
-          this.submitted = true;
+          alert("추가 성공!");
+          // 첫페이지(전체목록_조회_페이지) 강제 이동 : /reservation
+          this.$router.push("/reservation");
+          // this.submitted = true;
         })
         .catch((e) => {
           console.log(e);

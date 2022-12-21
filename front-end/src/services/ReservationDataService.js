@@ -2,8 +2,8 @@
 import http from "../http-common";
 
 class ReservationDataService {
-  getAll(name, page, size) {
-    return http.get(`/reservation?name=${name}&page=${page}&size=${size}`);
+  getAll(rname, page, size) {
+    return http.get(`/reservation?rname=${rname}&page=${page}&size=${size}`);
   }
 
   get(rid) {
