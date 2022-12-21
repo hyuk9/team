@@ -142,13 +142,13 @@ export default {
     return {
       reservation: {
         rid: null,
-        restaurant: "",
-        rname: "",
-        rcount: "",
-        phone: "",
-        reservationDate: "",
-        reservationTime: "",
-        reservationYn: "",
+        restaurant: "", // 가게명
+        rname: "", // 예약자명 
+        rcount: "", // 인원수
+        phone: "", // 연락처
+        reservationDate: "", // 예약날짜
+        reservationTime: "", // 예약시간
+        reservationYn: "", // 예약가능여부
       },
       daterange: "",
       submitted: false,
@@ -169,7 +169,14 @@ export default {
         .then((response) => {
           this.reservation.rid = response.data.rid;
           console.log(response.data);
-          alert("추가 성공!");
+          // alert 라이브러리 효과
+          this.$swal({
+            icon: "success",
+            title: "예약 접수 완료 \n 매장에서 빠르게 확인하겠습니다",
+            showConfirmButton: true,
+            confirmButtonColor: "#f4b642", // confrim 버튼 색깔 지정
+            confirmButtonText: "확인", // confirm 버튼 텍스트 지정
+          });
           // 첫페이지(전체목록_조회_페이지) 강제 이동 : /reservation
           this.$router.push("/reservation");
           // this.submitted = true;
