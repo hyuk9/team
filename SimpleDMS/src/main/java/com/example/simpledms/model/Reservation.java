@@ -56,6 +56,9 @@ public class Reservation extends BaseTimeEntity {
     private String rname;
 
     @Column
+    private String rcount;
+
+    @Column
     private String phone;
 
     @Column
@@ -63,9 +66,6 @@ public class Reservation extends BaseTimeEntity {
 
     @Column
     private String reservationTime;
-
-    @Column
-    private String reservationYn;
 }
 
 

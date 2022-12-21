@@ -23,7 +23,7 @@ import org.springframework.stereotype.Repository;
 public interface ReservationRepository extends JpaRepository<Reservation, Integer> {
 //    부서명으로(dname) 조회하는 like 검색 함수 ( 페이징 처리 추가 )
 //    1) 쿼리메소드 방식으로 사용자 정의 함수 정의
-    Page<Reservation> findAllByRnameContaining(String rname, Pageable pageable);
+    Page<Reservation> findAllByRnameContainingOrderByRidDescInsertTimeDesc(String rname, Pageable pageable);
 
 
 }
