@@ -181,6 +181,8 @@
                 aria-label="Search"
               />
             </div>
+              <button v-on="searchAll">검색</button>
+            
             <!-- 검색창 끝 -->
 
             <div v-if="!currentUser">
