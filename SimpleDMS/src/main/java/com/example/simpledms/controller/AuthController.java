@@ -119,10 +119,11 @@ public class AuthController {
         User user = new User(signupRequest.getUsername(),
                 signupRequest.getEmail(),
                 encoder.encode(signupRequest.getPassword()),
+                signupRequest.getName(),
                 signupRequest.getBirthday(),
                 signupRequest.getGender(),
                 signupRequest.getPhone(),
-                signupRequest.getAddress()// 암호화 적용
+                signupRequest.getAddress()
         );
 
         Set<String> strRoles = signupRequest.getRole(); // Vue 전송한 권한(role) 적용

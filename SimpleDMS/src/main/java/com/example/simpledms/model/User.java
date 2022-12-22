@@ -65,6 +65,11 @@ public class User extends BaseTimeEntity {
     @NotBlank
     @Size(max = 120)
     @Column
+    private String name;
+
+    @NotBlank
+    @Size(max = 120)
+    @Column
     private String birthday;
 
     @NotBlank
@@ -89,29 +94,30 @@ public class User extends BaseTimeEntity {
             inverseJoinColumns = @JoinColumn(name = "ROLE_ID"))
     private Set<Role> role = new HashSet<>();
 
-    public User(String username, String email, String password, String birthday, String gender, String phone, String address) {
+    public User(String username, String email, String password, String name, String birthday, String gender, String phone, String address) {
         this.username = username;
         this.email = email;
         this.password = password;
+        this.name = name;
         this.birthday = birthday;
         this.gender = gender;
         this.phone = phone;
         this.address = address;
     }
 
-    public User(Long id, String username, String email, String password, String birthday, String gender, String phone, String address) {
+    public User(Long id, String username, String email, String password, String name, String birthday, String gender, String phone, String address) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
+        this.name = name;
         this.birthday = birthday;
         this.gender = gender;
         this.phone = phone;
         this.address = address;
     }
 
-
-//
+    //
 //    public User(String username, String email, String password) {
 //        this.username = username;
 //        this.email = email;

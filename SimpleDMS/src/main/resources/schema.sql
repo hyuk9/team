@@ -138,6 +138,7 @@ CREATE TABLE TB_USER(
                         USERNAME    VARCHAR2(1000),
                         EMAIL       VARCHAR2(1000),
                         PASSWORD    VARCHAR2(1000),
+                        NAME        VARCHAR2(1000),
                         BIRTHDAY    VARCHAR2(1000),
                         GENDER      VARCHAR2(1000),
                         PHONE       VARCHAR2(1000),
