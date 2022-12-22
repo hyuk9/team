@@ -28,43 +28,7 @@
     <!-- Contact Start -->
     <div class="container mt-2 mb-2">
       <h1>1:1 문의 게시판</h1>
-      <!-- search 관련 div 시작 -->
-      <div class="col-md-8 offset-2">
-        <div class="input-group mb-3">
-          <!-- select box 추가 : v-model="searchSelect" -->
-          <div class="col-3">
-            <select class="form-select" v-model="searchSelect">
-              <option>작성자</option>
-              <option>제목</option>
-            </select>
-          </div>
 
-          <!-- searchDname -> searchKeyword 변경 -->
-          <div class="col-8">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Search by Question"
-              v-model="searchKeyword"
-            />
-          </div>
-
-          <div class="input-group-append col-1">
-            <button
-              class="btn btn-warning"
-              type="button"
-              @click="
-                page = 1;
-                retrieveAnnounce();
-              "
-            >
-              Search
-            </button>
-          </div>
-          <!--            Todo : 수정 끝 -->
-        </div>
-      </div>
-      <!-- search 관련 div 끝 -->
 
       <!--    Todo : page 바 시작 주석 처리 -->
       <!-- <div class="col-md-12 offset-2">
@@ -141,6 +105,43 @@
           @change="handlePageChange"
         ></b-pagination>
       </div>
+            <!-- search 관련 div 시작 -->
+      <div class="col-md-8 offset-2">
+        <div class="input-group mb-3">
+          <!-- select box 추가 : v-model="searchSelect" -->
+          <div class="col-3">
+            <select class="form-select" v-model="searchSelect">
+              <option>작성자</option>
+              <option>제목</option>
+            </select>
+          </div>
+
+          <!-- searchDname -> searchKeyword 변경 -->
+          <div class="col-8">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search by Question"
+              v-model="searchKeyword"
+            />
+          </div>
+
+          <div class="input-group-append col-1">
+            <button
+              class="btn btn-warning"
+              type="button"
+              @click="
+                page = 1;
+                retrieveAnnounce();
+              "
+            >
+              Search
+            </button>
+          </div>
+          <!--            Todo : 수정 끝 -->
+        </div>
+      </div>
+      <!-- search 관련 div 끝 -->
     </div>
     <!-- Contact End -->
     <!-- TODO: announce 끝 -->
