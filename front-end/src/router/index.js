@@ -14,7 +14,7 @@ const routes = [
   {
     path: "/diner",
     name: "diner",
-    component: () => import("@/components/food/local/LocalList.vue"),
+    component: () => import("@/components/food/local/DinerList.vue"),
   },
   {
     path: "/menu",
