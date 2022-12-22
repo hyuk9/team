@@ -90,6 +90,13 @@ const routes = [
     name: 'user-detail',
     component: () => import('../components/admin/UserDetail.vue')
   }
+  // 아이디/비번 찾기 페이지
+  ,
+  {
+    path: '/findIdPw',
+    name: 'findIdPw',
+    component: () => import('../components/user/FindIdPw.vue')
+  }
 ]
 
 const router = new VueRouter({

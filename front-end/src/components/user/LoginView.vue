@@ -54,7 +54,7 @@
 
               <button class="login__button">로그인</button>
                <div class="forgotIdPw_goRegister">
-                <router-link to="#">
+                <router-link to="/findIdPw">
                   <button class="login__signup login__signup--signup" @click="close()"
                   >아이디/비밀번호를 잊어버리셨나요?</button></router-link
                 >

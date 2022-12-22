@@ -16,7 +16,7 @@
             v-model="user.username"
             v-validate="'required|min:3|max:20'"
             type="text"
-            placeholder="아이디"
+            placeholder="아이디를 입력해 주세요."
             class="input"
             id="text"
             name="아이디 "
@@ -33,7 +33,7 @@
             v-model="user.email"
             v-validate="'required|email|max:50'"
             type="email"
-            placeholder="이메일"
+            placeholder="이메일를 입력해 주세요."
             class="input"
             id="email"
             name="이메일 "
@@ -50,7 +50,7 @@
             v-model="user.password"
             v-validate="'required|min:6|max:40'"
             type="password"
-            placeholder="비밀번호"
+            placeholder="비밀번호를 입력해 주세요."
             class="input"
             id="password"
             name="비밀번호 "
@@ -69,7 +69,7 @@
           <input
             v-validate="'required|confirmed:password|min:6|max:40'"
             type="password"
-            placeholder="비밀번호 재확인"
+            placeholder="비밀번호를 다시 입력해 주세요."
             class="input"
             id="passwordRe"
             name="비밀번호 재확인 "
@@ -135,7 +135,7 @@
           <input
             v-model="user.phone"
             type="text"
-            placeholder="전화번호"
+            placeholder="전화번호를 입력해 주세요."
             class="input"
             id="phone"
           />
@@ -146,7 +146,7 @@
           <input
             v-model="user.address"
             type="text"
-            placeholder="주소"
+            placeholder="주소를 입력해 주세요."
             class="input"
             id="address"
           />
@@ -404,81 +404,4 @@ button {
   font-family: ONE-Mobile-POP !important;
 }
 
-.separator {
-  display: block;
-  margin: 30px auto 10px;
-  text-align: center;
-  height: 40px;
-  position: relative;
-  background: transparent;
-  color: rgba(15, 19, 42, 0.4);
-  font-size: 13px;
-  width: 90%;
-  max-width: 680px;
-}
-.separator::before {
-  content: "";
-  position: absolute;
-  top: 8px;
-  left: 0;
-  background: rgba(15, 19, 42, 0.2);
-  height: 1px;
-  width: 45%;
-}
-.separator::after {
-  content: "";
-  position: absolute;
-  top: 8px;
-  right: 0;
-  background: rgba(15, 19, 42, 0.2);
-  height: 1px;
-  width: 45%;
-}
-
-.google__btn,
-.github__btn {
-  display: block;
-  width: 90%;
-  max-width: 680px;
-  margin: 20px auto;
-  height: 50px;
-  cursor: pointer;
-  font-size: 14px;
-  font-family: "Montserrat", sans-serif;
-  border-radius: 8px;
-  border: none;
-  line-height: 40px;
-}
-.google__btn.google__btn,
-.github__btn.google__btn {
-  background: #5b90f0;
-  color: white;
-  box-shadow: 0 15px 30px rgba(91, 144, 240, 0.36);
-  transition: 0.2s linear;
-}
-.google__btn.google__btn .fa,
-.github__btn.google__btn .fa {
-  font-size: 20px;
-  padding: 0 5px 0 0;
-}
-.google__btn.google__btn:hover,
-.github__btn.google__btn:hover {
-  box-shadow: 0 0 0 rgba(91, 144, 240, 0);
-}
-.google__btn.github__btn,
-.github__btn.github__btn {
-  background: #25282d;
-  color: white;
-  box-shadow: 0 15px 30px rgba(37, 40, 45, 0.36);
-  transition: 0.2s linear;
-}
-.google__btn.github__btn .fa,
-.github__btn.github__btn .fa {
-  font-size: 20px;
-  padding: 0 5px 0 0;
-}
-.google__btn.github__btn:hover,
-.github__btn.github__btn:hover {
-  box-shadow: 0 0 0 rgba(37, 40, 45, 0);
-}
 </style>
