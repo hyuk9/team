@@ -242,6 +242,7 @@ export default {
       });
     },
 
+
     // 클릭시 카카오 주소 api 띄우고 주소검색 데이터를 input 태그로 가져오는 함수
     popupaddress() {
       console.log(this.user)
@@ -253,11 +254,14 @@ export default {
           if (address !== "") {
             document.getElementById("address").value= address;
             // this.user.address= address;
+
           }
         },
         shorthand: false,
       }).open();
+
       console.log(this.$refs.log);
+
     },
   },
   mounted() {
@@ -423,5 +427,4 @@ form .signin__btn:hover {
 button {
   font-family: ONE-Mobile-POP !important;
 }
-
 </style>
