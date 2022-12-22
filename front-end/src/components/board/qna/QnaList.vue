@@ -5,12 +5,8 @@
       <div class="container">
         <div class="row flex-center">
           <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0">
-            <a class="img-landing-banner" href="#!"
-              ><img
-                class="img-fluid"
-                src="assets/img/gallery/hero-header.png"
-                alt="hero-header"
-            /></a>
+            <a class="img-landing-banner" href="#!"><img class="img-fluid" src="assets/img/gallery/hero-header.png"
+                alt="hero-header" /></a>
           </div>
           <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
             <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">
@@ -27,7 +23,15 @@
     <!-- TODO: qna 시작 -->
     <!-- Contact Start -->
     <div class="container mt-2 mb-2">
-      <h1>1:1 문의 게시판</h1>
+      <h1 class="offset-5">1:1 문의 게시판</h1>
+      <div style="text-align: center">
+        <div class="p-3 mb-2 bg-warning text-dark bg-opacity-25">
+          <strong>"공지사항를 통해서 맛있는 토마토의 최신정보를 찾아보세요"
+            <br />
+            "맛있는 토마토의 최신 정보와 공지를 모아서 한번에 찾아볼 수 있습니다.
+          </strong>
+        </div>
+      </div>
 
       <!--    Todo : page 바 시작 주석 처리 -->
       <!-- <div class="col-md-12 offset-2">
@@ -65,20 +69,15 @@
           </thead>
           <tbody v-for="(data, index) in qna" :key="index">
             <tr>
-              <td>{{ data.qno }}</td>
+              <td><i class="bi bi-hash"></i>{{ data.qno }}</td>
               <td>
-                <router-link :to="'/qnaview/' + data.qno"
-                  ><span>{{ data.title }}</span></router-link
-                >
+                <router-link :to="'/qnaview/' + data.qno"><span>{{ data.title }}</span></router-link>
               </td>
               <td>{{ data.questioner }}</td>
-              <td>{{ data.insertTime }}</td>
+              <td> <i class="bi bi-calendar-date"></i>{{ data.insertTime }}</td>
               <td>
-                <router-link :to="'/qna/' + data.qno"
-                  ><span class="badge rounded-pill bg-warning text-dark"
-                    >수정</span
-                  ></router-link
-                >
+                <router-link :to="'/qna/' + data.qno"><span
+                    class="badge rounded-pill bg-warning text-dark">수정</span></router-link>
               </td>
             </tr>
           </tbody>
@@ -93,16 +92,8 @@
         </router-link>
       </div>
       <div class="overflow-auto offset-5">
-        <b-pagination
-          v-model="page"
-          :total-rows="count"
-          :per-page="pageSize"
-          first-text="<<"
-          last-text=">>"
-          prev-text="Prev"
-          next-text="Next"
-          @change="handlePageChange"
-        ></b-pagination>
+        <b-pagination v-model="page" :total-rows="count" :per-page="pageSize" first-text="<<" last-text=">>"
+          prev-text="Prev" next-text="Next" @change="handlePageChange"></b-pagination>
       </div>
       <!-- search 관련 div 시작 -->
       <div class="col-md-8 offset-2">
@@ -116,24 +107,15 @@
           </div>
 
           <!-- searchDname -> searchKeyword 변경 -->
-          <div class="col-8">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Search by Question"
-              v-model="searchKeyword"
-            />
+          <div class="col-7">
+            <input type="text" class="form-control" placeholder="Search by Question" v-model="searchKeyword" />
           </div>
 
-          <div class="input-group-append col-1">
-            <button
-              class="btn btn-warning"
-              type="button"
-              @click="
-                page = 1;
-                retrieveQna();
-              "
-            >
+          <div class="input-group-append col-2">
+            <button class="btn btn-warning" type="button" @click="
+              page = 1;
+            retrieveQna();
+            "><i class="bi bi-search"></i>
               Search
             </button>
           </div>
@@ -208,4 +190,5 @@ export default {
 </script>
   
 <style>
+
 </style>
