@@ -65,12 +65,6 @@ const routes = [
     name: 'qna-detail',
     component: () => import('../components/board/qna/QnaDetailView.vue')
   },
-  // TODO: 로그인 메뉴 달기
-  {
-    path: '/login',
-    name: 'login',
-    component: () => import('@/components/user/LoginView.vue')
-  },
   {
     path: '/register',
     name: 'register',
@@ -95,6 +89,13 @@ const routes = [
     path: '/user/:id',
     name: 'user-detail',
     component: () => import('../components/admin/UserDetail.vue')
+  }
+  // 아이디/비번 찾기 페이지
+  ,
+  {
+    path: '/findIdPw',
+    name: 'findIdPw',
+    component: () => import('../components/user/FindIdPw.vue')
   }
 ]
 

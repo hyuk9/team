@@ -52,6 +52,7 @@ export default {
 
 <style lang="scss">
 h1,
+h2,
 h5,
 .dropdown-header,
 p,
@@ -74,5 +75,9 @@ span,
     format("woff");
   font-weight: lighter;
   font-style: normal;
+}
+// 다크모드 라이브러리 문제 해결
+.darkmode-toggle {
+  z-index: 500;
 }
 </style>
