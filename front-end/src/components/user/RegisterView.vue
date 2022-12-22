@@ -93,6 +93,7 @@
           />
         </div>
         <!-- 생년월일 -->
+        <!-- datepicker 찾아볼 예정 -->
         <div class="input__block">
           <h5>생년월일</h5>
           <input
@@ -141,6 +142,7 @@
           />
         </div>
         <!-- 주소 -->
+        <!-- api 추가 예정 -->
         <div class="input__block">
           <h5>주소</h5>
           <input
