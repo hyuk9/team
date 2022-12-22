@@ -33,7 +33,7 @@
               <ul class="dropdown-menu">
                 <li class="dropdown-header">지역별1111</li>
                 <li>
-                  <router-link to="/local" class="dropdown-item"
+                  <router-link to="/diner" class="dropdown-item"
                     >서울</router-link
                   >
                 </li>
