@@ -181,9 +181,9 @@
               </p> -->
             <!-- </section> -->
             <div class="btn-group btn-group-lg" role="group" aria-label="Basic example" style="width: 950px">
-              <button type="button" class="btn btn-primary">찜</button>
-              <button type="button" class="btn btn-primary">리뷰보기</button>
-              <button type="button" class="btn btn-primary">예약</button>
+              <router-link to="/reservation"><button type="button" class="btn btn-primary">찜</button></router-link>
+              <router-link to="/reservation"><button type="button" class="btn btn-primary">리뷰보기</button></router-link>
+              <router-link to="/reservation"><button type="button" class="btn btn-primary">예약</button></router-link>
             </div>
           </article>
           <!-- Comments section-->
