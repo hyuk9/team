@@ -12,8 +12,8 @@ const routes = [
   },
   // TODO: 분류별 맛집 리스트 구현
   {
-    path: "/local",
-    name: "local",
+    path: "/diner",
+    name: "diner",
     component: () => import("@/components/food/local/LocalList.vue"),
   },
   {
@@ -27,9 +27,19 @@ const routes = [
     component: () => import("@/components/food/theme/ThemeList.vue"),
   },
   {
-    path: '/diner', // 음식점 상세페이지 샘플
-    name: 'diner',
-    component: () => import('@/components/food/detail/DinerDetail.vue')
+    path: "/diner/:dno",
+    name: "diner-detail",
+    component: () => import("@/components/food/detail/DinerDetail.vue"),
+  },
+  {
+    path: "/add/diner",
+    name: "diner-add",
+    component: () => import("@/components/food/detail/AddDiner.vue"),
+  },
+  {
+    path: "/diner/:dno/edit",
+    name: "diner-edit",
+    component: () => import("@/components/food/detail/EditDiner.vue"),
   },
   // TODO: 분류별 게시판 구현
   {
@@ -38,28 +48,29 @@ const routes = [
     component: () => import("@/components/board/FreeList.vue"),
   },
   {
-    path: '/announce',
-    name: 'announce',
-    component: () => import('@/components/board/announce/AnnounceList.vue')
+    path: "/announce",
+    name: "announce",
+    component: () => import("@/components/board/announce/AnnounceList.vue"),
   },
-   // AddAnnounce 
-   {
-    path: '/add-announce',
-    name: 'add-announce',
-    component: () => import('../components/board/announce/AddAnnounceView.vue')
+  // AddAnnounce
+  {
+    path: "/add-announce",
+    name: "add-announce",
+    component: () => import("../components/board/announce/AddAnnounceView.vue"),
   },
 
-  // AnnounceDetail 
+  // AnnounceDetail
   {
-    path: '/announce/:ano',
-    name: 'announce-detail',
-    component: () => import('../components/board/announce/AnnounceDetailView.vue')
+    path: "/announce/:ano",
+    name: "announce-detail",
+    component: () =>
+      import("../components/board/announce/AnnounceDetailView.vue"),
   },
   // AnnounceView
   {
-    path: '/announceview/:ano',
-    name: 'announce-view',
-    component: () => import('../components/board/announce/AnnounceView.vue')
+    path: "/announceview/:ano",
+    name: "announce-view",
+    component: () => import("../components/board/announce/AnnounceView.vue"),
   },
   {
     path: "/faq",
@@ -86,9 +97,9 @@ const routes = [
   },
   // QnaView
   {
-    path: '/qnaview/:qno',
-    name: 'qna-view',
-    component: () => import('../components/board/qna/QnaView.vue')
+    path: "/qnaview/:qno",
+    name: "qna-view",
+    component: () => import("../components/board/qna/QnaView.vue"),
   },
   // TODO: 로그인 메뉴 달기
   {
@@ -141,6 +152,13 @@ const routes = [
 
 const router = new VueRouter({
   mode: "history",
+  scrollBehavior() {
+    return {
+      x: 0,
+      y: 0,
+      behavior: "smooth",
+    };
+  },
   base: process.env.BASE_URL,
   routes,
 });

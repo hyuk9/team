@@ -25,7 +25,8 @@
     <!-- 최상단 끝 -->
 
     <!-- Page content-->
-    <div class="container mt-5">
+    <!-- <div v-if="currentDiner" class="edit-form"> -->
+    <div v-if="currentDiner" class="container mt-5">
       <div class="row">
         <div class="col-lg-8">
           <!-- Post content-->
@@ -37,25 +38,25 @@
                 <a
                   class="badge bg-success text-decoration-none link-light"
                   href="#!"
-                  >{{ menu }}</a
+                  >{{ currentDiner.menu }}</a
                 >
               </h4>
               <!-- Post title-->
               <h1 class="fw-bolder mb-1">
-                {{ dname }}
+                {{ currentDiner.dname }}
                 <a
                   class="badge bg-danger text-decoration-none link-light"
                   href="#!"
-                  >{{ score }}</a
+                  >{{ currentDiner.score }}</a
                 >
               </h1>
 
               <!-- Post meta content-->
               <div class="text mb-2">
-                <p class=" fs-1">
-                  {{ loc }}<br />
+                <p class="fs-1">
+                  {{ currentDiner.loc }}<br />
 
-                  {{ phone }}
+                  {{ currentDiner.phone }}
                 </p>
               </div>
             </header>
@@ -95,13 +96,25 @@
                 </div>
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" class="d-block w-100" alt="..." />
+                    <img
+                      src="https://dummyimage.com/900x400/ced4da/6c757d.jpg"
+                      class="d-block w-100"
+                      alt="..."
+                    />
                   </div>
                   <div class="carousel-item">
-                    <img src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" class="d-block w-100" alt="..." />
+                    <img
+                      src="https://dummyimage.com/900x400/ced4da/6c757d.jpg"
+                      class="d-block w-100"
+                      alt="..."
+                    />
                   </div>
                   <div class="carousel-item">
-                    <img src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" class="d-block w-100" alt="..." />
+                    <img
+                      src="https://dummyimage.com/900x400/ced4da/6c757d.jpg"
+                      class="d-block w-100"
+                      alt="..."
+                    />
                   </div>
                 </div>
                 <button
@@ -167,6 +180,11 @@
                 well.
               </p> -->
             <!-- </section> -->
+            <div class="btn-group btn-group-lg" role="group" aria-label="Basic example" style="width: 950px">
+              <button type="button" class="btn btn-primary">찜</button>
+              <button type="button" class="btn btn-primary">리뷰보기</button>
+              <button type="button" class="btn btn-primary">예약</button>
+            </div>
           </article>
           <!-- Comments section-->
           <section class="mb-5">
@@ -273,18 +291,74 @@
 </template>
 
 <script>
+import DinerDataService from "@/services/DinerDataService";
 export default {
   data() {
     return {
-      dname: "맛있는 식당",
-      score: "4.5",
-      menu: "한식",
-      loc: "서울",
-      phone: "010-1234-5678",
+      currentDiner: null,
+      message: "",
     };
+  },
+  methods: {
+    // 부서번호(dno)로 조회 요청하는 함수
+    getDiner(dno) {
+      // axios 공통함수 호출
+      DinerDataService.get(dno)
+        // 성공하면 .then() 결과가 리턴됨
+        .then((response) => {
+          // springboot 결과를 리턴함(부서 객체)
+          this.currentDiner = response.data;
+          // 콘솔 로그 출력
+          console.log(response.data);
+        })
+        // 실패하면 .catch() 에러메세지가 리턴됨
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+    // 부서정보를 수정 요청하는 함수
+    updateDiner() {
+      // axios 공통함수 호출
+      DinerDataService.update(this.currentDiner.dno, this.currentDiner)
+        // 성공하면 then() 결과가 전송됨
+        .then((response) => {
+          console.log(response.data);
+          this.message = "The Diner was updated successfully!";
+        })
+        // 실패하면 .catch() 에러메세지가 전송됨
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+    // 부서정보를 삭제 요청하는 함수
+    deleteDiner() {
+      // axios 공통함수 호출
+      DinerDataService.delete(this.currentDiner.dno)
+        // 성공하면 then() 결과가 전송됨
+        .then((response) => {
+          console.log(response.data);
+          // 첫페이지(전체목록_조회_페이지) 강제 이동 : /local
+          this.$router.push("/diner");
+        })
+        // 실패하면 .catch() 에러메세지가 전송됨
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+  },
+  // 화면이 뜨자 마자 실행되는 이벤트
+  mounted() {
+    // 클라이언트쪽 디버깅
+    // alert(this.$route.params.dno);
+    // console.log(this.$route.params.dno);
+
+    this.message = "";
+    //  this.$route.params.dno : 이전페이지에서 전송한 매개변수는 $route.params 안에 있음
+    // $route 객체 : 주로 url 매개변수 정보들이 있음
+    // router/index.js 상세페이지 url의 매개변수명 : :dno
+    this.getDiner(this.$route.params.dno);
   },
 };
 </script>
-
 <style>
 </style>
