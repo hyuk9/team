@@ -30,6 +30,7 @@
               >
                 음식점 리스트
               </router-link>
+              <!-- 각 메뉴 누르면 전체리스트에서 매개변수로 넘긴 다음 필터링 된 페이지 리스트를 보여주게 설계할 예정 -->
               <ul class="dropdown-menu">
                 <li class="dropdown-header">지역별</li>
                 <li>
@@ -107,7 +108,7 @@
                 </li>
               </ul>
             </li>
-            <!-- 임시로 만든거 시작 -->
+            <!-- 임시로 만든 예약 네비게이션 시작 -->
             <li class="nav-item dropdown">
               <router-link
                 to=""
@@ -116,7 +117,7 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                예약
+                예약(임시)
               </router-link>
               <ul class="dropdown-menu">
                 <li>
@@ -131,7 +132,33 @@
                 </li>
               </ul>
             </li>
-            <!-- 임시로 만든거 끝 -->
+            <!-- 임시로 만든 예약 네비게이션 끝 -->
+
+            <!-- 관리자 전용 페이지 시작 -->
+            <li class="nav-item dropdown">
+              <router-link
+                to=""
+                class="nav-link dropdown-toggle"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                관리자 전용(관리자만 보이게 설정)
+              </router-link>
+              <ul class="dropdown-menu">
+                <li>
+                  <router-link to="/user" class="dropdown-item"
+                    >유저 목록 조회하기</router-link
+                  >
+                </li>
+                <li>
+                  <router-link to="/reservation" class="dropdown-item"
+                    >예약현황 조회하기</router-link
+                  >
+                </li>
+              </ul>
+            </li>
+            <!-- 관리자 전용 페이지 끝 -->
           </ul>
         </div>
 
