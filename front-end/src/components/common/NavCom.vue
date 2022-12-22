@@ -135,7 +135,8 @@
             <!-- 임시로 만든 예약 네비게이션 끝 -->
 
             <!-- 관리자 전용 페이지 시작 -->
-            <li class="nav-item dropdown">
+            <!-- showAdminBoard가 동작하면 보이게 작동 -->
+            <li v-if="showAdminBoard" class="nav-item dropdown">
               <router-link
                 to=""
                 class="nav-link dropdown-toggle"
@@ -234,6 +235,16 @@ export default {
       // 모듈 저장소 : this.$store.state.모듈명.state값
       // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
       return this.$store.state.auth.user;
+    },
+    // 관리자 접속인지 아닌지 확인하는 함수
+    showAdminBoard() {
+      if (this.currentUser && this.currentUser.roles) {
+        // if ROLE_ADMIN 있으면 true
+        //               없으면 false
+        return this.currentUser.roles.includes("ROLE_ADMIN");
+      }
+      // currentUser 없으면 false (메뉴가 안보임)
+      return false;
     },
   },
   methods: {
