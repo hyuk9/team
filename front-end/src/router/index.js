@@ -43,9 +43,28 @@ const routes = [
   },
   // TODO: 분류별 게시판 구현
   {
-    path: "/free",
-    name: "free",
-    component: () => import("@/components/board/FreeList.vue"),
+    path: '/free',
+    name: 'free',
+    component: () => import('@/components/board/free/FreeList.vue')
+  },
+  // AddFree 
+  {
+    path: '/add-free',
+    name: 'add-free',
+    component: () => import('../components/board/free/AddFreeView.vue')
+  },
+
+  // FreeDetail 
+  {
+    path: '/free/:fno',
+    name: 'free-detail',
+    component: () => import('../components/board/free/FreeDetailView.vue')
+  },
+  // FreeView
+  {
+    path: '/freeview/:fno',
+    name: 'free-view',
+    component: () => import('../components/board/free/FreeView.vue')
   },
   {
     path: "/announce",
@@ -143,11 +162,22 @@ const routes = [
     name: "add-reservation",
     component: () => import("../components/reservation/AddReservation.vue"),
   },
-  // {
-  //   path: '/reservation/:email',
-  //   name: 'reservation-detail',
-  //   component: () => import('../components/reservation/ReservationDetail.vue')
-  // },
+  {
+    path: "/reservation/:rid",
+    name: "reservation-detail",
+    component: () => import("../components/reservation/ReservationDetail.vue"),
+  },
+  // 팀원 소개 페이지
+  {
+    path: "/team",
+    name: "team",
+    component: () => import("../components/introduce/IntroduceView.vue"),
+  },
+  {
+    path: '/findIdPw',
+    name: 'findIdPw',
+    component: () => import('../components/user/FindIdPw.vue')
+  }
 ];
 
 const router = new VueRouter({

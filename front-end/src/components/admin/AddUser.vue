@@ -79,6 +79,7 @@
               <label for="password">role</label>
               <select class="form-select" v-model="user.role">
                 <option>ROLE_USER</option>
+                <option>ROLE_MANAGER</option>
                 <option>ROLE_ADMIN</option>
               </select>
             </div>

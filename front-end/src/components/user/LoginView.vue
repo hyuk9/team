@@ -1,15 +1,16 @@
 <template>
   <div>
-    <link
+    <!-- <link
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
       rel="stylesheet"
-    />
+    /> -->
 
-    <div class="login">
-      <div class="login__content">
-        <div class="login__img">
+    <div class="container">
+      <div class="login_middle">
+        <!-- 토마토 사진 삭제 -->
+        <!-- <div class="login__img">
           <img src="assets/img/gallery/hero-tomato.png" alt="user login" />
-        </div>
+        </div> -->
         <div class="login__forms">
           <!--         create account form -->
           <form
@@ -19,9 +20,10 @@
             name="form"
             @submit.prevent="handleLogin"
           >
-            <div v-if="!successful">
-              <h1 class="login__title">로그인</h1>
-              <div>
+            <div>
+              <!-- <h1 class="login__title">로그인</h1> -->
+              <div class="login__upperbox">
+                <h5>아이디</h5>
                 <div class="login__box">
                   <i class="bx bx-user login__icon"></i>
                   <input
@@ -35,7 +37,8 @@
                 </div>
               </div>
 
-              <div>
+              <div class="login__upperbox">
+                <h5>비밀번호</h5>
                 <div class="login__box">
                   <i class="bx bx-lock login__icon"></i>
                   <input
@@ -50,34 +53,51 @@
               </div>
 
               <button class="login__button">로그인</button>
-
-              <div>
-                <span class="login__account login__account--account"
-                  >회원이 아직 아니신가요?</span
+               <div class="forgotIdPw_goRegister">
+                <router-link to="/findIdPw">
+                  <button class="login__signup login__signup--signup" @click="close()"
+                  >아이디/비밀번호를 잊어버리셨나요?</button></router-link
                 >
                 &nbsp;
-                <router-link
-                  to="/register"
-                  class="login__signup login__signup--signup"
-                  id="sign-in"
-                  >회원가입 하기</router-link
+
+                <!-- 회원가입페이지로 이동과 로그인 모달창을 끄는것을 동시에 하기 위해
+                 라우터 링크와 버튼 2개를 사용 -->
+                <router-link to="/register">
+                  <button
+                    class="login__signup login__signup--signup"
+                    id="sign-in"
+                    @click="close()"
+                  >
+                    회원가입 하기
+                  </button></router-link
                 >
+                <!-- @click="$bvModal.hide('bv-modal-example')" -->
               </div>
 
-              <div class="login__social">
-                <a href="#" class="login__social--icon"
-                  ><i class="bx bxl-facebook"></i
-                ></a>
-                <a href="#" class="login__social--icon"
-                  ><i class="bx bxl-twitter"></i
-                ></a>
-                <a href="#" class="login__social--icon"
-                  ><i class="bx bxl-google"></i
-                ></a>
-                <a href="#" class="login__social--icon"
-                  ><i class="bx bxl-github"></i
-                ></a>
+              <div class="separator">
+                <p>또는</p>
               </div>
+              <div class="mb-3 snsLogin">
+                <!-- 구글 로그인 -->
+                <a href="#" role="button"
+                  ><img
+                    src="../../../public/assets/img/loginButton/google.png"
+                    class="img-fluid"
+                /></a>
+                <!-- 네이버 로그인 -->
+                <a href="#" role="button"
+                  ><img
+                    src="../../../public/assets/img/loginButton/naver.png"
+                    class="img-fluid"
+                /></a>
+                <!-- 카카오 로그인 -->
+                <a href="#" role="button"
+                  ><img
+                    src="../../../public/assets/img/loginButton/kakao.png"
+                    class="img-fluid"
+                /></a>
+              </div>
+             
             </div>
           </form>
         </div>
@@ -142,7 +162,8 @@ export default {
                 showConfirmButton: false,
                 timer: 1000,
               });
-              this.$router.push("/profile"); // 로그인 성공하면 강제 /profile 페이지 이동
+              // 모달창 닫기
+              this.close();
             })
             // 참고) if/else 문 대신에 -> or(||) and(&&) 연산자를 사용할때도 있음
             // 로직체크 순서 : true || false, false && true
@@ -205,6 +226,9 @@ export default {
         });
       }
     },
+    close() {
+      this.$store.dispatch("clickButton");
+    },
   },
 };
 </script>
@@ -224,53 +248,60 @@ body {
   font-size: 0.938rem;
   color: #23004d;
 }
-
+/* 
 h1 {
   margin: 0;
+} */
+
+h5 {
+  text-align: left;
+  color: #ffb30e;
+  margin: 15px 0 15px 10px;
 }
 
 a {
   text-decoration: none;
 }
 
-img {
+/* img {
   max-width: 100%;
   max-height: 100%;
   height: auto;
   display: block;
-}
+} */
 
-.login {
+/* .login {
   display: grid;
   grid-template-columns: 100%;
   height: 100vh;
   margin-left: 1.5rem;
   margin-right: 1.5rem;
-}
-.login__content {
+} */
+/* .login__content {
   display: grid;
-}
-.login__img {
+} */
+/* .login__img {
   justify-self: center;
 }
 .login__img img {
   width: 310px;
   margin-top: 1.5rem;
-}
+} */
 .login__forms {
-  position: relative;
-  height: 368px;
+  /* position: relative; */
+  /* height: 368px; */
 }
 .login__register,
 .login__create {
-  position: absolute;
-  bottom: 1rem;
+  /* position: absolute; */
+  /* bottom: 1rem; */
   width: 100%;
-  background-color: #f2f2f2;
-  padding: 2rem 1rem;
-  border-radius: 1rem;
+  max-height: 100%;
+  /* background-color: #f2f2f2; */
+  /* padding: 2rem 1rem; */
+  /* border-radius: 1rem; */
   text-align: center;
-  box-shadow: 0 8px 20px rgba(35, 0, 77, 0.2);
+  /* box-shadow: 0 8px 20px rgba(35, 0, 77, 0.2); */
   animation-duration: 0.4s;
   animation-name: animateLogin;
 }
@@ -279,14 +310,24 @@ img {
   font-size: 1.5rem;
   margin-bottom: 2rem;
 }
+
+.login__upperbox {
+  width: 275px;
+  max-width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+
 .login__box {
+  width: 100%;
   display: grid;
   grid-template-columns: max-content 1fr;
   column-gap: 0.5rem;
   padding: 1.125rem 1rem;
   background-color: #fff;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   border-radius: 0.5rem;
+  border: solid 2px #0f132a1a;
 }
 .login__icon {
   font-size: 1.5rem;
@@ -303,7 +344,7 @@ img {
 .login__input::placeholder {
   font-size: 0.938rem;
   font-family: "Open Sans", sans-serif;
-  color: #a49eac;
+  color: rgb(128, 128, 128, 0.6) !important;
 }
 .login__forgot {
   display: block;
@@ -315,12 +356,14 @@ img {
   color: #a49eac;
 }
 .login__button {
-  width: 316px;
-  padding: 1rem;
-  margin: 2rem 0;
+  width: 275px;
+  max-width: 100%;
+  height: 60px;
+  margin: 1rem 0 0 0;
   background-color: #ffb30e;
   color: #fff;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 300;
   text-align: center;
   border-radius: 0.5rem;
   transition: 0.3s;
@@ -350,6 +393,39 @@ img {
   color: #ffb30e;
   cursor: pointer;
 }
+
+.separator {
+  display: block;
+  margin: 20px auto 0px;
+  text-align: center;
+  height: 40px;
+  position: relative;
+  background: transparent;
+  color: rgba(15, 19, 42, 0.4);
+  font-size: 13px;
+  width: 90%;
+  max-width: 680px;
+}
+
+.separator::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 0;
+  background: rgba(15, 19, 42, 0.2);
+  height: 1px;
+  width: 45%;
+}
+.separator::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  right: 0;
+  background: rgba(15, 19, 42, 0.2);
+  height: 1px;
+  width: 45%;
+}
+/* 
 .login__social {
   margin-top: 2rem;
 }
@@ -357,8 +433,35 @@ img {
   font-size: 1.5rem;
   color: #23004d;
   margin: 0 1rem;
+} */
+
+/* id/pw 찾기 및 회원가입 페이지 이동하기 디자인 */
+.forgotIdPw_goRegister {
+  margin-top: 0.5rem;
 }
 
+
+/* '회원가입하러 가기' 버튼 디자인 */
+.login__signup {
+  border: none;
+  background: #fff;
+  font-family: ONE-Mobile-POP;
+  color: #23004dcc
+}
+
+/* 사진 크기 제어 */
+.snsLogin {
+  text-align: center;
+}
+
+/* 사진 크기 제어 */
+.snsLogin a {
+  display: block;
+}
+
+.img-fluid {
+  height: 60px;;
+}
 .block {
   display: block;
 }
@@ -380,7 +483,7 @@ img {
 }
 @media screen and (min-width: 576px) {
   .login__forms {
-    width: 348px;
+    /* width: 348px; */
     justify-self: center;
   }
 }

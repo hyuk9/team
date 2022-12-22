@@ -117,85 +117,72 @@
         <!-- 푸터 첫 단락 끝 -->
 
 
-        <!-- <hr class="text-900" /> -->
-
+        <!-- <hr class="text-900" /> 가로줄긋는 태그 --> 
 
         <!-- 푸터 두번째 단락 -->
         <div class="row">
           <div class="col-6 col-md-4 col-lg-3 col-xxl-2 mb-3">
-            <h5 class="lh-lg fw-bold text-white">COMPANY</h5>
+            <h5 class="lh-lg fw-bold text-white">메뉴별</h5>
             <ul class="list-unstyled mb-md-4 mb-lg-0">
               <li class="lh-lg">
-                <router-link to = "" class="text-200 text-decoration-none" >About Us</router-link>
+                <router-link to = "" class="text-200 text-decoration-none" >한식</router-link>
               </li>
               <li class="lh-lg">
-                <router-link to = "" class="text-200 text-decoration-none" >Team</router-link>
+                <router-link to = "" class="text-200 text-decoration-none" >중식</router-link>
               </li>
               <li class="lh-lg">
-                <router-link to = "" class="text-200 text-decoration-none" >Careers</router-link>
+                <router-link to = "" class="text-200 text-decoration-none" >일식</router-link>
               </li>
               <li class="lh-lg">
-                <router-link to = "" class="text-200 text-decoration-none" >blog</router-link>
+                <router-link to = "" class="text-200 text-decoration-none" >양식</router-link>
               </li>
             </ul>
           </div>
           <div class="col-6 col-md-4 col-lg-3 col-xxl-2 col-lg-3 mb-3">
-            <h5 class="lh-lg fw-bold text-white">CONTACT</h5>
+            <h5 class="lh-lg fw-bold text-white">지역별</h5>
             <ul class="list-unstyled mb-md-4 mb-lg-0">
               <li class="lh-lg">
                 <router-link to = "" class="text-200 text-decoration-none" 
-                  >Help &amp; Support</router-link>
+                  >서울</router-link>
               </li>
               <li class="lh-lg">
                 <router-link to = "" class="text-200 text-decoration-none" 
-                  >Partner with us
+                  >경기
                 </router-link>
               </li>
               <li class="lh-lg">
                 <router-link to = "" class="text-200 text-decoration-none" 
-                  >Ride with us</router-link>
-              </li>
-              <li class="lh-lg">
-                <router-link to = "" class="text-200 text-decoration-none" 
-                  >Ride with us</router-link>
+                  >부산</router-link>
               </li>
             </ul>
           </div>
           <div class="col-6 col-md-4 col-lg-3 col-xxl-2 mb-3">
-            <h5 class="lh-lg fw-bold text-white">LEGAL</h5>
+            <h5 class="lh-lg fw-bold text-white">테마별</h5>
             <ul class="list-unstyled mb-md-4 mb-lg-0">
               <li class="lh-lg">
                 <router-link to = "" class="text-200 text-decoration-none" 
-                  >Terms &amp; Conditions</router-link>
+                  >데이트</router-link>
               </li>
               <li class="lh-lg">
                 <router-link to = "" class="text-200 text-decoration-none" 
-                  >Refund &amp; Cancellation</router-link>
+                  >모임</router-link>
               </li>
               <li class="lh-lg">
                 <router-link to = "" class="text-200 text-decoration-none" 
-                  >Privacy Policy</router-link>
-              </li>
-              <li class="lh-lg">
-                <router-link to = "" class="text-200 text-decoration-none" 
-                  >Cookie Policy</router-link>
+                  >회식</router-link>
               </li>
             </ul>
           </div>
           <div class="col-6 col-md-4 col-lg-3 col-xxl-2 mb-3">
-            <h5 class="lh-lg fw-bold text-white">LEGAL</h5>
+            <h5 class="lh-lg fw-bold text-white">만든 사람들</h5>
             <ul class="list-unstyled mb-md-4 mb-lg-0">
               <li class="lh-lg">
-                <router-link to = "" class="text-200 text-decoration-none" 
-                  >Terms &amp; Conditions</router-link>
+                <router-link to = "/team" class="text-200 text-decoration-none" 
+                  >팀원 소개</router-link>
               </li>
               <li class="lh-lg">
                 <router-link to = "" class="text-200 text-decoration-none" 
-                  >Refund &amp; Cancellation</router-link>
-              </li>
-              <li class="lh-lg">
-                <router-link to = "" class="text-200 text-decoration-none" 
-                  >Privacy Policy</router-link>
+                  >도움주신분들</router-link>
               </li>
             </ul>
           </div>
@@ -278,12 +265,12 @@
         <div class="row flex-center pb-3">
           <div class="col-md-6 order-0">
             <p class="text-200 text-center text-md-start">
-              All rights Reserved &copy; DD Company, 2022
+              All rights Reserved &copy; Team DD, 2022
             </p>
           </div>
           <div class="col-md-6 order-1">
             <p class="text-200 text-center text-md-end">
-              만든 이&nbsp;
+              만든 사람&nbsp;
               <svg
                 class="bi bi-suit-heart-fill"
                 xmlns="http://www.w3.org/2000/svg"
@@ -299,7 +286,7 @@
                 class="text-200 fw-bold"
                 href="https://themewagon.com/"
                 target="_blank"
-                >D조
+                >Team DD
               </router-link>
             </p>
           </div>

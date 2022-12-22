@@ -70,7 +70,7 @@ public class ReservationService {
 
     //    ✅ dname like 검색 함수 ( 페이징 처리 추가 )
     public Page<Reservation> findAllByRnameContaining(String rname, Pageable pageable) {
-        Page<Reservation> list = reservationRepository.findAllByRnameContaining(rname, pageable);
+        Page<Reservation> list = reservationRepository.findAllByRnameContainingOrderByRidDescInsertTimeDesc(rname, pageable);
 
         return list;
     }

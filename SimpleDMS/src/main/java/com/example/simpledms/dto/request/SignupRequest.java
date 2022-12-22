@@ -34,9 +34,37 @@ public class SignupRequest {
     private String password;
 
     @NotBlank               // 공백 또는 null 허용 안함
+    @Size(min = 6, max= 40) // 자리수가 6 ~ 40 까지만 허용
+    private String name;
+
+    @NotBlank               // 공백 또는 null 허용 안함
     @Size(max= 50)          // 자리수가 50 까지만 허용
     @Email                  // email 형식이 맞는지 체크하는 @
     private String email;
+
+
+    @NotBlank               // 공백 또는 null 허용 안함
+    @Size(max= 50)          // 자리수가 50 까지만 허용
+    @Email                  // birthday 형식이 맞는지 체크하는 @
+    private String birthday;
+
+    @NotBlank               // 공백 또는 null 허용 안함
+    @Size(max= 50)          // 자리수가 50 까지만 허용
+    @Email                  // gender 형식이 맞는지 체크하는 @
+    private String gender;
+
+    @NotBlank               // 공백 또는 null 허용 안함
+    @Size(max= 50)          // 자리수가 50 까지만 허용
+    @Email                  // phone 형식이 맞는지 체크하는 @
+    private String phone;
+
+    @NotBlank               // 공백 또는 null 허용 안함
+    @Size(max= 50)          // 자리수가 50 까지만 허용
+    @Email                  // address 형식이 맞는지 체크하는 @
+    private String address;
+
+
+
 
     private Set<String> role; // 역할 ( ROLE_USER, ROLE_ADMIN )
 

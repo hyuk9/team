@@ -53,6 +53,12 @@
               </table>
           </div>
       </div>
+
+      <div>
+        <button class="btn btn-warning offset-4" type="button">수정</button>
+        <button class="btn btn-danger offset-1" type="button">삭제</button>
+      </div>
+
   </div>
 </template>
 

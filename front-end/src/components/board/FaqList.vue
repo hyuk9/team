@@ -5,8 +5,12 @@
       <div class="container">
         <div class="row flex-center">
           <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0">
-            <a class="img-landing-banner" href="#!"><img class="img-fluid" src="assets/img/gallery/hero-header.png"
-                alt="hero-header" /></a>
+            <a class="img-landing-banner" href="#!"
+              ><img
+                class="img-fluid"
+                src="assets/img/gallery/hero-header.png"
+                alt="hero-header"
+            /></a>
           </div>
           <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
             <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">
@@ -22,44 +26,16 @@
     <!-- TODO FAQ리스트 시작 -->
     <div class="container mt-2 mb-2">
       <h1 class="offset-5">FAQ 게시판</h1>
-      <div style="text-align:center">
+      <div style="text-align: center">
         <div class="p-3 mb-2 bg-warning text-dark bg-opacity-25">
-          <strong>"FAQ를 통해서 원하는 답변을 쉽고 빠르게 찾아보세요"
-            <br>
-            "맛있는 토마토 관련 질문 중 가장 빈도 수가 높은 질문들을 모아, 친절한 답변과 함께 제공해드리고 있습니다."
+          <strong
+            >"FAQ를 통해서 원하는 답변을 쉽고 빠르게 찾아보세요"
+            <br />
+            "맛있는 토마토 관련 질문 중 가장 빈도 수가 높은 질문들을 모아,
+            친절한 답변과 함께 제공해드리고 있습니다."
           </strong>
-
-        </div>
-
-      </div>
-      <!-- search 관련 div 시작 -->
-      <div class="col-md-8 offset-2">
-        <div class="input-group mb-3">
-          <!-- select box 추가 : v-model="searchSelect" -->
-          <div class="col-3">
-            <select class="form-select" v-model="searchSelect">
-              <option>제목</option>
-              <option>내용</option>
-            </select>
-          </div>
-
-          <!-- searchDname -> searchKeyword 변경 -->
-          <div class="col-7 ms-2">
-            <input type="text" class="form-control" placeholder="Search by Question" v-model="searchKeyword" />
-          </div>
-
-          <div class="input-group-append col-1 ms-2">
-            <button type="button" class="btn btn-warning" @click="
-  page = 1;
-retrieveFaq();
-            ">
-              Search
-            </button>
-          </div>
-          <!--            Todo : 수정 끝 -->
         </div>
       </div>
-      <!-- search 관련 div 끝 -->
 
       <!--    Todo : page 바 시작 -->
       <!-- <div class="col-md-12">
@@ -83,13 +59,23 @@ retrieveFaq();
       <div class="accordion accordion-flush" id="accordionFlushExample">
         <div class="accordion-item" v-for="(data, index) in faq" :key="index">
           <h2 class="accordion-header" id="flush-headingOne">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              :data-bs-target="'#flush-'+index" aria-expanded="false" aria-controls="flush-0">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              :data-bs-target="'#flush-' + index"
+              aria-expanded="false"
+              aria-controls="flush-0"
+            ><i class="bi bi-pin-fill"></i>
               {{ data.title }}
             </button>
           </h2>
-          <div :id="'flush-'+index" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
-            data-bs-parent="#accordionFlushExample">
+          <div
+            :id="'flush-' + index"
+            class="accordion-collapse collapse"
+            aria-labelledby="flush-headingOne"
+            data-bs-parent="#accordionFlushExample"
+          >
             <div class="accordion-body">
               {{ data.content }}
             </div>
@@ -97,9 +83,54 @@ retrieveFaq();
         </div>
       </div>
       <div class="overflow-auto offset-5">
-        <b-pagination v-model="page" :total-rows="count" :per-page="pageSize" first-text="<<" last-text=">>"
-          prev-text="Prev" next-text="Next" @change="handlePageChange"></b-pagination>
+        <b-pagination
+          v-model="page"
+          :total-rows="count"
+          :per-page="pageSize"
+          first-text="<<"
+          last-text=">>"
+          prev-text="Prev"
+          next-text="Next"
+          @change="handlePageChange"
+        ></b-pagination>
       </div>
+      <!-- search 관련 div 시작 -->
+      <div class="col-md-8 offset-2">
+        <div class="input-group mb-3">
+          <!-- select box 추가 : v-model="searchSelect" -->
+          <div class="col-3">
+            <select class="form-select" v-model="searchSelect">
+              <option>제목</option>
+              <option>내용</option>
+            </select>
+          </div>
+
+          <!-- searchDname -> searchKeyword 변경 -->
+          <div class="col-7">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search by Question"
+              v-model="searchKeyword"
+            />
+          </div>
+
+          <div class="input-group-append col-2">
+            <button
+              type="button"
+              class="btn btn-warning"
+              @click="
+                page = 1;
+                retrieveFaq();
+              "
+            ><i class="bi bi-search"></i>
+              Search
+            </button>
+          </div>
+          <!--            Todo : 수정 끝 -->
+        </div>
+      </div>
+      <!-- search 관련 div 끝 -->
     </div>
     <!-- TODO FAQ리스트 끝 -->
   </div>
@@ -108,13 +139,11 @@ retrieveFaq();
 <script>
 import FaqDataService from "../../services/FaqDataService";
 export default {
-
   data() {
     return {
       faq: [],
       searchKeyword: "",
       searchSelect: "제목",
-
 
       // 페이징을 위한 변수 정의
       page: 1, // 현재 페이지
@@ -164,13 +193,8 @@ export default {
   mounted() {
     this.retrieveFaq(); // 화면 로딩시 전체 조회함수 실행
   },
-
-
 };
-
-
 </script>
 
 <style>
-
 </style>

@@ -5,12 +5,16 @@
       <div class="container">
         <div class="row flex-center">
           <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0">
-            <a class="img-landing-banner" href="#!"><img class="img-fluid" src="assets/img/gallery/hero-header.png"
-                alt="hero-header" /></a>
+            <a class="img-landing-banner" href="#!"
+              ><img
+                class="img-fluid"
+                src="assets/img/gallery/hero-header.png"
+                alt="hero-header"
+            /></a>
           </div>
           <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
             <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">
-              여기는 공지사항 <br />
+              여기는 자유게시판 <br />
               페이지 입니다
             </h1>
             <h1 class="text-800 mb-5 fs-4">최상단만 제작</h1>
@@ -20,13 +24,14 @@
     </section>
     <!-- 최상단 끝 -->
 
-    <!-- TODO: announce 시작 -->
+    <!-- TODO: free 시작 -->
     <!-- Contact Start -->
     <div class="container mt-2 mb-2">
-      <h1 class="offset-5"><i class="bi bi-star-fill"></i>공지사항<i class="bi bi-star-fill"></i></h1>
+      <h1 class="offset-5">자유게시판</h1>
       <div style="text-align: center">
         <div class="p-3 mb-2 bg-warning text-dark bg-opacity-25">
-          <strong>"공지사항를 통해서 맛있는 토마토의 최신정보를 찾아보세요"
+          <strong
+            >"공지사항를 통해서 맛있는 토마토의 최신정보를 찾아보세요"
             <br />
             "맛있는 토마토의 최신 정보와 공지를 모아서 한번에 찾아볼 수 있습니다.
           </strong>
@@ -67,33 +72,46 @@
               </th>
             </tr>
           </thead>
-          <tbody v-for="(data, index) in announce" :key="index">
+          <tbody v-for="(data, index) in free" :key="index">
             <tr>
-              <td><i class="bi bi-hash"></i>{{ data.ano }}</td>
+              <td><i class="bi bi-hash"></i>{{ data.fno }}</td>
               <td>
-                <router-link :to="'/announceview/' + data.ano"><span>{{ data.title }}</span></router-link>
+                <router-link :to="'/freeview/' + data.fno"
+                  ><span>{{ data.title }}</span></router-link
+                >
               </td>
               <td>{{ data.writer }}</td>
-              <td><i class="bi bi-calendar-date"></i> {{ data.insertTime }}</td>
+              <td> <i class="bi bi-calendar-date"></i>{{ data.insertTime }}</td>
               <td>
-                <router-link :to="'/announce/' + data.ano"><span
-                    class="badge rounded-pill bg-warning text-dark">수정</span></router-link>
+                <router-link :to="'/free/' + data.fno"
+                  ><span class="badge rounded-pill bg-warning text-dark"
+                    >수정</span
+                  ></router-link
+                >
               </td>
             </tr>
           </tbody>
         </table>
 
-        <!-- <router-link to="/add-announce/">
+        <!-- <router-link to="/add-free/">
           <span class="badge bg-warning text-dark">추가</span>
         </router-link> -->
         <!-- TODO: badge를 버튼으로 교체 -->
-        <router-link class="offset-11" to="/add-announce/">
+        <router-link class="offset-11" to="/add-free/">
           <button type="button" class="btn btn-warning btn-sm">글쓰기</button>
         </router-link>
       </div>
       <div class="overflow-auto offset-5">
-        <b-pagination v-model="page" :total-rows="count" :per-page="pageSize" first-text="<<" last-text=">>"
-          prev-text="Prev" next-text="Next" @change="handlePageChange"></b-pagination>
+        <b-pagination
+          v-model="page"
+          :total-rows="count"
+          :per-page="pageSize"
+          first-text="<<"
+          last-text=">>"
+          prev-text="Prev"
+          next-text="Next"
+          @change="handlePageChange"
+        ></b-pagination>
       </div>
       <!-- search 관련 div 시작 -->
       <div class="col-md-8 offset-2">
@@ -108,14 +126,23 @@
 
           <!-- searchDname -> searchKeyword 변경 -->
           <div class="col-7">
-            <input type="text" class="form-control" placeholder="Search by Question" v-model="searchKeyword" />
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search by Question"
+              v-model="searchKeyword"
+            />
           </div>
 
           <div class="input-group-append col-2">
-            <button class="btn btn-warning" type="button" @click="
-              page = 1;
-            retrieveAnnounce();
-            "><i class="bi bi-search"></i>
+            <button
+              class="btn btn-warning"
+              type="button"
+              @click="
+                page = 1;
+                retrieveFree();
+              "
+            ><i class="bi bi-search"></i>
               Search
             </button>
           </div>
@@ -125,16 +152,16 @@
       <!-- search 관련 div 끝 -->
     </div>
     <!-- Contact End -->
-    <!-- TODO: announce 끝 -->
+    <!-- TODO: free 끝 -->
   </div>
 </template>
 
 <script>
-import AnnounceDataService from "../../../services/AnnounceDataService";
+import FreeDataService from "../../../services/FreeDataService";
 export default {
   data() {
     return {
-      announce: [],
+      free: [],
       searchKeyword: "",
       searchSelect: "작성자",
 
@@ -148,8 +175,8 @@ export default {
   },
   methods: {
     // axios , 모든 정보 조회 요청 함수
-    retrieveAnnounce() {
-      AnnounceDataService.getAll(
+    retrieveFree() {
+      FreeDataService.getAll(
         this.searchSelect, // select box 선택된 값
         this.searchKeyword, // 검색어
         this.page - 1,
@@ -157,8 +184,8 @@ export default {
       )
         // 성공하면 .then() 결과가 전송됨
         .then((response) => {
-          const { announce, totalItems } = response.data; // springboot 의 전송된 맵 정보
-          this.announce = announce; // 스프링부트에서 전송한 데이터
+          const { free, totalItems } = response.data; // springboot 의 전송된 맵 정보
+          this.free = free; // 스프링부트에서 전송한 데이터
           this.count = totalItems; // 스프링부트에서 전송한 페이지정보(총 건수)
           // 디버깅 콘솔에 정보 출력
           console.log(response.data);
@@ -173,22 +200,21 @@ export default {
       this.pageSize = event.target.value; // 한페이지당 개수 저장(3, 6, 9)
       this.page = 1;
       // 재조회 함수 호출
-      this.retrieveAnnounce();
+      this.retrieveFree();
     },
     // 페이지 번호 변경시 실행되는 함수(재조회)
     handlePageChange(value) {
       this.page = value; // 매개변수값으로 현재페이지 변경
       // 재조회 함수 호출
-      this.retrieveAnnounce();
+      this.retrieveFree();
     },
   },
   // 화면이 뜨자마자 실행되는 이벤트(라이프 사이클 함수) : mounted(), created()
   mounted() {
-    this.retrieveAnnounce(); // 화면 로딩시 전체 조회함수 실행
+    this.retrieveFree(); // 화면 로딩시 전체 조회함수 실행
   },
 };
 </script>
 
 <style>
-
 </style>
