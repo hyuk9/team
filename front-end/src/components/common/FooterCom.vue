@@ -117,8 +117,7 @@
         <!-- 푸터 첫 단락 끝 -->
 
 
-        <!-- <hr class="text-900" /> -->
-
+        <!-- <hr class="text-900" /> 가로줄긋는 태그 --> 
 
         <!-- 푸터 두번째 단락 -->
         <div class="row">
@@ -178,7 +177,7 @@
             <h5 class="lh-lg fw-bold text-white">만든 사람들</h5>
             <ul class="list-unstyled mb-md-4 mb-lg-0">
               <li class="lh-lg">
-                <router-link to = "" class="text-200 text-decoration-none" 
+                <router-link to = "/team" class="text-200 text-decoration-none" 
                   >팀원 소개</router-link>
               </li>
               <li class="lh-lg">
@@ -266,12 +265,12 @@
         <div class="row flex-center pb-3">
           <div class="col-md-6 order-0">
             <p class="text-200 text-center text-md-start">
-              All rights Reserved &copy; DD Company, 2022
+              All rights Reserved &copy; Team DD, 2022
             </p>
           </div>
           <div class="col-md-6 order-1">
             <p class="text-200 text-center text-md-end">
-              만든 이&nbsp;
+              만든 사람&nbsp;
               <svg
                 class="bi bi-suit-heart-fill"
                 xmlns="http://www.w3.org/2000/svg"
@@ -287,7 +286,7 @@
                 class="text-200 fw-bold"
                 href="https://themewagon.com/"
                 target="_blank"
-                >D조
+                >Team DD
               </router-link>
             </p>
           </div>

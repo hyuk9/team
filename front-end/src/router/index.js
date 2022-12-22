@@ -138,6 +138,12 @@ const routes = [
     name: "reservation-detail",
     component: () => import("../components/reservation/ReservationDetail.vue"),
   },
+  // 팀원 소개 페이지
+  {
+    path: "/team",
+    name: "team",
+    component: () => import("../components/introduce/IntroduceView.vue"),
+  },
 ];
 
 const router = new VueRouter({
