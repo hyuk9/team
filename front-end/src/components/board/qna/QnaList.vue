@@ -74,7 +74,7 @@
                 <router-link :to="'/qnaview/' + data.qno"><span>{{ data.title }}</span></router-link>
               </td>
               <td>{{ data.questioner }}</td>
-              <td><i class="bi bi-calendar-date"></i>{{ data.insertTime }}</td>
+              <td> <i class="bi bi-calendar-date"></i>{{ data.insertTime }}</td>
               <td>
                 <router-link :to="'/qna/' + data.qno"><span
                     class="badge rounded-pill bg-warning text-dark">수정</span></router-link>

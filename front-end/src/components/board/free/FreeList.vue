@@ -81,7 +81,7 @@
                 >
               </td>
               <td>{{ data.writer }}</td>
-              <td><i class="bi bi-calendar-date"></i>{{ data.insertTime }}</td>
+              <td> <i class="bi bi-calendar-date"></i>{{ data.insertTime }}</td>
               <td>
                 <router-link :to="'/free/' + data.fno"
                   ><span class="badge rounded-pill bg-warning text-dark"
