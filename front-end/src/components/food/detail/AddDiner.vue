@@ -48,7 +48,7 @@
             <div class="form-group">
               <label for="score">평점</label>
               <input
-              type="text"
+                type="text"
                 class="form-control"
                 id="score"
                 required
@@ -73,7 +73,7 @@
             <div class="form-group">
               <label for="phone">전화번호</label>
               <input
-              type="text"
+                type="text"
                 class="form-control"
                 id="phone"
                 required
@@ -86,7 +86,7 @@
             <div class="form-group">
               <label for="menu">메뉴</label>
               <input
-              type="text"
+                type="text"
                 class="form-control"
                 id="menu"
                 required
@@ -99,7 +99,7 @@
             <div class="form-group">
               <label for="photo" class="form-label">사진</label>
               <input
-              type="image"
+                type="text"
                 class="form-control"
                 id="photo"
                 required
@@ -115,6 +115,7 @@
                 <!--  파일 선택상자  -->
                 <input
                   type="file"
+                  multiple
                   accept="image/*"
                   ref="file"
                   @change="selectImage"
@@ -156,6 +157,27 @@
           </div>
 
           <!-- 새 양식 폼 끝 -->
+          <!-- <!— 쇼핑 카트 형태 디자인 시작 —> -->
+          <!-- <!— v-for 시작 —> -->
+          <div class="row">
+            <div
+              class="col-sm-4"
+              v-for="(data, index) in galleryDb"
+              :key="index"
+            >
+              <div class="card">
+                <img :src="data.galleryUrl" class="card-img-top" alt="강의" />
+                <div class="card-body">
+                  <h5 class="card-title">{{ data.galleryTitle }}</h5>
+                  <a style="color: inherit" @click="deleteImage(data.gid)">
+                    <!-- <!— <i class="fas fa-trash" /> —> -->
+                    <span class="badge bg-danger">Delete</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <!— 쇼핑 카트 형태 디자인 끝 —> -->
         </div>
       </div>
     </main>
@@ -174,6 +196,10 @@ export default {
       previewImage: undefined, // 미리보기 이미지 변수
       message: "", // 서버쪽 메세지를 저장할 변수
       galleryDb: [], // 이미지 객체 배열
+      searchTitle: "", // 이미지명으로 검색하는 변수
+
+      // springboot 에 요청할 변수, 이미지명(galleryTitle), 내용(content)
+      galleryTitle: "",
 
       diner: {
         dno: null,
@@ -184,7 +210,7 @@ export default {
         menu: "",
         phone: "",
         // springboot 에 요청할 변수, 이미지명(galleryTitle), 내용(content)
-        photo: "",
+        photo: [],
       },
       // submit 버튼을 클릭하면 true 가 되고, You submitted successfully! 화면에 출력됨
       submitted: false,
@@ -224,8 +250,8 @@ export default {
       this.submitted = false;
       this.diner = {};
     },
-      // 파일 선택상자에서 선택한 이미지를 저장하는 함수
-      selectImage() {
+    // 파일 선택상자에서 선택한 이미지를 저장하는 함수
+    selectImage() {
       // 첫번째 선택한 이미지를 변수에 저장
       // this.$refs : $refs 속성이 있는 컨트롤이 선택됨
       this.currentImage = this.$refs.file.files.item(0);
@@ -234,10 +260,7 @@ export default {
       this.message = "";
     }, // upload 함수
     upload() {
-      DinerDataService.upload(
-        this.galleryTitle,
-        this.currentImage
-      )
+      DinerDataService.upload(this.galleryTitle, this.currentImage)
         // insert 성공 then()
         .then((response) => {
           // 서버쪽 성공 메세지를 저장
