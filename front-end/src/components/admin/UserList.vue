@@ -13,7 +13,7 @@
               /></a>
             </div>
             <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
-              <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">사이트</h1>
+              <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">사이트 유저 목록 확인</h1>
               <h1 class="text-800 mb-5 fs-4">
                 <br />회원관리 게시판
               </h1>
@@ -76,9 +76,9 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Username</th>
-          <th scope="col">Email</th>
-          <th scope="col">roles</th>
+          <th scope="col">유저명</th>
+          <th scope="col">이메일</th>
+          <th scope="col">권한</th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -90,7 +90,7 @@
           <td>{{ data.name }}</td>
           <td>
             <router-link :to="'/user/' + data.id"
-              ><span class="badge bg-success">Edit</span></router-link
+              ><span class="badge bg-success">수정하기</span></router-link
             >
           </td>
         </tr>
