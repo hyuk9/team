@@ -162,7 +162,6 @@ export default {
                 showConfirmButton: false,
                 timer: 1000,
               });
-              this.$router.push("/profile"); // 로그인 성공하면 강제 /profile 페이지 이동
               // 모달창 닫기
               this.close();
             })

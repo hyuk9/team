@@ -237,7 +237,6 @@ export default {
         showConfirmButton: false,
         timer: 1000,
       });
-      this.$router.push("/"); // 강제 홈페이지로 이동
     },
   },
 

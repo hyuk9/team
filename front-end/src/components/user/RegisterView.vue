@@ -142,15 +142,16 @@
           />
         </div>
         <!-- 주소 -->
-        <!-- api 추가 예정 -->
         <div class="input__block">
           <h5>주소</h5>
           <input
-            v-model="user.address"
+
             type="text"
             placeholder="주소를 입력해 주세요."
             class="input"
             id="address"
+            ref="log"
+            @click="popupaddress"
           />
         </div>
         <!-- sign in button -->
@@ -240,17 +241,27 @@ export default {
           });
       });
     },
+
+
     // 클릭시 카카오 주소 api 띄우고 주소검색 데이터를 input 태그로 가져오는 함수
     popupaddress() {
+      console.log(this.user)
       new daum.Postcode({
         oncomplete: function (data) {
           let address = data.address;
+          console.log(address)
+          console.log(this.user)
           if (address !== "") {
-            document.getElementById("address").value = address;
+            document.getElementById("address").value= address;
+            // this.user.address= address;
+
           }
         },
         shorthand: false,
       }).open();
+
+      console.log(this.$refs.log);
+
     },
   },
   mounted() {
