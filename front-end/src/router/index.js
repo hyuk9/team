@@ -163,6 +163,11 @@ const routes = [
     name: "team",
     component: () => import("../components/introduce/IntroduceView.vue"),
   },
+  {
+    path: '/findIdPw',
+    name: 'findIdPw',
+    component: () => import('../components/user/FindIdPw.vue')
+  }
 ];
 
 const router = new VueRouter({

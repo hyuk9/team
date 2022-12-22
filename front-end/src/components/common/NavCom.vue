@@ -30,9 +30,8 @@
               >
                 음식점 리스트
               </router-link>
-              <!-- 각 메뉴 누르면 전체리스트에서 매개변수로 넘긴 다음 필터링 된 페이지 리스트를 보여주게 설계할 예정 -->
               <ul class="dropdown-menu">
-                <li class="dropdown-header">지역별</li>
+                <li class="dropdown-header">지역별1111</li>
                 <li>
                   <router-link to="/local" class="dropdown-item"
                     >서울</router-link
@@ -108,58 +107,6 @@
                 </li>
               </ul>
             </li>
-            <!-- 임시로 만든 예약 네비게이션 시작 -->
-            <li class="nav-item dropdown">
-              <router-link
-                to=""
-                class="nav-link dropdown-toggle"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                예약(임시)
-              </router-link>
-              <ul class="dropdown-menu">
-                <li>
-                  <router-link to="/reservation" class="dropdown-item"
-                    >예약 조회하기</router-link
-                  >
-                </li>
-                <li>
-                  <router-link to="/add-reservation" class="dropdown-item"
-                    >예약하기</router-link
-                  >
-                </li>
-              </ul>
-            </li>
-            <!-- 임시로 만든 예약 네비게이션 끝 -->
-
-            <!-- 관리자 전용 페이지 시작 -->
-            <!-- showAdminBoard가 동작하면 보이게 작동 -->
-            <li v-if="showAdminBoard" class="nav-item dropdown">
-              <router-link
-                to=""
-                class="nav-link dropdown-toggle"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                관리자 전용(관리자만 보이게 설정)
-              </router-link>
-              <ul class="dropdown-menu">
-                <li>
-                  <router-link to="/user" class="dropdown-item"
-                    >유저 목록 조회하기</router-link
-                  >
-                </li>
-                <li>
-                  <router-link to="/reservation" class="dropdown-item"
-                    >예약현황 조회하기</router-link
-                  >
-                </li>
-              </ul>
-            </li>
-            <!-- 관리자 전용 페이지 끝 -->
           </ul>
         </div>
 
@@ -181,8 +128,6 @@
                 aria-label="Search"
               />
             </div>
-              <button v-on="searchAll">검색</button>
-            
             <!-- 검색창 끝 -->
 
             <div v-if="!currentUser">
@@ -196,16 +141,21 @@
               <!-- 회원가입 끝 -->
 
               <!-- 로그인 시작 -->
-              <router-link to="/login" class="btn btn-white text-warning login">
+              <!-- 부트스트랩 뷰 의 모달 기능 사용하기 -->
+              <b-button
+                v-b-modal.modal-1
+                class="btn btn-white text-warning ms-1 login"
+                id="loginButton"
+              >
                 <i class="fas fa-user me-2"></i>로그인
-              </router-link>
+              </b-button>
               <!-- 로그인 끝 -->
             </div>
             <div v-if="currentUser">
               <!-- 프로필 시작 -->
               <router-link
                 to="/profile"
-                class="btn btn-white text-warning profile"
+                class="btn btn-white text-warning login"
               >
                 <i class="fas fa-user me-2"></i>프로필
               </router-link>
@@ -214,7 +164,7 @@
               <!-- 로그아웃 시작 -->
               <a
                 @click.prevent="logout"
-                class="btn btn-white text-warning logout"
+                class="btn btn-white text-warning  ms-1 login"
               >
                 <i class="fas fa-user me-2"></i>
                 로그아웃
@@ -226,11 +176,34 @@
       </div>
     </nav>
     <!-- 네비게이션 바 끝 -->
+
+    <!-- 로그인 모달 내용 시작 -->
+    <b-modal id="modal-1" title="로그인"  hide-footer="true"  >
+      <!-- 로그인 모달 컴포넌트를 내용으로 가져오기 -->
+    <LoginView/>
+    <!-- 모달창 끄기용 가짜버튼(화면에 안보임) -->
+    <b-button @click="$bvModal.hide('modal-1')" ref="button" class="b-button"></b-button>
+    </b-modal>
+    <!-- 로그인 모달 내용 끝 -->
   </div>
 </template>
 
 <script>
+/* eslint-disable */
+// 부트스트랩 뷰 의 모달 기능 사용하기
+import { BModal } from "bootstrap-vue";
+// 로그인 뷰 페이지를 컴포넌트로 가져오기
+import LoginView from "@/components/user/LoginView.vue";
+
 export default {
+
+
+  // 부트스트랩 뷰 의 모달 기능 사용하기, 로그인 뷰 페이지를 컴포넌트로 가져오기
+  components: {
+    BModal,
+    LoginView
+  },
+
   computed: {
     // 현재 유저
     currentUser() {
@@ -238,6 +211,7 @@ export default {
       // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
       return this.$store.state.auth.user;
     },
+
     // 관리자 접속인지 아닌지 확인하는 함수
     showAdminBoard() {
       if (this.currentUser && this.currentUser.roles) {
@@ -248,6 +222,8 @@ export default {
       // currentUser 없으면 false (메뉴가 안보임)
       return false;
     },
+
+
   },
   methods: {
     // 로그아웃 함수 -> 공통함수 호출
@@ -264,6 +240,29 @@ export default {
       this.$router.push("/"); // 강제 홈페이지로 이동
     },
   },
+
+// 모달 적용시 로그인 버튼에 강제적으로 추가되어 css를 바꾸는 클래스 삭제하기
+mounted() {
+  var ele = document.getElementById('loginButton');
+  ele.classList.remove('btn-secondary');
+
+  
+  this.$store.subscribeAction((action, state) => {
+      if (action.type === 'clickButton') {
+        // Trigger the click event on the button element
+        this.$refs.button.click();
+      }
+    });
+
+
+},
+// 모달 적용시 로그인 버튼에 강제적으로 추가되어 css를 바꾸는 클래스 삭제하기
+updated() {
+    var ele = document.getElementById('loginButton');
+  ele.classList.remove('btn-secondary');
+
+},
+ 
 };
 </script>
 
@@ -272,4 +271,20 @@ export default {
   display: block;
   margin-top: 0;
 } */
+
+/* 로그인 모달의 x 버튼 커마 */
+.close {
+  background: none;
+  border: none;
+  font-size: 2rem;
+}
+
+/* 모달안에 안보여야 할 버튼 숨기기 */
+.b-button {
+  display: none;
+}
+
+.modal-dialog{
+  display: table
+}
 </style>
