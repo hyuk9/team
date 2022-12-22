@@ -134,10 +134,14 @@ DROP TABLE TB_USER_ROLE CASCADE CONSTRAINTS;
 
 -- 유저 테이블
 CREATE TABLE TB_USER(
-                        ID NUMBER NOT NULL PRIMARY KEY,
-                        EMAIL VARCHAR2(1000),
-                        PASSWORD VARCHAR2(1000),
-                        USERNAME VARCHAR2(1000),
+                        ID          NUMBER NOT NULL PRIMARY KEY,
+                        USERNAME    VARCHAR2(1000),
+                        EMAIL       VARCHAR2(1000),
+                        PASSWORD    VARCHAR2(1000),
+                        BIRTHDAY    VARCHAR2(1000),
+                        GENDER      VARCHAR2(1000),
+                        PHONE       VARCHAR2(1000),
+                        ADDRESS     VARCHAR2(1000),
                         DELETE_YN   VARCHAR2(1) DEFAULT 'N',
                         INSERT_TIME VARCHAR2(255),
                         UPDATE_TIME VARCHAR2(255),
@@ -145,8 +149,8 @@ CREATE TABLE TB_USER(
 );
 -- 역할 테이블 : ROLE_USER, ROLE_ADMIN
 CREATE TABLE TB_ROLE(
-                        RID NUMBER NOT NULL PRIMARY KEY,
-                        NAME VARCHAR2(1000) UNIQUE,
+                        RID         NUMBER NOT NULL PRIMARY KEY,
+                        NAME        VARCHAR2(1000) UNIQUE,
                         DELETE_YN   VARCHAR2(1) DEFAULT 'N',
                         INSERT_TIME VARCHAR2(255),
                         UPDATE_TIME VARCHAR2(255),
