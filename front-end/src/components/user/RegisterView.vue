@@ -161,6 +161,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import User from "@/model/user";
 
 export default {
@@ -168,7 +169,7 @@ export default {
     return {
       // 기본적으로 ROLE_USER로 받고 ROLE 정보를 화면에서 수정할 수 있는 기능을 추가
       // TODO: user 객체 role 매개변수 추가
-      user: new User("", "", "","","","","","", "ROLE_USER"),
+      user: new User("", "", "", "", "", "", "", "", "ROLE_USER"),
       submitted: false,
       successful: false,
       message: "",
@@ -239,12 +240,22 @@ export default {
           });
       });
     },
+    // 클릭시 카카오 주소 api 띄우고 주소검색 데이터를 input 태그로 가져오는 함수
+    popupaddress() {
+      new daum.Postcode({
+        oncomplete: function (data) {
+          let address = data.address;
+          if (address !== "") {
+            document.getElementById("address").value = address;
+          }
+        },
+        shorthand: false,
+      }).open();
+    },
   },
   mounted() {
     // 날짜에 현재날짜로 placeholder 표시하기
-    this.user.birthday = new Date()
-      .toISOString()
-      .substring(0, 10);
+    this.user.birthday = new Date().toISOString().substring(0, 10);
   },
 };
 </script>
@@ -405,5 +416,4 @@ form .signin__btn:hover {
 button {
   font-family: ONE-Mobile-POP !important;
 }
-
 </style>
