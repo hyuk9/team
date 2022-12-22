@@ -1,11 +1,11 @@
 <template>
   <div>
-    <link
+    <!-- <link
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
       rel="stylesheet"
-    />
+    /> -->
 
-    <div class="login">
+    <div class="container">
       <div class="login_middle">
         <!-- 토마토 사진 삭제 -->
         <!-- <div class="login__img">
@@ -20,7 +20,7 @@
             name="form"
             @submit.prevent="handleLogin"
           >
-            <div v-if="!successful">
+            <div>
               <!-- <h1 class="login__title">로그인</h1> -->
               <div class="login__upperbox">
                 <h5>아이디</h5>
@@ -53,6 +53,26 @@
               </div>
 
               <button class="login__button">로그인</button>
+               <div class="forgotIdPw_goRegister">
+                <router-link to="#">
+                  <button class="login__signup login__signup--signup" @click="close()"
+                  >아이디/비밀번호를 잊어버리셨나요?</button></router-link
+                >
+                &nbsp;
+
+                <!-- 회원가입페이지로 이동과 로그인 모달창을 끄는것을 동시에 하기 위해
+                 라우터 링크와 버튼 2개를 사용 -->
+                <router-link to="/register">
+                  <button
+                    class="login__signup login__signup--signup"
+                    id="sign-in"
+                    @click="close()"
+                  >
+                    회원가입 하기
+                  </button></router-link
+                >
+                <!-- @click="$bvModal.hide('bv-modal-example')" -->
+              </div>
 
               <div class="separator">
                 <p>또는</p>
@@ -77,40 +97,7 @@
                     class="img-fluid"
                 /></a>
               </div>
-              <div>
-                <span class="login__account login__account--account"
-                  >회원이 아직 아니신가요?</span
-                >
-                &nbsp;
-
-                <!-- 회원가입페이지로 이동과 로그인 모달창을 끄는것을 동시에 하기 위해
-                 라우터 링크와 버튼 2개를 사용 -->
-                <router-link to="/register">
-                  <button
-                    class="login__signup login__signup--signup"
-                    id="sign-in"
-                    @click="close()"
-                  >
-                    회원가입 하기
-                  </button></router-link
-                >
-                <!-- @click="$bvModal.hide('bv-modal-example')" -->
-              </div>
-
-              <!-- <div class="login__social">
-                <a href="#" class="login__social--icon"
-                  ><i class="bx bxl-facebook"></i
-                ></a>
-                <a href="#" class="login__social--icon"
-                  ><i class="bx bxl-twitter"></i
-                ></a>
-                <a href="#" class="login__social--icon"
-                  ><i class="bx bxl-google"></i
-                ></a>
-                <a href="#" class="login__social--icon"
-                  ><i class="bx bxl-github"></i
-                ></a>
-              </div> -->
+             
             </div>
           </form>
         </div>
@@ -270,7 +257,7 @@ h1 {
 h5 {
   text-align: left;
   color: #ffb30e;
-  margin: 20px 0 20px 10px;
+  margin: 15px 0 15px 10px;
 }
 
 a {
@@ -284,13 +271,13 @@ a {
   display: block;
 } */
 
-.login {
+/* .login {
   display: grid;
   grid-template-columns: 100%;
   height: 100vh;
   margin-left: 1.5rem;
   margin-right: 1.5rem;
-}
+} */
 /* .login__content {
   display: grid;
 } */
@@ -326,9 +313,10 @@ a {
 }
 
 .login__upperbox {
-  width: 504px;
+  width: 275px;
   max-width: 100%;
-  display: inline-block;
+  margin: 0 auto;
+  display: block;
 }
 
 .login__box {
@@ -338,7 +326,7 @@ a {
   column-gap: 0.5rem;
   padding: 1.125rem 1rem;
   background-color: #fff;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   border-radius: 0.5rem;
   border: solid 2px #0f132a1a;
 }
@@ -369,14 +357,14 @@ a {
   color: #a49eac;
 }
 .login__button {
-  width: 504px;
+  width: 275px;
   max-width: 100%;
-  height: 93px;
-  margin: 2rem 0 0 0;
+  height: 60px;
+  margin: 1rem 0 0 0;
   background-color: #ffb30e;
   color: #fff;
-  font-size: 50px;
-  font-weight: 400;
+  font-size: 20px;
+  font-weight: 300;
   text-align: center;
   border-radius: 0.5rem;
   transition: 0.3s;
@@ -409,7 +397,7 @@ a {
 
 .separator {
   display: block;
-  margin: 30px auto 10px;
+  margin: 20px auto 0px;
   text-align: center;
   height: 40px;
   position: relative;
@@ -448,11 +436,18 @@ a {
   margin: 0 1rem;
 } */
 
+/* id/pw 찾기 및 회원가입 페이지 이동하기 디자인 */
+.forgotIdPw_goRegister {
+  margin-top: 0.5rem;
+}
+
+
 /* '회원가입하러 가기' 버튼 디자인 */
 .login__signup {
   border: none;
   background: #fff;
   font-family: ONE-Mobile-POP;
+  color: #23004dcc
 }
 
 /* 사진 크기 제어 */
@@ -465,6 +460,9 @@ a {
   display: block;
 }
 
+.img-fluid {
+  height: 60px;;
+}
 .block {
   display: block;
 }

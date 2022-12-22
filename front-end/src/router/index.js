@@ -65,12 +65,6 @@ const routes = [
     name: 'qna-detail',
     component: () => import('../components/board/qna/QnaDetailView.vue')
   },
-  // TODO: 로그인 메뉴 달기
-  {
-    path: '/login',
-    name: 'login',
-    component: () => import('@/components/user/LoginView.vue')
-  },
   {
     path: '/register',
     name: 'register',
