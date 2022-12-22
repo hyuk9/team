@@ -47,44 +47,30 @@
                     >부산</router-link
                   >
                 </li>
-                <li><hr class="dropdown-divider"></li>
+                <li><hr class="dropdown-divider" /></li>
                 <li class="dropdown-header">메뉴별</li>
                 <li>
-                  <router-link to="/" class="dropdown-item"
-                    >한식</router-link
-                  >
+                  <router-link to="/" class="dropdown-item">한식</router-link>
                 </li>
                 <li>
-                  <router-link to="/" class="dropdown-item"
-                    >중식</router-link
-                  >
+                  <router-link to="/" class="dropdown-item">중식</router-link>
                 </li>
                 <li>
-                  <router-link to="/" class="dropdown-item"
-                    >일식</router-link
-                  >
+                  <router-link to="/" class="dropdown-item">일식</router-link>
                 </li>
                 <li>
-                  <router-link to="/" class="dropdown-item"
-                    >양식</router-link
-                  >
+                  <router-link to="/" class="dropdown-item">양식</router-link>
                 </li>
-                <li><hr class="dropdown-divider"></li>
+                <li><hr class="dropdown-divider" /></li>
                 <li class="dropdown-header">테마별</li>
                 <li>
-                  <router-link to="/" class="dropdown-item"
-                    >데이트</router-link
-                  >
+                  <router-link to="/" class="dropdown-item">데이트</router-link>
                 </li>
                 <li>
-                  <router-link to="/" class="dropdown-item"
-                    >모임</router-link
-                  >
+                  <router-link to="/" class="dropdown-item">모임</router-link>
                 </li>
                 <li>
-                  <router-link to="/" class="dropdown-item"
-                    >회식</router-link
-                  >
+                  <router-link to="/" class="dropdown-item">회식</router-link>
                 </li>
               </ul>
             </li>
@@ -121,6 +107,7 @@
                 </li>
               </ul>
             </li>
+            <!-- 임시로 만든거 시작 -->
             <li class="nav-item dropdown">
               <router-link
                 to=""
@@ -129,16 +116,22 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                관리자용 게시판
+                예약
               </router-link>
               <ul class="dropdown-menu">
                 <li>
-                  <router-link to="/user" class="dropdown-item"
-                    >회원관리</router-link
+                  <router-link to="/reservation" class="dropdown-item"
+                    >예약 조회하기</router-link
+                  >
+                </li>
+                <li>
+                  <router-link to="/add-reservation" class="dropdown-item"
+                    >예약하기</router-link
                   >
                 </li>
               </ul>
             </li>
+            <!-- 임시로 만든거 끝 -->
           </ul>
         </div>
 
@@ -173,10 +166,7 @@
               <!-- 회원가입 끝 -->
 
               <!-- 로그인 시작 -->
-              <router-link
-                to="/login"
-                class="btn btn-white text-warning login"
-              >
+              <router-link to="/login" class="btn btn-white text-warning login">
                 <i class="fas fa-user me-2"></i>로그인
               </router-link>
               <!-- 로그인 끝 -->
@@ -206,8 +196,6 @@
       </div>
     </nav>
     <!-- 네비게이션 바 끝 -->
-
-    
   </div>
 </template>
 
@@ -245,4 +233,3 @@ export default {
   margin-top: 0;
 } */
 </style>
-
