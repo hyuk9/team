@@ -178,7 +178,7 @@
     <!-- 네비게이션 바 끝 -->
 
     <!-- 로그인 모달 내용 시작 -->
-    <b-modal id="modal-1" title="로그인" cente hide-footer="true"  >
+    <b-modal id="modal-1" title="로그인"  hide-footer="true"  >
       <!-- 로그인 모달 컴포넌트를 내용으로 가져오기 -->
     <LoginView/>
     <!-- 모달창 끄기용 가짜버튼(화면에 안보임) -->
