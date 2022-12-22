@@ -35,7 +35,26 @@ const routes = [
   {
     path: '/free',
     name: 'free',
-    component: () => import('@/components/board/FreeList.vue')
+    component: () => import('@/components/board/free/FreeList.vue')
+  },
+  // AddFree 
+  {
+    path: '/add-free',
+    name: 'add-free',
+    component: () => import('../components/board/free/AddFreeView.vue')
+  },
+
+  // FreeDetail 
+  {
+    path: '/free/:fno',
+    name: 'free-detail',
+    component: () => import('../components/board/free/FreeDetailView.vue')
+  },
+  // FreeView
+  {
+    path: '/freeview/:fno',
+    name: 'free-view',
+    component: () => import('../components/board/free/FreeView.vue')
   },
   {
     path: '/announce',
