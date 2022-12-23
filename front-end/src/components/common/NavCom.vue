@@ -5,7 +5,7 @@
       class="navbar navbar-expand-lg navbar-light bg-light fixed-top"
       data-navbar-on-scroll="data-navbar-on-scroll"
     >
-      <div class="container">
+      <div class="site-navigation container">
         <!-- 로고명과 이미지 시작 -->
         <router-link to="/" class="navbar-brand d-inline-flex">
           <!-- <img
@@ -17,7 +17,6 @@
           >
         </router-link>
         <!-- 로고명과 이미지 끝 -->
-
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item dropdown">
@@ -31,8 +30,8 @@
                 음식점 리스트
               </router-link>
               <ul class="dropdown-menu">
-                <li class="dropdown-header">지역별</li>
-                <li>
+                <li class="dropdown-item disabled">지역별</li>
+                <li class="has-children">
                   <router-link to="/diner" class="dropdown-item"
                     >서울</router-link
                   >
@@ -48,7 +47,7 @@
                   >
                 </li>
                 <li><hr class="dropdown-divider" /></li>
-                <li class="dropdown-header">메뉴별</li>
+                <li class="dropdown-item disabled">메뉴별</li>
                 <li>
                   <router-link to="/" class="dropdown-item">한식</router-link>
                 </li>
@@ -62,7 +61,7 @@
                   <router-link to="/" class="dropdown-item">양식</router-link>
                 </li>
                 <li><hr class="dropdown-divider" /></li>
-                <li class="dropdown-header">테마별</li>
+                <li class="dropdown-item disabled">테마별</li>
                 <li>
                   <router-link to="/" class="dropdown-item">데이트</router-link>
                 </li>
@@ -333,4 +332,5 @@ export default {
 .modal-dialog {
   display: table;
 }
+/* @import "../../../public/assets/css/navstyle.css" */
 </style>
