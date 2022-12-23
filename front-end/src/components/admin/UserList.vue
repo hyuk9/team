@@ -1,46 +1,71 @@
 <template>
   <div>
-      <!-- 최상단 시작 -->
-      <section class="py-5 overflow-hidden bg-warning" id="home">
-        <div class="container">
-          <div class="row flex-center">
-            <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0">
-              <a class="img-landing-banner" href="#!"
-                ><img
-                  class="img-fluid"
-                  src="assets/img/gallery/hero-header.png"
-                  alt="hero-header"
-              /></a>
-            </div>
-            <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
-              <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">사이트 유저 목록 확인</h1>
-              <h1 class="text-800 mb-5 fs-4">
-                <br />회원관리 게시판
-              </h1>
-            </div>
+    <!-- 최상단 시작 -->
+    <section class="py-5 overflow-hidden bg-warning" id="home">
+      <div class="container">
+        <div class="row flex-center">
+          <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0">
+            <a class="img-landing-banner" href="#!"><img class="img-fluid" src="assets/img/gallery/hero-header.png"
+                alt="hero-header" /></a>
+          </div>
+          <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
+            <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">사이트 유저 목록 확인</h1>
+            <h1 class="text-800 mb-5 fs-4">
+              <br />회원관리 게시판
+            </h1>
           </div>
         </div>
-      </section>
-      <!-- 최상단 끝 -->
+      </div>
+    </section>
+    <!-- 최상단 끝 -->
+    <div class="container mt-2 mb-2">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">유저명</th>
+            <th scope="col">이메일</th>
+            <th scope="col">권한</th>
+            <th scope="col">기능</th>
+          </tr>
+        </thead>
+        <tbody v-for="(data, index) in user" :key="index">
+          <tr>
+            <td>{{ data.username }}</td>
+            <!-- <td>{{ data.lastName }}</td>  -->
+            <td>{{ data.email }}</td>
+            <td>{{ data.name }}</td>
+            <td>
+              <router-link :to="'/user/' + data.id"><span class="badge bg-success">수정하기</span></router-link>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <b-pagination class="offset-5" v-model="page" :total-rows="count" :per-page="pageSize" pills first-text="<<"
+        last-text=">>" prev-text="Prev" next-text="Next" @change="handlePageChange"></b-pagination>
+    </div>
+
     <!-- search 관련 div 시작 -->
-    <div class="col-md-8">
-      <div class="input-group mb-3">
+    <div class="col-md-8 offset-2">
+      <div class="input-group mb-3 offset-1">
         <!--            Todo : 수정 시작 -->
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Search by Username"
-          v-model="searchUsername"
-        />
+        <!--    Todo : page 바 시작 -->
+        <div class="col-2">
+          <select class="form-select" v-model="pageSize" @change="handlePageSizeChange($event)">
+            <option v-for="size in pageSizes" :key="size" :value="size">
+              {{ size }}
+            </option>
+          </select>
+        </div>
+        <!-- Todo : page 바 끝 -->
+        <div class="col-6">
+          <input type="text" class="form-control" placeholder="Search by Username" v-model="searchUsername" />
+        </div>
         <div class="input-group-append">
-          <button
-            class="btn btn-outline-secondary"
-            type="button"
-            @click="
-              page = 1;
-              retrieveUser();
-            "
-          >
+          <button class="btn btn-warning" type="button" @click="
+  page = 1;
+retrieveUser();
+          ">
             Search
           </button>
         </div>
@@ -49,53 +74,6 @@
     </div>
     <!-- search 관련 div 끝 -->
 
-    <!--    Todo : page 바 시작 -->
-    <div class="col-md-12">
-      <div class="mb-3">
-        Items per Page:
-        <select v-model="pageSize" @change="handlePageSizeChange($event)">
-          <option v-for="size in pageSizes" :key="size" :value="size">
-            <!--            size : 3, 6, 9 -->
-            {{ size }}
-          </option>
-        </select>
-      </div>
-
-      <b-pagination
-        v-model="page"
-        :total-rows="count"
-        :per-page="pageSize"
-        pills
-        prev-text="Prev"
-        next-text="Next"
-        @change="handlePageChange"
-      ></b-pagination>
-    </div>
-    <!-- Todo : page 바 끝 -->
-
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">유저명</th>
-          <th scope="col">이메일</th>
-          <th scope="col">권한</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody v-for="(data, index) in user" :key="index">
-        <tr>
-          <td>{{ data.username }}</td>
-          <!-- <td>{{ data.lastName }}</td>  -->
-          <td>{{ data.email }}</td>
-          <td>{{ data.name }}</td>
-          <td>
-            <router-link :to="'/user/' + data.id"
-              ><span class="badge bg-success">수정하기</span></router-link
-            >
-          </td>
-        </tr>
-      </tbody>
-    </table>
   </div>
 </template>
 

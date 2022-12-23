@@ -27,7 +27,16 @@
     <!-- TODO: free 시작 -->
     <!-- Contact Start -->
     <div class="container mt-2 mb-2">
-      <h1>자유게시판</h1>
+      <h1 class="offset-5">자유게시판</h1>
+      <div style="text-align: center">
+        <div class="p-3 mb-2 bg-warning text-dark bg-opacity-25">
+          <strong
+            >"공지사항를 통해서 맛있는 토마토의 최신정보를 찾아보세요"
+            <br />
+            "맛있는 토마토의 최신 정보와 공지를 모아서 한번에 찾아볼 수 있습니다.
+          </strong>
+        </div>
+      </div>
 
       <!--    Todo : page 바 시작 주석 처리 -->
       <!-- <div class="col-md-12 offset-2">
@@ -65,14 +74,14 @@
           </thead>
           <tbody v-for="(data, index) in free" :key="index">
             <tr>
-              <td>{{ data.fno }}</td>
+              <td><i class="bi bi-hash"></i>{{ data.fno }}</td>
               <td>
                 <router-link :to="'/freeview/' + data.fno"
                   ><span>{{ data.title }}</span></router-link
                 >
               </td>
               <td>{{ data.writer }}</td>
-              <td>{{ data.insertTime }}</td>
+              <td> <i class="bi bi-calendar-date"></i>{{ data.insertTime }}</td>
               <td>
                 <router-link :to="'/free/' + data.fno"
                   ><span class="badge rounded-pill bg-warning text-dark"
@@ -116,7 +125,7 @@
           </div>
 
           <!-- searchDname -> searchKeyword 변경 -->
-          <div class="col-8">
+          <div class="col-7">
             <input
               type="text"
               class="form-control"
@@ -125,7 +134,7 @@
             />
           </div>
 
-          <div class="input-group-append col-1">
+          <div class="input-group-append col-2">
             <button
               class="btn btn-warning"
               type="button"
@@ -133,7 +142,7 @@
                 page = 1;
                 retrieveFree();
               "
-            >
+            ><i class="bi bi-search"></i>
               Search
             </button>
           </div>

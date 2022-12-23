@@ -297,7 +297,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 body {
   color: #000;
   overflow-x: hidden;

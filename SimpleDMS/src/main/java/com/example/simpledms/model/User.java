@@ -117,8 +117,7 @@ public class User extends BaseTimeEntity {
         this.address = address;
     }
 
-
-//
+    //
 //    public User(String username, String email, String password) {
 //        this.username = username;
 //        this.email = email;

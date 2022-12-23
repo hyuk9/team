@@ -66,7 +66,7 @@
               :data-bs-target="'#flush-' + index"
               aria-expanded="false"
               aria-controls="flush-0"
-            >
+            ><i class="bi bi-pin-fill"></i>
               {{ data.title }}
             </button>
           </h2>
@@ -106,7 +106,7 @@
           </div>
 
           <!-- searchDname -> searchKeyword 변경 -->
-          <div class="col-7 ms-2">
+          <div class="col-7">
             <input
               type="text"
               class="form-control"
@@ -115,7 +115,7 @@
             />
           </div>
 
-          <div class="input-group-append col-1 ms-2">
+          <div class="input-group-append col-2">
             <button
               type="button"
               class="btn btn-warning"
@@ -123,7 +123,7 @@
                 page = 1;
                 retrieveFaq();
               "
-            >
+            ><i class="bi bi-search"></i>
               Search
             </button>
           </div>

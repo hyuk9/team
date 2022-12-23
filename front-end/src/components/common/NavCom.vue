@@ -31,9 +31,9 @@
                 음식점 리스트
               </router-link>
               <ul class="dropdown-menu">
-                <li class="dropdown-header">지역별1111</li>
+                <li class="dropdown-header">지역별</li>
                 <li>
-                  <router-link to="/local" class="dropdown-item"
+                  <router-link to="/diner" class="dropdown-item"
                     >서울</router-link
                   >
                 </li>
@@ -107,6 +107,58 @@
                 </li>
               </ul>
             </li>
+            <!-- 임시로 만든 예약 네비게이션 시작 -->
+            <li class="nav-item dropdown">
+              <router-link
+                to=""
+                class="nav-link dropdown-toggle"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                예약(임시)
+              </router-link>
+              <ul class="dropdown-menu">
+                <li>
+                  <router-link to="/reservation" class="dropdown-item"
+                    >예약 조회하기</router-link
+                  >
+                </li>
+                <li>
+                  <router-link to="/add-reservation" class="dropdown-item"
+                    >예약하기</router-link
+                  >
+                </li>
+              </ul>
+            </li>
+            <!-- 임시로 만든 예약 네비게이션 끝 -->
+
+            <!-- 관리자 전용 페이지 시작 -->
+            <!-- showAdminBoard가 동작하면 보이게 작동 -->
+            <li v-if="showAdminBoard" class="nav-item dropdown">
+              <router-link
+                to=""
+                class="nav-link dropdown-toggle"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                관리자 전용(관리자만 보이게 설정)
+              </router-link>
+              <ul class="dropdown-menu">
+                <li>
+                  <router-link to="/user" class="dropdown-item"
+                    >유저 목록 조회하기</router-link
+                  >
+                </li>
+                <li>
+                  <router-link to="/reservation" class="dropdown-item"
+                    >예약현황 조회하기</router-link
+                  >
+                </li>
+              </ul>
+            </li>
+            <!-- 관리자 전용 페이지 끝 -->
           </ul>
         </div>
 
@@ -164,7 +216,7 @@
               <!-- 로그아웃 시작 -->
               <a
                 @click.prevent="logout"
-                class="btn btn-white text-warning  ms-1 login"
+                class="btn btn-white text-warning ms-1 login"
               >
                 <i class="fas fa-user me-2"></i>
                 로그아웃
@@ -178,11 +230,15 @@
     <!-- 네비게이션 바 끝 -->
 
     <!-- 로그인 모달 내용 시작 -->
-    <b-modal id="modal-1" title="로그인"  hide-footer="true"  >
+    <b-modal id="modal-1" title="로그인" hide-footer="true">
       <!-- 로그인 모달 컴포넌트를 내용으로 가져오기 -->
-    <LoginView/>
-    <!-- 모달창 끄기용 가짜버튼(화면에 안보임) -->
-    <b-button @click="$bvModal.hide('modal-1')" ref="button" class="b-button"></b-button>
+      <LoginView />
+      <!-- 모달창 끄기용 가짜버튼(화면에 안보임) -->
+      <b-button
+        @click="$bvModal.hide('modal-1')"
+        ref="button"
+        class="b-button"
+      ></b-button>
     </b-modal>
     <!-- 로그인 모달 내용 끝 -->
   </div>
@@ -196,12 +252,10 @@ import { BModal } from "bootstrap-vue";
 import LoginView from "@/components/user/LoginView.vue";
 
 export default {
-
-
   // 부트스트랩 뷰 의 모달 기능 사용하기, 로그인 뷰 페이지를 컴포넌트로 가져오기
   components: {
     BModal,
-    LoginView
+    LoginView,
   },
 
   computed: {
@@ -222,8 +276,6 @@ export default {
       // currentUser 없으면 false (메뉴가 안보임)
       return false;
     },
-
-
   },
   methods: {
     // 로그아웃 함수 -> 공통함수 호출
@@ -240,28 +292,23 @@ export default {
     },
   },
 
-// 모달 적용시 로그인 버튼에 강제적으로 추가되어 css를 바꾸는 클래스 삭제하기
-mounted() {
-  var ele = document.getElementById('loginButton');
-  ele.classList.remove('btn-secondary');
+  // 모달 적용시 로그인 버튼에 강제적으로 추가되어 css를 바꾸는 클래스 삭제하기
+  mounted() {
+    var ele = document.getElementById("loginButton");
+    ele.classList.remove("btn-secondary");
 
-  
-  this.$store.subscribeAction((action, state) => {
-      if (action.type === 'clickButton') {
+    this.$store.subscribeAction((action, state) => {
+      if (action.type === "clickButton") {
         // Trigger the click event on the button element
         this.$refs.button.click();
       }
     });
-
-
-},
-// 모달 적용시 로그인 버튼에 강제적으로 추가되어 css를 바꾸는 클래스 삭제하기
-updated() {
-    var ele = document.getElementById('loginButton');
-  ele.classList.remove('btn-secondary');
-
-},
- 
+  },
+  // 모달 적용시 로그인 버튼에 강제적으로 추가되어 css를 바꾸는 클래스 삭제하기
+  updated() {
+    var ele = document.getElementById("loginButton");
+    ele.classList.remove("btn-secondary");
+  },
 };
 </script>
 
@@ -283,7 +330,7 @@ updated() {
   display: none;
 }
 
-.modal-dialog{
-  display: table
+.modal-dialog {
+  display: table;
 }
 </style>

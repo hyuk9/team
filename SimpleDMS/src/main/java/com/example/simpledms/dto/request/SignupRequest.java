@@ -36,8 +36,6 @@ public class SignupRequest {
     @NotBlank               // 공백 또는 null 허용 안함
     @Size(max= 50)          // 자리수가 50 까지만 허용     // email 형식이 맞는지 체크하는 @
     private String name;
-
-
     @NotBlank               // 공백 또는 null 허용 안함
     @Size(max= 50)          // 자리수가 50 까지만 허용
     @Email                  // email 형식이 맞는지 체크하는 @

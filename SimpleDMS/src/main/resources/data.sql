@@ -147,6 +147,21 @@ VALUES (SQ_DINER.nextval, 'DINER15', '1.9','부산','010-0000-0000','한식','�
 
 
 
+INSERT INTO TB_REVIEW
+VALUES (SQ_REVIEW.nextval, '리뷰', '내용','사진','홍길동', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+INSERT INTO TB_REVIEW
+VALUES (SQ_REVIEW.nextval, '리뷰2', '내용2', '사진2', '장길산', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+INSERT INTO TB_REVIEW
+VALUES (SQ_REVIEW.nextval, '리뷰3', '내용3', '사진3', '임꺽정','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+INSERT INTO TB_REVIEW
+VALUES (SQ_REVIEW.nextval, '리뷰4', '내용4', '사진4', '전우치','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+INSERT INTO TB_REVIEW
+VALUES (SQ_REVIEW.nextval, '리뷰5', '내용5', '사진5', '마루치','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+INSERT INTO TB_REVIEW
+VALUES (SQ_REVIEW.nextval, '리뷰6', '내용6', '사진6','아라치','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+
+
+
 -- TODO: login 샘플 데이터
 INSERT INTO TB_ROLE VALUES(SQ_ROLE.NEXTVAL, 'ROLE_USER','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 -- INSERT INTO TB_ROLE(id, name) VALUES(SQ_ROLE.NEXTVAL, 'ROLE_MODERATOR');
@@ -158,6 +173,7 @@ INSERT INTO TB_ROLE VALUES(SQ_ROLE.NEXTVAL, 'ROLE_ADMIN','N', TO_CHAR(SYSDATE, '
 -- password : 123456
 -- email : forbob@naver.com
 -- roles : ROLE_ADMIN
+
 INSERT INTO TB_USER VALUES(SQ_USER.NEXTVAL, 'forbob', 'forbob@naver.com', '$2a$10$TG1a5ywSrGNgf7/fFH.m0.EdTzHax8AGYNeAr8aIseF3DKyO0lDti','홍길동', '1990.01.01', '남', '010-2020-0202', '부산시 영도구 남항동 123가', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_USER_ROLE VALUES(1, 3);
 
