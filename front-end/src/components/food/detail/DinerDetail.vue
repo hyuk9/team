@@ -180,10 +180,27 @@
                 well.
               </p> -->
             <!-- </section> -->
-            <div class="btn-group btn-group-lg" role="group" aria-label="Basic example" style="width: 950px">
-              <router-link to="/reservation"><button type="button" class="btn btn-primary">찜</button></router-link>
-              <router-link to="/reservation"><button type="button" class="btn btn-primary">리뷰보기</button></router-link>
-              <router-link to="/reservation"><button type="button" class="btn btn-primary">예약</button></router-link>
+            <div
+              class="btn-group btn-group-lg"
+              role="group"
+              aria-label="Basic example"
+              style="width: 950px"
+            >
+              <router-link to="/reservation"
+                ><button type="button" class="btn btn-primary">
+                  찜
+                </button></router-link
+              >
+              <router-link to="/reservation"
+                ><button type="button" class="btn btn-primary">
+                  리뷰보기
+                </button></router-link
+              >
+              <router-link to="/reservation"
+                ><button type="button" class="btn btn-primary">
+                  예약
+                </button></router-link
+              >
             </div>
           </article>
           <!-- Comments section-->
@@ -191,16 +208,42 @@
             <div class="card bg-light">
               <div class="card-body">
                 <!-- Comment form-->
-                <form class="mb-4">
-                  <h3>review<br /></h3>
-                  <textarea
-                    class="form-control"
-                    rows="3"
-                    placeholder="리뷰를 남겨주세요!"
-                  ></textarea>
-                </form>
+                <div class="mb-3">
+                  <form class="mb-3">
+                    <h3>review</h3>
+                    <div>
+                      <label for="rating-inline"></label>
+                      <br />
+                      <b-form-rating
+                        id="rating-inline"
+                        inline
+                        value="4"
+                        variant="warning"
+                      ></b-form-rating>
+                    </div>
+                    <textarea
+                      class="form-control mt-3"
+                      rows="3"
+                      placeholder="리뷰를 남겨주세요!"
+                    ></textarea>
+                    <button
+                      type="button"
+                      class="btn btn-dark mt-3"
+                      style="float: right"
+                    >
+                      입력
+                    </button>
+                  </form>
+                </div>
+
                 <!-- Comment with nested comments-->
-                <div class="d-flex mb-4">
+                <div
+                  class="d-flex mt-6 mb-4"
+                  :class="{ active: index == currentIndex }"
+                  v-for="(data, index) in review"
+                  :key="index"
+                  @click="setActiveReview(data, index)"
+                >
                   <!-- Parent comment-->
                   <div class="flex-shrink-0">
                     <img
@@ -210,11 +253,8 @@
                     />
                   </div>
                   <div class="ms-3">
-                    <div class="fw-bold">Commenter Name</div>
-                    If you're going to lead a space frontier, it has to be
-                    government; it'll never be private enterprise. Because the
-                    space frontier is dangerous, and it's expensive, and it has
-                    unquantified risks.
+                    <div class="fw-bold">{{ data.review_writer }}</div>
+                    {{ data.review_content }}
                     <!-- Child comment 1-->
                     <div class="d-flex mt-4">
                       <div class="flex-shrink-0">
@@ -292,14 +332,52 @@
 
 <script>
 import DinerDataService from "@/services/DinerDataService";
+import ReviewDataService from "@/services/ReviewDataService";
+
 export default {
   data() {
     return {
+      review: [],
+      currentReview: null,
+      currentIndex: -1,
+      // dname: "", ->(변경) searchDname: "",
+      searchReview_writer: "",
+
       currentDiner: null,
       message: "",
+
+      // 페이징을 위한 변수 정의
+      page: 1, // 현재 페이지
+      count: 0, // 전체 데이터 건수
+      pageSize: 8, // 한페이지당 몇개를 화면에 보여줄지 결정하는 변수
+
+      pageSizes: [3, 6, 9], // select box에 넣을 기본 데이터
     };
   },
   methods: {
+    // axios , 모든 부서 정보 조회 요청 함수
+    retrieveReview() {
+      // getAll() ->(변경) getAll(dname, page, size)
+      ReviewDataService.getAll(
+        this.searchReview_id,
+        this.page - 1,
+        this.pageSize
+      )
+        // 성공하면 .then() 결과가 전송됨
+        .then((response) => {
+          // this.review = response.data -> (변경) const { diner, totalItems } = response.data
+          // let(const) { 속성명1, 속성명2 } = 데이터 객체배열 (모던자바문법 구조분해할당)
+          const { review, totalItems } = response.data; // springboot 의 전송한 맵 정보
+          this.review = review; // 스프링부트에서 전송한 데이터
+          this.count = totalItems; // 스프링부트에서 전송한 페이지정보(총 건수)
+          // 디버깅 콘솔에 정보 출력
+          console.log(response.data);
+        })
+        // 실패하면 .catch() 에 에러가 전송됨
+        .catch((e) => {
+          console.log(e);
+        });
+    },
     // 부서번호(dno)로 조회 요청하는 함수
     getDiner(dno) {
       // axios 공통함수 호출
@@ -315,6 +393,24 @@ export default {
         .catch((e) => {
           console.log(e);
         });
+    },
+    // select box 값 변경시 실행되는 함수(재조회)
+    handlePageSizeChange(event) {
+      this.pageSize = event.target.value; // 한페이지당 개수 저장(3, 6, 9)
+      this.page = 1;
+      // 재조회함수 호출
+      this.retrieveDiner();
+    },
+    // 페이지 번호 변경시 실행되는 함수(재조회)
+    handlePageChange(value) {
+      this.page = value; // 매개변수값으로 현재페이지 변경
+      // 재조회함수 호출
+      this.retrieveReview();
+    },
+    // 목록을 클릭했을때 현재 부서객체, 인덱스번호를 저장하는 함수
+    setActiveReview(data, index) {
+      this.currentReview = data;
+      this.currentIndex = index;
     },
     // 부서정보를 수정 요청하는 함수
     updateDiner() {
@@ -357,6 +453,7 @@ export default {
     // $route 객체 : 주로 url 매개변수 정보들이 있음
     // router/index.js 상세페이지 url의 매개변수명 : :dno
     this.getDiner(this.$route.params.dno);
+    this.retrieveReview(); // 화면 로딩시 전체 조회함수 실행
   },
 };
 </script>
