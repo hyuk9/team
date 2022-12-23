@@ -30,14 +30,19 @@
           <h5>이메일</h5>
           <i class="fas fa-star-of-life ms-2"></i>
           <input
-            v-model="user.email"
-            v-validate="'required|email|max:50'"
-            type="email"
+            v-model="startEmail"
+            v-validate="'required|max:50'"
+            type="text"
             placeholder="이메일를 입력해 주세요."
             class="input"
             id="email"
             name="이메일 "
           />
+          <p>@</p>
+          <select name="" id="" v-model="endEmail">
+            <option value="naver.com">naver.com</option>
+            <option value="google.com">google.com</option>
+            </select>
           <div v-if="submitted && errors.has('이메일 ')" class="register-alert">
             <p>{{ errors.first("이메일 ") }}</p>
           </div>
@@ -107,12 +112,18 @@
         <div class="input__block">
           <h5>생년월일</h5>
           <input
-            v-model="user.birthday"
-            type="date"
+            v-model="year"
+            type="text"
             class="input"
             id="date"
-            placeholder="날짜 선택"
+            placeholder="연도 선택"
           />
+          <select v-model="month">
+            <option :value="index" v-for="index in 12" :key="index">{{index}}</option>
+          </select>  
+          <select v-model="day">
+            <option :value="index" v-for="index in 31" :key="index">{{index}}</option>
+          </select>
         </div>
         <!-- 성별 -->
         <div class="input__block gender">
@@ -182,6 +193,16 @@ export default {
       submitted: false,
       successful: false,
       message: "",
+      // 이메일 입력창 앞부분
+      startEmail : "",
+      // 이메일 입력창 뒷부분(@뒤 select 부분)
+      endEmail : "",
+      // 생년월일의 연도
+      year : "",
+      // 생년월일의 월
+      month : "",
+      // 생년월일의 일
+      day : "",
     };
   },
   computed: {
@@ -200,6 +221,11 @@ export default {
   methods: {
     // 회원가입 버튼 클릭시 실행되는 함수
     handleRegister() {
+      //  이메일 앞부분과 뒷부분 합쳐서 완성된 이메일 형식 만들기
+      this.user.email = this.startEmail +"@"+ this.endEmail;    
+      //  생년월일 앞부분과 뒷부분 합쳐서 완성된 생년월일 형식 만들기
+      console.log(this.user.birthday)
+      this.user.birthday = this.year +this.month + this.day;
       this.message = "";
       this.submitted = true; //  회원가입 버튼 클릭 = true
       // vee-validate 함수 처리 방법
@@ -276,6 +302,8 @@ export default {
   mounted() {
     // 날짜에 현재날짜로 placeholder 표시하기
     this.user.birthday = new Date().toISOString().substring(0, 10);
+
+   
   },   
 };
 </script>
