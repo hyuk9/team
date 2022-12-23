@@ -63,7 +63,7 @@
             <p>{{ errors.first("비밀번호 ") }}</p>
           </div>
         </div>
-        <!-- 비밀번호 재확인
+        <!-- 비밀번호 재확인 -->
         <div class="input__block">
           <h5>비밀번호 재확인</h5>
           <i class="fas fa-star-of-life ms-2"></i>
@@ -81,7 +81,7 @@
           >
             <p>{{ errors.first("비밀번호 재확인 ") }}</p>
           </div>
-        </div> -->
+        </div>
         <!-- 이름 -->
         <div class="input__block">
           <h5>이름</h5>
@@ -161,7 +161,6 @@
             class="input"
             id="address"
           />
-          <!-- @click="popupaddress" -->
         </div>
         <!-- sign in button -->
         <button class="signin__btn mt-5">회원가입하기</button>
