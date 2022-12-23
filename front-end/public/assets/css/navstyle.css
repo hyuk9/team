@@ -8,13 +8,12 @@
  }
  ul{
   list-style:none;/* ul의 하위에 속하는 전체 속성에 list-style없음*/
-  display:flex;/* flex 선언*/
+  /* display:flex;flex 선언 */
  }
  a{
   text-decoration:none;/* a태그의 밑줄 삭제*/
   padding:0px 10px 0px 10px;/* 패딩추가*/
   line-height:30px;/* 글씨의 높이를 중간으로 맞춰줌*/
-  display:block;/* 블럭형으로 변경*/
  }
  .dropmenu ul ul{
   display:none;/* .dropmenu의 ul 하위의 ul을 숨김처리*/
