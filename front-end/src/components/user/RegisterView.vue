@@ -54,6 +54,7 @@
             class="input"
             id="password"
             name="비밀번호 "
+            ref="password"
           />
           <div
             v-if="submitted && errors.has('비밀번호 ')"
@@ -84,13 +85,22 @@
         <!-- 이름 -->
         <div class="input__block">
           <h5>이름</h5>
+            <i class="fas fa-star-of-life ms-2"></i>
           <input
+              v-validate="'required'"
             v-model="user.name"
             type="text"
             placeholder="이름"
             class="input"
             id="username"
+            name="이름 "
           />
+               <div
+            v-if="submitted && errors.has('이름 ')"
+            class="register-alert"
+          >
+            <p>{{ errors.first("이름 ") }}</p>
+          </div>
         </div>
         <!-- 생년월일 -->
         <!-- datepicker 찾아볼 예정 -->
@@ -145,13 +155,11 @@
         <div class="input__block">
           <h5>주소</h5>
           <input
-
+          v-model="user.address"
             type="text"
             placeholder="주소를 입력해 주세요."
             class="input"
             id="address"
-            ref="log"
-            @click="popupaddress"
           />
         </div>
         <!-- sign in button -->
@@ -187,7 +195,6 @@ export default {
   created() {
     if (this.loggedIn) {
       // 로그인이 되어 있는 상태
-      this.$router.push("/profile"); // 강제 /profile 로 이동
     }
   },
   methods: {
@@ -217,8 +224,8 @@ export default {
               showConfirmButton: false,
               timer: 1000,
             });
-            // 로그인 화면으로 이동
-            this.$router.push("/login");
+            // 홈 화면으로 이동
+            this.$router.push("/");
           })
           // 참고) if/else 문 대신에 -> or(||) and(&&) 연산자를 사용할때도 있음
           // 로직체크 순서 : true || false, false && true
@@ -242,32 +249,34 @@ export default {
       });
     },
 
+    // 카카오 주소 api 보류
+  // doopop () {
+  //         new daum.Postcode({
+  //       oncomplete: function (data) {
+  //         let kakaoaddress = data.address;
+  //         if (kakaoaddress !== "") {
+  //           document.getElementById("address").value= kakaoaddress;
+  //         } 
+  //       },
+  //       shorthand: false,
+  //     }).open();
+  //     },
 
-    // 클릭시 카카오 주소 api 띄우고 주소검색 데이터를 input 태그로 가져오는 함수
-    popupaddress() {
-      console.log(this.user)
-      new daum.Postcode({
-        oncomplete: function (data) {
-          let address = data.address;
-          console.log(address)
-          console.log(this.user)
-          if (address !== "") {
-            document.getElementById("address").value= address;
-            // this.user.address= address;
-
-          }
-        },
-        shorthand: false,
-      }).open();
-
-      console.log(this.$refs.log);
-
-    },
+    // 클릭시 카카오 주소 api 띄우고 주소검색 데이터를 input 태그로 가져오는 함수 ->보류
+//     popupaddress() {
+//  this.doopop ();
+//  if(document.getElementById("address").value !="") {
+//   alert("fdsf")
+//  }
+     
+    
+//     },
+   
   },
   mounted() {
     // 날짜에 현재날짜로 placeholder 표시하기
     this.user.birthday = new Date().toISOString().substring(0, 10);
-  },
+  },   
 };
 </script>
 

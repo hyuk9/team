@@ -114,11 +114,11 @@ public class AuthController {
                     .badRequest()
                     .body(new MessageResponse("Error: email is already in use!"));
         }
-
 //        신규 사용자 생성
         User user = new User(signupRequest.getUsername(),
                 signupRequest.getEmail(),
                 encoder.encode(signupRequest.getPassword()),
+                signupRequest.getName(),
                 signupRequest.getBirthday(),
                 signupRequest.getGender(),
                 signupRequest.getPhone(),
