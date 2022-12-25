@@ -6,12 +6,8 @@
         <div class="row flex-center">
           <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0">
             <!-- TODO: 이미지가 안나와서 이미지 경로 수정 -->
-            <a class="img-landing-banner" href="#!"
-              ><img
-                class="img-fluid"
-                src="../../../public/assets/img/gallery/hero-tomato.png"
-                alt="hero-header"
-            /></a>
+            <a class="img-landing-banner" href="#!"><img class="img-fluid"
+                src="../../../public/assets/img/gallery/hero-tomato.png" alt="hero-header" /></a>
           </div>
           <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
             <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">
@@ -26,121 +22,120 @@
     <!-- 최상단 끝 -->
     <!-- ======= Team Section ======= -->
     <section id="team" class="team section-bg">
-      <div class="container" data-aos="fade-up">
-        <div class="section-title">
-          <h2>팀</h2>
-          <p>우리팀 있으면 소개하는 공간일거에요 아마도</p>
+      <!-- Team Start -->
+      <div class="container-xxl px-0 py-5">
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+          <p class="text-primary text-uppercase mb-2">팀원 소개</p>
+          <h1 class="display-6 mb-0">동성학원 맛있는 토마토 D조</h1>
         </div>
-        <div class="row">
-          <div class="col-lg-6">
-            <div
-              class="member d-flex align-items-start"
-              data-aos="zoom-in"
-              data-aos-delay="100"
-            >
-              <div class="pic">
-                <!-- <img
-                  src="assets/img/team/team-1.jpg"
-                  class="img-fluid"
-                  alt=""
-                /> -->
+        <div class="row g-0">
+          <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+            <div class="row g-0 flex-sm-row">
+              <div class="col-sm-6">
+                <div class="team-img position-relative">
+                  <img class="img-fluid" src="../../../public/assets/img/team/team-1.jpg" alt="">
+                </div>
               </div>
-              <div class="member-info">
-                <h4>김 아무개씨</h4>
-                <span>30대 고졸 무직 백수</span>
-                <p>취미는 인터넷 댓글 달기</p>
-                <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+              <div class="col-sm-6">
+                <div class="h-100 p-5 d-flex flex-column justify-content-between">
+                  <div class="mb-3">
+                    <h4>장동혁</h4>
+                    <span>조장</span>
+                  </div>
+                  <p>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo</p>
+                  <div class="d-flex">
+                    <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
+                        class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-square btn-success rounded-circle me-2" href=""><i
+                        class="fab fa-twitter"></i></a>
+                    <a class="btn btn-square btn-info rounded-circle me-2" href=""><i
+                        class="fab fa-instagram"></i></a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-
-          <div class="col-lg-6 mt-4 mt-lg-0">
-            <div
-              class="member d-flex align-items-start"
-              data-aos="zoom-in"
-              data-aos-delay="200"
-            >
-              <div class="pic">
-                <!-- <img
-                  src="assets/img/team/team-2.jpg"
-                  class="img-fluid"
-                  alt=""
-                /> -->
+          <div class="col-lg-6 wow fadeIn" data-wow-delay="0.3s">
+            <div class="row g-0 flex-sm-row-reverse flex-lg-row">
+              <div class="col-sm-6">
+                <div class="team-img position-relative">
+                  <img class="img-fluid" src="../../../public/assets/img/team/team-2.jpg" alt="">
+                </div>
               </div>
-              <div class="member-info">
-                <h4>이 무리씨</h4>
-                <span>40대 전업주부</span>
-                <p>취미는 홈쇼핑</p>
-                <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+              <div class="col-sm-6">
+                <div class="h-100 p-5 d-flex flex-column justify-content-between">
+                  <div class="mb-3">
+                    <h4>조성모</h4>
+                    <span>로그인 담당</span>
+                  </div>
+                  <p>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo</p>
+                  <div class="d-flex">
+                    <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
+                        class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
+                        class="fab fa-twitter"></i></a>
+                    <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
+                        class="fab fa-instagram"></i></a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-
-          <div class="col-lg-6 mt-4">
-            <div
-              class="member d-flex align-items-start"
-              data-aos="zoom-in"
-              data-aos-delay="300"
-            >
-              <div class="pic">
-                <!-- <img
-                  src="assets/img/team/team-3.jpg"
-                  class="img-fluid"
-                  alt=""
-                /> -->
+          <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+            <div class="row g-0 flex-lg-row-reverse">
+              <div class="col-sm-6">
+                <div class="team-img position-relative">
+                  <img class="img-fluid" src="../../../public/assets/img/team/team-3.jpg" alt="">
+                </div>
               </div>
-              <div class="member-info">
-                <h4>김 원붕씨</h4>
-                <span>방구석 전문가</span>
-                <p>취미는 훈수두기</p>
-                <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+              <div class="col-sm-6">
+                <div class="h-100 p-5 d-flex flex-column justify-content-between">
+                  <div class="mb-3">
+                    <h4>전성혜</h4>
+                    <span>프로필 담당</span>
+                  </div>
+                  <p>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo</p>
+                  <div class="d-flex">
+                    <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
+                        class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
+                        class="fab fa-twitter"></i></a>
+                    <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
+                        class="fab fa-instagram"></i></a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-
-          <div class="col-lg-6 mt-4">
-            <div
-              class="member d-flex align-items-start"
-              data-aos="zoom-in"
-              data-aos-delay="400"
-            >
-              <div class="pic">
-                <!-- <img
-                  src="assets/img/team/team-4.jpg"
-                  class="img-fluid"
-                  alt=""
-                /> -->
+          <div class="col-lg-6 wow fadeIn" data-wow-delay="0.3s">
+            <div class="row g-0 flex-sm-row-reverse">
+              <div class="col-sm-6">
+                <div class="team-img position-relative">
+                  <img class="img-fluid" src="../../../public/assets/img/team/team-4.jpg" alt="">
+                </div>
               </div>
-              <div class="member-info">
-                <h4>조 코린씨</h4>
-                <span>코딩몽키</span>
-                <p>코딩을 유튜브 쇼츠로만 배웠음</p>
-                <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+              <div class="col-sm-6">
+                <div class="h-100 p-5 d-flex flex-column justify-content-between">
+                  <div class="mb-3">
+                    <h4>권태현</h4>
+                    <span>게시판 담당</span>
+                  </div>
+                  <p>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo</p>
+                  <div class="d-flex">
+                    <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
+                        class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
+                        class="fab fa-twitter"></i></a>
+                    <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
+                        class="fab fa-instagram"></i></a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <!-- Team End -->
     </section>
     <!-- End Team Section -->
   </div>
@@ -151,4 +146,5 @@ export default {};
 </script>
 
 <style>
+@import "../../../public/assets/css/style.css"
 </style>
