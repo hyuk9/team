@@ -190,5 +190,4 @@ VALUES (SQ_REVIEW.nextval, '리뷰5', '내용5', '사진5', '마루치','N', TO_
 INSERT INTO TB_REVIEW
 VALUES (SQ_REVIEW.nextval, '리뷰6', '내용6', '사진6','아라치','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 
-
 COMMIT;
