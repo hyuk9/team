@@ -273,6 +273,8 @@ export default {
         // validateAll() 모두 통과하면 -> isValid = true  (유효함)
         //                             -> isValid = false (유효하지 않음)
         if (!isValid) {
+          // 유효성 검사 결과 이상 발견 시 그곳으로 이동하는 함수
+          document.querySelector(".register-alert:first-of-type").scrollIntoView( {block: "center"});
           return; // 함수 탈출(break)
         }
 
@@ -429,6 +431,11 @@ form .input__block input {
   font-family: "Montserrat", sans-serif;
   padding: 0 10px;
 }
+/* 셀렉트 박스 둥글게  */
+form select {
+    border-radius: 8px;
+}
+
 /* 이메일 입력용 */
 form .emailInput {
     display: block;
