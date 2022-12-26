@@ -207,103 +207,7 @@
           <section class="mb-5">
             <div class="card bg-light">
               <div class="card-body">
-                <!-- Comment form-->
-                <div class="mb-3">
-                  <form class="mb-3">
-                    <h3>review</h3>
-                    <div>
-                      <label for="rating-inline"></label>
-                      <br />
-                      <b-form-rating
-                        id="rating-inline"
-                        inline
-                        value="4"
-                        variant="warning"
-                      ></b-form-rating>
-                    </div>
-                    <textarea
-                      class="form-control mt-3"
-                      rows="3"
-                      placeholder="리뷰를 남겨주세요!"
-                    ></textarea>
-                    <button
-                      type="button"
-                      class="btn btn-dark mt-3"
-                      style="float: right"
-                    >
-                      입력
-                    </button>
-                  </form>
-                </div>
-
-                <!-- Comment with nested comments-->
-                <div
-                  class="d-flex mt-6 mb-4"
-                  :class="{ active: index == currentIndex }"
-                  v-for="(data, index) in review"
-                  :key="index"
-                  @click="setActiveReview(data, index)"
-                >
-                  <!-- Parent comment-->
-                  <div class="flex-shrink-0">
-                    <img
-                      class="rounded-circle"
-                      src="https://dummyimage.com/50x50/ced4da/6c757d.jpg"
-                      alt="..."
-                    />
-                  </div>
-                  <div class="ms-3">
-                    <div class="fw-bold">{{ data.review_writer }}</div>
-                    {{ data.review_content }}
-                    <!-- Child comment 1-->
-                    <div class="d-flex mt-4">
-                      <div class="flex-shrink-0">
-                        <img
-                          class="rounded-circle"
-                          src="https://dummyimage.com/50x50/ced4da/6c757d.jpg"
-                          alt="..."
-                        />
-                      </div>
-                      <div class="ms-3">
-                        <div class="fw-bold">Commenter Name</div>
-                        And under those conditions, you cannot establish a
-                        capital-market evaluation of that enterprise. You can't
-                        get investors.
-                      </div>
-                    </div>
-                    <!-- Child comment 2-->
-                    <div class="d-flex mt-4">
-                      <div class="flex-shrink-0">
-                        <img
-                          class="rounded-circle"
-                          src="https://dummyimage.com/50x50/ced4da/6c757d.jpg"
-                          alt="..."
-                        />
-                      </div>
-                      <div class="ms-3">
-                        <div class="fw-bold">Commenter Name</div>
-                        When you put money directly to a problem, it makes a
-                        good headline.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Single comment-->
-                <div class="d-flex">
-                  <div class="flex-shrink-0">
-                    <img
-                      class="rounded-circle"
-                      src="https://dummyimage.com/50x50/ced4da/6c757d.jpg"
-                      alt="..."
-                    />
-                  </div>
-                  <div class="ms-3">
-                    <div class="fw-bold">Commenter Name</div>
-                    When I look at the universe and all the ways the universe
-                    wants to kill us, I find it hard to reconcile that with
-                    statements of beneficence.
-                  </div>
-                </div>
+                <DinerCommentVue />
               </div>
             </div>
           </section>
@@ -333,6 +237,7 @@
 <script>
 import DinerDataService from "@/services/DinerDataService";
 import ReviewDataService from "@/services/ReviewDataService";
+import DinerCommentVue from "./DinerComment.vue";
 
 export default {
   data() {
@@ -353,6 +258,9 @@ export default {
 
       pageSizes: [3, 6, 9], // select box에 넣을 기본 데이터
     };
+  },
+  components: {
+    DinerCommentVue
   },
   methods: {
     // axios , 모든 부서 정보 조회 요청 함수
