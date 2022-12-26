@@ -41,6 +41,7 @@
             />
             <span class="atSign">@</span>
             <select name="" id="" class="endEmail" v-model="endEmail">
+              <option value="" selected>이메일 선택</option>
               <option value="naver.com">naver.com</option>
               <option value="google.com">google.com</option>
             </select>
@@ -124,9 +125,11 @@
               name="연도 "
             />
             <select v-model="month">
+              <option value="" selected>월</option>
               <option :value="index" v-for="index in 12" :key="index">{{index}}</option>
             </select>  
             <select v-model="day">
+              <option value="" selected>일</option>
               <option :value="index" v-for="index in 31" :key="index">{{index}}</option>
             </select>
           </div>
@@ -141,7 +144,7 @@
         <div class="input__block gender">
           <h5 class="d-block">성별</h5>
           <div class="col-6 d-inline-block">
-            <p class="d-inline-block col-6">남성</p>
+            <p class="d-inline-block col-6 mb-0 p-0">남성</p>
             <input
               v-model="user.gender"
               type="radio"
@@ -152,7 +155,7 @@
             />
           </div>
           <div class="col-6 d-inline-block">
-            <p class="d-inline-block col-6">여성</p>
+            <p class="d-inline-block col-6 mb-0 p-0">여성</p>
             <input
               v-model="user.gender"
               type="radio"
