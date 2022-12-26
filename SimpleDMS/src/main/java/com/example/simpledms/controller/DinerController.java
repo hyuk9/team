@@ -28,6 +28,7 @@ import java.util.Optional;
  */
 @Slf4j
 @RestController
+@CrossOrigin(origins = "http://localhost:8081")
 @RequestMapping("/api")
 public class DinerController {
     //    스프링부트 : DI(의존성 주입) ( @Autowired )
@@ -40,7 +41,7 @@ public class DinerController {
 //                                         기본값은 required = true
 //    ✅ @RequestParam(defaultValue = "값") : 매개변수에 값이 없으면 기본값을 설정함
     @GetMapping("/diner")
-    public ResponseEntity<Object> getDinerAll(@RequestParam(required = false) String dname,
+    public ResponseEntity<Object> getDinerAll(@RequestParam(required = false) String loc,
                                              @RequestParam(defaultValue = "0") int page,
                                              @RequestParam(defaultValue = "3") int size
     ) {
@@ -53,7 +54,7 @@ public class DinerController {
 
 //            findAll() 생략 해도 전체 검색이 됨 :
 //            why? like 검색시 부서명 매개변수가 ""이더라도 전체 검색이 됨
-            dinerPage = dinerService.findAllByDnameContaining(dname, pageable);
+            dinerPage = dinerService.findAllByLocContaining(loc, pageable);
 
     //            맵 자료구조에 넣어서 전송
             Map<String, Object> response = new HashMap<>();
@@ -73,7 +74,6 @@ public class DinerController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
 
     @GetMapping("/diner/{dno}")
     public ResponseEntity<Object> getDinerId(@PathVariable int dno) {
@@ -95,6 +95,7 @@ public class DinerController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
 
     //  *1) 클라이언트 : (form태그) Get 방식(url) -> 2) 서버 : @GetMapping("url") -> 3) DB: select 요청,
     @DeleteMapping("/diner/all")

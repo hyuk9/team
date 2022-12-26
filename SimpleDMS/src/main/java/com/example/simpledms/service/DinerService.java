@@ -43,6 +43,12 @@ public class DinerService {
         return optionalDiner;
     }
 
+//    dname으로 조회하는 함수
+    public Optional<Diner> findByDname(String dname) {
+        Optional<Diner> optionalDiner2 = dinerRepository.findByDname(dname);
+
+        return optionalDiner2;
+    }
 
     //    ✅ 전체 삭제 함수
     public void removeAll() {
@@ -68,11 +74,12 @@ public class DinerService {
     }
 
     //    ✅ dname like 검색 함수 ( 페이징 처리 추가 )
-    public Page<Diner> findAllByDnameContaining(String sname, Pageable pageable) {
-        Page<Diner> list = dinerRepository.findAllByDnameContaining(sname, pageable);
+    public Page<Diner> findAllByLocContaining(String loc, Pageable pageable) {
+        Page<Diner> list = dinerRepository.findAllByLocContaining(loc, pageable);
 
         return list;
     }
+
 
 }
 

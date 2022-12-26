@@ -6,12 +6,8 @@
         <div class="container">
           <div class="row flex-center">
             <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0">
-              <a class="img-landing-banner" href="#!"
-                ><img
-                  class="img-fluid"
-                  src="assets/img/gallery/hero-header.png"
-                  alt="hero-header"
-              /></a>
+              <a class="img-landing-banner" href="#!"><img class="img-fluid" src="assets/img/gallery/hero-header.png"
+                  alt="hero-header" /></a>
             </div>
             <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
               <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">전국</h1>
@@ -35,22 +31,13 @@
                 <router-link to="/add/diner">Add</router-link>
               </button>
               <!--  검색어 입력 -->
-              <input
-                type="text"
-                class="form-control"
-                placeholder="이름으로 찾기"
-                v-model="searchDname"
-              />
+              <input type="text" class="form-control" placeholder="이름으로 찾기" v-model="searchLoc" />
               <!--  검색어 버튼 -->
               <div class="input-group-append">
-                <button
-                  class="btn btn-secondary"
-                  type="button"
-                  @click="
-                    page = 1;
-                    retrieveDiner();
-                  "
-                >
+                <button class="btn btn-secondary" type="button" @click="
+  page = 1;
+retrieveDiner();
+                ">
                   Search
                 </button>
               </div>
@@ -79,13 +66,8 @@
             </div> -->
             <!-- Nested row for non-featured blog posts-->
             <div class="row">
-              <div
-                class="col-lg-6"
-                :class="{ active: index == currentIndex }"
-                v-for="(data, index) in diner"
-                :key="index"
-                @click="setActiveDiner(data, index)"
-              >
+              <div class="col-lg-6" :class="{ active: index == currentIndex }" v-for="(data, index) in diner"
+                :key="index" @click="setActiveDiner(data, index)">
                 <!-- Blog post-->
                 <div class="card mb-4">
                   <!-- <a href="#!"
@@ -94,43 +76,23 @@
                       src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
                       alt="..."
                   /></a> -->
-                  <div
-                    id="carouselExampleSlidesOnly"
-                    class="carousel slide"
-                    data-bs-ride="carousel"
-                  >
+                  <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                       <div class="carousel-item active">
-                        <img
-                          src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
-                          class="d-block w-100"
-                          alt="..."
-                        />
+                        <img src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" class="d-block w-100" alt="..." />
                       </div>
                       <div class="carousel-item">
-                        <img
-                          src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
-                          class="d-block w-100"
-                          alt="..."
-                        />
+                        <img src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" class="d-block w-100" alt="..." />
                       </div>
                       <div class="carousel-item">
-                        <img
-                          src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
-                          class="d-block w-100"
-                          alt="..."
-                        />
+                        <img src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" class="d-block w-100" alt="..." />
                       </div>
                     </div>
                   </div>
                   <div class="card-body">
                     <h2 class="card-title h4">
                       {{ data.dname }}
-                      <a
-                        class="badge bg-danger text-decoration-none link-light"
-                        href="#!"
-                        >{{ data.score }}</a
-                      >
+                      <a class="badge bg-danger text-decoration-none link-light" href="#!">{{ data.score }}</a>
                     </h2>
                     <p class="card-text">
                       {{ data.review }}
@@ -138,16 +100,12 @@
 
                     <!-- 간략 상세 목록 시작 -->
                     <div v-if="currentDiner">
-                        <button class="btn btn-warning" type="button">
-                        <router-link :to="'/diner/' + currentDiner.dno"
-                          >detail >
+                      <button class="btn btn-warning" type="button">
+                        <router-link :to="'/diner/' + currentDiner.dno">detail >
                         </router-link>
                       </button>
-                        <button class="btn btn-danger ms-3">
-                        <router-link
-                          :to="'/diner/' + currentDiner.dno + '/edit'"
-                          >Edit</router-link
-                        >
+                      <button class="btn btn-danger ms-3">
+                        <router-link :to="'/diner/' + currentDiner.dno + '/edit'">Edit</router-link>
                       </button>
                     </div>
 
@@ -161,14 +119,8 @@
             <nav aria-label="Pagination mb-5">
               <hr class="my-0" />
               <ul class="pagination justify-content-center my-4">
-                <b-pagination
-                  v-model="page"
-                  :total-rows="count"
-                  :per-page="pageSize"
-                  prev-text="Prev"
-                  next-text="Next"
-                  @change="handlePageChange"
-                ></b-pagination>
+                <b-pagination v-model="page" :total-rows="count" :per-page="pageSize" prev-text="Prev" next-text="Next"
+                  @change="handlePageChange"></b-pagination>
               </ul>
             </nav>
           </div>
@@ -200,7 +152,8 @@ export default {
       currentDiner: null,
       currentIndex: -1,
       // dname: "", ->(변경) searchDname: "",
-      searchDname: "",
+      // TODO: searchDname -> searchLoc
+      searchLoc: "",
 
       // 페이징을 위한 변수 정의
       page: 1, // 현재 페이지
@@ -215,7 +168,7 @@ export default {
     // axios , 모든 부서 정보 조회 요청 함수
     retrieveDiner() {
       // getAll() ->(변경) getAll(dname, page, size)
-      DinerDataService.getAll(this.searchDname, this.page - 1, this.pageSize)
+      DinerDataService.getAll(this.searchLoc, this.page - 1, this.pageSize)
         // 성공하면 .then() 결과가 전송됨
         .then((response) => {
           // this.diner = response.data -> (변경) const { diner, totalItems } = response.data
@@ -267,13 +220,17 @@ export default {
           console.log(e);
         });
     },
+
+    
   },
   // 화면이 뜨자마자 실행되는 이벤트(라이프 사이클 함수) : mounted(), created()
   mounted() {
-    this.retrieveDiner(); // 화면 로딩시 전체 조회함수 실행
+    // 화면 로딩시 전체 조회함수 실행
+    this.retrieveDiner(this.searchLoc="서울");
   },
 };
 </script>
 
 <style>
+
 </style>
