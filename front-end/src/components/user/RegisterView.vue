@@ -198,6 +198,7 @@
             placeholder="주소를 입력해 주세요."
             class="input"
             id="address"
+            @click="popupaddress"
           />
         </div>
         <!-- sign in button -->
@@ -317,28 +318,19 @@ export default {
       });
     },
 
-    // 카카오 주소 api 보류
-  // doopop () {
-  //         new daum.Postcode({
-  //       oncomplete: function (data) {
-  //         let kakaoaddress = data.address;
-  //         if (kakaoaddress !== "") {
-  //           document.getElementById("address").value= kakaoaddress;
-  //         } 
-  //       },
-  //       shorthand: false,
-  //     }).open();
-  //     },
-
-    // 클릭시 카카오 주소 api 띄우고 주소검색 데이터를 input 태그로 가져오는 함수 ->보류
-//     popupaddress() {
-//  this.doopop ();
-//  if(document.getElementById("address").value !="") {
-//   alert("fdsf")
-//  }
-     
-    
-//     },
+    // 클릭시 카카오 주소 api 띄우고 주소검색 데이터를 가져오는 함수 
+    popupaddress() {
+      let user = this.user;
+      new daum.Postcode({
+          oncomplete: function (data) {
+            let kakaoaddress = data.address;
+            if (kakaoaddress !== "") {
+              user.address= kakaoaddress;
+            } 
+          },
+          shorthand: false,
+        }).open();
+    },
    
   },
 };
