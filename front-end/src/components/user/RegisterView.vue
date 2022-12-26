@@ -43,8 +43,7 @@
             <select name="" id="" class="endEmail" v-model="endEmail">
               <option value="" selected>이메일 선택</option>
               <option value="naver.com">naver.com</option>
-              <option value="gmail.com">gmail.com</option>
-              <option value="hanmail.net">hanmail.net</option>
+              <option value="google.com">google.com</option>
             </select>
           </div>
           <div v-if="submitted && errors.has('이메일 ')" class="register-alert">
