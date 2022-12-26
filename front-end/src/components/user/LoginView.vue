@@ -338,7 +338,6 @@ a {
   outline: none;
   font-size: 0.938rem;
   font-weight: 700;
-  color: #23004d;
   width: 100%;
 }
 .login__input::placeholder {
