@@ -2,6 +2,7 @@
   <div id="app">
     <!-- <NavCom /> -->
     <SubnavCom/>
+    <!-- <HeaderCom /> -->
     <router-view />
     <FooterCom />
   </div>
@@ -12,6 +13,7 @@
 // import NavCom from "@/components/common/NavCom.vue";
 import SubnavCom from "@/components/common/SubnavCom.vue";
 import FooterCom from "@/components/common/FooterCom.vue";
+// import HeaderCom from "@/components/common/HeaderCom.vue";
 import Darkmode from "darkmode-js";
 
 export default {
@@ -45,7 +47,7 @@ export default {
     // NavCom,
     SubnavCom,
     FooterCom,
-
+    // HeaderCom,
   },
   mounted() {
     const darkmode = new Darkmode(this.options);
