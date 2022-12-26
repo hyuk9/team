@@ -41,6 +41,7 @@
             />
             <span class="atSign">@</span>
             <select name="" id="" class="endEmail" v-model="endEmail">
+              <option value="" selected>이메일 선택</option>
               <option value="naver.com">naver.com</option>
               <option value="google.com">google.com</option>
             </select>
@@ -124,9 +125,11 @@
               name="연도 "
             />
             <select v-model="month">
+              <option value="" selected>월</option>
               <option :value="index" v-for="index in 12" :key="index">{{index}}</option>
             </select>  
             <select v-model="day">
+              <option value="" selected>일</option>
               <option :value="index" v-for="index in 31" :key="index">{{index}}</option>
             </select>
           </div>
@@ -141,7 +144,7 @@
         <div class="input__block gender">
           <h5 class="d-block">성별</h5>
           <div class="col-6 d-inline-block">
-            <p class="d-inline-block col-6">남성</p>
+            <p class="d-inline-block col-6 mb-0 p-0">남성</p>
             <input
               v-model="user.gender"
               type="radio"
@@ -152,7 +155,7 @@
             />
           </div>
           <div class="col-6 d-inline-block">
-            <p class="d-inline-block col-6">여성</p>
+            <p class="d-inline-block col-6 mb-0 p-0">여성</p>
             <input
               v-model="user.gender"
               type="radio"
@@ -198,6 +201,7 @@
             placeholder="주소를 입력해 주세요."
             class="input"
             id="address"
+            @click="popupaddress"
           />
         </div>
         <!-- sign in button -->
@@ -245,21 +249,21 @@ export default {
       return this.$store.state.auth.status.loggedIn;
     },
   },
-  // created() : Vue 생성되자 마자 실행되는 이벤트(화면은 생성되지 않은 상태)
-  created() {
-    if (this.loggedIn) {
-      // 로그인이 되어 있는 상태
-    }
-  },
   methods: {
     // 회원가입시 나눠진 일부 입력폼 합치는 함수
     registerInputCombine() {
       //  이메일 앞부분과 뒷부분 합쳐서 완성된 이메일 형식 만들기
-      this.user.email = this.startEmail +"@"+ this.endEmail;    
+      if(this.startEmail && this.endEmail) {
+      this.user.email = this.startEmail +"@"+ this.endEmail;   
+      }
       //  생년월일 앞부분과 뒷부분 합쳐서 완성된 생년월일 형식 만들기
+            if(this.year && this.month && this.day) {
       this.user.birthday = this.year +"."+this.month +"."+ this.day;
+            }
       //  전화번호 부분들 합쳐서 완성된 전화번호 형식 만들기
+            if(this.phoneFirstPart && this.phoneMiddlePart && this.phoneLastPart) {
       this.user.phone = this.phoneFirstPart +"-"+this.phoneMiddlePart +"-"+ this.phoneLastPart;
+            }
     },
     
     // 회원가입 버튼 클릭시 실행되는 함수
@@ -273,6 +277,8 @@ export default {
         // validateAll() 모두 통과하면 -> isValid = true  (유효함)
         //                             -> isValid = false (유효하지 않음)
         if (!isValid) {
+          // 유효성 검사 결과 이상 발견 시 그곳으로 이동하는 함수
+          document.querySelector(".register-alert:first-of-type").scrollIntoView( {block: "center"});
           return; // 함수 탈출(break)
         }
 
@@ -315,36 +321,21 @@ export default {
       });
     },
 
-    // 카카오 주소 api 보류
-  // doopop () {
-  //         new daum.Postcode({
-  //       oncomplete: function (data) {
-  //         let kakaoaddress = data.address;
-  //         if (kakaoaddress !== "") {
-  //           document.getElementById("address").value= kakaoaddress;
-  //         } 
-  //       },
-  //       shorthand: false,
-  //     }).open();
-  //     },
-
-    // 클릭시 카카오 주소 api 띄우고 주소검색 데이터를 input 태그로 가져오는 함수 ->보류
-//     popupaddress() {
-//  this.doopop ();
-//  if(document.getElementById("address").value !="") {
-//   alert("fdsf")
-//  }
-     
-    
-//     },
+    // 클릭시 카카오 주소 api 띄우고 주소검색 데이터를 가져오는 함수 
+    popupaddress() {
+      let user = this.user;
+      new daum.Postcode({
+          oncomplete: function (data) {
+            let kakaoaddress = data.address;
+            if (kakaoaddress !== "") {
+              user.address= kakaoaddress;
+            } 
+          },
+          shorthand: false,
+        }).open();
+    },
    
   },
-  mounted() {
-    // 날짜에 현재날짜로 placeholder 표시하기
-    this.user.birthday = new Date().toISOString().substring(0, 10);
-
-   
-  },   
 };
 </script>
 
@@ -429,6 +420,11 @@ form .input__block input {
   font-family: "Montserrat", sans-serif;
   padding: 0 10px;
 }
+/* 셀렉트 박스 둥글게  */
+form select {
+    border-radius: 8px;
+}
+
 /* 이메일 입력용 */
 form .emailInput {
     display: block;

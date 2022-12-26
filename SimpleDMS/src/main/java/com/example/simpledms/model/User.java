@@ -67,22 +67,22 @@ public class User extends BaseTimeEntity {
     @Column
     private String name;
 
-    @NotBlank
+
     @Size(max = 120)
     @Column
     private String birthday;
 
-    @NotBlank
+
     @Size(max = 120)
     @Column
     private String gender;
 
-    @NotBlank
+
     @Size(max = 120)
     @Column
     private String phone;
 
-    @NotBlank
+
     @Size(max = 120)
     @Column
     private String address;

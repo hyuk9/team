@@ -58,6 +58,7 @@ export default {
 
 <style lang="scss">
 h1,
+h2,
 h5,
 .dropdown-header,
 p,

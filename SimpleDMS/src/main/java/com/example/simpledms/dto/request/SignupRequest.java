@@ -42,19 +42,15 @@ public class SignupRequest {
     private String email;
 
 
-    @NotBlank               // 공백 또는 null 허용 안함
     @Size(max= 50)          // 자리수가 50 까지만 허용     // birthday 형식이 맞는지 체크하는 @
     private String birthday;
 
-    @NotBlank               // 공백 또는 null 허용 안함
     @Size(max= 50)          // 자리수가 50 까지만 허용     // gender 형식이 맞는지 체크하는 @
     private String gender;
 
-    @NotBlank               // 공백 또는 null 허용 안함
     @Size(max= 50)          // 자리수가 50 까지만 허용     // phone 형식이 맞는지 체크하는 @
     private String phone;
 
-    @NotBlank               // 공백 또는 null 허용 안함
     @Size(max= 50)          // 자리수가 50 까지만 허용     // address 형식이 맞는지 체크하는 @
     private String address;
 
