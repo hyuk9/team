@@ -19,4 +19,13 @@ public interface UserRoleDto {
 //    Role 클래스 getter
     Long getRid();
     String getName();
+    String getBirthday();
+
+    String getGender();
+
+    String getPhone();
+
+    String getAddress();
+
+    String getRname();
 }

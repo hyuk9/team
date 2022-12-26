@@ -23,10 +23,10 @@
       </div>
     </section>
     <!-- 최상단 끝 -->
-    <div v-if="currentUser" class="container-fluid w-50">
+    <div v-if="currentUser" class="container-fluid w-50 bg bg-danger mt-5 mb-5">
       <div>
         <div class="form-group">
-          <label for="username">Username</label>
+          <label for="username">아이디</label>
           <!-- v-validate : 유효성 체크 -->
           <!-- v-validate="'required|min:3|max:20'" 체크함 -->
           <!-- errors.has('username') : 에러 발생했는지 검사 -->
@@ -34,6 +34,7 @@
           <input
             v-model="currentUser.username"
             v-validate="'required|min:3|max:20'"
+            v-bind:disabled="true"
             type="text"
             class="form-control"
             name="username"
@@ -45,10 +46,11 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="email">Email</label>
+          <label for="email">이메일</label>
           <input
             v-model="currentUser.email"
             v-validate="'required|email|max:50'"
+            v-bind:disabled="true"
             type="email"
             class="form-control"
             name="email"
@@ -58,7 +60,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="password">Password</label>
+          <label for="password">비밀번호</label>
           <input
             v-model="currentUser.password"
             type="password"
@@ -72,24 +74,22 @@
         </div>
 
         <div class="form-group">
-          <label for="password">role</label>
+          <label for="password">권한</label>
           <select class="form-select" v-model="currentUser.role[0].name">
             <option>ROLE_USER</option>
-            <option>ROLE_MANAGER</option>
             <option>ROLE_ADMIN</option>
           </select>
         </div>
 
-        <button class="mt-3 btn btn-danger" @click="deleteUser">Delete</button>
+        <button class="mt-3 btn btn-danger" @click="deleteUser">삭제하기</button>
 
         <button
           type="submit"
           class="ms-3 mt-3 btn btn-success"
           @click="updateUser(currentUser.id, changePwd, currentUser)"
         >
-          Update
+          수정하기
         </button>
-        <p>{{ message }}</p>
       </div>
     </div>
 
@@ -139,7 +139,7 @@ export default {
           UserDataService.update(id, changePwd, user)
             .then((response) => {
               console.log(response.data);
-              this.message = "The User was updated successfully!";
+              alert("수정완료")
             })
             .catch((e) => {
               console.log(e);
@@ -151,6 +151,7 @@ export default {
       UserDataService.delete(this.currentUser.id)
         .then((response) => {
           console.log(response.data);
+          alert("삭제 성공")
           this.$router.push("/user");
         })
         .catch((e) => {

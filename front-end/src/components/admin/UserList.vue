@@ -22,18 +22,19 @@
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">유저명</th>
+            <th scope="col">아이디</th>
+            <th scope="col">이름</th>
             <th scope="col">이메일</th>
             <th scope="col">권한</th>
-            <th scope="col">기능</th>
+            <th scope="col">편집</th>
           </tr>
         </thead>
         <tbody v-for="(data, index) in user" :key="index">
           <tr>
             <td>{{ data.username }}</td>
-            <!-- <td>{{ data.lastName }}</td>  -->
-            <td>{{ data.email }}</td>
             <td>{{ data.name }}</td>
+            <td>{{ data.email }}</td>
+            <td>{{ data.rname }}</td>
             <td>
               <router-link :to="'/user/' + data.id"><span class="badge bg-success">수정하기</span></router-link>
             </td>

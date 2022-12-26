@@ -56,8 +56,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
                          "and   r.delete_yn = 'N' " +
                          "and   u.username like %:username%"
             ,nativeQuery = true)
-
     Page<UserRoleDto> findAllByUsernameContaining(@Param("username") String username, Pageable pageable);
+
 
 }
 
