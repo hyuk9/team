@@ -226,7 +226,7 @@ CREATE TABLE TB_USER(
 -- 역할 테이블 : ROLE_USER, ROLE_ADMIN
 CREATE TABLE TB_ROLE(
                         RID         NUMBER NOT NULL PRIMARY KEY,
-                        NAME        VARCHAR2(1000) UNIQUE,
+                        RNAME       VARCHAR2(1000) UNIQUE,
                         DELETE_YN   VARCHAR2(1) DEFAULT 'N',
                         INSERT_TIME VARCHAR2(255),
                         UPDATE_TIME VARCHAR2(255),

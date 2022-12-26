@@ -145,14 +145,14 @@ public class UserController {
         Set<Role> roles = new HashSet<>();
 
         if (strRoles == null) {
-            Role userRole = roleService.findByName(ERole.ROLE_USER)
+            Role userRole = roleService.findByRname(ERole.ROLE_USER)
                     .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
             roles.add(userRole);
         } else {
             strRoles.forEach(role -> {
                 switch (role) {
                     case "admin":
-                        Role adminRole = roleService.findByName(ERole.ROLE_ADMIN)
+                        Role adminRole = roleService.findByRname(ERole.ROLE_ADMIN)
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
                         roles.add(adminRole);
 
@@ -164,7 +164,7 @@ public class UserController {
 //
 //          break;
                     default:
-                        Role userRole = roleService.findByName(ERole.ROLE_USER)
+                        Role userRole = roleService.findByRname(ERole.ROLE_USER)
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
                         roles.add(userRole);
                 }
@@ -205,20 +205,20 @@ public class UserController {
         Set<Role> roles = new HashSet<>();
 
         if (strRoles == null) {
-            Role userRole = roleService.findByName(ERole.ROLE_USER)
+            Role userRole = roleService.findByRname(ERole.ROLE_USER)
                     .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
             roles.add(userRole);
         } else {
             strRoles.forEach(role -> {
                 switch (role) {
                     case "ROLE_ADMIN":
-                        Role adminRole = roleService.findByName(ERole.ROLE_ADMIN)
+                        Role adminRole = roleService.findByRname(ERole.ROLE_ADMIN)
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
                         roles.add(adminRole);
 
                         break;
                     default:
-                        Role userRole = roleService.findByName(ERole.ROLE_USER)
+                        Role userRole = roleService.findByRname(ERole.ROLE_USER)
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
                         roles.add(userRole);
                 }

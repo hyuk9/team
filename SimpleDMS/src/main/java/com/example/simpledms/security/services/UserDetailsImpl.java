@@ -70,7 +70,7 @@ public class UserDetailsImpl implements UserDetails {
         List<GrantedAuthority> authorities =
 //                user.getRoels : ROLE_USER, ROLE_ADMIN
                 user.getRole().stream()
-                        .map(role -> new SimpleGrantedAuthority(role.getName().name()))
+                        .map(role -> new SimpleGrantedAuthority(role.getRname().name()))
                         .collect(Collectors.toList());
 //        User == UserDetailsImpl
 //        User role 은 문자열 : ROLE_USER 등

@@ -21,7 +21,7 @@ import java.util.Optional;
 @Repository
 public interface RoleRepository  extends JpaRepository<Role, Integer> {
 //    권한명으로(Name) 조회하는 함수
-    Optional<Role> findByName(ERole name);
+    Optional<Role> findByRname(ERole name);
 }
 
 

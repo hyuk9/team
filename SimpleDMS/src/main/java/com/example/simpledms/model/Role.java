@@ -48,10 +48,10 @@ public class Role extends BaseTimeEntity {
 
     @Enumerated(EnumType.STRING)
     @Column
-    private ERole name;
+    private ERole rname;
 
     public Role(ERole name) {
-        this.name = name;
+        this.rname = name;
     }
 }
 

@@ -24,7 +24,7 @@ public class RoleService {
     @Autowired
     RoleRepository repository;
 
-    public Optional<Role> findByName(ERole name){
-        return repository.findByName(name);
+    public Optional<Role> findByRname(ERole name){
+        return repository.findByRname(name);
     }
 }

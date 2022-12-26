@@ -37,7 +37,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Boolean existsByEmail(String email);
 
 //    @Query,
-    @Query(value = "select u.*, r.rid, r.name " +
+    @Query(value = "select u.*, r.rid, r.rname " +
             "from tb_user u, " +
             "     tb_role r, " +
             "     tb_user_role ur " +
@@ -46,7 +46,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
             "and   u.delete_yn = 'N' " +
             "and   r.delete_yn = 'N' " +
             "and   u.username like %:username%",
-            countQuery = "select u.*, r.rid, r.name " +
+            countQuery = "select u.*, r.rid, r.rname " +
                          "from tb_user u, " +
                          "     tb_role r, " +
                          "     tb_user_role ur " +
