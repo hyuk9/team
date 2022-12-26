@@ -39,166 +39,14 @@
 
       <!-- ============================================-->
       <!-- 음식점 리스트 표시 시작 -->
-      <section class="py-0">
-        <div class="container">
-          <div class="col-lg-5 mx-auto text-center mt-7">
-            <h5
-              class="
-                fw-light
-                fs-5 fs-lg-7
-                lh-sm
-                rounded-3
-                bg-primary
-                text-white
-                pt-2
-                pb-2
-              "
-            >
-              메뉴별 모아보기
-            </h5>
-          </div>
-          <div class="row h-100 gx-2 mt-7">
-            <!-- 한식 시작 -->
-            <div class="col-sm-6 col-lg-3 mb-3 mb-md-0 h-100 pb-4">
-              <div class="card card-span h-100">
-                <div class="position-relative">
-                  <img
-                    class="img-fluid rounded-3 w-100"
-                    src="assets/img/species/korean.jpg"
-                    alt="..."
-                  />
-                  <div class="card-actions">
-                    <div class="badge badge-foodwagon bg-primary p-4">
-                      <div class="d-flex flex-between-center">
-                        <div class="text-white fs-7" id="menu">한식</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-body px-0">
-                  <h5 class="fw-bold text-1000 text-truncate">
-                    한식에 대한 설명
-                  </h5>
-                  <span class="badge bg-soft-danger py-2 px-3">
-                    <span class="fs-1 text-danger">지금 바로 알아보기</span>
-                  </span>
-                </div>
-                <a class="stretched-link" href="#"></a>
-              </div>
-            </div>
-            <!-- 한식 끝 -->
-
-            <!-- 중식 시작 -->
-            <div class="col-sm-6 col-lg-3 mb-3 mb-md-0 h-100 pb-4">
-              <div class="card card-span h-100">
-                <div class="position-relative">
-                  <img
-                    class="img-fluid rounded-3 w-100"
-                    src="assets/img/species/chinese.jpg"
-                    alt="..."
-                  />
-                  <div class="card-actions">
-                    <div class="badge badge-foodwagon bg-primary p-4">
-                      <div class="d-flex flex-between-center">
-                        <div class="text-white fs-7" id="menu">중식</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-body px-0">
-                  <h5 class="fw-bold text-1000 text-truncate">
-                    중식에 대한 설명
-                  </h5>
-                  <span class="badge bg-soft-danger py-2 px-3">
-                    <span class="fs-1 text-danger">지금 바로 알아보기</span>
-                  </span>
-                </div>
-                <a class="stretched-link" href="#"></a>
-              </div>
-            </div>
-            <!-- 중식 끝 -->
-
-            <!-- 양식 시작 -->
-            <div class="col-sm-6 col-lg-3 mb-3 mb-md-0 h-100 pb-4">
-              <div class="card card-span h-100">
-                <div class="position-relative">
-                  <img
-                    class="img-fluid rounded-3 w-100"
-                    src="assets/img/species/italy.jpg"
-                    alt="..."
-                  />
-                  <div class="card-actions">
-                    <div class="badge badge-foodwagon bg-primary p-4">
-                      <div class="d-flex flex-between-center">
-                        <div class="text-white fs-7" id="menu">양식</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-body px-0">
-                  <h5 class="fw-bold text-1000 text-truncate">
-                    양식에 대한 설명
-                  </h5>
-                  <span class="badge bg-soft-danger py-2 px-3">
-                    <span class="fs-1 text-danger">지금 바로 알아보기</span>
-                  </span>
-                </div>
-                <a class="stretched-link" href="#"></a>
-              </div>
-            </div>
-            <!-- 양식 끝 -->
-
-            <!-- 일식 시작 -->
-            <div class="col-sm-6 col-lg-3 mb-3 mb-md-0 h-100 pb-4">
-              <div class="card card-span h-100">
-                <div class="position-relative">
-                  <img
-                    class="img-fluid rounded-3 w-100"
-                    src="assets/img/species/japan.jpg"
-                    alt="..."
-                  />
-                  <div class="card-actions">
-                    <div class="badge badge-foodwagon bg-primary p-4">
-                      <div class="d-flex flex-between-center">
-                        <div class="text-white fs-7" id="menu">일식</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-body px-0">
-                  <h5 class="fw-bold text-1000 text-truncate">
-                    일식에 대한 설명
-                  </h5>
-                  <span class="badge bg-soft-danger py-2 px-3">
-                    <span class="fs-1 text-danger">지금 바로 알아보기</span>
-                  </span>
-                </div>
-                <a class="stretched-link" href="#"></a>
-              </div>
-            </div>
-            <!-- 일식 끝 -->
-
-            <!-- 카페 시작 -->
-            <!-- <div class="col-sm-6 col-lg-2 mb-3 mb-md-0 h-100 pb-4"> <div class="card
-                        card-span h-100"> <div class="position-relative"> <img class="img-fluid
-                        rounded-3 w-100" src="assets/img/species/dessert.jpg" alt="..." /> <div
-                        class="card-actions"> <div class="badge badge-foodwagon bg-primary p-4"> <div
-                        class="d-flex flex-between-center"> <div class="text-white fs-7">디저트</div>
-                        </div> </div> </div> </div> <div class="card-body px-0"> <h5 class="fw-bold
-                        text-1000 text-truncate">카페에 대한 설명</h5><span class="badge bg-soft-danger py-2
-                        px-3"><span class="fs-1 text-danger">지금 바로 알아보기</span></span> </div><a
-                        class="stretched-link" href="#"></a> </div> </div> -->
-            <!-- 카페 끝 -->
-          </div>
-        </div>
-      </section>
+      <MenuList />
       <!-- 음식점 리스트 표시 끝 -->
       <!-- ============================================-->
 
       <!-- ============================================-->
-      <!-- 할인 중인 식당 순 정렬 시작 ============================-->
+      <!-- 지역별 맛집 정렬 시작 ============================-->
       <LocalList />
-      <!-- 할인 중인 식당 순 정렬 끝 ============================-->
+      <!-- 지역별 맛집 정렬 끝 ============================-->
       <!-- ============================================-->
 
       <!-- ============================================-->
@@ -226,6 +74,13 @@
             </section> -->
       <!-- close ============================-->
       <!-- ============================================-->
+
+      <!-- ============================================-->
+      <!-- 테마별 맛집 정렬 시작 ============================-->
+      <ThemeList />
+      <!-- 테마별 맛집 정렬 끝 ============================-->
+      <!-- ============================================-->
+
 
       <!-- ============================================-->
       <!-- 인기 순 정렬 시작 ============================-->
@@ -1692,12 +1547,18 @@
 /* eslint-disable */
 // '지역별 맛집' component 화
 import LocalList from "../components/HomeView/LocalList.vue";
+// '테마별 맛집' component 화
+import ThemeList from "../components/HomeView/ThemeList.vue";
+// '메뉴별 맛집' component 화
+import MenuList from "../components/HomeView/MenuList.vue";
 
 
 export default {
   // '지역별 맛집' component 화
   components: {
     LocalList,
+    ThemeList,
+    MenuList
   },
   data() {
     return {

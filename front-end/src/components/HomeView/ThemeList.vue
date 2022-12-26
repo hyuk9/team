@@ -1,6 +1,6 @@
 <template>
   <!-- 메인 화면의 지역별 맛집 부분 시작 -->
-  <section id="testimonial" style="background-color:green">
+  <section id="testimonial" style="background-color: blue">
     <div class="container">
       <div class="row h-100">
         <div class="col-lg-5 mx-auto text-center mb-6">
@@ -16,7 +16,7 @@
               pb-2
             "
           >
-            지역별 맛집
+            테마별 맛집
           </h5>
         </div>
       </div>
@@ -30,7 +30,6 @@
             </select>
           </div> -->
       <!-- 셀렉트 박스 일단 주석처리 종료 -->
-
       <div class="col-12 d-flex justify-content-end mb-2">
         <!-- 전체보기 눌렀을 때 음식점 리스트로 매개변수 날리면서 페이지 전환 -->
         <a class="btn btn-lg btn-primary" href="#!"

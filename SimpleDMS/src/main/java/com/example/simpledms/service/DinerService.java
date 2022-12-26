@@ -76,7 +76,6 @@ public class DinerService {
     //    ✅ dname like 검색 함수 ( 페이징 처리 추가 )
     public Page<Diner> findAllByLocContaining(String loc, Pageable pageable) {
         Page<Diner> list = dinerRepository.findAllByLocContaining(loc, pageable);
-
         return list;
     }
 

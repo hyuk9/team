@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <!-- Heading -->
-    <h1>회원가입</h1>
+    <router-link to="/"><h1>회원가입</h1></router-link>
     <!-- 필수 항목 안내 -->
     <i class="fas fa-star-of-life ms-4"> </i><span>는 필수 항목입니다.</span>
 
@@ -29,15 +29,22 @@
         <div class="input__block">
           <h5>이메일</h5>
           <i class="fas fa-star-of-life ms-2"></i>
-          <input
-            v-model="user.email"
-            v-validate="'required|email|max:50'"
-            type="email"
-            placeholder="이메일를 입력해 주세요."
-            class="input"
-            id="email"
-            name="이메일 "
-          />
+          <div class="emailInput">
+            <input
+              v-model="startEmail"
+              v-validate="'required|max:50'"
+              type="text"
+              placeholder="이메일를 입력해 주세요."
+              class="input"
+              id="email"
+              name="이메일 "
+            />
+            <span class="atSign">@</span>
+            <select name="" id="" class="endEmail" v-model="endEmail">
+              <option value="naver.com">naver.com</option>
+              <option value="google.com">google.com</option>
+            </select>
+          </div>
           <div v-if="submitted && errors.has('이메일 ')" class="register-alert">
             <p>{{ errors.first("이메일 ") }}</p>
           </div>
@@ -106,13 +113,29 @@
         <!-- datepicker 찾아볼 예정 -->
         <div class="input__block">
           <h5>생년월일</h5>
-          <input
-            v-model="user.birthday"
-            type="date"
-            class="input"
-            id="date"
-            placeholder="날짜 선택"
-          />
+          <div class="dateInput">
+            <input
+              v-model="year"
+              v-validate="'numeric'"
+              type="text"
+              class="input"
+              id="date"
+              placeholder="연도 선택"
+              name="연도 "
+            />
+            <select v-model="month">
+              <option :value="index" v-for="index in 12" :key="index">{{index}}</option>
+            </select>  
+            <select v-model="day">
+              <option :value="index" v-for="index in 31" :key="index">{{index}}</option>
+            </select>
+          </div>
+          <div
+            v-if="submitted && errors.has('연도 ')"
+            class="register-alert"
+          >
+            <p>{{ errors.first("연도 ") }}</p>
+          </div>
         </div>
         <!-- 성별 -->
         <div class="input__block gender">
@@ -143,13 +166,28 @@
         <!-- 전화번호 -->
         <div class="input__block">
           <h5>전화번호</h5>
-          <input
-            v-model="user.phone"
-            type="text"
-            placeholder="전화번호를 입력해 주세요."
-            class="input"
-            id="phone"
-          />
+          <div class="phoneInput">
+            <input
+              v-model="phoneFirstPart"
+              type="text"
+              class="input"
+              id="phone1"
+            />
+            <span class="minus">-</span>
+              <input
+              v-model="phoneMiddlePart"
+              type="text"
+              class="input"
+              id="phone2"
+            />
+            <span class="minus">-</span>
+              <input
+              v-model="phoneLastPart"
+              type="text"
+              class="input"
+              id="phone3"
+            />
+          </div>
         </div>
         <!-- 주소 -->
         <div class="input__block">
@@ -182,6 +220,22 @@ export default {
       submitted: false,
       successful: false,
       message: "",
+      // 이메일 입력창 앞부분
+      startEmail : "",
+      // 이메일 입력창 뒷부분(@뒤 select 부분)
+      endEmail : "",
+      // 생년월일의 연도
+      year : "",
+      // 생년월일의 월
+      month : "",
+      // 생년월일의 일
+      day : "",
+      // 전화번호의 앞자리
+      phoneFirstPart : "",
+      // 전화번호의 중간자리
+      phoneMiddlePart : "",
+      // 전화번호의 뒷자리
+      phoneLastPart : "",
     };
   },
   computed: {
@@ -198,8 +252,20 @@ export default {
     }
   },
   methods: {
+    // 회원가입시 나눠진 일부 입력폼 합치는 함수
+    registerInputCombine() {
+      //  이메일 앞부분과 뒷부분 합쳐서 완성된 이메일 형식 만들기
+      this.user.email = this.startEmail +"@"+ this.endEmail;    
+      //  생년월일 앞부분과 뒷부분 합쳐서 완성된 생년월일 형식 만들기
+      this.user.birthday = this.year +"."+this.month +"."+ this.day;
+      //  전화번호 부분들 합쳐서 완성된 전화번호 형식 만들기
+      this.user.phone = this.phoneFirstPart +"-"+this.phoneMiddlePart +"-"+ this.phoneLastPart;
+    },
+    
     // 회원가입 버튼 클릭시 실행되는 함수
     handleRegister() {
+      // 위의 함수 로그인 시 실행
+      this.registerInputCombine();
       this.message = "";
       this.submitted = true; //  회원가입 버튼 클릭 = true
       // vee-validate 함수 처리 방법
@@ -220,7 +286,7 @@ export default {
             // 성공알림 띄우기
             this.$swal({
               icon: "success",
-              title: "로그인 성공",
+              title: "회원가입 성공",
               showConfirmButton: false,
               timer: 1000,
             });
@@ -240,7 +306,7 @@ export default {
             // 실패알림 띄우기
             this.$swal({
               icon: "error",
-              title: "로그인 실패",
+              title: "회원가입 실패",
               text: this.message,
               confirmButtonColor: "#E1793D",
               confirmButtonText: "확인",
@@ -276,6 +342,8 @@ export default {
   mounted() {
     // 날짜에 현재날짜로 placeholder 표시하기
     this.user.birthday = new Date().toISOString().substring(0, 10);
+
+   
   },   
 };
 </script>
@@ -298,7 +366,7 @@ h1 {
   font-size: 48px;
   letter-spacing: -3px;
   text-align: center;
-  margin: 120px 0 80px 0;
+  margin-bottom: 80px ;
   transition: 0.2s linear;
 }
 
@@ -356,10 +424,69 @@ form .input__block input {
   border-radius: 8px;
   border: none;
   background: rgba(15, 19, 42, 0.1);
-  color: #23004d;
+  /* color: #23004d; */
   font-size: 14px;
   font-family: "Montserrat", sans-serif;
   padding: 0 10px;
+}
+/* 이메일 입력용 */
+form .emailInput {
+    display: block;
+  width: 90%;
+  max-width: 680px;
+  height: 50px;
+  margin: 0 auto;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+  padding: 0;
+}
+/* 이메일 입력용 */
+form .emailInput .input {
+  display: inline-block;
+  width: 50%;
+}
+/* 이메일 입력용 */
+form .emailInput .atSign {
+  display: inline-block;
+  width: 10%;
+    height: 50px;
+  text-align: center;
+}
+/* 이메일 입력용 */
+form .emailInput .endEmail {
+  width: 40%;
+    height: 30px;
+}
+
+/* 생년월일 입력용 */
+form .dateInput {
+    display: block;
+  width: 90%;
+  max-width: 680px;
+  height: 50px;
+  margin: 0 auto;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+  padding: 0;
+}
+/* 생년월일 입력용 */
+form .dateInput .input {
+  display: inline-block;
+  width: 32%;
+  margin-right: 2%;
+}
+/* 생년월일 입력용 */
+form .dateInput select {
+  width: 32%;
+  height: 50px;
+}
+/* 생년월일 입력용 */
+form .dateInput select:first-of-type{
+  margin-right: 2%;
 }
 
 form .gender {
@@ -378,6 +505,33 @@ form .gender input {
   padding: 0 0 0 15px;
   vertical-align: middle;
 }
+
+/* 전화번호 입력용 */
+form .phoneInput {
+    display: block;
+  width: 90%;
+  max-width: 680px;
+  height: 50px;
+  margin: 0 auto;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+  padding: 0;
+}
+
+/* 전화번호 입력용 */
+form .phoneInput .input {
+  display: inline-block;
+  width: 30%;
+}
+/* 전화번호 입력용 */
+form .phoneInput .minus {
+  display: inline-block;
+  width: 5%;
+  text-align: center;
+}
+
 
 form .input__block input:focus,
 form .input__block input:active {

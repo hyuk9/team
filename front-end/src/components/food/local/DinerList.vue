@@ -27,7 +27,7 @@
           <!-- Blog entries-->
           <div class="col-lg-8">
             <div class="input-group mt-5 mb-5">
-              <button class="btn btn-success">
+              <button class="btn btn-success" v-if="showAdminBoard">
                 <router-link to="/add/diner">Add</router-link>
               </button>
               <!--  검색어 입력 -->
@@ -41,7 +41,6 @@ retrieveDiner();
                   Search
                 </button>
               </div>
-
             </div>
 
             <!-- Featured blog post
@@ -162,6 +161,23 @@ export default {
 
       pageSizes: [3, 6, 9], // select box에 넣을 기본 데이터
     };
+  },
+  computed: {
+    currentUser() {
+      // 모듈 저장소 : this.$store.state.모듈명.state값
+      // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
+      return this.$store.state.auth.user;
+    },
+    // ROLE_ADMIN 만 보이는 메뉴(함수)
+    showAdminBoard() {
+      if(this.currentUser && this.currentUser.roles) {
+        // if ROLE_ADMIN 있으면 true
+        //               없으면 false
+        return this.currentUser.roles.includes("ROLE_ADMIN"); 
+      }
+      // currentUser 없으면 false (메뉴가 안보임)
+      return false;
+    }
   },
   // 함수 정의하는 곳 : methods:
   methods: {
