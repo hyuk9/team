@@ -245,21 +245,21 @@ export default {
       return this.$store.state.auth.status.loggedIn;
     },
   },
-  // created() : Vue 생성되자 마자 실행되는 이벤트(화면은 생성되지 않은 상태)
-  created() {
-    if (this.loggedIn) {
-      // 로그인이 되어 있는 상태
-    }
-  },
   methods: {
     // 회원가입시 나눠진 일부 입력폼 합치는 함수
     registerInputCombine() {
       //  이메일 앞부분과 뒷부분 합쳐서 완성된 이메일 형식 만들기
-      this.user.email = this.startEmail +"@"+ this.endEmail;    
+      if(this.startEmail && this.endEmail) {
+      this.user.email = this.startEmail +"@"+ this.endEmail;   
+      }
       //  생년월일 앞부분과 뒷부분 합쳐서 완성된 생년월일 형식 만들기
+            if(this.year && this.month && this.day) {
       this.user.birthday = this.year +"."+this.month +"."+ this.day;
+            }
       //  전화번호 부분들 합쳐서 완성된 전화번호 형식 만들기
+            if(this.phoneFirstPart && this.phoneMiddlePart && this.phoneLastPart) {
       this.user.phone = this.phoneFirstPart +"-"+this.phoneMiddlePart +"-"+ this.phoneLastPart;
+            }
     },
     
     // 회원가입 버튼 클릭시 실행되는 함수
@@ -341,12 +341,6 @@ export default {
 //     },
    
   },
-  mounted() {
-    // 날짜에 현재날짜로 placeholder 표시하기
-    this.user.birthday = new Date().toISOString().substring(0, 10);
-
-   
-  },   
 };
 </script>
 
