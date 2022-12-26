@@ -33,6 +33,8 @@
         </div>
       </div>
 
+      <h1 class="text-danger">수정버튼을 관리자(ROLE_ADMIN)에게만 보이도록 조정 - 지금은 ROLE_USER한테도 다 보임</h1>
+      <h1 class="text-danger">th랑 td 문자열 가운데 정렬 해주세요 - 수정완료시 태그채로 삭제요망</h1>
       <!--    Todo : page 바 시작 주석 처리 -->
       <!-- <div class="col-md-12 offset-2">
                 <div class="mb-3">

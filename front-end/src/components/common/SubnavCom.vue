@@ -110,6 +110,23 @@
                                 </li>
                             </ul>
                         </li>
+                        <!-- 푸드컬럼 페이지 시작 -->
+                        <li class="nav-item dropdown">
+                            <router-link to="" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                푸드컬럼
+                            </router-link>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <router-link to="#" class="dropdown-item">아직 미정</router-link>
+                                </li>
+                                <li>
+                                    <router-link to="#" class="dropdown-item">차라리 게시판 쪽에 통합을 할지?</router-link>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- 푸드컬럼 페이지 끝 -->
+
                         <!-- 임시로 만든 예약 네비게이션 시작 -->
                         <li class="nav-item dropdown">
                             <router-link to="" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
@@ -144,6 +161,7 @@
                             </ul>
                         </li>
                         <!-- 관리자 전용 페이지 끝 -->
+
                     </ul>
                 </div>
 

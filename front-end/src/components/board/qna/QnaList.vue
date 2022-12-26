@@ -32,6 +32,9 @@
           </strong>
         </div>
       </div>
+      <h1 class="text-danger">수정버튼 관리자에게만 보이도록 설정 - 수정완료시 태그채로 삭제요망</h1>
+      <h1 class="text-danger">질문테이블(TB_QUESTION), 답변테이블(TB_ANSWER)두개 조인해서 사용할 예정</h1>
+      <h1 class="text-danger">여기도 th,td 텍스트 가운데 정렬 부탁드립니다</h1>
 
       <!--    Todo : page 바 시작 주석 처리 -->
       <!-- <div class="col-md-12 offset-2">

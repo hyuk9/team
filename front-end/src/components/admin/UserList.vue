@@ -19,6 +19,7 @@
     </section>
     <!-- 최상단 끝 -->
     <div class="container mt-2 mb-2">
+      <h1 class="text-danger">샘플테이블에 데이터 두개가 들어있는데 현재보이는건 한개만 보이는 문제가 있음</h1>
       <table class="table">
         <thead>
           <tr>

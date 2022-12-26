@@ -182,7 +182,7 @@
               </li>
               <li class="lh-lg">
                 <router-link to = "" class="text-200 text-decoration-none" 
-                  >도움주신분들</router-link>
+                  >도움주신분들(빈칸채우기용)</router-link>
               </li>
             </ul>
           </div>

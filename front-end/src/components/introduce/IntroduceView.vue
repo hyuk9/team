@@ -20,6 +20,8 @@
       </div>
     </section>
     <!-- 최상단 끝 -->
+    <h1 class="text-danger">형태는 괜찮은데 5명으로 나눌거면 조금 애매할 수 있으니 강사님 끼워넣고 6명으로 채워넣으면 좋을거같습니다</h1>
+
     <!-- ======= Team Section ======= -->
     <section id="team" class="team section-bg">
       <!-- Team Start -->

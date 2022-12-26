@@ -26,6 +26,8 @@
         <div class="row">
           <!-- Blog entries-->
           <div class="col-lg-8">
+            <h1 class="text-danger">추가버튼을 페이지 아래쪽 pagination 오른쪽으로 이동하면 좋을거 같습니다</h1>
+            <h1 class="text-danger">추가버튼 있던 위치에 셀렉트 박스로 검색 기능 설정(메뉴 / 지역 / 테마) - 조정 후에 태그채로 삭제요망</h1>
             <div class="input-group mt-5 mb-5">
               <button class="btn btn-success" v-if="showAdminBoard">
                 <router-link to="/add/diner">Add</router-link>

@@ -29,6 +29,7 @@
         <div class="input__block">
           <h5>이메일</h5>
           <i class="fas fa-star-of-life ms-2"></i>
+      <h1 class="text-danger">이메일 직접입력을 눌렀을때 선택지 추가요망</h1>
           <div class="emailInput">
             <input
               v-model="startEmail"
