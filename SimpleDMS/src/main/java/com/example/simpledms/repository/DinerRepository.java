@@ -7,6 +7,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 /**
  * packageName : com.example.jpaexam.repository
  * fileName : DeptRepository
@@ -21,9 +23,12 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DinerRepository extends JpaRepository<Diner, Integer> {
-    Page<Diner> findAllByDnameContaining(String dname, Pageable pageable);
+    Page<Diner> findAllByLocContaining(String loc, Pageable pageable);
+
+    Optional<Diner> findByDname(String dname);
 
 }
+
 
 
 
