@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <!-- Heading -->
-    <h1>회원가입</h1>
+    <router-link to="/"><h1>회원가입</h1></router-link>
     <!-- 필수 항목 안내 -->
     <i class="fas fa-star-of-life ms-4"> </i><span>는 필수 항목입니다.</span>
 
@@ -306,7 +306,7 @@ export default {
             // 실패알림 띄우기
             this.$swal({
               icon: "error",
-              title: "로그인 실패",
+              title: "회원가입 실패",
               text: this.message,
               confirmButtonColor: "#E1793D",
               confirmButtonText: "확인",
@@ -366,7 +366,7 @@ h1 {
   font-size: 48px;
   letter-spacing: -3px;
   text-align: center;
-  margin: 120px 0 80px 0;
+  margin-bottom: 80px ;
   transition: 0.2s linear;
 }
 

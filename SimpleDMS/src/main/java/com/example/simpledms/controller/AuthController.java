@@ -104,7 +104,7 @@ public class AuthController {
         if (userRepository.existsByUsername(signupRequest.getUsername())) {
             return ResponseEntity
                     .badRequest()
-                    .body(new MessageResponse("Error: Username is already taken!"));
+                    .body(new MessageResponse("에러: 아이디가 이미 존재합니다."));
         }
 
         //  email 이 DB 에 있는지 확인해서
@@ -112,7 +112,7 @@ public class AuthController {
         if (userRepository.existsByEmail(signupRequest.getEmail())) {
             return ResponseEntity
                     .badRequest()
-                    .body(new MessageResponse("Error: email is already in use!"));
+                    .body(new MessageResponse("에러: 이메일이 이미 사용중 입니다."));
         }
 //        신규 사용자 생성
         User user = new User(signupRequest.getUsername(),
@@ -159,7 +159,7 @@ public class AuthController {
         userRepository.save(user); // DB 에 신규 회원 생성됨( role = ROLE_USER )
 
 //        Vue 에 성공메세지 전송
-        return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+        return ResponseEntity.ok(new MessageResponse("회원가입이 완료되었습니다!"));
     }
 }
 
