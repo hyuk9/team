@@ -140,7 +140,9 @@ CREATE TABLE TB_RESERVATION
     RESTAURANT           VARCHAR2(1000),
     RNAME                VARCHAR2(1000),
     RCOUNT               VARCHAR2(1000),
-    PHONE                VARCHAR2(1000),
+    PHONE1               VARCHAR2(1000),
+    PHONE2               VARCHAR2(1000),
+    PHONE3               VARCHAR2(1000),
     RESERVATION_DATE     VARCHAR2(1000), -- 관광지
     RESERVATION_TIME     VARCHAR2(1000), -- 시작날짜
     DELETE_YN            VARCHAR2(1) DEFAULT 'N',

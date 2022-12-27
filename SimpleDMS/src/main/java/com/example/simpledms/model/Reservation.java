@@ -59,7 +59,13 @@ public class Reservation extends BaseTimeEntity {
     private String rcount;
 
     @Column
-    private String phone;
+    private String phone1;
+
+    @Column
+    private String phone2;
+
+    @Column
+    private String phone3;
 
     @Column
     private String reservationDate;
