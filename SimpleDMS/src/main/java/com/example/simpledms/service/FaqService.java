@@ -69,15 +69,15 @@ public class FaqService {
     }
 
     //    questioner(질문자) like 검색 함수 ( 페이징 처리 )
-    public Page<Faq> findAllByTitleContaining(String title, Pageable pageable) {
-        Page<Faq> page = faqRepository.findAllByTitleContaining(title, pageable);
+    public Page<Faq> findAllByTitleContainingOrderByInsertTimeDescNoDesc(String title, Pageable pageable) {
+        Page<Faq> page = faqRepository.findAllByTitleContainingOrderByInsertTimeDescNoDesc(title, pageable);
 
         return page;
     }
 
     //    question(질문) like 검색 함수 ( 페이징 처리 )
-    public Page<Faq> findAllByContentContaining(String content, Pageable pageable) {
-        Page<Faq> page = faqRepository.findAllByContentContaining(content, pageable);
+    public Page<Faq> findAllByContentContainingOrderByInsertTimeDescNoDesc(String content, Pageable pageable) {
+        Page<Faq> page = faqRepository.findAllByContentContainingOrderByInsertTimeDescNoDesc(content, pageable);
 
         return page;
     }

@@ -28,10 +28,8 @@
                   <div class="d-flex">
                     <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
                         class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-square btn-success rounded-circle me-2" href=""><i
-                        class="fab fa-twitter"></i></a>
-                    <a class="btn btn-square btn-info rounded-circle me-2" href=""><i
-                        class="fab fa-instagram"></i></a>
+                    <a class="btn btn-square btn-success rounded-circle me-2" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-square btn-info rounded-circle me-2" href=""><i class="fab fa-instagram"></i></a>
                   </div>
                 </div>
               </div>
@@ -54,8 +52,7 @@
                   <div class="d-flex">
                     <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
                         class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
-                        class="fab fa-twitter"></i></a>
+                    <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
                         class="fab fa-instagram"></i></a>
                   </div>
@@ -80,8 +77,7 @@
                   <div class="d-flex">
                     <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
                         class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
-                        class="fab fa-twitter"></i></a>
+                    <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
                         class="fab fa-instagram"></i></a>
                   </div>
@@ -106,10 +102,58 @@
                   <div class="d-flex">
                     <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
                         class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
-                        class="fab fa-twitter"></i></a>
+                    <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
                         class="fab fa-instagram"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 wow fadeIn" data-wow-delay="0.3s">
+            <div class="row g-0 flex-sm-row-reverse flex-lg-row">
+              <div class="col-sm-6">
+                <div class="team-img position-relative">
+                  <img class="img-fluid" src="../../../public/assets/img/team/team-2.jpg" alt="">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="h-100 p-5 d-flex flex-column justify-content-between">
+                  <div class="mb-3">
+                    <h4>박선영</h4>
+                    <span>음식점 리스트 담당</span>
+                  </div>
+                  <p>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo</p>
+                  <div class="d-flex">
+                    <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
+                        class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
+                        class="fab fa-instagram"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+            <div class="row g-0 flex-sm-row">
+              <div class="col-sm-6">
+                <div class="team-img position-relative">
+                  <img class="img-fluid" src="../../../public/assets/img/team/team-1.jpg" alt="">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="h-100 p-5 d-flex flex-column justify-content-between">
+                  <div class="mb-3">
+                    <h4>강해경 강사님</h4>
+                    <span>총괄</span>
+                  </div>
+                  <p>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo</p>
+                  <div class="d-flex">
+                    <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
+                        class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-square btn-success rounded-circle me-2" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-square btn-info rounded-circle me-2" href=""><i class="fab fa-instagram"></i></a>
                   </div>
                 </div>
               </div>

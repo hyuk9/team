@@ -12,10 +12,7 @@
           </strong>
         </div>
       </div>
-      <h1 class="text-danger">수정버튼 관리자에게만 보이도록 설정 - 수정완료시 태그채로 삭제요망</h1>
       <h1 class="text-danger">질문테이블(TB_QUESTION), 답변테이블(TB_ANSWER)두개 조인해서 사용할 예정</h1>
-      <h1 class="text-danger">여기도 th,td 텍스트 가운데 정렬 부탁드립니다</h1>
-
       <!--    Todo : page 바 시작 주석 처리 -->
       <!-- <div class="col-md-12 offset-2">
                   <div class="mb-3">
@@ -37,28 +34,28 @@
         <table class="table table-hover">
           <thead>
             <tr>
-              <th class="table-active" style="width: 10%" scope="col">#</th>
-              <th class="table-active" style="width: 40%" scope="col">제목</th>
-              <th class="table-active" style="width: 20%" scope="col">
+              <th class="table-active text-center" style="width: 10%" scope="col">#</th>
+              <th class="table-active text-center" style="width: 40%" scope="col">제목</th>
+              <th class="table-active text-center" style="width: 20%" scope="col">
                 작성자
               </th>
-              <th class="table-active" style="width: 20%" scope="col">
+              <th class="table-active text-center" style="width: 20%" scope="col">
                 작성일
               </th>
-              <th class="table-active" style="width: 10%" scope="col">
+              <th class="table-active" style="width: 10%" scope="col" v-if="showAdminBoard">
                 수정/삭제
               </th>
             </tr>
           </thead>
           <tbody v-for="(data, index) in qna" :key="index">
             <tr>
-              <td><i class="bi bi-hash"></i>{{ data.qno }}</td>
-              <td>
+              <td class="text-center"><i class="bi bi-hash"></i>{{ data.qno }}</td>
+              <td class="text-center">
                 <router-link :to="'/qnaview/' + data.qno"><span>{{ data.title }}</span></router-link>
               </td>
-              <td>{{ data.questioner }}</td>
-              <td> <i class="bi bi-calendar-date"></i>{{ data.insertTime }}</td>
-              <td>
+              <td class="text-center">{{ data.questioner }}</td>
+              <td class="text-center"> <i class="bi bi-calendar-date">&nbsp;</i>{{ data.insertTime }}</td>
+              <td v-if="showAdminBoard">
                 <router-link :to="'/qna/' + data.qno"><span
                     class="badge rounded-pill bg-warning text-dark">수정</span></router-link>
               </td>
@@ -165,6 +162,27 @@ export default {
       this.retrieveQna();
     },
   },
+
+  computed: {
+            // 현재 유저
+            currentUser() {
+            // 모듈 저장소 : this.$store.state.모듈명.state값
+            // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
+            return this.$store.state.auth.user;
+        },
+
+        // 관리자 접속인지 아닌지 확인하는 함수
+        showAdminBoard() {
+            if (this.currentUser && this.currentUser.roles) {
+                // if ROLE_ADMIN 있으면 true
+                //               없으면 false
+                return this.currentUser.roles.includes("ROLE_ADMIN");
+            }
+            // currentUser 없으면 false (메뉴가 안보임)
+            return false;
+        },
+  },
+
   // 화면이 뜨자마자 실행되는 이벤트(라이프 사이클 함수) : mounted(), created()
   mounted() {
     this.retrieveQna(); // 화면 로딩시 전체 조회함수 실행

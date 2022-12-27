@@ -13,8 +13,6 @@
         </div>
       </div>
 
-      <h1 class="text-danger">수정버튼을 관리자(ROLE_ADMIN)에게만 보이도록 조정 - 지금은 ROLE_USER한테도 다 보임</h1>
-      <h1 class="text-danger">th랑 td 문자열 가운데 정렬 해주세요 - 수정완료시 태그채로 삭제요망</h1>
       <!--    Todo : page 바 시작 주석 처리 -->
       <!-- <div class="col-md-12 offset-2">
                 <div class="mb-3">
@@ -36,28 +34,28 @@
         <table class="table table-hover">
           <thead>
             <tr>
-              <th class="table-active" style="width: 10%" scope="col">#</th>
-              <th class="table-active" style="width: 40%" scope="col">제목</th>
-              <th class="table-active" style="width: 20%" scope="col">
+              <th class="table-active text-center" style="width: 10%" scope="col">#</th>
+              <th class="table-active text-center" style="width: 40%" scope="col">제목</th>
+              <th class="table-active text-center" style="width: 20%" scope="col">
                 작성자
               </th>
-              <th class="table-active" style="width: 20%" scope="col">
+              <th class="table-active text-center" style="width: 20%" scope="col">
                 작성일
               </th>
-              <th class="table-active" style="width: 10%" scope="col">
+              <th v-if="showAdminBoard" class="table-active" style="width: 10%" scope="col">
                 수정/삭제
               </th>
             </tr>
           </thead>
           <tbody v-for="(data, index) in announce" :key="index">
             <tr>
-              <td><i class="bi bi-hash"></i>{{ data.ano }}</td>
-              <td>
+              <td class="text-center"><i class="bi bi-hash"></i>{{ data.ano }}</td>
+              <td class="text-center">
                 <router-link :to="'/announceview/' + data.ano"><span>{{ data.title }}</span></router-link>
               </td>
-              <td>{{ data.writer }}</td>
-              <td><i class="bi bi-calendar-date"></i> {{ data.insertTime }}</td>
-              <td>
+              <td class="text-center">{{ data.writer }}</td>
+              <td class="text-center"><i class="bi bi-calendar-date"></i> {{ data.insertTime }}</td>
+              <td v-if="showAdminBoard">
                 <router-link :to="'/announce/' + data.ano"><span
                     class="badge rounded-pill bg-warning text-dark">수정</span></router-link>
               </td>
@@ -69,9 +67,11 @@
           <span class="badge bg-warning text-dark">추가</span>
         </router-link> -->
         <!-- TODO: badge를 버튼으로 교체 -->
+        <div v-if="showAdminBoard">
         <router-link class="offset-11" to="/add-announce/">
           <button type="button" class="btn btn-warning btn-sm">글쓰기</button>
         </router-link>
+      </div>
       </div>
       <div class="overflow-auto offset-5">
         <b-pagination v-model="page" :total-rows="count" :per-page="pageSize" first-text="<<" last-text=">>"
@@ -164,6 +164,27 @@ export default {
       this.retrieveAnnounce();
     },
   },
+
+  computed: {
+            // 현재 유저
+            currentUser() {
+            // 모듈 저장소 : this.$store.state.모듈명.state값
+            // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
+            return this.$store.state.auth.user;
+        },
+
+        // 관리자 접속인지 아닌지 확인하는 함수
+        showAdminBoard() {
+            if (this.currentUser && this.currentUser.roles) {
+                // if ROLE_ADMIN 있으면 true
+                //               없으면 false
+                return this.currentUser.roles.includes("ROLE_ADMIN");
+            }
+            // currentUser 없으면 false (메뉴가 안보임)
+            return false;
+        },
+  },
+
   // 화면이 뜨자마자 실행되는 이벤트(라이프 사이클 함수) : mounted(), created()
   mounted() {
     this.retrieveAnnounce(); // 화면 로딩시 전체 조회함수 실행

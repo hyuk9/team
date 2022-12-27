@@ -91,11 +91,24 @@ const routes = [
     name: "announce-view",
     component: () => import("../components/board/announce/AnnounceView.vue"),
   },
+  // Faq
   {
     path: "/faq",
     name: "faq",
-    component: () => import("@/components/board/FaqList.vue"),
+    component: () => import("@/components/board/faq/FaqList.vue"),
   },
+    // AddFaq
+    {
+      path: "/add-faq",
+      name: "add-faq",
+      component: () => import("../components/board/faq/AddFaqView.vue"),
+    },
+    // FaqDetail
+    {
+      path: "/faq/:no",
+      name: "faq-detail",
+      component: () => import("../components/board/faq/FaqDetailView.vue"),
+    },
   {
     path: "/qna",
     name: "qna",
