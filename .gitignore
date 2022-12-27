@@ -1,4 +1,4 @@
 
 SimpleDMS/src/main/resources/application.properties
 *.properties
-# SimpleDMS/.gradle/
+SimpleDMS/.gradle/
