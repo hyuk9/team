@@ -54,9 +54,9 @@ public class FaqController {
 
 //            Page 객체 정의
             if (searchSelect.equals("제목")) {
-                faqPage = faqService.findAllByTitleContaining(searchKeyword, pageable);
+                faqPage = faqService.findAllByTitleContainingOrderByInsertTimeDescNoDesc(searchKeyword, pageable);
             } else {
-                faqPage = faqService.findAllByContentContaining(searchKeyword, pageable);
+                faqPage = faqService.findAllByContentContainingOrderByInsertTimeDescNoDesc(searchKeyword, pageable);
             }
 
             //            맵 자료구조에 넣어서 전송
