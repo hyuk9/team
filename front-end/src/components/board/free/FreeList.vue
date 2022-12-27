@@ -5,12 +5,8 @@
       <div class="container">
         <div class="row flex-center">
           <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0">
-            <a class="img-landing-banner" href="#!"
-              ><img
-                class="img-fluid"
-                src="assets/img/gallery/hero-header.png"
-                alt="hero-header"
-            /></a>
+            <a class="img-landing-banner" href="#!"><img class="img-fluid" src="assets/img/gallery/hero-header.png"
+                alt="hero-header" /></a>
           </div>
           <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
             <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">
@@ -30,8 +26,7 @@
       <h1 class="offset-5">자유게시판</h1>
       <div style="text-align: center">
         <div class="p-3 mb-2 bg-warning text-dark bg-opacity-25">
-          <strong
-            >"공지사항를 통해서 맛있는 토마토의 최신정보를 찾아보세요"
+          <strong>"공지사항를 통해서 맛있는 토마토의 최신정보를 찾아보세요"
             <br />
             "맛있는 토마토의 최신 정보와 공지를 모아서 한번에 찾아볼 수 있습니다.
           </strong>
@@ -61,35 +56,30 @@
         <table class="table table-hover">
           <thead>
             <tr>
-              <th class="table-active" style="width: 10%" scope="col">#</th>
-              <th class="table-active" style="width: 40%" scope="col">제목</th>
-              <th class="table-active" style="width: 20%" scope="col">
+              <th class="table-active text-center" style="width: 10%" scope="col">#</th>
+              <th class="table-active text-center" style="width: 40%" scope="col">제목</th>
+              <th class="table-active text-center" style="width: 20%" scope="col">
                 작성자
               </th>
-              <th class="table-active" style="width: 20%" scope="col">
+              <th class="table-active text-center" style="width: 20%" scope="col">
                 작성일
               </th>
-              <th class="table-active" style="width: 10%" scope="col">
+              <th class="table-active" style="width: 10%" scope="col" v-if="showAdminBoard">
                 수정/삭제
               </th>
             </tr>
           </thead>
           <tbody v-for="(data, index) in free" :key="index">
             <tr>
-              <td><i class="bi bi-hash"></i>{{ data.fno }}</td>
-              <td>
-                <router-link :to="'/freeview/' + data.fno"
-                  ><span>{{ data.title }}</span></router-link
-                >
+              <td class="text-center"><i class="bi bi-hash"></i>{{ data.fno }}</td>
+              <td class="text-center">
+                <router-link :to="'/freeview/' + data.fno"><span>{{ data.title }}</span></router-link>
               </td>
-              <td>{{ data.writer }}</td>
-              <td> <i class="bi bi-calendar-date"></i>{{ data.insertTime }}</td>
-              <td>
-                <router-link :to="'/free/' + data.fno"
-                  ><span class="badge rounded-pill bg-warning text-dark"
-                    >수정</span
-                  ></router-link
-                >
+              <td class="text-center">{{ data.writer }}</td>
+              <td class="text-center"> <i class="bi bi-calendar-date"></i>&nbsp;{{ data.insertTime }}</td>
+              <td v-if="showAdminBoard">
+                <router-link :to="'/free/' + data.fno"><span
+                    class="badge rounded-pill bg-warning text-dark">수정</span></router-link>
               </td>
             </tr>
           </tbody>
@@ -104,16 +94,8 @@
         </router-link>
       </div>
       <div class="overflow-auto offset-5">
-        <b-pagination
-          v-model="page"
-          :total-rows="count"
-          :per-page="pageSize"
-          first-text="<<"
-          last-text=">>"
-          prev-text="Prev"
-          next-text="Next"
-          @change="handlePageChange"
-        ></b-pagination>
+        <b-pagination v-model="page" :total-rows="count" :per-page="pageSize" first-text="<<" last-text=">>"
+          prev-text="Prev" next-text="Next" @change="handlePageChange"></b-pagination>
       </div>
       <!-- search 관련 div 시작 -->
       <div class="col-md-8 offset-2">
@@ -128,23 +110,14 @@
 
           <!-- searchDname -> searchKeyword 변경 -->
           <div class="col-7">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Search by Question"
-              v-model="searchKeyword"
-            />
+            <input type="text" class="form-control" placeholder="Search by Question" v-model="searchKeyword" />
           </div>
 
           <div class="input-group-append col-2">
-            <button
-              class="btn btn-warning"
-              type="button"
-              @click="
-                page = 1;
-                retrieveFree();
-              "
-            ><i class="bi bi-search"></i>
+            <button class="btn btn-warning" type="button" @click="
+  page = 1;
+retrieveFree();
+              "><i class="bi bi-search"></i>
               Search
             </button>
           </div>
@@ -211,6 +184,27 @@ export default {
       this.retrieveFree();
     },
   },
+
+  computed: {
+    // 현재 유저
+    currentUser() {
+      // 모듈 저장소 : this.$store.state.모듈명.state값
+      // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
+      return this.$store.state.auth.user;
+    },
+
+    // 관리자 접속인지 아닌지 확인하는 함수
+    showAdminBoard() {
+      if (this.currentUser && this.currentUser.roles) {
+        // if ROLE_ADMIN 있으면 true
+        //               없으면 false
+        return this.currentUser.roles.includes("ROLE_ADMIN");
+      }
+      // currentUser 없으면 false (메뉴가 안보임)
+      return false;
+    },
+  },
+
   // 화면이 뜨자마자 실행되는 이벤트(라이프 사이클 함수) : mounted(), created()
   mounted() {
     this.retrieveFree(); // 화면 로딩시 전체 조회함수 실행
@@ -219,4 +213,5 @@ export default {
 </script>
 
 <style>
+
 </style>

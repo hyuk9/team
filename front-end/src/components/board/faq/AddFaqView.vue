@@ -21,40 +21,34 @@
         </section>
         <!-- 최상단 끝 -->
 
-        <!-- AddQna Start -->
+        <!-- AddFaq Start -->
         <div class="container" v-if="!submitted">
-            <div class="mb-3">
-                <label for="questioner" class="form-label">작성자</label>
-                <input type="questioner" class="form-control" id="questioner" required name="questioner"
-                    v-model="qna.questioner" />
-            </div>
             <div class="mb-3">
                 <label for="title" class="form-label">제목</label>
                 <input type="title" class="form-control" id="title" required name="title"
-                    v-model="qna.title" />
+                    v-model="faq.title" />
             </div>
             <div class="mb-3">
                 <label for="content" class="form-label">내용</label>
                 <textarea class="form-control form-control-lg " id="content" rows="8" required name="content"
-                    v-model="qna.content"></textarea>
+                    v-model="faq.content"></textarea>
             </div>
             <div class="mb-3">
-                <button @click="saveQna" class="btn btn-primary">Submit</button>
+                <button @click="saveFaq" class="btn btn-primary">Submit</button>
             </div>
         </div>
-        <!-- AddQna End -->
+        <!-- AddFaq End -->
     </div>
 </template>
 
 
 <script>
-import QnaDataService from "../../../services/QnaDataService";
+import FaqDataService from "../../../services/FaqDataService";
 export default {
     data() {
         return {
-            qna: {
-                qno: null,
-                questioner: "",
+            faq: {
+                no: null,
                 title: "",
                 content:""
             },
@@ -63,41 +57,40 @@ export default {
         };
     },
     methods: {
-        saveQna() {
+        saveFaq() {
             // 임시 객체 변수 -> springboot 전송
             // 부서번호는(no) 자동생성되므로 빼고 전송함
             let data = {
                 
-                questioner: this.qna.questioner,
-                title: this.qna.title,
-                content: this.qna.content
+                title: this.faq.title,
+                content: this.faq.content
             };
 
             // insert 요청 함수 호출(axios 공통함수 호출)
-            QnaDataService.create(data)
+            FaqDataService.create(data)
                 // 성공하면 then() 결과가 전송됨
                 .then((response) => {
-                    this.qna.qno = response.data.qno;
+                    this.faq.no = response.data.no;
                     // 콘솔 로그 출력(response.data)
                     console.log(response.data);
                     // 변수 submitted
                     this.submitted = true;
                     alert("성공했습니다.")
-                    location.href = "/qna";
+                    location.href = "/faq";
                 })
                 // 실패하면 .catch() 결과가 전송됨
                 .catch((e) => {
                     console.log(e);
                 });
         },
-        newQna() {
+        newFaq() {
             // 새양식 다시 보여주기 함수, 변수 초기화
             this.submitted = false;
-            this.qna = {};
+            this.faq = {};
         },
 
-        returnQna() {
-            location.href = "/qna";
+        returnFaq() {
+            location.href = "/faq";
         }
      
     },

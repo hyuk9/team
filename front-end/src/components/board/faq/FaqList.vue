@@ -21,8 +21,6 @@
     <!-- 최상단 끝 -->
     <!-- TODO FAQ리스트 시작 -->
     <div class="container mt-2 mb-2">
-      <h1 class="text-danger">faq게시판 테이블 정렬을 생성된 순서대로 내림차순 정렬해주시고 우측하단에 관리자에게만 보이는 추가버튼 생성</h1>
-      <h1 class="text-danger">아코디언 눌렀을때 내용 수정가능하게 구현 - 완료시 태그채로 삭제요망</h1>
       <h1 class="offset-5">FAQ 게시판</h1>
       <div style="text-align: center">
         <div class="p-3 mb-2 bg-warning text-dark bg-opacity-25">
@@ -66,12 +64,16 @@
             data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">
               {{ data.content }}
+              <div class="offset-11" v-if="showAdminBoard">
+                <router-link :to="'/faq/' + data.no"><span
+                    class="badge rounded-pill bg-danger text-dark">수정</span></router-link>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <!-- TODO: 어드민 한테만 보이는 추가 버튼 -->
-      <router-link class="offset-11 mt-3" :to="/add-faq/">
+      <router-link class="offset-11 mt-3" to="/add-faq/">
         <button type="button" class="btn btn-danger" v-if="showAdminBoard">추가</button>
       </router-link>
       <div class="overflow-auto offset-5">

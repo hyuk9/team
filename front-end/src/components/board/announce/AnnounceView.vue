@@ -56,7 +56,7 @@
 
     <div class="mb-3" v-if="showAdminBoard">
       <router-link :to="'/announce/' + currentAnnounce.ano">
-        <button class="btn btn-warning offset-2" type="button">수정&삭제</button>
+        <button class="btn btn-warning offset-5" type="button">수정&삭제</button>
       </router-link>
     </div>
 
