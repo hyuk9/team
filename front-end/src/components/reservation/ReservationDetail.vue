@@ -23,39 +23,45 @@
       </div>
     </section>
     <!-- 최상단 끝 -->
+
+    <!-- Form -->
     <section>
-      <div class="container">
-        <div class="col-lg-6 mx-auto">
-          <div v-if="currentReservation">
-            <div class="mb-3">
-              <label for="restaurant" class="form-label">식당</label>
-              <input
-                type="text"
-                class="form-control"
-                id="restaurant"
-                required
-                name="restaurant"
-                v-model="currentReservation.restaurant"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="rname" class="form-label">이름</label>
-              <input
-                type="text"
-                class="form-control"
-                id="rname"
-                required
-                name="rname"
-                v-model="currentReservation.rname"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="rcount" class="form-label">인원수</label>
-              <select
-                class="form-control"
-                required
-                v-model="currentReservation.rcount"
-              >
+      <div class="mx-auto text-center mb-5">
+        <h5 class="fw-bold fs-3 fs-lg-5 lh-sm">예약 수정하기</h5>
+      </div>
+      <div class="form">
+        <div>
+          <!-- 가게 명 -->
+          <div class="input__block">
+            <h5>가게</h5>
+            <input
+              v-model="currentReservation.restaurant"
+              required
+              type="text"
+              class="input"
+              id="restaurant"
+              name="restaurant"
+            />
+          </div>
+
+          <!-- 예약자 이름 -->
+          <div class="input__block">
+            <h5>예약자</h5>
+            <input
+              v-model="currentReservation.rname"
+              required
+              type="text"
+              class="input"
+              id="rname"
+              name="rname"
+            />
+          </div>
+
+          <!-- 인원수 -->
+          <div class="input__block">
+            <h5>인원수</h5>
+            <div class="rcountInput">
+              <select required v-model="currentReservation.rcount">
                 <option>2</option>
                 <option>3</option>
                 <option>4</option>
@@ -63,54 +69,74 @@
                 <option>6</option>
                 <option>7</option>
                 <option>8</option>
-                <option>9</option>
-                <option>10</option>
               </select>
             </div>
-            <div class="mb-3">
-              <label for="phone" class="form-label">연락처</label>
+          </div>
+
+          <!-- 전화번호 -->
+          <div class="input__block">
+            <h5>전화번호</h5>
+            <div class="phoneInput">
               <input
+                v-model="currentReservation.phone1"
                 type="text"
-                class="form-control"
-                id="phone"
-                required
-                name="phone"
-                v-model="currentReservation.phone"
+                class="input"
+                id="phone1"
+                maxlength="3"
               />
-            </div>
-            <div class="mb-3">
-              <label for="reservationDate" class="form-label">예약 날짜</label>
+              <span class="minus">-</span>
               <input
-                type="date"
-                class="form-control"
-                id="reservationDate"
-                required
-                name="reservationDate"
-                v-model="currentReservation.reservationDate"
+                v-model="currentReservation.phone2"
+                type="text"
+                class="input"
+                id="phone2"
+                maxlength="4"
               />
-            </div>
-            <div class="mb-3 pb-5">
-              <label for="reservationTime" class="form-label">예약 시간</label>
+              <span class="minus">-</span>
               <input
-                type="time"
-                class="form-control"
-                id="reservationTime"
-                required
-                name="reservationTime"
-                v-model="currentReservation.reservationTime"
+                v-model="currentReservation.phone3"
+                type="text"
+                class="input"
+                id="phone3"
+                maxlength="4"
               />
             </div>
-            <div class="mb-3">
-              <button @click="updateReservation" class="btn btn-primary me-3">
-                Update
-              </button>
-              <button @click="deleteReservation" class="btn btn-danger">
-                Delete
-              </button>
-            </div>
-            <div class="alert alert-success" role="alert" v-if="message">
-              {{ message }}
-            </div>
+          </div>
+
+          <!-- 예약 날짜 -->
+          <div class="input__block">
+            <h5>예약 날짜</h5>
+            <input
+              v-model="currentReservation.reservationDate"
+              required
+              type="date"
+              class="input"
+              id="reservationDate"
+              name="reservationDate"
+            />
+          </div>
+
+          <!-- 예약 시간 -->
+          <div class="input__block">
+            <h5>예약 시간</h5>
+            <input
+              v-model="currentReservation.reservationTime"
+              required
+              type="time"
+              class="input"
+              id="reservationTime"
+              name="reservationTime"
+            />
+          </div>
+
+          <!-- button -->
+          <div class="mt-5 mb-3 text-center">
+            <button @click="updateReservation" class="reservation__btn1 me-5">
+              수정하기
+            </button>
+            <button @click="deleteReservation" class="reservation__btn2">
+              취소하기
+            </button>
           </div>
         </div>
       </div>
@@ -199,4 +225,134 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+h5 {
+  display: inline-block;
+  color: #ffb30e;
+  margin: 30px 0 30px 30px;
+}
+
+.form {
+  width: 100%;
+  max-width: 680px;
+  margin: 40px auto 10px;
+}
+.input__block {
+  margin: 20px auto;
+  position: relative;
+}
+
+.input__block input {
+  display: block;
+  width: 90%;
+  max-width: 680px;
+  height: 50px;
+  margin: 0 auto;
+  border-radius: 8px;
+  border: none;
+  background: rgba(15, 19, 42, 0.1);
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+  padding: 0 10px;
+}
+/* 셀렉트 박스 둥글게  */
+select {
+  border-radius: 8px;
+}
+
+/* 인원수 입력용 */
+.rcountInput {
+  display: block;
+  width: 90%;
+  max-width: 680px;
+  height: 50px;
+  margin: 0 auto;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+  padding: 0;
+}
+
+/* 인원수 입력용 */
+.rcountInput select {
+  width: 32%;
+  height: 50px;
+}
+/* 인원수 입력용 */
+.rcountInput select:first-of-type {
+  margin-right: 2%;
+}
+
+/* 전화번호 입력용 */
+.phoneInput {
+  display: block;
+  width: 90%;
+  max-width: 680px;
+  height: 50px;
+  margin: 0 auto;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+  padding: 0;
+}
+
+/* 전화번호 입력용 */
+.phoneInput .input {
+  display: inline-block;
+  width: 30%;
+}
+/* 전화번호 입력용 */
+.phoneInput .minus {
+  display: inline-block;
+  width: 5%;
+  text-align: center;
+}
+
+.input__block input:focus,
+.input__block input:active {
+  outline: none;
+  border: none;
+  color: #0f132a;
+}
+
+.reservation__btn1 {
+  background: #ffb30e;
+  color: white;
+  display: inline;
+  width: 140px;
+  height: 50px;
+  border-radius: 8px;
+  margin: 0 auto;
+  border: none;
+  font-size: 18px;
+  box-shadow: 0 15px 30px #ffb30e5c;
+  transition: 0.2s linear;
+}
+.reservation__btn2 {
+  background: tomato;
+  color: white;
+  display: inline;
+  width: 140px;
+  height: 50px;
+  border-radius: 8px;
+  margin: 0 auto;
+  border: none;
+  font-size: 18px;
+  box-shadow: 0 15px 30px #ffb30e5c;
+  transition: 0.2s linear;
+}
+.reservation__btn1:hover,
+.reservation__btn2:hover {
+  box-shadow: 0 0 0 rgba(233, 30, 99, 0);
+}
+
+/* ::placeholder {
+  color: rgb(128, 128, 128, 0.6) !important;
+} */
+
+button {
+  font-family: ONE-Mobile-POP !important;
+}
+</style>
