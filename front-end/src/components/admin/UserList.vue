@@ -18,7 +18,6 @@
       </div>
     </section>
     <!-- 최상단 끝 -->
-    <h1 class="text-danger">번호 내림차순 정렬 필요함</h1>
     <div class="container mt-2 mb-2">
       <table class="table">
         <thead>

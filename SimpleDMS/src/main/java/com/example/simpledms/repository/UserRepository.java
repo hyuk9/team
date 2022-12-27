@@ -45,7 +45,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
             "and   ur.role_id = r.rid " +
             "and   u.delete_yn = 'N' " +
             "and   r.delete_yn = 'N' " +
-            "and   u.username like %:username%",
+            "and   u.username like %:username% " +
+            "order by u.id desc",
             countQuery = "select u.*, r.rid, r.rname " +
                          "from tb_user u, " +
                          "     tb_role r, " +
