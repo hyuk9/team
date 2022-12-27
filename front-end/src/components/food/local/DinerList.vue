@@ -243,6 +243,7 @@ export default {
   mounted() {
     // 화면 로딩시 전체 조회함수 실행
     this.retrieveDiner(this.searchLoc="서울");
+    this.searchLoc="";
   },
 };
 </script>
