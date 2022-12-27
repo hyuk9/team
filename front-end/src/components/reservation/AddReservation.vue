@@ -23,202 +23,110 @@
       </div>
     </section>
     <!-- 최상단 끝 -->
-    <section>
-      <div class="untree_co-section">
-        <div class="container" data-aos="fade-left" data-aos-delay="200">
-          <div class="row">
-            <div class="col-lg-6 mx-auto">
-              <!-- TODO:  -->
-              <div class="submit-form">
-                <div v-if="!submitted">
-                  <!-- <form> -->
-                  <div class="form-group">
-                    <label for="restaurant">가게 이름</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="restaurant"
-                      required
-                      v-model="reservation.restaurant"
-                      name="restaurant"
-                    />
-                  </div>
 
-                  <div class="form-group">
-                    <label for="rname">예약자 성함</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="rname"
-                      required
-                      v-model="reservation.rname"
-                      name="rname"
-                    />
-                  </div>
+    <!-- Form -->
+    <form action="" name="form">
+      <div>
+        <!-- 가게 명 -->
+        <div class="input__block">
+          <h5>가게</h5>
+          <input
+            v-model="reservation.restaurant"
+            v-validate="'required'"
+            type="text"
+            class="input"
+            id="restaurant"
+            name="restaurant"
+          />
+        </div>
 
-                  <div class="form-group">
-                    <label for="rcount">인원수</label>
-                    <select
-                      class="form-control"
-                      required
-                      v-model="reservation.rcount"
-                    >
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                      <option>6</option>
-                      <option>7</option>
-                      <option>8</option>
-                      <option>9</option>
-                      <option>10</option>
-                    </select>
-                  </div>
+        <!-- 예약자 이름 -->
+        <div class="input__block">
+          <h5>예약자</h5>
+          <input
+            v-model="reservation.rname"
+            v-validate="'required'"
+            type="text"
+            class="input"
+            id="rname"
+            name="rname"
+          />
+        </div>
 
-                  <div class="form-group">
-                    <label for="phone">연락처</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="phone"
-                      required
-                      v-model="reservation.phone"
-                      name="phone"
-                    />
-                  </div>
-
-                  <div class="form-group">
-                    <label for="reservationDate">예약 날짜</label>
-                    <input
-                      type="date"
-                      class="form-control"
-                      id="reservationDate"
-                      required
-                      v-model="reservation.reservationDate"
-                      name="reservationDate"
-                    />
-                  </div>
-
-                  <div class="form-group">
-                    <label for="reservationTime">예약 시간</label>
-                    <input
-                      type="time"
-                      class="form-control"
-                      id="reservationTime"
-                      required
-                      v-model="reservation.reservationTime"
-                      name="reservationTime"
-                    />
-                  </div>
-
-                  <div class="text-center mt-5">
-                    <button @click="saveReservation" class="btn btn-primary">
-                      확인
-                    </button>
-                  </div>
-                  <!-- </form> -->
-                </div>
-
-                <!-- <div v-else>
-                <h4>You submitted successfully!</h4>
-                <button class="btn btn-success" @click.prevent="newReservation">
-                  Add
-                </button>
-              </div> -->
-              </div>
-            </div>
+        <!-- 인원수 -->
+        <div class="input__block">
+          <h5>인원수</h5>
+          <div class="rcountInput">
+            <select required v-model="reservation.rcount">
+              <option :value="index" v-for="index in 8" :key="index">
+                {{ index }}
+              </option>
+            </select>
           </div>
         </div>
-      </div>
-    </section>
-    <!-- datepicker 시작 -->
-    <div class="container-fluid px-0 px-sm-4 mx-auto">
-      <div class="row justify-content-center mx-0">
-        <div class="col-lg-10">
-          <div class="card border-0">
-            <form autocomplete="off">
-              <div class="card-header bg-dark">
-                <div
-                  class="mx-0 mb-0 row justify-content-sm-center justify-content-start px-1"
-                >
-                  <input
-                    type="text"
-                    id="dp1"
-                    class="datepicker"
-                    placeholder="Pick Date"
-                    name="date"
-                    readonly
-                  /><span class="fa fa-calendar"></span>
-                </div>
-              </div>
-              <div class="card-body p-3 p-sm-5">
-                <div class="row text-center mx-0">
-                  <div class="col-md-2 col-4 my-1 px-2">
-                    <div class="cell py-1">11:00AM</div>
-                  </div>
-                  <div class="col-md-2 col-4 my-1 px-2">
-                    <div class="cell py-1">11:30AM</div>
-                  </div>
-                  <div class="col-md-2 col-4 my-1 px-2">
-                    <div class="cell py-1">12:00PM</div>
-                  </div>
-                  <div class="col-md-2 col-4 my-1 px-2">
-                    <div class="cell py-1">12:30PM</div>
-                  </div>
-                  <div class="col-md-2 col-4 my-1 px-2">
-                    <div class="cell py-1">13:00PM</div>
-                  </div>
-                  <div class="col-md-2 col-4 my-1 px-2">
-                    <div class="cell py-1">13:30PM</div>
-                  </div>
-                </div>
-                <div class="row text-center mx-0">
-                  <div class="col-md-2 col-4 my-1 px-2">
-                    <div class="cell py-1">14:00PM</div>
-                  </div>
-                  <div class="col-md-2 col-4 my-1 px-2">
-                    <div class="cell py-1">14:30PM</div>
-                  </div>
-                  <div class="col-md-2 col-4 my-1 px-2">
-                    <div class="cell py-1">15:00PM</div>
-                  </div>
-                  <div class="col-md-2 col-4 my-1 px-2">
-                    <div class="cell py-1">15:30PM</div>
-                  </div>
-                  <div class="col-md-2 col-4 my-1 px-2">
-                    <div class="cell py-1">16:00PM</div>
-                  </div>
-                  <div class="col-md-2 col-4 my-1 px-2">
-                    <div class="cell py-1">16:30PM</div>
-                  </div>
-                </div>
-                <div class="row text-center mx-0">
-                  <div class="col-md-2 col-4 my-1 px-2">
-                    <div class="cell py-1">17:00PM</div>
-                  </div>
-                  <div class="col-md-2 col-4 my-1 px-2">
-                    <div class="cell py-1">17:30PM</div>
-                  </div>
-                  <div class="col-md-2 col-4 my-1 px-2">
-                    <div class="cell py-1">18:00PM</div>
-                  </div>
-                  <div class="col-md-2 col-4 my-1 px-2">
-                    <div class="cell py-1">18:30PM</div>
-                  </div>
-                  <div class="col-md-2 col-4 my-1 px-2">
-                    <div class="cell py-1">19:00PM</div>
-                  </div>
-                  <div class="col-md-2 col-4 my-1 px-2">
-                    <div class="cell py-1">19:30PM</div>
-                  </div>
-                </div>
-              </div>
-            </form>
+
+        <!-- 전화번호 -->
+        <div class="input__block">
+          <h5>전화번호</h5>
+          <div class="phoneInput">
+            <input
+              v-model="reservation.phone1"
+              type="text"
+              class="input"
+              id="phone1"
+              maxlength="3"
+            />
+            <span class="minus">-</span>
+            <input
+              v-model="reservation.phone2"
+              type="text"
+              class="input"
+              id="phone2"
+              maxlength="4"
+            />
+            <span class="minus">-</span>
+            <input
+              v-model="reservation.phone3"
+              type="text"
+              class="input"
+              id="phone3"
+              maxlength="4"
+            />
           </div>
         </div>
+
+        <!-- 예약 날짜 -->
+        <div class="input__block">
+          <h5>예약 날짜</h5>
+          <input
+            v-model="reservation.reservationDate"
+            v-validate="'required'"
+            type="date"
+            class="input"
+            id="reservationDate"
+            name="reservationDate"
+          />
+        </div>
+
+        <!-- 예약 시간 -->
+        <div class="input__block">
+          <h5>예약 시간</h5>
+          <input
+            v-model="reservation.reservationTime"
+            v-validate="'required'"
+            type="time"
+            class="input"
+            id="reservationTime"
+            name="reservationTime"
+          />
+        </div>
+
+        <!-- sign in button -->
+        <button @click="saveReservation" class="signin__btn mt-5">
+          예약하기
+        </button>
       </div>
-    </div>
-    <!-- datepicker 끝 -->
+    </form>
   </div>
 </template>
 
@@ -234,7 +142,9 @@ export default {
         restaurant: "", // 가게명
         rname: "", // 예약자명
         rcount: "", // 인원수
-        phone: "", // 연락처
+        phoneFirstPart: "", // 전화번호의 앞자리
+        phoneMiddlePart: "", // 전화번호의 중간자리
+        phoneLastPart: "", // 전화번호의 뒷자리
         reservationDate: "", // 예약날짜
         reservationTime: "", // 예약시간
         reservationYn: "", // 예약가능여부
@@ -249,7 +159,9 @@ export default {
         restaurant: this.reservation.restaurant,
         rname: this.reservation.rname,
         rcount: this.reservation.rcount,
-        phone: this.reservation.phone,
+        phone1: this.reservation.phone1,
+        phone2: this.reservation.phone2,
+        phone3: this.reservation.phone3,
         reservationDate: this.reservation.reservationDate,
         reservationTime: this.reservation.reservationTime,
       };
@@ -280,169 +192,207 @@ export default {
       this.reservation = {};
     },
   },
-  mounted() {
-    $(document).ready(function () {
-      $(".datepicker").datepicker({
-        format: "dd-mm-yyyy",
-        autoclose: true,
-        startDate: "0d",
-      });
 
-      $(".cell").click(function () {
-        $(".cell").removeClass("select");
-        $(this).addClass("select");
-      });
-    });
-  },
+  mounted() {},
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 body {
-  color: #000;
-  overflow-x: hidden;
-  height: 100%;
-  background-color: #c5cae9 !important;
-  background-repeat: no-repeat;
-  padding: 0px !important;
+  font-family: "Montserrat", sans-serif;
+  background: white;
 }
 
-.container-fluid {
-  padding-top: 120px !important;
-  padding-bottom: 120px !important;
+/* .container {
+  display: block;
+  max-width: 680px;
+  width: 80%;
+  margin: 120px auto;
+} */
+
+/* h1 {
+  color: #ffb30e;
+  font-size: 48px;
+  letter-spacing: -3px;
+  text-align: center;
+  margin-bottom: 80px;
+  transition: 0.2s linear;
+} */
+
+h5 {
+  display: inline-block;
+  color: #ffb30e;
+  margin: 30px 0 30px 30px;
+  transition: 0.2s linear;
 }
 
-.card {
-  box-shadow: 0px 4px 8px 0px #7986cb;
+form {
+  width: 100%;
+  max-width: 680px;
+  margin: 40px auto 10px;
+}
+form .input__block {
+  margin: 20px auto;
+  display: block;
+  position: relative;
+}
+form .input__block.first-input__block::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: 50px;
+  display: block;
+  width: 0;
+  height: 0;
+  background: transparent;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid rgba(15, 19, 42, 0.1);
+  transition: 0.2s linear;
+}
+form .input__block.signup-input__block::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: 150px;
+  display: block;
+  width: 0;
+  height: 0;
+  background: transparent;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid rgba(15, 19, 42, 0.1);
+  transition: 0.2s linear;
+}
+form .input__block input {
+  display: block;
+  width: 90%;
+  max-width: 680px;
+  height: 50px;
+  margin: 0 auto;
+  border-radius: 8px;
+  border: none;
+  background: rgba(15, 19, 42, 0.1);
+  /* color: #23004d; */
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+  padding: 0 10px;
+}
+/* 셀렉트 박스 둥글게  */
+form select {
+  border-radius: 8px;
 }
 
-input {
-  padding: 10px 20px !important;
-  border: 1px solid #000 !important;
-  border-radius: 10px;
-  box-sizing: border-box;
-  background-color: #616161 !important;
-  color: #fff !important;
-  font-size: 16px;
-  letter-spacing: 1px;
-  width: 180px;
+/* 인원수 입력용 */
+form .rcountInput {
+  display: block;
+  width: 90%;
+  max-width: 680px;
+  height: 50px;
+  margin: 0 auto;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+  padding: 0;
+}
+/* 인원수 입력용 */
+form .rcountInput .input {
+  display: inline-block;
+  width: 32%;
+  margin-right: 2%;
+}
+/* 인원수 입력용 */
+form .rcountInput select {
+  width: 32%;
+  height: 50px;
+}
+/* 인원수 입력용 */
+form .rcountInput select:first-of-type {
+  margin-right: 2%;
 }
 
-input:focus {
-  -moz-box-shadow: none !important;
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
-  border: 1px solid #512da8;
-  outline-width: 0;
+/* 전화번호 입력용 */
+form .phoneInput {
+  display: block;
+  width: 90%;
+  max-width: 680px;
+  height: 50px;
+  margin: 0 auto;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+  padding: 0;
+}
+
+/* 전화번호 입력용 */
+form .phoneInput .input {
+  display: inline-block;
+  width: 30%;
+}
+/* 전화번호 입력용 */
+form .phoneInput .minus {
+  display: inline-block;
+  width: 5%;
+  text-align: center;
+}
+
+form .input__block input:focus,
+form .input__block input:active {
+  outline: none;
+  border: none;
+  color: #0f132a;
+}
+form .input__block input.repeat__password {
+  opacity: 0;
+  display: none;
+  transition: 0.2s linear;
+}
+
+form .signin__btn {
+  background: #ffb30e;
+  color: white;
+  display: block;
+  width: 92.5%;
+  max-width: 680px;
+  height: 50px;
+  border-radius: 8px;
+  margin: 0 auto;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-family: "Montserrat", sans-serif;
+  box-shadow: 0 15px 30px #ffb30e5c;
+  transition: 0.2s linear;
+}
+form .signin__btn:hover {
+  box-shadow: 0 0 0 rgba(233, 30, 99, 0);
 }
 
 ::placeholder {
-  color: #fff;
-  opacity: 1;
+  color: rgb(128, 128, 128, 0.6) !important;
 }
 
-:-ms-input-placeholder {
-  color: #fff;
-}
-
-::-ms-input-placeholder {
-  color: #fff;
-}
-
-button:focus {
-  -moz-box-shadow: none !important;
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
-  outline-width: 0;
-}
-
-.datepicker {
-  background-color: #000 !important;
-  color: #fff !important;
+.register-alert {
+  display: block;
+  width: 90%;
+  max-width: 680px;
+  height: 30px;
+  margin: 10px auto 0 auto;
+  border-radius: 8px;
   border: none;
-  padding: 10px !important;
+  background: #ffb30e5c;
+  padding: 0 0 0 15px;
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
 }
 
-.datepicker-dropdown:after {
-  border-bottom: 6px solid #000;
+.register-alert p {
+  line-height: 30px;
 }
 
-thead tr:nth-child(3) th {
-  color: #fff !important;
-  font-weight: bold;
-  padding-top: 20px;
-  padding-bottom: 10px;
-}
-
-.dow,
-.old-day,
-.day,
-.new-day {
-  width: 40px !important;
-  height: 40px !important;
-  border-radius: 0px !important;
-}
-
-.old-day:hover,
-.day:hover,
-.new-day:hover,
-.month:hover,
-.year:hover,
-.decade:hover,
-.century:hover {
-  border-radius: 6px !important;
-  background-color: #eee;
-  color: #000;
-}
-
-.active {
-  border-radius: 6px !important;
-  background-image: linear-gradient(#90caf9, #64b5f6) !important;
-  color: #000 !important;
-}
-
-.disabled {
-  color: #616161 !important;
-}
-
-.prev,
-.next,
-.datepicker-switch {
-  border-radius: 0 !important;
-  padding: 20px 10px !important;
-  text-transform: uppercase;
-  font-size: 20px;
-  color: #fff !important;
-  opacity: 0.8;
-}
-
-.prev:hover,
-.next:hover,
-.datepicker-switch:hover {
-  background-color: inherit !important;
-  opacity: 1;
-}
-
-.cell {
-  border: 1px solid #bdbdbd;
-  margin: 2px;
-  cursor: pointer;
-}
-
-.cell:hover {
-  border: 1px solid #3d5afe;
-}
-
-.cell.select {
-  background-color: #3d5afe;
-  color: #fff;
-}
-
-.fa-calendar {
-  color: #fff;
-  font-size: 30px;
-  padding-top: 8px;
-  padding-left: 5px;
-  cursor: pointer;
+button {
+  font-family: ONE-Mobile-POP !important;
 }
 </style>
