@@ -30,7 +30,11 @@ public class QReservation extends EntityPathBase<Reservation> {
     //inherited
     public final StringPath insertTime = _super.insertTime;
 
-    public final StringPath phone = createString("phone");
+    public final StringPath phone1 = createString("phone1");
+
+    public final StringPath phone2 = createString("phone2");
+
+    public final StringPath phone3 = createString("phone3");
 
     public final StringPath rcount = createString("rcount");
 

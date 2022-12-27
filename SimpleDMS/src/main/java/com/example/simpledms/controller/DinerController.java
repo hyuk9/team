@@ -1,6 +1,7 @@
 package com.example.simpledms.controller;
 
 import com.example.simpledms.model.Diner;
+import com.example.simpledms.model.Qna;
 import com.example.simpledms.service.DinerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,35 +29,42 @@ import java.util.Optional;
  */
 @Slf4j
 @RestController
-@CrossOrigin(origins = "http://localhost:8081")
 @RequestMapping("/api")
 public class DinerController {
     //    스프링부트 : DI(의존성 주입) ( @Autowired )
     @Autowired
     DinerService dinerService; // @Autowired : 스프링부트가 가동될때 생성된 객체를 하나 받아오기
 
-//    ✅ frontend url(쿼리스트링방식) : ? 매개변수 전송방식 사용했으면 ----> backend @RequestParam
+    //    ✅ frontend url(쿼리스트링방식) : ? 매개변수 전송방식 사용했으면 ----> backend @RequestParam
 //    ✅ frontend url(파라매터방식) : /{} 매개변수 전송방식 사용했으면 ----> backend @PathVariable
 //    ✅ @RequestParam(required = false) : false 매개변수에 값이 없어도 애러가 발생하지 않음
 //                                         기본값은 required = true
 //    ✅ @RequestParam(defaultValue = "값") : 매개변수에 값이 없으면 기본값을 설정함
     @GetMapping("/diner")
-    public ResponseEntity<Object> getDinerAll(@RequestParam(required = false) String loc,
-                                             @RequestParam(defaultValue = "0") int page,
-                                             @RequestParam(defaultValue = "3") int size
+    public ResponseEntity<Object> getDinerAll(@RequestParam String searchSelect,
+                                              @RequestParam(required = false) String searchKeyword,
+                                              @RequestParam(defaultValue = "0") int page,
+                                              @RequestParam(defaultValue = "3") int size
     ) {
+
         try {
-    //            Pageable 객체 정의 ( page, size 값 설정 )
+//            Pageable 객체 정의 ( page, size 값 설정 )
             Pageable pageable = PageRequest.of(page, size);
 
-    //            Page 객체 정의
             Page<Diner> dinerPage;
 
-//            findAll() 생략 해도 전체 검색이 됨 :
-//            why? like 검색시 부서명 매개변수가 ""이더라도 전체 검색이 됨
-            dinerPage = dinerService.findAllByLocContaining(loc, pageable);
+//            findAll() 생략해도 전체검색해야 됨:
+//            why? like 검색시 고객명 매개변수가 ==이더라도 전채 검색 됨.
+            if (searchSelect.equals("지역")) {
+                dinerPage = dinerService.findAllByLocContaining(searchKeyword, pageable);
+            } else if (searchSelect.equals("메뉴")) {
+                dinerPage = dinerService.findAllByMenuContaining(searchKeyword, pageable);
+            } else {
+                dinerPage = dinerService.findAllByThemeContaining(searchKeyword, pageable);
+            }
 
-    //            맵 자료구조에 넣어서 전송
+
+//            맵 자료구조에 넣어서 전송
             Map<String, Object> response = new HashMap<>();
             response.put("diner", dinerPage.getContent());
             response.put("currentPage", dinerPage.getNumber());
@@ -144,7 +152,7 @@ public class DinerController {
     public ResponseEntity<Object> deleteId(@PathVariable int dno) {
 
         try {
-             boolean bSuccess = dinerService.removeById(dno);
+            boolean bSuccess = dinerService.removeById(dno);
 
             if (bSuccess == true) {
 //                데이터 + 성공 메세지 전송

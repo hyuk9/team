@@ -6,8 +6,12 @@
         <div class="container">
           <div class="row flex-center">
             <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0">
-              <a class="img-landing-banner" href="#!"><img class="img-fluid" src="assets/img/gallery/hero-header.png"
-                  alt="hero-header" /></a>
+              <a class="img-landing-banner" href="#!"
+                ><img
+                  class="img-fluid"
+                  src="assets/img/gallery/hero-header.png"
+                  alt="hero-header"
+              /></a>
             </div>
             <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
               <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">전국</h1>
@@ -26,20 +30,34 @@
         <div class="row">
           <!-- Blog entries-->
           <div class="col-lg-8">
-            <h1 class="text-danger">추가버튼을 페이지 아래쪽 pagination 오른쪽으로 이동하면 좋을거 같습니다</h1>
-            <h1 class="text-danger">추가버튼 있던 위치에 셀렉트 박스로 검색 기능 설정(메뉴 / 지역 / 테마) - 조정 후에 태그채로 삭제요망</h1>
             <div class="input-group mt-5 mb-5">
-              <button class="btn btn-success" v-if="showAdminBoard">
-                <router-link to="/add/diner">Add</router-link>
-              </button>
-              <!--  검색어 입력 -->
-              <input type="text" class="form-control" placeholder="이름으로 찾기" v-model="searchLoc" />
+              <div class="col-3">
+                <select class="form-select" v-model="searchSelect">
+                  <option>메뉴</option>
+                  <option>지역</option>
+                  <option>테마</option>
+                </select>
+              </div>
+
+              <!-- searchDname -> searchKeyword 변경 -->
+              <div class="col-7">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="검색하기"
+                  v-model="searchKeyword"
+                />
+              </div>
               <!--  검색어 버튼 -->
-              <div class="input-group-append">
-                <button class="btn btn-secondary" type="button" @click="
-  page = 1;
-retrieveDiner();
-                ">
+              <div class="input-group-append col-1">
+                <button
+                  class="btn btn-secondary"
+                  type="button"
+                  @click="
+                    page = 1;
+                    retrieveDiner();
+                  "
+                >
                   Search
                 </button>
               </div>
@@ -67,8 +85,13 @@ retrieveDiner();
             </div> -->
             <!-- Nested row for non-featured blog posts-->
             <div class="row">
-              <div class="col-lg-6" :class="{ active: index == currentIndex }" v-for="(data, index) in diner"
-                :key="index" @click="setActiveDiner(data, index)">
+              <div
+                class="col-lg-6"
+                :class="{ active: index == currentIndex }"
+                v-for="(data, index) in diner"
+                :key="index"
+                @click="setActiveDiner(data, index)"
+              >
                 <!-- Blog post-->
                 <div class="card mb-4">
                   <!-- <a href="#!"
@@ -77,24 +100,52 @@ retrieveDiner();
                       src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
                       alt="..."
                   /></a> -->
-                  <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                  <div
+                    id="carouselExampleSlidesOnly"
+                    class="carousel slide"
+                    data-bs-ride="carousel"
+                  >
                     <div class="carousel-inner">
                       <div class="carousel-item active">
-                        <img src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" class="d-block w-100" alt="..." />
+                        <img
+                          src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
+                          class="d-block w-100"
+                          alt="..."
+                        />
                       </div>
                       <div class="carousel-item">
-                        <img src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" class="d-block w-100" alt="..." />
+                        <img
+                          src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
+                          class="d-block w-100"
+                          alt="..."
+                        />
                       </div>
                       <div class="carousel-item">
-                        <img src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" class="d-block w-100" alt="..." />
+                        <img
+                          src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
+                          class="d-block w-100"
+                          alt="..."
+                        />
                       </div>
                     </div>
                   </div>
                   <div class="card-body">
+                    <a
+                      class="badge bg-success text-decoration-none link-light"
+                      href="#!"
+                      >{{ data.menu }}</a
+                    >
                     <h2 class="card-title h4">
                       {{ data.dname }}
-                      <a class="badge bg-danger text-decoration-none link-light" href="#!">{{ data.score }}</a>
+                      <a
+                        class="badge bg-danger text-decoration-none link-light"
+                        href="#!"
+                        >{{ data.score }}</a
+                      >
                     </h2>
+                    <p class="card-text fw-bolder">
+                      {{ data.loc }}
+                    </p>
                     <p class="card-text">
                       {{ data.review }}
                     </p>
@@ -102,11 +153,16 @@ retrieveDiner();
                     <!-- 간략 상세 목록 시작 -->
                     <div v-if="currentDiner">
                       <button class="btn btn-warning" type="button">
-                        <router-link :to="'/diner/' + currentDiner.dno">detail >
+                        <router-link :to="'/diner/' + currentDiner.dno"
+                          >detail >
                         </router-link>
                       </button>
-                      <button class="btn btn-danger ms-3">
-                        <router-link :to="'/diner/' + currentDiner.dno + '/edit'">Edit</router-link>
+                      <button class="btn btn-danger ms-3"
+                      v-if="showAdminBoard">
+                        <router-link
+                          :to="'/diner/' + currentDiner.dno + '/edit'"
+                          >Edit</router-link
+                        >
                       </button>
                     </div>
 
@@ -117,13 +173,28 @@ retrieveDiner();
             </div>
 
             <!-- Pagination-->
-            <nav aria-label="Pagination mb-5">
+            <nav aria-label="Pagination mb-4">
               <hr class="my-0" />
               <ul class="pagination justify-content-center my-4">
-                <b-pagination v-model="page" :total-rows="count" :per-page="pageSize" prev-text="Prev" next-text="Next"
-                  @change="handlePageChange"></b-pagination>
+                <b-pagination
+                  v-model="page"
+                  :total-rows="count"
+                  :per-page="pageSize"
+                  first-text="<<"
+                  last-text=">>"
+                  prev-text="Prev"
+                  next-text="Next"
+                  @change="handlePageChange"
+                ></b-pagination>
               </ul>
             </nav>
+
+            <button
+              class="btn btn-warning float-right mb-5 text-white"
+              v-if="showAdminBoard"
+            >
+              <router-link to="/add/diner">목록 추가</router-link>
+            </button>
           </div>
           <!-- Side widgets-->
           <div class="col-lg-4">
@@ -150,11 +221,12 @@ export default {
   data() {
     return {
       diner: [],
+      // TODO: searchLoc -> searchSelect
+      searchSelect: "지역",
+      searchKeyword: "",
+
       currentDiner: null,
       currentIndex: -1,
-      // dname: "", ->(변경) searchDname: "",
-      // TODO: searchDname -> searchLoc
-      searchLoc: "",
 
       // 페이징을 위한 변수 정의
       page: 1, // 현재 페이지
@@ -164,33 +236,18 @@ export default {
       pageSizes: [3, 6, 9], // select box에 넣을 기본 데이터
     };
   },
-  computed: {
-    currentUser() {
-      // 모듈 저장소 : this.$store.state.모듈명.state값
-      // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
-      return this.$store.state.auth.user;
-    },
-    // ROLE_ADMIN 만 보이는 메뉴(함수)
-    showAdminBoard() {
-      if(this.currentUser && this.currentUser.roles) {
-        // if ROLE_ADMIN 있으면 true
-        //               없으면 false
-        return this.currentUser.roles.includes("ROLE_ADMIN"); 
-      }
-      // currentUser 없으면 false (메뉴가 안보임)
-      return false;
-    }
-  },
   // 함수 정의하는 곳 : methods:
   methods: {
-    // axios , 모든 부서 정보 조회 요청 함수
     retrieveDiner() {
-      // getAll() ->(변경) getAll(dname, page, size)
-      DinerDataService.getAll(this.searchLoc, this.page - 1, this.pageSize)
+      DinerDataService.getAll(
+        this.searchSelect, // select box 선택된 값
+        this.searchKeyword, // 검색어
+        this.page - 1,
+        this.pageSize
+      )
         // 성공하면 .then() 결과가 전송됨
         .then((response) => {
-          // this.diner = response.data -> (변경) const { diner, totalItems } = response.data
-          // let(const) { 속성명1, 속성명2 } = 데이터 객체배열 (모던자바문법 구조분해할당)
+          // let(const) { 속성명1, 속성명2 } = 데이터 객체배열 (모던자바문법 구조 분해 할당)
           const { diner, totalItems } = response.data; // springboot 의 전송한 맵 정보
           this.diner = diner; // 스프링부트에서 전송한 데이터
           this.count = totalItems; // 스프링부트에서 전송한 페이지정보(총 건수)
@@ -206,13 +263,13 @@ export default {
     handlePageSizeChange(event) {
       this.pageSize = event.target.value; // 한페이지당 개수 저장(3, 6, 9)
       this.page = 1;
-      // 재조회함수 호출
+      // 재조회 함수 호출
       this.retrieveDiner();
     },
     // 페이지 번호 변경시 실행되는 함수(재조회)
     handlePageChange(value) {
       this.page = value; // 매개변수값으로 현재페이지 변경
-      // 재조회함수 호출
+      // 재조회 함수 호출
       this.retrieveDiner();
     },
     // 목록을 클릭했을때 현재 부서객체, 인덱스번호를 저장하는 함수
@@ -220,36 +277,32 @@ export default {
       this.currentDiner = data;
       this.currentIndex = index;
     },
-    // axios, 모든 부서 정보 삭제 요청 함수
-    removeAllDiner() {
-      DinerDataService.deleteAll()
-        // 성공하면 .then() 결과가 전송됨
-        .then((response) => {
-          // 디버깅 콘솔에 정보 출력
-          console.log(response.data);
-          // 전체 목록 재조회
-          this.retrieveDiner();
-          // currentDiner, currentIndex 초기화
-          this.currentDiner = null;
-          this.currentIndex = -1;
-        })
-        // 실패하면 .catch() 에 에러가 전송됨
-        .catch((e) => {
-          console.log(e);
-        });
+  },
+  computed: {
+    currentUser() {
+      // 모듈 저장소 : this.$store.state.모듈명.state값
+      // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
+      return this.$store.state.auth.user;
     },
-
-    
+    // ROLE_ADMIN 만 보이는 메뉴(함수)
+    showAdminBoard() {
+      if (this.currentUser && this.currentUser.roles) {
+        // if ROLE_ADMIN 있으면 true
+        //               없으면 false
+        return this.currentUser.roles.includes("ROLE_ADMIN");
+      }
+      // currentUser 없으면 false (메뉴가 안보임)
+      return false;
+    },
   },
   // 화면이 뜨자마자 실행되는 이벤트(라이프 사이클 함수) : mounted(), created()
   mounted() {
     // 화면 로딩시 전체 조회함수 실행
-    this.retrieveDiner(this.searchLoc="서울");
-    this.searchLoc="";
+    this.retrieveDiner((this.searchKeyword = "서울"));
+    this.searchKeyword = "";
   },
 };
 </script>
 
 <style>
-
 </style>

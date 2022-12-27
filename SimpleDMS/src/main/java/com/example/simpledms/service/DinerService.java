@@ -73,9 +73,21 @@ public class DinerService {
         return false;
     }
 
-    //    ✅ dname like 검색 함수 ( 페이징 처리 추가 )
+    //    ✅ loc like 검색 함수 ( 페이징 처리 추가 )
     public Page<Diner> findAllByLocContaining(String loc, Pageable pageable) {
         Page<Diner> list = dinerRepository.findAllByLocContaining(loc, pageable);
+        return list;
+    }
+
+    //    ✅ menu like 검색 함수 ( 페이징 처리 추가 )
+    public Page<Diner> findAllByMenuContaining(String menu, Pageable pageable) {
+        Page<Diner> list = dinerRepository.findAllByMenuContaining(menu, pageable);
+        return list;
+    }
+
+    //    ✅ theme like 검색 함수 ( 페이징 처리 추가 )
+    public Page<Diner> findAllByThemeContaining(String theme, Pageable pageable) {
+        Page<Diner> list = dinerRepository.findAllByThemeContaining(theme, pageable);
         return list;
     }
 
