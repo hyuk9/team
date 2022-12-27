@@ -31,6 +31,7 @@
 
     <!-- 프로필, 예약, 찜, 리뷰 시작 -->
     <div class="pt-5 pb-5">
+      <h1 class="text-danger">예약조회 / 찜한가게 / 내가쓴리뷰 클릭했을때 해당 위치로 스크롤하게 변경</h1>
       <div class="container">
         <div class="row">
           <!-- 프로필 사진 시작 -->
@@ -97,6 +98,7 @@
 
     <!-- 예약조회 섹션 시작 -->
     <div class="pt-5 pb-5">
+      <h1 class="text-danger">연락처 안보이는 문제 수정요망</h1>
       <div class="mx-auto text-center mb-5">
         <h5 class="fw-bold fs-3 fs-lg-5 lh-sm">내 예약 목록</h5>
       </div>

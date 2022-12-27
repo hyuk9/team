@@ -44,13 +44,13 @@ public class Announce extends BaseTimeEntity {
     )
     private Integer ano;
 
-    @Column(columnDefinition = "VARCHAR2(255)")
+    @javax.persistence.Column(columnDefinition = "VARCHAR2(255)")
     private String writer;
 
-    @Column(columnDefinition = "VARCHAR2(255)")
+    @javax.persistence.Column(columnDefinition = "VARCHAR2(255)")
     private String title;
 
-    @Column(columnDefinition = "CLOB")
+    @javax.persistence.Column(columnDefinition = "CLOB")
     private String content;
 }
 

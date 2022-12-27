@@ -51,9 +51,9 @@ public class Faq extends BaseTimeEntity {
                    , generator = "SQ_FAQ_GENERATOR"
     )
     private Integer no;
-    @Column(columnDefinition = "VARCHAR2(255)")
+    @javax.persistence.Column(columnDefinition = "VARCHAR2(255)")
     private String title;
-    @Column(columnDefinition = "CLOB")
+    @javax.persistence.Column(columnDefinition = "CLOB")
     private String content;
 }
 

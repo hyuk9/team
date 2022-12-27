@@ -1,46 +1,30 @@
 <template>
   <div>
-    <div class="container col-8 mb-2 mt-2">
-      <h1 class="text-danger">수정/삭제 버튼을 따로 분리해서 삭제는 바로 삭제되게 만들고 수정버튼만 넘어가게 변경</h1>
-      <div class="AnnounceView-header">
-        <h1><strong>공지사항 게시판</strong></h1>
+    <!-- detali Start -->
+    <div class="container" v-if="currentAnnounce">
+      <div class="mb-3">
+        <label for="writer" class="form-label">작성자</label>
+        <input type="writer" class="form-control" id="writer" required name="writer"
+          v-model="currentAnnounce.writer" />
       </div>
-      <div class="AnnounceView-title">
-        <table class="table">
-          <colgroup>
-            <col style="width:15%">
-            <col style="width:85%">
-          </colgroup>
-          <thead>
-            <tr>
-              <th scope="col"></th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-          <tbody>
-
-            <tr>
-              <th scope="col">제목</th>
-              <td scope="col" v-text="currentAnnounce.title"></td>
-            </tr>
-            <tr>
-              <th scope="row">작성자</th>
-              <td scope="row" v-text="currentAnnounce.writer"></td>
-            </tr>
-            <tr>
-              <td colspan="2" scope="row" style="padding:10px" v-text="currentAnnounce.content"></td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="mb-3">
+        <label for="title" class="form-label">제목</label>
+        <input type="text" class="form-control" id="title" required name="title" v-model="currentAnnounce.title" />
+      </div>
+      <div class="mb-3">
+        <label for="content" class="form-label">내용</label>
+        <textarea class="form-control form-control-lg " id="content" rows="8" required name="content"
+          v-model="currentAnnounce.content"></textarea>
+      </div>
+      <div class="mb-3">
+        <button @click="updateAnnounce" class="btn btn-primary me-3">수정</button>
+        <button @click="deleteAnnounce" class="btn btn-danger">삭제</button>
+      </div>
+      <div class="alert alert-success" role="alert" v-if="message">
+        {{ message }}
       </div>
     </div>
-
-    <div class="mb-3" v-if="showAdminBoard">
-      <router-link :to="'/announce/' + currentAnnounce.ano">
-        <button class="btn btn-warning offset-5" type="button">수정&삭제</button>
-      </router-link>
-    </div>
-
+    <!-- detail End -->
   </div>
 </template>
 
@@ -103,27 +87,6 @@ export default {
         });
     },
   },
-
-  computed: {
-            // 현재 유저
-            currentUser() {
-            // 모듈 저장소 : this.$store.state.모듈명.state값
-            // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
-            return this.$store.state.auth.user;
-        },
-
-        // 관리자 접속인지 아닌지 확인하는 함수
-        showAdminBoard() {
-            if (this.currentUser && this.currentUser.roles) {
-                // if ROLE_ADMIN 있으면 true
-                //               없으면 false
-                return this.currentUser.roles.includes("ROLE_ADMIN");
-            }
-            // currentUser 없으면 false (메뉴가 안보임)
-            return false;
-        },
-  },
-
   // 화면이 뜨자 마자 실행되는 이벤트
   mounted() {
     this.message = "";

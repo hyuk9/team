@@ -17,16 +17,6 @@ const routes = [
     component: () => import("@/components/food/local/DinerList.vue"),
   },
   {
-    path: "/menu",
-    name: "menu",
-    component: () => import("@/components/food/menu/MenuList.vue"),
-  },
-  {
-    path: "/theme",
-    name: "theme",
-    component: () => import("@/components/food/theme/ThemeList.vue"),
-  },
-  {
     path: "/diner/:dno",
     name: "diner-detail",
     component: () => import("@/components/food/detail/DinerDetail.vue"),
@@ -97,18 +87,18 @@ const routes = [
     name: "faq",
     component: () => import("@/components/board/faq/FaqList.vue"),
   },
-    // AddFaq
-    {
-      path: "/add-faq",
-      name: "add-faq",
-      component: () => import("../components/board/faq/AddFaqView.vue"),
-    },
-    // FaqDetail
-    {
-      path: "/faq/:no",
-      name: "faq-detail",
-      component: () => import("../components/board/faq/FaqDetailView.vue"),
-    },
+  // AddFaq
+  {
+    path: "/add-faq",
+    name: "add-faq",
+    component: () => import("../components/board/faq/AddFaqView.vue"),
+  },
+  // FaqDetail
+  {
+    path: "/faq/:no",
+    name: "faq-detail",
+    component: () => import("../components/board/faq/FaqDetailView.vue"),
+  },
   {
     path: "/qna",
     name: "qna",
@@ -190,6 +180,11 @@ const routes = [
     path: '/findIdPw',
     name: 'findIdPw',
     component: () => import('../components/user/FindIdPw.vue')
+  },
+  {
+    path: '/column',
+    name: 'column',
+    component: () => import('../components/foodcolumn/ColumnList.vue')
   }
 ];
 

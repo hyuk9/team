@@ -44,13 +44,13 @@ public class Question extends BaseTimeEntity {
     )
     private Integer qno;
 
-    @Column(columnDefinition = "VARCHAR2(255)")
+    @javax.persistence.Column(columnDefinition = "VARCHAR2(255)")
     private String title;
 
-    @Column(columnDefinition = "VARCHAR2(255)")
+    @javax.persistence.Column(columnDefinition = "VARCHAR2(255)")
     private String content;
 
-    @Column(columnDefinition = "VARCHAR2(255)")
+    @javax.persistence.Column(columnDefinition = "VARCHAR2(255)")
     private String writer;
 }
 

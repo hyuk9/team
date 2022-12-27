@@ -219,7 +219,8 @@ export default {
     return {
       diner: [],
       // dname: "", ->(변경) searchUsername: "",
-      dinername: "", // 부서명
+      currentDiner: null,
+      currentIndex: -1,
       // 페이징을 위한 변수 정의
       page: 1, // 현재 페이지
       count: 0, // 전체 데이터 건수
@@ -231,14 +232,22 @@ export default {
   },
   methods: {
     retrieveDiner() {
-      DinerDataService.getAll(this.dinername, this.page - 1, this.pageSize)
+      DinerDataService.getAll(
+        this.searchSelect, // select box 선택된 값
+        this.searchKeyword, // 검색어
+        this.page - 1,
+        this.pageSize
+      )
+        // 성공하면 .then() 결과가 전송됨
         .then((response) => {
-          const { diner, totalItems } = response.data;
-          this.diner = diner;
-          this.count = totalItems;
-
+          // let(const) { 속성명1, 속성명2 } = 데이터 객체배열 (모던자바문법 구조 분해 할당)
+          const { diner, totalItems } = response.data; // springboot 의 전송한 맵 정보
+          this.diner = diner; // 스프링부트에서 전송한 데이터
+          this.count = totalItems; // 스프링부트에서 전송한 페이지정보(총 건수)
+          // 디버깅 콘솔에 정보 출력
           console.log(response.data);
         })
+        // 실패하면 .catch() 에 에러가 전송됨
         .catch((e) => {
           console.log(e);
         });

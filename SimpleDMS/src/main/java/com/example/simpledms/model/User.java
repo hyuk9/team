@@ -42,49 +42,49 @@ public class User extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE
             , generator = "SQ_USER_GENERATOR"
     )
-    @Column
+    @javax.persistence.Column
     private Long id;
 
     //  로그인 ID 임
     @NotBlank
     @Size(max = 20)
-    @Column
+    @javax.persistence.Column
     private String username;
 
     @NotBlank
     @Size(max = 50)
     @Email
-    @Column
+    @javax.persistence.Column
     private String email;
 
     @NotBlank
     @Size(max = 120)
-    @Column
+    @javax.persistence.Column
     private String password;
 
     @NotBlank
     @Size(max = 120)
-    @Column
+    @javax.persistence.Column
     private String name;
 
 
     @Size(max = 120)
-    @Column
+    @javax.persistence.Column
     private String birthday;
 
 
     @Size(max = 120)
-    @Column
+    @javax.persistence.Column
     private String gender;
 
 
     @Size(max = 120)
-    @Column
+    @javax.persistence.Column
     private String phone;
 
 
     @Size(max = 120)
-    @Column
+    @javax.persistence.Column
     private String address;
 
 

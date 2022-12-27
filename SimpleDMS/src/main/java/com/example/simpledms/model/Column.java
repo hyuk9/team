@@ -20,10 +20,10 @@ import javax.persistence.*;
  * 2022-10-19         ds          최초 생성
  */
 @Entity
-@Table(name = "TB_DINER")
+@Table(name = "TB_COLUMN")
 @SequenceGenerator(
-        name= "SQ_DINER_GENERATOR"
-        , sequenceName = "SQ_DINER"
+        name= "SQ_COLUMN_GENERATOR"
+        , sequenceName = "SQ_COLUMN"
         , initialValue = 1
         , allocationSize = 1
 )
@@ -36,37 +36,27 @@ import javax.persistence.*;
 @DynamicUpdate
 @ToString
 @Where(clause = "DELETE_YN = 'N'")
-@SQLDelete(sql="UPDATE TB_DINER SET DELETE_YN = 'Y', DELETE_TIME = TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') WHERE DNO = ?")
-public class Diner extends BaseTimeEntity {
+@SQLDelete(sql="UPDATE TB_COLUMN SET DELETE_YN = 'Y', DELETE_TIME = TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') WHERE CID = ?")
+public class Column extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE
-            , generator = "SQ_DINER_GENERATOR"
+            , generator = "SQ_COLUMN_GENERATOR"
     )
-    private Integer dno;
 
     @javax.persistence.Column
-    private String dname;
+    private Integer cid;
 
     @javax.persistence.Column
-    private String score;
+    private String columnTitle;
 
     @javax.persistence.Column
-    private String loc;
+    private String columnContent;
 
     @javax.persistence.Column
-    private String phone;
+    private String columnPhoto;
 
     @javax.persistence.Column
-    private String menu;
-
-    @javax.persistence.Column
-    private String theme;
-
-    @javax.persistence.Column
-    private String review;
-
-    @javax.persistence.Column
-    private String photo;
+    private String columnWriter;
 }
 
 

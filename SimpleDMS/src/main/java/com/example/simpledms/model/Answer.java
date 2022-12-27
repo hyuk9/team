@@ -45,14 +45,14 @@ public class Answer extends BaseTimeEntity {
     private Integer ano;
 
 //    조인용 컬럼
-    @Column(columnDefinition = "NUMBER")
+    @javax.persistence.Column(columnDefinition = "NUMBER")
     private String qno;
 
-    @Column(columnDefinition = "VARCHAR2(255)")
+    @javax.persistence.Column(columnDefinition = "VARCHAR2(255)")
     private String content;
 
 //   조인용 컬럼
-    @Column(columnDefinition = "VARCHAR2(255)")
+    @javax.persistence.Column(columnDefinition = "VARCHAR2(255)")
     private String writer;
 }
 

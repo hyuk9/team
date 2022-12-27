@@ -43,11 +43,11 @@ public class Role extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE
                     ,generator = "SQ_ROLE_GENERATOR"
     )
-    @Column
+    @javax.persistence.Column
     private Integer rid;
 
     @Enumerated(EnumType.STRING)
-    @Column
+    @javax.persistence.Column
     private ERole rname;
 
     public Role(ERole name) {

@@ -44,13 +44,13 @@ public class Qna extends BaseTimeEntity {
     )
     private Integer qno;
 
-    @Column(columnDefinition = "VARCHAR2(255)")
+    @javax.persistence.Column(columnDefinition = "VARCHAR2(255)")
     private String questioner;
 
-    @Column(columnDefinition = "VARCHAR2(255)")
+    @javax.persistence.Column(columnDefinition = "VARCHAR2(255)")
     private String title;
 
-    @Column(columnDefinition = "CLOB")
+    @javax.persistence.Column(columnDefinition = "CLOB")
     private String content;
 }
 
