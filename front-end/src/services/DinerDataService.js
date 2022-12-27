@@ -26,11 +26,11 @@ class DinerDataService {
     // page : 현재 페이지 번호
     // size : 페이지당 화면에 보여질 개수
     // TODO: dname -> loc
-    getAll(loc, page, size) {
-        // get 방식 통신 요청 -> @GetMapping("/api/diner")
+    getAll(searchSelect, searchKeyword, page, size) {
+        // get 방식 통신 요청 -> @GetMapping("/api/qna")
         // 1) 전체 조회 +
-        // 2) 부서명 조회 같이하는 함수
-        return http.get(`/diner?loc=${loc}&page=${page}&size=${size}`); 
+        // 2) 고객명 조회 같이하는 함수
+        return http.get(`/diner?searchSelect=${searchSelect}&searchKeyword=${searchKeyword}&page=${page}&size=${size}`); 
     }
 
     // 부서번호로 조회 요청 함수
