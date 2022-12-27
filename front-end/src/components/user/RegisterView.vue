@@ -29,7 +29,6 @@
         <div class="input__block">
           <h5>이메일</h5>
           <i class="fas fa-star-of-life ms-2"></i>
-      <h1 class="text-danger">이메일 직접입력을 눌렀을때 선택지 추가요망</h1>
           <div class="emailInput">
             <input
               v-model="startEmail"
@@ -41,12 +40,20 @@
               name="이메일 "
             />
             <span class="atSign">@</span>
-            <select name="" id="" class="endEmail" v-model="endEmail">
+            <!-- 직접 입력 클릭시 추가 입력창 때문에 크기를 재조정해야함 -> 그 상황시 class 추가 -->
+            <select name="" id="direct" :class="['endEmail', selectEmail ? '' : 'endEmailDirectInput']" v-model="endEmail" @click="inputEmailMyself">
               <option value="" selected>이메일 선택</option>
               <option value="naver.com">naver.com</option>
               <option value="gmail.com">gmail.com</option>
               <option value="hanmail.net">hanmail.net</option>
+              <option value="daum.net">daum.net</option>
+              <option value="nate.com">nate.com</option>
+              <option value="icloud.com">icloud.com</option>
+              <option value="outlook.kr">outlook.kr</option>
+              <option value="yahoo.com">yahoo.com</option>
+              <option value="direct" id="inputMyself">직접입력</option>
             </select>
+            <input type="text" name="" class="endEmail endEmailDirectInput" placeholder="직접 입력" v-model="endEmail" v-if="!selectEmail">
           </div>
           <div v-if="submitted && errors.has('이메일 ')" class="register-alert">
             <p>{{ errors.first("이메일 ") }}</p>
@@ -230,6 +237,8 @@ export default {
       startEmail : "",
       // 이메일 입력창 뒷부분(@뒤 select 부분)
       endEmail : "",
+      // 이메일 뒷부분을 선택할지 본인이 직접 입력할지를 결정하는 변수
+      selectEmail : true,
       // 생년월일의 연도
       year : "",
       // 생년월일의 월
@@ -336,6 +345,17 @@ export default {
           shorthand: false,
         }).open();
     },
+
+    // 이메일 @의 뒷부분 중 "직접입력" 클릭시 입력창을 띄우는 함수 
+    inputEmailMyself(e) {
+      if(e.target.value == "direct" ) {
+        document.getElementById("inputMyself").value = "";
+        this.selectEmail = false;
+      } else {
+        this.selectEmail = true;
+        document.getElementById("inputMyself").value = "direct";
+      }
+    }
    
   },
 };
@@ -456,6 +476,13 @@ form .emailInput .atSign {
 form .emailInput .endEmail {
   width: 40%;
     height: 30px;
+}
+/* 이메일 입력용 */
+form .emailInput .endEmailDirectInput {
+  display: inline-block;
+  margin: 0;
+  width: 20%;
+  height: 30px;
 }
 
 /* 생년월일 입력용 */
