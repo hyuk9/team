@@ -18,10 +18,12 @@
       </div>
     </section>
     <!-- 최상단 끝 -->
+    <h1 class="text-danger">번호 내림차순 정렬 필요함</h1>
     <div class="container mt-2 mb-2">
       <table class="table">
         <thead>
           <tr>
+            <th scope="col">번호</th>
             <th scope="col">아이디</th>
             <th scope="col">이름</th>
             <th scope="col">이메일</th>
@@ -31,6 +33,7 @@
         </thead>
         <tbody v-for="(data, index) in user" :key="index">
           <tr>
+            <td>{{ data.id }}</td>
             <td>{{ data.username }}</td>
             <td>{{ data.name }}</td>
             <td>{{ data.email }}</td>
