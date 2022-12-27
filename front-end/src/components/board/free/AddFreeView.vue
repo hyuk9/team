@@ -1,89 +1,103 @@
 <template>
-    <div>
-        <!-- AddFree Start -->
-        <div class="container" v-if="!submitted">
-            <div class="mb-3">
-                <label for="writer" class="form-label">작성자</label>
-                <input type="writer" class="form-control" id="writer" required name="writer"
-                    v-model="free.writer" />
-            </div>
-            <div class="mb-3">
-                <label for="title" class="form-label">제목</label>
-                <input type="title" class="form-control" id="title" required name="title"
-                    v-model="free.title" />
-            </div>
-            <div class="mb-3">
-                <label for="content" class="form-label">내용</label>
-                <textarea class="form-control form-control-lg " id="content" rows="8" required name="content"
-                    v-model="free.content"></textarea>
-            </div>
-            <div class="mb-3">
-                <button @click="saveFree" class="btn btn-primary">Submit</button>
-            </div>
-        </div>
-        <!-- AddFree End -->
+  <div>
+    <!-- AddFree Start -->
+    <div class="container" v-if="!submitted">
+      <div class="mb-3">
+        <label for="writer" class="form-label">작성자</label>
+        <input
+          type="writer"
+          class="form-control"
+          id="writer"
+          required
+          name="writer"
+          v-model="free.writer"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="title" class="form-label">제목</label>
+        <input
+          type="title"
+          class="form-control"
+          id="title"
+          required
+          name="title"
+          v-model="free.title"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="content" class="form-label">내용</label>
+        <textarea
+          class="form-control form-control-lg"
+          id="content"
+          rows="8"
+          required
+          name="content"
+          v-model="free.content"
+        ></textarea>
+      </div>
+      <div class="mb-3">
+        <button @click="saveFree" class="btn btn-primary">Submit</button>
+      </div>
     </div>
+    <!-- AddFree End -->
+  </div>
 </template>
 
 
 <script>
 import FreeDataService from "../../../services/FreeDataService";
 export default {
-    data() {
-        return {
-            free: {
-                fno: null,
-                writer: "",
-                title: "",
-                content:""
-            },
-            // submit 버튼을 클릭하면 true 가 되고, You submitted successfully! 화면에 출력됨
-            submitted: false,
-        };
+  data() {
+    return {
+      free: {
+        fno: null,
+        writer: "",
+        title: "",
+        content: "",
+      },
+      // submit 버튼을 클릭하면 true 가 되고, You submitted successfully! 화면에 출력됨
+      submitted: false,
+    };
+  },
+  methods: {
+    saveFree() {
+      // 임시 객체 변수 -> springboot 전송
+      // 부서번호는(no) 자동생성되므로 빼고 전송함
+      let data = {
+        writer: this.free.writer,
+        title: this.free.title,
+        content: this.free.content,
+      };
+
+      // insert 요청 함수 호출(axios 공통함수 호출)
+      FreeDataService.create(data)
+        // 성공하면 then() 결과가 전송됨
+        .then((response) => {
+          this.free.fno = response.data.fno;
+          // 콘솔 로그 출력(response.data)
+          console.log(response.data);
+          // 변수 submitted
+          this.submitted = true;
+          alert("성공했습니다.");
+          location.href = "/free";
+        })
+        // 실패하면 .catch() 결과가 전송됨
+        .catch((e) => {
+          console.log(e);
+        });
     },
-    methods: {
-        saveFree() {
-            // 임시 객체 변수 -> springboot 전송
-            // 부서번호는(no) 자동생성되므로 빼고 전송함
-            let data = {
-                
-                writer: this.free.writer,
-                title: this.free.title,
-                content: this.free.content
-            };
-
-            // insert 요청 함수 호출(axios 공통함수 호출)
-            FreeDataService.create(data)
-                // 성공하면 then() 결과가 전송됨
-                .then((response) => {
-                    this.free.fno = response.data.fno;
-                    // 콘솔 로그 출력(response.data)
-                    console.log(response.data);
-                    // 변수 submitted
-                    this.submitted = true;
-                    alert("성공했습니다.")
-                    location.href = "/free";
-                })
-                // 실패하면 .catch() 결과가 전송됨
-                .catch((e) => {
-                    console.log(e);
-                });
-        },
-        newFree() {
-            // 새양식 다시 보여주기 함수, 변수 초기화
-            this.submitted = false;
-            this.free = {};
-        },
-
-        returnFree() {
-            location.href = "/free";
-        }
-     
+    newFree() {
+      // 새양식 다시 보여주기 함수, 변수 초기화
+      this.submitted = false;
+      this.free = {};
     },
 
+    returnFree() {
+      location.href = "/free";
+    },
+  },
 };
 </script>
 
 <style>
-
 </style>

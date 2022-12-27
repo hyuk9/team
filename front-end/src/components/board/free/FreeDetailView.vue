@@ -4,17 +4,36 @@
     <div class="container" v-if="currentFree">
       <div class="mb-3">
         <label for="writer" class="form-label">작성자</label>
-        <input type="writer" class="form-control" id="writer" required name="writer"
-          v-model="currentFree.writer" />
+        <input
+          type="writer"
+          class="form-control"
+          id="writer"
+          required
+          name="writer"
+          v-model="currentFree.writer"
+        />
       </div>
       <div class="mb-3">
         <label for="title" class="form-label">제목</label>
-        <input type="text" class="form-control" id="title" required name="title" v-model="currentFree.title" />
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          required
+          name="title"
+          v-model="currentFree.title"
+        />
       </div>
       <div class="mb-3">
         <label for="content" class="form-label">내용</label>
-        <textarea class="form-control form-control-lg " id="content" rows="8" required name="content"
-          v-model="currentFree.content"></textarea>
+        <textarea
+          class="form-control form-control-lg"
+          id="content"
+          rows="8"
+          required
+          name="content"
+          v-model="currentFree.content"
+        ></textarea>
       </div>
       <div class="mb-3">
         <button @click="updateFree" class="btn btn-primary me-3">Update</button>
@@ -68,7 +87,6 @@ export default {
         .catch((e) => {
           console.log(e);
         });
-
     },
     // 부서정보를 삭제 요청하는 함수
     deleteFree() {
@@ -92,9 +110,8 @@ export default {
     this.message = "";
     this.getFree(this.$route.params.fno);
   },
-}
+};
 </script>
 
 <style>
-
 </style>

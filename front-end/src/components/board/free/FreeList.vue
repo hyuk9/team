@@ -1,39 +1,24 @@
 <template>
   <div>
-    <!-- 최상단 시작 -->
-    <section class="py-5 overflow-hidden bg-warning" id="home">
-      <div class="container">
-        <div class="row flex-center">
-          <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0">
-            <a class="img-landing-banner" href="#!"><img class="img-fluid" src="assets/img/gallery/hero-header.png"
-                alt="hero-header" /></a>
-          </div>
-          <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
-            <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">
-              여기는 자유게시판 <br />
-              페이지 입니다
-            </h1>
-            <h1 class="text-800 mb-5 fs-4">최상단만 제작</h1>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- 최상단 끝 -->
-
     <!-- TODO: free 시작 -->
     <!-- Contact Start -->
     <div class="container mt-2 mb-2">
       <h1 class="offset-5">자유게시판</h1>
       <div style="text-align: center">
         <div class="p-3 mb-2 bg-warning text-dark bg-opacity-25">
-          <strong>"공지사항를 통해서 맛있는 토마토의 최신정보를 찾아보세요"
+          <strong
+            >"공지사항를 통해서 맛있는 토마토의 최신정보를 찾아보세요"
             <br />
-            "맛있는 토마토의 최신 정보와 공지를 모아서 한번에 찾아볼 수 있습니다.
+            "맛있는 토마토의 최신 정보와 공지를 모아서 한번에 찾아볼 수
+            있습니다.
           </strong>
         </div>
       </div>
       <h1 class="text-danger">수정버튼을 관리자에게만 보이도록 설정</h1>
-      <h1 class="text-danger">최종적으로는 TB_FREE랑 TB_USER 조인해서 TB_USER.ID = TB_FREE.ID 조건이 일치하면 수정버튼 보이게 만들 예정</h1>
+      <h1 class="text-danger">
+        최종적으로는 TB_FREE랑 TB_USER 조인해서 TB_USER.ID = TB_FREE.ID 조건이
+        일치하면 수정버튼 보이게 만들 예정
+      </h1>
 
       <!--    Todo : page 바 시작 주석 처리 -->
       <!-- <div class="col-md-12 offset-2">
@@ -56,30 +41,64 @@
         <table class="table table-hover">
           <thead>
             <tr>
-              <th class="table-active text-center" style="width: 10%" scope="col">#</th>
-              <th class="table-active text-center" style="width: 40%" scope="col">제목</th>
-              <th class="table-active text-center" style="width: 20%" scope="col">
+              <th
+                class="table-active text-center"
+                style="width: 10%"
+                scope="col"
+              >
+                #
+              </th>
+              <th
+                class="table-active text-center"
+                style="width: 40%"
+                scope="col"
+              >
+                제목
+              </th>
+              <th
+                class="table-active text-center"
+                style="width: 20%"
+                scope="col"
+              >
                 작성자
               </th>
-              <th class="table-active text-center" style="width: 20%" scope="col">
+              <th
+                class="table-active text-center"
+                style="width: 20%"
+                scope="col"
+              >
                 작성일
               </th>
-              <th class="table-active" style="width: 10%" scope="col" v-if="showAdminBoard">
+              <th
+                class="table-active"
+                style="width: 10%"
+                scope="col"
+                v-if="showAdminBoard"
+              >
                 수정/삭제
               </th>
             </tr>
           </thead>
           <tbody v-for="(data, index) in free" :key="index">
             <tr>
-              <td class="text-center"><i class="bi bi-hash"></i>{{ data.fno }}</td>
               <td class="text-center">
-                <router-link :to="'/freeview/' + data.fno"><span>{{ data.title }}</span></router-link>
+                <i class="bi bi-hash"></i>{{ data.fno }}
+              </td>
+              <td class="text-center">
+                <router-link :to="'/freeview/' + data.fno"
+                  ><span>{{ data.title }}</span></router-link
+                >
               </td>
               <td class="text-center">{{ data.writer }}</td>
-              <td class="text-center"> <i class="bi bi-calendar-date"></i>&nbsp;{{ data.insertTime }}</td>
+              <td class="text-center">
+                <i class="bi bi-calendar-date"></i>&nbsp;{{ data.insertTime }}
+              </td>
               <td v-if="showAdminBoard">
-                <router-link :to="'/free/' + data.fno"><span
-                    class="badge rounded-pill bg-warning text-dark">수정</span></router-link>
+                <router-link :to="'/free/' + data.fno"
+                  ><span class="badge rounded-pill bg-warning text-dark"
+                    >수정</span
+                  ></router-link
+                >
               </td>
             </tr>
           </tbody>
@@ -94,8 +113,16 @@
         </router-link>
       </div>
       <div class="overflow-auto offset-5">
-        <b-pagination v-model="page" :total-rows="count" :per-page="pageSize" first-text="<<" last-text=">>"
-          prev-text="Prev" next-text="Next" @change="handlePageChange"></b-pagination>
+        <b-pagination
+          v-model="page"
+          :total-rows="count"
+          :per-page="pageSize"
+          first-text="<<"
+          last-text=">>"
+          prev-text="Prev"
+          next-text="Next"
+          @change="handlePageChange"
+        ></b-pagination>
       </div>
       <!-- search 관련 div 시작 -->
       <div class="col-md-8 offset-2">
@@ -110,14 +137,24 @@
 
           <!-- searchDname -> searchKeyword 변경 -->
           <div class="col-7">
-            <input type="text" class="form-control" placeholder="Search by Question" v-model="searchKeyword" />
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search by Question"
+              v-model="searchKeyword"
+            />
           </div>
 
           <div class="input-group-append col-2">
-            <button class="btn btn-warning" type="button" @click="
-  page = 1;
-retrieveFree();
-              "><i class="bi bi-search"></i>
+            <button
+              class="btn btn-warning"
+              type="button"
+              @click="
+                page = 1;
+                retrieveFree();
+              "
+            >
+              <i class="bi bi-search"></i>
               Search
             </button>
           </div>
@@ -213,5 +250,4 @@ export default {
 </script>
 
 <style>
-
 </style>
