@@ -23,7 +23,6 @@ import java.util.Optional;
  * 2022-11-29         ds          최초 생성
  */
 // JpaRepository<모델명, 모델기본키타입>
-@Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
 //    쿼리메소드

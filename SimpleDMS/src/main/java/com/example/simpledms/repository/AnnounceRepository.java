@@ -1,7 +1,6 @@
 package com.example.simpledms.repository;
 
 import com.example.simpledms.model.Announce;
-import com.example.simpledms.model.Qna;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -19,7 +18,6 @@ import org.springframework.stereotype.Repository;
  * 2022-10-20         ds          최초 생성
  */
 
-@Repository
 public interface AnnounceRepository extends JpaRepository<Announce, Integer> {
 //    question 조회하는 like 검색 함수
 //    1) 쿼리메소드 방식으로 함수 정의

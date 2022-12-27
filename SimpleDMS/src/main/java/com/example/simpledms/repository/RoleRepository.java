@@ -18,7 +18,6 @@ import java.util.Optional;
  * —————————————————————————————
  * 2022-11-29         ds          최초 생성
  */
-@Repository
 public interface RoleRepository  extends JpaRepository<Role, Integer> {
 //    권한명으로(Name) 조회하는 함수
     Optional<Role> findByRname(ERole name);

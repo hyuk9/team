@@ -2,7 +2,6 @@ package com.example.simpledms.repository;
 
 
 import com.example.simpledms.model.Diner;
-import com.example.simpledms.model.Qna;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -22,7 +21,6 @@ import java.util.Optional;
  * 2022-10-20         ds          최초 생성
  */
 
-@Repository
 public interface DinerRepository extends JpaRepository<Diner, Integer> {
 
     Optional<Diner> findByDname(String dname);

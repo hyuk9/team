@@ -18,7 +18,6 @@ import org.springframework.stereotype.Repository;
  * 2022-10-20         ds          최초 생성
  */
 
-@Repository
 public interface QnaRepository extends JpaRepository<Qna, Integer> {
     //    question 조회하는 like 검색 함수
 //    1) 쿼리메소드 방식으로 함수 정의
