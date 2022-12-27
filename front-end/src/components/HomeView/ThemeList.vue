@@ -40,7 +40,7 @@
         <div class="row gx-2">
           <div
             class="carousel slide"
-            id="carouselLocationItems"
+            id="carouselLocationItemsInThemeList"
             data-bs-touch="false"
             data-bs-interval="false"
           >
@@ -178,7 +178,7 @@
             <button
               class="carousel-control-prev carousel-icon"
               type="button"
-              data-bs-target="#carouselLocationItems"
+              data-bs-target="#carouselLocationItemsInThemeList"
               data-bs-slide="prev"
               v-on:click="countDown()"
             >
@@ -191,7 +191,7 @@
             <button
               class="carousel-control-next carousel-icon"
               type="button"
-              data-bs-target="#carouselLocationItems"
+              data-bs-target="#carouselLocationItemsInThemeList"
               data-bs-slide="next"
               v-on:click="countUp()"
             >

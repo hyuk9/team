@@ -12,8 +12,6 @@ export default new Vuex.Store({
     auth
   },
   actions: {
-    clickButton({ commit }) {
-      // Commit the "clickButton" mutation (if needed)
-      commit('clickButton');
+    clickButton() {
     }
 }})

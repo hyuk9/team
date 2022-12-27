@@ -180,27 +180,27 @@
 
                         <div v-if="!currentUser">
                             <!-- 회원가입 시작 -->
-                            <router-link to="/register" class="btn btn-white text-warning register">
+                            <router-link to="/register" class="btn btn-white text-yellow register">
                                 <i class="fas fa-user me-2"></i>회원가입
                             </router-link>
                             <!-- 회원가입 끝 -->
 
                             <!-- 로그인 시작 -->
                             <!-- 부트스트랩 뷰 의 모달 기능 사용하기 -->
-                            <b-button v-b-modal.modal-1 class="btn btn-white text-warning ms-1 login" id="loginButton">
+                            <b-button v-b-modal.modal-1 class="btn btn-white text-yellow ms-1 login" id="loginButton">
                                 <i class="fas fa-user me-2"></i>로그인
                             </b-button>
                             <!-- 로그인 끝 -->
                         </div>
                         <div v-if="currentUser">
                             <!-- 프로필 시작 -->
-                            <router-link to="/profile" class="btn btn-white text-warning login">
+                            <router-link to="/profile" class="btn btn-white text-yellow login">
                                 <i class="fas fa-user me-2"></i>프로필
                             </router-link>
                             <!-- 프로필 끝 -->
 
                             <!-- 로그아웃 시작 -->
-                            <a @click.prevent="logout" class="btn btn-white text-warning ms-1 login">
+                            <a @click.prevent="logout" class="btn btn-white text-yellow ms-1 login">
                                 <i class="fas fa-user me-2"></i>
                                 로그아웃
                             </a>
@@ -311,6 +311,18 @@ export default {
 
 .modal-dialog {
     display: table;
+}
+
+/* 나브바 오른쪽 버튼들 색 조정 */
+.text-yellow {
+    color: #FFB30E;
+}
+/* 나브바 오른쪽 버튼들 마우스 올렸을 때 색 조정 */
+.text-yellow:hover {
+    color: #FFB30E !important;
+}
+.text-yellow:active {
+    border: none !important;
 }
 
 @import "../../../public/assets/css/navstyle.css"

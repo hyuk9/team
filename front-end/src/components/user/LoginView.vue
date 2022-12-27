@@ -302,8 +302,8 @@ a {
   /* border-radius: 1rem; */
   text-align: center;
   /* box-shadow: 0 8px 20px rgba(35, 0, 77, 0.2); */
-  animation-duration: 0.4s;
-  animation-name: animateLogin;
+  /* animation-duration: 0.4s;
+  animation-name: animateLogin; */
 }
 .login__title {
   color: #ffb30e;
