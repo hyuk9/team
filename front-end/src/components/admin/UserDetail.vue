@@ -142,10 +142,12 @@ export default {
             .then((response) => {
               console.log(response.data);
               alert("수정완료");
+              location.href = "/user";
             })
             .catch((e) => {
               console.log(e);
               alert(e, "실패");
+              location.href = "/user";
             });
         }
       });
