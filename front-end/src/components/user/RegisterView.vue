@@ -34,7 +34,7 @@
               v-model="startEmail"
               v-validate="'required|max:50'"
               type="text"
-              placeholder="이메일를 입력해 주세요."
+              placeholder="이메일 앞 부분을 입력해 주세요."
               class="input"
               id="email"
               name="이메일 "
@@ -42,7 +42,7 @@
             <span class="atSign">@</span>
             <!-- 직접 입력 클릭시 추가 입력창 때문에 크기를 재조정해야함 -> 그 상황시 class 추가 -->
             <select name="" id="direct" :class="['endEmail', selectEmail ? '' : 'endEmailDirectInput']" v-model="endEmail" @click="inputEmailMyself">
-              <option value="" selected>이메일 선택</option>
+              <option value="" selected disabled="disabled">이메일 선택</option>
               <option value="naver.com">naver.com</option>
               <option value="gmail.com">gmail.com</option>
               <option value="hanmail.net">hanmail.net</option>
@@ -134,11 +134,11 @@
               name="연도 "
             />
             <select v-model="month">
-              <option value="" selected>월</option>
+              <option value="" selected disabled="disabled">월</option>
               <option :value="index" v-for="index in 12" :key="index">{{index}}</option>
             </select>  
             <select v-model="day">
-              <option value="" selected>일</option>
+              <option value="" selected disabled="disabled">일</option>
               <option :value="index" v-for="index in 31" :key="index">{{index}}</option>
             </select>
           </div>

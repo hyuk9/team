@@ -2,7 +2,8 @@
   <div id="app">
     <!-- <NavCom /> -->
     <SubnavCom/>
-    <HeaderCom />
+    <!-- 특정 조건에서만 보여주는 함수 추가 -->
+    <HeaderCom v-if="wantToShow()"/>
     <router-view />
     <FooterCom />
   </div>
@@ -35,13 +36,19 @@ export default {
     };
   },
   methods: {
-    // wantToShow() {
-    //   if (this.$route.name == "login") {
-    //     return false;
-    //   } else {
-    //     return true;
-    //   }
-    // },
+    // 특정 페이지를 제외하고 최상단 보여주는 함수
+    wantToShow() {
+      if (
+        // 제외할 페이지 경로
+        this.$route.path == "/" || 
+        this.$route.path == "/register" ||
+        this.$route.path == "/findIdPw" 
+        ) {
+        return false;
+      } else {
+        return true;
+      }
+    },
   },
   components: {
     // NavCom,

@@ -1574,19 +1574,7 @@ export default {
     };
   },
   methods: {
-    retrieveDiner() {
-      DinerDataService.getAll(this.page - 1, this.pageSize)
-        .then((response) => {
-          const { diner, totalItems } = response.data;
-          this.diner = diner;
-          this.count = totalItems;
 
-          console.log(response.data);
-        })
-        .catch((e) => {
-          console.log(e);
-        });
-    },
 
     // handlePageSizeChange(event) {   this.pageSize = event.target.value;
     // this.page = 1;   this.retrieveDiner(); }, handlePageChange(value) {
@@ -1611,7 +1599,6 @@ export default {
       });
     });
 
-    this.retrieveDiner();
   },
 };
 </script>
