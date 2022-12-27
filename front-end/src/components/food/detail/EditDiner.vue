@@ -1,31 +1,6 @@
 <template>
   <!-- DinerDetail.vue -->
   <div>
-    <!-- 최상단 시작 -->
-    <section class="py-5 overflow-hidden bg-warning" id="home">
-      <div class="container">
-        <div class="row flex-center">
-          <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0">
-            <a class="img-landing-banner" href="#!"
-              ><img
-                class="img-fluid"
-                src="assets/img/gallery/hero-header.png"
-                alt="hero-header"
-            /></a>
-          </div>
-          <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
-            <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">
-              식당정보
-            </h1>
-            <h1 class="text-800 mb-5 fs-4">
-              <br />식당정보 수정페이지입니다! <br />
-            </h1>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- 최상단 끝 -->
-
     <!-- 수정 양식 폼 시작 -->
     <div v-if="currentDiner" class="edit-form mt-5 mb-5">
       <h4>식당 정보</h4>

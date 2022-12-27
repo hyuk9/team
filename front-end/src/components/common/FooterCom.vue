@@ -2,124 +2,6 @@
   <div>
     <footer class="py-0 pt-7 bg-1000">
       <div class="container">
-        <!-- 푸터 첫 단락 가로로 한 줄 -->
-        <!-- <div class="row justify-content-lg-between">
-          <h5 class="lh-lg fw-bold text-white">지역별 맛집 한번에 바로보기</h5>
-          <div class="col-6 col-md-4 col-lg-auto mb-3">
-            <ul class="list-unstyled mb-md-4 mb-lg-0">
-              <li class="lh-lg">
-                <router-link to = "" class="text-200 text-decoration-none" 
-                  >서울</router-link>
-              </li>
-              <li class="lh-lg">
-                <router-link to="#" class="text-200 text-decoration-none">경기도</router-link>
-              </li>
-              <li class="lh-lg">
-                <router-link to="#" class="text-200 text-decoration-none">인천</router-link >
-              </li>
-              <li class="lh-lg">
-                <router-link to="#" class="text-200 text-decoration-none">강원도</router-link >
-              </li>
-              <li class="lh-lg">
-                <router-link to="#" class="text-200 text-decoration-none"
-                  >충청남도</router-link 
-                >
-              </li>
-            </ul>
-          </div>
-          <div class="col-6 col-md-4 col-lg-auto mb-3">
-            <ul class="list-unstyled mb-md-4 mb-lg-0">
-              <li class="lh-lg">
-                <router-link to = "#" class="text-200 text-decoration-none" 
-                  >대전</router-link>
-              </li>
-              <li class="lh-lg">
-                <router-link to = "#" class="text-200 text-decoration-none" 
-                  >충청북도</router-link>
-              </li>
-              <li class="lh-lg">
-                <router-link to = "#" class="text-200 text-decoration-none" >세종</router-link>
-              </li>
-              <li class="lh-lg">
-                <router-link to = "#" class="text-200 text-decoration-none" >부산</router-link>
-              </li>
-              <li class="lh-lg">
-                <router-link to = "#" class="text-200 text-decoration-none" >울산</router-link>
-              </li>
-            </ul>
-          </div>
-          <div class="col-6 col-md-4 col-lg-auto mb-3">
-            <ul class="list-unstyled mb-md-4 mb-lg-0">
-              <li class="lh-lg">
-                <router-link to = "#" class="text-200 text-decoration-none" 
-                  >대구</router-link>
-              </li>
-              <li class="lh-lg">
-                <router-link to = "#" class="text-200 text-decoration-none" 
-                  >경상북도</router-link>
-              </li>
-              <li class="lh-lg">
-                <router-link to = "#" class="text-200 text-decoration-none" >경상남도</router-link>
-              </li>
-              <li class="lh-lg">
-                <router-link to = "#" class="text-200 text-decoration-none" >전라남도</router-link>
-              </li>
-              <li class="lh-lg">
-                <router-link to = "#" class="text-200 text-decoration-none" >광주</router-link>
-              </li>
-            </ul>
-          </div>
-          <div class="col-6 col-md-4 col-lg-auto mb-3">
-            <ul class="list-unstyled mb-md-4 mb-lg-0">
-              <li class="lh-lg">
-                <router-link to = "#" class="text-200 text-decoration-none" >전라북도</router-link>
-              </li>
-              <li class="lh-lg">
-                <router-link to = "#" class="text-200 text-decoration-none" >제주</router-link>
-              </li>
-              <li class="lh-lg">
-                <router-link to = "#" class="text-200 text-decoration-none" >Las Vegas</router-link>
-              </li>
-              <li class="lh-lg">
-                <router-link to = "#" class="text-200 text-decoration-none" 
-                  >Sacramento</router-link>
-              </li>
-              <li class="lh-lg">
-                <router-link to = "#" class="text-200 text-decoration-none" 
-                  >Oklahoma City</router-link>
-              </li>
-            </ul>
-          </div>
-          <div class="col-6 col-md-4 col-lg-auto mb-3">
-            <ul class="list-unstyled mb-md-4 mb-lg-0">
-              <li class="lh-lg">
-                <router-link to = "#" class="text-200 text-decoration-none" >Columbus</router-link>
-              </li>
-              <li class="lh-lg">
-                <router-link to = "#" class="text-200 text-decoration-none" 
-                  >New Mexico</router-link>
-              </li>
-              <li class="lh-lg">
-                <router-link to = "#" class="text-200 text-decoration-none" 
-                  >Albuquerque</router-link>
-              </li>
-              <li class="lh-lg">
-                <router-link to = "#" class="text-200 text-decoration-none" 
-                  >Sacramento</router-link>
-              </li>
-              <li class="lh-lg">
-                <router-link to = "#" class="text-200 text-decoration-none" 
-                  >New Orleans</router-link>
-              </li>
-            </ul>
-          </div>
-        </div> -->
-        <!-- 푸터 첫 단락 끝 -->
-
-
-        <!-- <hr class="text-900" /> 가로줄긋는 태그 --> 
-
-        <!-- 푸터 두번째 단락 -->
         <div class="row">
           <div class="col-6 col-md-4 col-lg-3 col-xxl-2 mb-3">
             <h5 class="lh-lg fw-bold text-white">메뉴별</h5>
@@ -255,7 +137,6 @@
             </div>
           </div>
         </div>
-        <!-- 푸터 두번째 단락 끝 -->
 
         
         <hr class="border border-800" />

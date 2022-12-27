@@ -1,25 +1,5 @@
 <template>
   <div>
-    <!-- 최상단 시작 -->
-    <section class="py-5 overflow-hidden bg-warning" id="home">
-      <div class="container">
-        <div class="row flex-center">
-          <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0">
-            <!-- TODO: 이미지가 안나와서 이미지 경로 수정 -->
-            <a class="img-landing-banner" href="#!"><img class="img-fluid"
-                src="../../../public/assets/img/gallery/hero-tomato.png" alt="hero-header" /></a>
-          </div>
-          <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
-            <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">
-              팀원 소개 <br />
-              페이지 입니다
-            </h1>
-            <h1 class="text-800 mb-5 fs-4">최상단만 제작</h1>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- 최상단 끝 -->
     <h1 class="text-danger">형태는 괜찮은데 5명으로 나눌거면 조금 애매할 수 있으니 강사님 끼워넣고 6명으로 채워넣으면 좋을거같습니다</h1>
 
     <!-- ======= Team Section ======= -->
