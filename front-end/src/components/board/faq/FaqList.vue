@@ -5,12 +5,8 @@
       <div class="container">
         <div class="row flex-center">
           <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0">
-            <a class="img-landing-banner" href="#!"
-              ><img
-                class="img-fluid"
-                src="assets/img/gallery/hero-header.png"
-                alt="hero-header"
-            /></a>
+            <a class="img-landing-banner" href="#!"><img class="img-fluid" src="assets/img/gallery/hero-header.png"
+                alt="hero-header" /></a>
           </div>
           <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
             <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">
@@ -30,8 +26,7 @@
       <h1 class="offset-5">FAQ 게시판</h1>
       <div style="text-align: center">
         <div class="p-3 mb-2 bg-warning text-dark bg-opacity-25">
-          <strong
-            >"FAQ를 통해서 원하는 답변을 쉽고 빠르게 찾아보세요"
+          <strong>"FAQ를 통해서 원하는 답변을 쉽고 빠르게 찾아보세요"
             <br />
             "맛있는 토마토 관련 질문 중 가장 빈도 수가 높은 질문들을 모아,
             친절한 답변과 함께 제공해드리고 있습니다."
@@ -61,44 +56,31 @@
       <div class="accordion accordion-flush" id="accordionFlushExample">
         <div class="accordion-item" v-for="(data, index) in faq" :key="index">
           <h2 class="accordion-header" id="flush-headingOne">
-            <button
-              class="accordion-button collapsed"
-              type="button"
-              data-bs-toggle="collapse"
-              :data-bs-target="'#flush-' + index"
-              aria-expanded="false"
-              aria-controls="flush-0"
-            ><i class="bi bi-pin-fill"></i>
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              :data-bs-target="'#flush-' + index" aria-expanded="false" aria-controls="flush-0"><i
+                class="bi bi-pin-fill"></i>
               {{ data.title }}
             </button>
           </h2>
-          <div
-            :id="'flush-' + index"
-            class="accordion-collapse collapse"
-            aria-labelledby="flush-headingOne"
-            data-bs-parent="#accordionFlushExample"
-          >
+          <div :id="'flush-' + index" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+            data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">
               {{ data.content }}
             </div>
           </div>
         </div>
       </div>
+      <!-- TODO: 어드민 한테만 보이는 추가 버튼 -->
+      <router-link class="offset-11 mt-3" :to="/add-faq/">
+        <button type="button" class="btn btn-danger" v-if="showAdminBoard">추가</button>
+      </router-link>
       <div class="overflow-auto offset-5">
-        <b-pagination
-          v-model="page"
-          :total-rows="count"
-          :per-page="pageSize"
-          first-text="<<"
-          last-text=">>"
-          prev-text="Prev"
-          next-text="Next"
-          @change="handlePageChange"
-        ></b-pagination>
+        <b-pagination v-model="page" :total-rows="count" :per-page="pageSize" first-text="<<" last-text=">>"
+          prev-text="Prev" next-text="Next" @change="handlePageChange"></b-pagination>
       </div>
       <!-- search 관련 div 시작 -->
       <div class="col-md-8 offset-2">
-        <div class="input-group mb-3">
+        <div class="input-group">
           <!-- select box 추가 : v-model="searchSelect" -->
           <div class="col-3">
             <select class="form-select" v-model="searchSelect">
@@ -109,23 +91,14 @@
 
           <!-- searchDname -> searchKeyword 변경 -->
           <div class="col-7">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Search by Question"
-              v-model="searchKeyword"
-            />
+            <input type="text" class="form-control" placeholder="Search by Question" v-model="searchKeyword" />
           </div>
 
           <div class="input-group-append col-2">
-            <button
-              type="button"
-              class="btn btn-warning"
-              @click="
-                page = 1;
-                retrieveFaq();
-              "
-            ><i class="bi bi-search"></i>
+            <button type="button" class="btn btn-warning" @click="
+  page = 1;
+retrieveFaq();
+              "><i class="bi bi-search"></i>
               Search
             </button>
           </div>
@@ -139,7 +112,7 @@
 </template>
 
 <script>
-import FaqDataService from "../../services/FaqDataService";
+import FaqDataService from "../../../services/FaqDataService";
 export default {
   data() {
     return {
@@ -191,6 +164,27 @@ export default {
       this.retrieveFaq();
     },
   },
+
+  computed: {
+    // 현재 유저
+    currentUser() {
+      // 모듈 저장소 : this.$store.state.모듈명.state값
+      // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
+      return this.$store.state.auth.user;
+    },
+
+    // 관리자 접속인지 아닌지 확인하는 함수
+    showAdminBoard() {
+      if (this.currentUser && this.currentUser.roles) {
+        // if ROLE_ADMIN 있으면 true
+        //               없으면 false
+        return this.currentUser.roles.includes("ROLE_ADMIN");
+      }
+      // currentUser 없으면 false (메뉴가 안보임)
+      return false;
+    },
+  },
+
   // 화면이 뜨자마자 실행되는 이벤트(라이프 사이클 함수) : mounted(), created()
   mounted() {
     this.retrieveFaq(); // 화면 로딩시 전체 조회함수 실행
@@ -199,4 +193,5 @@ export default {
 </script>
 
 <style>
+
 </style>

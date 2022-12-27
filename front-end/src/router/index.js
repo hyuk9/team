@@ -94,7 +94,7 @@ const routes = [
   {
     path: "/faq",
     name: "faq",
-    component: () => import("@/components/board/FaqList.vue"),
+    component: () => import("@/components/board/faq/FaqList.vue"),
   },
   {
     path: "/qna",
