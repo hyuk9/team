@@ -141,10 +141,11 @@ export default {
           UserDataService.update(id, changePwd, user)
             .then((response) => {
               console.log(response.data);
-              alert("수정완료")
+              alert("수정완료");
             })
             .catch((e) => {
               console.log(e);
+              alert(e, "실패");
             });
         }
       });

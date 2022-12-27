@@ -55,8 +55,6 @@ public class SignupRequest {
     private String address;
 
 
-
-
     private Set<String> role; // 역할 ( ROLE_USER, ROLE_ADMIN )
 
     private boolean changePwd; // 패스워드 변경시 사용할 속성

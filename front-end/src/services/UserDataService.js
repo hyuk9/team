@@ -34,6 +34,11 @@ class UserDataService {
       username: user.username,
       email: user.email,
       password: user.password,
+      name : user.namem, // 사용자 이름
+      birthday : user.birthday, // 사용자 생년월일
+      gender : user.gender, // 사용자 성별
+      phone : user.phone, // 사용자 전화번호
+      address : user.address, // 사용자 전화번호
       role: [user.role[0].name],
       changePwd: changePwd,
     };
