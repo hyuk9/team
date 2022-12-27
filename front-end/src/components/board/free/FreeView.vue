@@ -1,39 +1,66 @@
 <template>
-    <div>
-        <div class="container mb-2 mt-2">
-            <div class="FreeView-header">
-                <h1><strong>1:1 문의 게시판</strong></h1>
-            </div>
-            <div class="FreeView-title">
-                <table class="table">
-                    <colgroup>
-                        <col style="width:15%">
-                        <col style="width:85%">
-                    </colgroup>
-                    <thead>
-                        <tr>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        <tr>
-                            <th scope="col">제목</th>
-                            <td scope="col" v-text="currentFree.title"></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">작성자</th>
-                            <td scope="row" v-text="currentFree.writer"></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" scope="row" style="padding:10px" v-text="currentFree.content"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+  <div>
+    <!-- 최상단 시작 -->
+    <section class="py-5 overflow-hidden bg-warning" id="home">
+      <div class="container">
+        <div class="row flex-center">
+          <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0">
+            <!-- TODO: 이미지가 안나와서 이미지 경로 수정 -->
+            <a class="img-landing-banner" href="#!"><img class="img-fluid"
+                src="../../../../public/assets/img/gallery/hero-header.png" alt="hero-header" /></a>
+          </div>
+          <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
+            <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">
+              여기는 질문과답변 <br />
+              페이지 입니다
+            </h1>
+            <h1 class="text-800 mb-5 fs-4">최상단만 제작</h1>
+          </div>
         </div>
+      </div>
+    </section>
+    <!-- 최상단 끝 -->
+    <div class="container mb-2 mt-2">
+      <div class="FreeView-header">
+        <h1><strong>1:1 문의 게시판</strong></h1>
+      </div>
+      <div class="FreeView-title">
+        <table class="table">
+          <colgroup>
+            <col style="width:15%">
+            <col style="width:85%">
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr>
+              <th scope="col">제목</th>
+              <td scope="col" v-text="currentFree.title"></td>
+            </tr>
+            <tr>
+              <th scope="row">작성자</th>
+              <td scope="row" v-text="currentFree.writer"></td>
+            </tr>
+            <tr>
+              <td colspan="2" scope="row" style="padding:10px" v-text="currentFree.content"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
+
+    <div class="mb-3">
+      <router-link :to="'/free/' + currentFree.fno">
+        <button class="btn btn-warning offset-5" type="button">수정&삭제</button>
+      </router-link>
+    </div>
+
+  </div>
 </template>
 
 <script>
@@ -95,6 +122,27 @@ export default {
         });
     },
   },
+
+  computed: {
+    // 현재 유저
+    currentUser() {
+      // 모듈 저장소 : this.$store.state.모듈명.state값
+      // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
+      return this.$store.state.auth.user;
+    },
+
+    // 관리자 접속인지 아닌지 확인하는 함수
+    showAdminBoard() {
+      if (this.currentUser && this.currentUser.roles) {
+        // if ROLE_ADMIN 있으면 true
+        //               없으면 false
+        return this.currentUser.roles.includes("ROLE_ADMIN");
+      }
+      // currentUser 없으면 false (메뉴가 안보임)
+      return false;
+    },
+  },
+
   // 화면이 뜨자 마자 실행되는 이벤트
   mounted() {
     this.message = "";
