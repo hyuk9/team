@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Vue from "vue";
 import VueRouter from "vue-router";
 
@@ -181,6 +182,18 @@ const routes = [
     name: 'findIdPw',
     component: () => import('../components/user/FindIdPw.vue')
   },
+  // 아이디 찾기 버튼 눌렀을 때 아아디 보여주는 화면
+  {
+    path: '/findId',
+    name: 'findId',
+    component: () => import('../components/user/FindId.vue')
+  },
+  // 비번 찾기 버튼 눌렀을 때 비번 재설정 화면
+  {
+    path: '/findPw',
+    name: 'findPw',
+    component: () => import('../components/user/FindPw.vue')
+  },
   {
     path: '/column',
     name: 'column',
@@ -190,12 +203,23 @@ const routes = [
 
 const router = new VueRouter({
   mode: "history",
-  scrollBehavior() {
-    return {
-      x: 0,
-      y: 0,
-      behavior: "smooth",
-    };
+  // 다른 컴포넌트 특정 위치로 가기위해 설정 추가
+  scrollBehavior(to, from, savedPosition) {
+    if (to.hash) {
+      return {
+        selector: to.hash,
+        offset: { y: 200 },
+        behavior: "smooth",
+      }
+    } else {
+      return {
+        x: 0,
+        y: 0,
+        behavior: "smooth",
+      };
+    }
+
+    
   },
   base: process.env.BASE_URL,
   routes,

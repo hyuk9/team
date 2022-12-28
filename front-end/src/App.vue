@@ -42,7 +42,9 @@ export default {
         // 제외할 페이지 경로
         this.$route.path == "/" || 
         this.$route.path == "/register" ||
-        this.$route.path == "/findIdPw" 
+        this.$route.path == "/findIdPw" ||
+        this.$route.path == "/findId" ||
+        this.$route.path == "/findPw" 
         ) {
         return false;
       } else {
