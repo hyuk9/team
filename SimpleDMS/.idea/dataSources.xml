@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="Oracle" uuid="7c1a18c2-ac44-4352-85c5-66d33f804b1a">
+    <data-source source="LOCAL" name="Oracle [2]" uuid="cab0debc-260d-428c-a98c-834c4eb39f89">
       <driver-ref>oracle.19</driver-ref>
       <synchronize>true</synchronize>
       <auto-commit>false</auto-commit>
       <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
-      <jdbc-url>jdbc:oracle:thin:@dongsungteamproject_high?TNS_ADMIN=$PROJECT_DIR$/../../../eWallet_T/Wallet_DONGSUNGTEAMPROJECT</jdbc-url>
+      <jdbc-url>jdbc:oracle:thin:@dongsungteamproject_high?TNS_ADMIN=$PROJECT_DIR$/../../eWallet_T/Wallet_DONGSUNGTEAMPROJECT</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
