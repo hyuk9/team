@@ -315,14 +315,16 @@ export default {
 
 /* 나브바 오른쪽 버튼들 색 조정 */
 .text-yellow {
-    color: #FFB30E;
+    color: #FFB30E !important;
 }
 /* 나브바 오른쪽 버튼들 마우스 올렸을 때 색 조정 */
 .text-yellow:hover {
     color: #FFB30E !important;
 }
-.text-yellow:active {
-    border: none !important;
+
+/* 나브바 오른쪽 버튼들 마우스 눌렸을 때 테두리 제거 */
+.text-yellow:focus {
+    box-shadow: none !important;
 }
 
 @import "../../../public/assets/css/navstyle.css"
