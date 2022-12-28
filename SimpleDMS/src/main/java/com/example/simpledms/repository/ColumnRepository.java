@@ -22,7 +22,8 @@ import java.util.Optional;
  */
 
 public interface ColumnRepository extends JpaRepository<Column, Integer> {
-    Page<Column> findAllByColumnTitleContaining (String title, Pageable pageable);
+    Page<Column> findAllByColumnTitleContainingOrderByCidDesc (String title, Pageable pageable);
+    Page<Column> findAllByColumnWriterContainingOrderByCidDesc (String writer, Pageable pageable);
 }
 
 
