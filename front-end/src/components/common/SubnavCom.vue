@@ -118,7 +118,7 @@
                             </router-link>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <router-link to="#" class="dropdown-item">아직 미정</router-link>
+                                    <router-link to="/column" class="dropdown-item">푸드컬럼 보기</router-link>
                                 </li>
                                 <li>
                                     <router-link to="#" class="dropdown-item">차라리 게시판 쪽에 통합을 할지?</router-link>

@@ -81,11 +81,11 @@
                 <i class="bi bi-hash"></i>{{ data.cid }}
               </td>
               <td class="text-center">
-                <router-link :to="'/columnview/' + data.cid"
-                  ><span>{{ data.title }}</span></router-link
+                <router-link :to="'/column/' + data.cid"
+                  ><span>{{ data.columnTitle }}</span></router-link
                 >
               </td>
-              <td class="text-center">{{ data.writer }}</td>
+              <td class="text-center">{{ data.columnWriter }}</td>
               <td class="text-center">
                 <i class="bi bi-calendar-date"></i> {{ data.insertTime }}
               </td>
@@ -128,8 +128,8 @@
           <!-- select box 추가 : v-model="searchSelect" -->
           <div class="col-3">
             <select class="form-select" v-model="searchSelect">
-              <option>작성자</option>
               <option>제목</option>
+              <option>작성자</option>
             </select>
           </div>
 
@@ -138,7 +138,7 @@
             <input
               type="text"
               class="form-control"
-              placeholder="Search by Question"
+              placeholder="검색어를 입력해주세요"
               v-model="searchKeyword"
             />
           </div>
@@ -174,7 +174,7 @@ export default {
     return {
       column: [],
       searchKeyword: "",
-      searchSelect: "작성자",
+      searchSelect: "제목",
 
       // 페이징을 위한 변수 정의
       page: 1, // 현재 페이지

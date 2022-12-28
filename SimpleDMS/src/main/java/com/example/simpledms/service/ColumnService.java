@@ -67,8 +67,14 @@ public class ColumnService {
     }
 
     //    ✅ title like 검색 함수 ( 페이징 처리 추가 )
-    public Page<Column> findAllByColumnTitleContaining(String title, Pageable pageable) {
-        Page<Column> list = columnRepository.findAllByColumnTitleContaining(title, pageable);
+    public Page<Column> findAllByColumnTitleContainingOrderByCidDesc(String title, Pageable pageable) {
+        Page<Column> list = columnRepository.findAllByColumnTitleContainingOrderByCidDesc(title, pageable);
+        return list;
+    }
+
+    //    ✅ writer like 검색 함수 ( 페이징 처리 추가 )
+    public Page<Column> findAllByColumnWriterContainingOrderByCidDesc(String writer, Pageable pageable) {
+        Page<Column> list = columnRepository.findAllByColumnWriterContainingOrderByCidDesc(writer, pageable);
         return list;
     }
 

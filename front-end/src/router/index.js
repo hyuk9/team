@@ -199,12 +199,22 @@ const routes = [
     name: 'column',
     component: () => import('../components/foodcolumn/ColumnList.vue')
   },
+    path: "/column/:cid",
+    name: "column-detail",
+    component: () => import('../components/foodcolumn/ColumnDetail.vue')
+  },
+  {
+    path: "/add-column",
+    name: "add-column",
+    component: () => import('../components/foodcolumn/AddColumn.vue')
+  },
   // 회원가입 전 약관 동의 페이지
   {
     path: '/termsOfService',
     name: 'termsOfService',
     component: () => import('../components/user/TermsOfService.vue')
-  },
+
+  {
 ];
 
 const router = new VueRouter({

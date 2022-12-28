@@ -55,8 +55,11 @@ public class ColumnController {
 
 //            findAll() 생략해도 전체검색해야 됨:
 //            why? like 검색시 고객명 매개변수가 ==이더라도 전채 검색 됨.
-            columnPage = columnService.findAllByColumnTitleContaining(searchKeyword, pageable);
-
+            if (searchSelect.equals("제목")) {
+                columnPage = columnService.findAllByColumnTitleContainingOrderByCidDesc(searchKeyword, pageable);
+            } else {
+                columnPage = columnService.findAllByColumnWriterContainingOrderByCidDesc(searchKeyword, pageable);
+            }
 //            맵 자료구조에 넣어서 전송
             Map<String, Object> response = new HashMap<>();
             response.put("column", columnPage.getContent());
