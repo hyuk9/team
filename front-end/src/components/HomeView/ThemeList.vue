@@ -219,6 +219,9 @@ export default {
     return {
       diner: [],
       // dname: "", ->(변경) searchUsername: "",
+      searchSelect: "테마",
+      searchKeyword: "",
+
       currentDiner: null,
       currentIndex: -1,
       // 페이징을 위한 변수 정의

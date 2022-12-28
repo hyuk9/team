@@ -1354,161 +1354,7 @@
       <!-- 어플 안내창 끝 ============================-->
       <!-- ============================================-->
 
-      <!-- ============================================-->
-      <!-- 푸드컬럼1 시작 ============================-->
-      <section class="pb-5 pt-8">
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <div class="card card-span mb-3 shadow-lg">
-                <div class="card-body py-0">
-                  <div class="row justify-content-center">
-                    <div
-                      class="col-md-5 col-xl-7 col-xxl-8 g-0 order-0 order-md-1"
-                    >
-                      <img
-                        class="
-                          img-fluid
-                          w-100
-                          fit-cover
-                          h-100
-                          rounded-top rounded-md-end rounded-md-top-0
-                        "
-                        src="assets/img/gallery/crispy-sandwiches.png"
-                        alt="..."
-                      />
-                    </div>
-                    <div class="col-md-7 col-xl-5 col-xxl-4 p-4 p-lg-5">
-                      <h1 class="card-title mt-xl-5 mb-4">
-                        여기는
-                        <span class="text-primary"> 푸드컬럼 공간</span>
-                      </h1>
-                      <p class="fs-1">
-                        이쪽은 작업 끝나고 여유되면 공간채우는 식으로 하는게
-                        좋을듯
-                      </p>
-                      <div class="d-grid bottom-0">
-                        <a class="btn btn-lg btn-primary mt-xl-6" href="#!"
-                          >자세히 알아보기<i
-                            class="fas fa-chevron-right ms-2"
-                          ></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- end of .container-->
-      </section>
-      <!-- 푸드컬럼 끝 ============================-->
-      <!-- ============================================-->
-
-      <!-- ============================================-->
-      <!-- 푸드컬럼2 시작 ============================-->
-      <section class="py-0">
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <div class="card card-span mb-3 shadow-lg">
-                <div class="card-body py-0">
-                  <div class="row justify-content-center">
-                    <div class="col-md-5 col-xl-7 col-xxl-8 g-0 order-md-0">
-                      <img
-                        class="
-                          img-fluid
-                          w-100
-                          fit-cover
-                          h-100
-                          rounded-top rounded-md-start rounded-md-top-0
-                        "
-                        src="assets/img/gallery/fried-chicken.png"
-                        alt="..."
-                      />
-                    </div>
-                    <div class="col-md-7 col-xl-5 col-xxl-4 p-4 p-lg-5">
-                      <h1 class="card-title mt-xl-5 mb-4">
-                        무슨 내용을
-                        <br />
-                        <span class="text-primary">넣을지는 나중에</span>
-                      </h1>
-                      <p class="fs-1">
-                        푸드컬럼용 페이지를 추가로 생성해야되는 귀찮음이 있어서
-                        일단 보류
-                      </p>
-                      <div class="d-grid bottom-0">
-                        <a class="btn btn-lg btn-primary mt-xl-6" href="#!"
-                          >자세히 알아보기<i
-                            class="fas fa-chevron-right ms-2"
-                          ></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- end of .container-->
-      </section>
-      <!-- 푸드컬럼 끝 ============================-->
-      <!-- ============================================-->
-
-      <!-- ============================================-->
-      <!-- 푸드컬럼3 시작 ============================-->
-      <section class="pt-5">
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <div class="card card-span mb-3 shadow-lg">
-                <div class="card-body py-0">
-                  <div class="row justify-content-center">
-                    <div
-                      class="col-md-5 col-xl-7 col-xxl-8 g-0 order-0 order-md-1"
-                    >
-                      <img
-                        class="
-                          img-fluid
-                          w-100
-                          fit-cover
-                          h-100
-                          rounded-top rounded-md-end rounded-md-top-0
-                        "
-                        src="assets/img/gallery/pizza.png"
-                        alt="..."
-                      />
-                    </div>
-                    <div class="col-md-7 col-xl-5 col-xxl-4 p-4 p-lg-5">
-                      <h1 class="card-title mt-xl-5 mb-4">
-                        필요없다고 생각하면
-                        <br />
-                        <span class="text-primary">과감하게 포기</span>
-                      </h1>
-                      <p class="fs-1">
-                        사용자가 직접 칼럼을 작성하는 식으로 만들어도 괜찮을거
-                        같음
-                      </p>
-                      <div class="d-grid bottom-0">
-                        <a class="btn btn-lg btn-primary mt-xl-6" href="#!"
-                          >자세히 알아보기<i
-                            class="fas fa-chevron-right ms-2"
-                          ></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- end of .container-->
-      </section>
-      <!-- 푸드컬럼 끝 ============================-->
-      <!-- ============================================-->
+      <FoodColumn />
 
       <!-- ============================================-->
       <!-- 광고배너? 시작 ============================-->
@@ -1553,6 +1399,8 @@ import LocalList from "../components/HomeView/LocalList.vue";
 import ThemeList from "../components/HomeView/ThemeList.vue";
 // '메뉴별 맛집' component 화
 import MenuList from "../components/HomeView/MenuList.vue";
+// '푸드컬럼' component 화
+import FoodColumn from "../components/HomeView/FoodColumn.vue";
 
 
 export default {
@@ -1560,7 +1408,8 @@ export default {
   components: {
     LocalList,
     ThemeList,
-    MenuList
+    MenuList,
+    FoodColumn
   },
   data() {
     return {
@@ -1574,8 +1423,6 @@ export default {
     };
   },
   methods: {
-
-
     // handlePageSizeChange(event) {   this.pageSize = event.target.value;
     // this.page = 1;   this.retrieveDiner(); }, handlePageChange(value) {
     // this.page = value;   this.retrieveDiner(); },
