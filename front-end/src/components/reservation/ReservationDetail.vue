@@ -201,7 +201,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 h5 {
   display: inline-block;
   color: #ffb30e;
