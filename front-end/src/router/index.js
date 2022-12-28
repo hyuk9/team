@@ -185,7 +185,17 @@ const routes = [
     path: '/column',
     name: 'column',
     component: () => import('../components/foodcolumn/ColumnList.vue')
-  }
+  },
+  {
+    path: "/column/:cid",
+    name: "column-detail",
+    component: () => import('../components/foodcolumn/ColumnDetail.vue')
+  },
+  {
+    path: "/add-column",
+    name: "add-column",
+    component: () => import('../components/foodcolumn/AddColumn.vue')
+  },
 ];
 
 const router = new VueRouter({

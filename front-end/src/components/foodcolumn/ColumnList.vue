@@ -81,7 +81,7 @@
                 <i class="bi bi-hash"></i>{{ data.cid }}
               </td>
               <td class="text-center">
-                <router-link :to="'/columnview/' + data.cid"
+                <router-link :to="'/column/' + data.cid"
                   ><span>{{ data.columnTitle }}</span></router-link
                 >
               </td>
