@@ -38,13 +38,13 @@
             <h5>인원수</h5>
             <div class="rcountInput">
               <select required v-model="reservation.rcount">
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
+                <option class="text-center">2</option>
+                <option class="text-center">3</option>
+                <option class="text-center">4</option>
+                <option class="text-center">5</option>
+                <option class="text-center">6</option>
+                <option class="text-center">7</option>
+                <option class="text-center">8</option>
               </select>
             </div>
           </div>
@@ -83,26 +83,94 @@
           <div class="input__block">
             <h5>예약 날짜</h5>
             <input
-              v-model="reservation.reservationDate"
+              ref="reservationDate"
               required
-              type="date"
+              type="text"
               class="input"
               id="reservationDate"
-              name="reservationDate"
+              placeholder="날짜 선택"
             />
           </div>
 
-          <!-- 예약 시간 -->
+          <!-- 예약 시간 1 -->
           <div class="input__block">
             <h5>예약 시간</h5>
             <input
-              v-model="reservation.reservationTime"
+              ref="reservationTime"
               required
-              type="time"
+              type="text"
               class="input"
               id="reservationTime"
-              name="reservationTime"
+              placeholder="시간 선택"
             />
+          </div>
+
+          <!-- 예약시간 2 -->
+          <div class="input__block">
+            <h5>예약 시간</h5>
+            <div class="p-3 p-sm-5">
+              <span id="selTime">{{ selectedTime }}</span>
+              <div class="row text-center mx-0">
+                <div class="col-md-2 col-4 my-1 px-2">
+                  <div class="cell py-1">11:00</div>
+                </div>
+                <div class="col-md-2 col-4 my-1 px-2">
+                  <div class="cell py-1">11:30</div>
+                </div>
+                <div class="col-md-2 col-4 my-1 px-2">
+                  <div class="cell py-1">12:00</div>
+                </div>
+                <div class="col-md-2 col-4 my-1 px-2">
+                  <div class="cell py-1">12:30</div>
+                </div>
+                <div class="col-md-2 col-4 my-1 px-2">
+                  <div class="cell py-1">13:00</div>
+                </div>
+                <div class="col-md-2 col-4 my-1 px-2">
+                  <div class="cell py-1">13:30</div>
+                </div>
+              </div>
+              <div class="row text-center mx-0">
+                <div class="col-md-2 col-4 my-1 px-2">
+                  <div class="cell py-1">14:00</div>
+                </div>
+                <div class="col-md-2 col-4 my-1 px-2">
+                  <div class="cell py-1">14:30</div>
+                </div>
+                <div class="col-md-2 col-4 my-1 px-2">
+                  <div class="cell py-1">15:00</div>
+                </div>
+                <div class="col-md-2 col-4 my-1 px-2">
+                  <div class="cell py-1">15:30</div>
+                </div>
+                <div class="col-md-2 col-4 my-1 px-2">
+                  <div class="cell py-1">16:00</div>
+                </div>
+                <div class="col-md-2 col-4 my-1 px-2">
+                  <div class="cell py-1">16:30</div>
+                </div>
+              </div>
+              <div class="row text-center mx-0">
+                <div class="col-md-2 col-4 my-1 px-2">
+                  <div class="cell py-1">17:00</div>
+                </div>
+                <div class="col-md-2 col-4 my-1 px-2">
+                  <div class="cell py-1">17:30</div>
+                </div>
+                <div class="col-md-2 col-4 my-1 px-2">
+                  <div class="cell py-1">18:00</div>
+                </div>
+                <div class="col-md-2 col-4 my-1 px-2">
+                  <div class="cell py-1">18:30</div>
+                </div>
+                <div class="col-md-2 col-4 my-1 px-2">
+                  <div class="cell py-1">19:00</div>
+                </div>
+                <div class="col-md-2 col-4 my-1 px-2">
+                  <div class="cell py-1">19:30</div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <!-- sign in button -->
@@ -116,6 +184,7 @@
 </template>
 
 <script>
+// @ is an alias to /src
 /* eslint-disable */
 import ReservationDataService from "../../services/ReservationDataService";
 
@@ -145,8 +214,8 @@ export default {
         phone1: this.reservation.phone1,
         phone2: this.reservation.phone2,
         phone3: this.reservation.phone3,
-        reservationDate: this.reservation.reservationDate,
-        reservationTime: this.reservation.reservationTime,
+        reservationDate: this.$refs.reservationDate.value,
+        reservationTime: document.querySelector("#selTime").innerHTML,
       };
 
       ReservationDataService.create(data)
@@ -176,11 +245,53 @@ export default {
     },
   },
 
-  mounted() {},
+  mounted() {
+    $(function () {
+      $("#reservationDate").datepicker({
+        dateFormat: "yy-mm-dd",
+        minDate: 1,
+        maxDate: "+1m",
+        dayNamesMin: ["일", "월", "화", "수", "목", "금", "토"],
+        monthNames: [
+          "1월",
+          "2월",
+          "3월",
+          "4월",
+          "5월",
+          "6월",
+          "7월",
+          "8월",
+          "9월",
+          "10월",
+          "11월",
+          "12월",
+        ],
+      });
+      $("#reservationTime").timepicker({
+        timeFormat: "H:mm",
+        interval: 30,
+        minTime: "11",
+        maxTime: "8:00pm",
+        startTime: "11:00",
+        dynamic: false,
+        dropdown: true,
+        scrollbar: true,
+      });
+      $(function () {
+        $(".cell").click(function () {
+          $(".cell").removeClass("select");
+          $(this).addClass("select");
+          $(this).text();
+          // TODO: document.querySelector("#selTime").innerHTML = $(this).text(); 변경
+          document.querySelector("#selTime").innerHTML = $(this).text();
+        });
+      });
+    });
+  },
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 /* body {
   font-family: "Montserrat", sans-serif;
   background: white;
@@ -229,7 +340,7 @@ select {
   margin: 0 auto;
   border-radius: 8px;
   border: none;
-  font-size: 14px;
+  font-size: 18px;
   font-family: "Montserrat", sans-serif;
   padding: 0;
 }
@@ -295,11 +406,26 @@ select {
   box-shadow: 0 0 0 rgba(233, 30, 99, 0);
 }
 
-/* ::placeholder {
+::placeholder {
   color: rgb(128, 128, 128, 0.6) !important;
-} */
+}
 
 button {
   font-family: ONE-Mobile-POP !important;
+}
+
+.cell {
+  border: 1px solid #bdbdbd;
+  margin: 2px;
+  cursor: pointer;
+}
+
+.cell:hover {
+  border: 1px solid #3d5afe;
+}
+
+.cell.select {
+  background-color: #3d5afe;
+  color: #fff;
 }
 </style>
