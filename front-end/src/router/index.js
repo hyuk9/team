@@ -199,6 +199,7 @@ const routes = [
     name: 'column',
     component: () => import('../components/foodcolumn/ColumnList.vue')
   },
+  {
     path: "/column/:cid",
     name: "column-detail",
     component: () => import('../components/foodcolumn/ColumnDetail.vue')
@@ -213,8 +214,7 @@ const routes = [
     path: '/termsOfService',
     name: 'termsOfService',
     component: () => import('../components/user/TermsOfService.vue')
-
-  {
+  }
 ];
 
 const router = new VueRouter({
