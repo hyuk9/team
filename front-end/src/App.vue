@@ -44,7 +44,8 @@ export default {
         this.$route.path == "/register" ||
         this.$route.path == "/findIdPw" ||
         this.$route.path == "/findId" ||
-        this.$route.path == "/findPw" 
+        this.$route.path == "/findPw" ||
+        this.$route.path == "/termsOfService" 
         ) {
         return false;
       } else {
@@ -68,6 +69,7 @@ export default {
 <style lang="scss">
 h1,
 h2,
+h4,
 h5,
 .dropdown-header,
 p,

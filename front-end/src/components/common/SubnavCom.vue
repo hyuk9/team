@@ -180,7 +180,7 @@
 
                         <div v-if="!currentUser">
                             <!-- 회원가입 시작 -->
-                            <router-link to="/register" class="btn btn-white text-yellow register">
+                            <router-link to="/termsOfService" class="btn btn-white text-yellow register">
                                 <i class="fas fa-user me-2"></i>회원가입
                             </router-link>
                             <!-- 회원가입 끝 -->
