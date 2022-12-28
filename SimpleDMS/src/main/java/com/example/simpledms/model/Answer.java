@@ -35,14 +35,14 @@ import javax.persistence.*;
 @DynamicInsert
 @DynamicUpdate
 @Where(clause = "DELETE_YN = 'N'")
-@SQLDelete(sql="UPDATE TB_ANSWER SET DELETE_YN = 'Y', DELETE_TIME = TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') WHERE ANO = ?")
+@SQLDelete(sql="UPDATE TB_ANSWER SET DELETE_YN = 'Y', DELETE_TIME = TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') WHERE ANSWER_NO = ?")
 public class Answer extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE
             , generator = "SQ_ANSWER_GENERATOR"
     )
-    private Integer ano;
+    private Integer answerNo;
 
 //    조인용 컬럼
     @javax.persistence.Column(columnDefinition = "NUMBER")
