@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1 class="text-danger">형태는 괜찮은데 5명으로 나눌거면 조금 애매할 수 있으니 강사님 끼워넣고 6명으로 채워넣으면 좋을거같습니다</h1>
+    <h1 class="text-danger">중간에 사진 크기 안맞는건 사진크기가 달라서 그런것입니다. 500x600 사이즈 사용하면 됩니다.</h1>
 
     <!-- ======= Team Section ======= -->
     <section id="team" class="team section-bg">

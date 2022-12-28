@@ -12,17 +12,17 @@ VALUES (SQ_FAQ.nextval, '제목4', '해결방법4', 'N', TO_CHAR(SYSDATE, 'YYYY-
 
 -- Todo:질문과 답변 테이블
 INSERT INTO TB_QNA
-VALUES (SQ_QNA.nextval, '질문', '해결','홍길동', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+VALUES (SQ_QNA.nextval, '홍길동', '제목','내용', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_QNA
-VALUES (SQ_QNA.nextval, '질문2', '해결2','장길산', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+VALUES (SQ_QNA.nextval, '장길산', '제목2','내용2', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_QNA
-VALUES (SQ_QNA.nextval, '질문3', '해결3','임꺽정','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+VALUES (SQ_QNA.nextval, '임꺽정', '제목3','내용3','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_QNA
-VALUES (SQ_QNA.nextval, '질문4', '해결4','전우치','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+VALUES (SQ_QNA.nextval, '전우치', '제목4','내용4','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_QNA
-VALUES (SQ_QNA.nextval, '질문5', '','마루치','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+VALUES (SQ_QNA.nextval, '마루치', '제목5','내용5','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_QNA
-VALUES (SQ_QNA.nextval, '질문6', '','아라치','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+VALUES (SQ_QNA.nextval, '아라치', '제목6','내용6','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 
 -- Todo:질문 테이블 세분화
 -- Todo:답변 테이블이랑 qno조인 예정
@@ -70,27 +70,27 @@ VALUES (SQ_QNA.nextval, '공지6', '내용6','아라치','N', TO_CHAR(SYSDATE, '
 
 -- Todo:자유게시판 테이블
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '작성자1', '제목1', '내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+VALUES (SQ_FREE.nextval, '작성자1', '제목1', '내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1내용1','','','','', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '작성자2', '제목2', '내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+VALUES (SQ_FREE.nextval, '작성자2', '제목2', '내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2내용2','','','','','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '작성자3', '제목3', '내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+VALUES (SQ_FREE.nextval, '작성자3', '제목3', '내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3내용3','','','','','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '작성자4', '제목4', '내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+VALUES (SQ_FREE.nextval, '작성자4', '제목4', '내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4내용4','','','','','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '작성자5', '제목5', '내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+VALUES (SQ_FREE.nextval, '작성자5', '제목5', '내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5내용5','','','','','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
 INSERT INTO TB_FREE
 VALUES (SQ_FREE.nextval, '작성자6', '제목6', '내용6내용6내용6내용6내용6내용6내용6내용6내용6내용6내용6내용6내용6내용6내용6내용6내용6내용6내용6내용6내용6내용6내용6내용6내용6내용6내용6내용6내용6내용6내용6내용6','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '작성자7', '제목7', '내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+VALUES (SQ_FREE.nextval, '작성자7', '제목7', '내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7내용7','','','','','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '작성자8', '제목8', '내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+VALUES (SQ_FREE.nextval, '작성자8', '제목8', '내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8내용8','','','','','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '작성자9', '제목9', '내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+VALUES (SQ_FREE.nextval, '작성자9', '제목9', '내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9내용9','','','','','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '작성자10', '제목10', '내용10내용10내용10내용10내용10내용10내용10내용10내용10내용10내용10내용10내용10내용10내용10내용10내용10내용10내용10내용10내용10내용10내용10내용10','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+VALUES (SQ_FREE.nextval, '작성자10', '제목10', '내용10내용10내용10내용10내용10내용10내용10내용10내용10내용10내용10내용10내용10내용10내용10내용10내용10내용10내용10내용10내용10내용10내용10내용10','','','','','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '작성자11', '제목11', '내용11내용11내용11내용11내용11내용11내용11내용11내용11내용11내용11내용11내용11내용11내용11내용11내용11내용11내용11내용11내용11내용11내용11내용11','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+VALUES (SQ_FREE.nextval, '작성자11', '제목11', '내용11내용11내용11내용11내용11내용11내용11내용11내용11내용11내용11내용11내용11내용11내용11내용11내용11내용11내용11내용11내용11내용11내용11내용11','','','','','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
 
 -- Todo:예약 테이블
 INSERT INTO TB_RESERVATION

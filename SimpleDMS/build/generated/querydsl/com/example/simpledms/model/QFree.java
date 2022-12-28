@@ -31,6 +31,14 @@ public class QFree extends EntityPathBase<Free> {
 
     public final NumberPath<Integer> fno = createNumber("fno", Integer.class);
 
+    public final ArrayPath<byte[], Byte> galleryData = createArray("galleryData", byte[].class);
+
+    public final StringPath galleryFileName = createString("galleryFileName");
+
+    public final StringPath galleryTitle = createString("galleryTitle");
+
+    public final StringPath galleryType = createString("galleryType");
+
     //inherited
     public final StringPath insertTime = _super.insertTime;
 
