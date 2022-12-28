@@ -12,7 +12,7 @@
           id="title"
           required
           name="title"
-          v-model="currentColumn.columnTitle"
+          v-model="currentColumn.title"
         />
       </div>
       <div class="mb-3">
@@ -23,7 +23,7 @@
           id="writer"
           required
           name="writer"
-          v-model="currentColumn.columnWriter"
+          v-model="currentColumn.writer"
         />
       </div>
       <div class="mb-3">
@@ -34,7 +34,7 @@
           rows="8"
           required
           name="content"
-          v-model="currentColumn.columnContent"
+          v-model="currentColumn.content"
         ></textarea>
       </div>
       <!-- 게시글 작성자 id == 현재 로그인한 유저 id 이면 보이거나 관리자 계정이면 보이게 설정해야함 -->

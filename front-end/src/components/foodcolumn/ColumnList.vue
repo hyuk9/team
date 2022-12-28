@@ -82,10 +82,10 @@
               </td>
               <td class="text-center">
                 <router-link :to="'/column/' + data.cid"
-                  ><span>{{ data.columnTitle }}</span></router-link
+                  ><span>{{ data.title }}</span></router-link
                 >
               </td>
-              <td class="text-center">{{ data.columnWriter }}</td>
+              <td class="text-center">{{ data.writer }}</td>
               <td class="text-center">
                 <i class="bi bi-calendar-date"></i> {{ data.insertTime }}
               </td>

@@ -47,16 +47,16 @@ public class Column extends BaseTimeEntity {
     private Integer cid;
 
     @javax.persistence.Column
-    private String columnTitle;
+    private String title;
 
     @javax.persistence.Column
-    private String columnContent;
+    private String content;
 
     @javax.persistence.Column
-    private String columnPhoto;
+    private String photo;
 
     @javax.persistence.Column
-    private String columnWriter;
+    private String writer;
 }
 
 

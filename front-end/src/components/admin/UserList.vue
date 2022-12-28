@@ -1,6 +1,19 @@
 <template>
   <div>
     <div class="container mt-2 mb-2">
+      <h1> {{ currentUser.username }} </h1>
+      <h1> {{ currentUser.id }} </h1>
+      <h1> {{ currentUser.email }} </h1>
+      <h1> {{ currentUser.roles }} </h1>
+      <h1> {{ currentUser.accessToken.substring(0, 20) }} </h1>
+      <h1> {{ currentUser.accessToken.substr(currentUser.accessToken.length - 20) }}</h1>
+      <!-- 여기까진 출력가능한데 다음부턴 출력이 안됨. 이유가 뭐지? -->
+      <!-- 웹토큰에 저장되어있는게 토큰 / email / id / roles / username 뿐이라서 -->
+      <h1> {{ currentUser.birthday }} </h1>
+      <h1> {{ currentUser.name }} </h1>
+      <h1> {{ currentUser.gender }} </h1>
+      <h1> {{ currentUser.phone }} </h1>
+      
       <table class="table">
         <thead>
           <tr>
@@ -104,6 +117,14 @@ export default {
     handlePageChange(value) {
       this.page = value;
       this.retrieveUser();
+    },
+  },
+
+  computed: {
+    currentUser() {
+      // 모듈 저장소 : this.$store.state.모듈명.state값
+      // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
+      return this.$store.state.auth.user;
     },
   },
 

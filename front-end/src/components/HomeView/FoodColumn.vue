@@ -28,11 +28,11 @@
                     </div>
                     <div class="col-md-7 col-xl-5 col-xxl-4 p-4 p-lg-5">
                       <h1 class="card-title mt-xl-5 mb-4">
-                        <span> {{ data.columnTitle}} </span>
+                        <span> {{ data.title}} </span>
                       </h1>
                       <p class="fs-1">
-                        <span class="text-primary"> {{ data.columnWriter }} </span> <br>
-                        {{ data.columnContent }}</p>
+                        <span class="text-primary"> {{ data.writer }} </span> <br>
+                        {{ data.content }}</p>
                       <div class="d-grid bottom-0">
                         <!-- <a class="btn btn-lg btn-primary mt-xl-6" href="/"
                         >자세히 알아보기<i

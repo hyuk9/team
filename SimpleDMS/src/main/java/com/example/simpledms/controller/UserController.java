@@ -200,7 +200,8 @@ public class UserController {
                 signUpRequest.getBirthday(),
                 signUpRequest.getGender(),
                 signUpRequest.getPhone(),
-                signUpRequest.getAddress());
+                signUpRequest.getAddress()
+                );
 
         Set<String> strRoles = signUpRequest.getRole();
         Set<Role> roles = new HashSet<>();
