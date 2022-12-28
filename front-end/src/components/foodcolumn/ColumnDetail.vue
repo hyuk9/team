@@ -1,18 +1,9 @@
 <template>
   <div>
     <!-- detali Start -->
+    
     <div class="container">
-      <div class="mb-3">
-        <label for="writer" class="form-label">작성자</label>
-        <input
-          type="writer"
-          class="form-control"
-          id="writer"
-          required
-          name="writer"
-          v-model="currentColumn.columnWriter"
-        />
-      </div>
+
       <div class="mb-3">
         <label for="title" class="form-label">제목</label>
         <input
@@ -25,6 +16,17 @@
         />
       </div>
       <div class="mb-3">
+        <label for="writer" class="form-label">작성자</label>
+        <input
+          type="writer"
+          class="form-control"
+          id="writer"
+          required
+          name="writer"
+          v-model="currentColumn.columnWriter"
+        />
+      </div>
+      <div class="mb-3">
         <label for="content" class="form-label">내용</label>
         <textarea
           class="form-control form-control-lg"
@@ -32,7 +34,7 @@
           rows="8"
           required
           name="content"
-          v-model="currentColumn.content"
+          v-model="currentColumn.columnContent"
         ></textarea>
       </div>
       <!-- 게시글 작성자 id == 현재 로그인한 유저 id 이면 보이거나 관리자 계정이면 보이게 설정해야함 -->
