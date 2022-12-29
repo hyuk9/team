@@ -268,6 +268,8 @@ export default {
                 showConfirmButton: false,
                 timer: 1000,
             });
+            // 홈으로 보내기 함수
+            this.$router.push("/")
         },
     },
 

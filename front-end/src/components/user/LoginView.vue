@@ -79,19 +79,19 @@
               </div>
               <div class="mb-3 snsLogin">
                 <!-- 구글 로그인 -->
-                <a href="#" role="button"
+                <a href="http://localhost:8000/oauth2/authorization/google" role="button"
                   ><img
                     src="../../../public/assets/img/loginButton/google.png"
                     class="img-fluid"
                 /></a>
                 <!-- 네이버 로그인 -->
-                <a href="#" role="button"
+                <a href="http://localhost:8000/oauth2/authorization/naver" role="button"
                   ><img
                     src="../../../public/assets/img/loginButton/naver.png"
                     class="img-fluid"
                 /></a>
                 <!-- 카카오 로그인 -->
-                <a href="#" role="button"
+                <a href="http://localhost:8000/oauth2/authorization/kakao" role="button"
                   ><img
                     src="../../../public/assets/img/loginButton/kakao.png"
                     class="img-fluid"

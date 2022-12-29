@@ -1,5 +1,7 @@
 package com.example.simpledms.configuration;
 
+import com.example.simpledms.security.auth.CustomOAuth2UserService;
+import com.example.simpledms.security.auth.OAuth2SuccessHandler;
 import com.example.simpledms.security.jwt.AuthEntryPointJwt;
 import com.example.simpledms.security.jwt.AuthTokenFilter;
 import com.example.simpledms.security.services.UserDetailsServiceImpl;
@@ -32,6 +34,15 @@ UserDetailsServiceImpl userDetailsService;
 
   @Autowired
   private AuthEntryPointJwt unauthorizedHandler; // 웹토큰 예외처리 객체
+
+
+  // todo : 소셜 로그인으로 인한 추가
+  @Autowired
+  private OAuth2SuccessHandler oAuth2SuccessHandler;
+
+  // todo : 소셜 로그인으로 인한 추가, 구글 로그인 이후 가져온 사용자의 정보(email,name,picture등) 들을 기반으로 가입 및 정보수정, 세션 저장 등의 기능을 지원
+  @Autowired
+  private CustomOAuth2UserService customOAuth2UserService;
 
 //  spring security 웹토큰 필터 클래스 없음
 //  JWT 웹토큰 필터 객체 생성
@@ -87,8 +98,21 @@ UserDetailsServiceImpl userDetailsService;
             // /api/auth/** url 은 모든 사용자 접근 허용
 //            TODO: /api/** 통과시키는(접속허영) 걸로 수정
         .authorizeRequests().antMatchers("/api/**").permitAll()
+            //            TODO 4) /auth-redirect 추가(front 쪽에서 리다이렉트)
+            .antMatchers("/api/test/**", "/auth-redirect").permitAll()
             // 그 외 url 은 인증 필요
-        .anyRequest().authenticated();
+        .anyRequest().authenticated()
+//    TODO 5) OAUTH2 로그인 기능에 대한 진입점 추가 -> 실행될 클래스 정의
+            .and()
+            .oauth2Login()// 간편로그인 인증
+            // 성공하면 실행됨(#2), 토큰발행 , Vue 리다이렉트(/auth-redirect?토큰&이메일등)
+            .successHandler(oAuth2SuccessHandler)
+//                로그인 성공 이후 토큰 발행
+//                OAuth 2 로그인 성공 이후 사용자 정보를 가져올 때의 설정들을 담당합니다.
+            .userInfoEndpoint()
+////                소셜 로그인 성공 시 후속 조치를 진행할 UserService 인터페이스의 구현체를 등록
+////                리소스 서버(즉, 소셜 서비스들)에서 사용자 정보를 가져온 상태에서 추가로 진행하고자 하는 기능을 명시할 수 있음
+            .userService(customOAuth2UserService); // 성공하면 실행됨(#1), 유저정보 DB저장
 
     // DB와 입력값(id, pwd) 비교 함수 호출(내부적으로 패스워드 암호화)
     http.authenticationProvider(authenticationProvider());
