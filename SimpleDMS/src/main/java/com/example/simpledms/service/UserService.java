@@ -84,4 +84,13 @@ public class UserService {
         return list;
     }
 
+    //    ✅ Todo: (추가)email로 조회하는 함수
+
+    public Optional<User> findByEmail(String  email) {
+//        findById(기본키)
+        Optional<User> optionalUser = userRepository.findByEmail(email);
+
+        return optionalUser;
+    }
+
 }

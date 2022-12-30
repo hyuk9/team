@@ -51,6 +51,22 @@ class UserDataService {
   delete(id) {
     return http.delete(`/user/deletion/${id}`, { headers: authHeader() });
   }
+
+  // (12/30 추가) 아이디 찾기시 필요한 함수
+  getId(email) {
+    return http.get(`/user/email/${email}`, { headers: authHeader() });
+  }
+      // (12/30 추가) 비번 찾기시 필요한 함수
+  getPw(username, email) {
+    return http.get(`/user/findPw/username/${username}/email/${email}`, { headers: authHeader() });
+  }    
+    // (12/30 추가) 비번 재설정 시 필요한 함수
+    updatePassword(email, user) {
+      let userData = {
+        password: user.password,
+      };
+    return http.put(`/user/changePw/email/${email}`,userData, { headers: authHeader() });
+  }
 }
 
 export default new UserDataService();

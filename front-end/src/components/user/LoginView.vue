@@ -62,7 +62,7 @@
 
                 <!-- 회원가입페이지로 이동과 로그인 모달창을 끄는것을 동시에 하기 위해
                  라우터 링크와 버튼 2개를 사용 -->
-                <router-link to="/register">
+                <router-link to="/termsOfService">
                   <button
                     class="login__signup login__signup--signup"
                     id="sign-in"
@@ -175,13 +175,13 @@ export default {
                   error.response.data.message) ||
                 error.message ||
                 error.toString();
-              //        this.$swal({
-              //   icon: "error",
-              //   title: "로그인 실패",
-              //   text: "",
-              //   confirmButtonColor: "#E1793D",
-              //   confirmButtonText: "확인",
-              // });
+                     this.$swal({
+                icon: "error",
+                title: "로그인 실패",
+                text: this.message,
+                confirmButtonColor: "#E1793D",
+                confirmButtonText: "확인",
+              });
             });
         }
       });
@@ -215,16 +215,7 @@ export default {
           confirmButtonColor: "#E1793D",
           confirmButtonText: "확인",
         });
-      } else if (this.message) {
-        // alert 라이브러리 효과
-        this.$swal({
-          icon: "error",
-          title: "로그인 실패",
-          text: this.message,
-          confirmButtonColor: "#E1793D",
-          confirmButtonText: "확인",
-        });
-      }
+      } 
     },
     close() {
       this.$store.dispatch("clickButton");

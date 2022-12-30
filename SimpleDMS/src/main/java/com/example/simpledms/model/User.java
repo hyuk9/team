@@ -144,4 +144,20 @@ public class User extends BaseTimeEntity {
 
         return this;
     }
+
+//    todo: 12/30 비번 찾기용 소스 추가
+@Builder
+public User(Long id, String username, String email, String password, String name, String birthday, String gender, String phone, String address, Set<Role> role) {
+    this.id = id;
+    this.username = username;
+    this.email = email;
+    this.password = password;
+    this.name = name;
+    this.birthday = birthday;
+    this.gender = gender;
+    this.phone = phone;
+    this.address = address;
+    this.role = role;
+
+}
 }
