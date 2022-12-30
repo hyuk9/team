@@ -56,7 +56,6 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
         //로그인 한 유저 정보
         User user = saveOrUpdate(attributes);
-        log.info("hi");
 
 
         // 로그인한 유저를 리턴함
