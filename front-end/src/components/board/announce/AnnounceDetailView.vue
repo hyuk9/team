@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import AnnounceDataService from "../../../services/AnnounceDataService";
+import AnnounceDataService from "@/services/AnnounceDataService";
 export default {
   data() {
     return {

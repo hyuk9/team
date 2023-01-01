@@ -212,7 +212,7 @@
 
 <script>
 /* eslint-disable */
-import DinerDataService from "../../services/DinerDataService.js";
+import DinerDataService from "@/services/DinerDataService";
 
 export default {
   data() {

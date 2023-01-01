@@ -34,7 +34,7 @@
 
 
 <script>
-import FaqDataService from "../../../services/FaqDataService";
+import FaqDataService from "@/services/FaqDataService";
 export default {
   data() {
     return {

@@ -122,7 +122,7 @@
 </template>
 
 <script>
-import ReservationDataService from "../../services/ReservationDataService";
+import ReservationDataService from "@/services/ReservationDataService";
 
 export default {
   data() {

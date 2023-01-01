@@ -101,8 +101,8 @@
 </template>
 
 <script>
-import FreeDataService from "../../../services/FreeDataService";
-import GalleryDataService from "../../../services/GalleryDataService";
+import FreeDataService from "@/services/FreeDataService";
+import GalleryDataService from "@/services/GalleryDataService";
 export default {
   data() {
     return {

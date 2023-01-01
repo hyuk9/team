@@ -654,7 +654,7 @@
 
 <script>
 /* eslint-disable */
-import ReservationDataService from "../../services/ReservationDataService";
+import ReservationDataService from "@/services/ReservationDataService";
 
 export default {
   data() {

@@ -45,7 +45,7 @@
 
 
 <script>
-import FreeDataService from "../../../services/FreeDataService";
+import FreeDataService from "@/services/FreeDataService";
 export default {
   data() {
     return {
