@@ -19,15 +19,8 @@
           <form class="col-sm-12 col-sm-offset-4" v-on:submit.prevent="submit">
             <h3>review</h3>
             <div class="form-group mt-3">
-              <AwesomeVueStarRating
-                :star="this.star"
-                :disabled="this.disabled"
-                :maxstars="this.maxstars"
-                :starsize="this.starsize"
-                :hasresults="this.hasresults"
-                :hasdescription="this.hasdescription"
-                :ratingdescription="this.ratingdescription"
-              />
+               <h6>평점을 입력해주세요</h6>
+              <star-rating v-model="rating"></star-rating>
               <textarea
                 required="required"
                 placeholder="리뷰를 남겨주세요!"
@@ -54,16 +47,8 @@
                 >
                   <p><strong>review: </strong> {{ comment.comment }}</p>
                   <p>
-                    <strong>좋아요 수:</strong>
-                    {{ comment.total_likes }}
-                  </p>
-                  <p>
-                    <button
-                      v-on:click="like(index)"
-                      class="btn btn-xs btn-info"
-                    >
-                      좋아요
-                    </button>
+                    <strong>평점:</strong>
+                    {{ comment.rating }}
                   </p>
                   <h5>댓글</h5>
                   <div class="list-group">
@@ -95,7 +80,7 @@
 </template>
 
 <script>
-import AwesomeVueStarRating from "awesome-vue-star-rating";
+import StarRating from "vue-star-rating";
 
 export default {
   el: "#comment_app",
@@ -108,9 +93,12 @@ export default {
     };
   },
   components: {
-    AwesomeVueStarRating,
+    StarRating,
   },
   methods: {
+        // setRating(rating){
+    //   this.rating= rating;
+    // },
     getReplySingleton: function (reply) {
       return function () {
         return {
@@ -122,7 +110,7 @@ export default {
       return function () {
         return {
           comment,
-          total_likes: 0,
+          rating: 0,
           replies: [],
         };
       };
@@ -135,15 +123,24 @@ export default {
       this.input = "";
       this.total_comments = this.comments.length;
     },
-    like(index) {
-      this.comments[index].total_likes = this.comments[index].total_likes + 1;
-    },
+        // rating(index) {
+    //   this.comments[index].rating = this.comments[index].rating + 1;
+    // },
     addReply(index) {
       var s = this.getReplySingleton(this.reply);
       var replies = this.comments[index].replies;
       var n = [...replies, s()];
       this.comments[index].replies = n;
       this.reply = "";
+    },
+        showCurrentRating(rating) {
+      this.currentRating =
+        rating === 0
+          ? this.currentSelectedRating
+          : "Click to select " + rating + " stars";
+    },
+    setCurrentSelectedRating(rating) {
+      this.currentSelectedRating = "You have Selected: " + rating + " stars";
     },
   },
 };
