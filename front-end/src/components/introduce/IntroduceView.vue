@@ -5,12 +5,13 @@
 
     <!-- ======= Team Section ======= -->
     <section id="team" class="team section-bg">
-      <!-- Team Start -->
+      <!-- 팀원소개 시작 -->
       <div class="container-xxl px-0 py-5">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
           <p class="text-primary text-uppercase mb-2">팀원 소개</p>
           <h1 class="display-6 mb-0">동성학원 맛있는 토마토 D조</h1>
         </div>
+
         <div class="row g-0">
           <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
             <div class="row g-0 flex-sm-row">
@@ -22,10 +23,10 @@
               <div class="col-sm-6">
                 <div class="h-100 p-5 d-flex flex-column justify-content-between">
                   <div class="mb-3">
-                    <h4>장동혁</h4>
-                    <span>조장</span>
+                    <h4>강태경</h4>
+                    <span>총괄</span>
                   </div>
-                  <p>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo</p>
+                  <p>대충 무슨 담당인지 소개</p>
                   <div class="d-flex">
                     <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
                         class="fab fa-facebook-f"></i></a>
@@ -46,10 +47,10 @@
               <div class="col-sm-6">
                 <div class="h-100 p-5 d-flex flex-column justify-content-between">
                   <div class="mb-3">
-                    <h4>조성모</h4>
-                    <span>로그인 담당</span>
+                    <h4>장동혁</h4>
+                    <span>조장</span>
                   </div>
-                  <p>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo</p>
+                  <p>대충 무슨 담당인지 소개</p>
                   <div class="d-flex">
                     <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
                         class="fab fa-facebook-f"></i></a>
@@ -74,7 +75,7 @@
                     <h4>전성혜</h4>
                     <span>프로필 담당</span>
                   </div>
-                  <p>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo</p>
+                  <p>대충 무슨 담당인지 소개</p>
                   <div class="d-flex">
                     <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
                         class="fab fa-facebook-f"></i></a>
@@ -99,7 +100,7 @@
                     <h4>권태현</h4>
                     <span>게시판 담당</span>
                   </div>
-                  <p>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo</p>
+                  <p>대충 무슨 담당인지 소개</p>
                   <div class="d-flex">
                     <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
                         class="fab fa-facebook-f"></i></a>
@@ -124,7 +125,7 @@
                     <h4>박선영</h4>
                     <span>음식점 리스트 담당</span>
                   </div>
-                  <p>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo</p>
+                  <p>대충 무슨 담당인지 소개</p>
                   <div class="d-flex">
                     <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
                         class="fab fa-facebook-f"></i></a>
@@ -146,10 +147,10 @@
               <div class="col-sm-6">
                 <div class="h-100 p-5 d-flex flex-column justify-content-between">
                   <div class="mb-3">
-                    <h4>강해경 강사님</h4>
-                    <span>총괄</span>
+                    <h4>조성모</h4>
+                    <span>로그인 담당</span>
                   </div>
-                  <p>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo</p>
+                  <p>대충 무슨 담당인지 소개</p>
                   <div class="d-flex">
                     <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
                         class="fab fa-facebook-f"></i></a>
@@ -162,7 +163,7 @@
           </div>
         </div>
       </div>
-      <!-- Team End -->
+      <!-- 팀원소개 끝 -->
     </section>
     <!-- End Team Section -->
   </div>
