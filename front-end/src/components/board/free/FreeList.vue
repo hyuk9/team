@@ -14,7 +14,6 @@
           </strong>
         </div>
       </div>
-      <h1 class="text-danger">수정버튼을 관리자에게만 보이도록 설정</h1>
       <h1 class="text-danger">
         최종적으로는 TB_FREE랑 TB_USER 조인해서 TB_USER.ID = TB_FREE.ID 조건이
         일치하면 수정버튼 보이게 만들 예정

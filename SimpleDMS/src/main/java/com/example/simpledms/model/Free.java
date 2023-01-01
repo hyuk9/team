@@ -9,6 +9,7 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
+import javax.persistence.Column;
 
 /**
  * packageName : com.example.jpaexam.model
@@ -52,6 +53,26 @@ public class Free extends BaseTimeEntity {
 
     @javax.persistence.Column(columnDefinition = "VARCHAR2(4000)")
     private String content;
+
+    @javax.persistence.Column
+    private String galleryTitle;
+
+    @javax.persistence.Column
+    private String galleryFileName;
+
+    @javax.persistence.Column
+    private String galleryType;
+
+    @Lob
+    @Column
+    private byte[] galleryData; // 이미지
+
+    public Free(String galleryTitle, String galleryFileName, String galleryType, byte[] galleryData) {
+        this.galleryTitle = galleryTitle;
+        this.galleryFileName = galleryFileName;
+        this.galleryType = galleryType;
+        this.galleryData = galleryData;
+    }
 }
 
 
