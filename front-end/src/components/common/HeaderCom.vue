@@ -4,7 +4,7 @@
         <div class="container">
           <div class="row flex-center">
             <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0">
-              <a class="img-landing-banner" href="#!"><img class="img-fluid" src="assets/img/gallery/hero-tomato.png"
+              <a class="img-landing-banner" href="#!"><img class="img-fluid" src="/assets/img/gallery/hero-tomato.png"
                   alt="hero-header" /></a>
             </div>
             <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">

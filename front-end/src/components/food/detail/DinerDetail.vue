@@ -192,11 +192,40 @@
         <div class="col-lg-4">
           <!-- Map widget-->
           <div class="card mb-4">
-            <div class="card-header">Map</div>
-            <div class="card-body">
-              <div id="map" style="height: 600px"></div>
-            </div>
+            <div class="card-header">지도</div>
+              <!-- <div id="map" style="height: 600px"></div> -->
+            <naver-maps
+              :height="height"
+              :width="width"
+              :mapOptions="mapOptions"
+              :initLayers="initLayers"
+              @load="onLoad"
+            >
+              <naver-info-window
+                class="info-window"
+                @load="onWindowLoad"
+                :isOpen="info"
+                :marker="marker"
+              >
+                <div class="info-window-container">
+                  <h1>김밥천국</h1>
+                </div>
+              </naver-info-window>
+              <naver-marker
+                :lat="35.1525133"
+                :lng="129.059547"
+                @click="onMarkerClicked"
+                @load="onMarkerLoaded"
+              />
+
+              <naver-ground-overlay
+                :url="'//logoproject.naver.com/img/img_about.gif'"
+                :bounds="{ south: 36.7, north: 36.9, west: 126.5, east: 127.5 }"
+              />
+            </naver-maps>
+
           </div>
+
           <!-- Chart widget-->
           <div class="card mb-4">
             <div class="card-header">Chart</div>
@@ -211,6 +240,8 @@
 </template>
 
 <script>
+/* eslint-disable */
+
 import DinerDataService from "@/services/DinerDataService";
 import ReviewDataService from "@/services/ReviewDataService";
 import DinerCommentVue from "./DinerComment.vue";
@@ -233,10 +264,36 @@ export default {
       pageSize: 8, // 한페이지당 몇개를 화면에 보여줄지 결정하는 변수
 
       pageSizes: [3, 6, 9], // select box에 넣을 기본 데이터
+
+      name: "HelloWorld",
+      width: 500,
+      height: 600,
+      info: false,
+      marker: null,
+      count: 1,
+      map: null,
+      isCTT: false,
+      mapOptions: {
+        lat: 35.1525133,
+        lng: 129.059547,
+        zoom: 15,
+        zoomControl: true,
+        zoomControlOptions: { position: "TOP_RIGHT" },
+        mapTypeControl: true,
+      },
+      initLayers: [
+        "BACKGROUND",
+        "BACKGROUND_DETAIL",
+        "POI_KOREAN",
+        "TRANSIT",
+        "ENGLISH",
+        "CHINESE",
+        "JAPANESE",
+      ],
     };
   },
   components: {
-    DinerCommentVue
+    DinerCommentVue,
   },
   methods: {
     // axios , 모든 부서 정보 조회 요청 함수
@@ -324,6 +381,16 @@ export default {
         .catch((e) => {
           console.log(e);
         });
+    },
+    onLoad(vue) {
+      this.map = vue;
+    },
+    onWindowLoad(that) {},
+    onMarkerClicked(event) {
+      this.info = !this.info;
+    },
+    onMarkerLoaded(vue) {
+      this.marker = vue.marker.set;
     },
   },
   // 화면이 뜨자 마자 실행되는 이벤트

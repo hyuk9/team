@@ -7,6 +7,16 @@ import store from './store'
 import VeeValidate from "vee-validate";
 import ko from "vee-validate/dist/locale/ko.js";
 
+// 네이버 지도 api 이용을 위한 소스
+import naver from 'vue-naver-maps';
+Vue.use(naver, {
+  // clientID : 네이버에서 개인이 발급받은 키 
+  clientID: '372sam0uw0',
+  useGovAPI: false, //공공 클라우드 API 사용 (선택)
+  subModules:'' // 서브모듈 (선택)
+});
+// 네이버 지도 api 이용을 위한 소스 끝
+
 const config = {
   locale: "ko",
   dictionary: {
