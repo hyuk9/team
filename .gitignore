@@ -1,6 +1,17 @@
 
 SimpleDMS/src/main/resources/application.properties
 *.properties
+SimpleDMS/.gradle/7.4/checksums/checksums.lock
+SimpleDMS/.gradle/7.4/executionHistory/executionHistory.bin
+SimpleDMS/.gradle/7.4/executionHistory/executionHistory.lock
+SimpleDMS/.gradle/7.4/fileHashes/fileHashes.bin
+SimpleDMS/.gradle/7.4/fileHashes/fileHashes.lock
+SimpleDMS/.gradle/7.4/fileHashes/resourceHashesCache.bin
+SimpleDMS/.gradle/buildOutputCleanup/buildOutputCleanup.lock
+SimpleDMS/.gradle/buildOutputCleanup/outputFiles.bin
+SimpleDMS/.gradle/file-system.probe
+SimpleDMS/build/tmp/bootWar/MANIFEST.MF
+SimpleDMS/build/tmp/compileJava/previous-compilation-data.bin
 
 # Created by https://www.toptal.com/developers/gitignore/api/gradle,java,intellij,vuejs
 # Edit at https://www.toptal.com/developers/gitignore?templates=gradle,java,intellij,vuejs
