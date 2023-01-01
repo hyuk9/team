@@ -167,9 +167,9 @@
                   찜
                 </button></router-link
               >
-              <router-link to="/reservation"
+              <router-link to="/add/review"
                 ><button type="button" class="btn btn-primary">
-                  리뷰보기
+                  리뷰쓰기
                 </button></router-link
               >
               <router-link to="/reservation"
@@ -212,17 +212,14 @@
 
 <script>
 import DinerDataService from "@/services/DinerDataService";
-import ReviewDataService from "@/services/ReviewDataService";
 import DinerCommentVue from "./DinerComment.vue";
 
 export default {
   data() {
     return {
       review: [],
-      currentReview: null,
+
       currentIndex: -1,
-      // dname: "", ->(변경) searchDname: "",
-      searchReview_writer: "",
 
       currentDiner: null,
       message: "",
@@ -236,32 +233,9 @@ export default {
     };
   },
   components: {
-    DinerCommentVue
+    DinerCommentVue,
   },
   methods: {
-    // axios , 모든 부서 정보 조회 요청 함수
-    retrieveReview() {
-      // getAll() ->(변경) getAll(dname, page, size)
-      ReviewDataService.getAll(
-        this.searchReview_id,
-        this.page - 1,
-        this.pageSize
-      )
-        // 성공하면 .then() 결과가 전송됨
-        .then((response) => {
-          // this.review = response.data -> (변경) const { diner, totalItems } = response.data
-          // let(const) { 속성명1, 속성명2 } = 데이터 객체배열 (모던자바문법 구조분해할당)
-          const { review, totalItems } = response.data; // springboot 의 전송한 맵 정보
-          this.review = review; // 스프링부트에서 전송한 데이터
-          this.count = totalItems; // 스프링부트에서 전송한 페이지정보(총 건수)
-          // 디버깅 콘솔에 정보 출력
-          console.log(response.data);
-        })
-        // 실패하면 .catch() 에 에러가 전송됨
-        .catch((e) => {
-          console.log(e);
-        });
-    },
     // 부서번호(dno)로 조회 요청하는 함수
     getDiner(dno) {
       // axios 공통함수 호출
