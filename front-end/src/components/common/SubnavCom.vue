@@ -35,7 +35,7 @@
                                     </ul>
                                 </li>
                                 <li class="has-children subdropmenu">
-                                    <router-link to="/local" class="dropdown-item">경기</router-link>
+                                    <router-link to="/diner" class="dropdown-item">경기</router-link>
                                     <ul class="dropdown-menu">
                                         <li><a href="#">인천</a></li>
                                         <li><a href="#">세종시</a></li>
@@ -47,7 +47,7 @@
                                     </ul>
                                 </li>
                                 <li class="has-children subdropmenu">
-                                    <router-link to="/local" class="dropdown-item">부산</router-link>
+                                    <router-link to="/diner" class="dropdown-item">부산</router-link>
                                     <ul class="dropdown-menu">
                                         <li><a href="#">해운대구</a></li>
                                         <li><a href="#">남구</a></li>
@@ -64,29 +64,29 @@
                                 </li>
                                 <li class="dropdown-item disabled">메뉴별</li>
                                 <li>
-                                    <router-link to="/" class="dropdown-item">한식</router-link>
+                                    <router-link to="/diner" class="dropdown-item">한식</router-link>
                                 </li>
                                 <li>
-                                    <router-link to="/" class="dropdown-item">중식</router-link>
+                                    <router-link to="/diner" class="dropdown-item">중식</router-link>
                                 </li>
                                 <li>
-                                    <router-link to="/" class="dropdown-item">일식</router-link>
+                                    <router-link to="/diner" class="dropdown-item">일식</router-link>
                                 </li>
                                 <li>
-                                    <router-link to="/" class="dropdown-item">양식</router-link>
+                                    <router-link to="/diner" class="dropdown-item">양식</router-link>
                                 </li>
                                 <li>
                                     <hr class="dropdown-divider" />
                                 </li>
                                 <li class="dropdown-item disabled">테마별</li>
                                 <li>
-                                    <router-link to="/" class="dropdown-item">데이트</router-link>
+                                    <router-link to="/diner" class="dropdown-item">데이트</router-link>
                                 </li>
                                 <li>
-                                    <router-link to="/" class="dropdown-item">모임</router-link>
+                                    <router-link to="/diner" class="dropdown-item">모임</router-link>
                                 </li>
                                 <li>
-                                    <router-link to="/" class="dropdown-item">회식</router-link>
+                                    <router-link to="/diner" class="dropdown-item">회식</router-link>
                                 </li>
                             </ul>
                         </li>
