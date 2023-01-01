@@ -79,7 +79,7 @@ export default {
           // 변수 submitted
           this.submitted = true;
           alert("성공했습니다.");
-          location.href = "/free";
+          this.$router.push("/free");
         })
         // 실패하면 .catch() 결과가 전송됨
         .catch((e) => {
@@ -93,7 +93,7 @@ export default {
     },
 
     returnFree() {
-      location.href = "/free";
+      this.$router.push("/free");
     },
   },
 };

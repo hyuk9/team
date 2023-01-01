@@ -110,7 +110,7 @@
 </template>
   
 <script>
-import QnaDataService from "../../../services/QnaDataService";
+import QnaDataService from "@/services/QnaDataService";
 export default {
   data() {
     return {

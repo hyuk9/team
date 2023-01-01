@@ -1,6 +1,9 @@
 <template>
   <div>
-    <h1 class="text-danger">현재 삭제하는 기능을 정상작동하지만 수정기능이 axios405에러 발생</h1>
+    <h1 class="text-danger">
+      현재 수정할때 자동으로 user.role 셀렉트박스 지정이 안되는 문제 있음(기능은
+      정상 작동)
+    </h1>
     <h1 class="text-danger">아이디랑 이메일은 변경 불가능하게 막아둔 상태</h1>
     <div v-if="currentUser" class="container-fluid w-50 bg bg-danger mt-5 mb-5">
       <div>
@@ -55,12 +58,14 @@
         <div class="form-group">
           <label for="password">권한</label>
           <select class="form-select" v-model="currentUser.role[0].name">
-            <option>ROLE_USER</option>
+            <option selected>ROLE_USER</option>
             <option>ROLE_ADMIN</option>
           </select>
         </div>
 
-        <button class="mt-3 btn btn-danger" @click="deleteUser">삭제하기</button>
+        <button class="mt-3 btn btn-danger" @click="deleteUser">
+          삭제하기
+        </button>
 
         <button
           type="submit"
@@ -119,12 +124,12 @@ export default {
             .then((response) => {
               console.log(response.data);
               alert("수정완료");
-              location.href = "/user";
+              this.$router.push("/user");
             })
             .catch((e) => {
               console.log(e);
-              alert(e, "실패");
-              location.href = "/user";
+              alert(e, "수정실패");
+              this.$router.push("/user");
             });
         }
       });
@@ -133,7 +138,7 @@ export default {
       UserDataService.delete(this.currentUser.id)
         .then((response) => {
           console.log(response.data);
-          alert("삭제 성공")
+          alert("삭제 성공");
           this.$router.push("/user");
         })
         .catch((e) => {
@@ -145,6 +150,7 @@ export default {
       this.changePwd = true;
     },
   },
+
   mounted() {
     this.message = "";
     this.getUser(this.$route.params.id);

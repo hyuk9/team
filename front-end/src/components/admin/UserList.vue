@@ -9,7 +9,7 @@
             <th scope="col">이름</th>
             <th scope="col">이메일</th>
             <th scope="col">권한</th>
-            <th scope="col">편집</th>
+            <th scope="col" v-if="showAdminBoard">편집</th>
           </tr>
         </thead>
         <tbody v-for="(data, index) in user" :key="index">
@@ -19,15 +19,27 @@
             <td>{{ data.name }}</td>
             <td>{{ data.email }}</td>
             <td>{{ data.rname }}</td>
-            <td>
-              <router-link :to="'/user/' + data.id"><span class="badge bg-success">수정하기</span></router-link>
+            <td v-if="showAdminBoard">
+              <router-link :to="'/user/' + data.id"
+                ><span class="badge bg-success">수정하기</span></router-link
+              >
             </td>
           </tr>
         </tbody>
       </table>
 
-      <b-pagination class="offset-5" v-model="page" :total-rows="count" :per-page="pageSize" pills first-text="<<"
-        last-text=">>" prev-text="Prev" next-text="Next" @change="handlePageChange"></b-pagination>
+      <b-pagination
+        class="offset-5"
+        v-model="page"
+        :total-rows="count"
+        :per-page="pageSize"
+        pills
+        first-text="<<"
+        last-text=">>"
+        prev-text="Prev"
+        next-text="Next"
+        @change="handlePageChange"
+      ></b-pagination>
     </div>
 
     <!-- search 관련 div 시작 -->
@@ -36,7 +48,11 @@
         <!--            Todo : 수정 시작 -->
         <!--    Todo : page 바 시작 -->
         <div class="col-2">
-          <select class="form-select" v-model="pageSize" @change="handlePageSizeChange($event)">
+          <select
+            class="form-select"
+            v-model="pageSize"
+            @change="handlePageSizeChange($event)"
+          >
             <option v-for="size in pageSizes" :key="size" :value="size">
               {{ size }}
             </option>
@@ -44,13 +60,22 @@
         </div>
         <!-- Todo : page 바 끝 -->
         <div class="col-6">
-          <input type="text" class="form-control" placeholder="Search by Username" v-model="searchUsername" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search by Username"
+            v-model="searchUsername"
+          />
         </div>
         <div class="input-group-append">
-          <button class="btn btn-warning" type="button" @click="
-  page = 1;
-retrieveUser();
-          ">
+          <button
+            class="btn btn-warning"
+            type="button"
+            @click="
+              page = 1;
+              retrieveUser();
+            "
+          >
             Search
           </button>
         </div>
@@ -58,7 +83,6 @@ retrieveUser();
       </div>
     </div>
     <!-- search 관련 div 끝 -->
-
   </div>
 </template>
 
@@ -104,6 +128,26 @@ export default {
     handlePageChange(value) {
       this.page = value;
       this.retrieveUser();
+    },
+  },
+
+  computed: {
+    // 현재 유저
+    currentUser() {
+      // 모듈 저장소 : this.$store.state.모듈명.state값
+      // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
+      return this.$store.state.auth.user;
+    },
+
+    // 관리자 접속인지 아닌지 확인하는 함수
+    showAdminBoard() {
+      if (this.currentUser && this.currentUser.roles) {
+        // if ROLE_ADMIN 있으면 true
+        //               없으면 false
+        return this.currentUser.roles.includes("ROLE_ADMIN");
+      }
+      // currentUser 없으면 false (메뉴가 안보임)
+      return false;
     },
   },
 

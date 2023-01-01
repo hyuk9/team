@@ -20,9 +20,9 @@ VALUES (SQ_QNA.nextval, '질문3', '해결3','임꺽정','N', TO_CHAR(SYSDATE, '
 INSERT INTO TB_QNA
 VALUES (SQ_QNA.nextval, '질문4', '해결4','전우치','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_QNA
-VALUES (SQ_QNA.nextval, '질문5', '','마루치','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+VALUES (SQ_QNA.nextval, '질문5', '해결5','마루치','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_QNA
-VALUES (SQ_QNA.nextval, '질문6', '','아라치','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+VALUES (SQ_QNA.nextval, '질문6', '해결6','아라치','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 
 -- Todo:질문 테이블 세분화
 -- Todo:답변 테이블이랑 qno조인 예정
@@ -241,11 +241,15 @@ INSERT INTO TB_ROLE VALUES(SQ_ROLE.NEXTVAL, 'ROLE_ADMIN','N', TO_CHAR(SYSDATE, '
 INSERT INTO TB_USER
 VALUES(SQ_USER.NEXTVAL, 'forbob', 'forbob@naver.com', '$2a$10$TG1a5ywSrGNgf7/fFH.m0.EdTzHax8AGYNeAr8aIseF3DKyO0lDti','강태경', '1991.01.01', 'male', '010-2020-0202', '부산시 영도구 남항동 123가', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_USER
-VALUES(SQ_USER.NEXTVAL, 'for', 'forbob@naver.com', '$2a$10$TG1a5ywSrGNgf7/fFH.m0.EdTzHax8AGYNeAr8aIseF3DKyO0lDti','장길산', '1992.02.02', 'female', '010-2020-0202', '부산시 영도구 남항동 123가', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+VALUES(SQ_USER.NEXTVAL, 'JANGDH', 'JANG@gmail.com', '$2a$10$TG1a5ywSrGNgf7/fFH.m0.EdTzHax8AGYNeAr8aIseF3DKyO0lDti','장동혁', '1992.02.02', 'female', '010-2020-0202', '부산시 영도구 남항동 123가', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_USER
-VALUES(SQ_USER.NEXTVAL, 'asdf', 'asdf@gmail.com', '$2a$10$QrX8ZL/Z.VCfw..fuTnN9O2rOngh.JzwXfX.Qjy3CsZ53ZO6oW.o6','홍길동', '1993.03.03', 'male', '010-2020-0202', '부산시 영도구 남항동 123가', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+VALUES(SQ_USER.NEXTVAL, 'JOSM', 'JO@gmail.com', '$2a$10$QrX8ZL/Z.VCfw..fuTnN9O2rOngh.JzwXfX.Qjy3CsZ53ZO6oW.o6','조성모', '1993.03.03', 'male', '010-2020-0202', '부산시 영도구 남항동 123가', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_USER
-VALUES(SQ_USER.NEXTVAL, 'asdfasdf', 'asdfasdf@gmail.com', '$2a$10$eiNbF9k9tAjrSUEp9i2LG.CxJ1B/EBjqkqoHgAVb2X03O50PPrTGq','asdf', '1993.03.03', 'male', '010-2020-0202', '서울특별시 종로구 팔판길 1-6', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+VALUES(SQ_USER.NEXTVAL, 'JUNSH', 'JUN@gmail.com', '$2a$10$eiNbF9k9tAjrSUEp9i2LG.CxJ1B/EBjqkqoHgAVb2X03O50PPrTGq','전성혜', '1993.03.03', 'male', '010-2020-0202', '서울특별시 종로구 팔판길 1-6', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+INSERT INTO TB_USER
+VALUES(SQ_USER.NEXTVAL, 'KWONTH', 'KWON@gmail.com', '$2a$10$eiNbF9k9tAjrSUEp9i2LG.CxJ1B/EBjqkqoHgAVb2X03O50PPrTGq','권태현', '1993.03.03', 'male', '010-2020-0202', '서울특별시 종로구 팔판길 1-6', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+INSERT INTO TB_USER
+VALUES(SQ_USER.NEXTVAL, 'PARKSY', 'PARK@gmail.com', '$2a$10$eiNbF9k9tAjrSUEp9i2LG.CxJ1B/EBjqkqoHgAVb2X03O50PPrTGq','박선영', '1993.03.03', 'male', '010-2020-0202', '서울특별시 종로구 팔판길 1-6', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 
 
 -- TODO: (첫번째 : 유저id(시퀀스), 두번째 : 1(일반유저) 2(관리자) )
@@ -257,5 +261,9 @@ INSERT INTO TB_USER_ROLE
 VALUES(3, 1);
 INSERT INTO TB_USER_ROLE
 VALUES(4, 1);
+INSERT INTO TB_USER_ROLE
+VALUES(5, 1);
+INSERT INTO TB_USER_ROLE
+VALUES(6, 1);
 
 COMMIT;

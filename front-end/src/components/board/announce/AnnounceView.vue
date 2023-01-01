@@ -78,7 +78,7 @@ export default {
         .then((response) => {
           console.log(response.data);
           this.message = "The Announce was updated successfully!";
-          location.href = "/announce";
+          this.$router.push("/announce");
         })
         // 실패하면 .catch() 에러메세지가 전송됨
         .catch((e) => {
@@ -95,7 +95,6 @@ export default {
           console.log(response.data);
           // 첫페이지(전체목록_조회_페이지) 강제 이동 : /announce
           this.$router.push("/announce");
-          location.href = "/announce";
         })
         // 실패하면 .catch() 에러메세지가 전송됨
         .catch((e) => {

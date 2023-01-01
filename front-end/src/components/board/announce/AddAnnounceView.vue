@@ -62,7 +62,7 @@ export default {
                     // 변수 submitted
                     this.submitted = true;
                     alert("성공했습니다.")
-                    location.href = "/announce";
+                    this.$router.push("/announce");
                 })
                 // 실패하면 .catch() 결과가 전송됨
                 .catch((e) => {
@@ -76,7 +76,7 @@ export default {
         },
 
         returnAnnounce() {
-            location.href = "/announce";
+            this.$router.push("/announce");
         }
      
     },

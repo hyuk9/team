@@ -81,7 +81,7 @@ export default {
         .then((response) => {
           console.log(response.data);
           this.message = "The Free was updated successfully!";
-          location.href = "/free";
+          this.$router.push("/free");
         })
         // 실패하면 .catch() 에러메세지가 전송됨
         .catch((e) => {
@@ -97,7 +97,6 @@ export default {
           console.log(response.data);
           // 첫페이지(전체목록_조회_페이지) 강제 이동 : /free
           this.$router.push("/free");
-          location.href = "/free";
         })
         // 실패하면 .catch() 에러메세지가 전송됨
         .catch((e) => {
