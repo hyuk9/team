@@ -193,7 +193,7 @@
           <!-- Map widget-->
           <div class="card mb-4">
             <div class="card-header">지도</div>
-              <!-- <div id="map" style="height: 600px"></div> -->
+            <!-- <div id="map" style="height: 600px"></div> -->
             <naver-maps
               :height="height"
               :width="width"
@@ -223,7 +223,6 @@
                 :bounds="{ south: 36.7, north: 36.9, west: 126.5, east: 127.5 }"
               />
             </naver-maps>
-
           </div>
 
           <!-- Chart widget-->
@@ -236,10 +235,16 @@
         </div>
       </div>
     </div>
+    <div id="chart" class="col-lg-4 bg bg-info">
+      <h1>차트 위치 지정해줘야함 - 내부 div로 넣으면 안되는 문제 있음</h1>
+      <canvas id="myChart"></canvas>
+    </div>
   </main>
 </template>
 
 <script>
+import Chart from "chart.js/auto";
+
 /* eslint-disable */
 
 import DinerDataService from "@/services/DinerDataService";
@@ -290,6 +295,34 @@ export default {
         "CHINESE",
         "JAPANESE",
       ],
+
+      chartData: {
+       labels: ["맛", "친절도", "거리", "청결도"],
+        datasets: [
+          {
+            label: "여성",
+            data: [65, 59, 90, 81],
+            fill: true,
+            backgroundColor: "rgba(255, 99, 132, 0.2)",
+            borderColor: "rgb(255, 99, 132)",
+            pointBackgroundColor: "rgb(255, 99, 132)",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgb(255, 99, 132)",
+          },
+          {
+            label: "남성",
+            data: [48, 68, 70, 98],
+            fill: true,
+            backgroundColor: "rgba(54, 162, 235, 0.2)",
+            borderColor: "rgb(54, 162, 235)",
+            pointBackgroundColor: "rgb(54, 162, 235)",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgb(54, 162, 235)",
+          },
+        ],
+      },
     };
   },
   components: {
@@ -405,6 +438,20 @@ export default {
     // router/index.js 상세페이지 url의 매개변수명 : :dno
     this.getDiner(this.$route.params.dno);
     this.retrieveReview(); // 화면 로딩시 전체 조회함수 실행
+
+    const ctx = document.getElementById("myChart");
+
+    new Chart(ctx, {
+      type: "radar",
+      data: this.chartData,
+      options: {
+        elements: {
+          line: {
+            borderWidth: 3,
+          },
+        },
+      },
+    });
   },
 };
 </script>
