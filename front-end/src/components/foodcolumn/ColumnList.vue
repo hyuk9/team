@@ -66,7 +66,7 @@
                 작성일
               </th>
               <th
-                v-if="showAdminBoard"
+                v-if="showLoggedUser"
                 class="table-active"
                 style="width: 10%"
                 scope="col"
@@ -82,14 +82,14 @@
               </td>
               <td class="text-center">
                 <router-link :to="'/column/' + data.cid"
-                  ><span>{{ data.columnTitle }}</span></router-link
+                  ><span>{{ data.title }}</span></router-link
                 >
               </td>
-              <td class="text-center">{{ data.columnWriter }}</td>
+              <td class="text-center">{{ data.writer }}</td>
               <td class="text-center">
                 <i class="bi bi-calendar-date"></i> {{ data.insertTime }}
               </td>
-              <td v-if="showAdminBoard">
+              <td v-if="showLoggedUser">
                 <router-link :to="'/column/' + data.cid"
                   ><span class="badge rounded-pill bg-warning text-dark"
                     >수정</span
@@ -104,7 +104,7 @@
           <span class="badge bg-warning text-dark">추가</span>
         </router-link> -->
         <!-- TODO: badge를 버튼으로 교체 -->
-        <div v-if="showLoginUser">
+        <div v-if="showLoggedUser">
           <router-link class="offset-11" to="/add-column/">
             <button type="button" class="btn btn-warning btn-sm">글쓰기</button>
           </router-link>
@@ -228,13 +228,13 @@ export default {
       // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
       return this.$store.state.auth.user;
     },
-
-    // 일반유저 접속인지 아닌지 확인하는 함수
-    showLoginUser() {
+    // 현재 접속한 유저의 id = column.id 동일하면 버튼 보이게 하는 함수 작성해야함
+    showLoggedUser() {
+    // 밑에 주석처리한게 원본
       if (this.currentUser && this.currentUser.roles) {
         // if ROLE_ADMIN 있으면 true
         //               없으면 false
-        return this.currentUser.roles.includes("ROLE_USER");
+        return this.currentUser.roles.includes("ROLE_ADMIN");
       }
       // currentUser 없으면 false (메뉴가 안보임)
       return false;

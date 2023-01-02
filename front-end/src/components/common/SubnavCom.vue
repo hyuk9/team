@@ -101,24 +101,11 @@
                                 <li>
                                     <router-link to="/free" class="dropdown-item">자유게시판</router-link>
                                 </li>
-                            </ul>
-                        </li>
-                        <!-- 푸드컬럼 페이지 시작 -->
-                        <li class="nav-item dropdown">
-                            <router-link to="" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                푸드컬럼
-                            </router-link>
-                            <ul class="dropdown-menu">
                                 <li>
-                                    <router-link to="/column" class="dropdown-item">푸드컬럼 보기</router-link>
-                                </li>
-                                <li>
-                                    <router-link to="#" class="dropdown-item">차라리 게시판 쪽에 통합을 할지?</router-link>
+                                    <router-link to="/column" class="dropdown-item">푸드컬럼</router-link>
                                 </li>
                             </ul>
                         </li>
-                        <!-- 푸드컬럼 페이지 끝 -->
 
                         <!-- 임시로 만든 예약 네비게이션 시작 -->
                         <li class="nav-item dropdown">
@@ -163,11 +150,11 @@
                         <!-- 공간을 위한 안보이는 div -->
                     </div>
                     <form class="d-flex mt-4 mt-lg-0 ms-lg-auto ms-xl-0">
-                        <!-- 검색창 시작 -->
+                        <!-- 검색창 시작 일단 안보이게 주석처리함 -->
                         <div class="input-group-icon pe-2">
-                            <i class="fas fa-search input-box-icon text-primary"></i>
+                            <!-- <i class="fas fa-search input-box-icon text-primary"></i>
                             <input class="form-control border-0 input-box bg-100" type="search" placeholder="여기는 검색창"
-                                aria-label="Search" />
+                                aria-label="Search" /> -->
                         </div>
                         <!-- 검색창 끝 -->
 

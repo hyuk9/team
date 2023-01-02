@@ -146,35 +146,37 @@ VALUES (SQ_RESERVATION.nextval, '식당25', '아라치', '2', '010-1234-5678', '
 
 -- Todo:음식점 테이블
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER1', '4.5','서울','010-0000-0000','일식', '데이트', '리뷰1',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, 'DINER1', '4.5','해운대구','010-0000-0000','일식', '데이트', '리뷰1',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER2', '4.6','부산','010-0000-0000','한식', '모임', '리뷰2',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, 'DINER2', '4.6','남구','010-0000-0000','한식', '모임', '리뷰2',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER3', '2.6','부산','010-0000-0000','중식', '회식', '리뷰3',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, 'DINER3', '2.6','금정구','010-0000-0000','중식', '회식', '리뷰3',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER4', '2.5','부산','010-0000-0000','양식', '데이트', '리뷰4',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, 'DINER4', '2.5','기장구','010-0000-0000','양식', '데이트', '리뷰4',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER5', '4.9','부산','010-0000-0000','한식', '모임', '리뷰5',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, 'DINER5', '4.9','동래구','010-0000-0000','한식', '모임', '리뷰5',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER6', '3.5','부산','010-0000-0000','일식', '회식', '리뷰6',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, 'DINER6', '3.5','부산진구','010-0000-0000','일식', '회식', '리뷰6',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER7', '5.0','부산','010-0000-0000','한식', '데이트', '리뷰7',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, 'DINER7', '5.0','영도구','010-0000-0000','한식', '데이트', '리뷰7',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER8', '3.4','부산','010-0000-0000','중식', '모임', '리뷰8',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, 'DINER8', '3.4','강서구','010-0000-0000','중식', '모임', '리뷰8',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER9', '3.5','부산','010-0000-0000','양식', '회식', '리뷰9',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, 'DINER9', '3.5','해운대구','010-0000-0000','양식', '회식', '리뷰9',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER10', '3.0','부산','010-0000-0000','한식', '데이트', '리뷰10',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, 'DINER10', '3.0','남구','010-0000-0000','한식', '데이트', '리뷰10',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER11', '4.2','부산','010-0000-0000','일식', '모임', '리뷰11',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, 'DINER11', '4.2','금정구','010-0000-0000','일식', '모임', '리뷰11',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER12', '4.6','부산','010-0000-0000','한식', '회식', '리뷰12',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, 'DINER12', '4.6','기장구','010-0000-0000','한식', '회식', '리뷰12',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER13', '1.5','부산','010-0000-0000','중식', '데이트', '리뷰13',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, 'DINER13', '1.5','동래구','010-0000-0000','중식', '데이트', '리뷰13',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER14', '3.6','부산','010-0000-0000','양식', '모임', '리뷰14',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, 'DINER14', '3.6','부산진구','010-0000-0000','양식', '모임', '리뷰14',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER15', '1.9','부산','010-0000-0000','한식', '회식', '리뷰15',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, 'DINER15', '1.9','영도구','010-0000-0000','한식', '회식', '리뷰15',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+INSERT INTO TB_DINER
+VALUES (SQ_DINER.nextval, 'DINER16', '2.7','강서구','010-0000-0000','한식', '회식', '리뷰16',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 
 -- Todo:리뷰 테이블
 INSERT INTO TB_REVIEW
@@ -193,15 +195,15 @@ VALUES (SQ_REVIEW.nextval, '리뷰6', '내용6', '사진6','아라치','N', TO_C
 -- Todo: 메뉴 테이블
 -- Todo: 음식점 테이블이랑 조인 예정
 INSERT INTO TB_MENU
-VALUES (SQ_MENU.nextval, '메뉴1', '가격1', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+VALUES (SQ_MENU.nextval, '메뉴1', '가격1', '1', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_MENU
-VALUES (SQ_MENU.nextval, '메뉴2', '가격2', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+VALUES (SQ_MENU.nextval, '메뉴2', '가격2', '2', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_MENU
-VALUES (SQ_MENU.nextval, '메뉴3', '가격3', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+VALUES (SQ_MENU.nextval, '메뉴3', '가격3', '3', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_MENU
-VALUES (SQ_MENU.nextval, '메뉴4', '가격4', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+VALUES (SQ_MENU.nextval, '메뉴4', '가격4', '4', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_MENU
-VALUES (SQ_MENU.nextval, '메뉴5', '가격5', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+VALUES (SQ_MENU.nextval, '메뉴5', '가격5', '5', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 
 -- Todo: 평점 테이블
 -- Todo: 리뷰 테이블이랑 조인 예정
@@ -219,11 +221,11 @@ VALUES (SQ_SCORE.nextval, '5', '5', '5', '5', '5', 'N', TO_CHAR(SYSDATE, 'YYYY-M
 
 -- Todo:푸드컬럼 테이블
 INSERT INTO TB_COLUMN
-VALUES (SQ_COLUMN.nextval, '연말연시 맛집 추천', '한 해의 마지막과 새해의 시작을 이곳에서','사진','장동혁', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+VALUES (SQ_COLUMN.nextval, '연말연시 맛집 추천', '한 해의 마지막과 새해의 시작을 이곳에서','사진','장동혁', '2', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_COLUMN
-VALUES (SQ_COLUMN.nextval, '서면 맛집 Best5', '부산토박이가 알려주는 로컬맛집', '사진2', '전성혜', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+VALUES (SQ_COLUMN.nextval, '서면 맛집 Best5', '부산토박이가 알려주는 로컬맛집', '사진2', '전성혜', '4','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_COLUMN
-VALUES (SQ_COLUMN.nextval, '여기가 바로 가성비 맛집', '서비스는 필요없다. 오로지 가성비로만 승부', '사진3', '조성모','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+VALUES (SQ_COLUMN.nextval, '여기가 바로 가성비 맛집', '서비스는 필요없다. 오로지 가성비로만 승부', '사진3', '조성모', '3', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 
 
 

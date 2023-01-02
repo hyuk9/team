@@ -10,7 +10,8 @@
           id="writer"
           required
           name="writer"
-          v-model="column.columnWriter"
+          v-bind:disabled="true"
+          v-model="currentUser.username"
         />
       </div>
       <div class="mb-3">
@@ -21,7 +22,7 @@
           id="title"
           required
           name="title"
-          v-model="column.columnTitle"
+          v-model="column.title"
         />
       </div>
       <div class="mb-3">
@@ -32,11 +33,11 @@
           rows="8"
           required
           name="content"
-          v-model="column.columnContent"
+          v-model="column.content"
         ></textarea>
       </div>
       <div class="mb-3">
-        <button @click="saveColumn" class="btn btn-primary">Submit</button>
+        <button @click="saveColumn" class="btn btn-primary">작성완료</button>
       </div>
     </div>
     <!-- AddColumn End -->
@@ -46,14 +47,15 @@
 
 <script>
 import ColumnDataService from "@/services/ColumnDataService";
+
 export default {
   data() {
     return {
       column: {
         cid: null,
-        columnWriter: "",
-        columnTitle: "",
-        columnContent: "",
+        writer: "",
+        title: "",
+        content: "",
       },
       // submit 버튼을 클릭하면 true 가 되고, You submitted successfully! 화면에 출력됨
       submitted: false,
@@ -64,9 +66,9 @@ export default {
       // 임시 객체 변수 -> springboot 전송
       // 부서번호는(no) 자동생성되므로 빼고 전송함
       let data = {
-        columnWriter: this.column.columnWriter,
-        columnTitle: this.column.columnTitle,
-        columnContent: this.column.columnContent,
+        writer: this.currentUser.username,
+        title: this.column.title,
+        content: this.column.content,
       };
 
       // insert 요청 함수 호출(axios 공통함수 호출)
@@ -94,6 +96,13 @@ export default {
 
     returnColumn() {
       this.$router.push("/column");
+    },
+  },
+  computed: {
+    currentUser() {
+      // 모듈 저장소 : this.$store.state.모듈명.state값
+      // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
+      return this.$store.state.auth.user;
     },
   },
 };
