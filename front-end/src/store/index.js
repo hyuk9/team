@@ -11,7 +11,19 @@ export default new Vuex.Store({
   modules: {
     auth
   },
+  // 아이디 찾기에서 받은 아이디 정보 저장용 변수
+  state : {
+    username : "",
+  },
   actions: {
     clickButton() {
     }
-}})
+  },
+  // 아이디 찾기에서 받은 아이디 정보 저장용 함수
+  mutations : {
+    saveId : function(state, value) {
+      state.username = value;
+    },
+  },
+  
+})

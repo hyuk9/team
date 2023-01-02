@@ -1,6 +1,7 @@
 package com.example.simpledms.controller;
 
 import com.example.simpledms.dto.MessageResponse;
+import com.example.simpledms.dto.request.ChangePasswordRequest;
 import com.example.simpledms.dto.request.SignupRequest;
 import com.example.simpledms.dto.response.UserRoleDto;
 import com.example.simpledms.model.ERole;
@@ -266,6 +267,81 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+//    todo: (12/30 추가) : 아이디 찾을 시 이메일 입력 받은 걸로 회원 확인 후 아이디 정보 주기 함수
+    @GetMapping("/user/email/{email}")
+//    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Object> getUserEmail(@PathVariable String  email) {
+
+        try {
+            Optional<User> optionalUser = userService.findByEmail(email);
+            if (optionalUser.isPresent()) {
+//                성공
+                return new ResponseEntity<>(optionalUser.get().getEmail().charAt(0) + "**" + optionalUser.get().getEmail().substring(3) , HttpStatus.OK);
+            } else {
+//                데이터 없음
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+        } catch (Exception e) {
+//            서버 에러
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    //    todo: (12/30 추가) : 비번 찾을 시 아이디,이메일 입력 받은 걸로 회원 있는지 확인하는 함수
+    @GetMapping("/user/findPw/username/{username}/email/{email}")
+//    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Object> getUsernameAndEmail(@PathVariable String  username, @PathVariable String  email) {
+
+        try {
+            boolean existsUsername = userService.existsByUsername(username);
+            boolean existsEmail = userService.existsByEmail(email);
+            if (existsUsername && existsEmail) {
+//                성공
+                    return new ResponseEntity<>(email, HttpStatus.OK);
+
+            } else {
+//                데이터 없음
+                return new ResponseEntity<>( HttpStatus.NO_CONTENT);
+            }
+        } catch (Exception e) {
+//            서버 에러
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+//   todo: 12/30 비밀번호 재설정 함수
+@PutMapping("/user/changePw/email/{email}")
+//    @PreAuthorize("hasRole('ADMIN')")
+public ResponseEntity<Object> updatePassword(@PathVariable String  email, @RequestBody ChangePasswordRequest changePasswordRequest) {
+    log.debug(changePasswordRequest.getPassword());
+    try {
+        String password = encoder.encode(changePasswordRequest.getPassword());
+
+//       이메일에 맞는 유저 정보 들고와서
+        Optional<User> optionalUser = userService.findByEmail(email);
+
+        User userData = optionalUser.get();
+
+        User user = new User(
+                userData.getId(),
+                userData.getUsername(),
+                userData.getEmail(),
+                password,
+                userData.getName(),
+                userData.getBirthday(),
+                userData.getGender(),
+                userData.getPhone(),
+                userData.getAddress(),
+                userData.getRole()
+        );
+        userService.save(user);
+        return new ResponseEntity<>(HttpStatus.OK);
+    } catch (Exception e) {
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+}
 }
 
 

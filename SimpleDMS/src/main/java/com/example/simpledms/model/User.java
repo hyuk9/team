@@ -1,9 +1,6 @@
 package com.example.simpledms.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.SQLDelete;
@@ -130,4 +127,37 @@ public class User extends BaseTimeEntity {
 //        this.email = email;
 //        this.password = password;
 //    }
+
+
+    //  TODO : 1) 추가
+    @Builder
+    public User(String username, String email, String password, String name, Set<Role> role) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.role = role;
+    }
+    //  TODO : 2) 추가
+    public User update(String name) {
+        this.username = username;
+
+        return this;
+    }
+
+//    todo: 12/30 비번 찾기용 소스 추가
+@Builder
+public User(Long id, String username, String email, String password, String name, String birthday, String gender, String phone, String address, Set<Role> role) {
+    this.id = id;
+    this.username = username;
+    this.email = email;
+    this.password = password;
+    this.name = name;
+    this.birthday = birthday;
+    this.gender = gender;
+    this.phone = phone;
+    this.address = address;
+    this.role = role;
+
+}
 }

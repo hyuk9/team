@@ -5,7 +5,7 @@
     <h1>아이디/비밀번호 찾기</h1>
 
     <!-- 아이디 찾기 시작 -->
-    <form action="" name="formOne" class="form_container">
+    <form action="" name="formOne" class="form_container"  @submit.prevent="handleFindId" data-vv-scope='findId'>
       <h2>아이디 찾기</h2>
       <div>
         <!-- 이메일 입력 input -->
@@ -27,14 +27,13 @@
         </div>
 
         <!-- 다음 절차 수행 버튼 -->
-        <button class="signin__btn mt-5">다음(현재사용 불가)</button>
-        <!-- 위 버튼 임시로 대체하는 링크 -->
-        <a class="signin__btn mt-5" href="/findId">이동용 임시 버튼(이메일 있음을 확인 시)</a>
+        <button class="signin__btn mt-5">다음</button>
+
       </div>
     </form>
     <!-- 아이디 찾기 끝 -->
     <!-- 비번 찾기 시작 -->
-    <form action="" name="formTwo" id="password" class="form_container">
+    <form action="" name="formTwo" id="password" class="form_container"  @submit.prevent="handleFindPw" data-vv-scope='findPw'>
       <h2>비밀번호 찾기</h2>
       <div>
         <!-- 아이디 입력 input  -->
@@ -59,9 +58,9 @@
           <h5>회원님의 이메일을 입력해 주세요.</h5>
 
           <input
-            v-model="user.username"
+            v-model="user.email"
             v-validate="'required|email|max:50'"
-            type="text"
+            type="email"
             placeholder="이메일을 입력해 주세요."
             class="input"
             id="text"
@@ -73,9 +72,7 @@
         </div>
 
         <!-- 다음 절차 수행 버튼 -->
-        <button class="signin__btn mt-5">다음(현재사용불가)</button>
-           <!-- 위 버튼 임시로 대체하는 링크 -->
-        <a class="signin__btn mt-5" href="/findPw">이동용 임시 버튼(아이디와 이메일 있음을 확인 시)</a>
+        <button class="signin__btn mt-5">다음</button>
       </div>
     </form>
     <!-- 비번 찾기 끝 -->
@@ -84,6 +81,7 @@
 
 <script>
 import User from "@/model/user";
+import userDataService from "@/services/UserDataService"
 
 export default {
   data() {
@@ -95,6 +93,110 @@ export default {
       successful: false,
       message: "",
     };
+  },
+  methods: {
+    // 아이디 찾기 함수
+      handleFindId() {
+      this.message = "";
+      this.submitted = true;
+
+      // vee-validate 함수 처리 방법
+      this.$validator.validateAll('findId').then((isValid) => {
+        // validateAll() 모두 통과하면 -> isValid = true  (유효함)
+        //                             -> isValid = false (유효하지 않음)
+        if (!isValid) {
+          return; // 함수 탈출(break)
+        }
+
+        userDataService.getId(this.user.email)
+      .then((response) => {
+            this.successful = true; 
+            this.$store.commit("saveId" , response.data) 
+            // 성공알림 띄우기
+            this.$swal({
+              icon: "success",
+              title: "확인되었습니다.",
+              showConfirmButton: false,
+              timer: 1000,
+            });
+            this.$router.push("/findId");
+          })
+          .catch((error) => {
+            this.successful = false; 
+            this.message =
+              (error.response &&
+                error.response.data &&
+                error.response.data.message) ||
+              error.message ||
+              error.toString();
+            // 실패알림 띄우기
+            this.$swal({
+              icon: "error",
+              title: "확인에 실패하였습니다.",
+              text: this.message,
+              confirmButtonColor: "#E1793D",
+              confirmButtonText: "확인",
+            });
+          });
+      });
+    },
+       // 비번 찾기 함수
+      handleFindPw() {
+      this.message = "";
+      this.submitted = true;
+
+      // vee-validate 함수 처리 방법
+      this.$validator.validateAll('findPw').then((isValid) => {
+        // validateAll() 모두 통과하면 -> isValid = true  (유효함)
+        //                             -> isValid = false (유효하지 않음)
+        if (!isValid) {
+          return; // 함수 탈출(break)
+        }
+
+        userDataService.getPw(this.user.username,this.user.email)
+      .then((response) => {
+            this.successful = true; 
+           if(response.data) {
+              this.$store.commit("saveId" , response.data) 
+              // 성공알림 띄우기
+            this.$swal({
+              icon: "success",
+              title: "확인되었습니다.",
+              showConfirmButton: false,
+              timer: 1000,
+            });
+            this.$router.push("/findPw");
+           } else {
+              // 실패알림 띄우기
+            this.$swal({
+              icon: "error",
+              title: "유저가 존재하지 않는것 같습니다.",
+              confirmButtonColor: "#E1793D",
+              confirmButtonText: "확인",
+            });
+           }
+
+ 
+          })
+          .catch((error) => {
+            this.successful = false; 
+            this.message =
+              (error.response &&
+                error.response.data &&
+                error.response.data.message) ||
+              error.message ||
+              error.toString();
+            // 실패알림 띄우기
+            this.$swal({
+              icon: "error",
+              title: "확인에 실패하였습니다.",
+              text: this.message,
+              confirmButtonColor: "#E1793D",
+              confirmButtonText: "확인",
+            });
+          });
+      });
+    },
   },
 };
 </script>
