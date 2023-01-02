@@ -219,24 +219,31 @@ export default {
         restaurant: "", // 가게명
         rname: "", // 예약자명
         rcount: "", // 인원수
-        phoneFirstPart: "", // 전화번호의 앞자리
-        phoneMiddlePart: "", // 전화번호의 중간자리
-        phoneLastPart: "", // 전화번호의 뒷자리
+        phone:"", // 전화번호
         reservationDate: "", // 예약날짜
         reservationTime: "", // 예약시간
         reservationYn: "", // 예약가능여부
       },
+              phoneFirstPart: "", // 전화번호의 앞자리
+        phoneMiddlePart: "", // 전화번호의 중간자리
+        phoneLastPart: "", // 전화번호의 뒷자리
     };
   },
   methods: {
+        InputCombine() {
+      //  전화번호 부분들 합쳐서 완성된 전화번호 형식 만들기
+      if (this.phoneFirstPart && this.phoneMiddlePart && this.phoneLastPart) {
+        this.reservation.phone =
+          this.phoneFirstPart + "-" + this.phoneMiddlePart + "-" + this.phoneLastPart;
+      }
+    },
     saveReservation() {
+      this.InputCombine();
       let data = {
         restaurant: this.reservation.restaurant,
         rname: this.reservation.rname,
         rcount: this.reservation.rcount,
-        phone1: this.reservation.phone1,
-        phone2: this.reservation.phone2,
-        phone3: this.reservation.phone3,
+        phone: this.reservation.phone,
         reservationDate: this.$refs.reservationDate.value,
         reservationTime: this.$refs.reservationTime.value,
         // reservationTime: document.querySelector("#selTime").innerHTML,
@@ -260,19 +267,8 @@ export default {
         .catch((e) => {
           console.log(e);
         });
-      InputCombine();
     },
-    InputCombine() {
-      //  전화번호 부분들 합쳐서 완성된 전화번호 형식 만들기
-      if (this.phoneFirstPart && this.phoneMiddlePart && this.phoneLastPart) {
-        this.reservation.phone =
-          this.phoneFirstPart +
-          "-" +
-          this.phoneMiddlePart +
-          "-" +
-          this.phoneLastPart;
-      }
-    },
+
 
     newReservation() {
       this.submitted = false;

@@ -44,7 +44,7 @@
                     <td>{{ data.rname }}</td>
                     <td>{{ data.rcount }}</td>
                     <td>
-                      {{ data.phone1 + "-" + data.phone2 + "-" + data.phone3 }}
+                      {{ data.phone }}
                     </td>
                     <td>{{ data.reservationDate }}</td>
                     <td>{{ data.reservationTime }}</td>

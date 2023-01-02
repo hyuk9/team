@@ -46,7 +46,7 @@
                                     </ul>
                                 </li> -->
                                 <li class="has-children subdropmenu">
-                                    <router-link to="/diner" class="dropdown-item" @click="busanNav">부산광역시</router-link>
+                                    <router-link to="/diner" class="dropdown-item">부산광역시</router-link>
                                     <ul class="dropdown-menu">
                                         <li><a href="#">해운대구</a></li>
                                         <li><a href="#">남구</a></li>
@@ -264,6 +264,9 @@ export default {
             // 홈으로 보내기 함수
             this.$router.push("/")
         },
+        busanNav(){
+            alert("클릭성공");
+        }
     },
 
     // 모달 적용시 로그인 버튼에 강제적으로 추가되어 css를 바꾸는 클래스 삭제하기
