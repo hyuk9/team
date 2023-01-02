@@ -54,7 +54,7 @@
             <h5>전화번호</h5>
             <div class="phoneInput">
               <input
-                v-model="reservation.phone1"
+                v-model="phoneFirstPart"
                 type="text"
                 class="input"
                 id="phone1"
@@ -62,7 +62,7 @@
               />
               <span class="minus">-</span>
               <input
-                v-model="reservation.phone2"
+                v-model="phoneMiddlePart"
                 type="text"
                 class="input"
                 id="phone2"
@@ -70,7 +70,7 @@
               />
               <span class="minus">-</span>
               <input
-                v-model="reservation.phone3"
+                v-model="phoneLastPart"
                 type="text"
                 class="input"
                 id="phone3"
@@ -219,9 +219,9 @@ export default {
         restaurant: "", // 가게명
         rname: "", // 예약자명
         rcount: "", // 인원수
-        phone1: "", // 전화번호의 앞자리
-        phone2: "", // 전화번호의 중간자리
-        phone3: "", // 전화번호의 뒷자리
+        phoneFirstPart: "", // 전화번호의 앞자리
+        phoneMiddlePart: "", // 전화번호의 중간자리
+        phoneLastPart: "", // 전화번호의 뒷자리
         reservationDate: "", // 예약날짜
         reservationTime: "", // 예약시간
         reservationYn: "", // 예약가능여부
@@ -241,7 +241,6 @@ export default {
         reservationTime: this.$refs.reservationTime.value,
         // reservationTime: document.querySelector("#selTime").innerHTML,
       };
-
       ReservationDataService.create(data)
         .then((response) => {
           this.reservation.rid = response.data.rid;
@@ -261,6 +260,18 @@ export default {
         .catch((e) => {
           console.log(e);
         });
+      InputCombine();
+    },
+    InputCombine() {
+      //  전화번호 부분들 합쳐서 완성된 전화번호 형식 만들기
+      if (this.phoneFirstPart && this.phoneMiddlePart && this.phoneLastPart) {
+        this.reservation.phone =
+          this.phoneFirstPart +
+          "-" +
+          this.phoneMiddlePart +
+          "-" +
+          this.phoneLastPart;
+      }
     },
 
     newReservation() {

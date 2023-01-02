@@ -5,7 +5,7 @@
     <h1>비밀번호 재설정</h1>
 
     <!-- 비번 설정 시작 -->
-    <form action="" name="formOne" class="form_container">
+    <form action="" name="formOne" class="form_container" @submit.prevent="ResetPw">
       <h2 >확인되었습니다. 비밀번호를 재설정해주세요.</h2>
       <div class="input__upper">
         <!-- 비밀번호 input -->
@@ -56,6 +56,7 @@
 
 <script>
 import User from "@/model/user";
+import userDataService from "@/services/UserDataService"
 
 export default {
   data() {
@@ -67,6 +68,54 @@ export default {
       successful: false,
       message: "",
     };
+  },
+  methods: {
+           // 비번 재설정 함수
+      ResetPw() {
+      this.message = "";
+      this.submitted = true;
+
+      // vee-validate 함수 처리 방법
+      this.$validator.validateAll().then((isValid) => {
+        // validateAll() 모두 통과하면 -> isValid = true  (유효함)
+        //                             -> isValid = false (유효하지 않음)
+        if (!isValid) {
+          return; // 함수 탈출(break)
+        }
+        this.user.email =this.$store.state.username;
+        userDataService.updatePassword(this.user.email, this.user)
+      .then(() => {
+            this.successful = true; 
+
+              // 성공알림 띄우기
+            this.$swal({
+              icon: "success",
+              title: "재설정되었습니다.",
+              showConfirmButton: false,
+              timer: 1000,
+            });
+            this.$router.push("/");
+ 
+          })
+          .catch((error) => {
+            this.successful = false; 
+            this.message =
+              (error.response &&
+                error.response.data &&
+                error.response.data.message) ||
+              error.message ||
+              error.toString();
+            // 실패알림 띄우기
+            this.$swal({
+              icon: "error",
+              title: "재설정에 실패하였습니다.",
+              text: this.message,
+              confirmButtonColor: "#E1793D",
+              confirmButtonText: "확인",
+            });
+          });
+      });
+    },
   },
 };
 </script>

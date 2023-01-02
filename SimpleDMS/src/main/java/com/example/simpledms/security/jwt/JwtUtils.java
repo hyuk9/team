@@ -55,6 +55,24 @@ public class JwtUtils {
         .compact(); // 토큰 생성
   }
 
+
+  //  TODO 2) : JWT 토큰 만들기 : oAuth2 인증
+  public String generateJwtToken(String email) {
+//    Json Web Token 구조 : 헤더(header).내용(payload).서명(signature)
+//    헤더 : 토큰타입, 알고리즘
+//    내용 : 데이터(subject(주체(이름))), 토큰발급대상(issuedAt), 만료기간(expiration), 토큰수령자
+//    서명 : Jwts.builder().signWith(암호화알고리즘, 비밀키값)
+//    생성 : Jwts.builder().compact()
+    return Jwts.builder()
+            .setSubject((String)email.split("@")[0])
+            .setIssuedAt(new Date())
+//            만료일자 적용
+            .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
+
+            .signWith(SignatureAlgorithm.HS512, jwtSecret) // 암호화 적용 서명
+            .compact(); // 토큰 생성
+  }
+
 //  JWT 토큰에서 username(로그인ID) 꺼내기 함수
   public String getUserNameFromJwtToken(String token) {
 //    웹토큰의 비밀키 + 토큰명을 적용해 body 안의 subject(주체(이름))에 접근해서 꺼냄

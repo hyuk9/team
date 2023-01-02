@@ -67,6 +67,11 @@ implementation 'org.springframework.boot:spring-boot-starter-validation:2.6.7'
 //    TODO: spring security 테스트 라이브러리 추가
 testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+    // todo:    OAUTH2 라이브러리 추가 : 소셜 로그인 , 구글로그인, 네이버로그인, 카카오로그인,
+//    위의 것들을 SSO(Single Sign On)
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
 
 }
 

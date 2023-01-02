@@ -214,7 +214,13 @@ const routes = [
     path: '/termsOfService',
     name: 'termsOfService',
     component: () => import('../components/user/TermsOfService.vue')
-  }
+  },
+  // TODO 3) : 간편 로그인 추가 /auth-redirect
+  {
+      path: '/auth-redirect',
+      name: 'auth-redirect',
+      component: () => import('../views/Auth2View.vue')
+  },
 ];
 
 const router = new VueRouter({

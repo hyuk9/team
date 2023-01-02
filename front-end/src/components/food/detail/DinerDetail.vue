@@ -162,12 +162,12 @@
               aria-label="Basic example"
               style="width: 950px"
             >
-              <router-link to="/reservation"
+              <router-link to="/#"
                 ><button type="button" class="btn btn-primary">
                   찜
                 </button></router-link
               >
-              <router-link to="/reservation"
+              <router-link to="/#"
                 ><button type="button" class="btn btn-primary">
                   리뷰보기
                 </button></router-link
