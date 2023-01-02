@@ -46,7 +46,7 @@ public class Answer extends BaseTimeEntity {
 
 //    조인용 컬럼
     @javax.persistence.Column(columnDefinition = "NUMBER")
-    private String qno;
+    private String questionNo;
 
     @javax.persistence.Column(columnDefinition = "VARCHAR2(255)")
     private String content;

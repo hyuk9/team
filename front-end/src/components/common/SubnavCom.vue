@@ -96,7 +96,7 @@
                                     <router-link to="/faq" class="dropdown-item">자주묻는질문</router-link>
                                 </li>
                                 <li>
-                                    <router-link to="/qna" class="dropdown-item">질문과답변</router-link>
+                                    <router-link to="/question" class="dropdown-item">질문과답변</router-link>
                                 </li>
                                 <li>
                                     <router-link to="/free" class="dropdown-item">자유게시판</router-link>

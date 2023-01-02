@@ -101,9 +101,9 @@ const routes = [
     component: () => import("../components/board/faq/FaqDetailView.vue"),
   },
   {
-    path: "/qna",
-    name: "qna",
-    component: () => import("@/components/board/qna/QnaList.vue"),
+    path: "/question",
+    name: "question",
+    component: () => import("@/components/board/qna/QuestionList.vue"),
   },
   // TODO: qna 디테일,add 추가
   // AddQna
@@ -114,7 +114,7 @@ const routes = [
   },
   // QnaDetail
   {
-    path: "/qna/:qno",
+    path: "/question/:questionNo",
     name: "qna-detail",
     component: () => import("../components/board/qna/QnaDetailView.vue"),
   },

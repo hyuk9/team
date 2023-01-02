@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="container col-8 mb-2 mt-2">
-      <div class="QnaView-header">
+      <div class="QuestionView-header">
         <h1><strong>1:1 문의 게시판</strong></h1>
       </div>
-      <div class="QnaView-title">
+      <div class="QuestionView-title">
         <table class="table">
           <colgroup>
             <col style="width: 15%" />
@@ -19,18 +19,18 @@
           <tbody>
             <tr>
               <th scope="col">제목</th>
-              <td scope="col" v-text="currentQna.title"></td>
+              <td scope="col" v-text="currentQuestion.title"></td>
             </tr>
             <tr>
               <th scope="row">작성자</th>
-              <td scope="row" v-text="currentQna.questioner"></td>
+              <td scope="row" v-text="currentQuestion.writer"></td>
             </tr>
             <tr>
               <td
                 colspan="2"
                 scope="row"
                 style="padding: 10px"
-                v-text="currentQna.content"
+                v-text="currentQuestion.content"
               ></td>
             </tr>
           </tbody>
@@ -39,7 +39,7 @@
     </div>
 
     <div class="mb-3">
-      <router-link :to="'/qna/' + currentQna.qno">
+      <router-link :to="'/qna/' + currentQuestion.questionNo">
         <button class="btn btn-warning offset-5" type="button">
           수정&삭제
         </button>
@@ -49,23 +49,23 @@
 </template>
 
 <script>
-import QnaDataService from "@/services/QnaDataService";
+import QuestionDataService from "@/services/QustionDataService";
 export default {
   data() {
     return {
-      currentQna: null,
+      currentQuestion: null,
       message: "",
     };
   },
   methods: {
-    // 부서번호(qno)로 조회 요청하는 함수
-    getQna(qno) {
+    // 부서번호(questionNo)로 조회 요청하는 함수
+    getQuestion(questionNo) {
       // axios 공통함수 호출
-      QnaDataService.get(qno)
+      QuestionDataService.get(questionNo)
         // 성공하면 .then() 결과가 리턴됨
         .then((response) => {
           // springboot 결과를 리턴함(부서 객체)
-          this.currentQna = response.data;
+          this.currentQuestion = response.data;
           // 콘솔 로그 출력
           console.log(response.data);
         })
@@ -75,13 +75,13 @@ export default {
         });
     },
     // 부서정보를 수정 요청하는 함수
-    updateQna() {
+    updateQuestion() {
       // axios 공통함수 호출
-      QnaDataService.update(this.currentQna.qno, this.currentQna)
+      QuestionDataService.update(this.currentQuestion.questionNo, this.currentQuestion)
         // 성공하면 then() 결과가 전송됨
         .then((response) => {
           console.log(response.data);
-          this.message = "The Qna was updated successfully!";
+          this.message = "The Question was updated successfully!";
           this.$router.push("/qna");
         })
         // 실패하면 .catch() 에러메세지가 전송됨
@@ -90,9 +90,9 @@ export default {
         });
     },
     // 부서정보를 삭제 요청하는 함수
-    deleteQna() {
+    deleteQuestion() {
       // axios 공통함수 호출
-      QnaDataService.delete(this.currentQna.qno)
+      QuestionDataService.delete(this.currentQuestion.questionNo)
         // 성공하면 then() 결과가 전송됨
         .then((response) => {
           console.log(response.data);
@@ -129,7 +129,7 @@ export default {
   // 화면이 뜨자 마자 실행되는 이벤트
   mounted() {
     this.message = "";
-    this.getQna(this.$route.params.qno);
+    this.getQuestion(this.$route.params.questionNo);
   },
 };
 </script>

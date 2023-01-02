@@ -42,7 +42,7 @@ public class Question extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE
             , generator = "SQ_QUESTION_GENERATOR"
     )
-    private Integer questionNO;
+    private Integer questionNo;
 
     @javax.persistence.Column(columnDefinition = "VARCHAR2(255)")
     private String title;

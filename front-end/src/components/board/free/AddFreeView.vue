@@ -67,7 +67,7 @@
 
 
 <script>
-import FreeDataService from "../../../services/FreeDataService";
+import FreeDataService from "@/services/FreeDataService";
 export default {
   data() {
     return {
@@ -145,9 +145,8 @@ export default {
     // 파일 업로드를 위한 메소드
     upload() {
       this.progress = 0;
-
       // 서버에 이미지 업로드 요청(insert 문 실행)
-      FreeService.create(
+      FreeDataService.create(
         this.currentImage,
         (eve) => {
           // 파일이 업로드될때 진척상황이 저장됨(%)
