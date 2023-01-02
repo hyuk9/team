@@ -34,7 +34,7 @@
         <table class="table table-hover">
           <thead>
             <tr>
-              <th class="table-active text-center" style="width: 10%" scope="col">#</th>
+              <th class="table-active text-center" style="width: 10%" scope="col">번호</th>
               <th class="table-active text-center" style="width: 40%" scope="col">제목</th>
               <th class="table-active text-center" style="width: 20%" scope="col">
                 작성자
