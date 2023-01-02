@@ -7,6 +7,7 @@
     <h1 class="text-danger">아이디랑 이메일은 변경 불가능하게 막아둔 상태</h1>
     <div v-if="currentUser" class="container-fluid w-50 bg bg-danger mt-5 mb-5">
       <div>
+        <!-- 아이디 -->
         <div class="form-group">
           <label for="username">아이디</label>
           <!-- v-validate : 유효성 체크 -->
@@ -27,6 +28,8 @@
             {{ errors.first("username") }}
           </div>
         </div>
+
+        <!-- 이메일 -->
         <div class="form-group">
           <label for="email">이메일</label>
           <input
@@ -41,6 +44,8 @@
             {{ errors.first("email") }}
           </div>
         </div>
+
+        <!-- 비밀번호 -->
         <div class="form-group">
           <label for="password">비밀번호</label>
           <input
@@ -55,6 +60,99 @@
           </button>
         </div>
 
+        <!-- 이름 -->
+        <div class="form-group">
+          <label for="name">이름</label>
+          <input
+            v-model="currentUser.name"
+            v-validate="'required|name|max:10'"
+            v-bind:disabled="true"
+            type="text"
+            class="form-control"
+            name="name"
+          />
+          <div v-if="submitted && errors.has('name')" class="alert-danger">
+            {{ errors.first("name") }}
+          </div>
+        </div>
+
+        <!-- 생년월일 -->
+        <div class="form-group">
+          <label for="birthday">생년월일</label>
+          <input
+            v-model="currentUser.birthday"
+            v-validate="'numeric'"
+            v-bind:disabled="true"
+            type="text"
+            class="form-control"
+            name="birthday"
+          />
+          <div v-if="submitted && errors.has('birthday')" class="alert-danger">
+            {{ errors.first("birthday") }}
+          </div>
+        </div>
+
+        <!-- 성별 -->
+        <div class="form-group">
+          <label for="gender">성별</label>
+          <div class="col-6 d-inline">
+            <p class="d-inline col-6 mb-0 p-0 me-2">남성</p>
+            <input
+              v-model="currentUser.gender"
+              type="radio"
+              class="input d-inline"
+              id="gendermale"
+              name="gender"
+              value="male"
+            />
+          </div>
+          <div class="col-6 d-inline">
+            <p class="d-inline col-6 mb-0 p-0 me-2">여성</p>
+            <input
+              v-model="currentUser.gender"
+              type="radio"
+              class="input d-inline"
+              id="genderfemale"
+              name="gender"
+              value="female"
+            />
+          </div>
+          <div v-if="submitted && errors.has('gender')" class="alert-danger">
+            {{ errors.first("gender") }}
+          </div>
+        </div>
+
+        <!-- 전화번호 -->
+        <div class="form-group">
+          <label for="phone">전화번호</label>
+          <input
+            v-model="currentUser.phone"
+            v-bind:disabled="true"
+            type="text"
+            class="form-control"
+            name="phone"
+          />
+          <div v-if="submitted && errors.has('phone')" class="alert-danger">
+            {{ errors.first("phone") }}
+          </div>
+        </div>
+
+        <!-- 주소 -->
+        <div class="form-group">
+          <label for="address">주소</label>
+          <input
+            v-model="currentUser.address"
+            type="text"
+            class="form-control"
+            name="address"
+            @click="popupaddress"
+          />
+          <div v-if="submitted && errors.has('address')" class="alert-danger">
+            {{ errors.first("address") }}
+          </div>
+        </div>
+
+        <!-- 권한 -->
         <div class="form-group" v-if="showAdminBoard">
           <label for="password">권한</label>
           <select class="form-select" v-model="currentUser.role[0].name">
@@ -85,6 +183,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import UserDataService from "@/services/UserDataService";
 
 export default {
@@ -148,6 +247,20 @@ export default {
     changePassword() {
       this.currentUser.password = "";
       this.changePwd = true;
+    },
+
+    // 클릭시 카카오 주소 api 띄우고 주소검색 데이터를 가져오는 함수
+    popupaddress() {
+      let user = this.user;
+      new daum.Postcode({
+        oncomplete: function (data) {
+          let kakaoaddress = data.address;
+          if (kakaoaddress !== "") {
+            user.address = kakaoaddress;
+          }
+        },
+        shorthand: false,
+      }).open();
     },
   },
   computed: {

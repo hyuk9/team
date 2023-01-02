@@ -41,7 +41,13 @@
             />
             <span class="atSign">@</span>
             <!-- 직접 입력 클릭시 추가 입력창 때문에 크기를 재조정해야함 -> 그 상황시 class 추가 -->
-            <select name="" id="direct" :class="['endEmail', selectEmail ? '' : 'endEmailDirectInput']" v-model="endEmail" @click="inputEmailMyself">
+            <select
+              name=""
+              id="direct"
+              :class="['endEmail', selectEmail ? '' : 'endEmailDirectInput']"
+              v-model="endEmail"
+              @click="inputEmailMyself"
+            >
               <option value="" selected disabled="disabled">이메일 선택</option>
               <option value="naver.com">naver.com</option>
               <option value="gmail.com">gmail.com</option>
@@ -53,7 +59,14 @@
               <option value="yahoo.com">yahoo.com</option>
               <option value="direct" id="inputMyself">직접입력</option>
             </select>
-            <input type="text" name="" class="endEmail endEmailDirectInput" placeholder="직접 입력" v-model="endEmail" v-if="!selectEmail">
+            <input
+              type="text"
+              name=""
+              class="endEmail endEmailDirectInput"
+              placeholder="직접 입력"
+              v-model="endEmail"
+              v-if="!selectEmail"
+            />
           </div>
           <div v-if="submitted && errors.has('이메일 ')" class="register-alert">
             <p>{{ errors.first("이메일 ") }}</p>
@@ -102,9 +115,9 @@
         <!-- 이름 -->
         <div class="input__block">
           <h5>이름</h5>
-            <i class="fas fa-star-of-life ms-2"></i>
+          <i class="fas fa-star-of-life ms-2"></i>
           <input
-              v-validate="'required'"
+            v-validate="'required'"
             v-model="user.name"
             type="text"
             placeholder="이름"
@@ -112,10 +125,7 @@
             id="username"
             name="이름 "
           />
-               <div
-            v-if="submitted && errors.has('이름 ')"
-            class="register-alert"
-          >
+          <div v-if="submitted && errors.has('이름 ')" class="register-alert">
             <p>{{ errors.first("이름 ") }}</p>
           </div>
         </div>
@@ -135,17 +145,18 @@
             />
             <select v-model="month">
               <option value="" selected disabled="disabled">월</option>
-              <option :value="index" v-for="index in 12" :key="index">{{index}}</option>
-            </select>  
+              <option :value="index" v-for="index in 12" :key="index">
+                {{ index }}
+              </option>
+            </select>
             <select v-model="day">
               <option value="" selected disabled="disabled">일</option>
-              <option :value="index" v-for="index in 31" :key="index">{{index}}</option>
+              <option :value="index" v-for="index in 31" :key="index">
+                {{ index }}
+              </option>
             </select>
           </div>
-          <div
-            v-if="submitted && errors.has('연도 ')"
-            class="register-alert"
-          >
+          <div v-if="submitted && errors.has('연도 ')" class="register-alert">
             <p>{{ errors.first("연도 ") }}</p>
           </div>
         </div>
@@ -186,14 +197,14 @@
               id="phone1"
             />
             <span class="minus">-</span>
-              <input
+            <input
               v-model="phoneMiddlePart"
               type="text"
               class="input"
               id="phone2"
             />
             <span class="minus">-</span>
-              <input
+            <input
               v-model="phoneLastPart"
               type="text"
               class="input"
@@ -205,7 +216,7 @@
         <div class="input__block">
           <h5>주소</h5>
           <input
-          v-model="user.address"
+            v-model="user.address"
             type="text"
             placeholder="주소를 입력해 주세요."
             class="input"
@@ -234,23 +245,23 @@ export default {
       successful: false,
       message: "",
       // 이메일 입력창 앞부분
-      startEmail : "",
+      startEmail: "",
       // 이메일 입력창 뒷부분(@뒤 select 부분)
-      endEmail : "",
+      endEmail: "",
       // 이메일 뒷부분을 선택할지 본인이 직접 입력할지를 결정하는 변수
-      selectEmail : true,
+      selectEmail: true,
       // 생년월일의 연도
-      year : "",
+      year: "",
       // 생년월일의 월
-      month : "",
+      month: "",
       // 생년월일의 일
-      day : "",
+      day: "",
       // 전화번호의 앞자리
-      phoneFirstPart : "",
+      phoneFirstPart: "",
       // 전화번호의 중간자리
-      phoneMiddlePart : "",
+      phoneMiddlePart: "",
       // 전화번호의 뒷자리
-      phoneLastPart : "",
+      phoneLastPart: "",
     };
   },
   computed: {
@@ -264,19 +275,24 @@ export default {
     // 회원가입시 나눠진 일부 입력폼 합치는 함수
     registerInputCombine() {
       //  이메일 앞부분과 뒷부분 합쳐서 완성된 이메일 형식 만들기
-      if(this.startEmail && this.endEmail) {
-      this.user.email = this.startEmail +"@"+ this.endEmail;   
+      if (this.startEmail && this.endEmail) {
+        this.user.email = this.startEmail + "@" + this.endEmail;
       }
       //  생년월일 앞부분과 뒷부분 합쳐서 완성된 생년월일 형식 만들기
-            if(this.year && this.month && this.day) {
-      this.user.birthday = this.year +"."+this.month +"."+ this.day;
-            }
+      if (this.year && this.month && this.day) {
+        this.user.birthday = this.year + "." + this.month + "." + this.day;
+      }
       //  전화번호 부분들 합쳐서 완성된 전화번호 형식 만들기
-            if(this.phoneFirstPart && this.phoneMiddlePart && this.phoneLastPart) {
-      this.user.phone = this.phoneFirstPart +"-"+this.phoneMiddlePart +"-"+ this.phoneLastPart;
-            }
+      if (this.phoneFirstPart && this.phoneMiddlePart && this.phoneLastPart) {
+        this.user.phone =
+          this.phoneFirstPart +
+          "-" +
+          this.phoneMiddlePart +
+          "-" +
+          this.phoneLastPart;
+      }
     },
-    
+
     // 회원가입 버튼 클릭시 실행되는 함수
     handleRegister() {
       // 위의 함수 로그인 시 실행
@@ -289,7 +305,9 @@ export default {
         //                             -> isValid = false (유효하지 않음)
         if (!isValid) {
           // 유효성 검사 결과 이상 발견 시 그곳으로 이동하는 함수
-          document.querySelector(".register-alert:first-of-type").scrollIntoView( {block: "center"});
+          document
+            .querySelector(".register-alert:first-of-type")
+            .scrollIntoView({ block: "center" });
           return; // 함수 탈출(break)
         }
 
@@ -332,31 +350,30 @@ export default {
       });
     },
 
-    // 클릭시 카카오 주소 api 띄우고 주소검색 데이터를 가져오는 함수 
+    // 클릭시 카카오 주소 api 띄우고 주소검색 데이터를 가져오는 함수
     popupaddress() {
       let user = this.user;
       new daum.Postcode({
-          oncomplete: function (data) {
-            let kakaoaddress = data.address;
-            if (kakaoaddress !== "") {
-              user.address= kakaoaddress;
-            } 
-          },
-          shorthand: false,
-        }).open();
+        oncomplete: function (data) {
+          let kakaoaddress = data.address;
+          if (kakaoaddress !== "") {
+            user.address = kakaoaddress;
+          }
+        },
+        shorthand: false,
+      }).open();
     },
 
-    // 이메일 @의 뒷부분 중 "직접입력" 클릭시 입력창을 띄우는 함수 
+    // 이메일 @의 뒷부분 중 "직접입력" 클릭시 입력창을 띄우는 함수
     inputEmailMyself(e) {
-      if(e.target.value == "direct" ) {
+      if (e.target.value == "direct") {
         document.getElementById("inputMyself").value = "";
         this.selectEmail = false;
       } else {
         this.selectEmail = true;
         document.getElementById("inputMyself").value = "direct";
       }
-    }
-   
+    },
   },
 };
 </script>
@@ -379,7 +396,7 @@ h1 {
   font-size: 48px;
   letter-spacing: -3px;
   text-align: center;
-  margin-bottom: 80px ;
+  margin-bottom: 80px;
   transition: 0.2s linear;
 }
 
@@ -444,12 +461,12 @@ form .input__block input {
 }
 /* 셀렉트 박스 둥글게  */
 form select {
-    border-radius: 8px;
+  border-radius: 8px;
 }
 
 /* 이메일 입력용 */
 form .emailInput {
-    display: block;
+  display: block;
   width: 90%;
   max-width: 680px;
   height: 50px;
@@ -469,13 +486,13 @@ form .emailInput .input {
 form .emailInput .atSign {
   display: inline-block;
   width: 10%;
-    height: 50px;
+  height: 50px;
   text-align: center;
 }
 /* 이메일 입력용 */
 form .emailInput .endEmail {
   width: 40%;
-    height: 30px;
+  height: 30px;
 }
 /* 이메일 입력용 */
 form .emailInput .endEmailDirectInput {
@@ -487,7 +504,7 @@ form .emailInput .endEmailDirectInput {
 
 /* 생년월일 입력용 */
 form .dateInput {
-    display: block;
+  display: block;
   width: 90%;
   max-width: 680px;
   height: 50px;
@@ -510,7 +527,7 @@ form .dateInput select {
   height: 50px;
 }
 /* 생년월일 입력용 */
-form .dateInput select:first-of-type{
+form .dateInput select:first-of-type {
   margin-right: 2%;
 }
 
@@ -533,7 +550,7 @@ form .gender input {
 
 /* 전화번호 입력용 */
 form .phoneInput {
-    display: block;
+  display: block;
   width: 90%;
   max-width: 680px;
   height: 50px;
@@ -556,7 +573,6 @@ form .phoneInput .minus {
   width: 5%;
   text-align: center;
 }
-
 
 form .input__block input:focus,
 form .input__block input:active {
