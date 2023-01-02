@@ -21,8 +21,7 @@
                                 음식점 리스트
                             </router-link>
                             <ul class="dropdown-menu">
-                                <li class="dropdown-item disabled">지역별</li>
-                                <li class="has-children subdropmenu">
+                                <!-- <li class="has-children subdropmenu">
                                     <router-link to="/diner" class="dropdown-item">서울</router-link>
                                     <ul class="dropdown-menu">
                                         <li><a href="#">강남구</a></li>
@@ -45,9 +44,9 @@
                                         <li><a href="#">화성</a></li>
                                         <li><a href="#">김포</a></li>
                                     </ul>
-                                </li>
+                                </li> -->
                                 <li class="has-children subdropmenu">
-                                    <router-link to="/diner" class="dropdown-item">부산</router-link>
+                                    <router-link to="/diner" class="dropdown-item" @click="busanNav">부산광역시</router-link>
                                     <ul class="dropdown-menu">
                                         <li><a href="#">해운대구</a></li>
                                         <li><a href="#">남구</a></li>
@@ -62,31 +61,25 @@
                                 <li>
                                     <hr class="dropdown-divider" />
                                 </li>
-                                <li class="dropdown-item disabled">메뉴별</li>
-                                <li>
-                                    <router-link to="/diner" class="dropdown-item">한식</router-link>
-                                </li>
-                                <li>
-                                    <router-link to="/diner" class="dropdown-item">중식</router-link>
-                                </li>
-                                <li>
-                                    <router-link to="/diner" class="dropdown-item">일식</router-link>
-                                </li>
-                                <li>
-                                    <router-link to="/diner" class="dropdown-item">양식</router-link>
+                                <li class="has-children subdropmenu">
+                                    <router-link to="/diner" class="dropdown-item">메뉴별</router-link>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">한식</a></li>
+                                        <li><a href="#">중식</a></li>
+                                        <li><a href="#">일식</a></li>
+                                        <li><a href="#">양식</a></li>
+                                    </ul>
                                 </li>
                                 <li>
                                     <hr class="dropdown-divider" />
                                 </li>
-                                <li class="dropdown-item disabled">테마별</li>
-                                <li>
-                                    <router-link to="/diner" class="dropdown-item">데이트</router-link>
-                                </li>
-                                <li>
-                                    <router-link to="/diner" class="dropdown-item">모임</router-link>
-                                </li>
-                                <li>
-                                    <router-link to="/diner" class="dropdown-item">회식</router-link>
+                                <li class="has-children subdropmenu">
+                                    <router-link to="/diner" class="dropdown-item">테마별</router-link>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">데이트</a></li>
+                                        <li><a href="#">모임</a></li>
+                                        <li><a href="#">회식</a></li>
+                                    </ul>
                                 </li>
                             </ul>
                         </li>
