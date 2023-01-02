@@ -55,10 +55,10 @@
           </button>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" v-if="showAdminBoard">
           <label for="password">권한</label>
           <select class="form-select" v-model="currentUser.role[0].name">
-            <option selected>ROLE_USER</option>
+            <option>ROLE_USER</option>
             <option>ROLE_ADMIN</option>
           </select>
         </div>
@@ -148,6 +148,24 @@ export default {
     changePassword() {
       this.currentUser.password = "";
       this.changePwd = true;
+    },
+  },
+  computed: {
+    // 현재 유저
+    loginedUser() {
+      // 모듈 저장소 : this.$store.state.모듈명.state값
+      // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
+      return this.$store.state.auth.user;
+    },
+    // 관리자 접속인지 아닌지 확인하는 함수
+    showAdminBoard() {
+      if (this.loginedUser && this.loginedUser.roles) {
+        // if ROLE_ADMIN 있으면 true
+        //               없으면 false
+        return this.loginedUser.roles.includes("ROLE_ADMIN");
+      }
+      // loginedUser 없으면 false (메뉴가 안보임)
+      return false;
     },
   },
 
