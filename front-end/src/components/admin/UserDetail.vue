@@ -251,12 +251,12 @@ export default {
 
     // 클릭시 카카오 주소 api 띄우고 주소검색 데이터를 가져오는 함수
     popupaddress() {
-      let user = this.user;
+      let currentUser = this.currentUser;
       new daum.Postcode({
         oncomplete: function (data) {
           let kakaoaddress = data.address;
           if (kakaoaddress !== "") {
-            user.address = kakaoaddress;
+            currentUser.address = kakaoaddress;
           }
         },
         shorthand: false,
