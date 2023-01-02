@@ -1,5 +1,5 @@
 <template>
-  <div style="background-color:red">
+  <div>
     <section class="py-0">
       <div class="container">
         <div class="col-lg-5 mx-auto text-center mt-7">
@@ -23,7 +23,7 @@
 
       <div class="col-12 d-flex justify-content-end mb-2">
         <!-- 전체보기 눌렀을 때 음식점 리스트로 매개변수 날리면서 페이지 전환 -->
-        <a class="btn btn-lg btn-primary" href="#!"
+        <a class="btn btn-lg btn-primary" href="/diner"
           >전체보기 <i class="fas fa-chevron-right ms-2"> </i
         ></a>
       </div>

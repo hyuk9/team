@@ -1,8 +1,7 @@
 <template>
-  <div class="bg bg-info">
+  <div>
     <!-- ============================================-->
     <!-- 푸드컬럼1 시작 ============================-->
-    <h1 class="text-danger">최신 푸드칼럼 3개만 보이도록 설정해야함 - 지금은 있는거 다나옴</h1>
     <div v-for="(data, index) in column" :key="index">
       <section class="pb-2 pt-2">
         <div class="container">

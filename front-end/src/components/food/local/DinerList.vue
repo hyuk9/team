@@ -133,8 +133,7 @@
                           >detail >
                         </router-link>
                       </button>
-                      <button class="btn btn-danger ms-3"
-                      v-if="showAdminBoard">
+                      <button class="btn btn-danger ms-3" v-if="showAdminBoard">
                         <router-link
                           :to="'/diner/' + currentDiner.dno + '/edit'"
                           >Edit</router-link
@@ -175,11 +174,43 @@
           <!-- Side widgets-->
           <div class="col-lg-4">
             <!-- Map widget-->
-            <div class="card mt-5 mb-5">
-              <div class="card-header">내 주변 맛집</div>
-              <div class="card-body">
-                <div id="map" style="height: 600px"></div>
-              </div>
+            <div class="card mb-4">
+              <div class="card-header">지도</div>
+              <!-- <div id="map" style="height: 600px"></div> -->
+              <naver-maps
+                :height="height"
+                :width="width"
+                :mapOptions="mapOptions"
+                :initLayers="initLayers"
+                @load="onLoad"
+              >
+                <naver-info-window
+                  class="info-window"
+                  @load="onWindowLoad"
+                  :isOpen="info"
+                  :marker="marker"
+                >
+                  <div class="info-window-container">
+                    <h1>김밥천국</h1>
+                  </div>
+                </naver-info-window>
+                <naver-marker
+                  :lat="35.1525133"
+                  :lng="129.059547"
+                  @click="onMarkerClicked"
+                  @load="onMarkerLoaded"
+                />
+
+                <naver-ground-overlay
+                  :url="'//logoproject.naver.com/img/img_about.gif'"
+                  :bounds="{
+                    south: 36.7,
+                    north: 36.9,
+                    west: 126.5,
+                    east: 127.5,
+                  }"
+                />
+              </naver-maps>
             </div>
           </div>
         </div>
@@ -190,6 +221,8 @@
 
 <script>
 // axios 공통함수 import
+/* eslint-disable */
+
 import DinerDataService from "@/services/DinerDataService";
 
 export default {
@@ -210,6 +243,32 @@ export default {
       pageSize: 8, // 한페이지당 몇개를 화면에 보여줄지 결정하는 변수
 
       pageSizes: [3, 6, 9], // select box에 넣을 기본 데이터
+
+      name: "HelloWorld",
+      width: 500,
+      height: 600,
+      info: false,
+      marker: null,
+      count: 1,
+      map: null,
+      isCTT: false,
+      mapOptions: {
+        lat: 35.1525133,
+        lng: 129.059547,
+        zoom: 15,
+        zoomControl: true,
+        zoomControlOptions: { position: "TOP_RIGHT" },
+        mapTypeControl: true,
+      },
+      initLayers: [
+        "BACKGROUND",
+        "BACKGROUND_DETAIL",
+        "POI_KOREAN",
+        "TRANSIT",
+        "ENGLISH",
+        "CHINESE",
+        "JAPANESE",
+      ],
     };
   },
   // 함수 정의하는 곳 : methods:
@@ -274,8 +333,8 @@ export default {
   // 화면이 뜨자마자 실행되는 이벤트(라이프 사이클 함수) : mounted(), created()
   mounted() {
     // 화면 로딩시 전체 조회함수 실행
-    this.retrieveDiner((this.searchKeyword = "서울"));
-    this.searchKeyword = "";
+    this.retrieveDiner();
+    // this.searchKeyword = "";
   },
 };
 </script>

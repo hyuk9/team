@@ -104,7 +104,7 @@
           <span class="badge bg-warning text-dark">추가</span>
         </router-link> -->
         <!-- TODO: badge를 버튼으로 교체 -->
-        <div v-if="showAdminBoard">
+        <div v-if="showLoginUser">
           <router-link class="offset-11" to="/add-column/">
             <button type="button" class="btn btn-warning btn-sm">글쓰기</button>
           </router-link>
@@ -229,12 +229,12 @@ export default {
       return this.$store.state.auth.user;
     },
 
-    // 관리자 접속인지 아닌지 확인하는 함수
-    showAdminBoard() {
+    // 일반유저 접속인지 아닌지 확인하는 함수
+    showLoginUser() {
       if (this.currentUser && this.currentUser.roles) {
         // if ROLE_ADMIN 있으면 true
         //               없으면 false
-        return this.currentUser.roles.includes("ROLE_ADMIN");
+        return this.currentUser.roles.includes("ROLE_USER");
       }
       // currentUser 없으면 false (메뉴가 안보임)
       return false;

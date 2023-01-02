@@ -30,6 +30,9 @@ public interface DinerRepository extends JpaRepository<Diner, Integer> {
     Page<Diner> findAllByMenuContaining(String menu, Pageable pageable);
     Page<Diner> findAllByThemeContaining(String theme, Pageable pageable);
 
+
+//     g
+
 }
 
 
