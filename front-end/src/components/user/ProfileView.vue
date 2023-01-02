@@ -208,7 +208,7 @@
                 <h5 class="card-title">강릉현대장칼국수 부산2호점</h5>
                 <div class="card-text">
                   <span class="text-warning me-2"
-                    ><i class="fas fa-map-marker-alt"></i></span
+                    ><i class="fas fa-map-marker-alt" /></span
                   ><span class="text-primary">서면</span>
                 </div>
               </div>
@@ -235,7 +235,7 @@
                 <h5 class="card-title">디퀄리타</h5>
                 <div class="card-text">
                   <span class="text-warning me-2"
-                    ><i class="fas fa-map-marker-alt"></i></span
+                    ><i class="fas fa-map-marker-alt" /></span
                   ><span class="text-primary">서면</span>
                 </div>
               </div>
@@ -262,7 +262,7 @@
                 <h5 class="card-title">후라토식당 서면점</h5>
                 <div class="card-text">
                   <span class="text-warning me-2"
-                    ><i class="fas fa-map-marker-alt"></i></span
+                    ><i class="fas fa-map-marker-alt" /></span
                   ><span class="text-primary">서면</span>
                 </div>
               </div>
