@@ -48,62 +48,15 @@ public class Review extends BaseTimeEntity {
     private Integer dno;
 
     @javax.persistence.Column
-    private String review_title;
+    private Integer rating;
 
     @javax.persistence.Column
-    private String review_content;
+    private String rcontent;
 
     @javax.persistence.Column
-    private String review_photo;
+    private String rphoto;
 
     @javax.persistence.Column
-    private String review_writer;
+    private String rwriter;
 
-    public Integer getRno() {
-        return rno;
-    }
-
-    public void setRno(Integer rno) {
-        this.rno = rno;
-    }
-
-    public Integer getDno() {
-        return dno;
-    }
-
-    public void setDno(Integer dno) {
-        this.dno = dno;
-    }
-
-    public String getReview_title() {
-        return review_title;
-    }
-
-    public void setReview_title(String review_title) {
-        this.review_title = review_title;
-    }
-
-    public String getReview_content() {
-        return review_content;
-    }
-
-    public void setReview_content(String review_content) {
-        this.review_content = review_content;
-    }
-
-    public String getReview_photo() {
-        return review_photo;
-    }
-
-    public void setReview_photo(String review_photo) {
-        this.review_photo = review_photo;
-    }
-
-    public String getReview_writer() {
-        return review_writer;
-    }
-
-    public void setReview_writer(String review_writer) {
-        this.review_writer = review_writer;
-    }
 }
