@@ -172,11 +172,13 @@
                   리뷰보기
                 </button></router-link
               >
-              <router-link :to="'/add-reservation/' + currentDiner.dno"
-                ><button type="button" class="btn btn-primary">
-                  예약
-                </button></router-link
+              <button
+                type="button"
+                class="btn btn-primary"
+                v-on:click="reservationToggle"
               >
+                예약
+              </button>
             </div>
           </article>
           <!-- Comments section-->
@@ -188,8 +190,8 @@
             </div>
           </section>
         </div>
-        <!-- Side widgets-->
-        <div class="col-lg-4">
+        <!-- Side widgets Map&Chart 시작 -->
+        <div class="col-lg-4" v-if="mapNchart">
           <!-- Map widget-->
           <div class="card mb-4">
             <div class="card-header">지도</div>
@@ -233,6 +235,13 @@
             </div>
           </div>
         </div>
+        <!-- Side widgets Map&Chart 끝 -->
+
+        <!-- Side widgets 예약하기 시작 -->
+        <div class="col-lg-4" v-if="showReservation">
+          <AddReservation />
+        </div>
+        <!-- Side widgets 예약하기 끝 -->
       </div>
     </div>
     <div id="chart" class="col-lg-4 bg bg-info">
@@ -250,6 +259,7 @@ import Chart from "chart.js/auto";
 import DinerDataService from "@/services/DinerDataService";
 import ReviewDataService from "@/services/ReviewDataService";
 import DinerCommentVue from "./DinerComment.vue";
+import AddReservation from "@/components/reservation/AddReservation.vue";
 
 export default {
   data() {
@@ -262,6 +272,9 @@ export default {
 
       currentDiner: null,
       message: "",
+
+      mapNchart: true,
+      showReservation: false,
 
       // 페이징을 위한 변수 정의
       page: 1, // 현재 페이지
@@ -297,7 +310,7 @@ export default {
       ],
 
       chartData: {
-       labels: ["맛", "친절도", "거리", "청결도"],
+        labels: ["맛", "친절도", "거리", "청결도"],
         datasets: [
           {
             label: "여성",
@@ -327,6 +340,7 @@ export default {
   },
   components: {
     DinerCommentVue,
+    AddReservation,
   },
   methods: {
     // axios , 모든 부서 정보 조회 요청 함수
@@ -425,6 +439,19 @@ export default {
     onMarkerLoaded(vue) {
       this.marker = vue.marker.set;
     },
+    // 함수(메소드)
+    reservationToggle() {
+      this.mapNchart = !this.mapNchart;
+      // mapNchart == false 이면 예약폼을 보여주고
+      // mapNchart == true 이면 지도와 차트 보여주기
+      if (this.mapNchart == false) {
+        // 이미지 보여주기 : showReservation = true
+        this.showReservation = true;
+      } else {
+        // 이미지 안보여주기
+        this.showReservation = false;
+      }
+    },
   },
   // 화면이 뜨자 마자 실행되는 이벤트
   mounted() {
@@ -455,5 +482,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

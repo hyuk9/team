@@ -1,14 +1,13 @@
 <template>
   <div id="app">
     <!-- <NavCom /> -->
-    <SubnavCom/>
+    <SubnavCom />
     <!-- 특정 조건에서만 보여주는 함수 추가 -->
-    <HeaderCom v-if="wantToShow()"/>
+    <HeaderCom v-if="wantToShow()" />
     <router-view />
     <FooterCom />
   </div>
 </template>
-
 
 <script>
 // import NavCom from "@/components/common/NavCom.vue";
@@ -40,13 +39,14 @@ export default {
     wantToShow() {
       if (
         // 제외할 페이지 경로
-        this.$route.path == "/" || 
+        this.$route.path == "/" ||
         this.$route.path == "/register" ||
         this.$route.path == "/findIdPw" ||
         this.$route.path == "/findId" ||
         this.$route.path == "/findPw" ||
-        this.$route.path == "/termsOfService" 
-        ) {
+        this.$route.path == "/termsOfService" ||
+        this.$route.path == "//add-reservation"
+      ) {
         return false;
       } else {
         return true;

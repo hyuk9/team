@@ -92,7 +92,7 @@
             />
           </div>
 
-          <!-- 예약 시간 1 -->
+          <!-- 예약 시간 -->
           <div class="input__block">
             <h5>예약 시간</h5>
             <input
@@ -105,73 +105,96 @@
             />
           </div>
 
-          <!-- 예약시간 2 -->
-          <div class="input__block">
+          <!-- 예약시간 -->
+          <!-- <div class="input__block">
             <h5>예약 시간</h5>
-            <div class="p-3 p-sm-5">
-              <span id="selTime">{{ selectedTime }}</span>
-              <div class="row text-center mx-0">
-                <div class="col-md-2 col-4 my-1 px-2">
-                  <div class="cell py-1">11:00</div>
-                </div>
-                <div class="col-md-2 col-4 my-1 px-2">
-                  <div class="cell py-1">11:30</div>
-                </div>
-                <div class="col-md-2 col-4 my-1 px-2">
-                  <div class="cell py-1">12:00</div>
-                </div>
-                <div class="col-md-2 col-4 my-1 px-2">
-                  <div class="cell py-1">12:30</div>
-                </div>
-                <div class="col-md-2 col-4 my-1 px-2">
-                  <div class="cell py-1">13:00</div>
-                </div>
-                <div class="col-md-2 col-4 my-1 px-2">
-                  <div class="cell py-1">13:30</div>
-                </div>
-              </div>
-              <div class="row text-center mx-0">
-                <div class="col-md-2 col-4 my-1 px-2">
-                  <div class="cell py-1">14:00</div>
-                </div>
-                <div class="col-md-2 col-4 my-1 px-2">
-                  <div class="cell py-1">14:30</div>
-                </div>
-                <div class="col-md-2 col-4 my-1 px-2">
-                  <div class="cell py-1">15:00</div>
-                </div>
-                <div class="col-md-2 col-4 my-1 px-2">
-                  <div class="cell py-1">15:30</div>
-                </div>
-                <div class="col-md-2 col-4 my-1 px-2">
-                  <div class="cell py-1">16:00</div>
-                </div>
-                <div class="col-md-2 col-4 my-1 px-2">
-                  <div class="cell py-1">16:30</div>
-                </div>
-              </div>
-              <div class="row text-center mx-0">
-                <div class="col-md-2 col-4 my-1 px-2">
-                  <div class="cell py-1">17:00</div>
-                </div>
-                <div class="col-md-2 col-4 my-1 px-2">
-                  <div class="cell py-1">17:30</div>
-                </div>
-                <div class="col-md-2 col-4 my-1 px-2">
-                  <div class="cell py-1">18:00</div>
-                </div>
-                <div class="col-md-2 col-4 my-1 px-2">
-                  <div class="cell py-1">18:30</div>
-                </div>
-                <div class="col-md-2 col-4 my-1 px-2">
-                  <div class="cell py-1">19:00</div>
-                </div>
-                <div class="col-md-2 col-4 my-1 px-2">
-                  <div class="cell py-1">19:30</div>
+            <div class="accordion" id="accordionExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne"
+                    aria-expanded="false"
+                    aria-controls="collapseOne"
+                    id="selTime"
+                  ></button>
+                </h2>
+                <div
+                  id="collapseOne"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#accordionExample"
+                >
+                  <div class="accordion-body">
+                    <div class="p-3 p-sm-5">
+                      <div class="row text-center mx-0">
+                        <div class="col-md-2 col-4 my-1 px-2">
+                          <div class="cell py-1">11:00</div>
+                        </div>
+                        <div class="col-md-2 col-4 my-1 px-2">
+                          <div class="cell py-1">11:30</div>
+                        </div>
+                        <div class="col-md-2 col-4 my-1 px-2">
+                          <div class="cell py-1">12:00</div>
+                        </div>
+                        <div class="col-md-2 col-4 my-1 px-2">
+                          <div class="cell py-1">12:30</div>
+                        </div>
+                        <div class="col-md-2 col-4 my-1 px-2">
+                          <div class="cell py-1">13:00</div>
+                        </div>
+                        <div class="col-md-2 col-4 my-1 px-2">
+                          <div class="cell py-1">13:30</div>
+                        </div>
+                      </div>
+                      <div class="row text-center mx-0">
+                        <div class="col-md-2 col-4 my-1 px-2">
+                          <div class="cell py-1">14:00</div>
+                        </div>
+                        <div class="col-md-2 col-4 my-1 px-2">
+                          <div class="cell py-1">14:30</div>
+                        </div>
+                        <div class="col-md-2 col-4 my-1 px-2">
+                          <div class="cell py-1">15:00</div>
+                        </div>
+                        <div class="col-md-2 col-4 my-1 px-2">
+                          <div class="cell py-1">15:30</div>
+                        </div>
+                        <div class="col-md-2 col-4 my-1 px-2">
+                          <div class="cell py-1">16:00</div>
+                        </div>
+                        <div class="col-md-2 col-4 my-1 px-2">
+                          <div class="cell py-1">16:30</div>
+                        </div>
+                      </div>
+                      <div class="row text-center mx-0">
+                        <div class="col-md-2 col-4 my-1 px-2">
+                          <div class="cell py-1">17:00</div>
+                        </div>
+                        <div class="col-md-2 col-4 my-1 px-2">
+                          <div class="cell py-1">17:30</div>
+                        </div>
+                        <div class="col-md-2 col-4 my-1 px-2">
+                          <div class="cell py-1">18:00</div>
+                        </div>
+                        <div class="col-md-2 col-4 my-1 px-2">
+                          <div class="cell py-1">18:30</div>
+                        </div>
+                        <div class="col-md-2 col-4 my-1 px-2">
+                          <div class="cell py-1">19:00</div>
+                        </div>
+                        <div class="col-md-2 col-4 my-1 px-2">
+                          <div class="cell py-1">19:30</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
           <!-- sign in button -->
           <button @click="saveReservation" class="reservation__btn mt-5">
@@ -186,7 +209,7 @@
 <script>
 // @ is an alias to /src
 /* eslint-disable */
-import ReservationDataService from "../../services/ReservationDataService";
+import ReservationDataService from "@/services/ReservationDataService";
 
 export default {
   data() {
@@ -215,7 +238,8 @@ export default {
         phone2: this.reservation.phone2,
         phone3: this.reservation.phone3,
         reservationDate: this.$refs.reservationDate.value,
-        reservationTime: document.querySelector("#selTime").innerHTML,
+        reservationTime: this.$refs.reservationTime.value,
+        // reservationTime: document.querySelector("#selTime").innerHTML,
       };
       ReservationDataService.create(data)
         .then((response) => {
@@ -288,26 +312,21 @@ export default {
         dropdown: true,
         scrollbar: true,
       });
-      $(function () {
-        $(".cell").click(function () {
-          $(".cell").removeClass("select");
-          $(this).addClass("select");
-          $(this).text();
-          // TODO: document.querySelector("#selTime").innerHTML = $(this).text(); 변경
-          document.querySelector("#selTime").innerHTML = $(this).text();
-        });
-      });
+      // $(function () {
+      //   $(".cell").click(function () {
+      //     $(".cell").removeClass("select");
+      //     $(this).addClass("select");
+      //     $(this).text();
+      //     // TODO: document.querySelector("#selTime").innerHTML = $(this).text(); 변경
+      //     document.querySelector("#selTime").innerHTML = $(this).text();
+      //   });
+      // });
     });
   },
 };
 </script>
 
 <style lang="scss" scoped>
-/* body {
-  font-family: "Montserrat", sans-serif;
-  background: white;
-} */
-
 h5 {
   display: inline-block;
   color: #ffb30e;
@@ -337,6 +356,7 @@ h5 {
   font-family: "Montserrat", sans-serif;
   padding: 0 10px;
 }
+
 /* 셀렉트 박스 둥글게  */
 select {
   border-radius: 8px;

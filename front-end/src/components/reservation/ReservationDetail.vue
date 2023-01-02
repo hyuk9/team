@@ -80,6 +80,19 @@
           </div>
 
           <!-- 예약 날짜 -->
+          <!-- <div class="input__block">
+            <h5>예약 날짜</h5>
+            <input
+              v-model="currentReservation.reservationDate"
+              required
+              type="date"
+              class="input"
+              id="reservationDate"
+              placeholder="날짜 선택"
+            />
+          </div> -->
+
+          <!-- 예약 날짜 -->
           <div class="input__block">
             <h5>예약 날짜</h5>
             <input
@@ -88,7 +101,7 @@
               type="date"
               class="input"
               id="reservationDate"
-              name="reservationDate"
+              placeholder="날짜 선택"
             />
           </div>
 
@@ -101,7 +114,7 @@
               type="time"
               class="input"
               id="reservationTime"
-              name="reservationTime"
+              placeholder="시간 선택"
             />
           </div>
 
@@ -121,13 +134,14 @@
 </template>
 
 <script>
-import ReservationDataService from "../../services/ReservationDataService";
+// @ is an alias to /src
+/* eslint-disable */
+import ReservationDataService from "@/services/ReservationDataService";
 
 export default {
   data() {
     return {
       currentReservation: null,
-      message: "",
     };
   },
   methods: {
@@ -184,7 +198,7 @@ export default {
             showConfirmButton: false,
             timer: 1000,
           });
-          // 첫페이지(전체목록_조회_페이지) 강제 이동 : /dept
+          // 첫페이지(전체목록_조회_페이지) 강제 이동 : /reservation
           this.$router.push("/reservation");
         })
         // 실패하면 .catch() 에러메세지가 전송됨
@@ -195,8 +209,40 @@ export default {
   },
   // 화면 뜨자마자 실행되는 이벤트
   mounted() {
-    this.message = "";
     this.getReservation(this.$route.params.rid);
+
+    $(function () {
+      $("#reservationDate").datepicker({
+        dateFormat: "yy-mm-dd",
+        minDate: 1,
+        maxDate: "+1m",
+        dayNamesMin: ["일", "월", "화", "수", "목", "금", "토"],
+        monthNames: [
+          "1월",
+          "2월",
+          "3월",
+          "4월",
+          "5월",
+          "6월",
+          "7월",
+          "8월",
+          "9월",
+          "10월",
+          "11월",
+          "12월",
+        ],
+      });
+      $("#reservationTime").timepicker({
+        timeFormat: "H:mm",
+        interval: 30,
+        minTime: "11",
+        maxTime: "8:00pm",
+        startTime: "11:00",
+        dynamic: false,
+        dropdown: true,
+        scrollbar: true,
+      });
+    });
   },
 };
 </script>
@@ -324,9 +370,9 @@ select {
   box-shadow: 0 0 0 rgba(233, 30, 99, 0);
 }
 
-/* ::placeholder {
+::placeholder {
   color: rgb(128, 128, 128, 0.6) !important;
-} */
+}
 
 button {
   font-family: ONE-Mobile-POP !important;
