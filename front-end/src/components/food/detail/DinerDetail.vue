@@ -167,11 +167,9 @@
                   찜
                 </button></router-link
               >
-              <router-link to="/#"
-                ><button type="button" class="btn btn-primary">
-                  리뷰보기
-                </button></router-link
-              >
+              
+              <b-button v-b-modal.modal-prevent-closing>리뷰 등록</b-button>
+
               <button
                 type="button"
                 class="btn btn-primary"
