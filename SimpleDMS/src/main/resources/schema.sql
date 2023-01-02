@@ -234,7 +234,7 @@ DROP TABLE TB_USER_ROLE CASCADE CONSTRAINTS;
 
 -- 유저 테이블
 CREATE TABLE TB_USER(
-                        UID          NUMBER NOT NULL PRIMARY KEY,
+                        ID          NUMBER NOT NULL PRIMARY KEY,
                         USERNAME    VARCHAR2(1000),
                         EMAIL       VARCHAR2(1000),
                         PASSWORD    VARCHAR2(1000),
