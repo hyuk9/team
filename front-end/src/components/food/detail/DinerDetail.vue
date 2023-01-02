@@ -160,7 +160,6 @@
               class="btn-group btn-group-lg"
               role="group"
               aria-label="Basic example"
-              style="width: 950px"
             >
               <router-link to="/#"
                 ><button type="button" class="btn btn-primary">
@@ -266,7 +265,7 @@ export default {
       currentReview: null,
       currentIndex: -1,
       // dname: "", ->(변경) searchDname: "",
-      searchReview_writer: "",
+      searchRwriter: "",
 
       currentDiner: null,
       message: "",
@@ -345,7 +344,7 @@ export default {
     retrieveReview() {
       // getAll() ->(변경) getAll(dname, page, size)
       ReviewDataService.getAll(
-        this.searchReview_id,
+        this.searchDno,
         this.page - 1,
         this.pageSize
       )
