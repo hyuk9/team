@@ -1,9 +1,7 @@
 <template>
   <div>
     <!-- detali Start -->
-    
     <div class="container">
-
       <div class="mb-3">
         <label for="title" class="form-label">제목</label>
         <input
@@ -12,7 +10,7 @@
           id="title"
           required
           name="title"
-          v-model="currentColumn.columnTitle"
+          v-model="currentColumn.title"
         />
       </div>
       <div class="mb-3">
@@ -23,7 +21,7 @@
           id="writer"
           required
           name="writer"
-          v-model="currentColumn.columnWriter"
+          v-model="currentColumn.writer"
         />
       </div>
       <div class="mb-3">
@@ -34,13 +32,16 @@
           rows="8"
           required
           name="content"
-          v-model="currentColumn.columnContent"
+          v-model="currentColumn.content"
         ></textarea>
       </div>
       <!-- 게시글 작성자 id == 현재 로그인한 유저 id 이면 보이거나 관리자 계정이면 보이게 설정해야함 -->
       <div class="mb-3" v-if="showAdminBoard">
         <button @click="updateColumn" class="btn btn-primary me-3">수정</button>
-        <button @click="deleteColumn" class="btn btn-danger">삭제</button>
+        <button @click="deleteColumn" class="btn btn-danger me-3">삭제</button>
+      </div>
+      <div>
+        <button @click="goColumnList" class="btn btn-danger me-3">목록보기</button>
       </div>
       <div class="alert alert-success" role="alert" v-if="message">
         {{ message }}
@@ -106,6 +107,10 @@ export default {
           console.log(e);
         });
     },
+    // 푸드컬럼리스트로 페이지 이동하는 함수
+    goColumnList(){
+      this.$router.push("/column");
+    }
   },
   computed: {
     // 현재 유저

@@ -44,8 +44,7 @@ export default {
         this.$route.path == "/findIdPw" ||
         this.$route.path == "/findId" ||
         this.$route.path == "/findPw" ||
-        this.$route.path == "/termsOfService" ||
-        this.$route.path == "//add-reservation"
+        this.$route.path == "/termsOfService"
       ) {
         return false;
       } else {

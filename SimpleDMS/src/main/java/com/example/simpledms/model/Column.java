@@ -42,21 +42,24 @@ public class Column extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE
             , generator = "SQ_COLUMN_GENERATOR"
     )
-
     @javax.persistence.Column
     private Integer cid;
 
     @javax.persistence.Column
-    private String columnTitle;
+    private String title;
 
     @javax.persistence.Column
-    private String columnContent;
+    private String content;
 
     @javax.persistence.Column
-    private String columnPhoto;
+    private String photo;
 
     @javax.persistence.Column
-    private String columnWriter;
+    private String writer;
+
+//    글쓴사람 id값
+    @javax.persistence.Column
+    private Integer id;
 }
 
 

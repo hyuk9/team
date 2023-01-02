@@ -114,128 +114,90 @@ VALUES (SQ_FREE.nextval, '김시습', '이번에 책 한권 냈는데 한번 봐
 
 -- Todo:예약 테이블
 INSERT INTO TB_RESERVATION
-VALUES (SQ_RESERVATION.nextval, '식당1', '홍길동', '3', '010-1234-5678', '1', '12/24/2022', '18:30', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_RESERVATION.nextval, '식당1', '홍길동', '3', '010-1234-5678', '1', '2022-12-24', '18:30', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_RESERVATION
-VALUES (SQ_RESERVATION.nextval, '식당2', '장길산', '2', '010-1234-5678', '2', '12/24/2022', '18:30', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_RESERVATION.nextval, '식당2', '장길산', '2', '010-1234-5678', '2', '2022-12-24', '18:30', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_RESERVATION
-VALUES (SQ_RESERVATION.nextval, '식당3', '임꺽정', '4', '010-1234-5678', '3', '12/24/2022', '18:30', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_RESERVATION.nextval, '식당3', '임꺽정', '4', '010-1234-5678', '3', '2022-12-24', '18:30', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_RESERVATION
-VALUES (SQ_RESERVATION.nextval, '식당4', '전우치', '2', '010-1234-5678', '4', '12/24/2022', '18:30', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_RESERVATION.nextval, '식당4', '전우치', '2', '010-1234-5678', '4', '2022-12-24', '18:30', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_RESERVATION
-VALUES (SQ_RESERVATION.nextval, '식당5', '아라치', '2', '010-1234-5678', '5', '12/24/2022', '18:30', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_RESERVATION.nextval, '식당5', '아라치', '2', '010-1234-5678', '5', '2022-12-24', '18:30', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_RESERVATION
-
-VALUES (SQ_RESERVATION.nextval, '식당6', '홍길동', '3', '010', '1234', '5678', '2023-01-14', '18:30', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_RESERVATION.nextval, '식당6', '홍길동', '3', '010-1234-5678', '6', '2022-12-24', '18:30', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_RESERVATION
-VALUES (SQ_RESERVATION.nextval, '식당7', '장길산', '2', '010', '1234', '5678', '2023-01-14', '18:30', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_RESERVATION.nextval, '식당7', '장길산', '2', '010-1234-5678', '7', '2022-12-24', '18:30', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_RESERVATION
-VALUES (SQ_RESERVATION.nextval, '식당8', '임꺽정', '4', '010', '1234', '5678', '2023-01-14', '18:30', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_RESERVATION.nextval, '식당8', '임꺽정', '4', '010-1234-5678', '8', '2022-12-24', '18:30', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_RESERVATION
-VALUES (SQ_RESERVATION.nextval, '식당9', '전우치', '2', '010', '1234', '5678', '2023-01-14', '18:30', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_RESERVATION.nextval, '식당9', '전우치', '2', '010-1234-5678', '9', '2022-12-24', '18:30', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_RESERVATION
-VALUES (SQ_RESERVATION.nextval, '식당10', '아라치', '2', '010', '1234', '5678', '2023-01-14', '18:30', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_RESERVATION.nextval, '식당10', '아라치', '2', '010-1234-5678', '10', '2022-12-24', '18:30', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_RESERVATION
-VALUES (SQ_RESERVATION.nextval, '식당11', '홍길동', '3', '010', '1234', '5678', '2023-01-14', '18:30', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_RESERVATION.nextval, '식당11', '홍길동', '3', '010-1234-5678', '11', '2022-12-24', '18:30', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_RESERVATION
-VALUES (SQ_RESERVATION.nextval, '식당12', '장길산', '2', '010', '1234', '5678', '2023-01-14', '18:30', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_RESERVATION.nextval, '식당12', '장길산', '2', '010-1234-5678', '12', '2022-12-24', '18:30', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_RESERVATION
-VALUES (SQ_RESERVATION.nextval, '식당13', '임꺽정', '4', '010', '1234', '5678', '2023-01-14', '18:30', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_RESERVATION.nextval, '식당13', '임꺽정', '4', '010-1234-5678', '13', '2022-12-24', '18:30', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_RESERVATION
-VALUES (SQ_RESERVATION.nextval, '식당14', '전우치', '2', '010', '1234', '5678', '2023-01-14', '18:30', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_RESERVATION.nextval, '식당14', '전우치', '2', '010-1234-5678', '14', '2022-12-24', '18:30', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_RESERVATION
-VALUES (SQ_RESERVATION.nextval, '식당15', '아라치', '2', '010', '1234', '5678', '2023-01-14', '18:30', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_RESERVATION.nextval, '식당15', '아라치', '2', '010-1234-5678', '15', '2022-12-24', '18:30', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_RESERVATION
-VALUES (SQ_RESERVATION.nextval, '식당16', '홍길동', '3', '010', '1234', '5678', '2023-01-14', '18:30', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_RESERVATION.nextval, '식당16', '홍길동', '3', '010-1234-5678', '16', '2022-12-24', '18:30', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_RESERVATION
-VALUES (SQ_RESERVATION.nextval, '식당17', '장길산', '2', '010', '1234', '5678', '2023-01-14', '18:30', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_RESERVATION.nextval, '식당17', '장길산', '2', '010-1234-5678', '17', '2022-12-24', '18:30', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_RESERVATION
-VALUES (SQ_RESERVATION.nextval, '식당18', '임꺽정', '4', '010', '1234', '5678', '2023-01-14', '18:30', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_RESERVATION.nextval, '식당18', '임꺽정', '4', '010-1234-5678', '18', '2022-12-24', '18:30', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_RESERVATION
-VALUES (SQ_RESERVATION.nextval, '식당19', '전우치', '2', '010', '1234', '5678', '2023-01-14', '18:30', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_RESERVATION.nextval, '식당19', '전우치', '2', '010-1234-5678', '19', '2022-12-24', '18:30', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_RESERVATION
-VALUES (SQ_RESERVATION.nextval, '식당20', '아라치', '2', '010', '1234', '5678', '2023-01-14', '18:30', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_RESERVATION.nextval, '식당20', '아라치', '2', '010-1234-5678', '20', '2022-12-24', '18:30', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_RESERVATION
-VALUES (SQ_RESERVATION.nextval, '식당21', '홍길동', '3', '010', '1234', '5678', '2023-01-14', '18:30', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_RESERVATION.nextval, '식당21', '홍길동', '3', '010-1234-5678', '21', '2022-12-24', '18:30', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_RESERVATION
-VALUES (SQ_RESERVATION.nextval, '식당22', '장길산', '2', '010', '1234', '5678', '2023-01-14', '18:30', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_RESERVATION.nextval, '식당22', '장길산', '2', '010-1234-5678', '22', '2022-12-24', '18:30', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_RESERVATION
-VALUES (SQ_RESERVATION.nextval, '식당23', '임꺽정', '4', '010', '1234', '5678', '2023-01-14', '18:30', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_RESERVATION.nextval, '식당23', '임꺽정', '4', '010-1234-5678', '23', '2022-12-24', '18:30', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_RESERVATION
-VALUES (SQ_RESERVATION.nextval, '식당24', '전우치', '2', '010', '1234', '5678', '2023-01-14', '18:30', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_RESERVATION.nextval, '식당24', '전우치', '2', '010-1234-5678', '24', '2022-12-24', '18:30', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_RESERVATION
-VALUES (SQ_RESERVATION.nextval, '식당25', '아라치', '2', '010', '1234', '5678', '2023-01-14', '18:30', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_RESERVATION.nextval, '식당25', '아라치', '2', '010-1234-5678', '25', '2022-12-24', '18:30', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 
 -- Todo:음식점 테이블
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER1', '4.5', '서울', '010-0000-0000', '일식', '데이트', '리뷰1', ' ', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_DINER.nextval, 'DINER1', '4.5','해운대구','010-0000-0000','일식', '데이트', '리뷰1',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER2', '4.6', '부산', '010-0000-0000', '한식', '모임', '리뷰2', ' ', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_DINER.nextval, 'DINER2', '4.6','남구','010-0000-0000','한식', '모임', '리뷰2',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER3', '2.6', '부산', '010-0000-0000', '중식', '회식', '리뷰3', ' ', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_DINER.nextval, 'DINER3', '2.6','금정구','010-0000-0000','중식', '회식', '리뷰3',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER4', '2.5', '부산', '010-0000-0000', '양식', '데이트', '리뷰4', ' ', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_DINER.nextval, 'DINER4', '2.5','기장구','010-0000-0000','양식', '데이트', '리뷰4',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER5', '4.9', '부산', '010-0000-0000', '한식', '모임', '리뷰5', ' ', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_DINER.nextval, 'DINER5', '4.9','동래구','010-0000-0000','한식', '모임', '리뷰5',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER6', '3.5', '부산', '010-0000-0000', '일식', '회식', '리뷰6', ' ', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_DINER.nextval, 'DINER6', '3.5','부산진구','010-0000-0000','일식', '회식', '리뷰6',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER7', '5.0', '부산', '010-0000-0000', '한식', '데이트', '리뷰7', ' ', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_DINER.nextval, 'DINER7', '5.0','영도구','010-0000-0000','한식', '데이트', '리뷰7',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER8', '3.4', '부산', '010-0000-0000', '중식', '모임', '리뷰8', ' ', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_DINER.nextval, 'DINER8', '3.4','강서구','010-0000-0000','중식', '모임', '리뷰8',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER9', '3.5', '부산', '010-0000-0000', '양식', '회식', '리뷰9', ' ', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_DINER.nextval, 'DINER9', '3.5','해운대구','010-0000-0000','양식', '회식', '리뷰9',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER10', '3.0', '부산', '010-0000-0000', '한식', '데이트', '리뷰10', ' ', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_DINER.nextval, 'DINER10', '3.0','남구','010-0000-0000','한식', '데이트', '리뷰10',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER11', '4.2', '부산', '010-0000-0000', '일식', '모임', '리뷰11', ' ', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_DINER.nextval, 'DINER11', '4.2','금정구','010-0000-0000','일식', '모임', '리뷰11',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER12', '4.6', '부산', '010-0000-0000', '한식', '회식', '리뷰12', ' ', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_DINER.nextval, 'DINER12', '4.6','기장구','010-0000-0000','한식', '회식', '리뷰12',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER13', '1.5', '부산', '010-0000-0000', '중식', '데이트', '리뷰13', ' ', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_DINER.nextval, 'DINER13', '1.5','동래구','010-0000-0000','중식', '데이트', '리뷰13',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER14', '3.6', '부산', '010-0000-0000', '양식', '모임', '리뷰14', ' ', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_DINER.nextval, 'DINER14', '3.6','부산진구','010-0000-0000','양식', '모임', '리뷰14',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER15', '1.9', '부산', '010-0000-0000', '한식', '회식', '리뷰15', ' ', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_DINER.nextval, 'DINER15', '1.9','영도구','010-0000-0000','한식', '회식', '리뷰15',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+INSERT INTO TB_DINER
+VALUES (SQ_DINER.nextval, 'DINER16', '2.7','강서구','010-0000-0000','한식', '회식', '리뷰16',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+
 
 -- Todo:리뷰 테이블
 INSERT INTO TB_REVIEW
@@ -254,15 +216,15 @@ VALUES (SQ_REVIEW.nextval, '아라치', '6', '내용6', '3', '사진6', 'N', TO_
 -- Todo: 메뉴 테이블
 -- Todo: 음식점 테이블이랑 조인 예정
 INSERT INTO TB_MENU
-VALUES (SQ_MENU.nextval, '메뉴1', '가격1', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_MENU.nextval, '메뉴1', '가격1', '1', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_MENU
-VALUES (SQ_MENU.nextval, '메뉴2', '가격2', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_MENU.nextval, '메뉴2', '가격2', '2', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_MENU
-VALUES (SQ_MENU.nextval, '메뉴3', '가격3', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_MENU.nextval, '메뉴3', '가격3', '3', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_MENU
-VALUES (SQ_MENU.nextval, '메뉴4', '가격4', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_MENU.nextval, '메뉴4', '가격4', '4', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_MENU
-VALUES (SQ_MENU.nextval, '메뉴5', '가격5', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_MENU.nextval, '메뉴5', '가격5', '5', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 
 -- Todo: 평점 테이블
 -- Todo: 리뷰 테이블이랑 조인 예정
@@ -280,14 +242,11 @@ VALUES (SQ_SCORE.nextval, '5', '5', '5', '5', '5', 'N', TO_CHAR(SYSDATE, 'YYYY-M
 
 -- Todo:푸드컬럼 테이블
 INSERT INTO TB_COLUMN
-VALUES (SQ_COLUMN.nextval, '연말연시 맛집 추천', '한 해의 마지막과 새해의 시작을 이곳에서', '사진', '장동혁', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_COLUMN.nextval, '연말연시 맛집 추천', '한 해의 마지막과 새해의 시작을 이곳에서','사진','장동혁', '2', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_COLUMN
-VALUES (SQ_COLUMN.nextval, '서면 맛집 Best5', '부산토박이가 알려주는 로컬맛집', '사진2', '전성혜', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_COLUMN.nextval, '서면 맛집 Best5', '부산토박이가 알려주는 로컬맛집', '사진2', '전성혜', '4','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_COLUMN
-VALUES (SQ_COLUMN.nextval, '여기가 바로 가성비 맛집', '서비스는 필요없다. 오로지 가성비로만 승부', '사진3', '조성모', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_COLUMN.nextval, '여기가 바로 가성비 맛집', '서비스는 필요없다. 오로지 가성비로만 승부', '사진3', '조성모', '3', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 
 
 -- TODO: login 샘플 데이터
@@ -308,25 +267,19 @@ VALUES (SQ_USER.NEXTVAL, 'forbob', 'forbob@naver.com', '$2a$10$TG1a5ywSrGNgf7/fF
         '강태경', '1991.01.01', 'male', '010-2020-0202', '부산시 영도구 남항동 123가', 'N',
         TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 INSERT INTO TB_USER
-VALUES (SQ_USER.NEXTVAL, 'JANGDH', 'JANG@gmail.com', '$2a$10$TG1a5ywSrGNgf7/fFH.m0.EdTzHax8AGYNeAr8aIseF3DKyO0lDti',
-        '장동혁', '1992.02.02', 'female', '010-2020-0202', '부산시 영도구 남항동 123가', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES(SQ_USER.NEXTVAL, 'JANGDH', 'JANG@gmail.com', '$2a$10$TG1a5ywSrGNgf7/fFH.m0.EdTzHax8AGYNeAr8aIseF3DKyO0lDti','장동혁', '1992.02.02', 'male', '010-2020-0202', '부산시 영도구 남항동 123가', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_USER
 VALUES (SQ_USER.NEXTVAL, 'JOSM', 'JO@gmail.com', '$2a$10$QrX8ZL/Z.VCfw..fuTnN9O2rOngh.JzwXfX.Qjy3CsZ53ZO6oW.o6', '조성모',
         '1993.03.03', 'male', '010-2020-0202', '부산시 영도구 남항동 123가', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL,
         NULL);
 INSERT INTO TB_USER
-VALUES (SQ_USER.NEXTVAL, 'JUNSH', 'JUN@gmail.com', '$2a$10$eiNbF9k9tAjrSUEp9i2LG.CxJ1B/EBjqkqoHgAVb2X03O50PPrTGq',
-        '전성혜', '1993.03.03', 'male', '010-2020-0202', '서울특별시 종로구 팔판길 1-6', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES(SQ_USER.NEXTVAL, 'JUNSH', 'JUN@gmail.com', '$2a$10$eiNbF9k9tAjrSUEp9i2LG.CxJ1B/EBjqkqoHgAVb2X03O50PPrTGq','전성혜', '1993.03.03', 'female', '010-2020-0202', '서울특별시 종로구 팔판길 1-6', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_USER
 VALUES (SQ_USER.NEXTVAL, 'KWONTH', 'KWON@gmail.com', '$2a$10$eiNbF9k9tAjrSUEp9i2LG.CxJ1B/EBjqkqoHgAVb2X03O50PPrTGq',
         '권태현', '1993.03.03', 'male', '010-2020-0202', '서울특별시 종로구 팔판길 1-6', 'N',
         TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 INSERT INTO TB_USER
-VALUES (SQ_USER.NEXTVAL, 'PARKSY', 'PARK@gmail.com', '$2a$10$eiNbF9k9tAjrSUEp9i2LG.CxJ1B/EBjqkqoHgAVb2X03O50PPrTGq',
-        '박선영', '1993.03.03', 'male', '010-2020-0202', '서울특별시 종로구 팔판길 1-6', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES(SQ_USER.NEXTVAL, 'PARKSY', 'PARK@gmail.com', '$2a$10$eiNbF9k9tAjrSUEp9i2LG.CxJ1B/EBjqkqoHgAVb2X03O50PPrTGq','박선영', '1993.03.03', 'female', '010-2020-0202', '서울특별시 종로구 팔판길 1-6', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 
 
 -- TODO: (첫번째 : 유저id(시퀀스), 두번째 : 1(일반유저) 2(관리자) )

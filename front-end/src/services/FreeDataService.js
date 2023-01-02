@@ -37,9 +37,44 @@ class FreeDataService {
 
     // 부서정보 전체 삭제 요청 함수
     // delete 방식 통신 요청 -> @DeleteMapping("/api/free/all")
-    deleteAll() {
-        return http.delete("/free/all")
-    }
+    // deleteAll() {
+    //     return http.delete("/free/all")
+    // }
+
+  //   create(blobFile, onUploadProgress) {
+  //   let formData = new FormData(); 
+  //   console.log(blobFile);
+  
+  //   formData.append("blobFile", blobFile);
+
+  //   return http.post("/free", formData, {
+  //     headers: {
+  //       "Content-Type": "multipart/form-data"
+  //     },
+  //     onUploadProgress
+  //   });
+  // }
+  
+  // update(fno, blobFile, onUploadProgress) {
+  //   let formData = new FormData();
+
+  //   console.log(fno);
+    
+  //   console.log(blobFile);
+
+  //   formData.append("blobFile", blobFile);
+
+  //   return http.put(`/free/${fno}`, formData, {
+  //     headers: {
+  //       "Content-Type": "multipart/form-data"
+  //     },
+  //     onUploadProgress
+  //   });
+  // }
+
+  // delete(fno)  {
+  //   return http.delete(`/free/deletion/${fno}`);
+  // }
 
 }
 

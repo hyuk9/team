@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- TODO: qna 시작 -->
+    <!-- TODO: question 시작 -->
     <!-- Contact Start -->
     <div class="container mt-2 mb-2">
       <h1 class="offset-5">1:1 문의 게시판</h1>
@@ -47,27 +47,27 @@
               </th>
             </tr>
           </thead>
-          <tbody v-for="(data, index) in qna" :key="index">
+          <tbody v-for="(data, index) in question" :key="index">
             <tr>
-              <td class="text-center"><i class="bi bi-hash"></i>{{ data.qno }}</td>
+              <td class="text-center"><i class="bi bi-hash"></i>{{ data.questionNo }}</td>
               <td class="text-center">
-                <router-link :to="'/qnaview/' + data.qno"><span>{{ data.title }}</span></router-link>
+                <router-link :to="'/question/' + data.questionNo"><span>{{ data.title }}</span></router-link>
               </td>
-              <td class="text-center">{{ data.questioner }}</td>
+              <td class="text-center">{{ data.writer }}</td>
               <td class="text-center"> <i class="bi bi-calendar-date">&nbsp;</i>{{ data.insertTime }}</td>
               <td v-if="showAdminBoard">
-                <router-link :to="'/qna/' + data.qno"><span
+                <router-link :to="'/question/' + data.qno"><span
                     class="badge rounded-pill bg-warning text-dark">수정</span></router-link>
               </td>
             </tr>
           </tbody>
         </table>
 
-        <!-- <router-link to="/add-qna/">
+        <!-- <router-link to="/add-question/">
             <span class="badge bg-warning text-dark">추가</span>
           </router-link> -->
         <!-- TODO: badge를 버튼으로 교체 -->
-        <router-link class="offset-11" to="/add-qna/">
+        <router-link class="offset-11" to="/add-question/">
           <button type="button" class="btn btn-warning btn-sm">글쓰기</button>
         </router-link>
       </div>
@@ -94,7 +94,7 @@
           <div class="input-group-append col-2">
             <button class="btn btn-warning" type="button" @click="
               page = 1;
-            retrieveQna();
+            retrieveQuestion();
             "><i class="bi bi-search"></i>
               Search
             </button>
@@ -105,16 +105,16 @@
       <!-- search 관련 div 끝 -->
     </div>
     <!-- Contact End -->
-    <!-- TODO: qna 끝 -->
+    <!-- TODO: question 끝 -->
   </div>
 </template>
   
 <script>
-import QnaDataService from "@/services/QnaDataService";
+import QuestionDataService from "@/services/QustionDataService";
 export default {
   data() {
     return {
-      qna: [],
+      question: [],
       searchKeyword: "",
       searchSelect: "작성자",
 
@@ -128,8 +128,8 @@ export default {
   },
   methods: {
     // axios , 모든 정보 조회 요청 함수
-    retrieveQna() {
-      QnaDataService.getAll(
+    retrieveQuestion() {
+      QuestionDataService.getAll(
         this.searchSelect, // select box 선택된 값
         this.searchKeyword, // 검색어
         this.page - 1,
@@ -137,8 +137,8 @@ export default {
       )
         // 성공하면 .then() 결과가 전송됨
         .then((response) => {
-          const { qna, totalItems } = response.data; // springboot 의 전송된 맵 정보
-          this.qna = qna; // 스프링부트에서 전송한 데이터
+          const { question, totalItems } = response.data; // springboot 의 전송된 맵 정보
+          this.question = question; // 스프링부트에서 전송한 데이터
           this.count = totalItems; // 스프링부트에서 전송한 페이지정보(총 건수)
           // 디버깅 콘솔에 정보 출력
           console.log(response.data);
@@ -153,13 +153,13 @@ export default {
       this.pageSize = event.target.value; // 한페이지당 개수 저장(3, 6, 9)
       this.page = 1;
       // 재조회 함수 호출
-      this.retrieveQna();
+      this.retrieveQuestion();
     },
     // 페이지 번호 변경시 실행되는 함수(재조회)
     handlePageChange(value) {
       this.page = value; // 매개변수값으로 현재페이지 변경
       // 재조회 함수 호출
-      this.retrieveQna();
+      this.retrieveQuestion();
     },
   },
 
@@ -185,7 +185,7 @@ export default {
 
   // 화면이 뜨자마자 실행되는 이벤트(라이프 사이클 함수) : mounted(), created()
   mounted() {
-    this.retrieveQna(); // 화면 로딩시 전체 조회함수 실행
+    this.retrieveQuestion(); // 화면 로딩시 전체 조회함수 실행
   },
 };
 </script>

@@ -130,13 +130,13 @@
                     <div v-if="currentDiner">
                       <button class="btn btn-warning" type="button">
                         <router-link :to="'/diner/' + currentDiner.dno"
-                          >detail >
+                          >상세보기 >
                         </router-link>
                       </button>
                       <button class="btn btn-danger ms-3" v-if="showAdminBoard">
                         <router-link
                           :to="'/diner/' + currentDiner.dno + '/edit'"
-                          >Edit</router-link
+                          >수정하기</router-link
                         >
                       </button>
                     </div>

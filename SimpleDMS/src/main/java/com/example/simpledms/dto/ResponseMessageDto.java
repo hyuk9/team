@@ -18,7 +18,7 @@ import lombok.*;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class MessageResponse {
+public class ResponseMessageDto {
     private String message;
 }
 

@@ -1,13 +1,10 @@
 package com.example.simpledms.repository;
 
-
-import com.example.simpledms.model.Column;
-import com.example.simpledms.model.Diner;
+import com.example.simpledms.model.Qna;
+import com.example.simpledms.model.Question;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.Optional;
 
 /**
  * packageName : com.example.jpaexam.repository
@@ -21,10 +18,13 @@ import java.util.Optional;
  * 2022-10-20         ds          최초 생성
  */
 
-public interface ColumnRepository extends JpaRepository<Column, Integer> {
-    Page<Column> findAllByTitleContainingOrderByCidDesc (String title, Pageable pageable);
-    Page<Column> findAllByWriterContainingOrderByCidDesc (String writer, Pageable pageable);
+public interface QuestionRepository extends JpaRepository<Question, Integer> {
+    //    question 조회하는 like 검색 함수
+//    1) 쿼리메소드 방식으로 함수 정의
+    Page<Question> findAllByTitleContainingOrderByInsertTimeDescQuestionNoDesc(String title, Pageable pageable);
+    Page<Question> findAllByWriterContainingOrderByInsertTimeDescQuestionNoDesc(String writer, Pageable pageable);
 }
+
 
 
 

@@ -46,7 +46,7 @@
                                     </ul>
                                 </li> -->
                                 <li class="has-children subdropmenu">
-                                    <router-link to="/diner" class="dropdown-item" @click="busanNav">부산광역시</router-link>
+                                    <router-link to="/diner" class="dropdown-item">부산광역시</router-link>
                                     <ul class="dropdown-menu">
                                         <li><a href="#">해운대구</a></li>
                                         <li><a href="#">남구</a></li>
@@ -96,29 +96,16 @@
                                     <router-link to="/faq" class="dropdown-item">자주묻는질문</router-link>
                                 </li>
                                 <li>
-                                    <router-link to="/qna" class="dropdown-item">질문과답변</router-link>
+                                    <router-link to="/question" class="dropdown-item">질문과답변</router-link>
                                 </li>
                                 <li>
                                     <router-link to="/free" class="dropdown-item">자유게시판</router-link>
                                 </li>
-                            </ul>
-                        </li>
-                        <!-- 푸드컬럼 페이지 시작 -->
-                        <li class="nav-item dropdown">
-                            <router-link to="" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                푸드컬럼
-                            </router-link>
-                            <ul class="dropdown-menu">
                                 <li>
-                                    <router-link to="/column" class="dropdown-item">푸드컬럼 보기</router-link>
-                                </li>
-                                <li>
-                                    <router-link to="#" class="dropdown-item">차라리 게시판 쪽에 통합을 할지?</router-link>
+                                    <router-link to="/column" class="dropdown-item">푸드컬럼</router-link>
                                 </li>
                             </ul>
                         </li>
-                        <!-- 푸드컬럼 페이지 끝 -->
 
                         <!-- 임시로 만든 예약 네비게이션 시작 -->
                         <li class="nav-item dropdown">
@@ -163,11 +150,11 @@
                         <!-- 공간을 위한 안보이는 div -->
                     </div>
                     <form class="d-flex mt-4 mt-lg-0 ms-lg-auto ms-xl-0">
-                        <!-- 검색창 시작 -->
+                        <!-- 검색창 시작 일단 안보이게 주석처리함 -->
                         <div class="input-group-icon pe-2">
-                            <i class="fas fa-search input-box-icon text-primary"></i>
+                            <!-- <i class="fas fa-search input-box-icon text-primary"></i>
                             <input class="form-control border-0 input-box bg-100" type="search" placeholder="여기는 검색창"
-                                aria-label="Search" />
+                                aria-label="Search" /> -->
                         </div>
                         <!-- 검색창 끝 -->
 
@@ -264,6 +251,9 @@ export default {
             // 홈으로 보내기 함수
             this.$router.push("/")
         },
+        busanNav(){
+            alert("클릭성공");
+        }
     },
 
     // 모달 적용시 로그인 버튼에 강제적으로 추가되어 css를 바꾸는 클래스 삭제하기
