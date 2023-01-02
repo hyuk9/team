@@ -31,7 +31,6 @@
 
     <!-- 프로필, 예약, 찜, 리뷰 시작 -->
     <div class="pt-5 pb-5">
-      <h1 class="text-danger">예약조회 / 찜한가게 / 내가쓴리뷰 클릭했을때 해당 위치로 스크롤하게 변경</h1>
       <div class="container">
         <div class="row">
           <!-- 프로필 사진 시작 -->
@@ -39,7 +38,7 @@
             <div class="text-center">
               <img
                 class="profile"
-                src="assets/img/gallery/gosimperson2.jpg"
+                src="assets/img/gallery/empty_profile.png"
                 width="200px"
                 height="200px"
                 alt=""
@@ -53,8 +52,10 @@
             <div class="text-center">
               <h5>{{ currentUser.username }} 님</h5>
               <p class="pt-5">
-                <router-link to="" class="btn btn-primary"
-                  >개인정보 수정하기</router-link
+                <router-link :to="'/user/' + currentUser.id">
+                  <span class="btn btn-primary">
+                    개인정보 수정하기</span
+                  ></router-link
                 >
               </p>
             </div>
@@ -63,32 +64,32 @@
 
           <!-- 예약 확인하기 시작 -->
           <div class="col-2 pt-5">
-            <router-link to="">
+            <a href="#reservationCheck">
               <div class="col text-center align-self-center">
                 <i class="bi bi-journal-check"></i>
-                <p class="fs-1">예약 조회</p>
+                <p class="fs-1 mt-3">예약 조회</p>
               </div>
-            </router-link>
+            </a>
           </div>
           <!-- 예약 확인하기 끝 -->
           <!-- 찜 목록 조회하기 시작 -->
           <div class="col-2 pt-5">
-            <router-link to="">
+            <a href="#wishList">
               <div class="col text-center">
                 <i class="bi bi-suit-heart card-top"></i>
-                <p class="fs-1">찜한 가게</p>
+                <p class="fs-1 mt-3">찜한 가게</p>
               </div>
-            </router-link>
+            </a>
           </div>
           <!-- 찜 목록 조회하기 끝 -->
           <!-- 리뷰 관리 시작 -->
           <div class="col-2 pt-5">
-            <router-link to="">
+            <a href="#myReview">
               <div class="col text-center">
                 <i class="bi bi-chat-dots card-top"></i>
-                <p class="fs-1">내가 쓴 리뷰</p>
+                <p class="fs-1 mt-3">내가 쓴 리뷰</p>
               </div>
-            </router-link>
+            </a>
           </div>
           <!-- 리뷰 관리 끝 -->
         </div>
@@ -97,8 +98,7 @@
     <!-- 프로필, 예약, 찜, 리뷰 끝 -->
 
     <!-- 예약조회 섹션 시작 -->
-    <div class="pt-5 pb-5">
-      <h1 class="text-danger">연락처 안보이는 문제 수정요망</h1>
+    <div class="pt-5 pb-5" id="reservationCheck">
       <div class="mx-auto text-center mb-5">
         <h5 class="fw-bold fs-3 fs-lg-5 lh-sm">내 예약 목록</h5>
       </div>
@@ -118,7 +118,6 @@
                     <th scope="col">예약날짜</th>
                     <th scope="col">예약시간</th>
                     <th scope="col">변경하기</th>
-                    <th scope="col">취소하기</th>
                   </tr>
                 </thead>
                 <tbody v-for="(data, index) in reservation" :key="index">
@@ -128,7 +127,9 @@
                     <td>{{ data.restaurant }}</td>
                     <td>{{ data.rname }}</td>
                     <td>{{ data.rcount }}</td>
-                    <td>{{ data.phone }}</td>
+                    <td>
+                      {{ data.phone1 + "-" + data.phone2 + "-" + data.phone3 }}
+                    </td>
                     <td>{{ data.reservationDate }}</td>
                     <td>{{ data.reservationTime }}</td>
                     <td>
@@ -136,11 +137,6 @@
                         ><span class="badge bg-success"
                           >변경하기</span
                         ></router-link
-                      >
-                    </td>
-                    <td>
-                      <span @click="deleteReservation" class="badge bg-success"
-                        >취소하기</span
                       >
                     </td>
                   </tr>
@@ -194,7 +190,7 @@
     <!-- 예약조회 섹션 끝 -->
 
     <!-- 찜한 가게 시작 -->
-    <div class="pt-5 pb-5">
+    <div class="pt-5 pb-5" id="wishList">
       <div class="mx-auto text-center mb-5">
         <h5 class="fw-bold fs-3 fs-lg-5 lh-sm">찜한 가게</h5>
       </div>
@@ -367,7 +363,7 @@
     <!-- 찜한 가게 끝 -->
 
     <!-- 내가 쓴 리뷰 목록 시작 -->
-    <div class="pt-5 pb-5">
+    <div class="pt-5 pb-5" id="myReview">
       <div class="mx-auto text-center mb-5">
         <h5 class="fw-bold fs-3 fs-lg-5 lh-sm">내가 쓴 리뷰 목록</h5>
       </div>
@@ -385,7 +381,6 @@
                     <th scope="col">사진</th>
                     <th scope="col">작성자</th>
                     <th scope="col">변경하기</th>
-                    <th scope="col">삭제하기</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -403,11 +398,6 @@
                         ></router-link
                       >
                     </td>
-                    <td>
-                      <span class="badge bg-success"
-                        >삭제하기</span
-                      >
-                    </td>
                   </tr>
                   <tr>
                     <th scope="col">2</th>
@@ -420,11 +410,6 @@
                         ><span class="badge bg-success"
                           >수정하기</span
                         ></router-link
-                      >
-                    </td>
-                    <td>
-                      <span class="badge bg-success"
-                        >삭제하기</span
                       >
                     </td>
                   </tr>
@@ -654,12 +639,12 @@
 
 <script>
 /* eslint-disable */
-import ReservationDataService from "@/services/ReservationDataService";
+import ReservationDataService from "../../services/ReservationDataService";
 
 export default {
   data() {
     return {
-      currentReservation: null,
+      // currentReservation: null,
       reservation: [],
       searchName: "",
       currentData: null,
@@ -690,27 +675,7 @@ export default {
           console.log(e);
         });
     },
-    deleteReservation() {
-      // axios 공통함수 호출
-      ReservationDataService.delete(this.currentReservation.rid)
-        // 성공하면 then() 결과가 전송됨
-        .then((response) => {
-          console.log(response.data);
-          // alert 라이브러리 효과
-          this.$swal({
-            icon: "success",
-            title: "삭제 성공",
-            showConfirmButton: false,
-            timer: 1000,
-          });
-          // 첫페이지(전체목록_조회_페이지) 강제 이동 : /dept
-          this.$router.push("/reservation");
-        })
-        // 실패하면 .catch() 에러메세지가 전송됨
-        .catch((e) => {
-          console.log(e);
-        });
-    },
+
     handlePageChange(value) {
       this.page = value;
       this.retrieveReservation();
@@ -769,23 +734,4 @@ li {
 .profile {
   border-radius: 70%;
 }
-/* .qqq {
-  background-color: aqua;
-}
-.www {
-  background-color: burlywood;
-}
-.eee {
-  background-color: cornflowerblue;
-}
-.rrr {
-  background-color: indianred;
-}
-.aaa {
-  background-color: yellow;
-}
-.bbb {
-  background-color: tomato;
-} */
 </style>
->
