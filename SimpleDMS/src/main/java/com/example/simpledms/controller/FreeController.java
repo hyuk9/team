@@ -1,6 +1,6 @@
 package com.example.simpledms.controller;
 
-import com.example.simpledms.dto.gallery.ResponseMessageDto;
+import com.example.simpledms.dto.ResponseMessageDto;
 import com.example.simpledms.dto.gallery.ResponseGalleryDto;
 import com.example.simpledms.model.Free;
 import com.example.simpledms.service.FreeService;
@@ -243,8 +243,8 @@ public class FreeController {
                         ResponseGalleryDto fileDto = modelMapper.map(dbFile, ResponseGalleryDto.class);
 
 //                      DTO 에 2개 남은 속성 처리 : setter 이용 가공된 데이터 저장
-                        fileDto.setGallerySize(dbFile.getGalleryData().length);
-                        fileDto.setGalleryUrl(fileDownloadUri);
+                        fileDto.setFileSize(dbFile.getGalleryData().length);
+                        fileDto.setFileUrl(fileDownloadUri);
 
                         return fileDto;
                     });

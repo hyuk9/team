@@ -1,6 +1,6 @@
 package com.example.simpledms.controller;
 
-import com.example.simpledms.dto.MessageResponse;
+import com.example.simpledms.dto.ResponseMessageDto;
 import com.example.simpledms.dto.request.ChangePasswordRequest;
 import com.example.simpledms.dto.request.SignupRequest;
 import com.example.simpledms.dto.response.UserRoleDto;
@@ -123,14 +123,14 @@ public class UserController {
         if (userService.existsByUsername(signUpRequest.getUsername())) {
             return ResponseEntity
                     .badRequest()
-                    .body(new MessageResponse("Error: Username is already taken!"));
+                    .body(new ResponseMessageDto("Error: Username is already taken!"));
         }
 
 //    이메일이 DB 에 있는 지 확인
         if (userService.existsByEmail(signUpRequest.getEmail())) {
             return ResponseEntity
                     .badRequest()
-                    .body(new MessageResponse("Error: Email is already in use!"));
+                    .body(new ResponseMessageDto("Error: Email is already in use!"));
         }
 
         // Create new user's account
@@ -176,7 +176,7 @@ public class UserController {
         user.setRole(roles);
         userService.save(user);
 
-        return ResponseEntity.ok(new MessageResponse("User create successfully!"));
+        return ResponseEntity.ok(new ResponseMessageDto("User create successfully!"));
     }
 
     @PutMapping("/user/{id}")
@@ -230,7 +230,7 @@ public class UserController {
         user.setRole(roles);
         userService.save(user);
 
-        return ResponseEntity.ok(new MessageResponse("User update successfully!"));
+        return ResponseEntity.ok(new ResponseMessageDto("User update successfully!"));
     }
 
     @DeleteMapping("/user/deletion/{id}")
