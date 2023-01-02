@@ -41,40 +41,40 @@ class FreeDataService {
     //     return http.delete("/free/all")
     // }
 
-    create(blobFile, onUploadProgress) {
-    let formData = new FormData(); 
-    console.log(blobFile);
+  //   create(blobFile, onUploadProgress) {
+  //   let formData = new FormData(); 
+  //   console.log(blobFile);
   
-    formData.append("blobFile", blobFile);
+  //   formData.append("blobFile", blobFile);
 
-    return http.post("/free", formData, {
-      headers: {
-        "Content-Type": "multipart/form-data"
-      },
-      onUploadProgress
-    });
-  }
+  //   return http.post("/free", formData, {
+  //     headers: {
+  //       "Content-Type": "multipart/form-data"
+  //     },
+  //     onUploadProgress
+  //   });
+  // }
   
-  update(fno, blobFile, onUploadProgress) {
-    let formData = new FormData();
+  // update(fno, blobFile, onUploadProgress) {
+  //   let formData = new FormData();
 
-    console.log(fno);
+  //   console.log(fno);
     
-    console.log(blobFile);
+  //   console.log(blobFile);
 
-    formData.append("blobFile", blobFile);
+  //   formData.append("blobFile", blobFile);
 
-    return http.put(`/free/${fno}`, formData, {
-      headers: {
-        "Content-Type": "multipart/form-data"
-      },
-      onUploadProgress
-    });
-  }
+  //   return http.put(`/free/${fno}`, formData, {
+  //     headers: {
+  //       "Content-Type": "multipart/form-data"
+  //     },
+  //     onUploadProgress
+  //   });
+  // }
 
-  delete(fno)  {
-    return http.delete(`/free/deletion/${fno}`);
-  }
+  // delete(fno)  {
+  //   return http.delete(`/free/deletion/${fno}`);
+  // }
 
 }
 

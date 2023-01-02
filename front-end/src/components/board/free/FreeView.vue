@@ -166,7 +166,7 @@ export default {
     },
 
     retrieveFree() {
-      FreeService.getAll(
+      FreeDataService.getAll(
         this.searchSelect,
         this.searchKeyword,
         this.page - 1,
@@ -201,7 +201,7 @@ export default {
     },
     deleteCourse(id) {
       // alert(id);
-      FreeService.delete(id)
+      FreeDataService.delete(id)
         .then((response) => {
           console.log(response);
 
