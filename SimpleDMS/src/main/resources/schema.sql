@@ -243,7 +243,6 @@ CREATE TABLE TB_FAVORITE
     FID                  NUMBER NOT NULL PRIMARY KEY,
     ID                   NUMBER, -- 유저id컬럼
     DNO                  NUMBER, -- 식당id컬럼
-    FAVORITE_YN          VARCHAR2(1),
     DELETE_YN            VARCHAR2(1) DEFAULT 'N',
     INSERT_TIME          VARCHAR2(255),
     UPDATE_TIME          VARCHAR2(255),

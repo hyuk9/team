@@ -78,7 +78,7 @@
                         {{ data.menu }}
                       </a>
                       <a
-                        class="badge bg-warning text-dark text-decoration-none link-light ms-1"
+                        class="badge bg-warning text-decoration-none link-light ms-1"
                         href="#!"
                         >{{ data.theme }}</a
                       >

@@ -391,14 +391,6 @@ VALUES (SQ_COLUMN.nextval, '서면 맛집 Best5', '부산토박이가 알려주�
 INSERT INTO TB_COLUMN
 VALUES (SQ_COLUMN.nextval, '여기가 바로 가성비 맛집', '서비스는 필요없다. 오로지 가성비로만 승부', '사진3', '조성모', '3', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
 
--- Todo:찜한 테이블 (임시로 만듦)
--- INSERT INTO TB_FAVORITE
--- VALUES (SQ_SCORE.nextval, '3', '3', '3', '3', '3', '3', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
--- INSERT INTO TB_FAVORITE
--- VALUES (SQ_SCORE.nextval, '4', '4', '4', '4', '4', '4', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
--- INSERT INTO TB_FAVORITE
--- VALUES (SQ_SCORE.nextval, '5', '5', '5', '5', '5', '5', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
---
 
 
 -- TODO: login 샘플 데이터

@@ -169,6 +169,7 @@
               </button>
             </div>
           </article>
+          <!-- 메뉴 리스트 불러와서 v-for문으로 작동 -->
           <div>
             메뉴
             <div v-for="(data, index) in menu" :key="index">
@@ -176,6 +177,9 @@
               <p> {{data.menuPrice}} </p>
             </div>
           </div>
+          <!-- v-for 끝 -->
+
+          
           <!-- Comments section-->
           <section class="mb-5">
             <div class="card bg-light">

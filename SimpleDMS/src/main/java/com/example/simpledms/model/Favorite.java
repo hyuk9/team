@@ -50,9 +50,6 @@ public class Favorite extends BaseTimeEntity {
 
     @Column
     private String dno;
-
-    @Column
-    private String favoriteYn;
 }
 
 
