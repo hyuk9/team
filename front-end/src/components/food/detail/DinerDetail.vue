@@ -161,13 +161,29 @@
               role="group"
               aria-label="Basic example"
             >
-              <router-link to="/#"
-                ><button type="button" class="btn btn-primary">
-                  찜
-                </button></router-link
+              <button
+                type="button"
+                class="btn btn-primary"
+                @click="saveFavorite"
               >
-              
-              <b-button v-b-modal.modal-prevent-closing>리뷰 등록</b-button>
+                <!-- <img src="assets/img/gallery/empty_heart.png" v-if="empty" />
+                <img src="assets/img/gallery/fill_heart.png" v-else-if="fill" /> -->
+                <!-- <i class="bi bi-heart" v-if="empty"></i>
+                <i class="bi bi-heart-fill" v-else-if="fill"></i> -->
+                찜하기
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-danger"
+                @click="deleteFavorite"
+              >
+                찜삭제
+              </button>
+
+              <b-button type="button" v-b-modal.modal-prevent-closing
+                >리뷰 등록</b-button
+              >
 
               <button
                 type="button"
@@ -257,11 +273,13 @@ import DinerDataService from "@/services/DinerDataService";
 import ReviewDataService from "@/services/ReviewDataService";
 import DinerCommentVue from "./DinerComment.vue";
 import AddReservation from "@/components/reservation/AddReservation.vue";
+import FavoriteDataService from "@/services/FavoriteDataService";
 
 export default {
   data() {
     return {
       review: [],
+      diner: [],
       currentReview: null,
       currentIndex: -1,
       // dname: "", ->(변경) searchDname: "",
@@ -272,6 +290,15 @@ export default {
 
       mapNchart: true,
       showReservation: false,
+
+      // empty: true,
+      // fill: false,
+
+      favorite: {
+        fid: null,
+        dno: null,
+        id: null,
+      },
 
       // 페이징을 위한 변수 정의
       page: 1, // 현재 페이지
@@ -445,7 +472,42 @@ export default {
         this.showReservation = false;
       }
     },
+
+    saveFavorite() {
+      let data = {
+        dno: this.currentDiner.dno,
+        id: this.currentUser.id,
+      };
+      // insert 요청 함수 호출(axios 공통함수 호출)
+      FavoriteDataService.create(data)
+        // 성공하면 then() 결과가 전송됨
+        .then((response) => {
+          this.favorite.fid = response.data.fid;
+          // 콘솔 로그 출력(response.data)
+          console.log(response.data);
+          alert("찜했습니다.");
+        })
+        // 실패하면 .catch() 결과가 전송됨
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+    deleteFavorite() {
+      // axios 공통함수 호출
+      FavoriteDataService.delete(this.currentDiner.dno)
+        // 성공하면 then() 결과가 전송됨
+        .then((response) => {
+          console.log(response.data);
+          alert("찜 삭제했습니다.");
+          alert(this.currentDiner.dno);
+        })
+        // 실패하면 .catch() 에러메세지가 전송됨
+        .catch((e) => {
+          console.log(e);
+        });
+    },
   },
+
   // 화면이 뜨자 마자 실행되는 이벤트
   mounted() {
     // 클라이언트쪽 디버깅
@@ -472,6 +534,14 @@ export default {
         },
       },
     });
+  },
+  computed: {
+    // 현재 유저
+    currentUser() {
+      // 모듈 저장소 : this.$store.state.모듈명.state값
+      // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
+      return this.$store.state.auth.user;
+    },
   },
 };
 </script>

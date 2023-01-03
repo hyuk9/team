@@ -81,35 +81,35 @@ VALUES (SQ_ANNOUNCE.nextval, '질문사항에 대해', '질문게시판을 이�
 
 -- Todo:자유게시판 테이블
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '장동혁', '코로나 확진이 되었어요', '솔직히 걸릴 줄 몰랐는데 막상 걸리니까 힘들고 아프네요', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'),
+VALUES (SQ_FREE.nextval, '장동혁', '코로나 확진이 되었어요', '솔직히 걸릴 줄 몰랐는데 막상 걸리니까 힘들고 아프네요','','','','', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'),
         NULL, NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '전성혜', '고양이가 너무 귀여워요', '제 고양이 봐주세요', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
+VALUES (SQ_FREE.nextval, '전성혜', '고양이가 너무 귀여워요', '제 고양이 봐주세요','','','','', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '조성모', '팀프로젝트 하는데 조장이 탈주했어요', '갑자기 코로나 걸렸다고 사라졌어요 어떡하죠', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'),
+VALUES (SQ_FREE.nextval, '조성모', '팀프로젝트 하는데 조장이 탈주했어요', '갑자기 코로나 걸렸다고 사라졌어요 어떡하죠','','','','', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'),
         NULL, NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '박선영', '겨울에 듣기 좋은 노래 추천해주세요', '추운날씨에 듣기 좋은 곡이 있을까요', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL,
+VALUES (SQ_FREE.nextval, '박선영', '겨울에 듣기 좋은 노래 추천해주세요', '추운날씨에 듣기 좋은 곡이 있을까요','','','','', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL,
         NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '권태현', '이번 4090 그래픽카드 어떤가요', '가격이 너무 비싸서 고민되요', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL,
+VALUES (SQ_FREE.nextval, '권태현', '이번 4090 그래픽카드 어떤가요', '가격이 너무 비싸서 고민되요','','','','', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL,
         NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '강아름', '내일 소개팅 나가는데 옷좀 봐주세요', '추워서 롱패딩만 입고 나가기엔 썸남이 너무 잘생겼어요', 'N',
+VALUES (SQ_FREE.nextval, '강아름', '내일 소개팅 나가는데 옷좀 봐주세요', '추워서 롱패딩만 입고 나가기엔 썸남이 너무 잘생겼어요','','','','', 'N',
         TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '고건민', '저 성인 ADHD인가요?', '한가지에 집중을 잘 못하겠는데 의심됩니다', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL,
+VALUES (SQ_FREE.nextval, '고건민', '저 성인 ADHD인가요?', '한가지에 집중을 잘 못하겠는데 의심됩니다','','','','', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL,
         NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '최은빈', '그렇게 됐습니다', '뒷 내용이 궁금하신분은 연락주세요', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
+VALUES (SQ_FREE.nextval, '최은빈', '그렇게 됐습니다', '뒷 내용이 궁금하신분은 연락주세요','','','','', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '이빛나', '시어머니가 너무 귀찮게 굴어요', '집에 저만 있는데도 계속 찾아와서 절 너무 당황스럽게 하네요', 'N',
+VALUES (SQ_FREE.nextval, '이빛나', '시어머니가 너무 귀찮게 굴어요', '집에 저만 있는데도 계속 찾아와서 절 너무 당황스럽게 하네요','','','','', 'N',
         TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '남궁민', '자취하는데 필수템 있을까요?', '이번에 취직해서 처음 자취인데 필수템이라고 할만한게 있을까요', 'N',
+VALUES (SQ_FREE.nextval, '남궁민', '자취하는데 필수템 있을까요?', '이번에 취직해서 처음 자취인데 필수템이라고 할만한게 있을까요','','','','', 'N',
         TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '김시습', '이번에 책 한권 냈는데 한번 봐주세요', '제목을 금오신화라고 지었는데 요즘 사람들은 잘 안볼까요?', 'N',
+VALUES (SQ_FREE.nextval, '김시습', '이번에 책 한권 냈는데 한번 봐주세요', '제목을 금오신화라고 지었는데 요즘 사람들은 잘 안볼까요?','','','','', 'N',
         TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 
 -- Todo:예약 테이블
@@ -166,37 +166,37 @@ VALUES (SQ_RESERVATION.nextval, '식당25', '아라치', '2', '010-1234-5678', '
 
 -- Todo:음식점 테이블
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER1', '4.5','해운대구','010-0000-0000','일식', '데이트', '리뷰1',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, '해목', '4.5','해운대구','0507-1385-3730','일식', '식사', '리뷰1','https://mp-seoul-image-production-s3.mangoplate.com/1129699_1620482534399327.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER2', '4.6','남구','010-0000-0000','한식', '모임', '리뷰2',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, '합천국밥집', '4.6','남구','051-628-4898','한식', '식사', '리뷰2','https://mp-seoul-image-production-s3.mangoplate.com/25551/j7nkzmgyxpmqqa.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER3', '2.6','금정구','010-0000-0000','중식', '회식', '리뷰3',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, '톤쇼우', '4.1','금정구','051-517-1727','중식', '데이트', '리뷰3','https://mp-seoul-image-production-s3.mangoplate.com/872186_1608730709406579.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER4', '2.5','기장구','010-0000-0000','양식', '데이트', '리뷰4',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, '미청식당', '4.3','기장군','051-721-7050','한식', '모임', '리뷰4','https://mp-seoul-image-production-s3.mangoplate.com/1049578_1634728853479974.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER5', '4.9','동래구','010-0000-0000','한식', '모임', '리뷰5',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, '백객도', '4.3','동래구','051-554-5873','중식', '모임', '리뷰5','https://mp-seoul-image-production-s3.mangoplate.com/1515134_1669012125992684.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER6', '3.5','부산진구','010-0000-0000','일식', '회식', '리뷰6',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, '디젤앤카멜리아스', '4.3','부산진구','010-9179-6960','일식', '회식', '리뷰6','https://mp-seoul-image-production-s3.mangoplate.com/586167_1609749120642980.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER7', '5.0','영도구','010-0000-0000','한식', '데이트', '리뷰7',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, '옥천횟집', '4.4','영도구','051-403-7771','한식', '데이트', '리뷰7','https://mp-seoul-image-production-s3.mangoplate.com/693574_1667123439355703.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER8', '3.4','강서구','010-0000-0000','중식', '모임', '리뷰8',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, '다온나루', '3.4','강서구','051-832-1771','중식', '데이트', '리뷰8','https://mp-seoul-image-production-s3.mangoplate.com/393053/2032908_1653224070853_50338?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER9', '3.5','해운대구','010-0000-0000','양식', '회식', '리뷰9',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, '금수복국', '4.4','해운대구','051-742-3600','양식', '식사', '리뷰9','https://mp-seoul-image-production-s3.mangoplate.com/added_restaurants/584169_1492330956578913.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER10', '3.0','남구','010-0000-0000','한식', '데이트', '리뷰10',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, '초원복국', '4.2','남구','051-628-3935','한식', '식사', '리뷰10','https://mp-seoul-image-production-s3.mangoplate.com/546909_1536072584565408.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER11', '4.2','금정구','010-0000-0000','일식', '모임', '리뷰11',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, '양자강', '3.8','금정구','051-583-1266','중식', '모임', '리뷰11','https://mp-seoul-image-production-s3.mangoplate.com/added_restaurants/9388_1480730005476394.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER12', '4.6','기장구','010-0000-0000','한식', '회식', '리뷰12',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, '일광대복집', '4.3','기장군','051-721-1561','한식', '회식', '리뷰12','https://mp-seoul-image-production-s3.mangoplate.com/147811_1633838192987199.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER13', '1.5','동래구','010-0000-0000','중식', '데이트', '리뷰13',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, '오노고로', '3.9','동래구','0507-1347-2015','중식', '데이트', '리뷰13','https://mp-seoul-image-production-s3.mangoplate.com/693546_1670850112205255.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER14', '3.6','부산진구','010-0000-0000','양식', '모임', '리뷰14',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, '로바타아키', '4.2','부산진구','0507-1322-3415','양식', '모임', '리뷰14','https://mp-seoul-image-production-s3.mangoplate.com/1042441_1605430643484440.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER15', '1.9','영도구','010-0000-0000','한식', '회식', '리뷰15',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, '일구향만두', '4.0','영도구','051-418-7285','한식', '데이트', '리뷰15','https://mp-seoul-image-production-s3.mangoplate.com/348107/1466243_1670838071029_17000?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, 'DINER16', '2.7','강서구','010-0000-0000','한식', '회식', '리뷰16',' ','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, '대저할매국수', '2.7','강서구','051-973-0837','한식', '회식', '리뷰16','https://mp-seoul-image-production-s3.mangoplate.com/16929/reviews/bc862256e507.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 
 
 -- Todo:리뷰 테이블
@@ -229,15 +229,15 @@ VALUES (SQ_MENU.nextval, '메뉴5', '가격5', '5', 'N', TO_CHAR(SYSDATE, 'YYYY-
 -- Todo: 평점 테이블
 -- Todo: 리뷰 테이블이랑 조인 예정
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '1', '1', '1', '1', '1', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_SCORE.nextval, '1', '1', '1', '1', '1', '1', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '2', '2', '2', '2', '2', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_SCORE.nextval, '2', '2', '2', '2', '2', '2', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '3', '3', '3', '3', '3', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_SCORE.nextval, '3', '3', '3', '3', '3', '3', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '4', '4', '4', '4', '4', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_SCORE.nextval, '4', '4', '4', '4', '4', '4', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '5', '5', '5', '5', '5', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_SCORE.nextval, '5', '5', '5', '5', '5', '5', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 
 
 -- Todo:푸드컬럼 테이블
@@ -247,6 +247,15 @@ INSERT INTO TB_COLUMN
 VALUES (SQ_COLUMN.nextval, '서면 맛집 Best5', '부산토박이가 알려주는 로컬맛집', '사진2', '전성혜', '4','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
 INSERT INTO TB_COLUMN
 VALUES (SQ_COLUMN.nextval, '여기가 바로 가성비 맛집', '서비스는 필요없다. 오로지 가성비로만 승부', '사진3', '조성모', '3', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+
+-- Todo:찜한 테이블 (임시로 만듦)
+-- INSERT INTO TB_FAVORITE
+-- VALUES (SQ_SCORE.nextval, '3', '3', '3', '3', '3', '3', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+-- INSERT INTO TB_FAVORITE
+-- VALUES (SQ_SCORE.nextval, '4', '4', '4', '4', '4', '4', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+-- INSERT INTO TB_FAVORITE
+-- VALUES (SQ_SCORE.nextval, '5', '5', '5', '5', '5', '5', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+--
 
 
 -- TODO: login 샘플 데이터

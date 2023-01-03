@@ -20,20 +20,21 @@
           </h5>
         </div>
       </div>
-      <!-- 셀렉트 박스 일단 주석처리 시작 -->
-      <!-- <div class="col-2 mb-3">
-            <select class="form-select" v-model="dinername" >
-              <option value="#" selected>전체</option>
-              <option value="DINER1" v-on:click="retrieveDiner()">서울</option>
-              <option value="#">경기</option>
-              <option value="#">부산</option>
-            </select>
-          </div> -->
-      <!-- 셀렉트 박스 일단 주석처리 종료 -->
 
-      <div class="col-12 d-flex justify-content-end mb-2">
+      <div class="col-12 mb-2">
         <!-- 전체보기 눌렀을 때 음식점 리스트로 매개변수 날리면서 페이지 전환 -->
-        <a class="btn btn-lg btn-primary" href="/diner"
+        <!-- 지역별 맛집 선택 -->
+            <select class="form-select" v-model="searchKeyword">
+                  <option value="해운대구">해운대구</option>
+                  <option value="남구">남구</option>
+                  <option value="금정구">금정구</option>
+                  <option value="기장군">기장군</option>
+                  <option value="동래구">동래구</option>
+                  <option value="부산진구">부산진구</option>
+                  <option value="영도구">영도구</option>
+                  <option value="강서구">강서구</option>
+                </select>
+        <a class="btn btn-lg btn-primary float-right" href="/diner"
           >전체보기 <i class="fas fa-chevron-right ms-2"> </i
         ></a>
       </div>
@@ -60,8 +61,10 @@
                     d-inline-block
                   "
                 >
-                  <div class="card card-span h-100 text-white rounded-3">
-                    <img
+                  <router-link :to="'/diner/' + data.dno">
+                    <div class="card card-span h-100 text-white rounded-3">
+                      <!-- TODO: test dataURL <- DB url -->
+                      <!-- <img
                       class="img-fluid rounded-3 h-100"
                       :src="data.photo"
                       alt="…"
@@ -95,14 +98,14 @@
                             data.score
                           }}</span>
                         </div>
+                        <span class="badge bg-soft-danger py-2 px-3">
+                          <span class="fs-1 text-danger">
+                            {{ data.phone }}</span
+                          >
+                        </span>
                       </div>
-                      <span class="badge p-2"
-                        ><span class="fs-0 text-danger">{{
-                          data.phone
-                        }}</span></span
-                      >
                     </div>
-                  </div>
+                  </router-link>
                 </div>
               </div>
               <!-- 첫 캐러셀 종료 -->
@@ -128,8 +131,9 @@
                     d-inline-block
                   "
                 >
-                  <div class="card card-span h-100 text-white rounded-3">
-                    <img
+                  <router-link :to="'/diner/' + data.dno">
+                    <div class="card card-span h-100 text-white rounded-3">
+                      <!-- <img
                       class="img-fluid rounded-3 h-100"
                       :src="data.photo"
                       alt="…"
@@ -163,14 +167,14 @@
                             data.score
                           }}</span>
                         </div>
+                        <span class="badge bg-soft-danger py-2 px-3">
+                          <span class="fs-1 text-danger">
+                            {{ data.phone }}</span
+                          >
+                        </span>
                       </div>
-                      <span class="badge p-2"
-                        ><span class="fs-0 text-danger">{{
-                          data.phone
-                        }}</span></span
-                      >
                     </div>
-                  </div>
+                  </router-link>
                 </div>
               </div>
               <!-- 첫번째를 제외한 나머지 캐러셀 종료 -->
@@ -218,10 +222,13 @@ import DinerDataService from "../../services/DinerDataService.js";
 export default {
   data() {
     return {
+      // TODO: test
+      dataUrl:
+        "https://mp-seoul-image-production-s3.mangoplate.com/16929/reviews/bc862256e507.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80",
       diner: [],
       // dname: "", ->(변경) searchUsername: "",
       searchSelect: "지역",
-      searchKeyword: "",
+      searchKeyword: "해운대구",
 
       currentDiner: null,
       currentIndex: -1,
@@ -312,7 +319,15 @@ export default {
 
     this.retrieveDiner();
   },
+  updated() {
+    this.retrieveDiner();
+  },
 };
 </script>
 
-<style></style>
+<style>
+.form-select {
+  display: inline-block;
+  width: 15%;
+}
+</style>

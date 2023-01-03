@@ -92,6 +92,7 @@ export default {
         title: "",
         content: "",
         photo: "",
+        id: null,
       },
       // submit 버튼을 클릭하면 true 가 되고, You submitted successfully! 화면에 출력됨
       submitted: false,
@@ -116,6 +117,7 @@ export default {
         title: this.column.title,
         content: this.column.content,
         photo: this.selectImage.currentImage,
+        id: this.currentUser.id,
       };
 
       // insert 요청 함수 호출(axios 공통함수 호출)

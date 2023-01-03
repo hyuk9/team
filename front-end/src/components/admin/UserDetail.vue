@@ -5,7 +5,7 @@
       정상 작동)
     </h1>
     <h1 class="text-danger">아이디랑 이메일은 변경 불가능하게 막아둔 상태</h1>
-    <div v-if="currentUser" class="container-fluid w-50 bg bg-danger mt-5 mb-5">
+    <div v-if="currentUser" class="container-fluid w-50 mt-5 mb-5">
       <div>
         <!-- 아이디 -->
         <div class="form-group">

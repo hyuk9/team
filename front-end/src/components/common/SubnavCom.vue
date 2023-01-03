@@ -46,39 +46,39 @@
                                     </ul>
                                 </li> -->
                                 <li class="has-children subdropmenu">
-                                    <router-link to="/diner" class="dropdown-item">부산광역시</router-link>
+                                    <a href="/diner" class="dropdown-item">부산광역시</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#">해운대구</a></li>
-                                        <li><a href="#">남구</a></li>
-                                        <li><a href="#">금정구</a></li>
-                                        <li><a href="#">기장구</a></li>
-                                        <li><a href="#">동래구</a></li>
-                                        <li><a href="#">부산진구</a></li>
-                                        <li><a href="#">영도구</a></li>
-                                        <li><a href="#">강서구</a></li>
+                                        <li><a href="/haeundae">해운대구</a></li>
+                                        <li><a href="/namgu">남구</a></li>
+                                        <li><a href="/geumjeong">금정구</a></li>
+                                        <li><a href="/gijang">기장구</a></li>
+                                        <li><a href="/dongnae">동래구</a></li>
+                                        <li><a href="/busanjin">부산진구</a></li>
+                                        <li><a href="/yeongdo">영도구</a></li>
+                                        <li><a href="/gangseo">강서구</a></li>
                                     </ul>
                                 </li>
                                 <li>
                                     <hr class="dropdown-divider" />
                                 </li>
                                 <li class="has-children subdropmenu">
-                                    <router-link to="/diner" class="dropdown-item">메뉴별</router-link>
+                                    <a href="/diner" class="dropdown-item">메뉴별</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#">한식</a></li>
-                                        <li><a href="#">중식</a></li>
-                                        <li><a href="#">일식</a></li>
-                                        <li><a href="#">양식</a></li>
+                                        <li><a href="/korean">한식</a></li>
+                                        <li><a href="/chinese">중식</a></li>
+                                        <li><a href="/japanese">일식</a></li>
+                                        <li><a href="/western">양식</a></li>
                                     </ul>
                                 </li>
                                 <li>
                                     <hr class="dropdown-divider" />
                                 </li>
                                 <li class="has-children subdropmenu">
-                                    <router-link to="/diner" class="dropdown-item">테마별</router-link>
+                                    <a href="/diner" class="dropdown-item">테마별</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#">데이트</a></li>
-                                        <li><a href="#">모임</a></li>
-                                        <li><a href="#">회식</a></li>
+                                        <li><a href="/date">데이트</a></li>
+                                        <li><a href="/meeting">모임</a></li>
+                                        <li><a href="/getTogether">회식</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -90,19 +90,19 @@
                             </router-link>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <router-link to="/announce" class="dropdown-item">공지사항</router-link>
+                                    <a href="/announce" class="dropdown-item">공지사항</a>
                                 </li>
                                 <li>
-                                    <router-link to="/faq" class="dropdown-item">자주묻는질문</router-link>
+                                    <a href="/faq" class="dropdown-item">자주묻는질문</a>
                                 </li>
                                 <li>
-                                    <router-link to="/question" class="dropdown-item">질문과답변</router-link>
+                                    <a href="/question" class="dropdown-item">질문과답변</a>
                                 </li>
                                 <li>
-                                    <router-link to="/free" class="dropdown-item">자유게시판</router-link>
+                                    <a href="/free" class="dropdown-item">자유게시판</a>
                                 </li>
                                 <li>
-                                    <router-link to="/column" class="dropdown-item">푸드컬럼</router-link>
+                                    <a href="/column" class="dropdown-item">푸드컬럼</a>
                                 </li>
                             </ul>
                         </li>
@@ -115,10 +115,10 @@
                             </router-link>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <router-link to="/reservation" class="dropdown-item">예약 조회하기</router-link>
+                                    <a href="/reservation" class="dropdown-item">예약 조회하기</a>
                                 </li>
                                 <li>
-                                    <router-link to="/add-reservation" class="dropdown-item">예약하기</router-link>
+                                    <a href="/add-reservation" class="dropdown-item">예약하기</a>
                                 </li>
                             </ul>
                         </li>
@@ -133,10 +133,10 @@
                             </router-link>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <router-link to="/user" class="dropdown-item">유저 목록 조회하기</router-link>
+                                    <a href="/user" class="dropdown-item">유저 목록 조회하기</a>
                                 </li>
                                 <li>
-                                    <router-link to="/reservation" class="dropdown-item">예약현황 조회하기</router-link>
+                                    <a href="/reservation" class="dropdown-item">예약현황 조회하기</a>
                                 </li>
                             </ul>
                         </li>
@@ -174,9 +174,9 @@
                         </div>
                         <div v-if="currentUser">
                             <!-- 프로필 시작 -->
-                            <router-link to="/profile" class="btn btn-white text-yellow login">
+                            <a href="/profile" class="btn btn-white text-yellow login">
                                 <i class="fas fa-user me-2"></i>프로필
-                            </router-link>
+                            </a>
                             <!-- 프로필 끝 -->
 
                             <!-- 로그아웃 시작 -->

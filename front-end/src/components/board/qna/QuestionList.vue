@@ -6,13 +6,17 @@
       <h1 class="offset-5">1:1 문의 게시판</h1>
       <div style="text-align: center">
         <div class="p-3 mb-2 bg-warning text-dark bg-opacity-25">
-          <strong>"공지사항를 통해서 맛있는 토마토의 최신정보를 찾아보세요"
+          <strong
+            >"공지사항를 통해서 맛있는 토마토의 최신정보를 찾아보세요"
             <br />
-            "맛있는 토마토의 최신 정보와 공지를 모아서 한번에 찾아볼 수 있습니다.
+            "맛있는 토마토의 최신 정보와 공지를 모아서 한번에 찾아볼 수
+            있습니다.
           </strong>
         </div>
       </div>
-      <h1 class="text-danger">질문테이블(TB_QUESTION), 답변테이블(TB_ANSWER)두개 조인해서 사용할 예정</h1>
+      <h1 class="text-danger">
+        질문테이블(TB_QUESTION), 답변테이블(TB_ANSWER)두개 조인해서 사용할 예정
+      </h1>
       <!--    Todo : page 바 시작 주석 처리 -->
       <!-- <div class="col-md-12 offset-2">
                   <div class="mb-3">
@@ -34,30 +38,64 @@
         <table class="table table-hover">
           <thead>
             <tr>
-              <th class="table-active text-center" style="width: 10%" scope="col">#</th>
-              <th class="table-active text-center" style="width: 40%" scope="col">제목</th>
-              <th class="table-active text-center" style="width: 20%" scope="col">
+              <th
+                class="table-active text-center"
+                style="width: 10%"
+                scope="col"
+              >
+                #
+              </th>
+              <th
+                class="table-active text-center"
+                style="width: 40%"
+                scope="col"
+              >
+                제목
+              </th>
+              <th
+                class="table-active text-center"
+                style="width: 20%"
+                scope="col"
+              >
                 작성자
               </th>
-              <th class="table-active text-center" style="width: 20%" scope="col">
+              <th
+                class="table-active text-center"
+                style="width: 20%"
+                scope="col"
+              >
                 작성일
               </th>
-              <th class="table-active" style="width: 10%" scope="col" v-if="showAdminBoard">
+              <th
+                class="table-active"
+                style="width: 10%"
+                scope="col"
+                v-if="showAdminBoard"
+              >
                 수정/삭제
               </th>
             </tr>
           </thead>
           <tbody v-for="(data, index) in question" :key="index">
             <tr>
-              <td class="text-center"><i class="bi bi-hash"></i>{{ data.questionNo }}</td>
               <td class="text-center">
-                <router-link :to="'/question/' + data.questionNo"><span>{{ data.title }}</span></router-link>
+                <i class="bi bi-hash"></i>{{ data.questionNo }}
+              </td>
+              <td class="text-center">
+                <router-link :to="'/question/' + data.questionNo"
+                  ><span>{{ data.title }}</span></router-link
+                >
               </td>
               <td class="text-center">{{ data.writer }}</td>
-              <td class="text-center"> <i class="bi bi-calendar-date">&nbsp;</i>{{ data.insertTime }}</td>
+              <td class="text-center">
+                <i class="bi bi-calendar-date">&nbsp;</i>{{ data.insertTime }}
+              </td>
               <td v-if="showAdminBoard">
-                <router-link :to="'/question/' + data.qno"><span
-                    class="badge rounded-pill bg-warning text-dark">수정</span></router-link>
+                <router-link :to="'/question/' + data.qno"
+                  ><span class="badge rounded-pill bg-warning text-dark"
+                    >수정</span
+                  ></router-link
+                >
               </td>
             </tr>
           </tbody>
@@ -72,8 +110,16 @@
         </router-link>
       </div>
       <div class="overflow-auto offset-5">
-        <b-pagination v-model="page" :total-rows="count" :per-page="pageSize" first-text="<<" last-text=">>"
-          prev-text="Prev" next-text="Next" @change="handlePageChange"></b-pagination>
+        <b-pagination
+          v-model="page"
+          :total-rows="count"
+          :per-page="pageSize"
+          first-text="<<"
+          last-text=">>"
+          prev-text="Prev"
+          next-text="Next"
+          @change="handlePageChange"
+        ></b-pagination>
       </div>
       <!-- search 관련 div 시작 -->
       <div class="col-md-8 offset-2">
@@ -88,14 +134,24 @@
 
           <!-- searchDname -> searchKeyword 변경 -->
           <div class="col-7">
-            <input type="text" class="form-control" placeholder="Search by Question" v-model="searchKeyword" />
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search by Question"
+              v-model="searchKeyword"
+            />
           </div>
 
           <div class="input-group-append col-2">
-            <button class="btn btn-warning" type="button" @click="
-              page = 1;
-            retrieveQuestion();
-            "><i class="bi bi-search"></i>
+            <button
+              class="btn btn-warning"
+              type="button"
+              @click="
+                page = 1;
+                retrieveQuestion();
+              "
+            >
+              <i class="bi bi-search"></i>
               Search
             </button>
           </div>
@@ -164,23 +220,22 @@ export default {
   },
 
   computed: {
-            // 현재 유저
-            currentUser() {
-            // 모듈 저장소 : this.$store.state.모듈명.state값
-            // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
-            return this.$store.state.auth.user;
-        },
-
-        // 관리자 접속인지 아닌지 확인하는 함수
-        showAdminBoard() {
-            if (this.currentUser && this.currentUser.roles) {
-                // if ROLE_ADMIN 있으면 true
-                //               없으면 false
-                return this.currentUser.roles.includes("ROLE_ADMIN");
-            }
-            // currentUser 없으면 false (메뉴가 안보임)
-            return false;
-        },
+    // 현재 유저
+    currentUser() {
+      // 모듈 저장소 : this.$store.state.모듈명.state값
+      // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
+      return this.$store.state.auth.user;
+    },
+    // 관리자 접속인지 아닌지 확인하는 함수
+    showAdminBoard() {
+      if (this.currentUser && this.currentUser.roles) {
+        // if ROLE_ADMIN 있으면 true
+        //               없으면 false
+        return this.currentUser.roles.includes("ROLE_ADMIN");
+      }
+      // currentUser 없으면 false (메뉴가 안보임)
+      return false;
+    },
   },
 
   // 화면이 뜨자마자 실행되는 이벤트(라이프 사이클 함수) : mounted(), created()
@@ -191,5 +246,4 @@ export default {
 </script>
   
 <style>
-
 </style>
