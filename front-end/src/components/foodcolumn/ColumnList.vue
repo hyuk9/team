@@ -105,13 +105,13 @@
         </router-link> -->
         <!-- TODO: badge를 버튼으로 교체 -->
         <div class="offset-11">
-            <button
-              type="button"
-              class="btn btn-warning btn-sm"
-              @click="ConfirmLoggedUser"
-            >
-              글쓰기
-            </button>
+          <button
+            type="button"
+            class="btn btn-warning btn-sm"
+            @click="ConfirmLoggedUser"
+          >
+            글쓰기
+          </button>
         </div>
       </div>
       <div class="overflow-auto offset-5">
@@ -192,7 +192,11 @@ export default {
     ConfirmLoggedUser() {
       if (this.currentUser && this.currentUser.roles) {
         // if (ROLE_ADMIN || ROLE_USER) 로그인이 되어있다면 관리자거나 일반유저이므로 푸드컬럼 페이지로 바로 이동
-        return (this.currentUser.roles.includes("ROLE_ADMIN") || this.currentUser.roles.includes("ROLE_USER")) && this.$router.push("/add-column/");
+        return (
+          (this.currentUser.roles.includes("ROLE_ADMIN") ||
+            this.currentUser.roles.includes("ROLE_USER")) &&
+          this.$router.push("/add-column/")
+        );
       }
       // 로그인이 되어있지 않다면 로그인이 필요한 항목이라고 표시
       return alert("로그인이 필요한 항목입니다.");
@@ -241,14 +245,14 @@ export default {
       // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
       return this.$store.state.auth.user;
     },
-    // 현재 접속한 유저의 id = column.id 동일하면 버튼 보이게 하는 함수 작성해야함
+    // 관리자 접속인지 아닌지 확인하는 함수
     showAdminBoard() {
       if (this.currentUser && this.currentUser.roles) {
         // if ROLE_ADMIN 있으면 true
         //               없으면 false
         return this.currentUser.roles.includes("ROLE_ADMIN");
       }
-      // currentUser 없으면 false (메뉴가 안보임)
+      // 관리자가 아니라면 안보임
       return false;
     },
   },
