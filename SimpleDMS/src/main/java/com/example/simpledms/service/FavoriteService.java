@@ -60,12 +60,12 @@ public class FavoriteService {
     }
 
     // 부서번호(no)로 삭제하는 함수
-    public boolean removeById(int fid) {
+    public boolean removeById(int dno) {
 //        existsById(기본키) 있으면 삭제 실행 + true 리턴
-        if(favoriteRepository.existsById(fid) == true) {
+        if(favoriteRepository.existsById(dno) == true) {
 
 
-            favoriteRepository.deleteById(fid);
+            favoriteRepository.deleteById(dno);
             return true;
         }
 

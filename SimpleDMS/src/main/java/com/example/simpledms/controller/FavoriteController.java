@@ -152,11 +152,11 @@ public class FavoriteController {
         }
     }
 
-    @DeleteMapping("/favorite/deletion/{fid}")
-    public ResponseEntity<Object> deleteFavorite(@PathVariable int fid) {
+    @DeleteMapping("/favorite/deletion/{dno}")
+    public ResponseEntity<Object> deleteFavorite(@PathVariable int dno) {
 
         try {
-            boolean bSuccess = favoriteService.removeById(fid);
+            boolean bSuccess = favoriteService.removeById(dno);
 
             if (bSuccess == true) {
 //                데이터 + 성공 메세지 전송
