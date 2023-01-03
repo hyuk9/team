@@ -280,18 +280,26 @@ export default {
         });
     },
 
-    // '지역별 맛집'의 캐러셀 버튼의 오른쪽을 눌렀을때 작동하는 함수
+      // '지역별 맛집'의 캐러셀 버튼의 오른쪽을 눌렀을때 작동하는 함수
     countUp() {
-      if (this.countCarouselNum + 4 < this.diner.length) {
+      setTimeout(function() {
+       if (this.countCarouselNum + 4 < this.diner.length) {
         this.countCarouselNum = this.countCarouselNum + 4;
       } else {
         this.countCarouselNum = 0;
       }
+}.bind(this), 600);
+      // if (this.countCarouselNum + 4 < this.diner.length) {
+      //   this.countCarouselNum = this.countCarouselNum + 4;
+      // } else {
+      //   this.countCarouselNum = 0;
+      // }
     },
 
     // '지역별 맛집'의 캐러셀 버튼의 왼쪽을 눌렀을때 작동하는 함수
     countDown() {
-      if (this.countCarouselNum >= 4) {
+         setTimeout(function() {
+   if (this.countCarouselNum >= 4) {
         this.countCarouselNum = this.countCarouselNum - 4;
       } else {
         if (this.diner.length % 4 == 0) {
@@ -300,6 +308,8 @@ export default {
           this.countCarouselNum = this.diner.length - (this.diner.length % 4);
         }
       }
+}.bind(this), 600);
+   
     },
   },
 
@@ -333,9 +343,6 @@ export default {
     //   });
     // });
 
-    this.retrieveDiner();
-  },
-  updated() {
     this.retrieveDiner();
   },
 };
