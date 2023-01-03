@@ -23,7 +23,7 @@
                   placeholder="검색하기"
                   v-model="notTruesearchKeyword"
                 />
-              </div>      
+              </div>
               <!--  검색어 버튼 -->
               <div class="input-group-append col-1">
                 <button
@@ -61,88 +61,43 @@
             </div> -->
             <!-- Nested row for non-featured blog posts-->
             <div class="row">
-              <div
-                class="col-lg-6"
-                :class="{ active: index == currentIndex }"
-                v-for="(data, index) in diner"
-                :key="index"
-                @click="setActiveDiner(data, index)"
-              >
+              <div class="col-lg-6" v-for="(data, index) in diner" :key="index">
                 <!-- Blog post-->
-                <div class="card mb-4">
-                  <!-- <a href="#!"
-                    ><img
-                      class="card-img-top"
-                      src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
+                <div class="card mb-5">
+                  <router-link :to="'/diner/' + data.dno">
+                    <img
+                      class="img-fluid rounded-3 h-100 pt-2"
+                      :src="data.photo"
                       alt="..."
-                  /></a> -->
-                  <div
-                    id="carouselExampleSlidesOnly"
-                    class="carousel slide"
-                    data-bs-ride="carousel"
-                  >
-                    <div class="carousel-inner">
-                      <div class="carousel-item active">
-                        <img
-                          src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
-                          class="d-block w-100"
-                          alt="..."
-                        />
-                      </div>
-                      <div class="carousel-item">
-                        <img
-                          src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
-                          class="d-block w-100"
-                          alt="..."
-                        />
-                      </div>
-                      <div class="carousel-item">
-                        <img
-                          src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
-                          class="d-block w-100"
-                          alt="..."
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-body">
-                    <a
-                      class="badge bg-success text-decoration-none link-light"
-                      href="#!"
-                      >{{ data.menu }}</a
-                    >
-                    <h2 class="card-title h4">
-                      {{ data.dname }}
+                    />
+                    <div class="card-body">
                       <a
-                        class="badge bg-danger text-decoration-none link-light"
+                        class="badge bg-success text-decoration-none link-light"
                         href="#!"
-                        >{{ data.score }}</a
                       >
-                    </h2>
-                    <p class="card-text fw-bolder">
-                      {{ data.loc }}
-                    </p>
-                    <p class="card-text">
-                      {{ data.review }}
-                    </p>
+                        {{ data.menu }}
+                      </a>
+                      <a
+                        class="badge bg-warning text-dark text-decoration-none link-light ms-1"
+                        href="#!"
+                        >{{ data.theme }}</a
+                      >
 
-                    <!-- 간략 상세 목록 시작 -->
-                    <div v-if="currentDiner">
-                      <button class="btn btn-warning" type="button">
-                        <router-link :to="'/diner/' + currentDiner.dno"
-                          >상세보기 >
-                        </router-link>
-                      </button>
-                      <button class="btn btn-danger ms-3" v-if="showAdminBoard">
-                        <router-link
-                          :to="'/diner/' + currentDiner.dno + '/edit'"
-                          >수정하기</router-link
+                      <h2 class="card-title h4 mt-1">
+                        <span>
+                          {{ data.dname }}
+                        </span>
+                        <a
+                          class="badge bg-danger text-decoration-none link-light"
+                          href="#!"
+                          >{{ data.score }}</a
                         >
-                      </button>
+                      </h2>
+                      <p class="card-text fw-bolder">
+                        {{ data.loc }}
+                      </p>
                     </div>
-
-                    <!-- 간략 상세 목록 끝 -->
-                  </div>
+                  </router-link>
                 </div>
               </div>
             </div>
@@ -270,15 +225,15 @@ export default {
         "JAPANESE",
       ],
       // 처음 페이지 열렸을때 입력값 숨기기용 변수
-    notTruesearchSelect : "",
-    notTruesearchKeyword : "",
+      notTruesearchSelect: "",
+      notTruesearchKeyword: "",
     };
   },
   // 함수 정의하는 곳 : methods:
   methods: {
     retrieveDiner() {
       // 입력값 숨기기용 변수 값을 원래 변수로 옮기기
-      if(this.notTruesearchSelect != "" &&this.notTruesearchKeyword != "") {
+      if (this.notTruesearchSelect != "" && this.notTruesearchKeyword != "") {
         this.searchSelect = this.notTruesearchSelect;
         this.searchKeyword = this.notTruesearchKeyword;
       }
@@ -338,52 +293,52 @@ export default {
       return false;
     },
     // 나브바에서 무엇을 선택했냐에 따라서 보여주는 음식점을 바꾸는 함수
-    whatSelectDinerList () {
-      if(this.$route.path == "/haeundae") {
-        this.searchSelect = "지역"
-        this.searchKeyword = "해운대구"
+    whatSelectDinerList() {
+      if (this.$route.path == "/haeundae") {
+        this.searchSelect = "지역";
+        this.searchKeyword = "해운대구";
       } else if (this.$route.path == "/namgu") {
-        this.searchSelect = "지역"
-        this.searchKeyword = "남구"
-      }else if (this.$route.path == "/geumjeong") {
-        this.searchSelect = "지역"
-        this.searchKeyword = "금정구"
-      }else if (this.$route.path == "/gijang") {
-        this.searchSelect = "지역"
-        this.searchKeyword = "기장군"
-      }else if (this.$route.path == "/dongnae") {
-        this.searchSelect = "지역"
-        this.searchKeyword = "동래구"
-      }else if (this.$route.path == "/busanjin") {
-        this.searchSelect = "지역"
-        this.searchKeyword = "부산진구"
-      }else if (this.$route.path == "/yeongdo") {
-        this.searchSelect = "지역"
-        this.searchKeyword = "영도구"
-      }else if (this.$route.path == "/gangseo") {
-        this.searchSelect = "지역"
-        this.searchKeyword = "강서구"
-      }else if (this.$route.path == "/korean") {
-        this.searchSelect = "메뉴"
-        this.searchKeyword = "한식"
-      }else if (this.$route.path == "/chinese") {
-        this.searchSelect = "메뉴"
-        this.searchKeyword = "중식"
-      }else if (this.$route.path == "/japanese") {
-        this.searchSelect = "메뉴"
-        this.searchKeyword = "일식"
-      }else if (this.$route.path == "/western") {
-        this.searchSelect = "메뉴"
-        this.searchKeyword = "양식"
-      }else if (this.$route.path == "/date") {
-        this.searchSelect = "테마"
-        this.searchKeyword = "데이트"
-      }else if (this.$route.path == "/meeting") {
-        this.searchSelect = "테마"
-        this.searchKeyword = "모임"
-      }else if (this.$route.path == "/getTogether") {
-        this.searchSelect = "테마"
-        this.searchKeyword = "회식"
+        this.searchSelect = "지역";
+        this.searchKeyword = "남구";
+      } else if (this.$route.path == "/geumjeong") {
+        this.searchSelect = "지역";
+        this.searchKeyword = "금정구";
+      } else if (this.$route.path == "/gijang") {
+        this.searchSelect = "지역";
+        this.searchKeyword = "기장군";
+      } else if (this.$route.path == "/dongnae") {
+        this.searchSelect = "지역";
+        this.searchKeyword = "동래구";
+      } else if (this.$route.path == "/busanjin") {
+        this.searchSelect = "지역";
+        this.searchKeyword = "부산진구";
+      } else if (this.$route.path == "/yeongdo") {
+        this.searchSelect = "지역";
+        this.searchKeyword = "영도구";
+      } else if (this.$route.path == "/gangseo") {
+        this.searchSelect = "지역";
+        this.searchKeyword = "강서구";
+      } else if (this.$route.path == "/korean") {
+        this.searchSelect = "메뉴";
+        this.searchKeyword = "한식";
+      } else if (this.$route.path == "/chinese") {
+        this.searchSelect = "메뉴";
+        this.searchKeyword = "중식";
+      } else if (this.$route.path == "/japanese") {
+        this.searchSelect = "메뉴";
+        this.searchKeyword = "일식";
+      } else if (this.$route.path == "/western") {
+        this.searchSelect = "메뉴";
+        this.searchKeyword = "양식";
+      } else if (this.$route.path == "/date") {
+        this.searchSelect = "테마";
+        this.searchKeyword = "데이트";
+      } else if (this.$route.path == "/meeting") {
+        this.searchSelect = "테마";
+        this.searchKeyword = "모임";
+      } else if (this.$route.path == "/getTogether") {
+        this.searchSelect = "테마";
+        this.searchKeyword = "회식";
       }
       this.retrieveDiner();
     },
@@ -391,11 +346,10 @@ export default {
   // 화면이 뜨자마자 실행되는 이벤트(라이프 사이클 함수) : mounted(), created()
   mounted() {
     // 화면 로딩시 전체 조회함수 실행
-         this.whatSelectDinerList()
+    this.whatSelectDinerList();
     // this.searchKeyword = "";
   },
 };
 </script>
 
-<style>
-</style>
+<style></style>
