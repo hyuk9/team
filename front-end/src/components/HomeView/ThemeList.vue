@@ -20,14 +20,14 @@
           </h5>
         </div>
       </div>
-   <div class="col-12 mb-2">
+      <div class="col-12 mb-2">
         <!-- 전체보기 눌렀을 때 음식점 리스트로 매개변수 날리면서 페이지 전환 -->
         <!-- 지역별 맛집 선택 -->
-            <select class="form-select" v-model="searchKeyword">
-                  <option value="데이트">데이트</option>
-                  <option value="모임">모임</option>
-                  <option value="회식">회식</option>
-                </select>
+        <select class="form-select" v-model="searchKeyword">
+          <option value="데이트">데이트</option>
+          <option value="모임">모임</option>
+          <option value="회식">회식</option>
+        </select>
         <a class="btn btn-lg btn-primary float-right" href="/diner"
           >전체보기 <i class="fas fa-chevron-right ms-2"> </i
         ></a>
@@ -84,21 +84,21 @@
                       <div class="card-body ps-0">
                         <div class="d-flex align-items-center mb-3">
                           <div class="flex-1 ms-3">
-                            <h5 class="mb-0 fw-bold text-1000">
+                            <h4 class="mb-0 fw-bold text-1000">
                               {{ data.dname }}
-                            </h5>
+                            </h4>
                             <span class="text-primary fs--1 me-1"
                               ><i class="fas fa-star"></i></span
                             ><span class="mb-0 text-primary">{{
                               data.score
                             }}</span>
                           </div>
+                          <span class="badge bg-soft-danger py-2 px-3">
+                            <span class="fs-1 text-danger">
+                              {{ data.phone }}</span
+                            >
+                          </span>
                         </div>
-                        <span class="badge bg-soft-danger py-2 px-3">
-                          <span class="fs-1 text-danger">
-                            {{ data.phone }}</span
-                          >
-                        </span>
                       </div>
                     </div>
                   </router-link>

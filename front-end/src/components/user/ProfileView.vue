@@ -511,6 +511,7 @@ export default {
     return {
       // currentReservation: null,
       reservation: [],
+      favorite: [],
       searchName: "",
       currentData: null,
       currentIndex: -1,

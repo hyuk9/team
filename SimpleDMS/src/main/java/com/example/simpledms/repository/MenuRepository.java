@@ -1,10 +1,11 @@
 package com.example.simpledms.repository;
 
-import com.example.simpledms.model.Free;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+
+import com.example.simpledms.model.Menu;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * packageName : com.example.jpaexam.repository
@@ -18,13 +19,13 @@ import org.springframework.stereotype.Repository;
  * 2022-10-20         ds          최초 생성
  */
 
-public interface FreeRepository extends JpaRepository<Free, Integer> {
-//    question 조회하는 like 검색 함수
-//    1) 쿼리메소드 방식으로 함수 정의
-    Page<Free> findAllByWriterContainingOrderByInsertTimeDescFnoDesc(String writer, Pageable pageable);
-    Page<Free> findAllByTitleContainingOrderByInsertTimeDescFnoDesc(String title, Pageable pageable);
+@Repository
+public interface MenuRepository extends JpaRepository<Menu, Integer> {
+//    부서명으로(dname) 조회하는 like 검색 함수
+//    1) 쿼리메소드 방식으로 사용자 정의 함수 정의
+    List<Menu> findAllByMenuNameContaining (String menuName);
 
-    public Page<Free> findAllByOrderByInsertTimeDesc(Pageable pageable);
+    List<Menu> findAllByDnoEquals (Integer dno);
 }
 
 
