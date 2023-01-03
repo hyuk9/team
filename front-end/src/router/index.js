@@ -221,6 +221,76 @@ const routes = [
       name: 'auth-redirect',
       component: () => import('../views/Auth2View.vue')
   },
+  // 음식점 조건별(지역,테마 등등) 이동
+  {
+    path: "/haeundae",
+    name: "haeundae",
+    component: () => import("@/components/food/local/DinerList.vue"),
+  },  
+  {
+    path: "/namgu",
+    name: "namgu",
+    component: () => import("@/components/food/local/DinerList.vue"),
+  },  {
+    path: "/geumjeong",
+    name: "geumjeong",
+    component: () => import("@/components/food/local/DinerList.vue"),
+  },  
+  {
+    path: "/gijang",
+    name: "gijang",
+    component: () => import("@/components/food/local/DinerList.vue"),
+  },  {
+    path: "/dongnae",
+    name: "dongnae",
+    component: () => import("@/components/food/local/DinerList.vue"),
+  },  
+  {
+    path: "/busanjin",
+    name: "busanjin",
+    component: () => import("@/components/food/local/DinerList.vue"),
+  },  {
+    path: "/yeongdo",
+    name: "yeongdo",
+    component: () => import("@/components/food/local/DinerList.vue"),
+  },  
+  {
+    path: "/gangseo",
+    name: "gangseo",
+    component: () => import("@/components/food/local/DinerList.vue"),
+  },  {
+    path: "/korean",
+    name: "korean",
+    component: () => import("@/components/food/local/DinerList.vue"),
+  },  
+  {
+    path: "/chinese",
+    name: "chinese",
+    component: () => import("@/components/food/local/DinerList.vue"),
+  },  {
+    path: "/japanese",
+    name: "japanese",
+    component: () => import("@/components/food/local/DinerList.vue"),
+  },  
+  {
+    path: "/western",
+    name: "western",
+    component: () => import("@/components/food/local/DinerList.vue"),
+  },  {
+    path: "/date",
+    name: "date",
+    component: () => import("@/components/food/local/DinerList.vue"),
+  },  
+  {
+    path: "/meeting",
+    name: "meeting",
+    component: () => import("@/components/food/local/DinerList.vue"),
+  },  
+  {
+    path: "/getTogether",
+    name: "getTogether",
+    component: () => import("@/components/food/local/DinerList.vue"),
+  },
 ];
 
 const router = new VueRouter({

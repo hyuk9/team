@@ -48,14 +48,14 @@
                                 <li class="has-children subdropmenu">
                                     <router-link to="/diner" class="dropdown-item">부산광역시</router-link>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#">해운대구</a></li>
-                                        <li><a href="#">남구</a></li>
-                                        <li><a href="#">금정구</a></li>
-                                        <li><a href="#">기장구</a></li>
-                                        <li><a href="#">동래구</a></li>
-                                        <li><a href="#">부산진구</a></li>
-                                        <li><a href="#">영도구</a></li>
-                                        <li><a href="#">강서구</a></li>
+                                        <li><a href="/haeundae">해운대구</a></li>
+                                        <li><a href="/namgu">남구</a></li>
+                                        <li><a href="/geumjeong">금정구</a></li>
+                                        <li><a href="/gijang">기장구</a></li>
+                                        <li><a href="/dongnae">동래구</a></li>
+                                        <li><a href="/busanjin">부산진구</a></li>
+                                        <li><a href="/yeongdo">영도구</a></li>
+                                        <li><a href="/gangseo">강서구</a></li>
                                     </ul>
                                 </li>
                                 <li>
@@ -64,10 +64,10 @@
                                 <li class="has-children subdropmenu">
                                     <router-link to="/diner" class="dropdown-item">메뉴별</router-link>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#">한식</a></li>
-                                        <li><a href="#">중식</a></li>
-                                        <li><a href="#">일식</a></li>
-                                        <li><a href="#">양식</a></li>
+                                        <li><a href="/korean">한식</a></li>
+                                        <li><a href="/chinese">중식</a></li>
+                                        <li><a href="/japanese">일식</a></li>
+                                        <li><a href="/western">양식</a></li>
                                     </ul>
                                 </li>
                                 <li>
@@ -76,9 +76,9 @@
                                 <li class="has-children subdropmenu">
                                     <router-link to="/diner" class="dropdown-item">테마별</router-link>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#">데이트</a></li>
-                                        <li><a href="#">모임</a></li>
-                                        <li><a href="#">회식</a></li>
+                                        <li><a href="/date">데이트</a></li>
+                                        <li><a href="/meeting">모임</a></li>
+                                        <li><a href="/getTogether">회식</a></li>
                                     </ul>
                                 </li>
                             </ul>

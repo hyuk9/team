@@ -8,7 +8,7 @@
           <div class="col-lg-8">
             <div class="input-group mt-5 mb-5">
               <div class="col-3">
-                <select class="form-select" v-model="searchSelect">
+                <select class="form-select" v-model="notTruesearchSelect">
                   <option>메뉴</option>
                   <option>지역</option>
                   <option>테마</option>
@@ -21,9 +21,9 @@
                   type="text"
                   class="form-control"
                   placeholder="검색하기"
-                  v-model="searchKeyword"
+                  v-model="notTruesearchKeyword"
                 />
-              </div>
+              </div>      
               <!--  검색어 버튼 -->
               <div class="input-group-append col-1">
                 <button
@@ -269,11 +269,19 @@ export default {
         "CHINESE",
         "JAPANESE",
       ],
+      // 처음 페이지 열렸을때 입력값 숨기기용 변수
+    notTruesearchSelect : "",
+    notTruesearchKeyword : "",
     };
   },
   // 함수 정의하는 곳 : methods:
   methods: {
     retrieveDiner() {
+      // 입력값 숨기기용 변수 값을 원래 변수로 옮기기
+      if(this.notTruesearchSelect != "" &&this.notTruesearchKeyword != "") {
+        this.searchSelect = this.notTruesearchSelect;
+        this.searchKeyword = this.notTruesearchKeyword;
+      }
       DinerDataService.getAll(
         this.searchSelect, // select box 선택된 값
         this.searchKeyword, // 검색어
@@ -329,11 +337,61 @@ export default {
       // currentUser 없으면 false (메뉴가 안보임)
       return false;
     },
+    // 나브바에서 무엇을 선택했냐에 따라서 보여주는 음식점을 바꾸는 함수
+    whatSelectDinerList () {
+      if(this.$route.path == "/haeundae") {
+        this.searchSelect = "지역"
+        this.searchKeyword = "해운대구"
+      } else if (this.$route.path == "/namgu") {
+        this.searchSelect = "지역"
+        this.searchKeyword = "남구"
+      }else if (this.$route.path == "/geumjeong") {
+        this.searchSelect = "지역"
+        this.searchKeyword = "금정구"
+      }else if (this.$route.path == "/gijang") {
+        this.searchSelect = "지역"
+        this.searchKeyword = "기장군"
+      }else if (this.$route.path == "/dongnae") {
+        this.searchSelect = "지역"
+        this.searchKeyword = "동래구"
+      }else if (this.$route.path == "/busanjin") {
+        this.searchSelect = "지역"
+        this.searchKeyword = "부산진구"
+      }else if (this.$route.path == "/yeongdo") {
+        this.searchSelect = "지역"
+        this.searchKeyword = "영도구"
+      }else if (this.$route.path == "/gangseo") {
+        this.searchSelect = "지역"
+        this.searchKeyword = "강서구"
+      }else if (this.$route.path == "/korean") {
+        this.searchSelect = "메뉴"
+        this.searchKeyword = "한식"
+      }else if (this.$route.path == "/chinese") {
+        this.searchSelect = "메뉴"
+        this.searchKeyword = "중식"
+      }else if (this.$route.path == "/japanese") {
+        this.searchSelect = "메뉴"
+        this.searchKeyword = "일식"
+      }else if (this.$route.path == "/western") {
+        this.searchSelect = "메뉴"
+        this.searchKeyword = "양식"
+      }else if (this.$route.path == "/date") {
+        this.searchSelect = "테마"
+        this.searchKeyword = "데이트"
+      }else if (this.$route.path == "/meeting") {
+        this.searchSelect = "테마"
+        this.searchKeyword = "모임"
+      }else if (this.$route.path == "/getTogether") {
+        this.searchSelect = "테마"
+        this.searchKeyword = "회식"
+      }
+      this.retrieveDiner();
+    },
   },
   // 화면이 뜨자마자 실행되는 이벤트(라이프 사이클 함수) : mounted(), created()
   mounted() {
     // 화면 로딩시 전체 조회함수 실행
-    this.retrieveDiner();
+         this.whatSelectDinerList()
     // this.searchKeyword = "";
   },
 };
