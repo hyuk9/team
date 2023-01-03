@@ -25,7 +25,7 @@
             </a>
           </div> -->
           <div class="col-sm-4">
-            <img :src="previewImage" class="card-img-top" alt="강의" />
+            <img :src="previewImage" class="card-img-top" alt="" />
             <a style="color: inherit" @click="deleteImage(free.fno)">
               <span class="badge bg-danger">Delete</span>
             </a>
