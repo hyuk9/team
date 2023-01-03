@@ -22,8 +22,8 @@ class FavoriteDataService {
     return http.put(`/favorite/${fid}`, data);
   }
 
-  delete(fid) {
-    return http.delete(`/favorite/deletion/${fid}`);
+  delete(dno) {
+    return http.delete(`/favorite/deletion/${dno}`);
   }
 
   deleteAll() {

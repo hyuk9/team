@@ -168,9 +168,17 @@
               >
                 <!-- <img src="assets/img/gallery/empty_heart.png" v-if="empty" />
                 <img src="assets/img/gallery/fill_heart.png" v-else-if="fill" /> -->
-                찜
                 <!-- <i class="bi bi-heart" v-if="empty"></i>
                 <i class="bi bi-heart-fill" v-else-if="fill"></i> -->
+                찜하기
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-danger"
+                @click="deleteFavorite"
+              >
+                찜삭제
               </button>
 
               <b-button type="button" v-b-modal.modal-prevent-closing
@@ -467,7 +475,7 @@ export default {
 
     saveFavorite() {
       let data = {
-        dno: this.diner.dno,
+        dno: this.currentDiner.dno,
         id: this.currentUser.id,
       };
       // insert 요청 함수 호출(axios 공통함수 호출)
@@ -477,11 +485,22 @@ export default {
           this.favorite.fid = response.data.fid;
           // 콘솔 로그 출력(response.data)
           console.log(response.data);
-          // 변수 submitted
-          this.submitted = true;
           alert("찜했습니다.");
         })
         // 실패하면 .catch() 결과가 전송됨
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+    deleteFavorite() {
+      // axios 공통함수 호출
+      FavoriteDataService.delete(this.currentDiner.dno)
+        // 성공하면 then() 결과가 전송됨
+        .then((response) => {
+          console.log(response.data);
+          alert("찜 삭제했습니다.");
+        })
+        // 실패하면 .catch() 에러메세지가 전송됨
         .catch((e) => {
           console.log(e);
         });
