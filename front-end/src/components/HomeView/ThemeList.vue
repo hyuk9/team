@@ -325,6 +325,13 @@ export default {
 
     this.retrieveDiner();
   },
+  watch : {
+    searchKeyword() {
+      this.countCarouselNum = 0;
+      $('#carouselLocationItemsInThemeList').carousel(0).removeData();
+      this.retrieveDiner();
+    },
+  },
 };
 </script>
 
