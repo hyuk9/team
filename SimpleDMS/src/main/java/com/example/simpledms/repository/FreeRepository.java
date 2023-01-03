@@ -23,7 +23,8 @@ public interface FreeRepository extends JpaRepository<Free, Integer> {
 //    1) 쿼리메소드 방식으로 함수 정의
     Page<Free> findAllByWriterContainingOrderByInsertTimeDescFnoDesc(String writer, Pageable pageable);
     Page<Free> findAllByTitleContainingOrderByInsertTimeDescFnoDesc(String title, Pageable pageable);
-    Page<Free> findAllByGalleryTitleContaining(String galleryTitle, Pageable pageable);
+
+    public Page<Free> findAllByOrderByInsertTimeDesc(Pageable pageable);
 }
 
 

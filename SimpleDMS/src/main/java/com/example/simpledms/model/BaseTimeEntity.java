@@ -43,7 +43,7 @@ public abstract class BaseTimeEntity {
     @PrePersist
     void onPrePersist() {
         this.insertTime = LocalDateTime.now()
-                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         this.deleteYn = "N"; // null 값이 들어가는 것을 방지하기 위한 초기화
     }
 
@@ -51,7 +51,7 @@ public abstract class BaseTimeEntity {
     @PreUpdate
     void onPreUpdate() {
         this.updateTime = LocalDateTime.now()
-                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         this.insertTime = this.updateTime;
         this.deleteYn = "N"; // null 값이 들어가는 것을 방지하기 위한 초기화
     }

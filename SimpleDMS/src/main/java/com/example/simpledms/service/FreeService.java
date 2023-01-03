@@ -51,18 +51,11 @@ public class FreeService {
         return free2;
     }
 
-    //    부서번호로 조회하는 함수
-    public Optional<Free> findById(int fno) {
-//        findById(기본키속성)
-        Optional<Free> optionalFree = freeRepository.findById(fno);
-
-        return optionalFree;
-    }
 
     // 부서번호(no)로 삭제하는 함수
     public boolean removeById(int fno) {
 //        existsById(기본키) 있으면 삭제 실행 + true 리턴
-        if(freeRepository.existsById(fno) == true) {
+        if (freeRepository.existsById(fno) == true) {
 
 
             freeRepository.deleteById(fno);
@@ -94,49 +87,85 @@ public class FreeService {
         return page;
     }
 
-    //   ID(기본키) 로 파일 조회 ( findById(기본키) : JPA 제공하는 기본 함수 )
-    public Optional<Free> getFile(int fid) {
-        Optional<Free> optionalFree = freeRepository.findById(fid);
-
-        return optionalFree;
-    }
-
-    //    freeTitle(이미지명) 으로 like 검색하는 함수
-    public Page<Free> findAllByGalleryTitleContaining(String freeTitle, Pageable pageable) {
-        Page<Free> page = freeRepository
-                .findAllByGalleryTitleContaining(freeTitle, pageable);
-
-        return page;
-    }
-
-    //    ID(기본키) 로 삭제 함수 : 1건만 삭제됨
-    public boolean removeById2(int fno) {
-
-        if (freeRepository.existsById(fno) == true) {
-            freeRepository.deleteById(fno); // 삭제 실행
-            return true;
-        }
-
-        return false;
-    }
-
     //    이미지 저장 함수(*)
-    public Free store(String freeTitle,
-                      MultipartFile file) throws IOException
-    {
-//        path(폴더경로) 제거후 순순한 fileName 가져오기
-//        .getOriginalFilename() : 경로/파일명
-        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+//    public Free store(String freeTitle,
+//                      MultipartFile file) throws IOException
+//    {
+////        path(폴더경로) 제거후 순순한 fileName 가져오기
+////        .getOriginalFilename() : 경로/파일명
+//        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+//
+////      1) Free 생성자에 경로 등 여러 정보를 저장
+//        Free free = new Free(freeTitle,
+//                fileName,
+//                file.getContentType(), // 이미지의 타입정보( .jpg, .png 등 )
+//                file.getBytes());      // 이미지 크기(size)
+//
+////      2) 위의 Free 를 DB 저장 + return
+//        return freeRepository.save(free);
+//    }
 
-//      1) Free 생성자에 경로 등 여러 정보를 저장
-        Free free = new Free(freeTitle,
-                fileName,
-                file.getContentType(), // 이미지의 타입정보( .jpg, .png 등 )
-                file.getBytes());      // 이미지 크기(size)
+    public Free createUploadImage(String writer, String title, String
+            content, MultipartFile blobFile) throws IOException {
 
-//      2) 위의 Free 를 DB 저장 + return
-        return freeRepository.save(free);
+        //            업로드 파일에서 파일명 얻기
+        String galleryFileName = StringUtils.cleanPath(blobFile.getOriginalFilename());
+
+        Free free = Free.builder()
+                .writer(writer)
+                .title(title)
+                .content(content)
+                .galleryFileName(galleryFileName)
+                .blobFile(blobFile.getBytes())
+                .build();
+
+        Free createFree = freeRepository.save(free);
+        return createFree;
     }
+
+    public Free updateUploadFile(int fno,String writer, String title, String
+            content, MultipartFile blobFile) throws IOException {
+
+        //            업로드 파일에서 파일명 얻기
+        String galleryFileName = StringUtils.cleanPath(blobFile.getOriginalFilename());
+
+        Free free = Free.builder()
+                .fno(fno)
+                .writer(writer)
+                .title(title)
+                .content(content)
+                .galleryFileName(galleryFileName)
+                .blobFile(blobFile.getBytes())
+                .build();
+
+        Free createFree = freeRepository.save(free);
+
+        return createFree;
+    }
+
+//    //    부서번호로 조회하는 함수
+//    public Optional<Free> findById(int fno) {
+////        findById(기본키속성)
+//        Optional<Free> optionalFree = freeRepository.findById(fno);
+//
+//        return optionalFree;
+//    }
+
+    public Optional<Free> findId(int fno) {
+
+        //            findById : parameter 값 - ID, return  값 - Optional
+        Optional<Free> courseOptional = freeRepository.findById(fno);
+
+        return courseOptional;
+    }
+
+    public Page<Free> findAllDesc(Pageable pageable) {
+
+        Page<Free> freeList = freeRepository.findAllByOrderByInsertTimeDesc(pageable);
+
+        return freeList;
+    }
+
 }
 
 

@@ -81,35 +81,35 @@ VALUES (SQ_ANNOUNCE.nextval, '질문사항에 대해', '질문게시판을 이�
 
 -- Todo:자유게시판 테이블
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '장동혁', '코로나 확진이 되었어요', '솔직히 걸릴 줄 몰랐는데 막상 걸리니까 힘들고 아프네요', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'),
+VALUES (SQ_FREE.nextval, '장동혁', '코로나 확진이 되었어요', '솔직히 걸릴 줄 몰랐는데 막상 걸리니까 힘들고 아프네요','','','','', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'),
         NULL, NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '전성혜', '고양이가 너무 귀여워요', '제 고양이 봐주세요', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
+VALUES (SQ_FREE.nextval, '전성혜', '고양이가 너무 귀여워요', '제 고양이 봐주세요','','','','', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '조성모', '팀프로젝트 하는데 조장이 탈주했어요', '갑자기 코로나 걸렸다고 사라졌어요 어떡하죠', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'),
+VALUES (SQ_FREE.nextval, '조성모', '팀프로젝트 하는데 조장이 탈주했어요', '갑자기 코로나 걸렸다고 사라졌어요 어떡하죠','','','','', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'),
         NULL, NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '박선영', '겨울에 듣기 좋은 노래 추천해주세요', '추운날씨에 듣기 좋은 곡이 있을까요', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL,
+VALUES (SQ_FREE.nextval, '박선영', '겨울에 듣기 좋은 노래 추천해주세요', '추운날씨에 듣기 좋은 곡이 있을까요','','','','', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL,
         NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '권태현', '이번 4090 그래픽카드 어떤가요', '가격이 너무 비싸서 고민되요', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL,
+VALUES (SQ_FREE.nextval, '권태현', '이번 4090 그래픽카드 어떤가요', '가격이 너무 비싸서 고민되요','','','','', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL,
         NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '강아름', '내일 소개팅 나가는데 옷좀 봐주세요', '추워서 롱패딩만 입고 나가기엔 썸남이 너무 잘생겼어요', 'N',
+VALUES (SQ_FREE.nextval, '강아름', '내일 소개팅 나가는데 옷좀 봐주세요', '추워서 롱패딩만 입고 나가기엔 썸남이 너무 잘생겼어요','','','','', 'N',
         TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '고건민', '저 성인 ADHD인가요?', '한가지에 집중을 잘 못하겠는데 의심됩니다', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL,
+VALUES (SQ_FREE.nextval, '고건민', '저 성인 ADHD인가요?', '한가지에 집중을 잘 못하겠는데 의심됩니다','','','','', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL,
         NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '최은빈', '그렇게 됐습니다', '뒷 내용이 궁금하신분은 연락주세요', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
+VALUES (SQ_FREE.nextval, '최은빈', '그렇게 됐습니다', '뒷 내용이 궁금하신분은 연락주세요','','','','', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '이빛나', '시어머니가 너무 귀찮게 굴어요', '집에 저만 있는데도 계속 찾아와서 절 너무 당황스럽게 하네요', 'N',
+VALUES (SQ_FREE.nextval, '이빛나', '시어머니가 너무 귀찮게 굴어요', '집에 저만 있는데도 계속 찾아와서 절 너무 당황스럽게 하네요','','','','', 'N',
         TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '남궁민', '자취하는데 필수템 있을까요?', '이번에 취직해서 처음 자취인데 필수템이라고 할만한게 있을까요', 'N',
+VALUES (SQ_FREE.nextval, '남궁민', '자취하는데 필수템 있을까요?', '이번에 취직해서 처음 자취인데 필수템이라고 할만한게 있을까요','','','','', 'N',
         TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '김시습', '이번에 책 한권 냈는데 한번 봐주세요', '제목을 금오신화라고 지었는데 요즘 사람들은 잘 안볼까요?', 'N',
+VALUES (SQ_FREE.nextval, '김시습', '이번에 책 한권 냈는데 한번 봐주세요', '제목을 금오신화라고 지었는데 요즘 사람들은 잘 안볼까요?','','','','', 'N',
         TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 
 -- Todo:예약 테이블
