@@ -17,9 +17,9 @@
         <div class="mt-3 form-group">
           <label for="loc">평점</label>
           <input
-            type="text"
+            type="number"
             class="form-control"
-            id="loc"
+            id="score"
             v-model="currentDiner.score"
           />
         </div>
@@ -37,7 +37,7 @@
           <input
             type="text"
             class="form-control"
-            id="loc"
+            id="phone"
             v-model="currentDiner.phone"
           />
         </div>
@@ -46,20 +46,29 @@
           <input
             type="text"
             class="form-control"
-            id="loc"
+            id="menu"
             v-model="currentDiner.menu"
+          />
+        </div>
+        <div class="mt-3 form-group">
+          <label for="theme">테마</label>
+          <input
+            type="text"
+            class="form-control"
+            id="theme"
+            v-model="currentDiner.theme"
           />
         </div>
       </form>
 
-      <button class="mt-3 btn btn-danger" @click="deleteDiner">Delete</button>
+      <button class="mt-3 btn btn-danger" @click="deleteDiner">삭제</button>
 
       <button
         type="submit"
         class="ms-3 mt-3 btn btn-success"
         @click="updateDiner"
       >
-        Update
+        수정
       </button>
     </div>
     <!-- 수정 양식 폼 끝 -->

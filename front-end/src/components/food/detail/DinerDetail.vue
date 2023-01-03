@@ -16,6 +16,11 @@
                   href="#!"
                   >{{ currentDiner.menu }}</a
                 >
+                <a
+                  class="badge bg-warning text-decoration-none link-light ms-1"
+                  href="#!"
+                  >{{ currentDiner.theme }}</a
+                >
               </h4>
               <!-- Post title-->
               <h1 class="fw-bolder mb-1">
@@ -119,43 +124,7 @@
                 </button>
               </div>
             </figure>
-            <!-- Post content
-            <section class="mb-5">
-              <p class="fs-5 mb-4">
-                Science is an enterprise that should be cherished as an activity
-                of the free human mind. Because it transforms who we are, how we
-                live, and it gives us an understanding of our place in the
-                universe.
-              </p>
-              <p class="fs-5 mb-4">
-                The universe is large and old, and the ingredients for life as
-                we know it are everywhere, so there's no reason to think that
-                Earth would be unique in that regard. Whether of not the life
-                became intelligent is a different question, and we'll see if we
-                find that.
-              </p>
-              <p class="fs-5 mb-4">
-                If you get asteroids about a kilometer in size, those are large
-                enough and carry enough energy into our system to disrupt
-                transportation, communication, the food chains, and that can be
-                a really bad day on Earth.
-              </p>
-              <h2 class="fw-bolder mb-4 mt-5">
-                I have odd cosmic thoughts every day
-              </h2>
-              <p class="fs-5 mb-4">
-                For me, the most fascinating interface is Twitter. I have odd
-                cosmic thoughts every day and I realized I could hold them to
-                myself or share them with people who might be interested.
-              </p>
-              <p class="fs-5 mb-4">
-                Venus has a runaway greenhouse effect. I kind of want to know
-                what happened there because we're twirling knobs here on Earth
-                without knowing the consequences of it. Mars once had running
-                water. It's bone dry today. Something bad happened there as
-                well.
-              </p> -->
-            <!-- </section> -->
+
             <div
               class="btn-group btn-group-lg"
               role="group"
@@ -191,6 +160,12 @@
                 v-on:click="reservationToggle"
               >
                 예약
+              </button>
+
+              <button type="button" class="btn btn-success" v-if="showAdminBoard">
+                <router-link :to="'/diner/' + currentDiner.dno + '/edit'"
+                  >수정하기</router-link
+                >
               </button>
             </div>
           </article>
@@ -467,7 +442,7 @@ export default {
         // 성공하면 then() 결과가 전송됨
         .then((response) => {
           console.log(response.data);
-          // 첫페이지(전체목록_조회_페이지) 강제 이동 : /local
+          // 첫페이지(전체목록_조회_페이지) 강제 이동 : /diner
           this.$router.push("/diner");
         })
         // 실패하면 .catch() 에러메세지가 전송됨
@@ -568,6 +543,16 @@ export default {
       // 모듈 저장소 : this.$store.state.모듈명.state값
       // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
       return this.$store.state.auth.user;
+    },
+    // ROLE_ADMIN 만 보이는 메뉴(함수)
+    showAdminBoard() {
+      if (this.currentUser && this.currentUser.roles) {
+        // if ROLE_ADMIN 있으면 true
+        //               없으면 false
+        return this.currentUser.roles.includes("ROLE_ADMIN");
+      }
+      // currentUser 없으면 false (메뉴가 안보임)
+      return false;
     },
   },
 };
