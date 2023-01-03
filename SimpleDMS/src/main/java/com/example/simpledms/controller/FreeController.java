@@ -104,21 +104,6 @@ public class FreeController {
         }
     }
 
-    @PostMapping("/free")
-    public ResponseEntity<Object> createFree(@RequestBody Free free) {
-
-        try {
-            Free free2 = freeService.save(free);
-
-            return new ResponseEntity<>(free2, HttpStatus.OK);
-
-        } catch (Exception e) {
-            log.debug(e.getMessage());
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-
     @GetMapping("/free/{fno}")
     public ResponseEntity<Object> getFreeId(@PathVariable int fno) {
 
@@ -177,36 +162,65 @@ public class FreeController {
         }
     }
 
+
+//    @PostMapping("/free")
+//    public ResponseEntity<Object> createFree(@RequestBody Free free) {
+//
+//        try {
+//            Free free2 = freeService.save(free);
+//
+//            return new ResponseEntity<>(free2, HttpStatus.OK);
+//
+//        } catch (Exception e) {
+//            log.debug(e.getMessage());
+//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
+
     //    생성 처리 : image update 포함
     @PostMapping("/free/create")
     public ResponseEntity<Object> createUploadFile(
+            @RequestParam("writer") String writer,
+            @RequestParam("title") String title,
+            @RequestParam("content") String content,
             @RequestParam("blobFile") MultipartFile blobFile
     ) {
         String message = "";
 
+        log.info("writer {} : ", writer);
+        log.info("title {} : ", title);
+        log.info("content {} : ", content);
 
         try {
-            freeService.createUploadImage(blobFile);
+            freeService.createUploadImage(writer, title, content, blobFile);
 
             message = "Uploaded the file successfully: " + blobFile.getOriginalFilename();
             return new ResponseEntity<Object>(message, HttpStatus.CREATED);
         } catch (Exception e) {
             message = "Could not upload the file: " + blobFile.getOriginalFilename() + "!";
+            log.debug(e.getMessage());
             return new ResponseEntity<Object>(message, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     //    수정 처리 : image update 포함
     @PutMapping("/free/update/{fno}")
-    public ResponseEntity<Object> updateUploadFile(@PathVariable int fno,
-                                                   @RequestParam("blobFile") MultipartFile blobFile
+    public ResponseEntity<Object> updateUploadFile(
+            @PathVariable int fno,
+            @RequestParam("writer") String writer,
+            @RequestParam("title") String title,
+            @RequestParam("content") String content,
+            @RequestParam("blobFile") MultipartFile blobFile
     ) {
         String message = "";
 
         log.info("fno {} : ", fno);
+        log.info("writer {} : ", writer);
+        log.info("title {} : ", title);
+        log.info("content {} : ", content);
 
         try {
-            freeService.updateUploadFile(fno,blobFile);
+            freeService.updateUploadFile(fno,writer, title, content, blobFile);
 
             message = "Uploaded the file successfully: " + blobFile.getOriginalFilename();
             return new ResponseEntity<Object>(message, HttpStatus.CREATED);
@@ -228,7 +242,7 @@ public class FreeController {
                 .body(free.getBlobFile());
     }
 
-//      Todo:
+    //      Todo:
     @GetMapping("/free/getlist")
     public ResponseEntity<Object> getListFiles(
             @RequestParam(defaultValue = "0") int page,
@@ -277,25 +291,25 @@ public class FreeController {
     }
 
     //    삭제 처리
-    @DeleteMapping("/free/deletions/{fno}")
-    public ResponseEntity<Object> deleteDept(@PathVariable int fno) {
-
-//        프론트엔드 쪽으로 상태정보를 보내줌
-        try {
-            log.debug("fno : {}", fno);
-            boolean bSuccess = freeService.removeById(fno);
-
-            if (bSuccess == true) {
-//                delete 문이 성공했을 경우
-                return new ResponseEntity<>(HttpStatus.OK);
-            }
-//            delete 실패했을 경우( 0건 삭제가 될경우 )
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch (Exception e) {
-//            DB 에러가 날경우
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+//    @DeleteMapping("/free/deletion/{fno}")
+//    public ResponseEntity<Object> deleteDept(@PathVariable int fno) {
+//
+////        프론트엔드 쪽으로 상태정보를 보내줌
+//        try {
+//            log.debug("fno : {}", fno);
+//            boolean bSuccess = freeService.removeById(fno);
+//
+//            if (bSuccess == true) {
+////                delete 문이 성공했을 경우
+//                return new ResponseEntity<>(HttpStatus.OK);
+//            }
+////            delete 실패했을 경우( 0건 삭제가 될경우 )
+//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        } catch (Exception e) {
+////            DB 에러가 날경우
+//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
 }
 
 

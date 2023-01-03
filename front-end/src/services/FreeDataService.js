@@ -17,15 +17,49 @@ class FreeDataService {
 
     // 부서정보 생성(insert) 요청 함수
     // post 방식 통신 요청 -> @PostMapping("/api/free"), @RequestBody
-    create(data) {
-        console.log(data);
-        return http.post("/free", data);
+    create(writer,title,content,blobFile,onUploadProgress) {
+        let formData = new FormData(); 
+
+        console.log(writer);
+        console.log(title);
+        console.log(content);
+        console.log(blobFile);
+
+        formData.append("writer", writer);
+        formData.append("title", title);
+        formData.append("content", content);
+        formData.append("blobFile", blobFile);
+        
+        return http.post("/free/create", formData, {
+            headers: {
+              "Content-Type": "multipart/form-data"
+            },
+            onUploadProgress
+          });
     }
 
     // 부서정보 수정(update) 요청 함수
     // put 방식 통신 요청 -> @PutMapping("/api/free/{fno}"), @RequestBody
-    update(fno, data) {
-        return http.put(`/free/${fno}`, data);
+    update(fno,writer,title,content,blobFile,onUploadProgress) {
+        let formData = new FormData();
+
+        console.log(fno);
+        console.log(writer);
+        console.log(title);
+        console.log(content);
+        console.log(blobFile);
+
+        formData.append("writer", writer);
+        formData.append("title", title);
+        formData.append("content", content);
+        formData.append("blobFile", blobFile);
+
+        return http.put(`/free/update/${fno}`, formData, {
+            headers: {
+              "Content-Type": "multipart/form-data"
+            },
+            onUploadProgress
+          });
     }
 
     // 부서정보 삭제(delete) 요청 함수
@@ -41,40 +75,40 @@ class FreeDataService {
         return http.delete("/free/all")
     }
 
-    createImage(blobFile, onUploadProgress) {
-    let formData = new FormData(); 
-    console.log(blobFile);
+//     createImage(blobFile, onUploadProgress) {
+//     let formData = new FormData(); 
+//     console.log(blobFile);
   
-    formData.append("blobFile", blobFile);
+//     formData.append("blobFile", blobFile);
 
-    return http.post("/free/create", formData, {
-      headers: {
-        "Content-Type": "multipart/form-data"
-      },
-      onUploadProgress
-    });
-  }
+//     return http.post("/free/create", formData, {
+//       headers: {
+//         "Content-Type": "multipart/form-data"
+//       },
+//       onUploadProgress
+//     });
+//   }
   
-  updateImage(fno, blobFile, onUploadProgress) {
-    let formData = new FormData();
+//   updateImage(fno, blobFile, onUploadProgress) {
+//     let formData = new FormData();
 
-    console.log(fno);
+//     console.log(fno);
     
-    console.log(blobFile);
+//     console.log(blobFile);
 
-    formData.append("blobFile", blobFile);
+//     formData.append("blobFile", blobFile);
 
-    return http.put(`/free/update/${fno}`, formData, {
-      headers: {
-        "Content-Type": "multipart/form-data"
-      },
-      onUploadProgress
-    });
-  }
+//     return http.put(`/free/update/${fno}`, formData, {
+//       headers: {
+//         "Content-Type": "multipart/form-data"
+//       },
+//       onUploadProgress
+//     });
+//   }
 
-  deleteImage(fno)  {
-    return http.delete(`/free/deletions/${fno}`);
-  }
+//   deleteImage(fno)  {
+//     return http.delete(`/free/deletions/${fno}`);
+//   }
 
 }
 

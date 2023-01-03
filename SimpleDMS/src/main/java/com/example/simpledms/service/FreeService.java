@@ -62,7 +62,7 @@ public class FreeService {
     // 부서번호(no)로 삭제하는 함수
     public boolean removeById(int fno) {
 //        existsById(기본키) 있으면 삭제 실행 + true 리턴
-        if(freeRepository.existsById(fno) == true) {
+        if (freeRepository.existsById(fno) == true) {
 
 
             freeRepository.deleteById(fno);
@@ -119,12 +119,16 @@ public class FreeService {
 //        return freeRepository.save(free);
 //    }
 
-    public Free createUploadImage(MultipartFile blobFile) throws IOException {
+    public Free createUploadImage(String writer, String title, String
+            content, MultipartFile blobFile) throws IOException {
 
         //            업로드 파일에서 파일명 얻기
         String galleryFileName = StringUtils.cleanPath(blobFile.getOriginalFilename());
 
         Free free = Free.builder()
+                .writer(writer)
+                .title(title)
+                .content(content)
                 .galleryFileName(galleryFileName)
                 .blobFile(blobFile.getBytes())
                 .build();
@@ -133,13 +137,17 @@ public class FreeService {
         return createFree;
     }
 
-    public Free updateUploadFile(int fno, MultipartFile blobFile) throws IOException {
+    public Free updateUploadFile(int fno,String writer, String title, String
+            content, MultipartFile blobFile) throws IOException {
 
         //            업로드 파일에서 파일명 얻기
         String galleryFileName = StringUtils.cleanPath(blobFile.getOriginalFilename());
 
         Free free = Free.builder()
                 .fno(fno)
+                .writer(writer)
+                .title(title)
+                .content(content)
                 .galleryFileName(galleryFileName)
                 .blobFile(blobFile.getBytes())
                 .build();
