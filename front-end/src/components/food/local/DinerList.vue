@@ -94,9 +94,6 @@
                     <p class="card-text fw-bolder">
                       {{ data.loc }}
                     </p>
-                    <p class="card-text">
-                      {{ data.review }}
-                    </p>
 
                     <!-- 간략 상세 목록 시작 -->
                     <div v-if="currentDiner">

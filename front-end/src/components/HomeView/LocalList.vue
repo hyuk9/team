@@ -24,16 +24,16 @@
       <div class="col-12 mb-2">
         <!-- 전체보기 눌렀을 때 음식점 리스트로 매개변수 날리면서 페이지 전환 -->
         <!-- 지역별 맛집 선택 -->
-            <select class="form-select" v-model="searchKeyword">
-                  <option value="해운대구">해운대구</option>
-                  <option value="남구">남구</option>
-                  <option value="금정구">금정구</option>
-                  <option value="기장군">기장군</option>
-                  <option value="동래구">동래구</option>
-                  <option value="부산진구">부산진구</option>
-                  <option value="영도구">영도구</option>
-                  <option value="강서구">강서구</option>
-                </select>
+        <select class="form-select" v-model="searchKeyword">
+          <option value="해운대구">해운대구</option>
+          <option value="남구">남구</option>
+          <option value="금정구">금정구</option>
+          <option value="기장군">기장군</option>
+          <option value="동래구">동래구</option>
+          <option value="부산진구">부산진구</option>
+          <option value="영도구">영도구</option>
+          <option value="강서구">강서구</option>
+        </select>
         <a class="btn btn-lg btn-primary float-right" href="/diner"
           >전체보기 <i class="fas fa-chevron-right ms-2"> </i
         ></a>
@@ -63,46 +63,48 @@
                 >
                   <router-link :to="'/diner/' + data.dno">
                     <div class="card card-span h-100 text-white rounded-3">
-                      <!-- TODO: test dataURL <- DB url -->
-                      <!-- <img
-                      class="img-fluid rounded-3 h-100"
-                      :src="data.photo"
-                      alt="…"
-                    />
-                    <div class="card-img-overlay ps-0">
-                      <span class="badge bg-danger p-2 mt-1 ms-3"
-                        ><i class="fas fa-map-marker-alt me-2 fs-0"></i
-                        ><span class="fs-0">{{ data.loc }}</span></span
-                      >
-                      <span class="badge bg-primary p-2 mt-1 ms-3"
-                        ><i class="fas fa-ellipsis-h me-2 fs-0"></i
-                        ><span class="fs-0">{{ data.menu }}</span></span
-                      >
-                      <span class="badge bg-danger p-2 mt-1 ms-3"
-                        ><i class="fas fa-comment-dots me-2 fs-0"></i
-                        ><span class="fs-0">{{ data.review_count }}</span></span
-                      ><span class="badge bg-primary p-2 mt-1 ms-3"
-                        ><i class="fas fa-thumbs-up me-2 fs-0"></i
-                        ><span class="fs-0">{{ data.like_count }}</span></span
-                      >
-                    </div>
-                    <div class="card-body ps-0">
-                      <div class="d-flex align-items-center mb-3">
-                        <div class="flex-1 ms-3">
-                          <h5 class="mb-0 fw-bold text-1000">
-                            {{ data.dname }}
-                          </h5>
-                          <span class="text-primary fs--1 me-1"
-                            ><i class="fas fa-star"></i></span
-                          ><span class="mb-0 text-primary">{{
-                            data.score
-                          }}</span>
+                      <img
+                        class="img-fluid rounded-3 h-100"
+                        :src="data.photo"
+                        alt="…"
+                      />
+                      <div class="card-img-overlay ps-0">
+                        <span class="badge bg-danger p-2 mt-1 ms-3"
+                          ><i class="fas fa-map-marker-alt me-2 fs-0"></i
+                          ><span class="fs-0">{{ data.loc }}</span></span
+                        >
+                        <span class="badge bg-primary p-2 mt-1 ms-3"
+                          ><i class="fas fa-ellipsis-h me-2 fs-0"></i
+                          ><span class="fs-0">{{ data.menu }}</span></span
+                        >
+                        <span class="badge bg-danger p-2 mt-1 ms-3"
+                          ><i class="fas fa-comment-dots me-2 fs-0"></i
+                          ><span class="fs-0">{{
+                            data.review_count
+                          }}</span></span
+                        ><span class="badge bg-primary p-2 mt-1 ms-3"
+                          ><i class="fas fa-thumbs-up me-2 fs-0"></i
+                          ><span class="fs-0">{{ data.like_count }}</span></span
+                        >
+                      </div>
+                      <div class="card-body ps-0">
+                        <div class="d-flex align-items-center mb-3">
+                          <div class="flex-1 ms-3">
+                            <h4 class="mb-0 fw-bold text-1000">
+                              {{ data.dname }}
+                            </h4>
+                            <span class="text-primary fs--1 me-1"
+                              ><i class="fas fa-star"></i></span
+                            ><span class="mb-0 text-primary">{{
+                              data.score
+                            }}</span>
+                          </div>
+                          <span class="badge bg-soft-danger py-2 px-3">
+                            <span class="fs-1 text-danger">
+                              {{ data.phone }}</span
+                            >
+                          </span>
                         </div>
-                        <span class="badge bg-soft-danger py-2 px-3">
-                          <span class="fs-1 text-danger">
-                            {{ data.phone }}</span
-                          >
-                        </span>
                       </div>
                     </div>
                   </router-link>
@@ -133,45 +135,48 @@
                 >
                   <router-link :to="'/diner/' + data.dno">
                     <div class="card card-span h-100 text-white rounded-3">
-                      <!-- <img
-                      class="img-fluid rounded-3 h-100"
-                      :src="data.photo"
-                      alt="…"
-                    />
-                    <div class="card-img-overlay ps-0">
-                      <span class="badge bg-danger p-2 mt-1 ms-3"
-                        ><i class="fas fa-map-marker-alt me-2 fs-0"></i
-                        ><span class="fs-0">{{ data.loc }}</span></span
-                      >
-                      <span class="badge bg-primary p-2 mt-1 ms-3"
-                        ><i class="fas fa-ellipsis-h me-2 fs-0"></i
-                        ><span class="fs-0">{{ data.menu }}</span></span
-                      >
-                      <span class="badge bg-danger p-2 mt-1 ms-3"
-                        ><i class="fas fa-comment-dots me-2 fs-0"></i
-                        ><span class="fs-0">{{ data.review_count }}</span></span
-                      ><span class="badge bg-primary p-2 mt-1 ms-3"
-                        ><i class="fas fa-thumbs-up me-2 fs-0"></i
-                        ><span class="fs-0">{{ data.like_count }}</span></span
-                      >
-                    </div>
-                    <div class="card-body ps-0">
-                      <div class="d-flex align-items-center mb-3">
-                        <div class="flex-1 ms-3">
-                          <h5 class="mb-0 fw-bold text-1000">
-                            {{ data.dname }}
-                          </h5>
-                          <span class="text-primary fs--1 me-1"
-                            ><i class="fas fa-star"></i></span
-                          ><span class="mb-0 text-primary">{{
-                            data.score
-                          }}</span>
+                      <img
+                        class="img-fluid rounded-3 h-100"
+                        :src="data.photo"
+                        alt="…"
+                      />
+                      <div class="card-img-overlay ps-0">
+                        <span class="badge bg-danger p-2 mt-1 ms-3"
+                          ><i class="fas fa-map-marker-alt me-2 fs-0"></i
+                          ><span class="fs-0">{{ data.loc }}</span></span
+                        >
+                        <span class="badge bg-primary p-2 mt-1 ms-3"
+                          ><i class="fas fa-ellipsis-h me-2 fs-0"></i
+                          ><span class="fs-0">{{ data.menu }}</span></span
+                        >
+                        <span class="badge bg-danger p-2 mt-1 ms-3"
+                          ><i class="fas fa-comment-dots me-2 fs-0"></i
+                          ><span class="fs-0">{{
+                            data.review_count
+                          }}</span></span
+                        ><span class="badge bg-primary p-2 mt-1 ms-3"
+                          ><i class="fas fa-thumbs-up me-2 fs-0"></i
+                          ><span class="fs-0">{{ data.like_count }}</span></span
+                        >
+                      </div>
+                      <div class="card-body ps-0">
+                        <div class="d-flex align-items-center mb-3">
+                          <div class="flex-1 ms-3">
+                            <h5 class="mb-0 fw-bold text-1000">
+                              {{ data.dname }}
+                            </h5>
+                            <span class="text-primary fs--1 me-1"
+                              ><i class="fas fa-star"></i></span
+                            ><span class="mb-0 text-primary">{{
+                              data.score
+                            }}</span>
+                          </div>
+                          <span class="badge bg-soft-danger py-2 px-3">
+                            <span class="fs-1 text-danger">
+                              {{ data.phone }}</span
+                            >
+                          </span>
                         </div>
-                        <span class="badge bg-soft-danger py-2 px-3">
-                          <span class="fs-1 text-danger">
-                            {{ data.phone }}</span
-                          >
-                        </span>
                       </div>
                     </div>
                   </router-link>
@@ -223,8 +228,6 @@ export default {
   data() {
     return {
       // TODO: test
-      dataUrl:
-        "https://mp-seoul-image-production-s3.mangoplate.com/16929/reviews/bc862256e507.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80",
       diner: [],
       // dname: "", ->(변경) searchUsername: "",
       searchSelect: "지역",

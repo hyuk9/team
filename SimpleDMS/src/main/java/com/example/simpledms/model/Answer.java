@@ -35,7 +35,7 @@ import javax.persistence.*;
 @DynamicInsert
 @DynamicUpdate
 @Where(clause = "DELETE_YN = 'N'")
-@SQLDelete(sql="UPDATE TB_ANSWER SET DELETE_YN = 'Y', DELETE_TIME = TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') WHERE ANSWER_NO = ?")
+@SQLDelete(sql="UPDATE TB_ANSWER SET DELETE_YN = 'Y', DELETE_TIME = TO_CHAR(SYSDATE, 'YYYY-MM-DD') WHERE ANSWER_NO = ?")
 public class Answer extends BaseTimeEntity {
 
     @Id

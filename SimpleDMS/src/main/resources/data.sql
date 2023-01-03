@@ -32,51 +32,51 @@ VALUES (SQ_QNA.nextval, '질문6', '해결6', '아라치', 'N', TO_CHAR(SYSDATE,
 -- Todo:질문 테이블 세분화
 -- Todo:답변 테이블이랑 qno조인 예정
 INSERT INTO TB_QUESTION
-VALUES (SQ_QUESTION.nextval, '질문', '내용', '홍길동', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_QUESTION.nextval, '질문', '내용', '홍길동', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_QUESTION
-VALUES (SQ_QUESTION.nextval, '질문2', '내용2', '장길산', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_QUESTION.nextval, '질문2', '내용2', '장길산', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_QUESTION
-VALUES (SQ_QUESTION.nextval, '질문3', '내용3', '임꺽정', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_QUESTION.nextval, '질문3', '내용3', '임꺽정', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_QUESTION
-VALUES (SQ_QUESTION.nextval, '질문4', '내용4', '전우치', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_QUESTION.nextval, '질문4', '내용4', '전우치', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_QUESTION
-VALUES (SQ_QUESTION.nextval, '질문5', '내용5', '마루치', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_QUESTION.nextval, '질문5', '내용5', '마루치', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_QUESTION
-VALUES (SQ_QUESTION.nextval, '질문6', '내용6', '아라치', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_QUESTION.nextval, '질문6', '내용6', '아라치', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 
 -- Todo:답변 테이블 세분화
 INSERT INTO TB_ANSWER
-VALUES (SQ_ANSWER.nextval, '1', '답변', '홍길동', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_ANSWER.nextval, '1', '답변', '홍길동', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_ANSWER
-VALUES (SQ_ANSWER.nextval, '2', '답변2', '장길산', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_ANSWER.nextval, '2', '답변2', '장길산', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_ANSWER
-VALUES (SQ_ANSWER.nextval, '3', '답변3', '임꺽정', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_ANSWER.nextval, '3', '답변3', '임꺽정', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_ANSWER
-VALUES (SQ_ANSWER.nextval, '4', '답변4', '전우치', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_ANSWER.nextval, '4', '답변4', '전우치', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_ANSWER
-VALUES (SQ_ANSWER.nextval, '5', '답변5', '마루치', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_ANSWER.nextval, '5', '답변5', '마루치', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_ANSWER
-VALUES (SQ_ANSWER.nextval, '6', '답변6', '아라치', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_ANSWER.nextval, '6', '답변6', '아라치', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 
 
 -- Todo:공지사항 테이블
 INSERT INTO TB_ANNOUNCE
 VALUES (SQ_ANNOUNCE.nextval, '사이트 이용 규칙에 대해', '타인을 비방하는 게시글은 관리자를 통해 삭제될 수 있습니다.', '관리자', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_ANNOUNCE
 VALUES (SQ_ANNOUNCE.nextval, '음식점 정보에 관해', '사실과 다른 내용이 기재될 경우 통보없이 삭제될 수 있습니다.', '관리자', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_ANNOUNCE
 VALUES (SQ_ANNOUNCE.nextval, '회원정보 관리에 대해', '보안을 강화하여 회원정보 유출이 안되게 신경쓰고 있습니다.', '관리자', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_ANNOUNCE
 VALUES (SQ_ANNOUNCE.nextval, '이용약관에 대해', '불만이 있는 부분이 있다면 관리자에게 문의해주세요.', '전우치', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_ANNOUNCE
 VALUES (SQ_ANNOUNCE.nextval, '사이트 제작에 대해', '5명이서 협업해서 제작한 사이트로 Vue.js와 Springboot를 이용해서 작업했습니다.', '마루치', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_ANNOUNCE
-VALUES (SQ_ANNOUNCE.nextval, '질문사항에 대해', '질문게시판을 이용해주세요.', '아라치', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL,
+VALUES (SQ_ANNOUNCE.nextval, '질문사항에 대해', '질문게시판을 이용해주세요.', '아라치', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL,
         NULL);
 
 -- Todo:자유게시판 테이블
@@ -242,11 +242,11 @@ VALUES (SQ_SCORE.nextval, '5', '5', '5', '5', '5', '5', 'N', TO_CHAR(SYSDATE, 'Y
 
 -- Todo:푸드컬럼 테이블
 INSERT INTO TB_COLUMN
-VALUES (SQ_COLUMN.nextval, '연말연시 맛집 추천', '한 해의 마지막과 새해의 시작을 이곳에서','사진','장동혁', '2', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+VALUES (SQ_COLUMN.nextval, '연말연시 맛집 추천', '한 해의 마지막과 새해의 시작을 이곳에서','사진','장동혁', '2', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
 INSERT INTO TB_COLUMN
-VALUES (SQ_COLUMN.nextval, '서면 맛집 Best5', '부산토박이가 알려주는 로컬맛집', '사진2', '전성혜', '4','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+VALUES (SQ_COLUMN.nextval, '서면 맛집 Best5', '부산토박이가 알려주는 로컬맛집', '사진2', '전성혜', '4','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
 INSERT INTO TB_COLUMN
-VALUES (SQ_COLUMN.nextval, '여기가 바로 가성비 맛집', '서비스는 필요없다. 오로지 가성비로만 승부', '사진3', '조성모', '3', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+VALUES (SQ_COLUMN.nextval, '여기가 바로 가성비 맛집', '서비스는 필요없다. 오로지 가성비로만 승부', '사진3', '조성모', '3', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
 
 -- Todo:찜한 테이블 (임시로 만듦)
 -- INSERT INTO TB_FAVORITE

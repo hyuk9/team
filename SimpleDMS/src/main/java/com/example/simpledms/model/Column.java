@@ -8,6 +8,7 @@ import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 
+
 /**
  * packageName : com.example.jpaexam.model
  * fileName : Dept
@@ -36,7 +37,7 @@ import javax.persistence.*;
 @DynamicUpdate
 @ToString
 @Where(clause = "DELETE_YN = 'N'")
-@SQLDelete(sql="UPDATE TB_COLUMN SET DELETE_YN = 'Y', DELETE_TIME = TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') WHERE CID = ?")
+@SQLDelete(sql="UPDATE TB_COLUMN SET DELETE_YN = 'Y', DELETE_TIME = TO_CHAR(SYSDATE, 'YYYY-MM-DD') WHERE CID = ?")
 public class Column extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE
