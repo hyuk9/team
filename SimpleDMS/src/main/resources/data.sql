@@ -32,84 +32,84 @@ VALUES (SQ_QNA.nextval, '질문6', '해결6', '아라치', 'N', TO_CHAR(SYSDATE,
 -- Todo:질문 테이블 세분화
 -- Todo:답변 테이블이랑 qno조인 예정
 INSERT INTO TB_QUESTION
-VALUES (SQ_QUESTION.nextval, '질문', '내용', '홍길동', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_QUESTION.nextval, '질문', '내용', '홍길동', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_QUESTION
-VALUES (SQ_QUESTION.nextval, '질문2', '내용2', '장길산', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_QUESTION.nextval, '질문2', '내용2', '장길산', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_QUESTION
-VALUES (SQ_QUESTION.nextval, '질문3', '내용3', '임꺽정', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_QUESTION.nextval, '질문3', '내용3', '임꺽정', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_QUESTION
-VALUES (SQ_QUESTION.nextval, '질문4', '내용4', '전우치', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_QUESTION.nextval, '질문4', '내용4', '전우치', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_QUESTION
-VALUES (SQ_QUESTION.nextval, '질문5', '내용5', '마루치', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_QUESTION.nextval, '질문5', '내용5', '마루치', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_QUESTION
-VALUES (SQ_QUESTION.nextval, '질문6', '내용6', '아라치', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_QUESTION.nextval, '질문6', '내용6', '아라치', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 
 -- Todo:답변 테이블 세분화
 INSERT INTO TB_ANSWER
-VALUES (SQ_ANSWER.nextval, '1', '답변', '홍길동', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_ANSWER.nextval, '1', '답변', '홍길동', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_ANSWER
-VALUES (SQ_ANSWER.nextval, '2', '답변2', '장길산', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_ANSWER.nextval, '2', '답변2', '장길산', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_ANSWER
-VALUES (SQ_ANSWER.nextval, '3', '답변3', '임꺽정', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_ANSWER.nextval, '3', '답변3', '임꺽정', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_ANSWER
-VALUES (SQ_ANSWER.nextval, '4', '답변4', '전우치', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_ANSWER.nextval, '4', '답변4', '전우치', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_ANSWER
-VALUES (SQ_ANSWER.nextval, '5', '답변5', '마루치', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_ANSWER.nextval, '5', '답변5', '마루치', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_ANSWER
-VALUES (SQ_ANSWER.nextval, '6', '답변6', '아라치', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_ANSWER.nextval, '6', '답변6', '아라치', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 
 
 -- Todo:공지사항 테이블
 INSERT INTO TB_ANNOUNCE
 VALUES (SQ_ANNOUNCE.nextval, '사이트 이용 규칙에 대해', '타인을 비방하는 게시글은 관리자를 통해 삭제될 수 있습니다.', '관리자', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_ANNOUNCE
 VALUES (SQ_ANNOUNCE.nextval, '음식점 정보에 관해', '사실과 다른 내용이 기재될 경우 통보없이 삭제될 수 있습니다.', '관리자', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_ANNOUNCE
 VALUES (SQ_ANNOUNCE.nextval, '회원정보 관리에 대해', '보안을 강화하여 회원정보 유출이 안되게 신경쓰고 있습니다.', '관리자', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_ANNOUNCE
 VALUES (SQ_ANNOUNCE.nextval, '이용약관에 대해', '불만이 있는 부분이 있다면 관리자에게 문의해주세요.', '전우치', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_ANNOUNCE
 VALUES (SQ_ANNOUNCE.nextval, '사이트 제작에 대해', '5명이서 협업해서 제작한 사이트로 Vue.js와 Springboot를 이용해서 작업했습니다.', '마루치', 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_ANNOUNCE
-VALUES (SQ_ANNOUNCE.nextval, '질문사항에 대해', '질문게시판을 이용해주세요.', '아라치', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL,
+VALUES (SQ_ANNOUNCE.nextval, '질문사항에 대해', '질문게시판을 이용해주세요.', '아라치', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL,
         NULL);
 
 -- Todo:자유게시판 테이블
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '장동혁', '코로나 확진이 되었어요', '솔직히 걸릴 줄 몰랐는데 막상 걸리니까 힘들고 아프네요', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'),
+VALUES (SQ_FREE.nextval, '장동혁', '코로나 확진이 되었어요', '솔직히 걸릴 줄 몰랐는데 막상 걸리니까 힘들고 아프네요','','','','', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'),
         NULL, NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '전성혜', '고양이가 너무 귀여워요', '제 고양이 봐주세요', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
+VALUES (SQ_FREE.nextval, '전성혜', '고양이가 너무 귀여워요', '제 고양이 봐주세요','','','','', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '조성모', '팀프로젝트 하는데 조장이 탈주했어요', '갑자기 코로나 걸렸다고 사라졌어요 어떡하죠', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'),
+VALUES (SQ_FREE.nextval, '조성모', '팀프로젝트 하는데 조장이 탈주했어요', '갑자기 코로나 걸렸다고 사라졌어요 어떡하죠','','','','', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'),
         NULL, NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '박선영', '겨울에 듣기 좋은 노래 추천해주세요', '추운날씨에 듣기 좋은 곡이 있을까요', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL,
+VALUES (SQ_FREE.nextval, '박선영', '겨울에 듣기 좋은 노래 추천해주세요', '추운날씨에 듣기 좋은 곡이 있을까요','','','','', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL,
         NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '권태현', '이번 4090 그래픽카드 어떤가요', '가격이 너무 비싸서 고민되요', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL,
+VALUES (SQ_FREE.nextval, '권태현', '이번 4090 그래픽카드 어떤가요', '가격이 너무 비싸서 고민되요','','','','', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL,
         NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '강아름', '내일 소개팅 나가는데 옷좀 봐주세요', '추워서 롱패딩만 입고 나가기엔 썸남이 너무 잘생겼어요', 'N',
+VALUES (SQ_FREE.nextval, '강아름', '내일 소개팅 나가는데 옷좀 봐주세요', '추워서 롱패딩만 입고 나가기엔 썸남이 너무 잘생겼어요','','','','', 'N',
         TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '고건민', '저 성인 ADHD인가요?', '한가지에 집중을 잘 못하겠는데 의심됩니다', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL,
+VALUES (SQ_FREE.nextval, '고건민', '저 성인 ADHD인가요?', '한가지에 집중을 잘 못하겠는데 의심됩니다','','','','', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL,
         NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '최은빈', '그렇게 됐습니다', '뒷 내용이 궁금하신분은 연락주세요', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
+VALUES (SQ_FREE.nextval, '최은빈', '그렇게 됐습니다', '뒷 내용이 궁금하신분은 연락주세요','','','','', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '이빛나', '시어머니가 너무 귀찮게 굴어요', '집에 저만 있는데도 계속 찾아와서 절 너무 당황스럽게 하네요', 'N',
+VALUES (SQ_FREE.nextval, '이빛나', '시어머니가 너무 귀찮게 굴어요', '집에 저만 있는데도 계속 찾아와서 절 너무 당황스럽게 하네요','','','','', 'N',
         TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '남궁민', '자취하는데 필수템 있을까요?', '이번에 취직해서 처음 자취인데 필수템이라고 할만한게 있을까요', 'N',
+VALUES (SQ_FREE.nextval, '남궁민', '자취하는데 필수템 있을까요?', '이번에 취직해서 처음 자취인데 필수템이라고 할만한게 있을까요','','','','', 'N',
         TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '김시습', '이번에 책 한권 냈는데 한번 봐주세요', '제목을 금오신화라고 지었는데 요즘 사람들은 잘 안볼까요?', 'N',
+VALUES (SQ_FREE.nextval, '김시습', '이번에 책 한권 냈는데 한번 봐주세요', '제목을 금오신화라고 지었는데 요즘 사람들은 잘 안볼까요?','','','','', 'N',
         TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 
 -- Todo:예약 테이블
@@ -216,15 +216,158 @@ VALUES (SQ_REVIEW.nextval, '아라치', '6', '내용6', '3', '사진6', 'N', TO_
 -- Todo: 메뉴 테이블
 -- Todo: 음식점 테이블이랑 조인 예정
 INSERT INTO TB_MENU
-VALUES (SQ_MENU.nextval, '메뉴1', '가격1', '1', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+VALUES (SQ_MENU.nextval, '특히츠마부시', '57000', '1', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
 INSERT INTO TB_MENU
-VALUES (SQ_MENU.nextval, '메뉴2', '가격2', '2', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+VALUES (SQ_MENU.nextval, '히츠마부시', '39000', '1', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
 INSERT INTO TB_MENU
-VALUES (SQ_MENU.nextval, '메뉴3', '가격3', '3', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+VALUES (SQ_MENU.nextval, '특카이센동', '50000', '1', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
 INSERT INTO TB_MENU
-VALUES (SQ_MENU.nextval, '메뉴4', '가격4', '4', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+VALUES (SQ_MENU.nextval, '카이센동', '36000', '1', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
 INSERT INTO TB_MENU
-VALUES (SQ_MENU.nextval, '메뉴5', '가격5', '5', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+VALUES (SQ_MENU.nextval, '생연어덮밥+네기도로', '22000', '1', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '따로국밥', '10000', '2', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '내장따로국밥', '10000', '2', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '수육백반', '11000', '2', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '수육 (대)', '40000', '2', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '순대 (대)', '30000', '2', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '버크셔K로스카츠', '14500', '3', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '히레카츠', '11500', '3', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '로스카츠', '10500', '3', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '간쥬쿠카츠', '10500', '3', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '모듬카츠', '14500', '3', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+-- 일단 여기까지 넣어봄
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴4', '가격4', '4', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴4', '가격4', '4', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴4', '가격4', '4', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴4', '가격4', '4', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴5', '가격5', '5', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴5', '가격5', '5', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴5', '가격5', '5', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴5', '가격5', '5', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴6', '가격6', '6', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴6', '가격6', '6', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴6', '가격6', '6', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴6', '가격6', '6', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴6', '가격6', '6', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴7', '가격7', '7', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴7', '가격7', '7', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴7', '가격7', '7', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴7', '가격7', '7', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴7', '가격7', '7', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴8', '가격8', '8', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴8', '가격8', '8', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴8', '가격8', '8', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴8', '가격8', '8', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴8', '가격8', '8', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴9', '가격9', '9', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴9', '가격9', '9', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴9', '가격9', '9', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴9', '가격9', '9', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴9', '가격9', '9', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴10', '가격10', '10', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴10', '가격10', '10', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴10', '가격10', '10', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴10', '가격10', '10', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴10', '가격10', '10', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴11', '가격11', '11', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴11', '가격11', '11', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴11', '가격11', '11', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴11', '가격11', '11', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴11', '가격11', '11', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴12', '가격12', '12', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴12', '가격12', '12', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴12', '가격12', '12', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴12', '가격12', '12', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴12', '가격12', '12', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴13', '가격13', '13', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴13', '가격13', '13', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴13', '가격13', '13', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴13', '가격13', '13', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴13', '가격13', '13', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴14', '가격14', '14', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴14', '가격14', '14', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴14', '가격14', '14', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴14', '가격14', '14', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴15', '가격15', '15', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴15', '가격15', '15', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴15', '가격15', '15', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴15', '가격15', '15', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴16', '가격16', '16', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴16', '가격16', '16', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴16', '가격16', '16', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴16', '가격16', '16', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
+INSERT INTO TB_MENU
+VALUES (SQ_MENU.nextval, '메뉴16', '가격16', '16', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
 
 -- Todo: 평점 테이블
 -- Todo: 리뷰 테이블이랑 조인 예정
@@ -242,11 +385,11 @@ VALUES (SQ_SCORE.nextval, '5', '5', '5', '5', '5', '5', 'N', TO_CHAR(SYSDATE, 'Y
 
 -- Todo:푸드컬럼 테이블
 INSERT INTO TB_COLUMN
-VALUES (SQ_COLUMN.nextval, '연말연시 맛집 추천', '한 해의 마지막과 새해의 시작을 이곳에서','사진','장동혁', '2', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+VALUES (SQ_COLUMN.nextval, '연말연시 맛집 추천', '한 해의 마지막과 새해의 시작을 이곳에서','사진','장동혁', '2', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
 INSERT INTO TB_COLUMN
-VALUES (SQ_COLUMN.nextval, '서면 맛집 Best5', '부산토박이가 알려주는 로컬맛집', '사진2', '전성혜', '4','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+VALUES (SQ_COLUMN.nextval, '서면 맛집 Best5', '부산토박이가 알려주는 로컬맛집', '사진2', '전성혜', '4','N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
 INSERT INTO TB_COLUMN
-VALUES (SQ_COLUMN.nextval, '여기가 바로 가성비 맛집', '서비스는 필요없다. 오로지 가성비로만 승부', '사진3', '조성모', '3', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ,NULL, NULL);
+VALUES (SQ_COLUMN.nextval, '여기가 바로 가성비 맛집', '서비스는 필요없다. 오로지 가성비로만 승부', '사진3', '조성모', '3', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD') ,NULL, NULL);
 
 -- Todo:찜한 테이블 (임시로 만듦)
 -- INSERT INTO TB_FAVORITE

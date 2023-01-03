@@ -169,6 +169,13 @@
               </button>
             </div>
           </article>
+          <div>
+            메뉴
+            <div v-for="(data, index) in menu" :key="index">
+              <p> {{data.menuName}} </p>
+              <p> {{data.menuPrice}} </p>
+            </div>
+          </div>
           <!-- Comments section-->
           <section class="mb-5">
             <div class="card bg-light">
@@ -249,10 +256,12 @@ import ReviewDataService from "@/services/ReviewDataService";
 import DinerCommentVue from "./DinerComment.vue";
 import AddReservation from "@/components/reservation/AddReservation.vue";
 import FavoriteDataService from "@/services/FavoriteDataService";
+import MenuDataService from "@/services/MenuDataService"; // 메뉴 리스트를 불러오기 위한 서비스 임포트
 
 export default {
   data() {
     return {
+      menu: [], // 메뉴 리스트 불러오기 위한 배열
       review: [],
       diner: [],
       currentReview: null,
@@ -261,6 +270,7 @@ export default {
       searchRwriter: "",
 
       currentDiner: null,
+      currentMenu: null,
       message: "",
 
       mapNchart: true,
@@ -345,10 +355,10 @@ export default {
     // axios , 모든 부서 정보 조회 요청 함수
     retrieveReview() {
       // getAll() ->(변경) getAll(dname, page, size)
-      ReviewDataService.getAll(this.searchDno, this.page - 1, this.pageSize)
+      ReviewDataService.getAll(this.searchRwriter, this.page - 1, this.pageSize)
         // 성공하면 .then() 결과가 전송됨
         .then((response) => {
-          // this.review = response.data -> (변경) const { diner, totalItems } = response.data
+          // this.emp = response.data -> (변경) const { emp, totalItems } = response.data
           // let(const) { 속성명1, 속성명2 } = 데이터 객체배열 (모던자바문법 구조분해할당)
           const { review, totalItems } = response.data; // springboot 의 전송한 맵 정보
           this.review = review; // 스프링부트에서 전송한 데이터
@@ -369,6 +379,22 @@ export default {
         .then((response) => {
           // springboot 결과를 리턴함(부서 객체)
           this.currentDiner = response.data;
+          // 콘솔 로그 출력
+          console.log(response.data);
+        })
+        // 실패하면 .catch() 에러메세지가 리턴됨
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+    // 부서번호(dno)로 메뉴조회 요청하는 함수
+    getMenu(dno) {
+      // axios 공통함수 호출
+      MenuDataService.get(dno)
+        // 성공하면 .then() 결과가 리턴됨
+        .then((response) => {
+          // springboot 결과를 리턴함(부서 객체)
+          this.menu = response.data;
           // 콘솔 로그 출력
           console.log(response.data);
         })
@@ -474,6 +500,7 @@ export default {
         .then((response) => {
           console.log(response.data);
           alert("찜 삭제했습니다.");
+          alert(this.currentDiner.dno);
         })
         // 실패하면 .catch() 에러메세지가 전송됨
         .catch((e) => {
@@ -493,6 +520,7 @@ export default {
     // $route 객체 : 주로 url 매개변수 정보들이 있음
     // router/index.js 상세페이지 url의 매개변수명 : :dno
     this.getDiner(this.$route.params.dno);
+    this.getMenu(this.$route.params.dno); // 화면 로딩시 음식점번호(dno)로 메뉴조회하기
     this.retrieveReview(); // 화면 로딩시 전체 조회함수 실행
 
     const ctx = document.getElementById("myChart");

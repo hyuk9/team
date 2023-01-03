@@ -45,9 +45,6 @@
                   </div>
                 </div>
                 <div class="card-body px-0">
-                  <h5 class="fw-bold text-1000 text-truncate">
-                    한식에 대한 설명
-                  </h5>
                   <span class="badge bg-soft-danger py-2 px-3">
                     <span class="fs-1 text-danger">지금 바로 알아보기</span>
                   </span>
@@ -77,9 +74,6 @@
                   </div>
                 </div>
                 <div class="card-body px-0">
-                  <h5 class="fw-bold text-1000 text-truncate">
-                    중식에 대한 설명
-                  </h5>
                   <span class="badge bg-soft-danger py-2 px-3">
                     <span class="fs-1 text-danger">지금 바로 알아보기</span>
                   </span>
@@ -109,9 +103,6 @@
                   </div>
                 </div>
                 <div class="card-body px-0">
-                  <h5 class="fw-bold text-1000 text-truncate">
-                    양식에 대한 설명
-                  </h5>
                   <span class="badge bg-soft-danger py-2 px-3">
                     <span class="fs-1 text-danger">지금 바로 알아보기</span>
                   </span>
@@ -141,9 +132,6 @@
                   </div>
                 </div>
                 <div class="card-body px-0">
-                  <h5 class="fw-bold text-1000 text-truncate">
-                    일식에 대한 설명
-                  </h5>
                   <span class="badge bg-soft-danger py-2 px-3">
                     <span class="fs-1 text-danger">지금 바로 알아보기</span>
                   </span>
