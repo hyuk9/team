@@ -7,6 +7,7 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
+import javax.persistence.Column;
 
 /**
  * packageName : com.example.jpaexam.model
@@ -53,8 +54,9 @@ public class Review extends BaseTimeEntity {
     @javax.persistence.Column
     private String rcontent;
 
+    @Lob
     @javax.persistence.Column
-    private String rphoto;
+    private byte[] rphoto;
 
     @javax.persistence.Column
     private String rwriter;

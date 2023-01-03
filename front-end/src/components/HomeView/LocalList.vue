@@ -66,45 +66,37 @@
                       <!-- TODO: test dataURL <- DB url -->
                       <!-- <img
                       class="img-fluid rounded-3 h-100"
-                      :src="dataUrl"
-                      alt="..."
-                    /> -->
-                      <img
-                        class="img-fluid rounded-3 h-100"
-                        :src="data.photo"
-                        alt="..."
-                      />
-                      <div class="card-img-overlay ps-0">
-                        <span class="badge bg-danger p-2 mt-1 ms-3"
-                          ><i class="fas fa-map-marker-alt me-2 fs-0"></i
-                          ><span class="fs-0">{{ data.loc }}</span></span
-                        >
-                        <span class="badge bg-primary p-2 mt-1 ms-3"
-                          ><i class="fas fa-ellipsis-h me-2 fs-0"></i
-                          ><span class="fs-0">{{ data.menu }}</span></span
-                        >
-                        <span class="badge bg-danger p-2 mt-1 ms-3"
-                          ><i class="fas fa-comment-dots me-2 fs-0"></i
-                          ><span class="fs-0">{{
-                            data.review_count
-                          }}</span></span
-                        ><span class="badge bg-primary p-2 mt-1 ms-3"
-                          ><i class="fas fa-thumbs-up me-2 fs-0"></i
-                          ><span class="fs-0">{{ data.like_count }}</span></span
-                        >
-                      </div>
-                      <div class="card-body ps-0">
-                        <div class="d-flex align-items-center mb-3">
-                          <div class="flex-1 ms-3">
-                            <h5 class="mb-0 fw-bold text-1000">
-                              {{ data.dname }}
-                            </h5>
-                            <span class="text-primary fs--1 me-1"
-                              ><i class="fas fa-star"></i></span
-                            ><span class="mb-0 text-primary">{{
-                              data.score
-                            }}</span>
-                          </div>
+                      :src="data.photo"
+                      alt="…"
+                    />
+                    <div class="card-img-overlay ps-0">
+                      <span class="badge bg-danger p-2 mt-1 ms-3"
+                        ><i class="fas fa-map-marker-alt me-2 fs-0"></i
+                        ><span class="fs-0">{{ data.loc }}</span></span
+                      >
+                      <span class="badge bg-primary p-2 mt-1 ms-3"
+                        ><i class="fas fa-ellipsis-h me-2 fs-0"></i
+                        ><span class="fs-0">{{ data.menu }}</span></span
+                      >
+                      <span class="badge bg-danger p-2 mt-1 ms-3"
+                        ><i class="fas fa-comment-dots me-2 fs-0"></i
+                        ><span class="fs-0">{{ data.review_count }}</span></span
+                      ><span class="badge bg-primary p-2 mt-1 ms-3"
+                        ><i class="fas fa-thumbs-up me-2 fs-0"></i
+                        ><span class="fs-0">{{ data.like_count }}</span></span
+                      >
+                    </div>
+                    <div class="card-body ps-0">
+                      <div class="d-flex align-items-center mb-3">
+                        <div class="flex-1 ms-3">
+                          <h5 class="mb-0 fw-bold text-1000">
+                            {{ data.dname }}
+                          </h5>
+                          <span class="text-primary fs--1 me-1"
+                            ><i class="fas fa-star"></i></span
+                          ><span class="mb-0 text-primary">{{
+                            data.score
+                          }}</span>
                         </div>
                         <span class="badge bg-soft-danger py-2 px-3">
                           <span class="fs-1 text-danger">
@@ -143,45 +135,37 @@
                     <div class="card card-span h-100 text-white rounded-3">
                       <!-- <img
                       class="img-fluid rounded-3 h-100"
-                      src="assets/img/gallery/food-world.png"
-                      alt="..."
-                    /> -->
-                      <img
-                        class="img-fluid rounded-3 h-100"
-                        :src="data.photo"
-                        alt="..."
-                      />
-                      <div class="card-img-overlay ps-0">
-                        <span class="badge bg-danger p-2 mt-1 ms-3"
-                          ><i class="fas fa-map-marker-alt me-2 fs-0"></i
-                          ><span class="fs-0">{{ data.loc }}</span></span
-                        >
-                        <span class="badge bg-primary p-2 mt-1 ms-3"
-                          ><i class="fas fa-ellipsis-h me-2 fs-0"></i
-                          ><span class="fs-0">{{ data.menu }}</span></span
-                        >
-                        <span class="badge bg-danger p-2 mt-1 ms-3"
-                          ><i class="fas fa-comment-dots me-2 fs-0"></i
-                          ><span class="fs-0">{{
-                            data.review_count
-                          }}</span></span
-                        ><span class="badge bg-primary p-2 mt-1 ms-3"
-                          ><i class="fas fa-thumbs-up me-2 fs-0"></i
-                          ><span class="fs-0">{{ data.like_count }}</span></span
-                        >
-                      </div>
-                      <div class="card-body ps-0">
-                        <div class="d-flex align-items-center mb-3">
-                          <div class="flex-1 ms-3">
-                            <h5 class="mb-0 fw-bold text-1000">
-                              {{ data.dname }}
-                            </h5>
-                            <span class="text-primary fs--1 me-1"
-                              ><i class="fas fa-star"></i></span
-                            ><span class="mb-0 text-primary">{{
-                              data.score
-                            }}</span>
-                          </div>
+                      :src="data.photo"
+                      alt="…"
+                    />
+                    <div class="card-img-overlay ps-0">
+                      <span class="badge bg-danger p-2 mt-1 ms-3"
+                        ><i class="fas fa-map-marker-alt me-2 fs-0"></i
+                        ><span class="fs-0">{{ data.loc }}</span></span
+                      >
+                      <span class="badge bg-primary p-2 mt-1 ms-3"
+                        ><i class="fas fa-ellipsis-h me-2 fs-0"></i
+                        ><span class="fs-0">{{ data.menu }}</span></span
+                      >
+                      <span class="badge bg-danger p-2 mt-1 ms-3"
+                        ><i class="fas fa-comment-dots me-2 fs-0"></i
+                        ><span class="fs-0">{{ data.review_count }}</span></span
+                      ><span class="badge bg-primary p-2 mt-1 ms-3"
+                        ><i class="fas fa-thumbs-up me-2 fs-0"></i
+                        ><span class="fs-0">{{ data.like_count }}</span></span
+                      >
+                    </div>
+                    <div class="card-body ps-0">
+                      <div class="d-flex align-items-center mb-3">
+                        <div class="flex-1 ms-3">
+                          <h5 class="mb-0 fw-bold text-1000">
+                            {{ data.dname }}
+                          </h5>
+                          <span class="text-primary fs--1 me-1"
+                            ><i class="fas fa-star"></i></span
+                          ><span class="mb-0 text-primary">{{
+                            data.score
+                          }}</span>
                         </div>
                         <span class="badge bg-soft-danger py-2 px-3">
                           <span class="fs-1 text-danger">

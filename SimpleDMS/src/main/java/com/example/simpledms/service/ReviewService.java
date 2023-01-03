@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Optional;
 
 /**
@@ -44,11 +47,11 @@ public class ReviewService {
     }
 
 //    writer으로 조회하는 함수
-    public Optional<Review> findByDno(int dno) {
-        Optional<Review> optionalReview2 = reviewRepository.findByDno(dno);
-
-        return optionalReview2;
-    }
+//    public Optional<Review> findByDno(int dno) {
+//        Optional<Review> optionalReview2 = reviewRepository.findByDno(dno);
+//
+//        return optionalReview2;
+//    }
 
     //    ✅ 전체 삭제 함수
     public void removeAll() {
@@ -79,6 +82,23 @@ public class ReviewService {
 
         return list;
     }
+
+//    //    이미지 저장 함수
+//    public Review store(MultipartFile rphoto) throws IOException
+//    {
+////        path(폴더경로) 제거 후 순수한 galleryName 가져오기
+////        .getOriginalGalleryname() : 경로/파일명
+//        String galleryFileName = StringUtils.cleanPath(gallery.getOriginalFilename());
+//
+////        1) GalleryDb 생성자에 경로 등 여러 정보를 저장
+//        Review galleryDb = new Review(galleryTitle
+//                , galleryFileName
+//                , gallery.getContentType() // 이미지의 타입정보( .jpg, .png 등 )
+//                , gallery.getBytes());     // 이미지 크기(size)
+//
+////        2) 위의 GalleryDb 를 DB 저장 + return
+//        return ReviewRepository.save(galleryDb);
+//    }
 
 }
 
