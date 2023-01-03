@@ -161,13 +161,21 @@
               role="group"
               aria-label="Basic example"
             >
-              <router-link to="/#"
-                ><button type="button" class="btn btn-primary">
-                  찜
-                </button></router-link
+              <button
+                type="button"
+                class="btn btn-primary"
+                @click="saveFavorite"
               >
-              
-              <b-button v-b-modal.modal-prevent-closing>리뷰 등록</b-button>
+                <!-- <img src="assets/img/gallery/empty_heart.png" v-if="empty" />
+                <img src="assets/img/gallery/fill_heart.png" v-else-if="fill" /> -->
+                찜
+                <!-- <i class="bi bi-heart" v-if="empty"></i>
+                <i class="bi bi-heart-fill" v-else-if="fill"></i> -->
+              </button>
+
+              <b-button type="button" v-b-modal.modal-prevent-closing
+                >리뷰 등록</b-button
+              >
 
               <button
                 type="button"
@@ -257,11 +265,13 @@ import DinerDataService from "@/services/DinerDataService";
 import ReviewDataService from "@/services/ReviewDataService";
 import DinerCommentVue from "./DinerComment.vue";
 import AddReservation from "@/components/reservation/AddReservation.vue";
+import FavoriteDataService from "@/services/FavoriteDataService";
 
 export default {
   data() {
     return {
       review: [],
+      diner: [],
       currentReview: null,
       currentIndex: -1,
       // dname: "", ->(변경) searchDname: "",
@@ -272,6 +282,15 @@ export default {
 
       mapNchart: true,
       showReservation: false,
+
+      // empty: true,
+      // fill: false,
+
+      favorite: {
+        fid: null,
+        dno: null,
+        id: null,
+      },
 
       // 페이징을 위한 변수 정의
       page: 1, // 현재 페이지
@@ -343,11 +362,7 @@ export default {
     // axios , 모든 부서 정보 조회 요청 함수
     retrieveReview() {
       // getAll() ->(변경) getAll(dname, page, size)
-      ReviewDataService.getAll(
-        this.searchDno,
-        this.page - 1,
-        this.pageSize
-      )
+      ReviewDataService.getAll(this.searchDno, this.page - 1, this.pageSize)
         // 성공하면 .then() 결과가 전송됨
         .then((response) => {
           // this.review = response.data -> (변경) const { diner, totalItems } = response.data
@@ -449,7 +464,30 @@ export default {
         this.showReservation = false;
       }
     },
+
+    saveFavorite() {
+      let data = {
+        dno: this.diner.dno,
+        id: this.currentUser.id,
+      };
+      // insert 요청 함수 호출(axios 공통함수 호출)
+      FavoriteDataService.create(data)
+        // 성공하면 then() 결과가 전송됨
+        .then((response) => {
+          this.favorite.fid = response.data.fid;
+          // 콘솔 로그 출력(response.data)
+          console.log(response.data);
+          // 변수 submitted
+          this.submitted = true;
+          alert("찜했습니다.");
+        })
+        // 실패하면 .catch() 결과가 전송됨
+        .catch((e) => {
+          console.log(e);
+        });
+    },
   },
+
   // 화면이 뜨자 마자 실행되는 이벤트
   mounted() {
     // 클라이언트쪽 디버깅
@@ -476,6 +514,14 @@ export default {
         },
       },
     });
+  },
+  computed: {
+    // 현재 유저
+    currentUser() {
+      // 모듈 저장소 : this.$store.state.모듈명.state값
+      // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
+      return this.$store.state.auth.user;
+    },
   },
 };
 </script>
