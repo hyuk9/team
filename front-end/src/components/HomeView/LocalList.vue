@@ -60,6 +60,7 @@
                     d-inline-block
                   "
                 >
+                <router-link :to="'/diner/' + data.dno">
                   <div class="card card-span h-100 text-white rounded-3">
                     <!-- TODO: test dataURL <- DB url -->
                     <!-- <img
@@ -109,6 +110,8 @@
                       >
                     </div>
                   </div>
+                </router-link>
+
                 </div>
               </div>
               <!-- 첫 캐러셀 종료 -->
@@ -134,6 +137,7 @@
                     d-inline-block
                   "
                 >
+                <router-link :to="'/diner/' + data.dno">
                   <div class="card card-span h-100 text-white rounded-3">
                     <!-- <img
                       class="img-fluid rounded-3 h-100"
@@ -182,6 +186,8 @@
                       >
                     </div>
                   </div>
+                </router-link>
+
                 </div>
               </div>
               <!-- 첫번째를 제외한 나머지 캐러셀 종료 -->
