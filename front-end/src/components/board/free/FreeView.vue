@@ -31,7 +31,7 @@
                 <!-- 미리보기 이미지 시작 -->
                 <div v-if="previewImage">
                   <div>
-                    <img class="preview my-3" :src="previewImage" alt="" />
+                    <img class="preview my-3" :src="data.fileUrl" alt="" />
                   </div>
                 </div>
                 <!-- 미리보기 이미지 끝 -->
@@ -45,7 +45,7 @@
                 <!-- <!— 쇼핑 카트 형태 디자인 시작 —> -->
                 <!-- <!— v-for 시작 —> -->
                 <div class="row">
-                  <div class="col-sm-4" v-for="(data, index) in free" :key="index">
+                  <div class="col-sm-4"  v-for="(data, index) in free" :key="index">
                     <div class="card">
                       <img :src="data.fileUrl" class="card-img-top" alt="강의" />
                       <div class="card-body">
@@ -55,9 +55,9 @@
                 </div>
               </td>
             </tr>
-            <tr>
-              <th scope="row">이미지 업로드</th>
-              <td scope="row">
+            <!-- <tr> -->
+              <!-- <th scope="row">이미지 업로드</th> -->
+              <!-- <td scope="row"> -->
                 <!-- 이미지명(galleryTitle) 입력박스 시작 -->
                 <!-- <div class="mb-3 col-md-5">
                   <label for="galleryTitle" class="form-label">이미지명</label>
@@ -77,8 +77,8 @@
                 </div> -->
                 <!-- 이미지 선택상자 끝 -->
                 <!-- upload 버튼 : insert 문 실행 끝 -->
-              </td>
-            </tr>
+              <!-- </td> -->
+            <!-- </tr> -->
           </tbody>
         </table>
       </div>
@@ -105,9 +105,8 @@ export default {
       previewImage: undefined, // 미리보기 이미지 변수
       message: "", // 서버쪽 메세지를 저장할 변수
       free: [], // 이미지 객체 배열
-      searchTitle: "", // 이미지명으로 검색하는 변수
-      // springboot 요청할 변수 , 이미지명(galleryTitle), 내용(content)
-      galleryTitle: "",
+      currentIndex: -1,
+      name: "",
 
       // 페이징을 위한 변수 정의
       page: 1, // 현재 페이지
@@ -199,9 +198,9 @@ export default {
       this.page = 1;
       this.retrieveFree();
     },
-    deleteCourse(id) {
+    deleteImages(fno) {
       // alert(id);
-      FreeDataService.delete(id)
+      FreeDataService.deleteImage(fno)
         .then((response) => {
           console.log(response);
 

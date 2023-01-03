@@ -20,13 +20,15 @@ import lombok.*;
 @ToString
 public class ResponseGalleryDto {
 
-    private Integer gid;
+    private Integer fno;
     private String galleryTitle;
     private String galleryFileName;
     private String galleryType;
+
 
 //    가공된 속성 (모델엔 없음)
 
     private Integer fileSize; // 이미지 크기
     private String fileUrl; // 이미지 다운로드 URL
+    private String fileType;
 }

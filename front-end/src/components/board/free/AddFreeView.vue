@@ -44,13 +44,6 @@
             Upload
           </button>
         </div>
-        <!-- 미리보기 이미지 시작-->
-        <div v-if="previewImage">
-          <div>
-            <img class="preview img-fluid" :src="previewImage" alt="..." />
-          </div>
-        </div>
-        <!--  미리보기 이미지 끝 -->
 
         <!-- 서버 에러 메세지가 있을경우 아래 출력 -->
         <div v-if="message" class="alert alert-secondary" role="alert">
@@ -146,7 +139,7 @@ export default {
     upload() {
       this.progress = 0;
       // 서버에 이미지 업로드 요청(insert 문 실행)
-      FreeDataService.create(
+      FreeDataService.createImage(
         this.currentImage,
         (eve) => {
           // 파일이 업로드될때 진척상황이 저장됨(%)
