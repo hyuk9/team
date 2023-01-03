@@ -21,6 +21,9 @@ import lombok.*;
 public class ResponseGalleryDto {
 
     private Integer fno;
+    private String writer;
+    private String title;
+    private String content;
     private String galleryTitle;
     private String galleryFileName;
     private String galleryType;

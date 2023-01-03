@@ -104,28 +104,6 @@ public class FreeController {
         }
     }
 
-    @GetMapping("/free/{fno}")
-    public ResponseEntity<Object> getFreeId(@PathVariable int fno) {
-
-        try {
-            Optional<Free> optionalFree = freeService.findById(fno);
-
-
-            if (optionalFree.isPresent() == true) {
-//                데이터 + 성공 메세지 전송
-                return new ResponseEntity<>(optionalFree.get(), HttpStatus.OK);
-            } else {
-//                데이터 없음 메세지 전송(클라이언트)
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            }
-
-        } catch (Exception e) {
-            log.debug(e.getMessage());
-            // 서버에러 발생 메세지 전송(클라이언트)
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
     @PutMapping("/free/{fno}")
     public ResponseEntity<Object> updateFree(@PathVariable int fno,
                                              @RequestBody Free free) {
@@ -287,6 +265,65 @@ public class FreeController {
         } catch (Exception e) {
             log.debug(e.getMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+//    @GetMapping("/free/{fno}")
+//    public ResponseEntity<Object> getFreeId(@PathVariable int fno) {
+//
+//        try {
+//            Optional<Free> optionalFree = freeService.findId(fno);
+//
+//
+//            if (optionalFree.isPresent() == true) {
+////                데이터 + 성공 메세지 전송
+//                return new ResponseEntity<>(optionalFree.get(), HttpStatus.OK);
+//            } else {
+////                데이터 없음 메세지 전송(클라이언트)
+//                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//            }
+//
+//        } catch (Exception e) {
+//            log.debug(e.getMessage());
+//            // 서버에러 발생 메세지 전송(클라이언트)
+//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
+
+    //    과목 id로 조회
+    @GetMapping("/free/{fno}")
+    public ResponseEntity<Object> findId(@PathVariable int fno) {
+        try {
+            //            Vue에서 전송한 매개변수 데이터 확인
+            log.info("fno {}", fno);
+
+            Optional<Free> freeOptional = freeService.findId(fno);
+
+            String fileDownloadUri = ServletUriComponentsBuilder
+                    .fromCurrentContextPath()
+                    .path("/api/free/file/")
+                    .path(freeOptional.get().getFno().toString())
+                    .toUriString();
+
+//                modelMapper 이용한 model to Dto 변환 ( 사전 라이브러리 설치 필요 )
+            ResponseGalleryDto courseDto = modelMapper.map(freeOptional.get(), ResponseGalleryDto.class);
+
+//                아래 2개 속성은 가공된 데이터 이므로 setter 를 이용해 저장
+            int fileSize = (freeOptional.get().getBlobFile() != null)?freeOptional.get().getBlobFile().length : 0;
+            courseDto.setFileSize(fileSize);
+            courseDto.setFileUrl(fileDownloadUri);
+
+
+
+            if (freeOptional.isPresent()) {
+                return new ResponseEntity<Object>(courseDto, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<Object>(HttpStatus.NOT_FOUND);
+            }
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+
+            return new ResponseEntity<Object>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

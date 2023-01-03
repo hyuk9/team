@@ -51,13 +51,6 @@ public class FreeService {
         return free2;
     }
 
-    //    부서번호로 조회하는 함수
-    public Optional<Free> findById(int fno) {
-//        findById(기본키속성)
-        Optional<Free> optionalFree = freeRepository.findById(fno);
-
-        return optionalFree;
-    }
 
     // 부서번호(no)로 삭제하는 함수
     public boolean removeById(int fno) {
@@ -92,13 +85,6 @@ public class FreeService {
         Page<Free> page = freeRepository.findAll(pageable);
 
         return page;
-    }
-
-    //   ID(기본키) 로 파일 조회 ( findById(기본키) : JPA 제공하는 기본 함수 )
-    public Optional<Free> getFile(int fid) {
-        Optional<Free> optionalFree = freeRepository.findById(fid);
-
-        return optionalFree;
     }
 
     //    이미지 저장 함수(*)
@@ -156,6 +142,14 @@ public class FreeService {
 
         return createFree;
     }
+
+//    //    부서번호로 조회하는 함수
+//    public Optional<Free> findById(int fno) {
+////        findById(기본키속성)
+//        Optional<Free> optionalFree = freeRepository.findById(fno);
+//
+//        return optionalFree;
+//    }
 
     public Optional<Free> findId(int fno) {
 

@@ -30,12 +30,11 @@
                 {{ currentFree.content }}
                 <!-- 미리보기 이미지 시작 -->
                 <div>
-                  <div>
+                  <div >
                     <img class="preview my-3" :src="currentFree.fileUrl" alt="" />
                   </div>
                 </div>
                 <!-- 미리보기 이미지 끝 -->
-
               </td>
             </tr>
           </tbody>
