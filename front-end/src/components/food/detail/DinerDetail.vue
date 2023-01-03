@@ -499,6 +499,7 @@ export default {
         .then((response) => {
           console.log(response.data);
           alert("찜 삭제했습니다.");
+          alert(this.currentDiner.dno);
         })
         // 실패하면 .catch() 에러메세지가 전송됨
         .catch((e) => {
