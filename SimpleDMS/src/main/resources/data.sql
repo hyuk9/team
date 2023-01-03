@@ -229,15 +229,15 @@ VALUES (SQ_MENU.nextval, '메뉴5', '가격5', '5', 'N', TO_CHAR(SYSDATE, 'YYYY-
 -- Todo: 평점 테이블
 -- Todo: 리뷰 테이블이랑 조인 예정
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '1', '1', '1', '1', '1', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_SCORE.nextval, '1', '1', '1', '1', '1', '1', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '2', '2', '2', '2', '2', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_SCORE.nextval, '2', '2', '2', '2', '2', '2', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '3', '3', '3', '3', '3', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_SCORE.nextval, '3', '3', '3', '3', '3', '3', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '4', '4', '4', '4', '4', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_SCORE.nextval, '4', '4', '4', '4', '4', '4', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '5', '5', '5', '5', '5', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_SCORE.nextval, '5', '5', '5', '5', '5', '5', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 
 
 -- Todo:푸드컬럼 테이블

@@ -119,13 +119,11 @@ export default {
       // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
       return this.$store.state.auth.user;
     },
-
-    // 관리자 접속인지 아닌지 확인하는 함수
+    // 관리자 접속이거나 글쓴사람(id)가 동일하면 보이는 함수
     showAdminBoard() {
       if (this.currentUser && this.currentUser.roles) {
-        // if ROLE_ADMIN 있으면 true
-        //               없으면 false
-        return this.currentUser.roles.includes("ROLE_ADMIN");
+        // if ROLE_ADMIN 있으면 true 없으면 false 이거나 현재로그인한id == 글쓴사람id
+        return this.currentUser.roles.includes("ROLE_ADMIN") || this.currentUser.id == this.currentColumn.id;
       }
       // currentUser 없으면 false (메뉴가 안보임)
       return false;

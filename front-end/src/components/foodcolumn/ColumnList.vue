@@ -66,7 +66,7 @@
                 작성일
               </th>
               <th
-                v-if="showLoggedUser"
+                v-if="showAdminBoard"
                 class="table-active"
                 style="width: 10%"
                 scope="col"
@@ -89,7 +89,7 @@
               <td class="text-center">
                 <i class="bi bi-calendar-date"></i> {{ data.insertTime }}
               </td>
-              <td v-if="showLoggedUser">
+              <td v-if="showAdminBoard">
                 <router-link :to="'/column/' + data.cid"
                   ><span class="badge rounded-pill bg-warning text-dark"
                     >수정</span
@@ -104,10 +104,14 @@
           <span class="badge bg-warning text-dark">추가</span>
         </router-link> -->
         <!-- TODO: badge를 버튼으로 교체 -->
-        <div v-if="showLoggedUser">
-          <router-link class="offset-11" to="/add-column/">
-            <button type="button" class="btn btn-warning btn-sm">글쓰기</button>
-          </router-link>
+        <div class="offset-11">
+            <button
+              type="button"
+              class="btn btn-warning btn-sm"
+              @click="ConfirmLoggedUser"
+            >
+              글쓰기
+            </button>
         </div>
       </div>
       <div class="overflow-auto offset-5">
@@ -185,6 +189,15 @@ export default {
     };
   },
   methods: {
+    ConfirmLoggedUser() {
+      if (this.currentUser && this.currentUser.roles) {
+        // if (ROLE_ADMIN || ROLE_USER) 로그인이 되어있다면 관리자거나 일반유저이므로 푸드컬럼 페이지로 바로 이동
+        return (this.currentUser.roles.includes("ROLE_ADMIN") || this.currentUser.roles.includes("ROLE_USER")) && this.$router.push("/add-column/");
+      }
+      // 로그인이 되어있지 않다면 로그인이 필요한 항목이라고 표시
+      return alert("로그인이 필요한 항목입니다.");
+    },
+
     // axios , 모든 정보 조회 요청 함수
     retrieveColumn() {
       ColumnDataService.getAll(
@@ -229,8 +242,7 @@ export default {
       return this.$store.state.auth.user;
     },
     // 현재 접속한 유저의 id = column.id 동일하면 버튼 보이게 하는 함수 작성해야함
-    showLoggedUser() {
-    // 밑에 주석처리한게 원본
+    showAdminBoard() {
       if (this.currentUser && this.currentUser.roles) {
         // if ROLE_ADMIN 있으면 true
         //               없으면 false
