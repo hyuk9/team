@@ -51,7 +51,7 @@
                                         <li><a href="#">해운대구</a></li>
                                         <li><a href="#">남구</a></li>
                                         <li><a href="#">금정구</a></li>
-                                        <li><a href="#">기장구</a></li>
+                                        <li><a href="#">기장군</a></li>
                                         <li><a href="#">동래구</a></li>
                                         <li><a href="#">부산진구</a></li>
                                         <li><a href="#">영도구</a></li>

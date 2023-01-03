@@ -18,6 +18,9 @@
                         src="assets/img/gallery/crispy-sandwiches.png"
                         alt="..."
                       />
+                      <!-- <div class="img-fluid w-100 fit-cover h-100 rounded-top rounded-md-end rounded-md-top-0">
+                        {{ data.photo }}
+                      </div> -->
                     </div>
                     <div class="col-md-7 col-xl-5 col-xxl-4 p-4 p-lg-5">
                       <h1 class="card-title mt-xl-5 mb-4">

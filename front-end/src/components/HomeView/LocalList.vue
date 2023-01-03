@@ -61,9 +61,15 @@
                   "
                 >
                   <div class="card card-span h-100 text-white rounded-3">
+                    <!-- TODO: test dataURL <- DB url -->
+                    <!-- <img
+                      class="img-fluid rounded-3 h-100"
+                      :src="dataUrl"
+                      alt="..."
+                    /> -->
                     <img
                       class="img-fluid rounded-3 h-100"
-                      src="assets/img/gallery/food-world.png"
+                      :src="data.photo"
                       alt="..."
                     />
                     <div class="card-img-overlay ps-0">
@@ -129,9 +135,14 @@
                   "
                 >
                   <div class="card card-span h-100 text-white rounded-3">
-                    <img
+                    <!-- <img
                       class="img-fluid rounded-3 h-100"
                       src="assets/img/gallery/food-world.png"
+                      alt="..."
+                    /> -->
+                    <img
+                      class="img-fluid rounded-3 h-100"
+                      :src="data.photo"
                       alt="..."
                     />
                     <div class="card-img-overlay ps-0">
@@ -218,6 +229,9 @@ import DinerDataService from "../../services/DinerDataService.js";
 export default {
   data() {
     return {
+      // TODO: test
+      dataUrl:
+        "https://mp-seoul-image-production-s3.mangoplate.com/16929/reviews/bc862256e507.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80",
       diner: [],
       // dname: "", ->(변경) searchUsername: "",
       searchSelect: "지역",
