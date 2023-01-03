@@ -8,7 +8,7 @@
         <div class="navbar-collapse collapse">
           <ul class="navbar-right navbar-nav nav">
             <li>
-              <a href="#">{{ total_comments }} Comments</a>
+              <!-- <a href="#">{{ total_comments }} Comments</a> -->
             </li>
           </ul>
         </div>
@@ -16,7 +16,7 @@
       <div>
         <div class="row">
           <!-- form -->
-          <form class="col-sm-12 col-sm-offset-4" v-on:submit.prevent="submit">
+          <form class="col-sm-12 col-sm-offset-4">
             <h3>review</h3>
             <!-- <div class="form-group mt-3">
               <h6>평점을 입력해주세요</h6>
@@ -37,7 +37,7 @@
           <!-- form -->
           <div class="cols-m-12">
             <div class="col-sm-12 col-sm-offset-4">
-              <div v-if="submittedReviews.length === 0">
+              <div v-if="review.length === 0">
                 <div class="alert alert-info">남겨진 리뷰가 없습니다.</div>
               </div>
               <ul v-else class="mb-0 pl-3">
@@ -47,7 +47,11 @@
                   :key="index"
                   @click="setActiveReview(data, index)"
                 >
-                  {{ data.rwriter }}
+                  {{ data }}
+                  <!-- {{ data.rwriter }}
+                  {{ data.rating }}
+                  {{ data.rphoto }}
+                  {{ data.rcontent }} -->
                 </li>
               </ul>
 
@@ -91,18 +95,19 @@
               @show="resetModal"
               @hidden="resetModal"
               @ok="handleOk"
+              @click="saveReview"
             >
               <form ref="form" @submit.stop.prevent="handleSubmit">
                 <b-form-group
                   label="작성자"
-                  label-for="name-input"
+                  label-for="rwriter-input"
                   invalid-feedback="Name is required"
-                  :state="nameState"
+                  :state="rwriterState"
                 >
                   <b-form-input
-                    id="name-input"
-                    v-model="rwriter"
-                    :state="nameState"
+                    id="rwriter-input"
+                    v-model="review.rwriter"
+                    :state="rwriterState"
                     required
                   ></b-form-input>
                 </b-form-group>
@@ -114,7 +119,7 @@
                   :state="ratingState"
                 >
                   <b-form-rating
-                    v-model="rating"
+                    v-model="review.rating"
                     show-value
                     required
                   ></b-form-rating>
@@ -122,22 +127,23 @@
 
                 <b-form-group
                   label="내용"
-                  label-for="content-input"
+                  label-for="rcontent-input"
                   invalid-feedback="Content is required"
-                  :state="contentState"
+                  :state="rcontentState"
                 >
                   <b-form-input
-                    id="content-input"
-                    v-model="content"
-                    :state="contentState"
+                    id="rcontent-input"
+                    v-model="review.rcontent"
+                    :state="rcontentState"
                     required
                   ></b-form-input>
                 </b-form-group>
 
                 <b-form-group
                   label="사진"
-                  label-for="photo-input"
-                  :state="photoState"
+                  label-for="rphoto-input"
+                  v-model="review.rphoto"
+                  :state="rphotoState"
                 >
                   <b-form-file multiple>
                     <template slot="file-name" slot-scope="{ names }">
@@ -183,19 +189,21 @@ import ReviewDataService from "@/services/ReviewDataService";
 export default {
   data() {
     return {
-      // name: "",
-      // content: "",
-      // rating: null,
-      // photo: "",
-      // nameState: null,
-      // ratingState: null,
-      // contentState: null,
-      // photoState: null,
       review: [],
+
+      rwriter: "",
+      rcontent: "",
+      rating: null,
+      rphoto: [],
+
+      rwriterState: null,
+      ratingState: null,
+      rcontentState: null,
+      rphotoState: null,
+
       currentReview: null,
       currentIndex: -1,
-      searchDno: "",
-      submittedReviews: [],
+      searchRwriter: "",
 
       // 페이징을 위한 변수 정의
       page: 1, // 현재 페이지
@@ -209,7 +217,7 @@ export default {
     // axios , 모든 부서 정보 조회 요청 함수
     retrieveReview() {
       // getAll() ->(변경) getAll(dname, page, size)
-      ReviewDataService.getAll(this.searchDno, this.page - 1, this.pageSize)
+      ReviewDataService.getAll(this.searchRwriter, this.page - 1, this.pageSize)
         // 성공하면 .then() 결과가 전송됨
         .then((response) => {
           // this.emp = response.data -> (변경) const { emp, totalItems } = response.data
@@ -221,6 +229,22 @@ export default {
           console.log(response.data);
         })
         // 실패하면 .catch() 에 에러가 전송됨
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+    // dno로 리뷰 요청하는 함수
+    getReview(dno) {
+      // axios 공통함수 호출
+      ReviewDataService.get(dno)
+        // 성공하면 .then() 결과가 리턴됨
+        .then((response) => {
+          // springboot 결과를 리턴함(부서 객체)
+          this.currentReview = response.data;
+          // 콘솔 로그 출력
+          console.log(response.data);
+        })
+        // 실패하면 .catch() 에러메세지가 리턴됨
         .catch((e) => {
           console.log(e);
         });
@@ -262,18 +286,18 @@ export default {
     },
     checkFormValidity() {
       const valid = this.$refs.form.checkValidity();
-      this.nameState = valid;
+      this.rwriterState = valid;
       this.ratingState = valid;
-      this.contentState = valid;
+      this.rcontentState = valid;
       return valid;
     },
     resetModal() {
-      this.name = "";
-      this.nameState = null;
+      this.rwriter = "";
+      this.rwriterState = null;
       this.rating = "";
       this.ratingState = null;
-      this.content = "";
-      this.contentState = null;
+      this.rcontent = "";
+      this.rcontentState = null;
     },
     handleOk(bvModalEvent) {
       // Prevent modal from closing
@@ -287,11 +311,48 @@ export default {
         return;
       }
       // Push the name to submitted names
-      this.submittedReviews.push(this.review);
+      this.review.push(this.review.rwriter);
+      this.review.push(this.review.rating);
+      this.review.push(this.review.rphoto);
+      this.review.push(this.review.rcontent);
       // Hide the modal manually
       this.$nextTick(() => {
         this.$bvModal.hide("modal-prevent-closing");
       });
+    },
+    // 리뷰 작성 form
+    saveReview() {
+      // 임시 객체 변수 -> springboot 전송
+      // 부서번호는(no) 자동생성되므로 빼고 전송함
+      let data = {
+        rwriter: this.review.rwriter,
+        rcontent: this.review.rcontent,
+        rating: this.review.rating,
+        rphoto: this.review.rphoto,
+      };
+
+      // insert 요청 함수 호출(axios 공통함수 호출)
+      ReviewDataService.create(data)
+        // 성공하면 then() 결과가 전송됨
+        .then((response) => {
+          this.review.rno = response.data.rno;
+          // 콘솔 로그 출력(response.data)
+          console.log(response.data);
+          // 변수 submitted
+          this.submitted = true;
+          alert("성공했습니다.");
+          this.$router.push("/review");
+        })
+        // 실패하면 .catch() 결과가 전송됨
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+
+    mounted() {
+      this.getReview(this.$route.params.dno);
+      // 화면 로딩시 전체 조회함수 실행
+      this.retrieveReview();
     },
   },
 };

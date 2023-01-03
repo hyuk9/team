@@ -343,14 +343,10 @@ export default {
     // axios , 모든 부서 정보 조회 요청 함수
     retrieveReview() {
       // getAll() ->(변경) getAll(dname, page, size)
-      ReviewDataService.getAll(
-        this.searchDno,
-        this.page - 1,
-        this.pageSize
-      )
+      ReviewDataService.getAll(this.searchRwriter, this.page - 1, this.pageSize)
         // 성공하면 .then() 결과가 전송됨
         .then((response) => {
-          // this.review = response.data -> (변경) const { diner, totalItems } = response.data
+          // this.emp = response.data -> (변경) const { emp, totalItems } = response.data
           // let(const) { 속성명1, 속성명2 } = 데이터 객체배열 (모던자바문법 구조분해할당)
           const { review, totalItems } = response.data; // springboot 의 전송한 맵 정보
           this.review = review; // 스프링부트에서 전송한 데이터

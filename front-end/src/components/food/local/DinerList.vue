@@ -70,41 +70,13 @@
               >
                 <!-- Blog post-->
                 <div class="card mb-4">
-                  <!-- <a href="#!"
+                  <a href="#!"
                     ><img
                       class="card-img-top"
-                      src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
+                      :src="data.photo"
                       alt="..."
-                  /></a> -->
-                  <div
-                    id="carouselExampleSlidesOnly"
-                    class="carousel slide"
-                    data-bs-ride="carousel"
-                  >
-                    <div class="carousel-inner">
-                      <div class="carousel-item active">
-                        <img
-                          src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
-                          class="d-block w-100"
-                          alt="..."
-                        />
-                      </div>
-                      <div class="carousel-item">
-                        <img
-                          src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
-                          class="d-block w-100"
-                          alt="..."
-                        />
-                      </div>
-                      <div class="carousel-item">
-                        <img
-                          src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
-                          class="d-block w-100"
-                          alt="..."
-                        />
-                      </div>
-                    </div>
-                  </div>
+                  /></a>
+                
                   <div class="card-body">
                     <a
                       class="badge bg-success text-decoration-none link-light"

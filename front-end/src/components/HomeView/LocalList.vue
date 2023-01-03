@@ -63,8 +63,8 @@
                   <div class="card card-span h-100 text-white rounded-3">
                     <img
                       class="img-fluid rounded-3 h-100"
-                      src="assets/img/gallery/food-world.png"
-                      alt="..."
+                      :src="data.photo"
+                      alt="…"
                     />
                     <div class="card-img-overlay ps-0">
                       <span class="badge bg-danger p-2 mt-1 ms-3"
@@ -131,8 +131,8 @@
                   <div class="card card-span h-100 text-white rounded-3">
                     <img
                       class="img-fluid rounded-3 h-100"
-                      src="assets/img/gallery/food-world.png"
-                      alt="..."
+                      :src="data.photo"
+                      alt="…"
                     />
                     <div class="card-img-overlay ps-0">
                       <span class="badge bg-danger p-2 mt-1 ms-3"
