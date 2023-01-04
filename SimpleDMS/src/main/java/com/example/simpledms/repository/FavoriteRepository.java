@@ -21,7 +21,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface FavoriteRepository extends JpaRepository<Favorite, Integer> {
 //    question 조회하는 like 검색 함수
 //    1) 쿼리메소드 방식으로 함수 정의
-    Page<Favorite> findAllByIdOrderByInsertTimeDesc(String id, Pageable pageable);
+    Page<Favorite> findAllByFidOrderByDno(String dno, Pageable pageable);
 }
 
 

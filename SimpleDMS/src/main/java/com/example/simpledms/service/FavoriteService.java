@@ -74,8 +74,8 @@ public class FavoriteService {
     }
 
     //    question(질문) like 검색 함수 ( 페이징 처리 )
-    public Page<Favorite> findAllByIdOrderByInsertTimeDesc(String id, Pageable pageable) {
-        Page<Favorite> page = favoriteRepository.findAllByIdOrderByInsertTimeDesc(id, pageable);
+    public Page<Favorite> findAllByFidOrderByDno(String dno, Pageable pageable) {
+        Page<Favorite> page = favoriteRepository.findAllByFidOrderByDno(dno, pageable);
 
         return page;
     }

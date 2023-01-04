@@ -61,7 +61,7 @@ public class FavoriteController {
             Page<Favorite> favoritePage;
 
 //            Page 객체 정의
-            favoritePage = favoriteService.findAllByIdOrderByInsertTimeDesc(searchKeyword, pageable);
+            favoritePage = favoriteService.findAllByFidOrderByDno(searchKeyword, pageable);
 
             //            맵 자료구조에 넣어서 전송
             Map<String, Object> response = new HashMap<>();
