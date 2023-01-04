@@ -1,10 +1,12 @@
 package com.example.simpledms.repository;
 
+import com.example.simpledms.dto.QuestionDto;
 import com.example.simpledms.model.Qna;
 import com.example.simpledms.model.Question;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 /**
  * packageName : com.example.jpaexam.repository
@@ -23,6 +25,17 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
 //    1) 쿼리메소드 방식으로 함수 정의
     Page<Question> findAllByTitleContainingOrderByInsertTimeDescQuestionNoDesc(String title, Pageable pageable);
     Page<Question> findAllByWriterContainingOrderByInsertTimeDescQuestionNoDesc(String writer, Pageable pageable);
+
+//    @Query(value = "select fa.*, di.dname, di.phone, di.loc, di.photo " +
+//            "from tb_diner di, tb_favorite fa " +
+//            "where di.dno = fa.dno " +
+//            "and id = :id",
+//            countQuery = "select fa.*, di.dname, di.phone, di.loc, di.photo  " +
+//                    "from tb_diner di, tb_favorite fa " +
+//                    "where di.dno = fa.dno " +
+//                    "and id = :id"
+//            ,nativeQuery = true)
+//    Page<QuestionDto> findAllByQuestionNo (Integer questionNo, Pageable pageable);
 }
 
 
