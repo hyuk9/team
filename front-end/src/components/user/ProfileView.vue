@@ -528,7 +528,7 @@ export default {
           this.message = response.data;
           this.profiles=false;
           // 변수 submitted
-          // alert("성공했습니다.");
+          alert("성공했습니다.");
           this.getProfile(1)
         })
         // 실패하면 .catch() 결과가 전송됨
@@ -580,7 +580,7 @@ export default {
     }
 
     this.retrieveReservation();
-    this.saveProfile();
+    // this.saveProfile();
 
     // 캐러셀 초기화 실행
     $(".testimonial-carousel").owlCarousel({
