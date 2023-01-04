@@ -91,7 +91,7 @@
                 <i class="bi bi-calendar-date">&nbsp;</i>{{ data.insertTime }}
               </td>
               <td v-if="showAdminBoard">
-                <router-link :to="'/question/' + data.qno"
+                <router-link :to="'/question/' + data.questionNo"
                   ><span class="badge rounded-pill bg-warning text-dark"
                     >수정</span
                   ></router-link

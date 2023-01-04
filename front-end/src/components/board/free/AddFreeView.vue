@@ -96,10 +96,10 @@ export default {
         this.free.title,
         this.free.content,
         this.currentImage,
-        (eve) => {
-          // 파일이 업로드될때 진척상황이 저장됨(%)
-          this.progress = Math.round((100 * eve.loaded) / eve.total);
-        }
+        // (eve) => {
+        //   // 파일이 업로드될때 진척상황이 저장됨(%)
+        //   this.progress = Math.round((100 * eve.loaded) / eve.total);
+        // }
       )
         // 성공하면 then() 결과가 전송됨
         .then((response) => {

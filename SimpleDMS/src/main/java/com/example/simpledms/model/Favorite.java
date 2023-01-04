@@ -35,9 +35,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @DynamicInsert
 @DynamicUpdate
-@Where(clause = "DELETE_YN = 'N'")
-@SQLDelete(sql="UPDATE TB_FAVORITE SET DELETE_YN = 'Y', DELETE_TIME = TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') WHERE FID = ?")
-public class Favorite extends BaseTimeEntity {
+public class Favorite {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE
@@ -46,10 +44,10 @@ public class Favorite extends BaseTimeEntity {
     private Integer fid;
 
     @Column
-    private String id;
+    private Integer id;
 
     @Column
-    private String dno;
+    private Integer dno;
 }
 
 

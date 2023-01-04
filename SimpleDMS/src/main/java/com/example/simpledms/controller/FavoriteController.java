@@ -50,7 +50,7 @@ public class FavoriteController {
 //    frontend url(파라메터방식) : /{} 매개변수 전송방식 사용했으면 ------> backend @PathVariable
     @GetMapping("/favorite")
     public ResponseEntity<Object> getFavoriteAll(@RequestParam String searchSelect,
-                                             @RequestParam(required = false) String searchKeyword,
+                                             @RequestParam(required = false) Integer searchKeyword,
                                              @RequestParam(defaultValue = "0") int page,
                                              @RequestParam(defaultValue = "3") int size) {
 
@@ -61,7 +61,7 @@ public class FavoriteController {
             Page<Favorite> favoritePage;
 
 //            Page 객체 정의
-            favoritePage = favoriteService.findAllByIdOrderByInsertTimeDesc(searchKeyword, pageable);
+            favoritePage = favoriteService.findAllByFidOrderByDno(searchKeyword, pageable);
 
             //            맵 자료구조에 넣어서 전송
             Map<String, Object> response = new HashMap<>();
@@ -115,11 +115,11 @@ public class FavoriteController {
     }
 
 
-    @GetMapping("/favorite/{fid}")
-    public ResponseEntity<Object> getFavoriteId(@PathVariable int fid) {
+    @GetMapping("/favorite/{id}/{dno}")
+    public ResponseEntity<Object> getFavoriteId(@PathVariable Integer id, @PathVariable Integer dno) {
 
         try {
-            Optional<Favorite> optionalFavorite = favoriteService.findById(fid);
+            Optional<Favorite> optionalFavorite = favoriteService.findByIdAndDno(id, dno);
 
 
             if (optionalFavorite.isPresent() == true) {
@@ -152,11 +152,11 @@ public class FavoriteController {
         }
     }
 
-    @DeleteMapping("/favorite/deletion/{dno}")
-    public ResponseEntity<Object> deleteFavorite(@PathVariable int dno) {
+    @DeleteMapping("/favorite/deletion/{fid}")
+    public ResponseEntity<Object> deleteFavorite(@PathVariable int fid) {
 
         try {
-            boolean bSuccess = favoriteService.removeById(dno);
+            boolean bSuccess = favoriteService.removeById(fid);
 
             if (bSuccess == true) {
 //                데이터 + 성공 메세지 전송

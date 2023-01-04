@@ -4,6 +4,7 @@ import com.example.simpledms.model.Announce;
 import com.example.simpledms.model.Free;
 import com.example.simpledms.repository.AnnounceRepository;
 import com.example.simpledms.repository.FreeRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -108,22 +109,34 @@ public class FreeService {
     public Free createUploadImage(String writer, String title, String
             content, MultipartFile blobFile) throws IOException {
 
+        String galleryFileName = "";
+        Free free = null;
         //            업로드 파일에서 파일명 얻기
-        String galleryFileName = StringUtils.cleanPath(blobFile.getOriginalFilename());
+        if (blobFile != null) {
+            galleryFileName = StringUtils.cleanPath(blobFile.getOriginalFilename());
 
-        Free free = Free.builder()
-                .writer(writer)
-                .title(title)
-                .content(content)
-                .galleryFileName(galleryFileName)
-                .blobFile(blobFile.getBytes())
-                .build();
+             free = Free.builder()
+                    .writer(writer)
+                    .title(title)
+                    .content(content)
+                    .galleryFileName(galleryFileName)
+                    .blobFile(blobFile.getBytes())
+                    .build();
+        }else {
 
+             free = Free.builder()
+                    .writer(writer)
+                    .title(title)
+                    .content(content)
+                    .galleryFileName(galleryFileName)
+                    .build();
+
+        }
         Free createFree = freeRepository.save(free);
         return createFree;
     }
 
-    public Free updateUploadFile(int fno,String writer, String title, String
+    public Free updateUploadFile(int fno, String writer, String title, String
             content, MultipartFile blobFile) throws IOException {
 
         //            업로드 파일에서 파일명 얻기

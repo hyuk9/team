@@ -17,7 +17,7 @@ class FreeDataService {
 
     // 부서정보 생성(insert) 요청 함수
     // post 방식 통신 요청 -> @PostMapping("/api/free"), @RequestBody
-    create(writer,title,content,blobFile,onUploadProgress) {
+    create(writer,title,content,blobFile) {
         let formData = new FormData(); 
 
         console.log(writer);
@@ -34,13 +34,13 @@ class FreeDataService {
             headers: {
               "Content-Type": "multipart/form-data"
             },
-            onUploadProgress
+            // onUploadProgress
           });
     }
 
     // 부서정보 수정(update) 요청 함수
     // put 방식 통신 요청 -> @PutMapping("/api/free/{fno}"), @RequestBody
-    update(fno,writer,title,content,blobFile,onUploadProgress) {
+    update(fno,writer,title,content,blobFile) {
         let formData = new FormData();
 
         console.log(fno);
@@ -58,7 +58,6 @@ class FreeDataService {
             headers: {
               "Content-Type": "multipart/form-data"
             },
-            onUploadProgress
           });
     }
 
