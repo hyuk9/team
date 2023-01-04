@@ -108,22 +108,26 @@ public class FreeService {
     public Free createUploadImage(String writer, String title, String
             content, MultipartFile blobFile) throws IOException {
 
+        String galleryFileName = "";
         //            업로드 파일에서 파일명 얻기
-        String galleryFileName = StringUtils.cleanPath(blobFile.getOriginalFilename());
+        if (blobFile != null) {
+            galleryFileName = StringUtils.cleanPath(blobFile.getOriginalFilename());
+        }
 
         Free free = Free.builder()
                 .writer(writer)
                 .title(title)
                 .content(content)
                 .galleryFileName(galleryFileName)
-                .blobFile(blobFile.getBytes())
+//                .blobFile(blobFile.getBytes())
                 .build();
 
         Free createFree = freeRepository.save(free);
         return createFree;
+
     }
 
-    public Free updateUploadFile(int fno,String writer, String title, String
+    public Free updateUploadFile(int fno, String writer, String title, String
             content, MultipartFile blobFile) throws IOException {
 
         //            업로드 파일에서 파일명 얻기
