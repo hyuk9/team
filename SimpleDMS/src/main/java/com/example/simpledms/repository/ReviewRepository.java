@@ -1,11 +1,13 @@
 package com.example.simpledms.repository;
 
 
+import com.example.simpledms.model.Menu;
 import com.example.simpledms.model.Review;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -22,14 +24,9 @@ import java.util.Optional;
 
 public interface ReviewRepository extends JpaRepository<Review, Integer> {
 
+    List<Review> findAllByRwriterContaining (String rwriter);
 
-    Optional<Review> findByRwriter(String rwriter);
-
-    Optional<Review> findByDno(int dno);
-
-    Page<Review> findByRwriter(String rwriter, Pageable pageable);
-
-    Page<Review> findByDno(int dno, Pageable pageable);
+    List<Review> findAllByDnoEquals (Integer dno);
 
 
 }

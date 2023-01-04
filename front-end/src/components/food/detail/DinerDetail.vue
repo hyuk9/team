@@ -162,7 +162,11 @@
                 예약
               </button>
 
-              <button type="button" class="btn btn-success" v-if="showAdminBoard">
+              <button
+                type="button"
+                class="btn btn-success"
+                v-if="showAdminBoard"
+              >
                 <router-link :to="'/diner/' + currentDiner.dno + '/edit'"
                   >수정하기</router-link
                 >
@@ -176,20 +180,48 @@
           <div>
             메뉴
             <div v-for="(data, index) in menu" :key="index">
-              <p> {{data.menuName}} </p>
-              <p> {{data.menuPrice}} </p>
+              <p>{{ data.menuName }}</p>
+              <p>{{ data.menuPrice }}</p>
             </div>
           </div>
-          <!-- v-for문 끝 -->
+          <!-- v-for 끝 -->
+
+          <DinerCommentVue/>
           <!-- Comments section-->
-          <section class="mb-5">
-            <div class="card bg-light">
-              <div class="card-body">
-                <DinerCommentVue />
+          <div class="card mb-6" id="card1" v-for="(data, index) in review" :key="index">
+            <div class="row d-flex">
+              <div class="">
+                <img
+                  class="profile-pic"
+                  src="https://i.imgur.com/V3ICjlm.jpg"
+                />
+              </div>
+              <div class="d-flex flex-column">
+                <h5 class="ms-3 mt-2 mb-0">{{ data.rwriter }}</h5>
+                <div>
+                  <p class="text-left">
+                    <span class="fa fa-star star-active ml-3"></span>
+                    <span>{{ data.rating }}점</span>
+                  </p>
+                </div>
+              </div>
+              <div class="ml-auto">
+                <p class="text-muted pt-5 pt-sm-3">{{ data.insertTime }}</p>
               </div>
             </div>
-          </section>
+            <div class="row text-left">
+              <p class="content">
+                {{ data.rcontent }}
+              </p>
+            </div>
+            <div class="row text-left">
+              <img class="pic" src="https://i.imgur.com/kjcZcfv.jpg" />
+              <img class="pic" src="https://i.imgur.com/SjBwAgs.jpg" />
+              <img class="pic" src="https://i.imgur.com/IgHpsBh.jpg" />
+            </div>
+          </div>
         </div>
+
         <!-- Side widgets Map&Chart 시작 -->
         <div class="col-lg-4" v-if="mapNchart">
           <!-- Map widget-->
@@ -244,10 +276,10 @@
         <!-- Side widgets 예약하기 끝 -->
       </div>
     </div>
-    <div id="chart" class="col-lg-4 bg bg-info">
+    <!-- <div id="chart" class="col-lg-4 bg bg-info">
       <h1>차트 위치 지정해줘야함 - 내부 div로 넣으면 안되는 문제 있음</h1>
       <canvas id="myChart"></canvas>
-    </div>
+    </div> -->
   </main>
 </template>
 
@@ -358,24 +390,24 @@ export default {
   },
   methods: {
     // axios , 모든 부서 정보 조회 요청 함수
-    retrieveReview() {
-      // getAll() ->(변경) getAll(dname, page, size)
-      ReviewDataService.getAll(this.searchRwriter, this.page - 1, this.pageSize)
-        // 성공하면 .then() 결과가 전송됨
-        .then((response) => {
-          // this.emp = response.data -> (변경) const { emp, totalItems } = response.data
-          // let(const) { 속성명1, 속성명2 } = 데이터 객체배열 (모던자바문법 구조분해할당)
-          const { review, totalItems } = response.data; // springboot 의 전송한 맵 정보
-          this.review = review; // 스프링부트에서 전송한 데이터
-          this.count = totalItems; // 스프링부트에서 전송한 페이지정보(총 건수)
-          // 디버깅 콘솔에 정보 출력
-          console.log(response.data);
-        })
-        // 실패하면 .catch() 에 에러가 전송됨
-        .catch((e) => {
-          console.log("현재 리뷰데이터 : ",e);
-        });
-    },
+    // retrieveReview() {
+    //   // getAll() ->(변경) getAll(dname, page, size)
+    //   ReviewDataService.getAll(this.searchRwriter, this.page - 1, this.pageSize)
+    //     // 성공하면 .then() 결과가 전송됨
+    //     .then((response) => {
+    //       // this.emp = response.data -> (변경) const { emp, totalItems } = response.data
+    //       // let(const) { 속성명1, 속성명2 } = 데이터 객체배열 (모던자바문법 구조분해할당)
+    //       const { review, totalItems } = response.data; // springboot 의 전송한 맵 정보
+    //       this.review = review; // 스프링부트에서 전송한 데이터
+    //       this.count = totalItems; // 스프링부트에서 전송한 페이지정보(총 건수)
+    //       // 디버깅 콘솔에 정보 출력
+    //       console.log(response.data);
+    //     })
+    //     // 실패하면 .catch() 에 에러가 전송됨
+    //     .catch((e) => {
+    //       console.log(e);
+    //     });
+    // },
     // axios , 모든 부서 정보 조회 요청 함수
     retrieveFavorite() {
       alert("현재유저아이디" + this.currentUser.id);
@@ -419,6 +451,22 @@ export default {
           this.menu = response.data;
           // 콘솔 로그 출력
           console.log("현재 메뉴 데이터 : ",response.data);
+        })
+        // 실패하면 .catch() 에러메세지가 리턴됨
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+    // dno로 리뷰 요청하는 함수
+    getReview(dno) {
+      // axios 공통함수 호출
+      ReviewDataService.get(dno)
+        // 성공하면 .then() 결과가 리턴됨
+        .then((response) => {
+          // springboot 결과를 리턴함(부서 객체)
+          this.review = response.data;
+          // 콘솔 로그 출력
+          console.log(response.data);
         })
         // 실패하면 .catch() 에러메세지가 리턴됨
         .catch((e) => {
@@ -543,6 +591,7 @@ export default {
     // router/index.js 상세페이지 url의 매개변수명 : :dno
     this.getDiner(this.$route.params.dno);
     this.getMenu(this.$route.params.dno); // 화면 로딩시 음식점번호(dno)로 메뉴조회하기
+    this.getReview(this.$route.params.dno);
     this.retrieveReview(); // 화면 로딩시 전체 조회함수 실행
     this.retrieveFavorite(); // 화면 로딩시 fid해당하는 조회함수 실행
 
@@ -588,4 +637,124 @@ export default {
   },
 };
 </script>
-<style></style>
+<style>
+#card1 {
+    border-radius: 5px;
+    background-color: #fff;
+    padding-left: 60px;
+    padding-right: 60px;
+    margin-top: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px
+}
+
+.rating-box {
+    width: 130px;
+    height: 130px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: #FBC02D;
+    color: #fff
+}
+
+.rating-label {
+    font-weight: bold
+}
+
+.rating-bar {
+    width: 300px;
+    padding: 8px;
+    border-radius: 5px
+}
+
+.bar-container {
+    width: 100%;
+    background-color: #f1f1f1;
+    text-align: center;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-bottom: 5px
+}
+
+.bar-5 {
+    width: 70%;
+    height: 13px;
+    background-color: #FBC02D;
+    border-radius: 20px
+}
+
+.bar-4 {
+    width: 30%;
+    height: 13px;
+    background-color: #FBC02D;
+    border-radius: 20px
+}
+
+.bar-3 {
+    width: 20%;
+    height: 13px;
+    background-color: #FBC02D;
+    border-radius: 20px
+}
+
+.bar-2 {
+    width: 10%;
+    height: 13px;
+    background-color: #FBC02D;
+    border-radius: 20px
+}
+
+.bar-1 {
+    width: 0%;
+    height: 13px;
+    background-color: #FBC02D;
+    border-radius: 20px
+}
+
+td {
+    padding-bottom: 10px
+}
+
+.star-active {
+    color: #FBC02D;
+    margin-top: 10px;
+    margin-bottom: 10px
+}
+
+.star-active:hover {
+    color: #F9A825;
+    cursor: pointer
+}
+
+.star-inactive {
+    color: #CFD8DC;
+    margin-top: 10px;
+    margin-bottom: 10px
+}
+
+.blue-text {
+    color: #0091EA
+}
+
+.content {
+    font-size: 18px
+}
+
+.profile-pic {
+    width: 90px;
+    height: 90px;
+    border-radius: 100%;
+    margin-right: 30px
+}
+
+.pic {
+    width: 80px;
+    height: 80px;
+    margin-right: 10px
+}
+
+.vote {
+    cursor: pointer
+}
+</style>

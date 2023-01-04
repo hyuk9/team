@@ -54,9 +54,9 @@ public class Review extends BaseTimeEntity {
     @javax.persistence.Column
     private String rcontent;
 
-    @Lob
+//    @Lob
     @javax.persistence.Column
-    private byte[] rphoto;
+    private String rphoto;
 
     @javax.persistence.Column
     private String rwriter;
