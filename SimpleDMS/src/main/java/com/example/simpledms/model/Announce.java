@@ -52,6 +52,18 @@ public class Announce extends BaseTimeEntity {
 
     @javax.persistence.Column(columnDefinition = "CLOB")
     private String content;
+
+    @javax.persistence.Column(columnDefinition = "NUMBER")
+    private Integer views;
+    
+//  0104 조회수 위해서 추가
+    public Announce(Integer ano, String writer, String title, String content, Integer views) {
+        this.ano = ano;
+        this.writer = writer;
+        this.title = title;
+        this.content = content;
+        this.views = views;
+    }
 }
 
 
