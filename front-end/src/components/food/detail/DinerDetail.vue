@@ -133,7 +133,7 @@
               <button
                 type="button"
                 class="btn btn-primary"
-                @click="saveFavorite"
+                @click="[saveFavorite(), retrieveFavorite()]"
                :disabled=existFid>
                 <!-- <img src="assets/img/gallery/empty_heart.png" v-if="empty" />
                 <img src="assets/img/gallery/fill_heart.png" v-else-if="fill" /> -->
@@ -144,7 +144,7 @@
               <button
                 type="button"
                 class="btn btn-danger"
-                @click="deleteFavorite"
+                @click="[deleteFavorite(), retrieveFavorite()]"
                 :disabled=!existFid
               >
                 찜삭제
@@ -169,7 +169,7 @@
               </button>
             </div>
             <h1>
-              현재 FID 값 : {{ favorite.fid}}
+              현재 FID 값 : {{ favorite.fid }}
             </h1>
           </article>
           <!-- 메뉴 리스트 불러와서 v-for문으로 작동 -->
@@ -373,13 +373,15 @@ export default {
         })
         // 실패하면 .catch() 에 에러가 전송됨
         .catch((e) => {
-          console.log(e);
+          console.log("현재 리뷰데이터 : ",e);
         });
     },
     // axios , 모든 부서 정보 조회 요청 함수
     retrieveFavorite() {
+      alert("현재유저아이디" + this.currentUser.id);
+      alert("현재식당아이디" + this.$route.params.dno);
       // getAll() ->(변경) getAll(dname, page, size)
-      FavoriteDataService.get(this.currentUser.id, this.currentDiner.dno)
+      FavoriteDataService.get(this.currentUser.id, this.$route.params.dno)
         // 성공하면 .then() 결과가 전송됨
         .then((response) => {
           this.favorite = response.data; // 스프링부트에서 전송한 데이터
@@ -388,7 +390,7 @@ export default {
         })
         // 실패하면 .catch() 에 에러가 전송됨
         .catch((e) => {
-          console.log(e);
+          console.log("찜한 목록 데이터 : ", e);
         });
     },
     // 부서번호(dno)로 조회 요청하는 함수
@@ -400,7 +402,7 @@ export default {
           // springboot 결과를 리턴함(부서 객체)
           this.currentDiner = response.data;
           // 콘솔 로그 출력
-          console.log(response.data);
+          console.log("현재 음식점 데이터 : ", response.data);
         })
         // 실패하면 .catch() 에러메세지가 리턴됨
         .catch((e) => {
@@ -416,7 +418,7 @@ export default {
           // springboot 결과를 리턴함(부서 객체)
           this.menu = response.data;
           // 콘솔 로그 출력
-          console.log(response.data);
+          console.log("현재 메뉴 데이터 : ",response.data);
         })
         // 실패하면 .catch() 에러메세지가 리턴됨
         .catch((e) => {
@@ -496,6 +498,7 @@ export default {
 
     saveFavorite() {
       let data = {
+        // fid는 자동생성
         dno: this.currentDiner.dno,
         id: this.currentUser.id,
       };
@@ -505,7 +508,7 @@ export default {
         .then((response) => {
           this.favorite.fid = response.data.fid;
           // 콘솔 로그 출력(response.data)
-          console.log(response.data);
+          console.log("찜한 데이터 : ",response.data);
           alert("찜했습니다.");
         })
         // 실패하면 .catch() 결과가 전송됨
@@ -520,7 +523,6 @@ export default {
         .then((response) => {
           console.log(response.data);
           alert("찜 삭제했습니다.");
-          alert(this.favorite.fid);
         })
         // 실패하면 .catch() 에러메세지가 전송됨
         .catch((e) => {
@@ -577,10 +579,10 @@ export default {
     },
     existFid() {
       if (this.favorite.fid != null) {
-        return true
+        return true;
       }
       else {
-        return false
+        return false;
       }
     }
   },
