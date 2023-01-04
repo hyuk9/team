@@ -1,5 +1,6 @@
 package com.example.simpledms.repository;
 
+import com.example.simpledms.dto.FavoriteDto;
 import com.example.simpledms.dto.response.UserRoleDto;
 import com.example.simpledms.model.Favorite;
 import com.example.simpledms.model.Free;
@@ -33,16 +34,16 @@ public interface FavoriteRepository extends JpaRepository<Favorite, Integer> {
 //    id랑 dno로 Fid찾는 함수
     Optional<Favorite> findByIdAndDno (Integer id, Integer dno);
 
-    @Query(value = "select fa.*, di.dname " +
-            "from tb_diner di, tb_favorite fa " +
-            "where di.dno = fa.dno "
-//            "and id = %:id%"
-            ,countQuery = "select fa.*, di.dname " +
-                    "from tb_diner di, tb_favorite fa " +
-                    "where di.dno = fa.dno "
-//                    "and id = %:id%"
+    @Query(value = "select fa.*, di.dname, di.phone, di.loc, di.photo " +
+                   "from tb_diner di, tb_favorite fa " +
+                   "where di.dno = fa.dno " +
+                   "and id = :id",
+                    countQuery = "select fa.*, di.dname, di.phone, di.loc, di.photo  " +
+                                 "from tb_diner di, tb_favorite fa " +
+                                 "where di.dno = fa.dno " +
+                                 "and id = :id"
             ,nativeQuery = true)
-    Page<Favorite> findAllBy (Pageable pageable);
+    Page<FavoriteDto> findAllById (Integer id, Pageable pageable);
 
 }
 

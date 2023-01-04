@@ -202,23 +202,33 @@ retrieveReservation();
                 <thead>
                   <tr>
                     <!-- <th scope="col">Last Name</th> -->
-                    <th scope="col">fid</th>
+                    <th scope="col">사진</th>
+                    <!-- <th scope="col">fid</th>
                     <th scope="col">user id</th>
-                    <th scope="col">dno</th>
-                    <!-- <th scope="col">가게</th>
+                    <th scope="col">dno</th> -->
+                    <th scope="col">가게</th>
                     <th scope="col">가게전화번호</th>
-                    <th scope="col">위치</th> -->
+                    <th scope="col">위치</th>
+                    <th scope="col">더보기</th>
                   </tr>
                 </thead>
                 <tbody v-for="(data, index) in favorite" :key="index">
                   <!-- <tr @click="setActive(data, index)"> -->
                   <tr>
-                    <td>{{ data.fid }}</td>
+                    <td> <img :src="data.photo" alt="" style="height: 100px;"> </td>
+                    <!-- <td>{{ data.fid }}</td>
                     <td>{{ data.id }}</td>
-                    <td>{{ data.dno }}</td>
-                    <!-- <td>{{ data.dname }}</td>
+                    <td>{{ data.dno }}</td> -->
+                    <td>{{ data.dname }}</td>
                     <td>{{ data.phone }}</td>
-                    <td>{{ data.loc }}</td> -->
+                    <td>{{ data.loc }}</td>
+                    <td>
+                <router-link :to="'/diner/' + data.dno"
+                  ><span class="badge rounded-pill bg-warning text-dark"
+                    >더보기</span
+                  ></router-link
+                >
+              </td>
                   </tr>
                 </tbody>
               </table>
@@ -450,8 +460,9 @@ retrieveReview();
 
 <script>
 /* eslint-disable */
-import ReservationDataService from "../../services/ReservationDataService";
-import ProfileDataService from "../../services/ProfileDataService";
+import ReservationDataService from "@/services/ReservationDataService";
+import ProfileDataService from "@/services/ProfileDataService";
+import FavoriteDataService from "@/services/FavoriteDataService";
 
 export default {
   data() {
@@ -485,6 +496,21 @@ export default {
         .then((response) => {
           const { reservation, totalItems } = response.data;
           this.reservation = reservation;
+          this.count = totalItems;
+
+          console.log(response.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+
+//  찜한목록 조회하는 함수
+    retrieveFavorite() {
+      FavoriteDataService.getId(this.currentUser.id, this.page - 1, this.pageSize)
+        .then((response) => {
+          const { favorite, totalItems } = response.data;
+          this.favorite = favorite;
           this.count = totalItems;
 
           console.log(response.data);
@@ -580,6 +606,7 @@ export default {
     }
 
     this.retrieveReservation();
+    this.retrieveFavorite();
     // this.saveProfile();
 
     // 캐러셀 초기화 실행

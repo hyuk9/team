@@ -1,5 +1,6 @@
 package com.example.simpledms.service;
 
+import com.example.simpledms.dto.FavoriteDto;
 import com.example.simpledms.dto.response.UserRoleDto;
 import com.example.simpledms.model.Favorite;
 import com.example.simpledms.model.Free;
@@ -90,8 +91,8 @@ public class FavoriteService {
     }
 
     //    ✅ username like 검색 함수 ( 페이징 처리 추가 )
-    public Page<Favorite> findAllBy(Pageable pageable) {
-        Page<Favorite> list = favoriteRepository.findAllBy(pageable);
+    public Page<FavoriteDto> findAllById(Integer id, Pageable pageable) {
+        Page<FavoriteDto> list = favoriteRepository.findAllById(id, pageable);
 
         return list;
     }
