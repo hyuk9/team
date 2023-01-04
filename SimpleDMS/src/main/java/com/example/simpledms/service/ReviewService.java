@@ -1,5 +1,6 @@
 package com.example.simpledms.service;
 
+import com.example.simpledms.model.Menu;
 import com.example.simpledms.model.Review;
 import com.example.simpledms.repository.ReviewRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -11,6 +12,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -31,19 +33,20 @@ public class ReviewService {
     @Autowired
     ReviewRepository reviewRepository; // JPA CRUD 함수가 있는 인터페이스
 
-    //    ✅ 전체 조회 함수 findAll() 👉 변경 findAll(Pageable pageable)
-    public Page<Review> findAll(Pageable pageable) {
-        Page<Review> page = reviewRepository.findAll(pageable);
+    //    ✅ 전체 조회 함수
+    public List<Review> findAll() {
+        List<Review> list = reviewRepository.findAll();
 
-        return page;
+        return list;
     }
 
 //    ✅ id로 조회하는 함수
-    public Optional<Review> findById(int rno) {
-//        findById(기본키)
-        Optional<Review> optionalReview = reviewRepository.findById(rno);
 
-        return optionalReview;
+    public List<Review> findAllByDnoEquals(int dno) {
+//        findById(기본키)
+        List<Review> list = reviewRepository.findAllByDnoEquals(dno);
+
+        return list;
     }
 
 //    writer으로 조회하는 함수
@@ -76,9 +79,9 @@ public class ReviewService {
         return false;
     }
 
-    //    ✅ dname like 검색 함수 ( 페이징 처리 추가 )
-    public Page<Review> findByDno(int dno, Pageable pageable) {
-        Page<Review> list = reviewRepository.findByDno(dno, pageable);
+    //    ✅ dname like 검색 함수
+    public List<Review> findAllByRwriterContaining(String rwriter) {
+        List<Review> list = reviewRepository.findAllByRwriterContaining(rwriter);
 
         return list;
     }

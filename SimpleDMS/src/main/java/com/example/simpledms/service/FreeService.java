@@ -4,6 +4,7 @@ import com.example.simpledms.model.Announce;
 import com.example.simpledms.model.Free;
 import com.example.simpledms.repository.AnnounceRepository;
 import com.example.simpledms.repository.FreeRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -56,8 +57,6 @@ public class FreeService {
     public boolean removeById(int fno) {
 //        existsById(기본키) 있으면 삭제 실행 + true 리턴
         if (freeRepository.existsById(fno) == true) {
-
-
             freeRepository.deleteById(fno);
             return true;
         }
@@ -109,22 +108,30 @@ public class FreeService {
             content, MultipartFile blobFile) throws IOException {
 
         String galleryFileName = "";
+        Free free = null;
         //            업로드 파일에서 파일명 얻기
         if (blobFile != null) {
             galleryFileName = StringUtils.cleanPath(blobFile.getOriginalFilename());
+
+             free = Free.builder()
+                    .writer(writer)
+                    .title(title)
+                    .content(content)
+                    .galleryFileName(galleryFileName)
+                    .blobFile(blobFile.getBytes())
+                    .build();
+        }else {
+
+             free = Free.builder()
+                    .writer(writer)
+                    .title(title)
+                    .content(content)
+                    .galleryFileName(galleryFileName)
+                    .build();
+
         }
-
-        Free free = Free.builder()
-                .writer(writer)
-                .title(title)
-                .content(content)
-                .galleryFileName(galleryFileName)
-//                .blobFile(blobFile.getBytes())
-                .build();
-
         Free createFree = freeRepository.save(free);
         return createFree;
-
     }
 
     public Free updateUploadFile(int fno, String writer, String title, String

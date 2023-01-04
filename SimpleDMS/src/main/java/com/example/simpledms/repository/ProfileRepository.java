@@ -1,14 +1,10 @@
 package com.example.simpledms.repository;
 
-
-import com.example.simpledms.model.Menu;
-import com.example.simpledms.model.Review;
+import com.example.simpledms.model.Free;
+import com.example.simpledms.model.Profile;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.List;
-import java.util.Optional;
 
 /**
  * packageName : com.example.jpaexam.repository
@@ -22,15 +18,12 @@ import java.util.Optional;
  * 2022-10-20         ds          최초 생성
  */
 
-public interface ReviewRepository extends JpaRepository<Review, Integer> {
+public interface ProfileRepository extends JpaRepository<Profile, Integer> {
+//    question 조회하는 like 검색 함수
+//    1) 쿼리메소드 방식으로 함수 정의
 
-    List<Review> findAllByRwriterContaining (String rwriter);
-
-    List<Review> findAllByDnoEquals (Integer dno);
-
-
+    public Page<Profile> findAllByOrderByInsertTimeDesc(Pageable pageable);
 }
-
 
 
 
