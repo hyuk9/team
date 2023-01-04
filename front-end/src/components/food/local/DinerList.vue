@@ -96,6 +96,10 @@
                       <p class="card-text fw-bolder">
                         {{ data.loc }}
                       </p>
+                      <p class="card-text text-800 fw-bolder">
+                         <i class="fas fa-eye text-dark text-800 me-2 fs-0"></i>
+                         {{ data.views }}
+                      </p>
                     </div>
                   </router-link>
                 </div>

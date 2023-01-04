@@ -105,6 +105,12 @@
                             >
                           </span>
                         </div>
+                        <div class="ms-3">
+                          <i class="fas fa-eye text-dark text-800 me-2 fs-0"></i>
+                          <span class="mb-0 text-dark text-800 fs-0">
+                            {{ data.views }}
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </router-link>
@@ -175,6 +181,12 @@
                             <span class="fs-1 text-danger">
                               {{ data.phone }}</span
                             >
+                          </span>
+                        </div>
+                        <div class="ms-3">
+                          <i class="fas fa-eye text-dark text-800 me-2 fs-0"></i>
+                          <span class="mb-0 text-dark text-800 fs-0">
+                            {{ data.views }}
                           </span>
                         </div>
                       </div>

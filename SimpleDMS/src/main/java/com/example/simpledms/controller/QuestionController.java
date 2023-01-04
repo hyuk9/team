@@ -1,5 +1,6 @@
 package com.example.simpledms.controller;
 
+import com.example.simpledms.model.Announce;
 import com.example.simpledms.model.Qna;
 import com.example.simpledms.model.Question;
 import com.example.simpledms.service.QnaService;
@@ -170,6 +171,33 @@ public class QuestionController {
         } catch (Exception e) {
             log.debug(e.getMessage());
             // 서버에러 발생 메세지 전송(클라이언트)
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    //    조회수 추가 함수0104
+    @PutMapping("/question/plusviews/{questionNo}")
+    public ResponseEntity<Object> updateQuestionViews(@PathVariable int questionNo) {
+
+        try {
+
+
+//       이메일에 맞는 유저 정보 들고와서
+            Optional<Question> optionalQuestion = questionService.findById(questionNo);
+
+            Question questionData = optionalQuestion.get();
+            Integer plusViews = questionData.getViews() +1;
+
+            Question question = new Question(
+                    questionData.getQuestionNo(),
+                    questionData.getTitle(),
+                    questionData.getContent(),
+                    questionData.getWriter(),
+                    plusViews
+            );
+            questionService.save(question);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

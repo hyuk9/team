@@ -36,8 +36,9 @@
               <div class="text mb-2">
                 <p class="fs-1">
                   {{ currentDiner.loc }}<br />
-
-                  {{ currentDiner.phone }}
+                  {{ currentDiner.phone }}<br />
+                   <i class="fas fa-eye text-dark me-2 fs-0"></i> 
+                   {{ currentDiner.views }}
                 </p>
               </div>
             </header>
@@ -583,6 +584,19 @@ export default {
           console.log(e);
         });
     },
+
+       // 조회수 증가 함수
+    countViews (dno) {
+      DinerDataService.plusViews(dno)
+     .then((response) => {
+          // 디버깅 콘솔에 정보 출력
+          console.log(response.data);
+        })
+        // 실패하면 .catch() 에 에러가 전송됨
+        .catch((e) => {
+          console.log(e);
+        });
+    }
   },
 
   // 화면이 뜨자 마자 실행되는 이벤트
@@ -614,6 +628,9 @@ export default {
         },
       },
     });
+
+       // 조회수 증가 함수
+    this.countViews(this.$route.params.dno);
   },
   computed: {
     // 현재 유저

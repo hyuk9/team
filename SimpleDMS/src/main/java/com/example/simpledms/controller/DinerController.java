@@ -2,6 +2,7 @@ package com.example.simpledms.controller;
 
 import com.example.simpledms.model.Diner;
 import com.example.simpledms.model.Qna;
+import com.example.simpledms.model.Question;
 import com.example.simpledms.service.DinerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -191,6 +192,37 @@ public class DinerController {
 //        }
 //    }
 
+    //    조회수 추가 함수0104
+    @PutMapping("/diner/plusviews/{dno}")
+    public ResponseEntity<Object> updateDinerViews(@PathVariable int dno) {
+
+        try {
+
+
+//       이메일에 맞는 유저 정보 들고와서
+            Optional<Diner> optionalDiner = dinerService.findById(dno);
+
+            Diner dinerData = optionalDiner.get();
+            Integer plusViews = dinerData.getViews() +1;
+
+            Diner diner = new Diner(
+                    dinerData.getDno(),
+                    dinerData.getDname(),
+                    dinerData.getScore(),
+                    dinerData.getLoc(),
+                    dinerData.getPhone(),
+                    dinerData.getMenu(),
+                    dinerData.getTheme(),
+                    dinerData.getReview(),
+                    dinerData.getPhoto(),
+                    plusViews
+            );
+            dinerService.save(diner);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
 }
 
