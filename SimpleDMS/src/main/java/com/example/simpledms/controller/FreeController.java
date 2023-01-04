@@ -161,25 +161,29 @@ public class FreeController {
             @RequestParam("writer") String writer,
             @RequestParam("title") String title,
             @RequestParam("content") String content,
-            @RequestParam("blobFile") MultipartFile blobFile
+            @RequestParam(required = false) MultipartFile blobFile
     ) {
         String message = "";
 
         log.info("writer {} : ", writer);
         log.info("title {} : ", title);
         log.info("content {} : ", content);
+        log.info("blobFile {} : ", blobFile);
 
         try {
             freeService.createUploadImage(writer, title, content, blobFile);
-
-            message = "Uploaded the file successfully: " + blobFile.getOriginalFilename();
+            if (blobFile != null) {
+                message = "Uploaded the file successfully: " + blobFile.getOriginalFilename();
+            }
             return new ResponseEntity<Object>(message, HttpStatus.CREATED);
         } catch (Exception e) {
             message = "Could not upload the file: " + blobFile.getOriginalFilename() + "!";
             log.debug(e.getMessage());
             return new ResponseEntity<Object>(message, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+
     }
+
 
     //    수정 처리 : image update 포함
     @PutMapping("/free/update/{fno}")
@@ -198,7 +202,7 @@ public class FreeController {
         log.info("content {} : ", content);
 
         try {
-            freeService.updateUploadFile(fno,writer, title, content, blobFile);
+            freeService.updateUploadFile(fno, writer, title, content, blobFile);
 
             message = "Uploaded the file successfully: " + blobFile.getOriginalFilename();
             return new ResponseEntity<Object>(message, HttpStatus.CREATED);
@@ -309,10 +313,9 @@ public class FreeController {
             ResponseGalleryDto courseDto = modelMapper.map(freeOptional.get(), ResponseGalleryDto.class);
 
 //                아래 2개 속성은 가공된 데이터 이므로 setter 를 이용해 저장
-            int fileSize = (freeOptional.get().getBlobFile() != null)?freeOptional.get().getBlobFile().length : 0;
+            int fileSize = (freeOptional.get().getBlobFile() != null) ? freeOptional.get().getBlobFile().length : 0;
             courseDto.setFileSize(fileSize);
             courseDto.setFileUrl(fileDownloadUri);
-
 
 
             if (freeOptional.isPresent()) {
