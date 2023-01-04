@@ -26,9 +26,9 @@
           </div> -->
           <div class="col-sm-4">
             <img :src="previewImage" class="card-img-top" alt="" />
-            <a style="color: inherit" @click="deleteImage(free.fno)">
+            <!-- <a style="color: inherit" @click="deleteImage(free.fno)">
               <span class="badge bg-danger">Delete</span>
-            </a>
+            </a> -->
           </div>
         </div>
         <div class="mb-3">
