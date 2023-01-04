@@ -37,7 +37,8 @@
                 <p class="fs-1">
                   {{ currentDiner.loc }}<br />
                   {{ currentDiner.phone }}<br />
-                  조회수: {{ currentDiner.views }}
+                   <i class="fas fa-eye text-dark me-2 fs-0"></i> 
+                   {{ currentDiner.views }}
                 </p>
               </div>
             </header>
