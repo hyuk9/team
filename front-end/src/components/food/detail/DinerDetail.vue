@@ -133,21 +133,18 @@
               <button
                 type="button"
                 class="btn btn-primary"
-                @click="[saveFavorite(), retrieveFavorite()]"
-               :disabled=existFid>
-                <!-- <img src="assets/img/gallery/empty_heart.png" v-if="empty" />
-                <img src="assets/img/gallery/fill_heart.png" v-else-if="fill" /> -->
-                <!-- <i class="bi bi-heart" v-if="empty"></i>
-                <i class="bi bi-heart-fill" v-else-if="fill"></i> -->
-                찜하기
+                @click="saveFavorite"
+                v-if="!existFid"
+              >
+                <i class="bi bi-heart fs-2"></i>
               </button>
               <button
                 type="button"
                 class="btn btn-danger"
-                @click="[deleteFavorite(), retrieveFavorite()]"
-                :disabled=!existFid
+                @click="deleteFavorite"
+                v-if="existFid"
               >
-                찜삭제
+                <i class="bi bi-heart-fill fs-2"></i>
               </button>
 
               <b-button type="button" v-b-modal.modal-prevent-closing
@@ -172,9 +169,6 @@
                 >
               </button>
             </div>
-            <h1>
-              현재 FID 값 : {{ favorite.fid }}
-            </h1>
           </article>
           <!-- 메뉴 리스트 불러와서 v-for문으로 작동 -->
           <div>
@@ -390,28 +384,26 @@ export default {
   },
   methods: {
     // axios , 모든 부서 정보 조회 요청 함수
-    // retrieveReview() {
-    //   // getAll() ->(변경) getAll(dname, page, size)
-    //   ReviewDataService.getAll(this.searchRwriter, this.page - 1, this.pageSize)
-    //     // 성공하면 .then() 결과가 전송됨
-    //     .then((response) => {
-    //       // this.emp = response.data -> (변경) const { emp, totalItems } = response.data
-    //       // let(const) { 속성명1, 속성명2 } = 데이터 객체배열 (모던자바문법 구조분해할당)
-    //       const { review, totalItems } = response.data; // springboot 의 전송한 맵 정보
-    //       this.review = review; // 스프링부트에서 전송한 데이터
-    //       this.count = totalItems; // 스프링부트에서 전송한 페이지정보(총 건수)
-    //       // 디버깅 콘솔에 정보 출력
-    //       console.log(response.data);
-    //     })
-    //     // 실패하면 .catch() 에 에러가 전송됨
-    //     .catch((e) => {
-    //       console.log(e);
-    //     });
-    // },
+    retrieveReview() {
+      // getAll() ->(변경) getAll(dname, page, size)
+      ReviewDataService.getAll(this.searchRwriter, this.page - 1, this.pageSize)
+        // 성공하면 .then() 결과가 전송됨
+        .then((response) => {
+          // this.emp = response.data -> (변경) const { emp, totalItems } = response.data
+          // let(const) { 속성명1, 속성명2 } = 데이터 객체배열 (모던자바문법 구조분해할당)
+          const { review, totalItems } = response.data; // springboot 의 전송한 맵 정보
+          this.review = review; // 스프링부트에서 전송한 데이터
+          this.count = totalItems; // 스프링부트에서 전송한 페이지정보(총 건수)
+          // 디버깅 콘솔에 정보 출력
+          console.log(response.data);
+        })
+        // 실패하면 .catch() 에 에러가 전송됨
+        .catch((e) => {
+          console.log("현재 리뷰데이터 : ", e);
+        });
+    },
     // axios , 모든 부서 정보 조회 요청 함수
     retrieveFavorite() {
-      alert("현재유저아이디" + this.currentUser.id);
-      alert("현재식당아이디" + this.$route.params.dno);
       // getAll() ->(변경) getAll(dname, page, size)
       FavoriteDataService.get(this.currentUser.id, this.$route.params.dno)
         // 성공하면 .then() 결과가 전송됨
@@ -554,13 +546,20 @@ export default {
       FavoriteDataService.create(data)
         // 성공하면 then() 결과가 전송됨
         .then((response) => {
-          this.favorite.fid = response.data.fid;
+          // this.favorite.fid = response.data.fid; --> 이거 처음에 이렇게 썼다가 오류났음. 이렇게 쓰면 안됨
+          this.favorite = response.data;
           // 콘솔 로그 출력(response.data)
-          console.log("찜한 데이터 : ",response.data);
-          alert("찜했습니다.");
+          console.log("찜한 데이터 : ", this.favorite);
+          // this.$swal({
+          //   icon: "success",
+          //   title: "찜하기",
+          //   showConfirmButton: false,
+          //   timer: 1000,
+          // });
         })
         // 실패하면 .catch() 결과가 전송됨
         .catch((e) => {
+          console.log("테스트용");
           console.log(e);
         });
     },
@@ -570,7 +569,14 @@ export default {
         // 성공하면 then() 결과가 전송됨
         .then((response) => {
           console.log(response.data);
-          alert("찜 삭제했습니다.");
+          // this.$swal({
+          //   icon: "error",
+          //   title: "찜 해제",
+          //   showConfirmButton: false,
+          //   timer: 1000,
+          // });
+          // this.$router.go();
+          this.retrieveFavorite();
         })
         // 실패하면 .catch() 에러메세지가 전송됨
         .catch((e) => {
@@ -629,11 +635,10 @@ export default {
     existFid() {
       if (this.favorite.fid != null) {
         return true;
-      }
-      else {
+      } else {
         return false;
       }
-    }
+    },
   },
 };
 </script>

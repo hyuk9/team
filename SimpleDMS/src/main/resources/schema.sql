@@ -159,6 +159,7 @@ CREATE TABLE TB_RESERVATION
     RCOUNT           VARCHAR2(1000),
     PHONE            VARCHAR2(1000),
     DNO              NUMBER, -- 식당번호(조인용 컬럼)
+--     ID               NUMBER,
     RESERVATION_DATE VARCHAR2(1000),
     RESERVATION_TIME VARCHAR2(1000),
     DELETE_YN        VARCHAR2(1) DEFAULT 'N',
