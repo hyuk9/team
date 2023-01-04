@@ -1,6 +1,7 @@
 package com.example.simpledms.controller;
 
 
+import com.example.simpledms.model.Menu;
 import com.example.simpledms.model.Review;
 import com.example.simpledms.service.ReviewService;
 import lombok.extern.slf4j.Slf4j;
@@ -12,9 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * packageName    : com.example.jpaexam.controller.exam07
@@ -49,45 +48,38 @@ public class ReviewController {
     @Autowired
     ReviewService reviewService; // @Autowired : 스프링부트가 가동될 때 생성된 객체를 하나 받아오기
 
-//    frontend url ( 쿼리 스트링 방식) : ? 매개변수 전송방식 사용했으면 ------> backend @RequestParam
+    //    frontend url ( 쿼리 스트링 방식) : ? 매개변수 전송방식 사용했으면 ------> backend @RequestParam
 //    frontend url (파라메터 방식) : /{} 매개변수 전송방식 사용했으면 ------> backend @PathVariable
 //    @RequestParam(required = false) : false 매개변수에 값이 없어도 에러가 발생하지 않음
 //                                      기본값은 required = true
 //    @RequestParam(defaultValue = "값") : 매개변수의 값이 없을떄 기본값을 설정함
     @GetMapping("/review")
-    public ResponseEntity<Object> getReviewAll(@RequestParam(required = false) int dno,
-                                             @RequestParam(defaultValue = "0") int page,
-                                             @RequestParam(defaultValue = "3") int size
-                                             ) {
+    public ResponseEntity<Object> getReviewAll(@RequestParam(required = false) String rwriter) {
 
         try {
-//            Pageable 객체 정의 ( page, size 값 설정 )
-            Pageable pageable = PageRequest.of(page, size);
+//            1) menuName == null : 전체 검색
+//            2) menuName != null : 부서명 like 검색
+            List<Review> list = Collections.emptyList(); // null 대신 초기화
 
-//            Page 객체 정의
-            Page<Review> reviewPage;
-
-//            findAll() 생략해도 전체검색해야 됨:
-//            why? like 검색시 부서명 매개변수가 ==이더라도 전채 검색 됨.
-                reviewPage = reviewService.findByDno(dno, pageable);
-
-
-
-//            맵 자료구조에 넣어서 전송
-            Map<String, Object> response = new HashMap<>();
-            response.put("review", reviewPage.getContent());
-            response.put("currentPage", reviewPage.getNumber());
-            response.put("totalItems", reviewPage.getTotalElements());
-            response.put("totalPages", reviewPage.getTotalPages());
-
-            if (reviewPage.isEmpty() == false) {
-                return new ResponseEntity<>(response, HttpStatus.OK);
+//            1) menuName == null : 전체 검색
+            if (rwriter == null) {
+                list = reviewService.findAll();
             } else {
+//            2) menuName != null : 부서명 like 검색
+                list = reviewService.findAllByRwriterContaining(rwriter);
+            }
+
+            if (list.isEmpty() == false) {
+//                데이터 + 성공 메세지 전송
+                return new ResponseEntity<>(list, HttpStatus.OK);
+            } else {
+//                데이터 없음 메세지 전송(클라이언트)
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
 
         } catch (Exception e) {
             log.debug(e.getMessage());
+            // 서버에러 발생 메세지 전송(클라이언트)
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -123,30 +115,30 @@ public class ReviewController {
     //    Optional 객체 : null 방지 객체
 //    주요함수 : get() 안에 있는 객체 꺼내기 함수
 //             .isPresent() 안에 있으면 true , 없으면 false
-    @GetMapping("/review/{rno}")
-    public ResponseEntity<Object> getReviewId(@PathVariable int rno) {
+    @GetMapping("/review/{dno}")
+    public ResponseEntity<Object> getReviewId(@PathVariable Integer dno) {
 
         try {
-            Optional<Review> optionalReview = reviewService.findById(rno);
+            List<Review> list = reviewService.findAllByDnoEquals(dno);
 
-            if (optionalReview.isPresent() == true) {
+            if (list.isEmpty() == false) {
 //                데이터 + 성공 메세지 전송
-                return new ResponseEntity<>(optionalReview.get(), HttpStatus.OK);
+                return new ResponseEntity<>(list, HttpStatus.OK);
             } else {
-//                데이터 없음 메세지 전송(클라이언트에)
+//                데이터 없음 메세지 전송(클라이언트)
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
 
         } catch (Exception e) {
             log.debug(e.getMessage());
-//           서버 에러 발생 메세지 전송(클라이언트)
+            // 서버에러 발생 메세지 전송(클라이언트)
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @PutMapping("/review/{rno}")
     public ResponseEntity<Object> updateReview(@PathVariable int rno,
-                                             @RequestBody Review review) {
+                                               @RequestBody Review review) {
 
         try {
             Review review2 = reviewService.save(review);
@@ -180,7 +172,6 @@ public class ReviewController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
 
 
 }

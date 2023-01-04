@@ -3,32 +3,34 @@
 import http from "../http-common";
 
 class ReviewDataService {
-    upload(review) {
-        // json 객체 사용하지 않음 (x)
-        // form 태그로 전송하는 방식을 이용함
-        // html <form></form> == js FormData 객체로 사용가능
-        //                       .append("속성명", 값) 함수 : 데이터를 저장
-        // axios 함수 : .post()
-        // 헤더 : "Content-Type" : "multipart/form-data" 
-        let formData = new FormData(); // 폼(form) 객체 생성
+    // upload(review) {
+    //     // json 객체 사용하지 않음 (x)
+    //     // form 태그로 전송하는 방식을 이용함
+    //     // html <form></form> == js FormData 객체로 사용가능
+    //     //                       .append("속성명", 값) 함수 : 데이터를 저장
+    //     // axios 함수 : .post()
+    //     // 헤더 : "Content-Type" : "multipart/form-data" 
+    //     let formData = new FormData(); // 폼(form) 객체 생성
 
-        formData.append("review", review);
+    //     formData.append("review", review);
 
-        return http.post("/review/upload", formData, {
-            headers: {
-                "Content-Type" : "multipart/form-data"
-            }
-        })
-    }
+    //     return http.post("/review/upload", formData, {
+    //         headers: {
+    //             "Content-Type" : "multipart/form-data"
+    //         }
+    //     })
+    // }
     
-    getAll(rwriter, page, size) {
-        return http.get(`/review?rwriter=${rwriter}&page=${page}&size=${size}`); 
+    // 모든 부서정보 조회 요청 함수
+    getAll() {
+        // get 방식 통신 요청 👉 @GetMapping("/api/dept")
+        return http.get("/review");
     }
 
-        // 부서번호로 조회 요청 함수
-    // get 방식 통신 요청 -> @GetMapping("/api/answer/{answerNo}"), @PathVariable
+    // 음식점번호로 조회 요청 함수
     get(dno) {
-        return http.get(`/review/${dno}`)
+        // get 방식 통신 요청 👉 @GetMapping("/api/menu/{dno}")
+        return http.get(`/review/${dno}`);
     }
 
     // 부서정보 생성(insert) 요청 함수
