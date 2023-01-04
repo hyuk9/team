@@ -2,6 +2,7 @@ package com.example.simpledms.controller;
 
 import com.example.simpledms.model.Announce;
 import com.example.simpledms.model.Qna;
+import com.example.simpledms.model.User;
 import com.example.simpledms.service.AnnounceService;
 import com.example.simpledms.service.QnaService;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -172,6 +174,33 @@ public class AnnounceController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+//    조회수 추가 함수0104
+@PutMapping("/announce/plusviews/{ano}")
+public ResponseEntity<Object> updateAnnounceViews(@PathVariable int ano) {
+
+    try {
+
+
+//       이메일에 맞는 유저 정보 들고와서
+        Optional<Announce> optionalAnnounce = announceService.findById(ano);
+
+        Announce announceData = optionalAnnounce.get();
+        Integer plusViews = announceData.getViews() +1;
+
+        Announce announce = new Announce(
+                announceData.getAno(),
+                announceData.getWriter(),
+                announceData.getTitle(),
+                announceData.getContent(),
+                plusViews
+        );
+        announceService.save(announce);
+        return new ResponseEntity<>(HttpStatus.OK);
+    } catch (Exception e) {
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
 
 }
 

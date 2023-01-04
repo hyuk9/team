@@ -35,12 +35,16 @@
           <thead>
             <tr>
               <th class="table-active text-center" style="width: 10%" scope="col">번호</th>
-              <th class="table-active text-center" style="width: 40%" scope="col">제목</th>
+              <th class="table-active text-center" style="width: 30%" scope="col">제목</th>
               <th class="table-active text-center" style="width: 20%" scope="col">
                 작성자
               </th>
               <th class="table-active text-center" style="width: 20%" scope="col">
                 작성일
+              </th> 
+              <!-- 조회수 제목 -->
+              <th class="table-active text-center" style="width: 10%" scope="col">
+                조회수
               </th>
               <th v-if="showAdminBoard" class="table-active" style="width: 10%" scope="col">
                 수정/삭제
@@ -51,10 +55,13 @@
             <tr>
               <td class="text-center"><i class="bi bi-hash"></i>{{ data.ano }}</td>
               <td class="text-center">
-                <router-link :to="'/announceview/' + data.ano"><span>{{ data.title }}</span></router-link>
+                <!-- 기존 링크안에 조회수 증가용 함수 a 태그 추가 -->
+                <router-link :to="'/announceview/' + data.ano"><a @click="countViews(data.ano)"><span>{{ data.title }}</span></a></router-link>
               </td>
               <td class="text-center">{{ data.writer }}</td>
               <td class="text-center"><i class="bi bi-calendar-date"></i> {{ data.insertTime }}</td>
+              <!-- 조회수 보여주기 -->
+              <td class="text-center">{{ data.views }}</td>
               <td v-if="showAdminBoard">
                 <router-link :to="'/announce/' + data.ano"><span
                     class="badge rounded-pill bg-warning text-dark">수정</span></router-link>
@@ -163,6 +170,19 @@ export default {
       // 재조회 함수 호출
       this.retrieveAnnounce();
     },
+    // 조회수 증가 함수
+    countViews (ano) {
+      alert("클릭")
+      AnnounceDataService.plusViews(ano)
+     .then((response) => {
+          // 디버깅 콘솔에 정보 출력
+          console.log(response.data);
+        })
+        // 실패하면 .catch() 에 에러가 전송됨
+        .catch((e) => {
+          console.log(e);
+        });
+    }
   },
 
   computed: {
