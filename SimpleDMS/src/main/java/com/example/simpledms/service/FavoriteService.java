@@ -1,5 +1,6 @@
 package com.example.simpledms.service;
 
+import com.example.simpledms.dto.response.UserRoleDto;
 import com.example.simpledms.model.Favorite;
 import com.example.simpledms.model.Free;
 import com.example.simpledms.model.Menu;
@@ -88,6 +89,12 @@ public class FavoriteService {
         return optional;
     }
 
+    //    ✅ username like 검색 함수 ( 페이징 처리 추가 )
+    public Page<Favorite> findAllBy(Pageable pageable) {
+        Page<Favorite> list = favoriteRepository.findAllBy(pageable);
+
+        return list;
+    }
 
 }
 
