@@ -134,18 +134,18 @@
                 type="button"
                 class="btn btn-primary"
                 @click="saveFavorite"
-              >
+               :disabled=existFid>
                 <!-- <img src="assets/img/gallery/empty_heart.png" v-if="empty" />
                 <img src="assets/img/gallery/fill_heart.png" v-else-if="fill" /> -->
                 <!-- <i class="bi bi-heart" v-if="empty"></i>
                 <i class="bi bi-heart-fill" v-else-if="fill"></i> -->
                 찜하기
               </button>
-
               <button
                 type="button"
                 class="btn btn-danger"
                 @click="deleteFavorite"
+                :disabled=!existFid
               >
                 찜삭제
               </button>
@@ -168,6 +168,9 @@
                 >
               </button>
             </div>
+            <h1>
+              현재 FID 값 : {{ favorite.fid}}
+            </h1>
           </article>
           <!-- 메뉴 리스트 불러와서 v-for문으로 작동 -->
           <div>
@@ -177,9 +180,7 @@
               <p> {{data.menuPrice}} </p>
             </div>
           </div>
-          <!-- v-for 끝 -->
-
-          
+          <!-- v-for문 끝 -->
           <!-- Comments section-->
           <section class="mb-5">
             <div class="card bg-light">
@@ -375,6 +376,21 @@ export default {
           console.log(e);
         });
     },
+    // axios , 모든 부서 정보 조회 요청 함수
+    retrieveFavorite() {
+      // getAll() ->(변경) getAll(dname, page, size)
+      FavoriteDataService.get(this.currentUser.id, this.currentDiner.dno)
+        // 성공하면 .then() 결과가 전송됨
+        .then((response) => {
+          this.favorite = response.data; // 스프링부트에서 전송한 데이터
+          // 디버깅 콘솔에 정보 출력
+          console.log(response.data);
+        })
+        // 실패하면 .catch() 에 에러가 전송됨
+        .catch((e) => {
+          console.log(e);
+        });
+    },
     // 부서번호(dno)로 조회 요청하는 함수
     getDiner(dno) {
       // axios 공통함수 호출
@@ -499,12 +515,12 @@ export default {
     },
     deleteFavorite() {
       // axios 공통함수 호출
-      FavoriteDataService.delete(this.currentDiner.dno)
+      FavoriteDataService.delete(this.favorite.fid)
         // 성공하면 then() 결과가 전송됨
         .then((response) => {
           console.log(response.data);
           alert("찜 삭제했습니다.");
-          alert(this.currentDiner.dno);
+          alert(this.favorite.fid);
         })
         // 실패하면 .catch() 에러메세지가 전송됨
         .catch((e) => {
@@ -526,6 +542,7 @@ export default {
     this.getDiner(this.$route.params.dno);
     this.getMenu(this.$route.params.dno); // 화면 로딩시 음식점번호(dno)로 메뉴조회하기
     this.retrieveReview(); // 화면 로딩시 전체 조회함수 실행
+    this.retrieveFavorite(); // 화면 로딩시 fid해당하는 조회함수 실행
 
     const ctx = document.getElementById("myChart");
 
@@ -558,6 +575,14 @@ export default {
       // currentUser 없으면 false (메뉴가 안보임)
       return false;
     },
+    existFid() {
+      if (this.favorite.fid != null) {
+        return true
+      }
+      else {
+        return false
+      }
+    }
   },
 };
 </script>

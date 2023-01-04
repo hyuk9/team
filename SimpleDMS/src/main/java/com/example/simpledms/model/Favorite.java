@@ -44,10 +44,10 @@ public class Favorite {
     private Integer fid;
 
     @Column
-    private String id;
+    private Integer id;
 
     @Column
-    private String dno;
+    private Integer dno;
 }
 
 

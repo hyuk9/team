@@ -6,6 +6,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Optional;
+
 /**
  * packageName : com.example.jpaexam.repository
  * fileName : DeptRepository
@@ -21,7 +23,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface FavoriteRepository extends JpaRepository<Favorite, Integer> {
 //    question 조회하는 like 검색 함수
 //    1) 쿼리메소드 방식으로 함수 정의
-    Page<Favorite> findAllByFidOrderByDno(String dno, Pageable pageable);
+
+//    프로필페이지에서 사용할 함수
+    Page<Favorite> findAllByFidOrderByDno(Integer dno, Pageable pageable);
+
+//    id랑 dno로 Fid찾는 함수
+    Optional<Favorite> findByIdAndDno (Integer id, Integer dno);
 }
 
 

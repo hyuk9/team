@@ -2,6 +2,7 @@ package com.example.simpledms.service;
 
 import com.example.simpledms.model.Favorite;
 import com.example.simpledms.model.Free;
+import com.example.simpledms.model.Menu;
 import com.example.simpledms.repository.FavoriteRepository;
 import com.example.simpledms.repository.FreeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -74,11 +76,18 @@ public class FavoriteService {
     }
 
     //    question(질문) like 검색 함수 ( 페이징 처리 )
-    public Page<Favorite> findAllByFidOrderByDno(String dno, Pageable pageable) {
+    public Page<Favorite> findAllByFidOrderByDno(Integer dno, Pageable pageable) {
         Page<Favorite> page = favoriteRepository.findAllByFidOrderByDno(dno, pageable);
-
         return page;
     }
+
+    //    ✅ dname like 검색 함수
+    public Optional<Favorite> findByIdAndDno(Integer id, Integer dno) {
+        Optional<Favorite> optional = favoriteRepository.findByIdAndDno(id, dno);
+
+        return optional;
+    }
+
 
 }
 

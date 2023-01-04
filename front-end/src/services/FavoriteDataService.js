@@ -9,8 +9,8 @@ class FavoriteDataService {
     );
   }
 
-  get(fid) {
-    return http.get(`/favorite/${fid}`);
+  get(id, dno) {
+    return http.get(`/favorite/${id}/${dno}`);
   }
 
   create(data) {
