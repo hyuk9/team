@@ -67,6 +67,10 @@ public class Diner extends BaseTimeEntity {
 
     @javax.persistence.Column
     private String photo;
+
+    @javax.persistence.Column(columnDefinition = "NUMBER")
+    private Integer views;
+
 }
 
 

@@ -72,6 +72,10 @@ class DinerDataService {
     //     return http.get(`/diner?dname=${dname}`);
     // }
 
+    // 조회수 갱신 요청 함수
+    plusViews(dno) {
+        return http.put(`/diner/plusviews/${dno}`);
+    }
 }
 
 export default new DinerDataService();

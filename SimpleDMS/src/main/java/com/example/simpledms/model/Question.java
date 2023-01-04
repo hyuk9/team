@@ -1,5 +1,6 @@
 package com.example.simpledms.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -32,6 +33,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @DynamicInsert
 @DynamicUpdate
 @Where(clause = "DELETE_YN = 'N'")
@@ -52,5 +54,9 @@ public class Question extends BaseTimeEntity {
 
     @javax.persistence.Column(columnDefinition = "VARCHAR2(255)")
     private String writer;
+
+    @javax.persistence.Column(columnDefinition = "NUMBER")
+    private Integer views;
+
 }
 

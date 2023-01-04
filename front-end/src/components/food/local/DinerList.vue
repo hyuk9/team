@@ -96,6 +96,9 @@
                       <p class="card-text fw-bolder">
                         {{ data.loc }}
                       </p>
+                      <p class="card-text fw-bolder">
+                        조회수: {{ data.views }}
+                      </p>
                     </div>
                   </router-link>
                 </div>
