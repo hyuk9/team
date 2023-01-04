@@ -57,8 +57,6 @@ public class FreeService {
     public boolean removeById(int fno) {
 //        existsById(기본키) 있으면 삭제 실행 + true 리턴
         if (freeRepository.existsById(fno) == true) {
-
-
             freeRepository.deleteById(fno);
             return true;
         }
