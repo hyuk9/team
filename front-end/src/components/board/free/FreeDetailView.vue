@@ -36,6 +36,13 @@
         ></textarea>
       </div>
       <div class="mb-3">
+        <label for="content" class="form-label">이미지</label>
+        <img :src="currentFree.fileUrl" class="card-img-top" alt="" />
+         <a style="color: inherit" @click="deleteImage(free.fno)">
+           <span class="badge bg-danger">Delete</span>
+         </a>
+      </div>
+      <div class="mb-3">
         <button @click="updateFree" class="btn btn-primary me-3">Update</button>
         <button @click="deleteFree" class="btn btn-danger">Delete</button>
       </div>
