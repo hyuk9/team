@@ -53,7 +53,7 @@ public class Faq extends BaseTimeEntity {
     private Integer no;
     @javax.persistence.Column(columnDefinition = "VARCHAR2(255)")
     private String title;
-    @javax.persistence.Column(columnDefinition = "CLOB")
+    @javax.persistence.Column(columnDefinition = "VARCHAR2(3000)")
     private String content;
 }
 
