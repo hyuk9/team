@@ -72,9 +72,12 @@ CREATE TABLE TB_DINER
     THEME       VARCHAR2(255),
     REVIEW      VARCHAR2(255),
     PHOTO       VARCHAR2(2000),
+<<<<<<< HEAD
     VIEWS       NUMBER,
+=======
     LAT         VARCHAR2(255),
     LNG         VARCHAR2(255),
+>>>>>>> parent of 93d9877a (Merge branch 'main' into sy#7)
     DELETE_YN   VARCHAR2(1) DEFAULT 'N',
     INSERT_TIME VARCHAR2(255),
     UPDATE_TIME VARCHAR2(255),
