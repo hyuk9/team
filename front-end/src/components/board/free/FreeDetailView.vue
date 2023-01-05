@@ -4,43 +4,29 @@
     <div class="container" v-if="currentFree">
       <div class="mb-3">
         <label for="writer" class="form-label">작성자</label>
-        <input
-          type="writer"
-          class="form-control"
-          id="writer"
-          required
-          name="writer"
-          v-model="currentFree.writer"
-        />
+        <input type="writer" class="form-control" id="writer" required name="writer" v-model="currentFree.writer" />
       </div>
       <div class="mb-3">
         <label for="title" class="form-label">제목</label>
-        <input
-          type="text"
-          class="form-control"
-          id="title"
-          required
-          name="title"
-          v-model="currentFree.title"
-        />
+        <input type="text" class="form-control" id="title" required name="title" v-model="currentFree.title" />
       </div>
       <div class="mb-3">
         <label for="content" class="form-label">내용</label>
-        <textarea
-          class="form-control form-control-lg"
-          id="content"
-          rows="8"
-          required
-          name="content"
-          v-model="currentFree.content"
-        ></textarea>
+        <textarea class="form-control form-control-lg" id="content" rows="8" required name="content"
+          v-model="currentFree.content"></textarea>
       </div>
       <div class="mb-3">
-        <label for="content" class="form-label">이미지</label>
-        <img :src="currentFree.fileUrl" class="card-img-top" alt="" />
-         <a style="color: inherit" @click="deleteImage(free.fno)">
-           <span class="badge bg-danger">Delete</span>
-         </a>
+        <label for="content" class="form-label">이미지</label><br>
+        <img :src="currentFree.fileUrl" class="preview my-3" alt="" />
+        <!-- <a style="color: inherit" @click="updateFree(currentFree.fno)">
+           <span class="badge bg-danger">수정</span>
+         </a> -->
+      </div>
+      <div class="mb-3">
+        <label class="btn btn-default p-0">
+          <!-- 파일 선택상자 -->
+          <input type="file" accept="image/*" ref="file" @change="selectImage" />
+        </label>
       </div>
       <div class="mb-3">
         <button @click="updateFree" class="btn btn-primary me-3">Update</button>
@@ -61,7 +47,10 @@ export default {
     return {
       currentFree: null,
       message: "",
+      currentImage: undefined, // 현재 이미지 변수
+      previewImage: undefined, // 미리보기 이미지 변수
     };
+    
   },
   methods: {
     // 부서번호(fno)로 조회 요청하는 함수
@@ -83,7 +72,7 @@ export default {
     // 부서정보를 수정 요청하는 함수
     updateFree() {
       // axios 공통함수 호출
-      FreeDataService.update(this.currentFree.fno, this.currentFree)
+      FreeDataService.update(this.currentFree.fno, this.currentFree.writer, this.currentFree.title, this.currentFree.content, this.currentImage)
         // 성공하면 then() 결과가 전송됨
         .then((response) => {
           console.log(response.data);
@@ -110,6 +99,15 @@ export default {
           console.log(e);
         });
     },
+
+    selectImage() {
+      // 파일선택상자에서 첫번째로 선택한 이미지가 저장됨
+      this.currentImage = this.$refs.file.files.item(0);
+      // 아래는 미리보기 이미지를 위한 주소가 저장됨
+      this.previewImage = URL.createObjectURL(this.currentImage);
+      this.progress = 0;
+      this.message = "";
+    },
   },
   // 화면이 뜨자 마자 실행되는 이벤트
   mounted() {
@@ -120,4 +118,5 @@ export default {
 </script>
 
 <style>
+
 </style>

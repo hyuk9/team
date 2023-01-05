@@ -138,19 +138,29 @@ public class FreeService {
             content, MultipartFile blobFile) throws IOException {
 
         //            업로드 파일에서 파일명 얻기
-        String galleryFileName = StringUtils.cleanPath(blobFile.getOriginalFilename());
+        String galleryFileName= "";
+        Free free = null;
+        if (blobFile != null) {
+            galleryFileName = StringUtils.cleanPath(blobFile.getOriginalFilename());
 
-        Free free = Free.builder()
-                .fno(fno)
-                .writer(writer)
-                .title(title)
-                .content(content)
-                .galleryFileName(galleryFileName)
-                .blobFile(blobFile.getBytes())
-                .build();
-
+            free = Free.builder()
+                    .fno(fno)
+                    .writer(writer)
+                    .title(title)
+                    .content(content)
+                    .galleryFileName(galleryFileName)
+                    .blobFile(blobFile.getBytes())
+                    .build();
+        }else{
+            free = Free.builder()
+                    .fno(fno)
+                    .writer(writer)
+                    .title(title)
+                    .content(content)
+                    .galleryFileName(galleryFileName)
+                    .build();
+        }
         Free createFree = freeRepository.save(free);
-
         return createFree;
     }
 

@@ -40,6 +40,10 @@ class QuestionDataService {
     deleteAll() {
         return http.delete("/question/all")
     }
+    // 조회수 갱신 요청 함수
+    plusViews(questionNo) {
+        return http.put(`/question/plusviews/${questionNo}`);
+    }
 
 }
 

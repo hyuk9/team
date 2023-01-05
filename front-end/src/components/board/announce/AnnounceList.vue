@@ -172,7 +172,6 @@ export default {
     },
     // 조회수 증가 함수
     countViews (ano) {
-      alert("클릭")
       AnnounceDataService.plusViews(ano)
      .then((response) => {
           // 디버깅 콘솔에 정보 출력

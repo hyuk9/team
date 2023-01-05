@@ -1,7 +1,9 @@
 package com.example.simpledms.controller;
 
+import com.example.simpledms.dto.FavoriteDto;
 import com.example.simpledms.dto.ResponseMessageDto;
 import com.example.simpledms.dto.gallery.ResponseGalleryDto;
+import com.example.simpledms.dto.response.UserRoleDto;
 import com.example.simpledms.model.Favorite;
 import com.example.simpledms.model.Free;
 import com.example.simpledms.service.FavoriteService;
@@ -49,21 +51,20 @@ public class FavoriteController {
     //    frontend url(쿼리스트링방식) : ? 매개변수 전송방식 사용했으면 ------> backend @RequestParam
 //    frontend url(파라메터방식) : /{} 매개변수 전송방식 사용했으면 ------> backend @PathVariable
     @GetMapping("/favorite")
-    public ResponseEntity<Object> getFavoriteAll(@RequestParam String searchSelect,
-                                             @RequestParam(required = false) Integer searchKeyword,
+    public ResponseEntity<Object> getFavoriteAll(@RequestParam(required = false) Integer id,
                                              @RequestParam(defaultValue = "0") int page,
-                                             @RequestParam(defaultValue = "3") int size) {
+                                             @RequestParam(defaultValue = "3") int size
+    ) {
 
         try {
-//            Pageable 객체 정의 ( page, size 값 설정 )
+
+//            페이지 변수 저장
             Pageable pageable = PageRequest.of(page, size);
 
-            Page<Favorite> favoritePage;
+            Page<FavoriteDto> favoritePage;
 
-//            Page 객체 정의
-            favoritePage = favoriteService.findAllByFidOrderByDno(searchKeyword, pageable);
+            favoritePage = favoriteService.findAllById(id, pageable);
 
-            //            맵 자료구조에 넣어서 전송
             Map<String, Object> response = new HashMap<>();
             response.put("favorite", favoritePage.getContent());
             response.put("currentPage", favoritePage.getNumber());
@@ -71,16 +72,14 @@ public class FavoriteController {
             response.put("totalPages", favoritePage.getTotalPages());
 
             if (favoritePage.isEmpty() == false) {
-//                데이터 + 성공 메세지 전송
+//                성공
                 return new ResponseEntity<>(response, HttpStatus.OK);
             } else {
-//                데이터 없음 메세지 전송(클라이언트)
+//                데이터 없음
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
-
         } catch (Exception e) {
-            log.debug(e.getMessage());
-            // 서버에러 발생 메세지 전송(클라이언트)
+//            서버 에러
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -169,6 +168,74 @@ public class FavoriteController {
         } catch (Exception e) {
             log.debug(e.getMessage());
             // 서버에러 발생 메세지 전송(클라이언트)
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
+//    Todo: 1.4 추가 currentUserId로 찜한목록 찾기함수
+
+    @GetMapping("/favorite/id/{id}")
+    public ResponseEntity<Object> getUserId(@PathVariable Integer id,
+                                            @RequestParam(defaultValue = "0") int page,
+                                            @RequestParam(defaultValue = "3") int size)
+    {
+        try {
+
+//            페이지 변수 저장
+            Pageable pageable = PageRequest.of(page, size);
+
+            Page<FavoriteDto> favoritePage;
+
+            favoritePage = favoriteService.findAllById(id, pageable);
+
+            Map<String, Object> response = new HashMap<>();
+            response.put("favorite", favoritePage.getContent());
+            response.put("currentPage", favoritePage.getNumber());
+            response.put("totalItems", favoritePage.getTotalElements());
+            response.put("totalPages", favoritePage.getTotalPages());
+
+            if (favoritePage.isEmpty() == false) {
+//                성공
+                return new ResponseEntity<>(response, HttpStatus.OK);
+            } else {
+//                데이터 없음
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+        } catch (Exception e) {
+//            서버 에러
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+//    Todo: 1.4 추가 currentUserId로 찜한목록 찾기함수
+
+    @GetMapping("/favorite/desc")
+    public ResponseEntity<Object> getFavorite(@RequestParam(defaultValue = "0") int page,
+                                             @RequestParam(defaultValue = "3") int size)
+    {
+        try {
+//            페이지 변수 저장
+            Pageable pageable = PageRequest.of(page, size);
+
+            Page<FavoriteDto> favoritePage;
+
+            favoritePage = favoriteService.findAllBy(pageable);
+
+            Map<String, Object> response = new HashMap<>();
+            response.put("favorite", favoritePage.getContent());
+            response.put("currentPage", favoritePage.getNumber());
+            response.put("totalItems", favoritePage.getTotalElements());
+            response.put("totalPages", favoritePage.getTotalPages());
+
+            if (favoritePage.isEmpty() == false) {
+//                성공
+                return new ResponseEntity<>(response, HttpStatus.OK);
+            } else {
+//                데이터 없음
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+        } catch (Exception e) {
+//            서버 에러
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
