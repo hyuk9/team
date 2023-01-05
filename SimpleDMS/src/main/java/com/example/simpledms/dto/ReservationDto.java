@@ -17,6 +17,7 @@ public interface ReservationDto {
     String getLoc();
 
 //    reservation 테이블에서 가져올 속성
+    Integer getRid();
     String getRname();
     Integer getRcount();
     String getPhone();

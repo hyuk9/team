@@ -162,7 +162,7 @@
         </div>
 
         <button class="mt-3 btn btn-danger" @click="deleteUser">
-          삭제하기
+          회원탈퇴
         </button>
 
         <button
@@ -237,13 +237,22 @@ export default {
       UserDataService.delete(this.currentUser.id)
         .then((response) => {
           console.log(response.data);
-          alert("삭제 성공");
-          this.$router.push("/user");
+          // this.$store.dispatch("모듈명/함수명")
+          this.$store.dispatch("auth/logout"); // 공통함수 logout 호출
+          // alert 라이브러리 효과
+          this.$swal({
+            icon: "success",
+            title: "탈퇴 성공",
+            showConfirmButton: false,
+            timer: 1000,
+          });
+          this.$router.push("/");
         })
         .catch((e) => {
           console.log(e);
         });
     },
+
     changePassword() {
       this.currentUser.password = "";
       this.changePwd = true;

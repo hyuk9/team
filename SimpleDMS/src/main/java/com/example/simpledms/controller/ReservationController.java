@@ -48,19 +48,19 @@ public class ReservationController {
 //    ✅ @RequestParam(defaultValue = "값") : 매개변수에 값이 없으면 기본값을 설정함
     @GetMapping("/reservation")
     public ResponseEntity<Object> getReservationAll(@RequestParam(required = false) String rname,
-                                             @RequestParam(defaultValue = "0") int page,
-                                             @RequestParam(defaultValue = "3") int size
+                                                    @RequestParam(defaultValue = "0") int page,
+                                                    @RequestParam(defaultValue = "3") int size
     ) {
         try {
     //            Pageable 객체 정의 ( page, size 값 설정 )
             Pageable pageable = PageRequest.of(page, size);
 
     //            Page 객체 정의
-            Page<Reservation> reservationPage;
+            Page<ReservationDto> reservationPage;
 
 //            findAll() 생략 해도 전체 검색이 됨 :
 //            why? like 검색시 부서명 매개변수가 ""이더라도 전체 검색이 됨
-            reservationPage = reservationService.findAllByRnameContainingOrderByRidDescInsertTimeDesc(rname, pageable);
+            reservationPage = reservationService.findAllByRname(rname, pageable);
 
     //            맵 자료구조에 넣어서 전송
             Map<String, Object> response = new HashMap<>();
@@ -86,7 +86,7 @@ public class ReservationController {
     public ResponseEntity<Object> getReservationId(@PathVariable int rid) {
 
         try {
-            Optional<Reservation> optionalReservation = reservationService.findById(rid);
+            Optional<ReservationDto> optionalReservation = reservationService.findByRid(rid);
 
             if (optionalReservation.isPresent() == true) {
 //                데이터 + 성공 메세지 전송

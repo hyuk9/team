@@ -39,9 +39,9 @@ public class ReservationService {
 
 //    ✅ id로 조회하는 함수
 
-    public Optional<Reservation> findById(int rid) {
+    public Optional<ReservationDto> findByRid(int rid) {
 //        findById(기본키)
-        Optional<Reservation> optionalReserve = reservationRepository.findById(rid);
+        Optional<ReservationDto> optionalReserve = reservationRepository.findByRid(rid);
 
         return optionalReserve;
     }
@@ -71,8 +71,8 @@ public class ReservationService {
     }
 
     //    ✅ dname like 검색 함수 ( 페이징 처리 추가 )
-    public Page<Reservation> findAllByRnameContainingOrderByRidDescInsertTimeDesc(String rname, Pageable pageable) {
-        Page<Reservation> list = reservationRepository.findAllByRnameContainingOrderByRidDescInsertTimeDesc(rname, pageable);
+    public Page<ReservationDto> findAllByRname(String rname, Pageable pageable) {
+        Page<ReservationDto> list = reservationRepository.findAllByRname(rname, pageable);
 
         return list;
     }
