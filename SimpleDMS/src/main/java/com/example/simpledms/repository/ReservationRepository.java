@@ -10,6 +10,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 /**
  * packageName : com.example.jpaexam.repository
  * fileName : DeptRepository
@@ -50,6 +52,13 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
                     "and id = :id"
             , nativeQuery = true)
     Page<ReservationDto> findAllById(Integer id, Pageable pageable);
+
+    @Query(value = "select di.dname, re.* " +
+            "from tb_diner di, tb_reservation re " +
+            "where di.dno = re.dno " +
+            "and rid = :rid"
+            , nativeQuery = true)
+    Optional<ReservationDto> findByRid(Integer rid);
 }
 
 

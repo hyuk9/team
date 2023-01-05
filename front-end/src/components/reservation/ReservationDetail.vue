@@ -11,12 +11,13 @@
           <div class="input__block">
             <h5>가게</h5>
             <input
-              v-model="currentReservation.restaurant"
+              v-model="currentReservation.dname"
+              v-bind:disabled="true"
               required
               type="text"
               class="input"
-              id="restaurant"
-              name="restaurant"
+              id="dname"
+              name="dname"
             />
           </div>
 
@@ -96,7 +97,7 @@
           <div class="input__block">
             <h5>예약 날짜</h5>
             <input
-              v-model="currentReservation.reservationDate"
+              v-model="currentReservation.rdate"
               required
               type="date"
               class="input"
@@ -109,7 +110,7 @@
           <div class="input__block">
             <h5>예약 시간</h5>
             <input
-              v-model="currentReservation.reservationTime"
+              v-model="currentReservation.rtime"
               required
               type="time"
               class="input"
@@ -161,6 +162,7 @@ export default {
           console.log(e);
         });
     },
+
     updateReservation() {
       // axios 공통함수 호출
       ReservationDataService.update(
@@ -211,38 +213,42 @@ export default {
   mounted() {
     this.getReservation(this.$route.params.rid);
 
-    $(function () {
-      $("#rdate").datepicker({
-        dateFormat: "yy-mm-dd",
-        minDate: 1,
-        maxDate: "+1m",
-        dayNamesMin: ["일", "월", "화", "수", "목", "금", "토"],
-        monthNames: [
-          "1월",
-          "2월",
-          "3월",
-          "4월",
-          "5월",
-          "6월",
-          "7월",
-          "8월",
-          "9월",
-          "10월",
-          "11월",
-          "12월",
-        ],
-      });
-      $("#rtime").timepicker({
-        timeFormat: "H:mm",
-        interval: 30,
-        minTime: "11",
-        maxTime: "8:00pm",
-        startTime: "11:00",
-        dynamic: false,
-        dropdown: true,
-        scrollbar: true,
-      });
-    });
+    // TODO: 데이트피커 타임피커 충돌로 인해 임시로 막아놓음
+
+    // TODO: 데이트피커
+    // $(function () {
+    //   $("#rdate").datepicker({
+    //     dateFormat: "yy-mm-dd",
+    //     minDate: 1,
+    //     maxDate: "+1m",
+    //     dayNamesMin: ["일", "월", "화", "수", "목", "금", "토"],
+    //     monthNames: [
+    //       "1월",
+    //       "2월",
+    //       "3월",
+    //       "4월",
+    //       "5월",
+    //       "6월",
+    //       "7월",
+    //       "8월",
+    //       "9월",
+    //       "10월",
+    //       "11월",
+    //       "12월",
+    //     ],
+    //   });
+    // TODO: 타임피커
+    //   $("#rtime").timepicker({
+    //     timeFormat: "H:mm",
+    //     interval: 30,
+    //     minTime: "11",
+    //     maxTime: "8:00pm",
+    //     startTime: "11:00",
+    //     dynamic: false,
+    //     dropdown: true,
+    //     scrollbar: true,
+    //   });
+    // });
   },
 };
 </script>

@@ -16,8 +16,8 @@
               required
               type="text"
               class="input"
-              id="restaurant"
-              name="restaurant"
+              id="dname"
+              name="dname"
             />
           </div>
 
@@ -220,7 +220,7 @@ export default {
 
       reservation: {
         rid: null,
-        restaurant: "", // 가게명
+        dname: "", // 가게명
         rname: "", // 예약자명
         rcount: "", // 인원수
         phone: "", // 전화번호
@@ -266,7 +266,7 @@ export default {
     saveReservation() {
       this.InputCombine();
       let data = {
-        restaurant: this.currentDiner.dname,
+        dname: this.currentDiner.dname,
         rname: this.reservation.rname,
         rcount: this.reservation.rcount,
         phone: this.reservation.phone,

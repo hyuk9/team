@@ -86,7 +86,7 @@ public class ReservationController {
     public ResponseEntity<Object> getReservationId(@PathVariable int rid) {
 
         try {
-            Optional<Reservation> optionalReservation = reservationService.findById(rid);
+            Optional<ReservationDto> optionalReservation = reservationService.findByRid(rid);
 
             if (optionalReservation.isPresent() == true) {
 //                데이터 + 성공 메세지 전송

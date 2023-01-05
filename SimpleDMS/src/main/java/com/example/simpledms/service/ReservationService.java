@@ -39,9 +39,9 @@ public class ReservationService {
 
 //    ✅ id로 조회하는 함수
 
-    public Optional<Reservation> findById(int rid) {
+    public Optional<ReservationDto> findByRid(int rid) {
 //        findById(기본키)
-        Optional<Reservation> optionalReserve = reservationRepository.findById(rid);
+        Optional<ReservationDto> optionalReserve = reservationRepository.findByRid(rid);
 
         return optionalReserve;
     }
