@@ -24,7 +24,7 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
     //    question 조회하는 like 검색 함수
 //    1) 쿼리메소드 방식으로 함수 정의
     Page<Question> findAllByTitleContainingOrderByInsertTimeDescQuestionNoDesc(String title, Pageable pageable);
-    Page<Question> findAllByWriterContainingOrderByInsertTimeDescQuestionNoDesc(String writer, Pageable pageable);
+    Page<Question> findAllByQwriterContainingOrderByInsertTimeDescQuestionNoDesc(String qwriter, Pageable pageable);
 
 //    @Query(value = "select fa.*, di.dname, di.phone, di.loc, di.photo " +
 //            "from tb_diner di, tb_favorite fa " +

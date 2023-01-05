@@ -28,14 +28,14 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
     Page<Reservation> findAllByRnameContainingOrderByRidDescInsertTimeDesc(String rname, Pageable pageable);
 
 
-    @Query(value = "select di.dname, re.* " +
+    @Query(value = "select di.dname, di.loc, re.* " +
                    "from tb_diner di, tb_reservation re " +
                    "where di.dno = re.dno " +
                    "and id = :id",
-            countQuery = "select di.dname, re.* " +
-                         "from tb_diner di, tb_reservation re " +
-                         "where di.dno = re.dno " +
-                         "and id = :id"
+                    countQuery = "select di.dname, di.loc, re.* " +
+                                 "from tb_diner di, tb_reservation re " +
+                                 "where di.dno = re.dno " +
+                                 "and id = :id"
             ,nativeQuery = true)
     Page<ReservationDto> findAllById (Integer id, Pageable pageable);
 }

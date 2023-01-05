@@ -14,6 +14,7 @@ package com.example.simpledms.dto;
 public interface ReservationDto {
 //    diner 테이블에서 가져올 속성
     String getDname();
+    String getLoc();
 
 //    reservation 테이블에서 가져올 속성
     String getRname();

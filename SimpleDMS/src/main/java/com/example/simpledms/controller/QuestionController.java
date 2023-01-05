@@ -61,7 +61,7 @@ public class QuestionController {
             if( searchSelect.equals("제목")) {
                 questionPage = questionService.findAllByTitleContainingOrderByInsertTimeDescQuestionNoDesc(searchKeyword, pageable);
             } else {
-                questionPage = questionService.findAllByWriterContainingOrderByInsertTimeDescQuestionNoDesc(searchKeyword, pageable);
+                questionPage = questionService.findAllByQwriterContainingOrderByInsertTimeDescQuestionNoDesc(searchKeyword, pageable);
             }
 
             //            맵 자료구조에 넣어서 전송
@@ -191,8 +191,8 @@ public class QuestionController {
             Question question = new Question(
                     questionData.getQuestionNo(),
                     questionData.getTitle(),
-                    questionData.getContent(),
-                    questionData.getWriter(),
+                    questionData.getQcontent(),
+                    questionData.getQwriter(),
                     plusViews
             );
             questionService.save(question);

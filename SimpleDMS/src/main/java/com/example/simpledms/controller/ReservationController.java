@@ -60,7 +60,7 @@ public class ReservationController {
 
 //            findAll() 생략 해도 전체 검색이 됨 :
 //            why? like 검색시 부서명 매개변수가 ""이더라도 전체 검색이 됨
-            reservationPage = reservationService.findAllByRnameContaining(rname, pageable);
+            reservationPage = reservationService.findAllByRnameContainingOrderByRidDescInsertTimeDesc(rname, pageable);
 
     //            맵 자료구조에 넣어서 전송
             Map<String, Object> response = new HashMap<>();
@@ -191,8 +191,8 @@ public class ReservationController {
 
     //    Todo: 1.5 추가 currentUserId로 예약목록 찾기함수
 
-    @GetMapping("/reservation/id/{id}")
-    public ResponseEntity<Object> getUserId(@PathVariable Integer id,
+    @GetMapping("/reservation/id")
+    public ResponseEntity<Object> getUserId(@RequestParam Integer id,
                                             @RequestParam(defaultValue = "0") int page,
                                             @RequestParam(defaultValue = "3") int size)
     {
