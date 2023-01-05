@@ -65,41 +65,21 @@
                 <!-- Blog post-->
                 <div class="card mb-5">
                   <router-link :to="'/diner/' + data.dno">
-                    <img
-                      class="img-fluid rounded-3 h-100 pt-2"
-                      :src="data.photo"
-                      alt="..."
-                    />
-                    <div class="card-body">
-                      <a
-                        class="badge bg-success text-decoration-none link-light"
-                        href="#!"
-                      >
-                        {{ data.menu }}
-                      </a>
-                      <a
-                        class="
-                          badge
-                          bg-warning
-                          text-decoration-none
-                          link-light
-                          ms-1
-                        "
-                        href="#!"
-                        >{{ data.theme }}</a
-                      >
-
-                      <h2 class="card-title h4 mt-1">
-                        <span>
-                          {{ data.dname }}
-                        </span>
+                    <a @click="countViews(data.dno)">
+                      <img
+                        class="img-fluid rounded-3 h-100 pt-2"
+                        :src="data.photo"
+                        alt="..."
+                      />
+                      <div class="card-body">
                         <a
-                          class="
-                            badge
-                            bg-danger
-                            text-decoration-none
-                            link-light
-                          "
+                          class="badge bg-success text-decoration-none link-light"
+                          href="#!"
+                        >
+                          {{ data.menu }}
+                        </a>
+                        <a
+                          class="badge bg-warning text-decoration-none link-light ms-1"
                           href="#!"
                           >{{ data.theme }}</a
                         >
@@ -155,11 +135,43 @@
           <!-- Side widgets-->
           <div class="col-lg-4">
             <!-- Map widget-->
-            <div class="card mb-4 mt-5">
-              <div class="card-header"><i class="bi bi-geo-alt-fill"></i> 내 근처 맛집</div>
-              <div class="card-body" style="height: 550px">
-                <CurrentMap />
-              </div>
+            <div class="card mb-4">
+              <div class="card-header">지도</div>
+              <!-- <div id="map" style="height: 600px"></div> -->
+              <naver-maps
+                :height="height"
+                :width="width"
+                :mapOptions="mapOptions"
+                :initLayers="initLayers"
+                @load="onLoad"
+              >
+                <naver-info-window
+                  class="info-window"
+                  @load="onWindowLoad"
+                  :isOpen="info"
+                  :marker="marker"
+                >
+                  <div class="info-window-container">
+                    <h1>김밥천국</h1>
+                  </div>
+                </naver-info-window>
+                <naver-marker
+                  :lat="35.1525133"
+                  :lng="129.059547"
+                  @click="onMarkerClicked"
+                  @load="onMarkerLoaded"
+                />
+
+                <naver-ground-overlay
+                  :url="'//logoproject.naver.com/img/img_about.gif'"
+                  :bounds="{
+                    south: 36.7,
+                    north: 36.9,
+                    west: 126.5,
+                    east: 127.5,
+                  }"
+                />
+              </naver-maps>
             </div>
           </div>
         </div>
@@ -173,7 +185,6 @@
 /* eslint-disable */
 
 import DinerDataService from "@/services/DinerDataService";
-import CurrentMap from "@/components/food/detail/CurrentMap.vue";
 
 export default {
   // 변수 정의하는 곳 : data(), 초기화
@@ -282,9 +293,6 @@ export default {
           console.log(e);
         });
     }
-  },
-  components: {
-    CurrentMap,
   },
   computed: {
     currentUser() {

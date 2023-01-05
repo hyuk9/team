@@ -9,45 +9,38 @@
           <article>
             <!-- Post header-->
             <header class="mb-4">
+              <!-- Post categories-->
+              <h4>
+                <a
+                  class="badge bg-success text-decoration-none link-light"
+                  href="#!"
+                  >{{ currentDiner.menu }}</a
+                >
+                <a
+                  class="badge bg-warning text-decoration-none link-light ms-1"
+                  href="#!"
+                  >{{ currentDiner.theme }}</a
+                >
+              </h4>
               <!-- Post title-->
               <h1 class="fw-bolder mb-1">
-                 {{ currentDiner.dname }}
-                 <i class="bi bi-shop-window"></i>
-                <button
-                  type="button"
-                  class="btn text-danger btn-sm"
-                  @click="saveFavorite"
-                  v-if="!existFid"
+                {{ currentDiner.dname }}
+                <a
+                  class="badge bg-danger text-decoration-none link-light"
+                  href="#!"
+                  >{{ currentDiner.score }}</a
                 >
-                  <i class="bi bi-heart fs-4"></i>
-                </button>
-                <button
-                  type="button"
-                  class="btn text-danger btn-sm"
-                  @click="deleteFavorite"
-                  v-if="existFid"
-                >
-                  <i class="bi bi-heart-fill fs-4"></i>
-                </button>
-
-                <router-link :to="'/diner/' + currentDiner.dno + '/edit'">
-                  <button
-                    type="button"
-                    class="btn btn-success btn-sm"
-                    v-if="showAdminBoard"
-                  >
-                    수정하기
-                  </button>
-                </router-link>
-
-                <button
-                  type="button"
-                  class="btn btn-primary float-right"
-                  v-on:click="reservationToggle"
-                >
-                  예약
-                </button>
               </h1>
+
+              <!-- Post meta content-->
+              <div class="text mb-2">
+                <p class="fs-1">
+                  {{ currentDiner.loc }}<br />
+                  {{ currentDiner.phone }}<br />
+                   <i class="fas fa-eye text-dark me-2 fs-0"></i> 
+                   {{ currentDiner.views }}
+                </p>
+              </div>
             </header>
             <!-- Preview image figure-->
             <figure class="mb-4">
@@ -132,94 +125,65 @@
                 </button>
               </div>
             </figure>
-          </article>
-          <!-- 식당정보 시작 -->
-          <div class="row">
-            <div class="col">
-              <div class="card text-dark bg-light border-primary mb-6 mt-5">
-                <div class="card-header"><i class="bi bi-shop"></i> 식당정보</div>
-                <div class="card-body">
-                  <h5 class="card-title">메뉴</h5>
-                  <p class="card-text">
-                    <a
-                      class="badge bg-success text-decoration-none link-light"
-                      href="#!"
-                      >{{ currentDiner.menu }}</a
-                    >
-                  </p>
-                </div>
 
-                <div class="card-body">
-                  <h5 class="card-title">테마</h5>
-                  <p class="card-text">
-                    <a
-                      class="badge bg-warning text-decoration-none link-light"
-                      href="#!"
-                      >{{ currentDiner.theme }}</a
-                    >
-                  </p>
-                </div>
+            <div
+              class="btn-group btn-group-lg"
+              role="group"
+              aria-label="Basic example"
+            >
+              <button
+                type="button"
+                class="btn btn-primary"
+                @click="saveFavorite"
+                v-if="!existFid"
+              >
+                <i class="bi bi-heart fs-2"></i>
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger"
+                @click="deleteFavorite"
+                v-if="existFid"
+              >
+                <i class="bi bi-heart-fill fs-2"></i>
+              </button>
 
-                <div class="card-body">
-                  <h5 class="card-title">평점</h5>
-                  <p class="card-text">
-                    <a
-                      class="badge bg-danger text-decoration-none link-light"
-                      href="#!"
-                      >{{ currentDiner.score }}</a
-                    >
-                  </p>
-                </div>
+              <b-button type="button" v-b-modal.modal-prevent-closing
+                >리뷰 등록</b-button
+              >
 
-                <div class="card-body">
-                  <h5 class="card-title">주소</h5>
-                  <p class="card-text">
-                    {{ currentDiner.loc }}
-                  </p>
-                </div>
+              <button
+                type="button"
+                class="btn btn-primary"
+                v-on:click="reservationToggle"
+              >
+                예약
+              </button>
 
-                <div class="card-body">
-                  <h5 class="card-title">전화번호</h5>
-                  <p class="card-text">
-                    {{ currentDiner.phone }}
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card text-dark bg-light border-primary mb-6 mt-5">
-                <div class="card-header"><i class="bi bi-lamp-fill"></i> 메뉴판</div>
-                <!-- 메뉴 리스트 불러와서 v-for문으로 작동 -->
-                <div
-                  class="card-body"
-                  v-for="(data, index) in menu"
-                  :key="index"
+              <button
+                type="button"
+                class="btn btn-success"
+                v-if="showAdminBoard"
+              >
+                <router-link :to="'/diner/' + currentDiner.dno + '/edit'"
+                  >수정하기</router-link
                 >
-                  <h5 class="card-title">{{ data.menuName }}</h5>
-                  <p class="card-text">
-                    {{ data.menuPrice }}
-                  </p>
-                </div>
-                <!--v-for 끝-->
-              </div>
+              </button>
+            </div>
+          </article>
+          <!-- 메뉴 리스트 불러와서 v-for문으로 작동 -->
+          <div>
+            메뉴
+            <div v-for="(data, index) in menu" :key="index">
+              <p>{{ data.menuName }}</p>
+              <p>{{ data.menuPrice }}</p>
             </div>
           </div>
+          <!-- v-for 끝 -->
 
-          <!--식당정보 끝-->
-
-          <b-button
-            type="button"
-            v-b-modal.modal-prevent-closing
-            >리뷰 쓰기</b-button
-          >
-          <DinerCommentVue />
+          <DinerCommentVue/>
           <!-- Comments section-->
-          <div
-            class="card mb-6 border-info"
-            id="card1"
-            v-for="(data, index) in review"
-            :key="index"
-          >
+          <div class="card mb-6" id="card1" v-for="(data, index) in review" :key="index">
             <div class="row d-flex">
               <div class="">
                 <img
@@ -257,10 +221,37 @@
         <div class="col-lg-4" v-if="mapNchart">
           <!-- Map widget-->
           <div class="card mb-4">
-            <div class="card-header"><i class="bi bi-geo-alt-fill"></i> 지도</div>
-            <div class="card-body" style="height: 600px">
-              <MakerDetail />
-            </div>
+            <div class="card-header">지도</div>
+            <!-- <div id="map" style="height: 600px"></div> -->
+            <naver-maps
+              :height="height"
+              :width="width"
+              :mapOptions="mapOptions"
+              :initLayers="initLayers"
+              @load="onLoad"
+            >
+              <naver-info-window
+                class="info-window"
+                @load="onWindowLoad"
+                :isOpen="info"
+                :marker="marker"
+              >
+                <div class="info-window-container">
+                  <h1>김밥천국</h1>
+                </div>
+              </naver-info-window>
+              <naver-marker
+                :lat="35.1525133"
+                :lng="129.059547"
+                @click="onMarkerClicked"
+                @load="onMarkerLoaded"
+              />
+
+              <naver-ground-overlay
+                :url="'//logoproject.naver.com/img/img_about.gif'"
+                :bounds="{ south: 36.7, north: 36.9, west: 126.5, east: 127.5 }"
+              />
+            </naver-maps>
           </div>
 
           <!-- Chart widget-->
@@ -298,7 +289,6 @@ import DinerCommentVue from "./DinerComment.vue";
 import AddReservation from "@/components/reservation/AddReservation.vue";
 import FavoriteDataService from "@/services/FavoriteDataService";
 import MenuDataService from "@/services/MenuDataService"; // 메뉴 리스트를 불러오기 위한 서비스 임포트
-import MakerDetail from "@/components/food/detail/MakerDetail.vue";
 
 export default {
   data() {
@@ -392,7 +382,6 @@ export default {
   components: {
     DinerCommentVue,
     AddReservation,
-    MakerDetail,
   },
   methods: {
     // axios , 모든 부서 정보 조회 요청 함수
@@ -454,7 +443,7 @@ export default {
           // springboot 결과를 리턴함(부서 객체)
           this.menu = response.data;
           // 콘솔 로그 출력
-          console.log("현재 메뉴 데이터 : ", response.data);
+          console.log("현재 메뉴 데이터 : ",response.data);
         })
         // 실패하면 .catch() 에러메세지가 리턴됨
         .catch((e) => {
@@ -658,122 +647,122 @@ export default {
 </script>
 <style>
 #card1 {
-  border-radius: 5px;
-  background-color: #fff;
-  padding-left: 60px;
-  padding-right: 60px;
-  margin-top: 30px;
-  padding-top: 30px;
-  padding-bottom: 30px;
+    border-radius: 5px;
+    background-color: #fff;
+    padding-left: 60px;
+    padding-right: 60px;
+    margin-top: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px
 }
 
 .rating-box {
-  width: 130px;
-  height: 130px;
-  margin-right: auto;
-  margin-left: auto;
-  background-color: #fbc02d;
-  color: #fff;
+    width: 130px;
+    height: 130px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: #FBC02D;
+    color: #fff
 }
 
 .rating-label {
-  font-weight: bold;
+    font-weight: bold
 }
 
 .rating-bar {
-  width: 300px;
-  padding: 8px;
-  border-radius: 5px;
+    width: 300px;
+    padding: 8px;
+    border-radius: 5px
 }
 
 .bar-container {
-  width: 100%;
-  background-color: #f1f1f1;
-  text-align: center;
-  color: white;
-  border-radius: 20px;
-  cursor: pointer;
-  margin-bottom: 5px;
+    width: 100%;
+    background-color: #f1f1f1;
+    text-align: center;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-bottom: 5px
 }
 
 .bar-5 {
-  width: 70%;
-  height: 13px;
-  background-color: #fbc02d;
-  border-radius: 20px;
+    width: 70%;
+    height: 13px;
+    background-color: #FBC02D;
+    border-radius: 20px
 }
 
 .bar-4 {
-  width: 30%;
-  height: 13px;
-  background-color: #fbc02d;
-  border-radius: 20px;
+    width: 30%;
+    height: 13px;
+    background-color: #FBC02D;
+    border-radius: 20px
 }
 
 .bar-3 {
-  width: 20%;
-  height: 13px;
-  background-color: #fbc02d;
-  border-radius: 20px;
+    width: 20%;
+    height: 13px;
+    background-color: #FBC02D;
+    border-radius: 20px
 }
 
 .bar-2 {
-  width: 10%;
-  height: 13px;
-  background-color: #fbc02d;
-  border-radius: 20px;
+    width: 10%;
+    height: 13px;
+    background-color: #FBC02D;
+    border-radius: 20px
 }
 
 .bar-1 {
-  width: 0%;
-  height: 13px;
-  background-color: #fbc02d;
-  border-radius: 20px;
+    width: 0%;
+    height: 13px;
+    background-color: #FBC02D;
+    border-radius: 20px
 }
 
 td {
-  padding-bottom: 10px;
+    padding-bottom: 10px
 }
 
 .star-active {
-  color: #fbc02d;
-  margin-top: 10px;
-  margin-bottom: 10px;
+    color: #FBC02D;
+    margin-top: 10px;
+    margin-bottom: 10px
 }
 
 .star-active:hover {
-  color: #f9a825;
-  cursor: pointer;
+    color: #F9A825;
+    cursor: pointer
 }
 
 .star-inactive {
-  color: #cfd8dc;
-  margin-top: 10px;
-  margin-bottom: 10px;
+    color: #CFD8DC;
+    margin-top: 10px;
+    margin-bottom: 10px
 }
 
 .blue-text {
-  color: #0091ea;
+    color: #0091EA
 }
 
 .content {
-  font-size: 18px;
+    font-size: 18px
 }
 
 .profile-pic {
-  width: 90px;
-  height: 90px;
-  border-radius: 100%;
-  margin-right: 30px;
+    width: 90px;
+    height: 90px;
+    border-radius: 100%;
+    margin-right: 30px
 }
 
 .pic {
-  width: 80px;
-  height: 80px;
-  margin-right: 10px;
+    width: 80px;
+    height: 80px;
+    margin-right: 10px
 }
 
 .vote {
-  cursor: pointer;
+    cursor: pointer
 }
 </style>
