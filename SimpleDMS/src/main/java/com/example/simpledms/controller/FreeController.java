@@ -194,7 +194,7 @@ public class FreeController {
             @RequestParam("writer") String writer,
             @RequestParam("title") String title,
             @RequestParam("content") String content,
-            @RequestParam("blobFile") MultipartFile blobFile
+            @RequestParam(required = false) MultipartFile blobFile
     ) {
         String message = "";
 
@@ -206,7 +206,9 @@ public class FreeController {
         try {
             freeService.updateUploadFile(fno, writer, title, content, blobFile);
 
-            message = "Uploaded the file successfully: " + blobFile.getOriginalFilename();
+            if (blobFile != null) {
+                message = "Uploaded the file successfully: " + blobFile.getOriginalFilename();
+            }
             return new ResponseEntity<Object>(message, HttpStatus.CREATED);
         } catch (Exception e) {
             message = "Could not upload the file: " + blobFile.getOriginalFilename() + "!";
