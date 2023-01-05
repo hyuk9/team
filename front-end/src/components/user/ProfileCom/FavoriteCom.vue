@@ -52,7 +52,6 @@
 
 <script>
 /* eslint-disable */
-import ReservationDataService from "@/services/ReservationDataService";
 import ProfileDataService from "@/services/ProfileDataService";
 import FavoriteDataService from "@/services/FavoriteDataService";
 

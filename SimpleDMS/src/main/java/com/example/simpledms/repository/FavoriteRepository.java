@@ -46,6 +46,21 @@ public interface FavoriteRepository extends JpaRepository<Favorite, Integer> {
             ,nativeQuery = true)
     Page<FavoriteDto> findAllById (Integer id, Pageable pageable);
 
+
+//    찜한 dno개수가 많은 컬럼순으로 내림차순으로 정렬하기
+    @Query(value = "select di.dname, count(fa.dno) as dno_count, fa.* " +
+                   "from tb_diner di " +
+                   "left join tb_favorite fa on di.dno = fa.dno " +
+                   "group by di.dno, di.dname " +
+                   "order by dno_count desc",
+                    countQuery = "select di.dname, count(fa.dno) as dno_count, fa.* " +
+                                 "from tb_diner di " +
+                                 "left join tb_favorite fa on di.dno = fa.dno " +
+                                 "group by di.dno, di.dname " +
+                                 "order by dno_count desc"
+            ,nativeQuery = true)
+    Page<FavoriteDto> findAllBy (Pageable pageable);
+
 }
 
 
