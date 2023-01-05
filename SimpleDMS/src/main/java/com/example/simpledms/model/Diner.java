@@ -67,6 +67,12 @@ public class Diner extends BaseTimeEntity {
 
     @javax.persistence.Column
     private String photo;
+
+    @javax.persistence.Column
+    private String lat;
+
+    @javax.persistence.Column
+    private String lng;
 }
 
 
