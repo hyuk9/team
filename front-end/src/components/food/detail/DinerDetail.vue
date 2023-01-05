@@ -39,6 +39,8 @@
                   {{ currentDiner.phone }}<br />
                    <i class="fas fa-eye text-dark me-2 fs-0"></i> 
                    {{ currentDiner.views }}
+                   <i class="fas fa-heart text-dark ms-4 me-2 fs-0"></i> 
+                   {{  }}
                 </p>
               </div>
             </header>
