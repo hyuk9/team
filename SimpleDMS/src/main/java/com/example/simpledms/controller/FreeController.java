@@ -2,8 +2,6 @@ package com.example.simpledms.controller;
 
 import com.example.simpledms.dto.ResponseMessageDto;
 import com.example.simpledms.dto.gallery.ResponseGalleryDto;
-import com.example.simpledms.model.Announce;
-import com.example.simpledms.model.Column;
 import com.example.simpledms.model.Free;
 import com.example.simpledms.service.FreeService;
 import lombok.extern.slf4j.Slf4j;
@@ -352,59 +350,6 @@ public class FreeController {
 //            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 //        }
 //    }
-
-    //    조회수 추가 함수0104
-    @PutMapping("/free/plusviews/{fno}")
-    public ResponseEntity<Object> updateFreeViews(@PathVariable int fno) {
-
-        try {
-
-
-//       이메일에 맞는 유저 정보 들고와서
-            Optional<Free> optionalFree = freeService.findId(fno);
-
-            Free freeData = optionalFree.get();
-            Integer plusViews = freeData.getViews() +1;
-
-            Free free = new Free(
-                    freeData.getFno(),
-                    freeData.getWriter(),
-                    freeData.getTitle(),
-                    freeData.getContent(),
-                    freeData.getGalleryTitle(),
-                    freeData.getGalleryFileName(),
-                    freeData.getGalleryType(),
-                    freeData.getBlobFile(),
-                    plusViews
-            );
-            freeService.save(free);
-            return new ResponseEntity<>(HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-//    조회수 위해서 추가
-@GetMapping("/free/findById/{fno}")
-public ResponseEntity<Object> getFreeId(@PathVariable int fno) {
-
-    try {
-        Optional<Free> optionalFree = freeService.findId(fno);
-
-        if (optionalFree.isPresent() == true) {
-//                데이터 + 성공 메세지 전송
-            return new ResponseEntity<>(optionalFree.get(), HttpStatus.OK);
-        } else {
-//                데이터 없음 메세지 전송(클라이언트)
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-
-    } catch (Exception e) {
-        log.debug(e.getMessage());
-        // 서버에러 발생 메세지 전송(클라이언트)
-        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-}
 }
 
 

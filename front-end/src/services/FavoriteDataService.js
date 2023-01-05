@@ -1,18 +1,12 @@
 // FavoriteDataService.js
 import http from "../http-common";
-import authHeader from "@/services/auth/auth-header";
 
 class FavoriteDataService {
-  getAll(id, page, size) {
-    return http.get(`/favorite?id=${id}&page=${page}&size=${size}`, {
-      headers: authHeader(),
-    });
-  }
-
-  getId(id, page, size) {
-    return http.get(`/favorite?id=${id}&page=${page}&size=${size}`, {
-      headers: authHeader(),
-    });
+  getAll(searchSelect, searchKeyword, page, size) {
+    // get 방식 통신 요청 -> @GetMapping("/api/faq")
+    return http.get(
+      `/favorite?searchSelect=${searchSelect}&searchKeyword=${searchKeyword}&page=${page}&size=${size}`
+    );
   }
 
   get(id, dno) {

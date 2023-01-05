@@ -81,28 +81,13 @@
                         <a
                           class="badge bg-warning text-decoration-none link-light ms-1"
                           href="#!"
-                          >{{ data.theme }}</a
+                          >{{ data.score }}</a
                         >
-
-                        <h2 class="card-title h4 mt-1">
-                          <span>
-                            {{ data.dname }}
-                          </span>
-                          <a
-                            class="badge bg-danger text-decoration-none link-light"
-                            href="#!"
-                            >{{ data.score }}</a
-                          >
-                        </h2>
-                        <p class="card-text fw-bolder">
-                          {{ data.loc }}
-                        </p>
-                        <p class="card-text text-800 fw-bolder">
-                          <i class="fas fa-eye text-dark text-800 me-2 fs-0"></i>
-                          {{ data.views }}
-                        </p>
-                      </div>
-                    </a>
+                      </h2>
+                      <p class="card-text fw-bolder">
+                        {{ data.loc }}
+                      </p>
+                    </div>
                   </router-link>
                 </div>
               </div>
@@ -281,18 +266,6 @@ export default {
       this.currentDiner = data;
       this.currentIndex = index;
     },
-    // 조회수 증가 함수
-    countViews (dno) {
-      DinerDataService.plusViews(dno)
-     .then((response) => {
-          // 디버깅 콘솔에 정보 출력
-          console.log(response.data);
-        })
-        // 실패하면 .catch() 에 에러가 전송됨
-        .catch((e) => {
-          console.log(e);
-        });
-    }
   },
   computed: {
     currentUser() {

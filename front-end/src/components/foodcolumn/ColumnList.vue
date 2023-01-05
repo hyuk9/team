@@ -46,7 +46,7 @@
               </th>
               <th
                 class="table-active text-center"
-                style="width: 30%"
+                style="width: 40%"
                 scope="col"
               >
                 제목
@@ -64,13 +64,6 @@
                 scope="col"
               >
                 작성일
-              </th> 
-              <th
-                class="table-active text-center"
-                style="width: 10%"
-                scope="col"
-              >
-                조회수
               </th>
               <th
                 v-if="showAdminBoard"
@@ -89,15 +82,13 @@
               </td>
               <td class="text-center">
                 <router-link :to="'/column/' + data.cid"
-                  ><a @click="countViews(data.cid)"><span>{{ data.title }}</span></a></router-link
+                  ><span>{{ data.title }}</span></router-link
                 >
               </td>
               <td class="text-center">{{ data.writer }}</td>
               <td class="text-center">
                 <i class="bi bi-calendar-date"></i> {{ data.insertTime }}
               </td>
-                 <!-- 조회수 보여주기 -->
-              <td class="text-center">{{ data.views }}</td>
               <td v-if="showAdminBoard">
                 <router-link :to="'/column/' + data.cid"
                   ><span class="badge rounded-pill bg-warning text-dark"
@@ -244,18 +235,6 @@ export default {
       this.page = value; // 매개변수값으로 현재페이지 변경
       // 재조회 함수 호출
       this.retrieveColumn();
-    },
-        // 조회수 증가 함수
-    countViews (cid) {
-      ColumnDataService.plusViews(cid)
-     .then((response) => {
-          // 디버깅 콘솔에 정보 출력
-          console.log(response.data);
-        })
-        // 실패하면 .catch() 에 에러가 전송됨
-        .catch((e) => {
-          console.log(e);
-        });
     },
   },
 

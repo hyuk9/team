@@ -24,10 +24,6 @@
             <tr>
               <th scope="row">작성자</th>
               <td scope="row" v-text="currentFree.writer"></td>
-            </tr> 
-            <tr>
-              <th scope="row">조회수</th>
-              <td scope="row" v-text="currentfreeForViews.views"></td>
             </tr>
             <tr>
               <td colspan="2" scope="row" style="padding: 10px">
@@ -75,9 +71,6 @@ export default {
       pageSize: 3, // 한페이지당 몇개를 화면에 보여줄지 결정하는 변수
 
       pageSizes: [3, 6, 9], // select box 에 넣을 기본 데이터
-
-      // 조회수용 변수 추가
-      currentfreeForViews : null,
     };
   },
   methods: {
@@ -89,19 +82,6 @@ export default {
         .then((response) => {
           // springboot 결과를 리턴함(부서 객체)
           this.currentFree = response.data;
-          // 콘솔 로그 출력
-          console.log(response.data);
-        })
-        // 실패하면 .catch() 에러메세지가 리턴됨
-        .catch((e) => {
-          console.log(e);
-        });
-           // axios 공통함수 호출
-      FreeDataService.getById(fno)
-        // 성공하면 .then() 결과가 리턴됨
-        .then((response) => {
-          // springboot 결과를 리턴함(부서 객체)
-          this.currentfreeForViews = response.data;
           // 콘솔 로그 출력
           console.log(response.data);
         })

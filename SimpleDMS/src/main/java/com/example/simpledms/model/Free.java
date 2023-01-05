@@ -75,8 +75,7 @@ public class Free extends BaseTimeEntity {
 //        this.galleryType = galleryType;
 //        this.blobFile = blobFile;
 //    }
-    @javax.persistence.Column(columnDefinition = "NUMBER")
-    private Integer views;
+
 }
 
 

@@ -50,25 +50,22 @@ public class Reservation extends BaseTimeEntity {
     private Integer rid;
 
     @javax.persistence.Column
+    private String restaurant;
+
+    @javax.persistence.Column
     private String rname;
 
     @javax.persistence.Column
-    private Integer rcount;
+    private String rcount;
 
     @javax.persistence.Column
     private String phone;
 
     @javax.persistence.Column
-    private Integer dno;
+    private String reservationDate;
 
     @javax.persistence.Column
-    private Integer id;
-
-    @javax.persistence.Column
-    private String rdate;
-
-    @javax.persistence.Column
-    private String rtime;
+    private String reservationTime;
 }
 
 

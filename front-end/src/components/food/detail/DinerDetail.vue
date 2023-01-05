@@ -584,7 +584,6 @@ export default {
           console.log(e);
         });
     },
-
   },
 
   // 화면이 뜨자 마자 실행되는 이벤트
@@ -616,7 +615,6 @@ export default {
         },
       },
     });
-
   },
   computed: {
     // 현재 유저

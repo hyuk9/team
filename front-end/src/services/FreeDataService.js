@@ -108,15 +108,7 @@ class FreeDataService {
 //   deleteImage(fno)  {
 //     return http.delete(`/free/deletions/${fno}`);
 //   }
-    // 조회수 갱신 요청 함수
-    plusViews(fno) {
-        return http.put(`/free/plusviews/${fno}`);
-    }
 
-    // 조회수 확인용 함수
-    getById(fno) {
-        return http.get(`/free/findById/${fno}`)
-    }
 }
 
 export default new FreeDataService();

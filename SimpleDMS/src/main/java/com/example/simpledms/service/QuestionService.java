@@ -69,8 +69,8 @@ public class QuestionService {
     }
 
     //    question(질문) like 검색 함수 ( 페이징 처리 )
-    public Page<Question> findAllByQwriterContainingOrderByInsertTimeDescQuestionNoDesc(String qwriter, Pageable pageable) {
-        Page<Question> page = questionRepository.findAllByQwriterContainingOrderByInsertTimeDescQuestionNoDesc(qwriter, pageable);
+    public Page<Question> findAllByWriterContainingOrderByInsertTimeDescQuestionNoDesc(String writer, Pageable pageable) {
+        Page<Question> page = questionRepository.findAllByWriterContainingOrderByInsertTimeDescQuestionNoDesc(writer, pageable);
 
         return page;
     }

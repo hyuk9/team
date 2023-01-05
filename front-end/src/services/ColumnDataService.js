@@ -41,12 +41,6 @@ class ColumnDataService {
         return http.delete("/column/all")
     }
 
-    // 조회수 갱신 요청 함수
-    plusViews(cid) {
-        return http.put(`/column/plusviews/${cid}`);
-    }
-    
-
 }
 
 export default new ColumnDataService();

@@ -27,7 +27,7 @@
                   <tr>
                     <!-- <th scope="col">Last Name</th> -->
                     <th scope="col">번호</th>
-                    <!-- <th scope="col">식당</th> -->
+                    <th scope="col">식당</th>
                     <th scope="col">이름</th>
                     <th scope="col">인원수</th>
                     <th scope="col">연락처</th>
@@ -40,14 +40,14 @@
                   <!-- <tr @click="setActive(data, index)"> -->
                   <tr>
                     <td>{{ data.rid }}</td>
-                    <!-- <td>{{ data.dname }}</td> -->
+                    <td>{{ data.restaurant }}</td>
                     <td>{{ data.rname }}</td>
                     <td>{{ data.rcount }}</td>
                     <td>
                       {{ data.phone }}
                     </td>
-                    <td>{{ data.rdate }}</td>
-                    <td>{{ data.rtime }}</td>
+                    <td>{{ data.reservationDate }}</td>
+                    <td>{{ data.reservationTime }}</td>
                     <td>
                       <router-link :to="'/reservation/' + data.rid"
                         ><span class="badge bg-success">Edit</span></router-link

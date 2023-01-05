@@ -28,10 +28,6 @@
               <td scope="row" v-text="currentAnnounce.writer"></td>
             </tr>
             <tr>
-              <th scope="col">조회수</th>
-              <td scope="col" v-text="currentAnnounce.views"></td>
-            </tr>
-            <tr>
               <td colspan="2" scope="row" style="padding:10px" v-text="currentAnnounce.content"></td>
             </tr>
           </tbody>

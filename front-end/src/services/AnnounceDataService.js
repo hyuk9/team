@@ -43,6 +43,7 @@ class AnnounceDataService {
 
     // 조회수 갱신 요청 함수
     plusViews(ano) {
+        alert("송신")
         return http.put(`/announce/plusviews/${ano}`);
     }
 

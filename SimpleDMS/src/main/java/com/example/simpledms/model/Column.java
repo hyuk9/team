@@ -61,11 +61,6 @@ public class Column extends BaseTimeEntity {
 //    글쓴사람 id값
     @javax.persistence.Column
     private Integer id;
-
-    @javax.persistence.Column(columnDefinition = "NUMBER")
-    private Integer views;
-
-
 }
 
 
