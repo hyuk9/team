@@ -48,12 +48,12 @@ public interface FavoriteRepository extends JpaRepository<Favorite, Integer> {
 
 
 //    찜한 dno개수가 많은 컬럼순으로 내림차순으로 정렬하기
-    @Query(value = "select di.dname, count(fa.dno) as dno_count, fa.* " +
+    @Query(value = "select di.dname, count(fa.dno) as dno_count " +
                    "from tb_diner di " +
                    "left join tb_favorite fa on di.dno = fa.dno " +
                    "group by di.dno, di.dname " +
                    "order by dno_count desc",
-                    countQuery = "select di.dname, count(fa.dno) as dno_count, fa.* " +
+                    countQuery = "select di.dname, count(fa.dno) as dno_count " +
                                  "from tb_diner di " +
                                  "left join tb_favorite fa on di.dno = fa.dno " +
                                  "group by di.dno, di.dname " +
