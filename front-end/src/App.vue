@@ -92,4 +92,9 @@ span,
   font-weight: lighter;
   font-style: normal;
 }
+
+// 네이버 지도 확대 축소 깨지는 현상 수정
+#vue-naver-maps a {
+  padding: 0;
+}
 </style>
