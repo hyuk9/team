@@ -1,5 +1,7 @@
 package com.example.simpledms.service;
 
+import com.example.simpledms.dto.FavoriteDto;
+import com.example.simpledms.dto.ReservationDto;
 import com.example.simpledms.model.Reservation;
 import com.example.simpledms.repository.ReservationRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -75,6 +77,13 @@ public class ReservationService {
         return list;
     }
 
+
+    //    ✅ username like 검색 함수 ( 페이징 처리 추가 )
+    public Page<ReservationDto> findAllById(Integer id, Pageable pageable) {
+        Page<ReservationDto> list = reservationRepository.findAllById(id, pageable);
+
+        return list;
+    }
 }
 
 

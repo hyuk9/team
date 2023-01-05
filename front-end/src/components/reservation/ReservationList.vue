@@ -27,7 +27,7 @@
                   <tr>
                     <!-- <th scope="col">Last Name</th> -->
                     <th scope="col">번호</th>
-                    <th scope="col">식당</th>
+                    <!-- <th scope="col">식당</th> -->
                     <th scope="col">이름</th>
                     <th scope="col">인원수</th>
                     <th scope="col">연락처</th>
@@ -40,7 +40,7 @@
                   <!-- <tr @click="setActive(data, index)"> -->
                   <tr>
                     <td>{{ data.rid }}</td>
-                    <td>{{ data.restaurant }}</td>
+                    <!-- <td>{{ data.dname }}</td> -->
                     <td>{{ data.rname }}</td>
                     <td>{{ data.rcount }}</td>
                     <td>

@@ -1,10 +1,13 @@
 package com.example.simpledms.repository;
 
 
+import com.example.simpledms.dto.FavoriteDto;
+import com.example.simpledms.dto.ReservationDto;
 import com.example.simpledms.model.Reservation;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -25,6 +28,16 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
     Page<Reservation> findAllByRnameContainingOrderByRidDescInsertTimeDesc(String rname, Pageable pageable);
 
 
+    @Query(value = "select di.dname, re.* " +
+                   "from tb_diner di, tb_reservation re " +
+                   "where di.dno = re.dno " +
+                   "and id = :id",
+            countQuery = "select di.dname, re.* " +
+                         "from tb_diner di, tb_reservation re " +
+                         "where di.dno = re.dno " +
+                         "and id = :id"
+            ,nativeQuery = true)
+    Page<ReservationDto> findAllById (Integer id, Pageable pageable);
 }
 
 
