@@ -35,11 +35,33 @@
         <div class="row">
           <!-- 프로필 사진 시작 -->
           <div class="col-2 pt-3">
-            <div class="text-center" v-if="profiles">
-              <img class="profile" src="assets/img/gallery/empty_profile.png" width="200px" height="200px" alt="" />
+            <div id="imageArea" class="text-center" v-if="profiles">
+              <img
+                class="profile"
+                src="assets/img/gallery/empty_profile.png"
+                width="200px"
+                height="200px"
+                alt=""
+              />
+              <span
+                id="imageBtn"
+                class="btn btn-primary"
+                type="button"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasExample"
+                aria-controls="offcanvasExample"
+              >
+                <i class="bi bi-camera-fill fs-3" id="camera"></i>
+              </span>
             </div>
             <div class="text-center" v-else>
-              <img class="profile" :src="currentProfile.fileUrl" width="200px" height="200px" alt="" />
+              <img
+                class="profile"
+                :src="currentProfile.fileUrl"
+                width="200px"
+                height="200px"
+                alt=""
+              />
             </div>
           </div>
           <!-- 프로필 사진 끝 -->
@@ -51,19 +73,27 @@
               <p class="pt-5">
                 <router-link :to="'/user/' + currentUser.id">
                   <span class="btn btn-primary">
-                    개인정보 수정하기</span></router-link>
+                    개인정보 수정하기</span
+                  ></router-link
+                >
               </p>
-              <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                이미지 수정
-              </button>
 
-              <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
-                aria-labelledby="offcanvasExampleLabel">
+              <div
+                class="offcanvas offcanvas-start"
+                tabindex="-1"
+                id="offcanvasExample"
+                aria-labelledby="offcanvasExampleLabel"
+              >
                 <div class="offcanvas-header container">
-                  <h5 class="offcanvas-title" id="offcanvasExampleLabel">이미지 수정</h5>
-                  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
-                    aria-label="Close"></button>
+                  <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+                    이미지 수정
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close text-reset"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close"
+                  ></button>
                 </div>
                 <div class="offcanvas-body">
                   <div>
@@ -72,8 +102,19 @@
                   <div>
                     <label class="btn btn-default p-0">
                       <!-- 파일 선택상자 -->
-                      <input type="file" class="col-5" accept="image/*" ref="file" @change="selectImage" />
-                      <button @click="saveProfile" class="btn btn-primary col-5">수정하기</button>
+                      <input
+                        type="file"
+                        class="col-5"
+                        accept="image/*"
+                        ref="file"
+                        @change="selectImage"
+                      />
+                      <button
+                        @click="saveProfile"
+                        class="btn btn-primary col-5"
+                      >
+                        수정하기
+                      </button>
                     </label>
                   </div>
                 </div>
@@ -157,7 +198,11 @@
                     <th scope="col">사진</th>
                     <th scope="col">임꺽정</th>
                     <td>
-                      <router-link to=""><span class="badge bg-success">수정하기</span></router-link>
+                      <router-link to=""
+                        ><span class="badge bg-success"
+                          >수정하기</span
+                        ></router-link
+                      >
                     </td>
                   </tr>
                   <tr>
@@ -167,7 +212,11 @@
                     <th scope="col">사진</th>
                     <th scope="col">홍길동</th>
                     <td>
-                      <router-link to=""><span class="badge bg-success">수정하기</span></router-link>
+                      <router-link to=""
+                        ><span class="badge bg-success"
+                          >수정하기</span
+                        ></router-link
+                      >
                     </td>
                   </tr>
                 </tbody>
@@ -175,8 +224,14 @@
 
               <!--    Todo : page 바 시작 -->
               <div class="col-md-8 offset-4 pt-5">
-                <b-pagination v-model="page" :total-rows="count" :per-page="pageSize" prev-text="Prev" next-text="Next"
-                  @change="handlePageChange"></b-pagination>
+                <b-pagination
+                  v-model="page"
+                  :total-rows="count"
+                  :per-page="pageSize"
+                  prev-text="Prev"
+                  next-text="Next"
+                  @change="handlePageChange"
+                ></b-pagination>
               </div>
               <!--    Todo : page 바 끝 -->
 
@@ -184,12 +239,21 @@
               <div class="col-md-6 offset-3 pt-5">
                 <div class="input-group mb-3">
                   <!-- Todo : 수정 시작 -->
-                  <input type="text" class="form-control" placeholder="Search by Restaurant" v-model="searchName" />
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Search by Restaurant"
+                    v-model="searchName"
+                  />
                   <div class="input-group-append">
-                    <button class="btn btn-primary" type="button" @click="
-  page = 1;
-retrieveReview();
-                    ">
+                    <button
+                      class="btn btn-primary"
+                      type="button"
+                      @click="
+                        page = 1;
+                        retrieveReview();
+                      "
+                    >
                       Search
                     </button>
                   </div>
@@ -214,20 +278,26 @@ retrieveReview();
           <!-- 1 -->
           <div class="position-relative">
             <div class="card" style="width: 18rem">
-              <img src="https://ldb-phinf.pstatic.net/20221113_271/1668319190296wqBDT_JPEG/IMG_6177_2.JPG"
-                class="card-img-top" alt="" />
+              <img
+                src="https://ldb-phinf.pstatic.net/20221113_271/1668319190296wqBDT_JPEG/IMG_6177_2.JPG"
+                class="card-img-top"
+                alt=""
+              />
               <div class="card-body">
                 <h5 class="card-title">강릉현대장칼국수 부산2호점</h5>
                 <div class="card-text">
-                  <span class="text-warning me-2"><i class="fas fa-map-marker-alt"></i></span><span
-                    class="text-primary">서면</span>
+                  <span class="text-warning me-2"
+                    ><i class="fas fa-map-marker-alt"></i></span
+                  ><span class="text-primary">서면</span>
                 </div>
               </div>
               <ul>
                 <li>매일 11:00 - 21:00 <br />20:30 라스트오더</li>
               </ul>
               <div class="card-body btn btn-primary">
-                <router-link to="" class="card-link text-white">예약하기</router-link>
+                <router-link to="" class="card-link text-white"
+                  >예약하기</router-link
+                >
               </div>
             </div>
           </div>
@@ -235,20 +305,26 @@ retrieveReview();
           <!-- 2 -->
           <div class="position-relative">
             <div class="card" style="width: 18rem">
-              <img src="https://ldb-phinf.pstatic.net/20220330_36/1648623511617Jb1zG_JPEG/1643331771309-0.jpg"
-                class="card-img-top" alt="" />
+              <img
+                src="https://ldb-phinf.pstatic.net/20220330_36/1648623511617Jb1zG_JPEG/1643331771309-0.jpg"
+                class="card-img-top"
+                alt=""
+              />
               <div class="card-body">
                 <h5 class="card-title">디퀄리타</h5>
                 <div class="card-text">
-                  <span class="text-warning me-2"><i class="fas fa-map-marker-alt"></i></span><span
-                    class="text-primary">서면</span>
+                  <span class="text-warning me-2"
+                    ><i class="fas fa-map-marker-alt"></i></span
+                  ><span class="text-primary">서면</span>
                 </div>
               </div>
               <ul>
                 <li>월-토 11:30 - 22:00 일요일 휴무 <br />20:30 라스트오더</li>
               </ul>
               <div class="card-body btn btn-primary">
-                <router-link to="" class="card-link text-white">예약하기</router-link>
+                <router-link to="" class="card-link text-white"
+                  >예약하기</router-link
+                >
               </div>
             </div>
           </div>
@@ -258,19 +334,24 @@ retrieveReview();
             <div class="card" style="width: 18rem">
               <img
                 src="https://ldb-phinf.pstatic.net/20221109_49/1667988084702HrJOG_JPEG/KakaoTalk_20221020_113119374.jpg"
-                class="card-img-top" alt="" />
+                class="card-img-top"
+                alt=""
+              />
               <div class="card-body">
                 <h5 class="card-title">후라토식당 서면점</h5>
                 <div class="card-text">
-                  <span class="text-warning me-2"><i class="fas fa-map-marker-alt"></i></span><span
-                    class="text-primary">서면</span>
+                  <span class="text-warning me-2"
+                    ><i class="fas fa-map-marker-alt"></i></span
+                  ><span class="text-primary">서면</span>
                 </div>
               </div>
               <ul>
                 <li>매일 11:30 - 22:00 <br />21:00 라스트오더</li>
               </ul>
               <div class="card-body btn btn-primary">
-                <router-link to="" class="card-link text-white">예약하기</router-link>
+                <router-link to="" class="card-link text-white"
+                  >예약하기</router-link
+                >
               </div>
             </div>
           </div>
@@ -278,20 +359,26 @@ retrieveReview();
           <!-- 4 -->
           <div class="position-relative">
             <div class="card" style="width: 18rem">
-              <img src="https://ldb-phinf.pstatic.net/20221124_186/1669262891000tEB1Q_PNG/%B7%CE%B0%ED7.png"
-                class="card-img-top" alt="" />
+              <img
+                src="https://ldb-phinf.pstatic.net/20221124_186/1669262891000tEB1Q_PNG/%B7%CE%B0%ED7.png"
+                class="card-img-top"
+                alt=""
+              />
               <div class="card-body">
                 <h5 class="card-title">컵플</h5>
                 <div class="card-text">
-                  <span class="text-warning me-2"><i class="fas fa-map-marker-alt"></i></span><span
-                    class="text-primary">서면</span>
+                  <span class="text-warning me-2"
+                    ><i class="fas fa-map-marker-alt"></i></span
+                  ><span class="text-primary">서면</span>
                 </div>
               </div>
               <ul>
                 <li>매일 10:00 - 18:30 <br />18:00 라스트오더</li>
               </ul>
               <div class="card-body btn btn-primary">
-                <router-link to="" class="card-link text-white">예약하기</router-link>
+                <router-link to="" class="card-link text-white"
+                  >예약하기</router-link
+                >
               </div>
             </div>
           </div>
@@ -301,19 +388,24 @@ retrieveReview();
             <div class="card" style="width: 18rem">
               <img
                 src="https://ldb-phinf.pstatic.net/20221008_173/1665158490202Aosi6_JPEG/1AC19864-A1DA-47CC-AE0C-F9FDC8BB1909.jpeg"
-                class="card-img-top" alt="" />
+                class="card-img-top"
+                alt=""
+              />
               <div class="card-body">
                 <h5 class="card-title">차선책</h5>
                 <div class="card-text">
-                  <span class="text-warning me-2"><i class="fas fa-map-marker-alt"></i></span><span
-                    class="text-primary">서면</span>
+                  <span class="text-warning me-2"
+                    ><i class="fas fa-map-marker-alt"></i></span
+                  ><span class="text-primary">서면</span>
                 </div>
               </div>
               <ul>
                 <li>매일 11:00 - 22:00 <br />21:30 라스트오더</li>
               </ul>
               <div class="card-body btn btn-primary">
-                <router-link to="" class="card-link text-white">예약하기</router-link>
+                <router-link to="" class="card-link text-white"
+                  >예약하기</router-link
+                >
               </div>
             </div>
           </div>
@@ -323,19 +415,24 @@ retrieveReview();
             <div class="card" style="width: 18rem">
               <img
                 src="https://ldb-phinf.pstatic.net/20220728_8/1659004494387VT8qo_JPEG/E41FD257-DAE2-419C-8F90-85DB4437DC5F.jpeg"
-                class="card-img-top" alt="" />
+                class="card-img-top"
+                alt=""
+              />
               <div class="card-body">
                 <h5 class="card-title">어어마무시</h5>
                 <div class="card-text">
-                  <span class="text-warning me-2"><i class="fas fa-map-marker-alt"></i></span><span
-                    class="text-primary">서면</span>
+                  <span class="text-warning me-2"
+                    ><i class="fas fa-map-marker-alt"></i></span
+                  ><span class="text-primary">서면</span>
                 </div>
               </div>
               <ul>
                 <li>매일 12:00 - 21:00 <br />20:00 라스트오더</li>
               </ul>
               <div class="card-body btn btn-primary">
-                <router-link to="" class="card-link text-white">예약하기</router-link>
+                <router-link to="" class="card-link text-white"
+                  >예약하기</router-link
+                >
               </div>
             </div>
           </div>
@@ -360,7 +457,7 @@ export default {
       searchName: "",
       currentData: null,
       currentProfile: null,
-      profiles:true,
+      profiles: true,
       currentIndex: -1,
       currentImage: undefined, // 현재 이미지 변수
       previewImage: undefined, // 미리보기 이미지 변수
@@ -374,7 +471,6 @@ export default {
     };
   },
   methods: {
-
     handlePageChange(value) {
       this.page = value;
       this.retrieveReservation();
@@ -396,8 +492,7 @@ export default {
       this.progress = 0;
       // insert 요청 함수 호출(axios 공통함수 호출)
       ProfileDataService.create(
-
-        this.currentImage,
+        this.currentImage
         // (eve) => {
         //   // 파일이 업로드될때 진척상황이 저장됨(%)
         //   this.progress = Math.round((100 * eve.loaded) / eve.total);
@@ -407,10 +502,10 @@ export default {
         .then((response) => {
           console.log(response.data);
           this.message = response.data;
-          this.profiles=false;
+          this.profiles = false;
           // 변수 submitted
           alert("성공했습니다.");
-          this.getProfile(1)
+          this.getProfile(1);
         })
         // 실패하면 .catch() 결과가 전송됨
         .catch((err) => {
@@ -418,7 +513,6 @@ export default {
           this.message = "Could not upload the image! " + err;
           this.currentImage = undefined;
         });
-
     },
 
     getProfile(pno) {
@@ -445,7 +539,6 @@ export default {
       this.progress = 0;
       this.message = "";
     },
-
   },
   computed: {
     currentUser() {
@@ -457,7 +550,7 @@ export default {
 
   components: {
     FavoriteCom,
-    ReservationCom
+    ReservationCom,
   },
   // 화면이 뜨자마자 실행되는 이벤트
   mounted() {
@@ -482,6 +575,29 @@ export default {
 <style lang="scss" scoped>
 li {
   list-style-type: none;
+}
+
+#imageArea {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+#imageBtn {
+  position: absolute;
+  width: 65px;
+  height: 65px;
+  top: 60%;
+  left: 60%;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 50%;
+}
+
+#camera {
+  position: absolute;
+  top: 20%;
+  left: 35%;
 }
 
 .bi {
