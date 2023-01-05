@@ -36,11 +36,22 @@
         ></textarea>
       </div>
       <div class="mb-3">
-        <label for="content" class="form-label">이미지</label>
-        <img :src="currentFree.fileUrl" class="card-img-top" alt="" />
-         <a style="color: inherit" @click="deleteImage(free.fno)">
-           <span class="badge bg-danger">Delete</span>
-         </a>
+        <label for="content" class="form-label">이미지</label><br />
+        <img :src="currentFree.fileUrl" class="preview my-3" alt="" />
+        <!-- <a style="color: inherit" @click="updateFree(currentFree.fno)">
+           <span class="badge bg-danger">수정</span>
+         </a> -->
+      </div>
+      <div class="mb-3">
+        <label class="btn btn-default p-0">
+          <!-- 파일 선택상자 -->
+          <input
+            type="file"
+            accept="image/*"
+            ref="file"
+            @change="selectImage"
+          />
+        </label>
       </div>
       <div class="mb-3">
         <button @click="updateFree" class="btn btn-primary me-3">Update</button>
@@ -83,7 +94,13 @@ export default {
     // 부서정보를 수정 요청하는 함수
     updateFree() {
       // axios 공통함수 호출
-      FreeDataService.update(this.currentFree.fno, this.currentFree)
+      FreeDataService.update(
+        this.currentFree.fno,
+        this.currentFree.writer,
+        this.currentFree.title,
+        this.currentFree.content,
+        this.currentImage
+      )
         // 성공하면 then() 결과가 전송됨
         .then((response) => {
           console.log(response.data);
@@ -94,6 +111,14 @@ export default {
         .catch((e) => {
           console.log(e);
         });
+    },
+    selectImage() {
+      // 파일선택상자에서 첫번째로 선택한 이미지가 저장됨
+      this.currentImage = this.$refs.file.files.item(0);
+      // 아래는 미리보기 이미지를 위한 주소가 저장됨
+      this.previewImage = URL.createObjectURL(this.currentImage);
+      this.progress = 0;
+      this.message = "";
     },
     // 부서정보를 삭제 요청하는 함수
     deleteFree() {
