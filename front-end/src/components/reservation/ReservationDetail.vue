@@ -212,7 +212,7 @@ export default {
     this.getReservation(this.$route.params.rid);
 
     $(function () {
-      $("#reservationDate").datepicker({
+      $("#rdate").datepicker({
         dateFormat: "yy-mm-dd",
         minDate: 1,
         maxDate: "+1m",
@@ -232,7 +232,7 @@ export default {
           "12월",
         ],
       });
-      $("#reservationTime").timepicker({
+      $("#rtime").timepicker({
         timeFormat: "H:mm",
         interval: 30,
         minTime: "11",

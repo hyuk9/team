@@ -27,7 +27,8 @@
                   <tr>
                     <!-- <th scope="col">Last Name</th> -->
                     <th scope="col">번호</th>
-                    <!-- <th scope="col">식당</th> -->
+                    <th scope="col">식당</th>
+                    <th scope="col">위치</th>
                     <th scope="col">이름</th>
                     <th scope="col">인원수</th>
                     <th scope="col">연락처</th>
@@ -40,7 +41,8 @@
                   <!-- <tr @click="setActive(data, index)"> -->
                   <tr>
                     <td>{{ data.rid }}</td>
-                    <!-- <td>{{ data.dname }}</td> -->
+                    <td>{{ data.dname }}</td>
+                    <td>{{ data.loc }}</td>
                     <td>{{ data.rname }}</td>
                     <td>{{ data.rcount }}</td>
                     <td>
@@ -97,23 +99,6 @@
               </div>
               <!-- search 관련 div 끝 -->
             </div>
-
-            <!-- <div v-if="currentData" class="col-lg-5 ml-auto">
-              <div class="quick-contact-item d-flex align-items-center mb-4">
-                <span class="flaticon-house"></span>
-                <address class="text">
-                  {{ this.currentData.restaurant }}
-                </address>
-              </div>
-              <div class="quick-contact-item d-flex align-items-center mb-4">
-                <span class="flaticon-phone-call"></span>
-                <address class="text">{{ this.currentData.phone }}</address>
-              </div>
-              <div class="quick-contact-item d-flex align-items-center mb-4">
-                <span class="flaticon-mail"></span>
-                <address class="text">{{ this.currentData.rname }}</address>
-              </div>
-            </div> -->
           </div>
         </div>
       </div>
@@ -150,7 +135,6 @@ export default {
           const { reservation, totalItems } = response.data;
           this.reservation = reservation;
           this.count = totalItems;
-
           console.log(response.data);
         })
         .catch((e) => {
@@ -172,7 +156,6 @@ export default {
       this.currentIndex = index;
     },
   },
-
   mounted() {
     this.retrieveReservation();
   },

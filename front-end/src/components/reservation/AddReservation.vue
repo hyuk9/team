@@ -11,7 +11,8 @@
           <div class="input__block">
             <h5>가게</h5>
             <input
-              v-model="reservation.restaurant"
+              v-model="currentDiner.dname"
+              v-bind:disabled="true"
               required
               type="text"
               class="input"
@@ -83,11 +84,11 @@
           <div class="input__block">
             <h5>예약 날짜</h5>
             <input
-              ref="reservationDate"
+              ref="rdate"
               required
-              type="text"
+              type="date"
               class="input"
-              id="reservationDate"
+              id="rdate"
               placeholder="날짜 선택"
             />
           </div>
@@ -96,11 +97,11 @@
           <div class="input__block">
             <h5>예약 시간</h5>
             <input
-              ref="reservationTime"
+              ref="rtime"
               required
-              type="text"
+              type="time"
               class="input"
-              id="reservationTime"
+              id="rtime"
               placeholder="시간 선택"
             />
           </div>
@@ -210,42 +211,69 @@
 // @ is an alias to /src
 /* eslint-disable */
 import ReservationDataService from "@/services/ReservationDataService";
+import DinerDataService from "@/services/DinerDataService";
 
 export default {
   data() {
     return {
+      currentDiner: null,
+
       reservation: {
         rid: null,
         restaurant: "", // 가게명
         rname: "", // 예약자명
         rcount: "", // 인원수
-        phone:"", // 전화번호
-        reservationDate: "", // 예약날짜
-        reservationTime: "", // 예약시간
+        phone: "", // 전화번호
+        rdate: "", // 예약날짜
+        rtime: "", // 예약시간
+        id: null, // 유저id
+        dno: null, // 가게id
         reservationYn: "", // 예약가능여부
       },
-              phoneFirstPart: "", // 전화번호의 앞자리
-        phoneMiddlePart: "", // 전화번호의 중간자리
-        phoneLastPart: "", // 전화번호의 뒷자리
+      phoneFirstPart: "", // 전화번호의 앞자리
+      phoneMiddlePart: "", // 전화번호의 중간자리
+      phoneLastPart: "", // 전화번호의 뒷자리
     };
   },
   methods: {
-        InputCombine() {
+    InputCombine() {
       //  전화번호 부분들 합쳐서 완성된 전화번호 형식 만들기
       if (this.phoneFirstPart && this.phoneMiddlePart && this.phoneLastPart) {
         this.reservation.phone =
-          this.phoneFirstPart + "-" + this.phoneMiddlePart + "-" + this.phoneLastPart;
+          this.phoneFirstPart +
+          "-" +
+          this.phoneMiddlePart +
+          "-" +
+          this.phoneLastPart;
       }
+    },
+    // 부서번호(dno)로 조회 요청하는 함수
+    getDiner(dno) {
+      // axios 공통함수 호출
+      DinerDataService.get(dno)
+        // 성공하면 .then() 결과가 리턴됨
+        .then((response) => {
+          // springboot 결과를 리턴함(부서 객체)
+          this.currentDiner = response.data;
+          // 콘솔 로그 출력
+          console.log("현재 음식점 데이터 : ", response.data);
+        })
+        // 실패하면 .catch() 에러메세지가 리턴됨
+        .catch((e) => {
+          console.log(e);
+        });
     },
     saveReservation() {
       this.InputCombine();
       let data = {
-        restaurant: this.reservation.restaurant,
+        restaurant: this.currentDiner.dname,
         rname: this.reservation.rname,
         rcount: this.reservation.rcount,
         phone: this.reservation.phone,
-        reservationDate: this.$refs.reservationDate.value,
-        reservationTime: this.$refs.reservationTime.value,
+        id: this.currentUser.id,
+        dno: this.$route.params.dno,
+        rdate: this.$refs.rdate.value,
+        rtime: this.$refs.rtime.value,
         // reservationTime: document.querySelector("#selTime").innerHTML,
       };
       ReservationDataService.create(data)
@@ -269,55 +297,68 @@ export default {
         });
     },
 
-
     newReservation() {
       this.submitted = false;
       this.reservation = {};
     },
   },
+  computed: {
+    currentUser() {
+      // 모듈 저장소 : this.$store.state.모듈명.state값
+      // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
+      return this.$store.state.auth.user;
+    },
+  },
 
   mounted() {
-    $(function () {
-      $("#reservationDate").datepicker({
-        dateFormat: "yy-mm-dd",
-        minDate: 1,
-        maxDate: "+1m",
-        dayNamesMin: ["일", "월", "화", "수", "목", "금", "토"],
-        monthNames: [
-          "1월",
-          "2월",
-          "3월",
-          "4월",
-          "5월",
-          "6월",
-          "7월",
-          "8월",
-          "9월",
-          "10월",
-          "11월",
-          "12월",
-        ],
-      });
-      $("#reservationTime").timepicker({
-        timeFormat: "H:mm",
-        interval: 30,
-        minTime: "11",
-        maxTime: "8:00pm",
-        startTime: "11:00",
-        dynamic: false,
-        dropdown: true,
-        scrollbar: true,
-      });
-      // $(function () {
-      //   $(".cell").click(function () {
-      //     $(".cell").removeClass("select");
-      //     $(this).addClass("select");
-      //     $(this).text();
-      //     // TODO: document.querySelector("#selTime").innerHTML = $(this).text(); 변경
-      //     document.querySelector("#selTime").innerHTML = $(this).text();
-      //   });
-      // });
-    });
+    this.getDiner(this.$route.params.dno);
+
+    // TODO: 데이트피커 타임피커 충돌로 인해 임시로 막아놓음
+
+    // TODO: 데이트피커
+    // $(function () {
+    //   $("#rdate").datepicker({
+    //     dateFormat: "yy-mm-dd",
+    //     minDate: 1,
+    //     maxDate: "+1m",
+    //     dayNamesMin: ["일", "월", "화", "수", "목", "금", "토"],
+    //     monthNames: [
+    //       "1월",
+    //       "2월",
+    //       "3월",
+    //       "4월",
+    //       "5월",
+    //       "6월",
+    //       "7월",
+    //       "8월",
+    //       "9월",
+    //       "10월",
+    //       "11월",
+    //       "12월",
+    //     ],
+    //   });
+    // TODO: 타임피커1
+    // $("#rtime").timepicker({
+    //   timeFormat: "H:mm",
+    //   interval: 30,
+    //   minTime: "11",
+    //   maxTime: "8:00pm",
+    //   startTime: "11:00",
+    //   dynamic: false,
+    //   dropdown: true,
+    //   scrollbar: true,
+    // });
+    // TODO: 타임피커2
+    // $(function () {
+    //   $(".cell").click(function () {
+    //     $(".cell").removeClass("select");
+    //     $(this).addClass("select");
+    //     $(this).text();
+    //     // TODO: document.querySelector("#selTime").innerHTML = $(this).text(); 변경
+    //     document.querySelector("#selTime").innerHTML = $(this).text();
+    //   });
+    // });
+    // });
   },
 };
 </script>
@@ -441,18 +482,18 @@ button {
   font-family: ONE-Mobile-POP !important;
 }
 
-.cell {
-  border: 1px solid #bdbdbd;
-  margin: 2px;
-  cursor: pointer;
-}
+// .cell {
+//   border: 1px solid #bdbdbd;
+//   margin: 2px;
+//   cursor: pointer;
+// }
 
-.cell:hover {
-  border: 1px solid #3d5afe;
-}
+// .cell:hover {
+//   border: 1px solid #3d5afe;
+// }
 
-.cell.select {
-  background-color: #3d5afe;
-  color: #fff;
-}
+// .cell.select {
+//   background-color: #3d5afe;
+//   color: #fff;
+// }
 </style>
