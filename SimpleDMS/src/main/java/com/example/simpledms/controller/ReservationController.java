@@ -1,5 +1,7 @@
 package com.example.simpledms.controller;
 
+import com.example.simpledms.dto.FavoriteDto;
+import com.example.simpledms.dto.ReservationDto;
 import com.example.simpledms.model.Reservation;
 import com.example.simpledms.service.ReservationService;
 import lombok.extern.slf4j.Slf4j;
@@ -58,7 +60,7 @@ public class ReservationController {
 
 //            findAll() 생략 해도 전체 검색이 됨 :
 //            why? like 검색시 부서명 매개변수가 ""이더라도 전체 검색이 됨
-            reservationPage = reservationService.findAllByRnameContaining(rname, pageable);
+            reservationPage = reservationService.findAllByRnameContainingOrderByRidDescInsertTimeDesc(rname, pageable);
 
     //            맵 자료구조에 넣어서 전송
             Map<String, Object> response = new HashMap<>();
@@ -187,7 +189,40 @@ public class ReservationController {
 //        }
 //    }
 
+    //    Todo: 1.5 추가 currentUserId로 예약목록 찾기함수
 
+    @GetMapping("/reservation/id")
+    public ResponseEntity<Object> getUserId(@RequestParam Integer id,
+                                            @RequestParam(defaultValue = "0") int page,
+                                            @RequestParam(defaultValue = "3") int size)
+    {
+        try {
+
+//            페이지 변수 저장
+            Pageable pageable = PageRequest.of(page, size);
+
+            Page<ReservationDto> reservationPage;
+
+            reservationPage = reservationService.findAllById(id, pageable);
+
+            Map<String, Object> response = new HashMap<>();
+            response.put("reservation", reservationPage.getContent());
+            response.put("currentPage", reservationPage.getNumber());
+            response.put("totalItems", reservationPage.getTotalElements());
+            response.put("totalPages", reservationPage.getTotalPages());
+
+            if (reservationPage.isEmpty() == false) {
+//                성공
+                return new ResponseEntity<>(response, HttpStatus.OK);
+            } else {
+//                데이터 없음
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+        } catch (Exception e) {
+//            서버 에러
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
 
 

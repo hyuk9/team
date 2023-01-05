@@ -1,5 +1,6 @@
 package com.example.simpledms.controller;
 
+import com.example.simpledms.model.Announce;
 import com.example.simpledms.model.Column;
 import com.example.simpledms.service.ColumnService;
 import lombok.extern.slf4j.Slf4j;
@@ -187,6 +188,35 @@ public class ColumnController {
 //        }
 //    }
 
+
+    //    조회수 추가 함수0104
+    @PutMapping("/column/plusviews/{cid}")
+    public ResponseEntity<Object> updateColumnViews(@PathVariable int cid) {
+
+        try {
+
+
+//       이메일에 맞는 유저 정보 들고와서
+            Optional<Column> optionalColumn = columnService.findById(cid);
+
+            Column columnData = optionalColumn.get();
+            Integer plusViews = columnData.getViews() +1;
+
+            Column column = new Column(
+                    columnData.getCid(),
+                    columnData.getTitle(),
+                    columnData.getContent(),
+                    columnData.getPhoto(),
+                    columnData.getWriter(),
+                    columnData.getId(),
+                    plusViews
+            );
+            columnService.save(column);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
 }
 

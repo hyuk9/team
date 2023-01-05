@@ -45,7 +45,7 @@
               </th>
               <th
                 class="table-active text-center"
-                style="width: 40%"
+                style="width: 30%"
                 scope="col"
               >
                 제목
@@ -64,6 +64,13 @@
               >
                 작성일
               </th>
+                <th
+                class="table-active text-center"
+                style="width: 10%"
+                scope="col"
+              >
+                조회수
+              </th>
               <th
                 class="table-active"
                 style="width: 10%"
@@ -81,13 +88,15 @@
               </td>
               <td class="text-center">
                 <router-link :to="'/freeview/' + data.fno"
-                  ><span>{{ data.title }}</span></router-link
+                  ><a @click="countViews(data.fno)"><span>{{ data.title }}</span></a></router-link
                 >
               </td>
               <td class="text-center">{{ data.writer }}</td>
               <td class="text-center">
                 <i class="bi bi-calendar-date"></i>&nbsp;{{ data.insertTime }}
               </td>
+                 <!-- 조회수 보여주기 -->
+              <td class="text-center">{{ data.views }}</td>
               <td v-if="showAdminBoard">
                 <router-link :to="'/free/' + data.fno"
                   ><span class="badge rounded-pill bg-warning text-dark"
@@ -215,6 +224,18 @@ export default {
       // 재조회 함수 호출
       this.retrieveFree();
     },
+       // 조회수 증가 함수
+    countViews (fno) {
+      FreeDataService.plusViews(fno)
+     .then((response) => {
+          // 디버깅 콘솔에 정보 출력
+          console.log(response.data);
+        })
+        // 실패하면 .catch() 에 에러가 전송됨
+        .catch((e) => {
+          console.log(e);
+        });
+    }
   },
 
   computed: {
