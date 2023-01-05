@@ -35,6 +35,11 @@ class FavoriteDataService {
   deleteAll() {
     return http.delete("/favorite/all");
   }
+
+  // 찜하기 추가
+  getFavorite(page, size) {
+    return http.get(`/favorite/desc?page=${page}&size=${size}`);
+  }
 }
 
 export default new FavoriteDataService();
