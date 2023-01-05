@@ -68,17 +68,14 @@ public class Diner extends BaseTimeEntity {
     @javax.persistence.Column
     private String photo;
 
-<<<<<<< HEAD
     @javax.persistence.Column(columnDefinition = "NUMBER")
     private Integer views;
 
-=======
     @javax.persistence.Column
     private String lat;
 
     @javax.persistence.Column
     private String lng;
->>>>>>> parent of 93d9877a (Merge branch 'main' into sy#7)
 }
 
 

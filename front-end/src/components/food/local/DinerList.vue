@@ -83,11 +83,11 @@
                           href="#!"
                           >{{ data.score }}</a
                         >
-                      </h2>
                       <p class="card-text fw-bolder">
                         {{ data.loc }}
                       </p>
                     </div>
+                      </a>
                   </router-link>
                 </div>
               </div>
