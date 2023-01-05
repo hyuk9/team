@@ -49,10 +49,10 @@ public class Answer extends BaseTimeEntity {
     private String questionNo;
 
     @javax.persistence.Column
-    private String content;
+    private String acontent;
 
 //   조인용 컬럼
     @javax.persistence.Column
-    private String writer;
+    private String awriter;
 }
 

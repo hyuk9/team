@@ -194,7 +194,6 @@
               type="button"
               data-bs-target="#carouselLocationItemsInChooseList"
               data-bs-slide="prev"
-
             >
               <span
                 class="carousel-control-prev-icon hover-top-shadow"
@@ -207,7 +206,6 @@
               type="button"
               data-bs-target="#carouselLocationItemsInChooseList"
               data-bs-slide="next"
-
             >
               <span
                 class="carousel-control-next-icon hover-top-shadow"

@@ -50,10 +50,10 @@ public class Question extends BaseTimeEntity {
     private String title;
 
     @javax.persistence.Column(columnDefinition = "VARCHAR2(255)")
-    private String content;
+    private String qcontent;
 
     @javax.persistence.Column(columnDefinition = "VARCHAR2(255)")
-    private String writer;
+    private String qwriter;
 
     @javax.persistence.Column(columnDefinition = "NUMBER")
     private Integer views;

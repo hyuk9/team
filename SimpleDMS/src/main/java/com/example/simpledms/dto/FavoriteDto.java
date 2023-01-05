@@ -22,4 +22,6 @@ public interface FavoriteDto {
     Integer getFid();
     Integer getId();
     Integer getDno();
+
+//    그룹함수 속성
 }
