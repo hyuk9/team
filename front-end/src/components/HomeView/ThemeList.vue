@@ -78,7 +78,7 @@
                               data.review_count
                             }}</span></span
                           ><span class="badge bg-primary p-2 mt-1 ms-3"
-                            ><i class="fas fa-thumbs-up me-2 fs-0"></i
+                            ><i class="fas fa-heart me-2 fs-0"></i
                             ><span class="fs-0">{{ data.like_count }}</span></span
                           >
                         </div>
@@ -104,10 +104,6 @@
                               <i class="fas fa-eye text-dark text-800 me-2 fs-0"></i>
                               <span class="mb-0 text-dark text-800 fs-0 me-3">
                                 {{ data.views }}
-                              </span>
-                              <i class="fas fa-heart text-dark text-800 me-2 fs-0"></i>
-                              <span class="mb-0 text-dark text-800 fs-0 me-3">
-                                {{  }}
                               </span>
                           </div>
                         </div>
@@ -162,7 +158,7 @@
                               data.review_count
                             }}</span></span
                           ><span class="badge bg-primary p-2 mt-1 ms-3"
-                            ><i class="fas fa-thumbs-up me-2 fs-0"></i
+                            ><i class="fas fa-heart me-2 fs-0"></i
                             ><span class="fs-0">{{ data.like_count }}</span></span
                           >
                         </div>
@@ -188,10 +184,6 @@
                               <i class="fas fa-eye text-dark text-800 me-2 fs-0"></i>
                               <span class="mb-0 text-dark text-800 fs-0 me-3">
                                 {{ data.views }}
-                              </span>
-                              <i class="fas fa-heart text-dark text-800 me-2 fs-0"></i>
-                              <span class="mb-0 text-dark text-800 fs-0 me-3">
-                                {{  }}
                               </span>
                           </div>
                         </div>

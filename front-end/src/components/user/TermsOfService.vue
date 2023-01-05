@@ -124,6 +124,7 @@ h4 {
 
 .idBlock {
   margin: 80px auto 100px;
+  padding: 2rem;
   width: 100%;
   height: 700px;
   background-color: rgba(15, 19, 42, 0.1);
