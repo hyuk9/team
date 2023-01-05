@@ -62,6 +62,7 @@
                   "
                 >
                   <router-link :to="'/diner/' + data.dno">
+                   <a @click="countViews(data.dno)">
                     <div class="card card-span h-100 text-white rounded-3">
                       <img
                         class="img-fluid rounded-3 h-100"
@@ -113,6 +114,7 @@
                         </div>
                       </div>
                     </div>
+                   </a>
                   </router-link>
                 </div>
               </div>
@@ -310,6 +312,19 @@ export default {
 }.bind(this), 600);
    
     },
+
+      // 조회수 증가 함수
+    countViews (dno) {
+      DinerDataService.plusViews(dno)
+     .then((response) => {
+          // 디버깅 콘솔에 정보 출력
+          console.log(response.data);
+        })
+        // 실패하면 .catch() 에 에러가 전송됨
+        .catch((e) => {
+          console.log(e);
+        });
+    }
   },
 
   // handlePageSizeChange(event) {
