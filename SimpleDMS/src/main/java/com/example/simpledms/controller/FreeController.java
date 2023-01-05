@@ -366,9 +366,18 @@ public class FreeController {
             Free freeData = optionalFree.get();
             Integer plusViews = freeData.getViews() +1;
 
-            freeData.setViews(plusViews);
-
-            freeService.save(freeData);
+            Free free = new Free(
+                    freeData.getFno(),
+                    freeData.getWriter(),
+                    freeData.getTitle(),
+                    freeData.getContent(),
+                    freeData.getGalleryTitle(),
+                    freeData.getGalleryFileName(),
+                    freeData.getGalleryType(),
+                    freeData.getBlobFile(),
+                    plusViews
+            );
+            freeService.save(free);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

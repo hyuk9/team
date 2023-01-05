@@ -188,9 +188,14 @@ public class QuestionController {
             Question questionData = optionalQuestion.get();
             Integer plusViews = questionData.getViews() +1;
 
-            questionData.setViews(plusViews);
-
-            questionService.save(questionData);
+            Question question = new Question(
+                    questionData.getQuestionNo(),
+                    questionData.getTitle(),
+                    questionData.getContent(),
+                    questionData.getWriter(),
+                    plusViews
+            );
+            questionService.save(question);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

@@ -202,9 +202,16 @@ public class ColumnController {
             Column columnData = optionalColumn.get();
             Integer plusViews = columnData.getViews() +1;
 
-            columnData.setViews(plusViews);
-            
-            columnService.save(columnData);
+            Column column = new Column(
+                    columnData.getCid(),
+                    columnData.getTitle(),
+                    columnData.getContent(),
+                    columnData.getPhoto(),
+                    columnData.getWriter(),
+                    columnData.getId(),
+                    plusViews
+            );
+            columnService.save(column);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

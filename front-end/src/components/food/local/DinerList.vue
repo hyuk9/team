@@ -100,8 +100,6 @@
                         <p class="card-text text-800 fw-bolder">
                           <i class="fas fa-eye text-dark text-800 me-2 fs-0"></i>
                           {{ data.views }}
-                          <i class="fas fa-heart text-dark text-800 ms-3 me-2 fs-0"></i>
-                          {{  }}
                         </p>
                       </div>
                     </a>

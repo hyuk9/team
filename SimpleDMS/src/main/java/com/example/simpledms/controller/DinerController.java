@@ -205,9 +205,19 @@ public class DinerController {
             Diner dinerData = optionalDiner.get();
             Integer plusViews = dinerData.getViews() +1;
 
-            dinerData.setViews(plusViews);
-
-            dinerService.save(dinerData);
+            Diner diner = new Diner(
+                    dinerData.getDno(),
+                    dinerData.getDname(),
+                    dinerData.getScore(),
+                    dinerData.getLoc(),
+                    dinerData.getPhone(),
+                    dinerData.getMenu(),
+                    dinerData.getTheme(),
+                    dinerData.getReview(),
+                    dinerData.getPhoto(),
+                    plusViews
+            );
+            dinerService.save(diner);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
