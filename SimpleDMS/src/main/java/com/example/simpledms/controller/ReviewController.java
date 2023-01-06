@@ -1,6 +1,8 @@
 package com.example.simpledms.controller;
 
 
+import com.example.simpledms.dto.ReservationDto;
+import com.example.simpledms.dto.ReviewDto;
 import com.example.simpledms.model.Menu;
 import com.example.simpledms.model.Review;
 import com.example.simpledms.service.ReviewService;
@@ -54,7 +56,7 @@ public class ReviewController {
 //                                      기본값은 required = true
 //    @RequestParam(defaultValue = "값") : 매개변수의 값이 없을떄 기본값을 설정함
     @GetMapping("/review")
-    public ResponseEntity<Object> getReviewAll(@RequestParam(required = false) String rwriter) {
+    public ResponseEntity<Object> getReviewAll(@RequestParam(required = false) Integer id) {
 
         try {
 //            1) menuName == null : 전체 검색
@@ -62,11 +64,11 @@ public class ReviewController {
             List<Review> list = Collections.emptyList(); // null 대신 초기화
 
 //            1) menuName == null : 전체 검색
-            if (rwriter == null) {
+            if (id == null) {
                 list = reviewService.findAll();
             } else {
 //            2) menuName != null : 부서명 like 검색
-                list = reviewService.findAllByRwriterContaining(rwriter);
+                list = reviewService.findAllByIdContaining(id);
             }
 
             if (list.isEmpty() == false) {
@@ -169,6 +171,40 @@ public class ReviewController {
         } catch (Exception e) {
             log.debug(e.getMessage());
 //           서버 에러 발생 메세지 전송(클라이언트)
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    //    Todo: 1.6 추가 currentUserId로 내가쓴리뷰 목록 찾기함수
+    @GetMapping("/review/id")
+    public ResponseEntity<Object> getUserId(@RequestParam Integer id,
+                                            @RequestParam(defaultValue = "0") int page,
+                                            @RequestParam(defaultValue = "3") int size)
+    {
+        try {
+
+//            페이지 변수 저장
+            Pageable pageable = PageRequest.of(page, size);
+
+            Page<ReviewDto> reviewPage;
+
+            reviewPage = reviewService.findAllById(id, pageable);
+
+            Map<String, Object> response = new HashMap<>();
+            response.put("review", reviewPage.getContent());
+            response.put("currentPage", reviewPage.getNumber());
+            response.put("totalItems", reviewPage.getTotalElements());
+            response.put("totalPages", reviewPage.getTotalPages());
+
+            if (reviewPage.isEmpty() == false) {
+//                성공
+                return new ResponseEntity<>(response, HttpStatus.OK);
+            } else {
+//                데이터 없음
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+        } catch (Exception e) {
+//            서버 에러
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

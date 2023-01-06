@@ -58,23 +58,18 @@
                           alt="..."
                         />
                         <div class="card-img-overlay ps-0">
-                          <span class="badge bg-danger p-2 mt-1 ms-3"
-                            ><i class="fas fa-map-marker-alt me-2 fs-0"></i
-                            ><span class="fs-0">{{ data.loc }}</span></span
-                          >
-                          <span class="badge bg-primary p-2 mt-1 ms-3"
-                            ><i class="fas fa-ellipsis-h me-2 fs-0"></i
-                            ><span class="fs-0">{{ data.menu }}</span></span
-                          >
-                          <span class="badge bg-danger p-2 mt-1 ms-3"
-                            ><i class="fas fa-comment-dots me-2 fs-0"></i
-                            ><span class="fs-0">{{
-                              data.review_count
-                            }}</span></span
-                          ><span class="badge bg-primary p-2 mt-1 ms-3"
-                            ><i class="fas fa-heart me-2 fs-0"></i
-                            ><span class="fs-0">{{ data.like_count }}</span></span
-                          >
+                          <div>
+                            <span class="badge bg-danger p-2 mt-1 ms-3"
+                              ><i class="fas fa-map-marker-alt me-2 fs-0"></i
+                              ><span class="fs-0">{{ data.loc.split(" ")[1]  }}</span></span
+                            >
+                          </div>
+                          <div>
+                            <span class="badge bg-primary p-2 mt-1 ms-3"
+                              ><i class="fas fa-ellipsis-h me-2 fs-0"></i
+                              ><span class="fs-0">{{ data.menu }}</span></span
+                            >
+                          </div>
                         </div>
                         <div class="card-body ps-0">
                           <div class="d-flex align-items-center mb-3">
@@ -142,23 +137,18 @@
                           alt="..."
                         />
                         <div class="card-img-overlay ps-0">
-                          <span class="badge bg-danger p-2 mt-1 ms-3"
-                            ><i class="fas fa-map-marker-alt me-2 fs-0"></i
-                            ><span class="fs-0">{{ data.loc }}</span></span
-                          >
-                          <span class="badge bg-primary p-2 mt-1 ms-3"
-                            ><i class="fas fa-ellipsis-h me-2 fs-0"></i
-                            ><span class="fs-0">{{ data.menu }}</span></span
-                          >
-                          <span class="badge bg-danger p-2 mt-1 ms-3"
-                            ><i class="fas fa-comment-dots me-2 fs-0"></i
-                            ><span class="fs-0">{{
-                              data.review_count
-                            }}</span></span
-                          ><span class="badge bg-primary p-2 mt-1 ms-3"
-                            ><i class="fas fa-heart me-2 fs-0"></i
-                            ><span class="fs-0">{{ data.like_count }}</span></span
-                          >
+                          <div>
+                            <span class="badge bg-danger p-2 mt-1 ms-3"
+                              ><i class="fas fa-map-marker-alt me-2 fs-0"></i
+                              ><span class="fs-0">{{ data.loc.split(" ")[1]  }}</span></span
+                            >
+                          </div>
+                          <div>
+                            <span class="badge bg-primary p-2 mt-1 ms-3"
+                              ><i class="fas fa-ellipsis-h me-2 fs-0"></i
+                              ><span class="fs-0">{{ data.menu }}</span></span
+                            >
+                          </div>
                         </div>
                         <div class="card-body ps-0">
                           <div class="d-flex align-items-center mb-3">
@@ -202,6 +192,7 @@
               type="button"
               data-bs-target="#carouselLocationItemsInChooseList"
               data-bs-slide="prev"
+              v-on:click="countDown()"
             >
               <span
                 class="carousel-control-prev-icon hover-top-shadow"
@@ -214,6 +205,7 @@
               type="button"
               data-bs-target="#carouselLocationItemsInChooseList"
               data-bs-slide="next"
+              v-on:click="countUp()"
             >
               <span
                 class="carousel-control-next-icon hover-top-shadow"
@@ -273,41 +265,39 @@ export default {
           this.count = totalItems; // 스프링부트에서 전송한 페이지정보(총 건수)
           // 디버깅 콘솔에 정보 출력
           console.log(response.data);
-
-          // favorite dno_count 를 diner dno_count에 복사
-           for(let i= 0; i<this.diner.length; i++) {
-            for(let j=0; j<this.favorite.length; j++) {
-              if(this.diner[i].dname ==this.favorite[j].dname) {
-              this.diner[i].dno_count = this.favorite[j].dno_count        
-              }
-            }              
-          }
-          // 내림차순 정렬
-         this.diner = this.diner.sort((a,b) => (b.dno_count - a.dno_count));
+          // favorite 정보 받기
+          FavoriteDataService.getFavoriteAll(
+          this.page - 1,
+          this.pageSize
+          )
+          // 성공하면 .then() 결과가 전송됨
+          .then((response) => {
+            // let(const) { 속성명1, 속성명2 } = 데이터 객체배열 (모던자바문법 구조 분해 할당)
+            const { favorite, totalItems } = response.data; // springboot 의 전송한 맵 정보
+            this.favorite = favorite // 스프링부트에서 전송한 데이터 받고 조회수 내림차순으로 가공
+            this.count = totalItems; // 스프링부트에서 전송한 페이지정보(총 건수)
+            // 디버깅 콘솔에 정보 출력
+            console.log(response.data);
+              // favorite dno_count 를 diner dno_count에 복사
+            for(let i= 0; i<this.diner.length; i++) {
+              for(let j=0; j<this.favorite.length; j++) {
+                if(this.diner[i].dname ==this.favorite[j].dname) {
+                  this.diner[i].dno_count = this.favorite[j].dno_count        
+                }
+              }              
+            }
+            // 내림차순 정렬
+            this.diner = this.diner.sort((a,b) => (b.dno_count - a.dno_count));     
+          })
+          // 실패하면 .catch() 에 에러가 전송됨
+          .catch((e) => {
+            console.log(e);
+          });       
         })
         // 실패하면 .catch() 에 에러가 전송됨
         .catch((e) => {
           console.log(e);
         }); 
-
-        // favorite 정보 받기
-        FavoriteDataService.getFavoriteAll(
-        this.page - 1,
-        this.pageSize
-      )
-        // 성공하면 .then() 결과가 전송됨
-        .then((response) => {
-          // let(const) { 속성명1, 속성명2 } = 데이터 객체배열 (모던자바문법 구조 분해 할당)
-          const { favorite, totalItems } = response.data; // springboot 의 전송한 맵 정보
-          this.favorite = favorite // 스프링부트에서 전송한 데이터 받고 조회수 내림차순으로 가공
-          this.count = totalItems; // 스프링부트에서 전송한 페이지정보(총 건수)
-          // 디버깅 콘솔에 정보 출력
-          console.log(response.data);     
-        })
-        // 실패하면 .catch() 에 에러가 전송됨
-        .catch((e) => {
-          console.log(e);
-        });
     },
 
     // '지역별 맛집'의 캐러셀 버튼의 오른쪽을 눌렀을때 작동하는 함수

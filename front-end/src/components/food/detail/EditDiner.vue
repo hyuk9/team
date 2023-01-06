@@ -14,49 +14,150 @@
             v-model="currentDiner.dname"
           />
         </div>
-        <div class="mt-3 form-group">
-          <label for="loc">평점</label>
-          <input
-            type="number"
-            class="form-control"
+
+        <!-- 평점 -->
+        <div class="form-group">
+          <label for="score">평점</label>
+          <select
+            class="form-select"
             id="score"
+            required
             v-model="currentDiner.score"
-          />
+            name="score"
+            aria-label="Default select example"
+          >
+            <option selected>평점을 선택해주세요.</option>
+            <option value="1">1점</option>
+            <option value="2">2점</option>
+            <option value="3">3점</option>
+            <option value="4">4점</option>
+            <option value="5">5점</option>
+          </select>
         </div>
-        <div class="mt-3 form-group">
-          <label for="loc">지역</label>
+
+        <!-- 지역 -->
+        <div class="form-group">
+          <label for="loc">주소</label>
           <input
-            type="text"
             class="form-control"
             id="loc"
+            required
             v-model="currentDiner.loc"
+            name="loc"
           />
         </div>
-        <div class="mt-3 form-group">
-          <label for="loc">전화번호</label>
+
+        <!-- 전화번호 -->
+        <div class="form-group">
+          <label for="phone">전화번호</label>
           <input
             type="text"
             class="form-control"
             id="phone"
+            required
             v-model="currentDiner.phone"
+            name="phone"
           />
         </div>
-        <div class="mt-3 form-group">
-          <label for="loc">메뉴</label>
-          <input
-            type="text"
-            class="form-control"
+
+        <!-- 메뉴 -->
+        <div class="form-group">
+          <label for="score">메뉴</label>
+          <select
+            class="form-select"
             id="menu"
+            required
             v-model="currentDiner.menu"
+            name="menu"
+            aria-label="Default select example"
+          >
+            <option selected>메뉴을 선택해주세요.</option>
+            <option value="한식">한식</option>
+            <option value="중식">중식</option>
+            <option value="일식">일식</option>
+            <option value="양식">양식</option>
+          </select>
+        </div>
+
+        <!-- 테마 -->
+        <div class="form-group">
+          <label for="score">테마</label>
+          <select
+            class="form-select"
+            id="theme"
+            required
+            v-model="currentDiner.theme"
+            name="theme"
+            aria-label="Default select example"
+          >
+            <option selected>테마를 선택해주세요.</option>
+            <option value="데이트">데이트</option>
+            <option value="모임">모임</option>
+            <option value="회식">회식</option>
+            <option value="식사">식사</option>
+          </select>
+        </div>
+
+        <!-- 주소로 지도 좌표찾는 사이트 링크 추가 -->
+        <button type="button" class="btn btn-info" @click="findL()">
+          주소 -> 좌표 전환 사이트
+        </button>
+
+        <!-- 지도 좌표추가 -->
+        <div class="form-group">
+          <label for="lat">식당 좌표값 -> 위도</label>
+          <input
+            type="number"
+            class="form-control"
+            id="lat"
+            v-model="currentDiner.lat"
+            name="lat"
+          />
+          <label for="lng">식당 좌표값 -> 경도</label>
+          <input
+            type="number"
+            class="form-control"
+            id="lng"
+            v-model="currentDiner.lng"
+            name="lng"
           />
         </div>
-        <div class="mt-3 form-group">
-          <label for="theme">테마</label>
+
+        <!-- 메인 사진넣기 -->
+        <div class="form-group">
+          <label for="mainphoto">메인 사진</label>
           <input
             type="text"
             class="form-control"
-            id="theme"
-            v-model="currentDiner.theme"
+            id="mainphoto"
+            v-model="currentDiner.mainphoto"
+            name="mainphoto"
+          />
+        </div>
+
+        <!-- 슬라이드 사진넣기 -->
+        <div class="form-group">
+          <label for="photo">슬라이드 사진</label>
+          <input
+            type="text"
+            class="form-control"
+            id="photo1"
+            v-model="currentDiner.photo1"
+            name="photo1"
+          />
+          <input
+            type="text"
+            class="form-control"
+            id="photo2"
+            v-model="currentDiner.photo2"
+            name="photo2"
+          />
+          <input
+            type="text"
+            class="form-control"
+            id="photo3"
+            v-model="currentDiner.photo3"
+            name="photo3"
           />
         </div>
       </form>

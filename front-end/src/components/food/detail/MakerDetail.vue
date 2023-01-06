@@ -7,8 +7,7 @@
   </div>
 </template>
 
-
-  <script>
+<script>
 import DinerDataService from "@/services/DinerDataService";
 /* eslint-disable */
 export default {
@@ -20,6 +19,7 @@ export default {
     };
   },
   mounted() {
+
     this.getDiner(this.$route.params.dno);
     window.kakao && window.kakao.maps
       ? this.initMap()
@@ -93,8 +93,7 @@ export default {
 };
 </script>
 
-
-  <style scoped>
+<style scoped>
 .mapDetail {
   height: 80vh;
   text-align: center;

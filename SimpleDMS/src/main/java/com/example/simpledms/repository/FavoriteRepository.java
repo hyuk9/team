@@ -35,11 +35,11 @@ public interface FavoriteRepository extends JpaRepository<Favorite, Integer> {
     Optional<Favorite> findByIdAndDno (Integer id, Integer dno);
 
 
-    @Query(value = "select fa.*, di.dname, di.phone, di.loc, di.photo " +
+    @Query(value = "select fa.*, di.dname, di.phone, di.loc, di.mainphoto " +
                    "from tb_diner di, tb_favorite fa " +
                    "where di.dno = fa.dno " +
                    "and id = :id",
-                    countQuery = "select fa.*, di.dname, di.phone, di.loc, di.photo  " +
+                    countQuery = "select fa.*, di.dname, di.phone, di.loc, di.mainphoto  " +
                                  "from tb_diner di, tb_favorite fa " +
                                  "where di.dno = fa.dno " +
                                  "and id = :id"
@@ -47,19 +47,33 @@ public interface FavoriteRepository extends JpaRepository<Favorite, Integer> {
     Page<FavoriteDto> findAllById (Integer id, Pageable pageable);
 
 
-//    찜한 dno개수가 많은 컬럼순으로 내림차순으로 정렬하기
-    @Query(value = "select di.dname, count(fa.dno) as dno_count " +
+//    찜한 dno개수가 많은 컬럼 dno 오름차순으로 정렬하기
+    @Query(value = "select di.dname, count(fa.dno) as dno_count, di.dno " +
                    "from tb_diner di " +
                    "left join tb_favorite fa on di.dno = fa.dno " +
                    "group by di.dno, di.dname " +
-                   "order by dno_count desc",
-                    countQuery = "select di.dname, count(fa.dno) as dno_count " +
+                   "order by dno",
+                    countQuery = "select di.dname, count(fa.dno) as dno_count, di.dno " +
                                  "from tb_diner di " +
                                  "left join tb_favorite fa on di.dno = fa.dno " +
                                  "group by di.dno, di.dname " +
-                                 "order by dno_count desc"
+                                 "order by dno"
             ,nativeQuery = true)
     Page<FavoriteDto> findAllBy (Pageable pageable);
+
+    //    찜한 dno개수가 많은 컬럼 dno 오름차순으로 정렬하기
+    @Query(value = "select di.dname, count(fa.dno) as dno_count " +
+            "from tb_diner di " +
+            "left join tb_favorite fa on di.dno = fa.dno " +
+            "group by di.dno, di.dname " +
+            "having di.dno = :dno",
+            countQuery = "select di.dname, count(fa.dno) as dno_count " +
+                    "from tb_diner di " +
+                    "left join tb_favorite fa on di.dno = fa.dno " +
+                    "group by di.dno, di.dname " +
+                    "having di.dno = :dno"
+            ,nativeQuery = true)
+    Optional<FavoriteDto> findDnoBy (@Param("dno") Integer dno);
 
 }
 

@@ -104,6 +104,12 @@ public class FavoriteService {
         return list;
     }
 
+    // dno 로 검색함수
+    public Optional<FavoriteDto> findDnoBy(Integer dno) {
+        Optional<FavoriteDto> list = favoriteRepository.findDnoBy(dno);
+
+        return list;
+    }
 }
 
 

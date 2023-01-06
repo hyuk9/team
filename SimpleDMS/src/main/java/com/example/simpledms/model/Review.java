@@ -46,19 +46,19 @@ public class Review extends BaseTimeEntity {
     private Integer rno;
 
     @javax.persistence.Column
-    private Integer dno;
+    private Integer id;
 
     @javax.persistence.Column
-    private Integer rating;
+    private Integer dno;
 
     @javax.persistence.Column
     private String rcontent;
 
+    @javax.persistence.Column
+    private Integer rating;
+
 //    @Lob
     @javax.persistence.Column
     private String rphoto;
-
-    @javax.persistence.Column
-    private String rwriter;
 
 }

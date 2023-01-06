@@ -12,9 +12,9 @@
                 <thead>
                   <tr>
                     <!-- <th scope="col">Last Name</th> -->
-                    <th scope="col">식당</th>
+                    <th scope="col">가게</th>
                     <th scope="col">위치</th>
-                    <th scope="col">이름</th>
+                    <th scope="col">예약자명</th>
                     <th scope="col">인원수</th>
                     <th scope="col">연락처</th>
                     <th scope="col">예약날짜</th>
@@ -34,7 +34,7 @@
                     <td>{{ data.rtime }}</td>
                     <td>
                       <router-link :to="'/reservation/' + data.rid"
-                        ><span class="badge bg-success"
+                        ><span class="badge rounded-pill bg-success"
                           >변경하기</span
                         ></router-link
                       >
@@ -44,16 +44,18 @@
               </table>
 
               <!--    Todo : page 바 시작 -->
-              <!-- <div class="col-md-8 offset-4 pt-5">
+              <div class="overflow-auto offset-5 mt-5">
                 <b-pagination
                   v-model="page"
                   :total-rows="count"
                   :per-page="pageSize"
+                  first-text="<<"
+                  last-text=">>"
                   prev-text="Prev"
                   next-text="Next"
                   @change="handlePageChange"
                 ></b-pagination>
-              </div> -->
+              </div>
               <!--    Todo : page 바 끝 -->
 
               <!-- search 관련 div 시작 -->
@@ -97,11 +99,7 @@ export default {
     return {
       reservation: [],
       currentData: null,
-      currentProfile: null,
-      profiles:true,
       currentIndex: -1,
-      currentImage: undefined, // 현재 이미지 변수
-      previewImage: undefined, // 미리보기 이미지 변수
       message: "", // 서버쪽 메세지를 저장할 변수
 
       page: 1,
@@ -112,9 +110,13 @@ export default {
     };
   },
   methods: {
-// 예약목록 조회하는 함수
+    // 예약목록 조회하는 함수
     retrieveReservation() {
-      ReservationDataService.getId(this.currentUser.id, this.page - 1, this.pageSize)
+      ReservationDataService.getId(
+        this.currentUser.id,
+        this.page - 1,
+        this.pageSize
+      )
         .then((response) => {
           const { reservation, totalItems } = response.data;
           this.reservation = reservation;
@@ -150,22 +152,9 @@ export default {
   },
   // 화면이 뜨자마자 실행되는 이벤트
   mounted() {
-    if (!this.currentUser) {
-      this.$router.push("/login"); // user 키가 없으면 강제 /login 페이지 이동
-    }
     this.retrieveReservation();
-
-    // 캐러셀 초기화 실행
-    $(".testimonial-carousel").owlCarousel({
-      autoplay: true, // 자동으로 이미지가 돌아가게 할 것인지?
-      smartSpeed: 1000, // 이미지가 변경될때 변경 속도
-      nav: true,
-      items: 4, // 초기 화면에 표시할 이미지 개수
-      loop: true, // 마지막 사진이 오면 처음사진으로 돌아가게 할 것인지?
-    });
   },
 };
 </script>
 
-<style>
-</style>
+<style></style>
