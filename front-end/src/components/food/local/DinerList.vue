@@ -168,7 +168,7 @@
               <div class="card-header">
                 <i class="bi bi-geo-alt-fill"></i> 내 근처 맛집
               </div>
-              <div class="card-body" style="height: 550px">
+              <div class="card-body" style="height: 550px; width: 100%;">
                 <CurrentMap />
               </div>
             </div>
