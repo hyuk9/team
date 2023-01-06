@@ -1,6 +1,8 @@
 package com.example.simpledms.security.auth;
 
+import com.example.simpledms.model.User;
 import com.example.simpledms.security.jwt.JwtUtils;
+import com.example.simpledms.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -16,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * packageName : com.example.simplelogin.security.auth
@@ -35,6 +38,9 @@ import java.util.Map;
 public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
     @Autowired
     JwtUtils jwtUtils;
+
+    @Autowired
+    UserService userService;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
@@ -82,9 +88,12 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
 
         jwt = jwtUtils.generateJwtToken(email);
         log.info("{}", jwt);
+
+        Optional<User> userOptional = userService.findByEmail(email);
 //        Vue 로(frontend) : 토큰 + 유저명 + email 전송 (Get 방식)
         targetUrl = UriComponentsBuilder.fromUriString("http://localhost:8080/auth-redirect")
                 .queryParam("accessToken", jwt)
+                .queryParam("id" , userOptional.get().getId())
                 .queryParam("username", username)
                 .queryParam("email", email)
                 .build().toUriString();
