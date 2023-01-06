@@ -20,6 +20,7 @@ export default {
 
     const urlParams = url.searchParams;
     const accessToken = urlParams.get("accessToken"); // URL accessToken 변수값 뽑아내기
+    const id = urlParams.get("id");
     const username = urlParams.get("username"); // URL username 변수값 뽑아내기
     const email = urlParams.get("email");  // URL email 변수값 뽑아내기
     console.log(urlParams)
@@ -30,6 +31,7 @@ export default {
     // 임시 객체 생성
     this.userData = {
       accessToken: accessToken,
+      id : Number(id),
       username: username,
       email: email,
       password: "",

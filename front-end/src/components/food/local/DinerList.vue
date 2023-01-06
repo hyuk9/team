@@ -68,7 +68,7 @@
                     <router-link :to="'/diner/' + data.dno">
                       <img
                         class="img-fluid rounded-3 h-100 pt-2"
-                        :src="data.photo"
+                        :src="data.mainphoto"
                         alt="..."
                       />
                       <div class="card-body">
