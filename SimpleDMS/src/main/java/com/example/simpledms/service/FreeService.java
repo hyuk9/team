@@ -135,7 +135,7 @@ public class FreeService {
     }
 
     public Free updateUploadFile(int fno, String writer, String title, String
-            content, MultipartFile blobFile) throws IOException {
+            content, MultipartFile blobFile, int views) throws IOException {
 
         //            업로드 파일에서 파일명 얻기
         String galleryFileName= "";
@@ -150,6 +150,7 @@ public class FreeService {
                     .content(content)
                     .galleryFileName(galleryFileName)
                     .blobFile(blobFile.getBytes())
+                    .views(views)
                     .build();
         }else{
             free = Free.builder()
@@ -158,6 +159,7 @@ public class FreeService {
                     .title(title)
                     .content(content)
                     .galleryFileName(galleryFileName)
+                    .views(views)
                     .build();
         }
         Free createFree = freeRepository.save(free);

@@ -1,10 +1,5 @@
 <template>
   <div>
-    <h1 class="text-danger">
-      현재 수정할때 자동으로 user.role 셀렉트박스 지정이 안되는 문제 있음(기능은
-      정상 작동)
-    </h1>
-    <h1 class="text-danger">아이디랑 이메일은 변경 불가능하게 막아둔 상태</h1>
     <div v-if="currentUser" class="container-fluid w-50 mt-5 mb-5">
       <div>
         <!-- 아이디 -->
@@ -155,7 +150,7 @@
         <!-- 권한 -->
         <div class="form-group" v-if="showAdminBoard">
           <label for="password">권한</label>
-          <select class="form-select" v-model="currentUser.role[0].name">
+          <select class="form-select" v-model="currentUser.role[0].rname">
             <option>ROLE_USER</option>
             <option>ROLE_ADMIN</option>
           </select>

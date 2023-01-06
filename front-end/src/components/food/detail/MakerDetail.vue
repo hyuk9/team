@@ -19,8 +19,7 @@ export default {
     };
   },
   mounted() {
-    // alert(this.currentDiner.lat),
-    //   alert(this.currentDiner.lng),
+
     this.getDiner(this.$route.params.dno);
     window.kakao && window.kakao.maps
       ? this.initMap()
@@ -100,7 +99,7 @@ export default {
   text-align: center;
 }
 #map {
-  width: 430px;
+  width: 100%;
   height: 500px;
   border: 1px #a8a8a8 solid;
 }

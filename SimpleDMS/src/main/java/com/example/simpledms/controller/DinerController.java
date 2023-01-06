@@ -208,6 +208,7 @@ public class DinerController {
             dinerData.setViews(plusViews);
 
             dinerService.save(dinerData);
+            
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

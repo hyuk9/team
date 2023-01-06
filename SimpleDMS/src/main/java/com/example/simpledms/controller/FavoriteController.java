@@ -239,6 +239,28 @@ public class FavoriteController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+//    dno로 검색함수
+    @GetMapping("/favorite/dno/{dno}")
+    public ResponseEntity<Object> getFavoriteId(@PathVariable Integer dno) {
+
+        try {
+            Optional<FavoriteDto> optionalFavorite = favoriteService.findDnoBy(dno);
+
+            if (optionalFavorite.isPresent() == true) {
+//                데이터 + 성공 메세지 전송
+                return new ResponseEntity<>(optionalFavorite.get(), HttpStatus.OK);
+            } else {
+//                데이터 없음 메세지 전송(클라이언트)
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+
+        } catch (Exception e) {
+            log.debug(e.getMessage());
+            // 서버에러 발생 메세지 전송(클라이언트)
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
 
 
