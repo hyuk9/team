@@ -54,7 +54,7 @@
                       <div class="card card-span h-100 text-white rounded-3">
                         <img
                           class="img-fluid rounded-3 h-100"
-                          :src="data.photo"
+                          :src="data.mainphoto"
                           alt="..."
                         />
                         <div class="card-img-overlay ps-0">
@@ -138,7 +138,7 @@
                       <div class="card card-span h-100 text-white rounded-3">
                         <img
                           class="img-fluid rounded-3 h-100"
-                          :src="data.photo"
+                          :src="data.mainphoto"
                           alt="..."
                         />
                         <div class="card-img-overlay ps-0">

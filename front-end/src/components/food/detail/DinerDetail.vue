@@ -86,22 +86,25 @@
                 <div class="carousel-inner">
                   <div class="carousel-item active">
                     <img
-                      src="https://dummyimage.com/900x400/ced4da/6c757d.jpg"
-                      class="d-block w-100"
+                      :src="currentDiner.photo1"
+                      class="d-block w-100 img-fluid"
+                      style="width: auto; height:500px;"
                       alt="..."
                     />
                   </div>
                   <div class="carousel-item">
                     <img
-                      src="https://dummyimage.com/900x400/ced4da/6c757d.jpg"
-                      class="d-block w-100"
+                      :src="currentDiner.photo2"
+                      class="d-block w-100 img-fluid"
+                      style="width: auto; height:500px;"
                       alt="..."
                     />
                   </div>
-                  <div class="carousel-item">
+                  <div class="carousel-item img-fluid">
                     <img
-                      src="https://dummyimage.com/900x400/ced4da/6c757d.jpg"
-                      class="d-block w-100"
+                      :src="currentDiner.photo3"
+                      class="d-block w-100 img-fluid"
+                      style="width: auto; height:500px;"
                       alt="..."
                     />
                   </div>
