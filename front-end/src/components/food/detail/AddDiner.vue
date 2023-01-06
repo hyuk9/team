@@ -38,17 +38,6 @@
                 <option value="5">5점</option>
               </select>
             </div>
-            <!-- <div class="form-group">
-              <label for="score">평점</label>
-              <input
-                type="text"
-                class="form-control"
-                id="score"
-                required
-                v-model="diner.score"
-                name="score"
-              />
-            </div> -->
 
             <!-- 지역 -->
             <div class="form-group">
@@ -113,24 +102,70 @@
               </select>
             </div>
 
+            <!-- 주소로 지도 좌표찾는 사이트 링크 추가 -->
+            <button type="button" class="btn btn-info" @click="findL()">주소 -> 좌표 전환 사이트</button>
+
             <!-- 지도 좌표추가 -->
             <div class="form-group">
-              <label for="dname">식당 좌표값</label>
+              <label for="lat">식당 좌표값 -> 위도</label>
+              <input
+                type="number"
+                class="form-control"
+                id="lat"
+               
+                v-model="diner.lat"
+                name="lat"
+              />
+              <label for="lng">식당 좌표값 -> 경도</label>
+              <input
+                type="number"
+                class="form-control"
+                id="lng"
+                
+                v-model="diner.lng"
+                name="lng"
+              />
+            </div>
+
+            <!-- 메인 사진넣기 -->
+            <div class="form-group">
+              <label for="mainphoto">메인 사진</label>
               <input
                 type="text"
                 class="form-control"
-                id="lat"
-                required
-                v-model="diner.lat"
-                name="lat"
+                id="mainphoto"
+              
+                v-model="diner.mainphoto"
+                name="mainphoto"
+              />
+            </div>
+
+            <!-- 슬라이드 사진넣기 -->
+            <div class="form-group">
+              <label for="photo">슬라이드 사진</label>
+              <input
+                type="text"
+                class="form-control"
+                id="photo1"
+               
+                v-model="diner.photo1"
+                name="photo1"
               />
               <input
                 type="text"
                 class="form-control"
-                id="lng"
-                required
-                v-model="diner.lng"
-                name="lng"
+                id="photo2"
+             
+                v-model="diner.photo2"
+                name="photo2"
+              />
+              <input
+                type="text"
+                class="form-control"
+                id="photo3"
+                
+                v-model="diner.photo3"
+                name="photo3"
               />
             </div>
 
@@ -169,6 +204,13 @@ export default {
         menu: "",
         phone: "",
         theme: "",
+        lat: null,
+        lng: null,
+
+        mainphoto: "",
+        photo1: "",
+        photo2: "",
+        photo3: "",
       },
       // submit 버튼을 클릭하면 true 가 되고, You submitted successfully! 화면에 출력됨
       submitted: false,
@@ -185,7 +227,12 @@ export default {
         menu: this.diner.menu,
         phone: this.diner.phone,
         theme: this.diner.theme,
-        // photo: this.diner.photo,
+        lat: this.diner.lat,
+        lng: this.diner.lng,
+        mainphoto: this.diner.mainphoto,
+        photo1: this.diner.photo1,
+        photo2: this.diner.photo2,
+        photo3: this.diner.photo3
       };
 
       // insert 요청 함수 호출(axios 공통함수 호출)
@@ -208,6 +255,11 @@ export default {
       // 새양식 다시 보여주기 함수, 변수 초기화
       this.submitted = false;
       this.diner = {};
+    },
+    findL() {
+      window.open(
+        "https://deveapp.com/map.php"
+      );
     },
   },
 };

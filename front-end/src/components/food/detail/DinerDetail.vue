@@ -86,21 +86,21 @@
                 <div class="carousel-inner">
                   <div class="carousel-item active">
                     <img
-                      src="https://dummyimage.com/900x400/ced4da/6c757d.jpg"
+                      :src="currentDiner.photo1"
                       class="d-block w-100"
                       alt="..."
                     />
                   </div>
                   <div class="carousel-item">
                     <img
-                      src="https://dummyimage.com/900x400/ced4da/6c757d.jpg"
+                    :src="currentDiner.photo2"
                       class="d-block w-100"
                       alt="..."
                     />
                   </div>
                   <div class="carousel-item">
                     <img
-                      src="https://dummyimage.com/900x400/ced4da/6c757d.jpg"
+                    :src="currentDiner.photo3"
                       class="d-block w-100"
                       alt="..."
                     />
