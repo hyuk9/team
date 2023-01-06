@@ -76,14 +76,17 @@ public class ProfileController {
     //    생성 처리 : image update 포함
     @PostMapping("/profile/create")
     public ResponseEntity<Object> createUploadFile(
+            @RequestParam Integer id,
             @RequestParam(required = false) MultipartFile blobFile
     ) {
         String message = "";
 
+        log.info("id : ", id);
         log.info("blobFile {} : ", blobFile);
 
+
         try {
-            profileService.createUploadImage(blobFile);
+            profileService.createUploadImage(id, blobFile);
             if (blobFile != null) {
                 message = "Uploaded the file successfully: " + blobFile.getOriginalFilename();
             }

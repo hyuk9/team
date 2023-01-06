@@ -64,8 +64,8 @@
               <div class="col-lg-6" v-for="(data, index) in diner" :key="index">
                 <!-- Blog post-->
                 <div class="card mb-5">
-                  <router-link :to="'/diner/' + data.dno">
-                    <a @click="countViews(data.dno)">
+                  <a @click="countViews(data.dno)">
+                    <router-link :to="'/diner/' + data.dno">
                       <img
                         class="img-fluid rounded-3 h-100 pt-2"
                         :src="data.photo"
@@ -128,11 +128,11 @@
                               fs-0
                             "
                           ></i>
-                          {{}}
+                          {{data.dno_count}}
                         </p>
                       </div>
-                    </a>
-                  </router-link>
+                    </router-link>
+                  </a>
                 </div>
               </div>
             </div>
@@ -165,13 +165,13 @@
           <div class="col-lg-4">
             <!-- Map widget-->
             <div class="card mb-4 mt-5">
-            <div class="card-header">
-              <i class="bi bi-geo-alt-fill"></i> 내 근처 맛집
+              <div class="card-header">
+                <i class="bi bi-geo-alt-fill"></i> 내 근처 맛집
+              </div>
+              <div class="card-body" style="height: 550px">
+                <CurrentMap />
+              </div>
             </div>
-            <div class="card-body" style="height: 550px">
-              <CurrentMap />
-            </div>
-          </div>
           </div>
         </div>
       </div>
@@ -185,6 +185,7 @@
 
 import DinerDataService from "@/services/DinerDataService";
 import CurrentMap from "@/components/food/detail/CurrentMap.vue";
+import FavoriteDataService from "@/services/FavoriteDataService";
 
 export default {
   // 변수 정의하는 곳 : data(), 초기화
@@ -233,6 +234,9 @@ export default {
       // 처음 페이지 열렸을때 입력값 숨기기용 변수
       notTruesearchSelect: "",
       notTruesearchKeyword: "",
+
+      // favorite 정보 저장용
+      favorite : [],
     };
   },
   // 함수 정의하는 곳 : methods:
@@ -257,11 +261,38 @@ export default {
           this.count = totalItems; // 스프링부트에서 전송한 페이지정보(총 건수)
           // 디버깅 콘솔에 정보 출력
           console.log(response.data);
+            // favorite 정보 받기
+          FavoriteDataService.getFavoriteAll(
+            this.page - 1,
+            this.pageSize
+          )
+          // 성공하면 .then() 결과가 전송됨
+          .then((response) => {
+            // let(const) { 속성명1, 속성명2 } = 데이터 객체배열 (모던자바문법 구조 분해 할당)
+            const { favorite, totalItems } = response.data; // springboot 의 전송한 맵 정보
+            this.favorite = favorite // 스프링부트에서 전송한 데이터 받고 조회수 내림차순으로 가공
+            this.count = totalItems; // 스프링부트에서 전송한 페이지정보(총 건수)
+            // 디버깅 콘솔에 정보 출력
+            console.log(response.data);
+            // favorite dno_count 를 diner dno_count에 복사
+            for(let i= 0; i<this.diner.length; i++) {
+              for(let j=0; j<this.favorite.length; j++) {
+                if(this.diner[i].dname ==this.favorite[j].dname) {
+                this.diner[i].dno_count = this.favorite[j].dno_count        
+                }
+              }              
+            } 
+          })
+          // 실패하면 .catch() 에 에러가 전송됨
+          .catch((e) => {
+            console.log(e);
+          });
         })
         // 실패하면 .catch() 에 에러가 전송됨
         .catch((e) => {
           console.log(e);
         });
+          
     },
     // select box 값 변경시 실행되는 함수(재조회)
     handlePageSizeChange(event) {

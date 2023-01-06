@@ -45,7 +45,7 @@ public class ProfileService {
     }
 
 
-    public Profile createUploadImage(MultipartFile blobFile) throws IOException {
+    public Profile createUploadImage(Integer id, MultipartFile blobFile) throws IOException {
 
         String imageFileName = "";
         Profile profile = null;
@@ -55,12 +55,14 @@ public class ProfileService {
 
              profile = Profile.builder()
                     .imageFileName(imageFileName)
+                     .id(id)
                     .blobFile(blobFile.getBytes())
                     .build();
         }else {
 
              profile = Profile.builder()
                     .imageFileName(imageFileName)
+                     .id(id)
                     .build();
 
         }
