@@ -54,18 +54,22 @@
                       <div class="card card-span h-100 text-white rounded-3">
                         <img
                           class="img-fluid rounded-3 h-100"
-                          :src="data.photo"
+                          :src="data.mainphoto"
                           alt="..."
                         />
                         <div class="card-img-overlay ps-0">
-                          <span class="badge bg-danger p-2 mt-1 ms-3"
-                            ><i class="fas fa-map-marker-alt me-2 fs-0"></i
-                            ><span class="fs-0">{{ data.loc }}</span></span
-                          >
-                          <span class="badge bg-primary p-2 mt-1 ms-3"
-                            ><i class="fas fa-ellipsis-h me-2 fs-0"></i
-                            ><span class="fs-0">{{ data.menu }}</span></span
-                          >
+                          <div>
+                            <span class="badge bg-danger p-2 mt-1 ms-3"
+                              ><i class="fas fa-map-marker-alt me-2 fs-0"></i
+                              ><span class="fs-0">{{ data.loc.split(" ")[1]  }}</span></span
+                            >
+                          </div>
+                          <div>
+                            <span class="badge bg-primary p-2 mt-1 ms-3"
+                              ><i class="fas fa-ellipsis-h me-2 fs-0"></i
+                              ><span class="fs-0">{{ data.menu }}</span></span
+                            >
+                          </div>
                         </div>
                         <div class="card-body ps-0">
                           <div class="d-flex align-items-center mb-3">
@@ -129,18 +133,22 @@
                       <div class="card card-span h-100 text-white rounded-3">
                         <img
                           class="img-fluid rounded-3 h-100"
-                          :src="data.photo"
+                          :src="data.mainphoto"
                           alt="..."
                         />
                         <div class="card-img-overlay ps-0">
-                          <span class="badge bg-danger p-2 mt-1 ms-3"
-                            ><i class="fas fa-map-marker-alt me-2 fs-0"></i
-                            ><span class="fs-0">{{ data.loc }}</span></span
-                          >
-                          <span class="badge bg-primary p-2 mt-1 ms-3"
-                            ><i class="fas fa-ellipsis-h me-2 fs-0"></i
-                            ><span class="fs-0">{{ data.menu }}</span></span
-                          >
+                          <div>
+                            <span class="badge bg-danger p-2 mt-1 ms-3"
+                              ><i class="fas fa-map-marker-alt me-2 fs-0"></i
+                              ><span class="fs-0">{{ data.loc.split(" ")[1]  }}</span></span
+                            >
+                          </div>
+                          <div>
+                            <span class="badge bg-primary p-2 mt-1 ms-3"
+                              ><i class="fas fa-ellipsis-h me-2 fs-0"></i
+                              ><span class="fs-0">{{ data.menu }}</span></span
+                            >
+                          </div>
                         </div>
                         <div class="card-body ps-0">
                           <div class="d-flex align-items-center mb-3">
