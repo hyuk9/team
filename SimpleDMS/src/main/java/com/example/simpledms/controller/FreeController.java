@@ -204,7 +204,9 @@ public class FreeController {
         log.info("content {} : ", content);
 
         try {
-            freeService.updateUploadFile(fno, writer, title, content, blobFile);
+            Optional<Free> free = freeService.findId(fno);
+            Integer views = free.get().getViews();
+            freeService.updateUploadFile(fno, writer, title, content, blobFile, views);
 
 
             if (blobFile != null) {
