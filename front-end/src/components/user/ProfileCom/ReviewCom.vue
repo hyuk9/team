@@ -25,7 +25,7 @@
                     <td class="align-middle">{{ data.rcontent }}</td>
                     <td class="align-middle">{{ data.rating }}</td>
                     <td>
-                      <img :src="data.photo" alt="" style="height: 100px" />
+                      <img :src="data.mainphoto" alt="" style="height: 100px" />
                     </td>
                     <td class="align-middle">
                       <router-link to=""

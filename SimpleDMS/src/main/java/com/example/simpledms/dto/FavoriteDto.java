@@ -16,7 +16,7 @@ public interface FavoriteDto {
     String getDname();
     String getPhone();
     String getLoc();
-    String getPhoto();
+    String getMainphoto();
 
 //    Favorite에서 가져올 속성
     Integer getFid();

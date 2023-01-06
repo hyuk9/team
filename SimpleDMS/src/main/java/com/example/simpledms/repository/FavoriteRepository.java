@@ -35,11 +35,11 @@ public interface FavoriteRepository extends JpaRepository<Favorite, Integer> {
     Optional<Favorite> findByIdAndDno (Integer id, Integer dno);
 
 
-    @Query(value = "select fa.*, di.dname, di.phone, di.loc, di.photo " +
+    @Query(value = "select fa.*, di.dname, di.phone, di.loc, di.mainphoto " +
                    "from tb_diner di, tb_favorite fa " +
                    "where di.dno = fa.dno " +
                    "and id = :id",
-                    countQuery = "select fa.*, di.dname, di.phone, di.loc, di.photo  " +
+                    countQuery = "select fa.*, di.dname, di.phone, di.loc, di.mainphoto  " +
                                  "from tb_diner di, tb_favorite fa " +
                                  "where di.dno = fa.dno " +
                                  "and id = :id"

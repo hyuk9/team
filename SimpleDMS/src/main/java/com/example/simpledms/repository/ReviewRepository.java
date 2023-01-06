@@ -31,11 +31,11 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
 
     List<Review> findAllByDnoEquals (Integer dno);
 
-    @Query(value = "select rv.*, di.dname, di.photo " +
+    @Query(value = "select rv.*, di.dname, di.mainphoto " +
             "from tb_review rv, tb_diner di " +
             "where rv.dno = di.dno " +
             "and id = :id",
-            countQuery = "select rv.*, di.dname, di.photo " +
+            countQuery = "select rv.*, di.dname, di.mainphoto " +
                     "from tb_review rv, tb_diner di " +
                     "where rv.dno = di.dno " +
                     "and id = :id"
