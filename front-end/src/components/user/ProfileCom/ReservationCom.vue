@@ -34,7 +34,7 @@
                     <td>{{ data.rtime }}</td>
                     <td>
                       <router-link :to="'/reservation/' + data.rid"
-                        ><span class="badge bg-success"
+                        ><span class="badge rounded-pill bg-success"
                           >변경하기</span
                         ></router-link
                       >
@@ -44,11 +44,13 @@
               </table>
 
               <!--    Todo : page 바 시작 -->
-              <div class="col-md-8 offset-4 pt-5">
+              <div class="overflow-auto offset-5 mt-5">
                 <b-pagination
                   v-model="page"
                   :total-rows="count"
                   :per-page="pageSize"
+                  first-text="<<"
+                  last-text=">>"
                   prev-text="Prev"
                   next-text="Next"
                   @change="handlePageChange"

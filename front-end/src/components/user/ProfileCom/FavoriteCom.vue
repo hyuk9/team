@@ -52,7 +52,7 @@
                     </td>
                     <td class="align-middle">
                       <router-link :to="'/diner/' + data.dno"
-                        ><span class="badge rounded-pill bg-warning text-dark"
+                        ><span class="badge rounded-pill bg-warning"
                           >더보기</span
                         ></router-link
                       >
@@ -62,11 +62,13 @@
               </table>
 
               <!--    Todo : page 바 시작 -->
-              <div class="col-md-8 offset-4 pt-5">
+              <div class="overflow-auto offset-5 mt-5">
                 <b-pagination
                   v-model="page"
                   :total-rows="count"
                   :per-page="pageSize"
+                  first-text="<<"
+                  last-text=">>"
                   prev-text="Prev"
                   next-text="Next"
                   @change="handlePageChange"
