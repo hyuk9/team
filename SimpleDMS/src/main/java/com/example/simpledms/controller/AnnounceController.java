@@ -188,14 +188,9 @@ public ResponseEntity<Object> updateAnnounceViews(@PathVariable int ano) {
         Announce announceData = optionalAnnounce.get();
         Integer plusViews = announceData.getViews() +1;
 
-        Announce announce = new Announce(
-                announceData.getAno(),
-                announceData.getWriter(),
-                announceData.getTitle(),
-                announceData.getContent(),
-                plusViews
-        );
-        announceService.save(announce);
+        announceData.setViews(plusViews);
+
+        announceService.save(announceData);
         return new ResponseEntity<>(HttpStatus.OK);
     } catch (Exception e) {
         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

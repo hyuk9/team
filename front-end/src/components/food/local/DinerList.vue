@@ -73,13 +73,24 @@
                       />
                       <div class="card-body">
                         <a
-                          class="badge bg-success text-decoration-none link-light"
+                          class="
+                            badge
+                            bg-success
+                            text-decoration-none
+                            link-light
+                          "
                           href="#!"
                         >
                           {{ data.menu }}
                         </a>
                         <a
-                          class="badge bg-warning text-decoration-none link-light ms-1"
+                          class="
+                            badge
+                            bg-warning
+                            text-decoration-none
+                            link-light
+                            ms-1
+                          "
                           href="#!"
                           >{{ data.theme }}</a
                         >
@@ -89,7 +100,12 @@
                             {{ data.dname }}
                           </span>
                           <a
-                            class="badge bg-danger text-decoration-none link-light"
+                            class="
+                              badge
+                              bg-danger
+                              text-decoration-none
+                              link-light
+                            "
                             href="#!"
                             >{{ data.score }}</a
                           >
@@ -98,8 +114,21 @@
                           {{ data.loc }}
                         </p>
                         <p class="card-text text-800 fw-bolder">
-                          <i class="fas fa-eye text-dark text-800 me-2 fs-0"></i>
+                          <i
+                            class="fas fa-eye text-dark text-800 me-2 fs-0"
+                          ></i>
                           {{ data.views }}
+                          <i
+                            class="
+                              fas
+                              fa-heart
+                              text-dark text-800
+                              ms-3
+                              me-2
+                              fs-0
+                            "
+                          ></i>
+                          {{}}
                         </p>
                       </div>
                     </a>
@@ -135,44 +164,14 @@
           <!-- Side widgets-->
           <div class="col-lg-4">
             <!-- Map widget-->
-            <div class="card mb-4">
-              <div class="card-header">지도</div>
-              <!-- <div id="map" style="height: 600px"></div> -->
-              <naver-maps
-                :height="height"
-                :width="width"
-                :mapOptions="mapOptions"
-                :initLayers="initLayers"
-                @load="onLoad"
-              >
-                <naver-info-window
-                  class="info-window"
-                  @load="onWindowLoad"
-                  :isOpen="info"
-                  :marker="marker"
-                >
-                  <div class="info-window-container">
-                    <h1>김밥천국</h1>
-                  </div>
-                </naver-info-window>
-                <naver-marker
-                  :lat="35.1525133"
-                  :lng="129.059547"
-                  @click="onMarkerClicked"
-                  @load="onMarkerLoaded"
-                />
-
-                <naver-ground-overlay
-                  :url="'//logoproject.naver.com/img/img_about.gif'"
-                  :bounds="{
-                    south: 36.7,
-                    north: 36.9,
-                    west: 126.5,
-                    east: 127.5,
-                  }"
-                />
-              </naver-maps>
+            <div class="card mb-4 mt-5">
+            <div class="card-header">
+              <i class="bi bi-geo-alt-fill"></i> 내 근처 맛집
             </div>
+            <div class="card-body" style="height: 550px">
+              <CurrentMap />
+            </div>
+          </div>
           </div>
         </div>
       </div>
@@ -185,6 +184,7 @@
 /* eslint-disable */
 
 import DinerDataService from "@/services/DinerDataService";
+import CurrentMap from "@/components/food/detail/CurrentMap.vue";
 
 export default {
   // 변수 정의하는 곳 : data(), 초기화
@@ -282,9 +282,9 @@ export default {
       this.currentIndex = index;
     },
     // 조회수 증가 함수
-    countViews (dno) {
+    countViews(dno) {
       DinerDataService.plusViews(dno)
-     .then((response) => {
+        .then((response) => {
           // 디버깅 콘솔에 정보 출력
           console.log(response.data);
         })
@@ -292,7 +292,10 @@ export default {
         .catch((e) => {
           console.log(e);
         });
-    }
+    },
+  },
+  components: {
+    CurrentMap,
   },
   computed: {
     currentUser() {

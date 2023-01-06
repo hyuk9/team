@@ -72,7 +72,7 @@
                               data.review_count
                             }}</span></span
                           ><span class="badge bg-primary p-2 mt-1 ms-3"
-                            ><i class="fas fa-thumbs-up me-2 fs-0"></i
+                            ><i class="fas fa-heart me-2 fs-0"></i
                             ><span class="fs-0">{{ data.like_count }}</span></span
                           >
                         </div>
@@ -156,7 +156,7 @@
                               data.review_count
                             }}</span></span
                           ><span class="badge bg-primary p-2 mt-1 ms-3"
-                            ><i class="fas fa-thumbs-up me-2 fs-0"></i
+                            ><i class="fas fa-heart me-2 fs-0"></i
                             ><span class="fs-0">{{ data.like_count }}</span></span
                           >
                         </div>
@@ -202,7 +202,6 @@
               type="button"
               data-bs-target="#carouselLocationItemsInChooseList"
               data-bs-slide="prev"
-              v-on:click="countDown()"
             >
               <span
                 class="carousel-control-prev-icon hover-top-shadow"
@@ -215,7 +214,6 @@
               type="button"
               data-bs-target="#carouselLocationItemsInChooseList"
               data-bs-slide="next"
-              v-on:click="countUp()"
             >
               <span
                 class="carousel-control-next-icon hover-top-shadow"

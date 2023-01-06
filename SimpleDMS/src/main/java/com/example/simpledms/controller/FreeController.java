@@ -194,7 +194,7 @@ public class FreeController {
             @RequestParam("writer") String writer,
             @RequestParam("title") String title,
             @RequestParam("content") String content,
-            @RequestParam("blobFile") MultipartFile blobFile
+            @RequestParam(required = false) MultipartFile blobFile
     ) {
         String message = "";
 
@@ -206,7 +206,10 @@ public class FreeController {
         try {
             freeService.updateUploadFile(fno, writer, title, content, blobFile);
 
-            message = "Uploaded the file successfully: " + blobFile.getOriginalFilename();
+
+            if (blobFile != null) {
+                message = "Uploaded the file successfully: " + blobFile.getOriginalFilename();
+            }
             return new ResponseEntity<Object>(message, HttpStatus.CREATED);
         } catch (Exception e) {
             message = "Could not upload the file: " + blobFile.getOriginalFilename() + "!";
@@ -366,18 +369,9 @@ public class FreeController {
             Free freeData = optionalFree.get();
             Integer plusViews = freeData.getViews() +1;
 
-            Free free = new Free(
-                    freeData.getFno(),
-                    freeData.getWriter(),
-                    freeData.getTitle(),
-                    freeData.getContent(),
-                    freeData.getGalleryTitle(),
-                    freeData.getGalleryFileName(),
-                    freeData.getGalleryType(),
-                    freeData.getBlobFile(),
-                    plusViews
-            );
-            freeService.save(free);
+            freeData.setViews(plusViews);
+
+            freeService.save(freeData);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
