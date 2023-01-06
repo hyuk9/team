@@ -55,7 +55,7 @@
             <h5>전화번호</h5>
             <div class="phoneInput">
               <input
-                v-model="currentReservation.phone1"
+                v-model="phoneFirstPart"
                 type="text"
                 class="input"
                 id="phone1"
@@ -63,7 +63,7 @@
               />
               <span class="minus">-</span>
               <input
-                v-model="currentReservation.phone2"
+                v-model="phoneMiddlePart"
                 type="text"
                 class="input"
                 id="phone2"
@@ -71,7 +71,7 @@
               />
               <span class="minus">-</span>
               <input
-                v-model="currentReservation.phone3"
+                v-model="phoneLastPart"
                 type="text"
                 class="input"
                 id="phone3"
@@ -143,6 +143,10 @@ export default {
   data() {
     return {
       currentReservation: null,
+      phoneFirstPart: null,
+      phoneMiddlePart: null,
+      phoneLastPart: null,
+      phoneArr: [],
     };
   },
   methods: {
@@ -156,6 +160,7 @@ export default {
           this.currentReservation = response.data;
           // 콘솔 로그 출력
           console.log(response.data);
+          this.separatePhone();
         })
         // 실패하면 .catch() 에러메세지가 리턴됨
         .catch((e) => {
@@ -163,7 +168,27 @@ export default {
         });
     },
 
+    //  예약정보에 있는 휴대폰번호를 3개로 나누는 함수
+    separatePhone() {
+      this.phoneArr = this.currentReservation.phone.split("-");
+      this.phoneFirstPart = this.phoneArr[0];
+      this.phoneMiddlePart = this.phoneArr[1];
+      this.phoneLastPart = this.phoneArr[2];
+    },
+
+    // 예약정보에서 수정한 전화번호를 합치는 함수
+    phoneInputCombine() {
+      //  전화번호 부분들 합쳐서 완성된 전화번호 형식 만들기
+      this.currentReservation.phone =
+        this.phoneFirstPart +
+        "-" +
+        this.phoneMiddlePart +
+        "-" +
+        this.phoneLastPart;
+    },
+
     updateReservation() {
+      this.phoneInputCombine();
       // axios 공통함수 호출
       ReservationDataService.update(
         this.currentReservation.rid,
@@ -180,7 +205,7 @@ export default {
             timer: 1000,
           });
           // 첫페이지(전체목록_조회_페이지) 강제 이동 : /reservation
-          this.$router.push("/reservation");
+          this.$router.push("/profile");
         })
         // 실패하면 .catch() 에러메세지가 전송됨
         .catch((e) => {
