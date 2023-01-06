@@ -208,6 +208,11 @@
           </div>
 
           <!--식당정보 끝-->
+          <button
+              class="btn btn-warning float-right mb-5 text-white"
+            >
+              <router-link to="/add/menu">목록 추가</router-link>
+            </button>
 
           <b-button
             type="button"

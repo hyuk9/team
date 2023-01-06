@@ -24,7 +24,7 @@
           />
         </div>
         <div class="mt-3 form-group">
-          <label for="loc">지역</label>
+          <label for="loc">주소</label>
           <input
             type="text"
             class="form-control"

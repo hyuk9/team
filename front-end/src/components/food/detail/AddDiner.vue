@@ -22,6 +22,24 @@
             <!-- 평점 -->
             <div class="form-group">
               <label for="score">평점</label>
+              <select
+                class="form-select"
+                id="score"
+                required
+                v-model="diner.score"
+                name="score"
+                aria-label="Default select example"
+              >
+                <option selected>평점을 선택해주세요.</option>
+                <option value="1">1점</option>
+                <option value="2">2점</option>
+                <option value="3">3점</option>
+                <option value="4">4점</option>
+                <option value="5">5점</option>
+              </select>
+            </div>
+            <!-- <div class="form-group">
+              <label for="score">평점</label>
               <input
                 type="text"
                 class="form-control"
@@ -30,11 +48,11 @@
                 v-model="diner.score"
                 name="score"
               />
-            </div>
+            </div> -->
 
             <!-- 지역 -->
             <div class="form-group">
-              <label for="loc">지역</label>
+              <label for="loc">주소</label>
               <input
                 class="form-control"
                 id="loc"
@@ -59,66 +77,62 @@
 
             <!-- 메뉴 -->
             <div class="form-group">
-              <label for="menu">메뉴</label>
-              <input
-                type="text"
-                class="form-control"
+              <label for="score">메뉴</label>
+              <select
+                class="form-select"
                 id="menu"
                 required
                 v-model="diner.menu"
                 name="menu"
-              />
+                aria-label="Default select example"
+              >
+                <option selected>메뉴을 선택해주세요.</option>
+                <option value="한식">한식</option>
+                <option value="중식">중식</option>
+                <option value="일식">일식</option>
+                <option value="양식">양식</option>
+              </select>
             </div>
 
-            <!-- 사진 입력박스 시작 -->
+            <!-- 테마 -->
             <div class="form-group">
-              <label for="photo" class="form-label">사진</label>
+              <label for="score">테마</label>
+              <select
+                class="form-select"
+                id="theme"
+                required
+                v-model="diner.theme"
+                name="theme"
+                aria-label="Default select example"
+              >
+                <option selected>테마를 선택해주세요.</option>
+                <option value="데이트">데이트</option>
+                <option value="모임">모임</option>
+                <option value="회식">회식</option>
+                <option value="식사">식사</option>
+              </select>
+            </div>
+
+            <!-- 지도 좌표추가 -->
+            <div class="form-group">
+              <label for="dname">식당 좌표값</label>
               <input
                 type="text"
                 class="form-control"
-                id="photo"
+                id="lat"
                 required
-                v-model="diner.photo"
-                name="photo"
+                v-model="diner.lat"
+                name="lat"
+              />
+              <input
+                type="text"
+                class="form-control"
+                id="lng"
+                required
+                v-model="diner.lng"
+                name="lng"
               />
             </div>
-            <!-- 이미지명 입력박스 끝 -->
-
-            <!-- 이미지 선택상자 시작 -->
-            <div class="form-group">
-              <label class="btn btn-default p-0">
-                <!--  파일 선택상자  -->
-                <input
-                  type="file"
-                  multiple
-                  accept="image/*"
-                  ref="file"
-                  @change="selectImage"
-                />
-              </label>
-            </div>
-            <!-- 이미지 선택상자 끝 -->
-
-            <!-- upload 버튼 : insert 문 실행 시작 -->
-            <div class="mb-3">
-              <!--  서버에 insert 문 호출  -->
-              <button
-                class="btn btn-success btn-sm float-left"
-                :disabled="!currentImage"
-                @click="upload"
-              >
-                Upload
-              </button>
-            </div>
-            <!-- upload 버튼 : insert 문 실행 끝 -->
-
-            <!-- 미리보기 이미지 시작 -->
-            <div v-if="previewImage">
-              <div>
-                <img class="preview my-3" :src="previewImage" alt="" />
-              </div>
-            </div>
-            <!-- 미리보기 이미지 끝 -->
 
             <!-- 서버 에러 메세지가 있을 경우 아래 출력 시작 -->
             <div v-if="message" class="alert alert-secondary" role="alert">
@@ -130,29 +144,6 @@
               Submit
             </button>
           </div>
-
-          <!-- 새 양식 폼 끝 -->
-          <!-- <!— 쇼핑 카트 형태 디자인 시작 —> -->
-          <!-- <!— v-for 시작 —> -->
-          <div class="row">
-            <div
-              class="col-sm-4"
-              v-for="(data, index) in galleryDb"
-              :key="index"
-            >
-              <div class="card">
-                <img :src="data.galleryUrl" class="card-img-top" alt="강의" />
-                <div class="card-body">
-                  <h5 class="card-title">{{ data.galleryTitle }}</h5>
-                  <a style="color: inherit" @click="deleteImage(data.gid)">
-                    <!-- <!— <i class="fas fa-trash" /> —> -->
-                    <span class="badge bg-danger">Delete</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- <!— 쇼핑 카트 형태 디자인 끝 —> -->
         </div>
       </div>
     </main>
@@ -167,25 +158,17 @@ import DinerDataService from "@/services/DinerDataService";
 export default {
   data() {
     return {
-      currentImage: undefined, // 현재 이미지 변수
-      previewImage: undefined, // 미리보기 이미지 변수
       message: "", // 서버쪽 메세지를 저장할 변수
-      galleryDb: [], // 이미지 객체 배열
-      searchTitle: "", // 이미지명으로 검색하는 변수
-
-      // springboot 에 요청할 변수, 이미지명(galleryTitle), 내용(content)
-      galleryTitle: "",
 
       diner: {
         dno: null,
         dname: "",
         loc: "",
-        score: "",
+        score: null,
         review: "",
         menu: "",
         phone: "",
-        // springboot 에 요청할 변수, 이미지명(galleryTitle), 내용(content)
-        photo: [],
+        theme: "",
       },
       // submit 버튼을 클릭하면 true 가 되고, You submitted successfully! 화면에 출력됨
       submitted: false,
@@ -201,7 +184,8 @@ export default {
         score: this.diner.score,
         menu: this.diner.menu,
         phone: this.diner.phone,
-        photo: this.diner.photo,
+        theme: this.diner.theme,
+        // photo: this.diner.photo,
       };
 
       // insert 요청 함수 호출(axios 공통함수 호출)
@@ -224,43 +208,6 @@ export default {
       // 새양식 다시 보여주기 함수, 변수 초기화
       this.submitted = false;
       this.diner = {};
-    },
-    // 파일 선택상자에서 선택한 이미지를 저장하는 함수
-    selectImage() {
-      // 첫번째 선택한 이미지를 변수에 저장
-      // this.$refs : $refs 속성이 있는 컨트롤이 선택됨
-      this.currentImage = this.$refs.file.files.item(0);
-      // .createObjectURL() : 이미지 주소만 참조해서 이미지 보여주기 함수
-      this.previewImage = URL.createObjectURL(this.currentImage);
-      this.message = "";
-    }, // upload 함수
-    upload() {
-      DinerDataService.upload(this.galleryTitle, this.currentImage)
-        // insert 성공 then()
-        .then((response) => {
-          // 서버쪽 성공 메세지를 저장
-          this.message = response.data.message;
-
-          // 화면에 재조회 요청( axios 함수로 재조회 요청 )
-          return DinerDataService.getFiles(
-            this.searchTitle,
-            this.page - 1,
-            this.pageSize
-          );
-        })
-        // 조회가 성공하면 실행되는 then()
-        .then((response2) => {
-          const { galleryDb, totalItems } = response2.data;
-          this.galleryDb = galleryDb;
-          this.count = totalItems;
-          console.log(response2.data);
-        })
-        .catch((e) => {
-          console.log(e);
-          // 서버쪽에 실패메세지를 받아서 화면에 출력
-          this.message = "Could not upload the image!" + e;
-          this.currentImage = undefined;
-        });
     },
   },
 };

@@ -3,24 +3,6 @@
 import http from "../http-common";
 
 class DinerDataService {
-    upload(title, galleryDb) {
-        // json 객체 사용하지 않음 (x)
-        // form 태그로 전송하는 방식을 이용함
-        // html <form></form> == js FormData 객체로 사용가능
-        //                       .append("속성명", 값) 함수 : 데이터를 저장
-        // axios 함수 : .post()
-        // 헤더 : "Content-Type" : "multipart/form-data" 
-        let formData = new FormData(); // 폼(form) 객체 생성
-
-        formData.append("galleryTitle", title);
-        formData.append("galleryDb", galleryDb);
-
-        return http.post("/galleryDb/upload", formData, {
-            headers: {
-                "Content-Type" : "multipart/form-data"
-            }
-        })
-    }
     // 모든 부서정보 조회 요청 함수
     // dname : 부서명
     // page : 현재 페이지 번호
