@@ -16,7 +16,7 @@
                     <th scope="col">리뷰</th>
                     <th scope="col">평점</th>
                     <th scope="col">사진</th>
-                    <th scope="col">변경하기</th>
+                    <th scope="col">수정하기</th>
                   </tr>
                 </thead>
                 <tbody v-for="(data, index) in review" :key="index">
@@ -29,7 +29,7 @@
                     </td>
                     <td class="align-middle">
                       <router-link to=""
-                        ><span class="badge bg-success"
+                        ><span class="badge rounded-pill bg-success"
                           >수정하기</span
                         ></router-link
                       >
@@ -39,11 +39,13 @@
               </table>
 
               <!--    Todo : page 바 시작 -->
-              <div class="col-md-8 offset-4 pt-5">
+              <div class="overflow-auto offset-5 mt-5">
                 <b-pagination
                   v-model="page"
                   :total-rows="count"
                   :per-page="pageSize"
+                  first-text="<<"
+                  last-text=">>"
                   prev-text="Prev"
                   next-text="Next"
                   @change="handlePageChange"
