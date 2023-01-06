@@ -71,6 +71,9 @@ public class Diner extends BaseTimeEntity {
     @javax.persistence.Column(columnDefinition = "NUMBER")
     private Integer views;
 
+    @javax.persistence.Column(columnDefinition = "NUMBER")
+    private Integer dno_count;
+
 }
 
 

@@ -215,7 +215,8 @@ public class DinerController {
                     dinerData.getTheme(),
                     dinerData.getReview(),
                     dinerData.getPhoto(),
-                    plusViews
+                    plusViews,
+                    dinerData.getDno_count()
             );
             dinerService.save(diner);
             return new ResponseEntity<>(HttpStatus.OK);

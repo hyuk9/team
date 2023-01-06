@@ -148,37 +148,37 @@ VALUES (SQ_RESERVATION.nextval, '박선영', '3', '010-1234-5678', '16', '6', '2
 
 -- Todo:음식점 테이블
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, '해목', '4.5','해운대구','0507-1385-3730','일식', '식사', '리뷰1','https://mp-seoul-image-production-s3.mangoplate.com/1129699_1620482534399327.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',1111,'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, '해목', '4.5','해운대구','0507-1385-3730','일식', '식사', '리뷰1','https://mp-seoul-image-production-s3.mangoplate.com/1129699_1620482534399327.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',1111,0,'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, '합천국밥집', '4.6','남구','051-628-4898','한식', '식사', '리뷰2','https://mp-seoul-image-production-s3.mangoplate.com/25551/j7nkzmgyxpmqqa.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',2222,'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, '합천국밥집', '4.6','남구','051-628-4898','한식', '식사', '리뷰2','https://mp-seoul-image-production-s3.mangoplate.com/25551/j7nkzmgyxpmqqa.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',2222,0,'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, '톤쇼우', '4.1','금정구','051-517-1727','중식', '데이트', '리뷰3','https://mp-seoul-image-production-s3.mangoplate.com/872186_1608730709406579.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',333,'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, '톤쇼우', '4.1','금정구','051-517-1727','중식', '데이트', '리뷰3','https://mp-seoul-image-production-s3.mangoplate.com/872186_1608730709406579.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',333,0,'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, '미청식당', '4.3','기장군','051-721-7050','한식', '모임', '리뷰4','https://mp-seoul-image-production-s3.mangoplate.com/1049578_1634728853479974.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',4444,'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, '미청식당', '4.3','기장군','051-721-7050','한식', '모임', '리뷰4','https://mp-seoul-image-production-s3.mangoplate.com/1049578_1634728853479974.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',4444,0,'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, '백객도', '4.3','동래구','051-554-5873','중식', '모임', '리뷰5','https://mp-seoul-image-production-s3.mangoplate.com/1515134_1669012125992684.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',545,'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, '백객도', '4.3','동래구','051-554-5873','중식', '모임', '리뷰5','https://mp-seoul-image-production-s3.mangoplate.com/1515134_1669012125992684.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',545,0,'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, '디젤앤카멜리아스', '4.3','부산진구','010-9179-6960','일식', '회식', '리뷰6','https://mp-seoul-image-production-s3.mangoplate.com/586167_1609749120642980.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',1324,'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, '디젤앤카멜리아스', '4.3','부산진구','010-9179-6960','일식', '회식', '리뷰6','https://mp-seoul-image-production-s3.mangoplate.com/586167_1609749120642980.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',1324,0,'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, '옥천횟집', '4.4','영도구','051-403-7771','한식', '데이트', '리뷰7','https://mp-seoul-image-production-s3.mangoplate.com/693574_1667123439355703.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',123,'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, '옥천횟집', '4.4','영도구','051-403-7771','한식', '데이트', '리뷰7','https://mp-seoul-image-production-s3.mangoplate.com/693574_1667123439355703.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',123,0,'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, '다온나루', '3.4','강서구','051-832-1771','중식', '데이트', '리뷰8','https://mp-seoul-image-production-s3.mangoplate.com/393053/2032908_1653224070853_50338?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',342,'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, '다온나루', '3.4','강서구','051-832-1771','중식', '데이트', '리뷰8','https://mp-seoul-image-production-s3.mangoplate.com/393053/2032908_1653224070853_50338?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',342,0,'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, '금수복국', '4.4','해운대구','051-742-3600','양식', '식사', '리뷰9','https://mp-seoul-image-production-s3.mangoplate.com/added_restaurants/584169_1492330956578913.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',123,'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, '금수복국', '4.4','해운대구','051-742-3600','양식', '식사', '리뷰9','https://mp-seoul-image-production-s3.mangoplate.com/added_restaurants/584169_1492330956578913.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',123,0,'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, '초원복국', '4.2','남구','051-628-3935','한식', '식사', '리뷰10','https://mp-seoul-image-production-s3.mangoplate.com/546909_1536072584565408.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',453,'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, '초원복국', '4.2','남구','051-628-3935','한식', '식사', '리뷰10','https://mp-seoul-image-production-s3.mangoplate.com/546909_1536072584565408.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',453,0,'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, '양자강', '3.8','금정구','051-583-1266','중식', '모임', '리뷰11','https://mp-seoul-image-production-s3.mangoplate.com/added_restaurants/9388_1480730005476394.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',234,'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, '양자강', '3.8','금정구','051-583-1266','중식', '모임', '리뷰11','https://mp-seoul-image-production-s3.mangoplate.com/added_restaurants/9388_1480730005476394.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',234,0,'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, '일광대복집', '4.3','기장군','051-721-1561','한식', '회식', '리뷰12','https://mp-seoul-image-production-s3.mangoplate.com/147811_1633838192987199.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',2345,'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, '일광대복집', '4.3','기장군','051-721-1561','한식', '회식', '리뷰12','https://mp-seoul-image-production-s3.mangoplate.com/147811_1633838192987199.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',2345,0,'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, '오노고로', '3.9','동래구','0507-1347-2015','중식', '데이트', '리뷰13','https://mp-seoul-image-production-s3.mangoplate.com/693546_1670850112205255.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',543,'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, '오노고로', '3.9','동래구','0507-1347-2015','중식', '데이트', '리뷰13','https://mp-seoul-image-production-s3.mangoplate.com/693546_1670850112205255.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',543,0,'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, '로바타아키', '4.2','부산진구','0507-1322-3415','양식', '모임', '리뷰14','https://mp-seoul-image-production-s3.mangoplate.com/1042441_1605430643484440.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',324,'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, '로바타아키', '4.2','부산진구','0507-1322-3415','양식', '모임', '리뷰14','https://mp-seoul-image-production-s3.mangoplate.com/1042441_1605430643484440.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',324,0,'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, '일구향만두', '4.0','영도구','051-418-7285','한식', '데이트', '리뷰15','https://mp-seoul-image-production-s3.mangoplate.com/348107/1466243_1670838071029_17000?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',543,'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, '일구향만두', '4.0','영도구','051-418-7285','한식', '데이트', '리뷰15','https://mp-seoul-image-production-s3.mangoplate.com/348107/1466243_1670838071029_17000?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',543,0,'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, '대저할매국수', '2.7','강서구','051-973-0837','한식', '회식', '리뷰16','https://mp-seoul-image-production-s3.mangoplate.com/16929/reviews/bc862256e507.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',443,'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
+VALUES (SQ_DINER.nextval, '대저할매국수', '2.7','강서구','051-973-0837','한식', '회식', '리뷰16','https://mp-seoul-image-production-s3.mangoplate.com/16929/reviews/bc862256e507.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',443,0,'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),NULL, NULL);
 
 
 -- Todo:리뷰 테이블
