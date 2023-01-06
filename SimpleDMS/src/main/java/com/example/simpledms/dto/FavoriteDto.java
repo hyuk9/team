@@ -24,4 +24,5 @@ public interface FavoriteDto {
     Integer getDno();
 
 //    그룹함수 속성
+    Integer getDno_count();
 }

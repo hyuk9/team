@@ -99,6 +99,10 @@
                               <span class="mb-0 text-dark text-800 fs-0 me-3">
                                 {{ data.views }}
                               </span>
+                              <i class="fas fa-heart text-dark text-800 me-2 fs-0"></i>
+                              <span class="mb-0 text-dark text-800 fs-0 me-3">
+                                {{ data.dno_count }}
+                              </span>
                           </div>
                         </div>
                       </div>
@@ -179,6 +183,10 @@
                               <span class="mb-0 text-dark text-800 fs-0 me-3">
                                 {{ data.views }}
                               </span>
+                              <i class="fas fa-heart text-dark text-800 me-2 fs-0"></i>
+                              <span class="mb-0 text-dark text-800 fs-0 me-3">
+                                {{ data.dno_count }}
+                              </span>
                           </div>
                         </div>
                       </div>
@@ -225,6 +233,7 @@
 <script>
 /* eslint-disable */
 import DinerDataService from "@/services/DinerDataService";
+import FavoriteDataService from "@/services/FavoriteDataService";
 
 export default {
   data() {
@@ -243,6 +252,9 @@ export default {
 
       pageSizes: [3, 6, 9], // select box 에 넣을 기본 데이터
       countCarouselNum: 0, //'지역별 맛집'의 캐러셀 작동을 위한 변수
+
+      // favorite 정보 저장용
+      favorite : [],
     };
   },
   methods: {
@@ -257,10 +269,40 @@ export default {
         .then((response) => {
           // let(const) { 속성명1, 속성명2 } = 데이터 객체배열 (모던자바문법 구조 분해 할당)
           const { diner, totalItems } = response.data; // springboot 의 전송한 맵 정보
-          this.diner = diner.sort((a,b) => (b.views - a.views)); // 스프링부트에서 전송한 데이터 받고 조회수 내림차순으로 가공
+          this.diner = diner// 스프링부트에서 전송한 데이터 받고 조회수 내림차순으로 가공
           this.count = totalItems; // 스프링부트에서 전송한 페이지정보(총 건수)
           // 디버깅 콘솔에 정보 출력
           console.log(response.data);
+
+          // favorite dno_count 를 diner dno_count에 복사
+           for(let i= 0; i<this.diner.length; i++) {
+            for(let j=0; j<this.favorite.length; j++) {
+              if(this.diner[i].dname ==this.favorite[j].dname) {
+              this.diner[i].dno_count = this.favorite[j].dno_count        
+              }
+            }              
+          }
+          // 내림차순 정렬
+         this.diner = this.diner.sort((a,b) => (b.dno_count - a.dno_count));
+        })
+        // 실패하면 .catch() 에 에러가 전송됨
+        .catch((e) => {
+          console.log(e);
+        }); 
+
+        // favorite 정보 받기
+        FavoriteDataService.getFavoriteAll(
+        this.page - 1,
+        this.pageSize
+      )
+        // 성공하면 .then() 결과가 전송됨
+        .then((response) => {
+          // let(const) { 속성명1, 속성명2 } = 데이터 객체배열 (모던자바문법 구조 분해 할당)
+          const { favorite, totalItems } = response.data; // springboot 의 전송한 맵 정보
+          this.favorite = favorite // 스프링부트에서 전송한 데이터 받고 조회수 내림차순으로 가공
+          this.count = totalItems; // 스프링부트에서 전송한 페이지정보(총 건수)
+          // 디버깅 콘솔에 정보 출력
+          console.log(response.data);     
         })
         // 실패하면 .catch() 에 에러가 전송됨
         .catch((e) => {

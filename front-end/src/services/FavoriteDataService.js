@@ -35,6 +35,11 @@ class FavoriteDataService {
   deleteAll() {
     return http.delete("/favorite/all");
   }
+
+  // 찜갯수 가져오기용
+  getFavoriteAll( page, size) {
+    return http.get(`/favorite/desc?page=${page}&size=${size}`);
+  }
 }
 
 export default new FavoriteDataService();
