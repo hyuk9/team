@@ -44,11 +44,6 @@
                     </div>
                   </div>
                 </div>
-                <div class="card-body px-0">
-                  <span class="badge bg-soft-danger py-2 px-3">
-                    <span class="fs-1 text-danger">지금 바로 알아보기</span>
-                  </span>
-                </div>
                 <a class="stretched-link" href="#"></a>
               </div>
             </router-link>
@@ -72,11 +67,6 @@
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="card-body px-0">
-                  <span class="badge bg-soft-danger py-2 px-3">
-                    <span class="fs-1 text-danger">지금 바로 알아보기</span>
-                  </span>
                 </div>
                 <a class="stretched-link" href="#"></a>
               </div>
@@ -102,11 +92,6 @@
                     </div>
                   </div>
                 </div>
-                <div class="card-body px-0">
-                  <span class="badge bg-soft-danger py-2 px-3">
-                    <span class="fs-1 text-danger">지금 바로 알아보기</span>
-                  </span>
-                </div>
                 <a class="stretched-link" href="#"></a>
               </div>
             </router-link>
@@ -130,11 +115,6 @@
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="card-body px-0">
-                  <span class="badge bg-soft-danger py-2 px-3">
-                    <span class="fs-1 text-danger">지금 바로 알아보기</span>
-                  </span>
                 </div>
                 <a class="stretched-link" href="#"></a>
               </div>

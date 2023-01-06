@@ -57,7 +57,7 @@ public class Diner extends BaseTimeEntity {
     private String phone;
 
     @javax.persistence.Column
-    private String menu;
+    private String menu; // 한식, 중식, 일식, 양식
 
     @javax.persistence.Column
     private String theme;

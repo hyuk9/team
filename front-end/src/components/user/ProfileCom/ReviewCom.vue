@@ -2,7 +2,7 @@
   <div>
     <div class="pt-5 pb-5" id="myReview">
       <div class="mx-auto text-center mb-5">
-        <h5 class="fw-bold fs-3 fs-lg-5 lh-sm">내가 쓴 리뷰 목록</h5>
+        <h5 class="fw-bold fs-3 fs-lg-5 lh-sm">내가 쓴 리뷰</h5>
       </div>
       <div class="untree_co-section">
         <div class="container" data-aos="fade-left" data-aos-delay="200">

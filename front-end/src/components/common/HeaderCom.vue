@@ -4,7 +4,7 @@
         <div class="container">
           <div class="row flex-center">
             <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0">
-              <a class="img-landing-banner" href="#!"><img class="img-fluid" src="/assets/img/gallery/hero-tomato.png"
+              <a class="img-landing-banner" href="#!"><img class="img-fluid" :src="heroTitle"
                   alt="hero-header" /></a>
             </div>
             <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
@@ -26,29 +26,38 @@ export default {
         return {
             title: "",
             contentOne : "",
-            contentTwo : ""
+            contentTwo : "",
+            heroTitle : "",
         }
     },
     mounted() {
         // 만약 주소가 /diner 이라면
         if(this.$route.path == "/diner"){
             this.title = "음식점 리스트"
+            this.contentOne = "원하는 음식점을 한번에 모아보세요"
+            this.heroTitle = "/assets/img/gallery/hero-tomato2.png";
         } else if (this.$route.path == "/announce"){
             this.title = "공지사항"
+            this.heroTitle = "/assets/img/gallery/hero-tomato3.png";
         } else if (this.$route.path == "/faq"){
             this.title = "자주 묻는 질문"
+            this.heroTitle = "/assets/img/gallery/hero-tomato3.png";
         } else if (this.$route.path == "/question"){
             this.title = "질문과 답변"
+            this.heroTitle = "/assets/img/gallery/hero-tomato3.png";
         } else if (this.$route.path == "/free"){
             this.title = "자유게시판"
+            this.heroTitle = "/assets/img/gallery/hero-tomato3.png";
         } else if (this.$route.path == "/column"){
             this.title = "푸드컬럼"
+            this.heroTitle = "/assets/img/gallery/hero-tomato4.png";
         } else if (this.$route.path == "/reservation"){
             this.title = "예약 조회 및 수정하기"
         } else if (this.$route.path == "/add-reservation"){
             this.title = "예약하기"
         } else if (this.$route.path == "/profile"){
             this.title = "프로필"
+            this.heroTitle = "/assets/img/gallery/hero-tomato5.png";
         } else if (this.$route.path == "/user"){
             this.title = "유저목록 조회 및 수정하기"
         } else if (this.$route.path == "/team"){

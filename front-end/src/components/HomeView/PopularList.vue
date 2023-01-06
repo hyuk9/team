@@ -63,10 +63,8 @@
                               ><i class="fas fa-map-marker-alt me-2 fs-0"></i
                               ><span class="fs-0">{{ data.loc.split(" ")[1]  }}</span></span
                             >
-                          </div>
-                          <div>
                             <span class="badge bg-primary p-2 mt-1 ms-3"
-                              ><i class="fas fa-ellipsis-h me-2 fs-0"></i
+                              ><i class="fas fa-tag me-2 fs-0"></i
                               ><span class="fs-0">{{ data.menu }}</span></span
                             >
                           </div>
@@ -77,27 +75,27 @@
                               <h4 class="mb-0 fw-bold text-1000 dinername">
                                 {{ data.dname }}
                               </h4>
-                              <span class="text-primary fs--1 me-1"
-                                ><i class="fas fa-star"></i></span
-                              ><span class="mb-0 text-primary">{{
-                                data.score
-                              }}</span>
                             </div>
-                            <span class="badge bg-soft-danger py-2 px-3">
-                              <span class="fs-1 text-danger">
-                                {{ data.phone }}</span
-                              >
-                            </span>
+                            <span class="text-primary fs-2 me-1"
+                              ><i class="fas fa-star"></i
+                            ></span>
+                            <span class="mb-0 fs-2 text-primary">{{
+                              data.score
+                            }}</span>
                           </div>
                           <div class="ms-3">
-                              <i class="fas fa-eye text-dark text-800 me-2 fs-0"></i>
-                              <span class="mb-0 text-dark text-800 fs-0 me-3">
-                                {{ data.views }}
-                              </span>
-                              <i class="fas fa-heart text-dark text-800 me-2 fs-0"></i>
-                              <span class="mb-0 text-dark text-800 fs-0 me-3">
-                                {{ data.dno_count }}
-                              </span>
+                            <i
+                              class="fas fa-eye text-dark text-800 me-2 fs-0"
+                            ></i>
+                            <span class="mb-0 text-dark text-800 fs-0 me-3">
+                              {{ data.views }}
+                            </span>
+                            <i
+                              class="fas fa-heart text-dark text-800 me-2 fs-0"
+                            ></i>
+                            <span class="mb-0 text-dark text-800 fs-0 me-3">
+                              {{ data.dno_count }}
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -142,10 +140,8 @@
                               ><i class="fas fa-map-marker-alt me-2 fs-0"></i
                               ><span class="fs-0">{{ data.loc.split(" ")[1]  }}</span></span
                             >
-                          </div>
-                          <div>
                             <span class="badge bg-primary p-2 mt-1 ms-3"
-                              ><i class="fas fa-ellipsis-h me-2 fs-0"></i
+                              ><i class="fas fa-tag me-2 fs-0"></i
                               ><span class="fs-0">{{ data.menu }}</span></span
                             >
                           </div>
@@ -156,27 +152,27 @@
                               <h4 class="mb-0 fw-bold text-1000 dinername">
                                 {{ data.dname }}
                               </h4>
-                              <span class="text-primary fs--1 me-1"
-                                ><i class="fas fa-star"></i></span
-                              ><span class="mb-0 text-primary">{{
-                                data.score
-                              }}</span>
                             </div>
-                            <span class="badge bg-soft-danger py-2 px-3">
-                            <span class="fs-1 text-danger">
-                              {{ data.phone }}</span
-                            >
-                            </span>
+                            <span class="text-primary fs-2 me-1"
+                              ><i class="fas fa-star"></i
+                            ></span>
+                            <span class="mb-0 fs-2 text-primary">{{
+                              data.score
+                            }}</span>
                           </div>
                           <div class="ms-3">
-                              <i class="fas fa-eye text-dark text-800 me-2 fs-0"></i>
-                              <span class="mb-0 text-dark text-800 fs-0 me-3">
-                                {{ data.views }}
-                              </span>
-                              <i class="fas fa-heart text-dark text-800 me-2 fs-0"></i>
-                              <span class="mb-0 text-dark text-800 fs-0 me-3">
-                                {{ data.dno_count }}
-                              </span>
+                            <i
+                              class="fas fa-eye text-dark text-800 me-2 fs-0"
+                            ></i>
+                            <span class="mb-0 text-dark text-800 fs-0 me-3">
+                              {{ data.views }}
+                            </span>
+                            <i
+                              class="fas fa-heart text-dark text-800 me-2 fs-0"
+                            ></i>
+                            <span class="mb-0 text-dark text-800 fs-0 me-3">
+                              {{ data.dno_count }}
+                            </span>
                           </div>
                         </div>
                       </div>
