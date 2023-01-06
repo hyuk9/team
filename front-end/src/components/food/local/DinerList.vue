@@ -64,8 +64,8 @@
               <div class="col-lg-6" v-for="(data, index) in diner" :key="index">
                 <!-- Blog post-->
                 <div class="card mb-5">
-                  <router-link :to="'/diner/' + data.dno">
-                    <a @click="countViews(data.dno)">
+                  <a @click="countViews(data.dno)">
+                    <router-link :to="'/diner/' + data.dno">
                       <img
                         class="img-fluid rounded-3 h-100 pt-2"
                         :src="data.photo"
@@ -131,8 +131,8 @@
                           {{}}
                         </p>
                       </div>
-                    </a>
-                  </router-link>
+                    </router-link>
+                  </a>
                 </div>
               </div>
             </div>
@@ -165,13 +165,13 @@
           <div class="col-lg-4">
             <!-- Map widget-->
             <div class="card mb-4 mt-5">
-            <div class="card-header">
-              <i class="bi bi-geo-alt-fill"></i> 내 근처 맛집
+              <div class="card-header">
+                <i class="bi bi-geo-alt-fill"></i> 내 근처 맛집
+              </div>
+              <div class="card-body" style="height: 550px">
+                <CurrentMap />
+              </div>
             </div>
-            <div class="card-body" style="height: 550px">
-              <CurrentMap />
-            </div>
-          </div>
           </div>
         </div>
       </div>
