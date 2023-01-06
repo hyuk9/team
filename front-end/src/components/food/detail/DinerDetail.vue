@@ -89,21 +89,24 @@
                   <div class="carousel-item active">
                     <img
                       :src="currentDiner.photo1"
-                      class="d-block w-100"
+                      class="d-block w-100 img-fluid"
+                      style="width: auto; height:500px;"
                       alt="..."
                     />
                   </div>
                   <div class="carousel-item">
                     <img
-                    :src="currentDiner.photo2"
-                      class="d-block w-100"
+                      :src="currentDiner.photo2"
+                      class="d-block w-100 img-fluid"
+                      style="width: auto; height:500px;"
                       alt="..."
                     />
                   </div>
-                  <div class="carousel-item">
+                  <div class="carousel-item img-fluid">
                     <img
-                    :src="currentDiner.photo3"
-                      class="d-block w-100"
+                      :src="currentDiner.photo3"
+                      class="d-block w-100 img-fluid"
+                      style="width: auto; height:500px;"
                       alt="..."
                     />
                   </div>

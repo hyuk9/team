@@ -20,6 +20,7 @@
  }
  .dropmenu ul li:hover{/* 마우스를 올릴때 하단에 밑줄나오도록*/
   box-sizing:border-box;/* 박스의 크기를 보더의 크기를 포함한 크기로 변경*/
+  
  }
  .dropmenu ul li:hover ul{ /* 마우스를 ul 하위 li위에 올릴때 li 하위ul 을 출력*/
   display:block;/* 디스플레이 출력되도록 설정*/
@@ -28,7 +29,7 @@
  .dropmenu ul li:hover li:hover{/* 하위 드롭다운 메뉴에 마우스 올릴시 색 반전효과*/
   border-bottom:0px;/* 하단 보더 없앰*/
   box-sizing:border-box;/* 박스의 크기를 보더의 크기를 포함한 크기로 변경*/
-  background-color:#ffa500;/* 배경색*/
+  background-color:#eeedeacb; /*배경색*/
  }
  .dropmenu ul li:hover li.subdropmenu ul{/*추가 2단 드랍메뉴 구성*/
    display: none;/*추가 드랍메뉴 숨기기*/
