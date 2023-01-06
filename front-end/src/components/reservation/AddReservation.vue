@@ -288,8 +288,6 @@ export default {
             confirmButtonColor: "#f4b642", // confrim 버튼 색깔 지정
             confirmButtonText: "확인", // confirm 버튼 텍스트 지정
           });
-          // 첫페이지(전체목록_조회_페이지) 강제 이동 : /reservation
-          this.$router.push("/reservation");
           // this.submitted = true;
         })
         .catch((e) => {

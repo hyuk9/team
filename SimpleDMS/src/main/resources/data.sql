@@ -217,17 +217,31 @@ VALUES(SQ_DINERIMAGE.nextval, '16', 'https://mp-seoul-image-production-s3.mangop
 
 -- Todo:리뷰 테이블
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '홍길동', '1', '내용', '4', '사진', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_REVIEW.nextval, '2', '1', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', '4', '사진', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '장길산', '2', '내용2', '5', '사진2', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_REVIEW.nextval, '3', '2', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', '3', '사진', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '임꺽정', '3', '내용3', '3', '사진3', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_REVIEW.nextval, '5', '3', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', '5', '사진', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '전우치', '4', '내용4', '2', '사진4', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_REVIEW.nextval, '4', '4', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', '5', '사진', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '마루치', '5', '내용5', '4', '사진5', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_REVIEW.nextval, '6', '5', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', '1', '사진', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '아라치', '6', '내용6', '3', '사진6', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_REVIEW.nextval, '6', '6', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', '2', '사진', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+INSERT INTO TB_REVIEW
+VALUES (SQ_REVIEW.nextval, '4', '1', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', '2', '사진', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+INSERT INTO TB_REVIEW
+VALUES (SQ_REVIEW.nextval, '2', '2', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', '1', '사진', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+INSERT INTO TB_REVIEW
+VALUES (SQ_REVIEW.nextval, '3', '3', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', '5', '사진', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+INSERT INTO TB_REVIEW
+VALUES (SQ_REVIEW.nextval, '3', '4', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', '4', '사진', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+INSERT INTO TB_REVIEW
+VALUES (SQ_REVIEW.nextval, '4', '5', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', '5', '사진', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+INSERT INTO TB_REVIEW
+VALUES (SQ_REVIEW.nextval, '2', '6', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', '3', '사진', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+
+
 
 -- Todo: 메뉴 테이블
 -- Todo: 음식점 테이블이랑 조인 예정

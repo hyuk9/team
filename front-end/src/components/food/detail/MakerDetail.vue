@@ -1,12 +1,13 @@
 <template>
   <div class="mapDetail">
-      <div id="map"></div>
-        <button type="button" class="btn btn-dark mt-3 btn-lg" @click="link()"><i class="bi bi-search"></i></button>
+    <div id="map"></div>
+    <button type="button" class="btn btn-dark mt-3 btn-lg" @click="link()">
+      <i class="bi bi-search"></i>
+    </button>
   </div>
 </template>
 
-
-  <script>
+<script>
 import DinerDataService from "@/services/DinerDataService";
 /* eslint-disable */
 export default {
@@ -18,8 +19,8 @@ export default {
     };
   },
   mounted() {
-    alert(this.currentDiner.lat),
-    alert(this.currentDiner.lng),
+    // alert(this.currentDiner.lat),
+    //   alert(this.currentDiner.lng),
     this.getDiner(this.$route.params.dno);
     window.kakao && window.kakao.maps
       ? this.initMap()
@@ -43,7 +44,9 @@ export default {
         });
     },
     link() {
-        window.open(`https://map.kakao.com/link/search/${this.currentDiner.dname}`)
+      window.open(
+        `https://map.kakao.com/link/search/${this.currentDiner.dname}`
+      );
     },
     addKakaoMapScript() {
       const script = document.createElement("script");
@@ -55,14 +58,20 @@ export default {
     initMap() {
       var mapContainer = document.getElementById("map"), // 지도를 표시할 div
         mapOption = {
-          center: new kakao.maps.LatLng(this.currentDiner.lat, this.currentDiner.lng), // 지도의 중심좌표
+          center: new kakao.maps.LatLng(
+            this.currentDiner.lat,
+            this.currentDiner.lng
+          ), // 지도의 중심좌표
           level: 3, // 지도의 확대 레벨
         };
       var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
       // 마커를 표시할 위치와 title 객체 배열입니다
       var positions = [
         {
-          latlng: new kakao.maps.LatLng(this.currentDiner.lat, this.currentDiner.lng),
+          latlng: new kakao.maps.LatLng(
+            this.currentDiner.lat,
+            this.currentDiner.lng
+          ),
         },
       ];
       // 마커 이미지의 이미지 주소입니다
@@ -85,8 +94,7 @@ export default {
 };
 </script>
 
-
-  <style scoped>
+<style scoped>
 .mapDetail {
   height: 80vh;
   text-align: center;

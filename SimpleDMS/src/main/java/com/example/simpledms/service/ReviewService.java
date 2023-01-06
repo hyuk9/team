@@ -1,5 +1,7 @@
 package com.example.simpledms.service;
 
+import com.example.simpledms.dto.ReservationDto;
+import com.example.simpledms.dto.ReviewDto;
 import com.example.simpledms.model.Menu;
 import com.example.simpledms.model.Review;
 import com.example.simpledms.repository.ReviewRepository;
@@ -80,8 +82,15 @@ public class ReviewService {
     }
 
     //    ✅ dname like 검색 함수
-    public List<Review> findAllByRwriterContaining(String rwriter) {
-        List<Review> list = reviewRepository.findAllByRwriterContaining(rwriter);
+    public List<Review> findAllByIdContaining(Integer id) {
+        List<Review> list = reviewRepository.findAllByIdContaining(id);
+
+        return list;
+    }
+
+    //    ✅ username like 검색 함수 ( 페이징 처리 추가 )
+    public Page<ReviewDto> findAllById(Integer id, Pageable pageable) {
+        Page<ReviewDto> list = reviewRepository.findAllById(id, pageable);
 
         return list;
     }

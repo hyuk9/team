@@ -35,14 +35,26 @@
         <div class="row">
           <!-- 프로필 사진 시작 -->
           <div class="col-2 pt-3">
-            <div id="imageArea" class="text-center" v-if="profiles">
-              <img
-                class="profile"
-                src="assets/img/gallery/empty_profile.png"
-                width="200px"
-                height="200px"
-                alt=""
-              />
+            <div>
+              <div class="text-center" v-if="profileImage">
+                <img
+                  class="profile"
+                  src="assets/img/gallery/empty_profile.png"
+                  width="200px"
+                  height="200px"
+                  alt=""
+                />
+              </div>
+              <div class="text-center" v-else>
+                <img
+                  class="profile"
+                  :src="currentProfile.fileUrl"
+                  width="200px"
+                  height="200px"
+                  alt=""
+                />
+              </div>
+              <!-- 이미지 수정 버튼 -->
               <span
                 id="imageBtn"
                 class="btn btn-primary"
@@ -54,14 +66,43 @@
                 <i class="bi bi-camera-fill fs-3" id="camera"></i>
               </span>
             </div>
-            <div class="text-center" v-else>
-              <img
-                class="profile"
-                :src="currentProfile.fileUrl"
-                width="200px"
-                height="200px"
-                alt=""
-              />
+            <div
+              class="offcanvas offcanvas-start"
+              tabindex="-1"
+              id="offcanvasExample"
+              aria-labelledby="offcanvasExampleLabel"
+            >
+              <div class="offcanvas-header container">
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+                  이미지 수정
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close text-reset"
+                  data-bs-dismiss="offcanvas"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="offcanvas-body">
+                <div>
+                  <img :src="previewImage" class="card-img-top" alt="" />
+                </div>
+                <div>
+                  <label class="btn btn-default p-0">
+                    <!-- 파일 선택상자 -->
+                    <input
+                      type="file"
+                      class="col-5"
+                      accept="image/*"
+                      ref="file"
+                      @change="selectImage"
+                    />
+                    <button @click="saveProfile" class="btn btn-primary col-5">
+                      수정하기
+                    </button>
+                  </label>
+                </div>
+              </div>
             </div>
           </div>
           <!-- 프로필 사진 끝 -->
@@ -77,48 +118,6 @@
                   ></router-link
                 >
               </p>
-
-              <div
-                class="offcanvas offcanvas-start"
-                tabindex="-1"
-                id="offcanvasExample"
-                aria-labelledby="offcanvasExampleLabel"
-              >
-                <div class="offcanvas-header container">
-                  <h5 class="offcanvas-title" id="offcanvasExampleLabel">
-                    이미지 수정
-                  </h5>
-                  <button
-                    type="button"
-                    class="btn-close text-reset"
-                    data-bs-dismiss="offcanvas"
-                    aria-label="Close"
-                  ></button>
-                </div>
-                <div class="offcanvas-body">
-                  <div>
-                    <img :src="previewImage" class="card-img-top" alt="" />
-                  </div>
-                  <div>
-                    <label class="btn btn-default p-0">
-                      <!-- 파일 선택상자 -->
-                      <input
-                        type="file"
-                        class="col-5"
-                        accept="image/*"
-                        ref="file"
-                        @change="selectImage"
-                      />
-                      <button
-                        @click="saveProfile"
-                        class="btn btn-primary col-5"
-                      >
-                        수정하기
-                      </button>
-                    </label>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
           <!-- 이름, 개인정보 수정 버튼 끝 -->
@@ -138,7 +137,7 @@
           <div class="col-2 pt-5">
             <a href="#favoriteList">
               <div class="col text-center">
-                <i class="bi bi-suit-heart card-top"></i>
+                <i class="bi bi-heart card-top"></i>
                 <p class="fs-1 mt-3">찜한 가게</p>
               </div>
             </a>
@@ -169,103 +168,7 @@
     <!-- 찜한 가게 끝 -->
 
     <!-- 내가 쓴 리뷰 목록 시작 -->
-    <div class="pt-5 pb-5" id="myReview">
-      <div class="mx-auto text-center mb-5">
-        <h5 class="fw-bold fs-3 fs-lg-5 lh-sm">내가 쓴 리뷰 목록</h5>
-      </div>
-      <div class="untree_co-section">
-        <div class="container" data-aos="fade-left" data-aos-delay="200">
-          <div class="row">
-            <div class="col-lg-10 mx-auto text-center">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <!-- <th scope="col">Last Name</th> -->
-                    <th scope="col">번호</th>
-                    <th scope="col">음식점명</th>
-                    <th scope="col">리뷰</th>
-                    <th scope="col">사진</th>
-                    <th scope="col">작성자</th>
-                    <th scope="col">변경하기</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <!-- <tr @click="setActive(data, index)"> -->
-                  <tr>
-                    <th scope="col">1</th>
-                    <th scope="col">스미스가 좋아하는 한옥</th>
-                    <th scope="col">사장님이 친절하고 요리가 맛있어요</th>
-                    <th scope="col">사진</th>
-                    <th scope="col">임꺽정</th>
-                    <td>
-                      <router-link to=""
-                        ><span class="badge bg-success"
-                          >수정하기</span
-                        ></router-link
-                      >
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="col">2</th>
-                    <th scope="col">롯데호텔 서울 라센느</th>
-                    <th scope="col">여친이랑 와보고 싶어요</th>
-                    <th scope="col">사진</th>
-                    <th scope="col">홍길동</th>
-                    <td>
-                      <router-link to=""
-                        ><span class="badge bg-success"
-                          >수정하기</span
-                        ></router-link
-                      >
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-
-              <!--    Todo : page 바 시작 -->
-              <div class="col-md-8 offset-4 pt-5">
-                <b-pagination
-                  v-model="page"
-                  :total-rows="count"
-                  :per-page="pageSize"
-                  prev-text="Prev"
-                  next-text="Next"
-                  @change="handlePageChange"
-                ></b-pagination>
-              </div>
-              <!--    Todo : page 바 끝 -->
-
-              <!-- search 관련 div 시작 -->
-              <div class="col-md-6 offset-3 pt-5">
-                <div class="input-group mb-3">
-                  <!-- Todo : 수정 시작 -->
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Search by Restaurant"
-                    v-model="searchName"
-                  />
-                  <div class="input-group-append">
-                    <button
-                      class="btn btn-primary"
-                      type="button"
-                      @click="
-                        page = 1;
-                        retrieveReview();
-                      "
-                    >
-                      Search
-                    </button>
-                  </div>
-                  <!-- Todo : 수정 끝 -->
-                </div>
-              </div>
-              <!-- search 관련 div 끝 -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <ReviewCom />
     <!-- 내가 쓴 리뷰 목록 끝 -->
 
     <!-- 최근 본 가게 시작 -->
@@ -448,6 +351,7 @@
 import ProfileDataService from "@/services/ProfileDataService";
 import FavoriteCom from "@/components/user/ProfileCom/FavoriteCom.vue";
 import ReservationCom from "@/components/user/ProfileCom/ReservationCom.vue";
+import ReviewCom from "@/components/user/ProfileCom/ReviewCom.vue";
 
 export default {
   data() {
@@ -455,10 +359,8 @@ export default {
       // currentReservation: null,
       reservation: [],
       searchName: "",
-      currentData: null,
       currentProfile: null,
-      profiles: true,
-      currentIndex: -1,
+      profileImage: true,
       currentImage: undefined, // 현재 이미지 변수
       previewImage: undefined, // 미리보기 이미지 변수
       message: "", // 서버쪽 메세지를 저장할 변수
@@ -471,21 +373,6 @@ export default {
     };
   },
   methods: {
-    handlePageChange(value) {
-      this.page = value;
-      this.retrieveReservation();
-    },
-    handlePageSizeChange(event) {
-      this.pageSize = event.target.value;
-      this.page = 1;
-      this.retrieveReservation();
-    },
-    setActive(data, index) {
-      console.log(data);
-      this.currentData = data;
-      this.currentIndex = index;
-    },
-
     saveProfile() {
       // 임시 객체 변수 -> springboot 전송
       // 부서번호는(no) 자동생성되므로 빼고 전송함
@@ -551,6 +438,7 @@ export default {
   components: {
     FavoriteCom,
     ReservationCom,
+    ReviewCom,
   },
   // 화면이 뜨자마자 실행되는 이벤트
   mounted() {
@@ -577,12 +465,6 @@ li {
   list-style-type: none;
 }
 
-#imageArea {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-}
-
 #imageBtn {
   position: absolute;
   width: 65px;
@@ -597,7 +479,7 @@ li {
 #camera {
   position: absolute;
   top: 20%;
-  left: 35%;
+  left: 32.5%;
 }
 
 .bi {
