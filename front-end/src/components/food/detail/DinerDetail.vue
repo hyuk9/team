@@ -29,6 +29,8 @@
                 >
                   <i class="bi bi-heart-fill fs-4"></i>
                 </button>
+                <!-- 찜하기 숫자 표시 -->
+                <span class="me-4">{{fastshow}}</span>
 
                 <router-link :to="'/diner/' + currentDiner.dno + '/edit'">
                   <button
@@ -387,6 +389,11 @@ export default {
           },
         ],
       },
+
+      // favorite 정보 저장용
+      totalfavorite : null,
+      // 찜하기 버튼에 따라 즉시 반응하기 위한 함수
+      fastshow:0
     };
   },
   components: {
@@ -439,6 +446,24 @@ export default {
           this.currentDiner = response.data;
           // 콘솔 로그 출력
           console.log("현재 음식점 데이터 : ", response.data);
+
+          FavoriteDataService.getFavorite(
+          dno
+          )
+          // 성공하면 .then() 결과가 전송됨
+          .then((response) => {
+            // let(const) { 속성명1, 속성명2 } = 데이터 객체배열 (모던자바문법 구조 분해 할당)
+            this.totalfavorite = response.data; // 스프링부트에서 전송한 데이터 받고 조회수 내림차순으로 가공
+            // 디버깅 콘솔에 정보 출력
+            console.log(response.data);
+            // favorite dno_count 를 diner dno_count에 복사
+            this.currentDiner.dno_count = this.totalfavorite.dno_count
+            this.fastshow = this.currentDiner.dno_count;      
+          })
+          // 실패하면 .catch() 에 에러가 전송됨
+          .catch((e) => {
+            console.log(e);
+          });
         })
         // 실패하면 .catch() 에러메세지가 리턴됨
         .catch((e) => {
@@ -568,6 +593,8 @@ export default {
           //   showConfirmButton: false,
           //   timer: 1000,
           // });
+          // 찜하기 숫자 변화
+          this.fastshow++
         })
         // 실패하면 .catch() 결과가 전송됨
         .catch((e) => {
@@ -589,6 +616,8 @@ export default {
           // });
           // this.$router.go();
           this.retrieveFavorite();
+          // 찜하기 숫자 변화
+          this.fastshow--
         })
         // 실패하면 .catch() 에러메세지가 전송됨
         .catch((e) => {
@@ -652,6 +681,9 @@ export default {
       }
     },
   },
+  update() {
+    getDiner()
+  }
 };
 </script>
 <style>
