@@ -492,6 +492,7 @@ export default {
       this.progress = 0;
       // insert 요청 함수 호출(axios 공통함수 호출)
       ProfileDataService.create(
+        this.currentUser.id,
         this.currentImage
         // (eve) => {
         //   // 파일이 업로드될때 진척상황이 저장됨(%)
@@ -500,12 +501,11 @@ export default {
       )
         // 성공하면 then() 결과가 전송됨
         .then((response) => {
-          console.log(response.data);
           this.message = response.data;
           this.profiles = false;
           // 변수 submitted
           alert("성공했습니다.");
-          this.getProfile(1);
+          this.getProfile(this.currentUser.id);
         })
         // 실패하면 .catch() 결과가 전송됨
         .catch((err) => {
