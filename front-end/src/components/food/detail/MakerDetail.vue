@@ -19,11 +19,7 @@ export default {
     };
   },
   mounted() {
-
     this.getDiner(this.$route.params.dno);
-    window.kakao && window.kakao.maps
-      ? this.initMap()
-      : this.addKakaoMapScript();
   },
   methods: {
     // 부서번호(dno)로 조회 요청하는 함수
@@ -36,6 +32,9 @@ export default {
           this.currentDiner = response.data;
           // 콘솔 로그 출력
           console.log("현재 음식점 데이터 : ", response.data);
+          window.kakao && window.kakao.maps
+            ? this.initMap()
+            : this.addKakaoMapScript();
         })
         // 실패하면 .catch() 에러메세지가 리턴됨
         .catch((e) => {
