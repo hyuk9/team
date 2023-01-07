@@ -37,6 +37,11 @@ const routes = [
     name: "review-add",
     component: () => import("@/components/food/detail/DinerComment.vue"),
   },
+  {
+    path: "/edit/review/:rno",
+    name: "review-edit",
+    component: () => import("@/components/food/detail/EditComment.vue"),
+  },
   // TODO: 분류별 게시판 구현
   {
     path: '/free',
