@@ -277,7 +277,7 @@
           <div class="card mb-4">
             <div class="card-header">Chart</div>
             <div class="card-body">
-              <div id="chart" style="height: 450px"></div>
+              <Canvas/>
             </div>
           </div>
         </div>
@@ -290,16 +290,10 @@
         <!-- Side widgets 예약하기 끝 -->
       </div>
     </div>
-    <!-- <div id="chart" class="col-lg-4 bg bg-info">
-      <h1>차트 위치 지정해줘야함 - 내부 div로 넣으면 안되는 문제 있음</h1>
-      <canvas id="myChart"></canvas>
-    </div> -->
   </main>
 </template>
 
 <script>
-import Chart from "chart.js/auto";
-
 /* eslint-disable */
 
 import DinerDataService from "@/services/DinerDataService";
@@ -309,6 +303,7 @@ import AddReservation from "@/components/reservation/AddReservation.vue";
 import FavoriteDataService from "@/services/FavoriteDataService";
 import MenuDataService from "@/services/MenuDataService"; // 메뉴 리스트를 불러오기 위한 서비스 임포트
 import MakerDetail from "@/components/food/detail/MakerDetail.vue";
+import Canvas from "@/components/food/detail/CanvasView.vue"
 
 export default {
   data() {
@@ -344,60 +339,6 @@ export default {
 
       pageSizes: [3, 6, 9], // select box에 넣을 기본 데이터
 
-      name: "HelloWorld",
-      width: 500,
-      height: 600,
-      info: false,
-      marker: null,
-      count: 1,
-      map: null,
-      isCTT: false,
-      mapOptions: {
-        lat: 35.1525133,
-        lng: 129.059547,
-        zoom: 15,
-        zoomControl: true,
-        zoomControlOptions: { position: "TOP_RIGHT" },
-        mapTypeControl: true,
-      },
-      initLayers: [
-        "BACKGROUND",
-        "BACKGROUND_DETAIL",
-        "POI_KOREAN",
-        "TRANSIT",
-        "ENGLISH",
-        "CHINESE",
-        "JAPANESE",
-      ],
-
-      chartData: {
-        labels: ["맛", "친절도", "거리", "청결도"],
-        datasets: [
-          {
-            label: "여성",
-            data: [65, 59, 90, 81],
-            fill: true,
-            backgroundColor: "rgba(255, 99, 132, 0.2)",
-            borderColor: "rgb(255, 99, 132)",
-            pointBackgroundColor: "rgb(255, 99, 132)",
-            pointBorderColor: "#fff",
-            pointHoverBackgroundColor: "#fff",
-            pointHoverBorderColor: "rgb(255, 99, 132)",
-          },
-          {
-            label: "남성",
-            data: [48, 68, 70, 98],
-            fill: true,
-            backgroundColor: "rgba(54, 162, 235, 0.2)",
-            borderColor: "rgb(54, 162, 235)",
-            pointBackgroundColor: "rgb(54, 162, 235)",
-            pointBorderColor: "#fff",
-            pointHoverBackgroundColor: "#fff",
-            pointHoverBorderColor: "rgb(54, 162, 235)",
-          },
-        ],
-      },
-
       // favorite 정보 저장용
       totalfavorite : null,
       // 찜하기 버튼에 따라 즉시 반응하기 위한 함수
@@ -408,6 +349,7 @@ export default {
     DinerCommentVue,
     AddReservation,
     MakerDetail,
+    Canvas
   },
   methods: {
     // axios , 모든 부서 정보 조회 요청 함수
@@ -650,19 +592,6 @@ export default {
     this.retrieveReview(); // 화면 로딩시 전체 조회함수 실행
     this.retrieveFavorite(); // 화면 로딩시 fid해당하는 조회함수 실행
 
-    const ctx = document.getElementById("myChart");
-
-    new Chart(ctx, {
-      type: "radar",
-      data: this.chartData,
-      options: {
-        elements: {
-          line: {
-            borderWidth: 3,
-          },
-        },
-      },
-    });
   },
   computed: {
     // 현재 유저
