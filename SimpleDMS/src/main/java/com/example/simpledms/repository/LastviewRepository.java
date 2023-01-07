@@ -45,13 +45,15 @@ public interface LastviewRepository extends JpaRepository<Lastview, Integer> {
 @Query(value = "select di.* " +
         "from tb_diner di, tb_lastview la " +
         "where di.dno = la.dno " +
+        "and id = :id " +
         "order by la.insert_time desc",
         countQuery = "select di.* " +
                 "from tb_diner di, tb_lastview la " +
                 "where di.dno = la.dno " +
-        "order by la.insert_time desc",
+                "and id = :id " +
+                "order by la.insert_time desc",
         nativeQuery = true)
-    Page<LastviewDto> findAllByIdOrderByInsertTimeDesc (Pageable pageable);
+    Page<LastviewDto> findAllByIdOrderByInsertTimeDesc (Integer id, Pageable pageable);
 }
 
 

@@ -47,8 +47,9 @@ public class LastviewController {
 
 
     //    Todo: 1.6 추가 currentUserId로 최근본 음식점 조회
-    @GetMapping("/lastview")
-    public ResponseEntity<Object> getLastviewById (@RequestParam(defaultValue = "0") int page,
+    @GetMapping("/lastview/id/{id}")
+    public ResponseEntity<Object> getLastviewById (@PathVariable Integer id,
+                                                    @RequestParam(defaultValue = "0") int page,
                                                    @RequestParam(defaultValue = "3") int size)
 
     {
@@ -59,7 +60,7 @@ public class LastviewController {
 
             Page<LastviewDto> lastviewPage;
 
-            lastviewPage = lastviewService.findAllByIdOrderByInsertTimeDesc(pageable);
+            lastviewPage = lastviewService.findAllByIdOrderByInsertTimeDesc(id, pageable);
 
             Map<String, Object> response = new HashMap<>();
             response.put("lastview", lastviewPage.getContent());

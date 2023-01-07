@@ -48,8 +48,8 @@ public class LastviewService {
     }
 
     //    Todo: user id로 최근 본 가게 조회하는 함수
-    public Page<LastviewDto> findAllByIdOrderByInsertTimeDesc(Pageable pageable) {
-        Page<LastviewDto> lastviews = lastviewRepository.findAllByIdOrderByInsertTimeDesc(pageable);
+    public Page<LastviewDto> findAllByIdOrderByInsertTimeDesc(Integer id, Pageable pageable) {
+        Page<LastviewDto> lastviews = lastviewRepository.findAllByIdOrderByInsertTimeDesc(id, pageable);
 
         return lastviews;
     }
