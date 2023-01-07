@@ -61,6 +61,8 @@ export default {
   mounted() {
     const darkmode = new Darkmode(this.options);
     darkmode.showWidget();
+    // 브라우저 꺼지면 자동으로 로그아웃하기
+    window.addEventListener('unload',()=> this.$store.dispatch("auth/logout"));
   },
 };
 </script>
