@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * packageName : com.example.jpaexam.service.exam01
@@ -39,7 +40,7 @@ public class LastviewService {
         return list;
     }
 
-//    Todo: 최근본 음식점 테이블에 저장하는 함수
+    //    Todo: 최근본 음식점 테이블에 저장하는 함수
     public Lastview save(Lastview lastview) {
 
         Lastview lastview2 = lastviewRepository.save(lastview);
@@ -54,9 +55,25 @@ public class LastviewService {
         return lastviews;
     }
 
+    //    Todo: id와 dno로 조회하는 함수
+    public Optional<Lastview> findByIdAndDno(Integer id, Integer dno) {
+        Optional<Lastview> optional = lastviewRepository.findByIdAndDno(id, dno);
+
+        return optional;
+    }
+
+    public boolean removeById(int lid) {
+//        existsById(기본키) 있으면 삭제 실행 + true 리턴
+        if (lastviewRepository.existsById(lid) == true) {
+
+            lastviewRepository.deleteById(lid);
+            return true;
+        }
+
+        return false;
+    }
+
 }
-
-
 
 
 

@@ -16,10 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * packageName : com.example.jpaexam.controller.exam07
@@ -81,17 +78,62 @@ public class LastviewController {
         }
     }
 
+    @GetMapping("/lastview/{id}/{dno}")
+    public ResponseEntity<Object> getLastviewId(@PathVariable Integer id, @PathVariable Integer dno) {
+
+        try {
+            Optional<Lastview> optionalLastview = lastviewService.findByIdAndDno(id, dno);
+
+
+            if (optionalLastview.isPresent() == true) {
+//                데이터 + 성공 메세지 전송
+                return new ResponseEntity<>(optionalLastview.get(), HttpStatus.OK);
+            } else {
+//                데이터 없음 메세지 전송(클라이언트)
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+
+        } catch (Exception e) {
+            log.debug(e.getMessage());
+            // 서버에러 발생 메세지 전송(클라이언트)
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 //    Todo: 1.7 추가 최근 본 음식점 데이터 저장하는 함수
     @PostMapping("/lastview")
     public ResponseEntity<Object> createLastview(@RequestBody Lastview lastview) {
 
         try {
             Lastview lastview2 = lastviewService.save(lastview);
+            log.debug("=====================성공=======================");
 
             return new ResponseEntity<>(lastview2, HttpStatus.OK);
 
         } catch (Exception e) {
             log.debug(e.getMessage());
+            log.debug("=====================에러=======================");
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @DeleteMapping("/lastview/deletion/{lid}")
+    public ResponseEntity<Object> deleteLastview(@PathVariable int lid) {
+
+        try {
+            boolean bSuccess = lastviewService.removeById(lid);
+
+            if (bSuccess == true) {
+//                데이터 + 성공 메세지 전송
+                return new ResponseEntity<>(HttpStatus.OK);
+            } else {
+//                데이터 없음 메세지 전송(클라이언트)
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+
+        } catch (Exception e) {
+            log.debug(e.getMessage());
+            // 서버에러 발생 메세지 전송(클라이언트)
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

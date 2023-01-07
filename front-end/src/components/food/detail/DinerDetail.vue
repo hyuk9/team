@@ -221,7 +221,9 @@
 
           <div>
             <button class="btn btn-warning mb-5 text-white">
-              <router-link :to="'/add/review/' + currentDiner.dno"> 리뷰 쓰기 </router-link>
+              <router-link :to="'/add/review/' + currentDiner.dno">
+                리뷰 쓰기
+              </router-link>
             </button>
           </div>
 
@@ -308,6 +310,7 @@ import FavoriteDataService from "@/services/FavoriteDataService";
 import MenuDataService from "@/services/MenuDataService"; // 메뉴 리스트를 불러오기 위한 서비스 임포트
 import MakerDetail from "@/components/food/detail/MakerDetail.vue";
 import Canvas from "@/components/food/detail/CanvasView.vue";
+import LastviewDataService from "@/services/LastviewDataService";
 
 export default {
   data() {
@@ -332,6 +335,12 @@ export default {
 
       favorite: {
         fid: null,
+        dno: null,
+        id: null,
+      },
+
+      lastview: {
+        lid: null,
         dno: null,
         id: null,
       },
@@ -557,6 +566,61 @@ export default {
           console.log(e);
         });
     },
+
+    // axios , 모든 부서 정보 조회 요청 함수
+    retrieveLastview() {
+      // getAll() ->(변경) getAll(dname, page, size)
+      LastviewDataService.get(this.currentUser.id, this.$route.params.dno)
+        // 성공하면 .then() 결과가 전송됨
+        .then((response) => {
+          this.lastview = response.data; // 스프링부트에서 전송한 데이터
+          // 디버깅 콘솔에 정보 출력
+          console.log(response.data);
+
+          if (this.lastview.lid != null) {
+            // axios 공통함수 호출
+            LastviewDataService.delete(this.lastview.lid)
+              // 성공하면 then() 결과가 전송됨
+              .then((response) => {
+                console.log(response.data);
+
+                this.saveLastview();
+              })
+              // 실패하면 .catch() 에러메세지가 전송됨
+              .catch((e) => {
+                console.log(e);
+              });
+          } else {
+            this.saveLastview();
+          }
+        })
+        // 실패하면 .catch() 에 에러가 전송됨
+        .catch((e) => {
+          console.log("찜한 목록 데이터 : ", e);
+        });
+    },
+
+    saveLastview() {
+      let data = {
+        // fid는 자동생성
+        dno: this.$route.params.dno,
+        id: this.currentUser.id,
+      };
+      // insert 요청 함수 호출(axios 공통함수 호출)
+      LastviewDataService.create(data)
+        // 성공하면 then() 결과가 전송됨
+        .then((response) => {
+          // this.favorite.fid = response.data.fid; --> 이거 처음에 이렇게 썼다가 오류났음. 이렇게 쓰면 안됨
+          this.lastview = response.data;
+          // 콘솔 로그 출력(response.data)
+          console.log("방문한 페이지 : ", this.lastview);
+        })
+        // 실패하면 .catch() 결과가 전송됨
+        .catch((e) => {
+          console.log("테스트용");
+          console.log(e);
+        });
+    },
   },
 
   // 화면이 뜨자 마자 실행되는 이벤트
@@ -564,6 +628,7 @@ export default {
     // 클라이언트쪽 디버깅
     // alert(this.$route.params.dno);
     // console.log(this.$route.params.dno);
+    this.retrieveLastview();
 
     this.message = "";
     //  this.$route.params.dno : 이전페이지에서 전송한 매개변수는 $route.params 안에 있음
