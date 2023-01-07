@@ -33,7 +33,7 @@ const routes = [
     component: () => import("@/components/food/detail/EditDiner.vue"),
   },
   {
-    path: "/add/review",
+    path: "/add/review/:dno",
     name: "review-add",
     component: () => import("@/components/food/detail/DinerComment.vue"),
   },

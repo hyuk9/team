@@ -221,7 +221,7 @@
 
           <div>
             <button class="btn btn-warning mb-5 text-white">
-              <router-link to="/add/review"> 리뷰 쓰기 </router-link>
+              <router-link :to="'/add/review/' + currentDiner.dno"> 리뷰 쓰기 </router-link>
             </button>
           </div>
 

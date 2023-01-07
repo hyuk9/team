@@ -89,7 +89,7 @@ export default {
       review: {
         id: null,
         // username: "",
-        dno: 1,
+        dno: null,
         rcontent: "",
         rating: null,
         rphoto: "",
@@ -122,7 +122,7 @@ export default {
       // 부서번호는(no) 자동생성되므로 빼고 전송함
       let data = {
         id: this.currentUser.id,
-        dno: this.dno,
+        dno: this.$route.params.dno,
         rcontent: this.review.rcontent,
         rating: this.review.rating,
         rphoto: this.review.rphoto,
