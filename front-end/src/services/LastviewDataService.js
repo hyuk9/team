@@ -12,7 +12,7 @@ class LastviewDataService {
 
   // 유저id를 받아서 리뷰 조회하는 함수
   getId(id, page, size) {
-    return http.get(`/lastview?id=${id}&page=${page}&size=${size}`, {
+    return http.get(`/lastview/id?id=${id}&page=${page}&size=${size}`, {
       headers: authHeader(),
     });
   }

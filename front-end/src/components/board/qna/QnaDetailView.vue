@@ -21,7 +21,7 @@
           id="questioner"
           required
           name="questioner"
-          v-model="currentQuestion.writer"
+          v-model="currentQuestion.qwriter"
         />
       </div>
       <div class="mb-3">
@@ -32,7 +32,7 @@
           rows="8"
           required
           name="content"
-          v-model="currentQuestion.content"
+          v-model="currentQuestion.qcontent"
         ></textarea>
       </div>
 
@@ -45,7 +45,7 @@
             id="answerer"
             required
             name="answerer"
-            v-model="currentAnswer.writer"
+            v-model="currentAnswer.awriter"
           />
         </div>
         <div class="mb-3">
@@ -56,7 +56,7 @@
             rows="8"
             required
             name="content"
-            v-model="currentAnswer.content"
+            v-model="currentAnswer.acontent"
           ></textarea>
         </div>
       </div>
@@ -65,11 +65,11 @@
       <div v-for="(data, index) in answer" :key="index">
         <div class="mb-3">
           <label for="answerer" class="form-label">답변 작성자</label>
-          <p>{{ data.writer }}</p>
+          <p>{{ data.awriter }}</p>
         </div>
         <div class="mb-3">
           <label for="content" class="form-label">답변</label>
-          <p>{{ data.conternt }}</p>
+          <p>{{ data.acontent }}</p>
         </div>
       </div>
       <!-- vfor끝 -->

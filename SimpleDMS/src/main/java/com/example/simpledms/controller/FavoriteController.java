@@ -207,6 +207,38 @@ public class FavoriteController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+//    Todo: 1.4 추가 currentUserId로 찜한목록 조회함수
+
+    @GetMapping("/favorite/desc")
+    public ResponseEntity<Object> getFavorite(@RequestParam(defaultValue = "0") int page,
+                                             @RequestParam(defaultValue = "3") int size)
+    {
+        try {
+//            페이지 변수 저장
+            Pageable pageable = PageRequest.of(page, size);
+
+            Page<FavoriteDto> favoritePage;
+
+            favoritePage = favoriteService.findAllBy(pageable);
+
+            Map<String, Object> response = new HashMap<>();
+            response.put("favorite", favoritePage.getContent());
+            response.put("currentPage", favoritePage.getNumber());
+            response.put("totalItems", favoritePage.getTotalElements());
+            response.put("totalPages", favoritePage.getTotalPages());
+
+            if (favoritePage.isEmpty() == false) {
+//                성공
+                return new ResponseEntity<>(response, HttpStatus.OK);
+            } else {
+//                데이터 없음
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+        } catch (Exception e) {
+//            서버 에러
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
 //    dno로 검색함수
     @GetMapping("/favorite/dno/{dno}")

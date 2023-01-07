@@ -47,8 +47,8 @@ public class LastviewController {
 
 
     //    Todo: 1.6 추가 currentUserId로 최근본 음식점 조회
-    @GetMapping("/lastview/{id}")
-    public ResponseEntity<Object> getLastviewById (@PathVariable Integer id,
+    @GetMapping("/lastview/id")
+    public ResponseEntity<Object> getLastviewById (@RequestParam Integer id,
                                                     @RequestParam(defaultValue = "0") int page,
                                                    @RequestParam(defaultValue = "3") int size)
 
