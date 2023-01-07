@@ -47,6 +47,9 @@ public class Free extends BaseTimeEntity {
     )
     private Integer fno;
 
+    @Column
+    private Integer id;
+
     @javax.persistence.Column(columnDefinition = "VARCHAR2(255)")
     private String writer;
 

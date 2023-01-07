@@ -96,6 +96,7 @@ export default {
       // axios 공통함수 호출
       FreeDataService.update(
         this.currentFree.fno,
+        this.currentUser.id,
         this.currentFree.writer,
         this.currentFree.title,
         this.currentFree.content,
@@ -140,6 +141,14 @@ export default {
   mounted() {
     this.message = "";
     this.getFree(this.$route.params.fno);
+  },
+
+  computed: {
+    currentUser() {
+      // 모듈 저장소 : this.$store.state.모듈명.state값
+      // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
+      return this.$store.state.auth.user;
+    },
   },
 };
 </script>

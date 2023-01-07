@@ -4,7 +4,7 @@
     <div class="container" v-if="!submitted">
       <div class="mb-3">
         <label for="writer" class="form-label">작성자</label>
-        <input type="writer" class="form-control" id="writer" required name="writer" v-model="free.writer" />
+        <input type="writer" class="form-control" id="writer"  required name="writer" v-model="free.writer" />
       </div>
       <div class="mb-3">
         <label for="title" class="form-label">제목</label>
@@ -65,6 +65,7 @@ export default {
     return {
       free: {
         fno: null,
+        id: null,
         writer: "",
         title: "",
         content: "",
@@ -92,6 +93,7 @@ export default {
       this.progress = 0;
       // insert 요청 함수 호출(axios 공통함수 호출)
       FreeDataService.create(
+        this.free.id = this.currentUser.id,
         this.free.writer,
         this.free.title,
         this.free.content,
@@ -182,6 +184,14 @@ export default {
     //       this.currentImage = undefined;
     //     });
     // },
+  },
+
+  computed: {
+    currentUser() {
+      // 모듈 저장소 : this.$store.state.모듈명.state값
+      // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
+      return this.$store.state.auth.user;
+    },
   },
 
 }
