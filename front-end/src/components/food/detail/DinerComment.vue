@@ -137,7 +137,7 @@ export default {
           console.log(response.data);
           alert("추가가 완료되었습니다!");
           // 첫페이지(전체목록_조회_페이지) 강제 이동 : /diner
-          this.$router.push("/diner");
+          this.$router.push("/diner/" + this.$route.params.dno);
         })
         // 실패하면 .catch() 결과가 전송됨
         .catch((e) => {

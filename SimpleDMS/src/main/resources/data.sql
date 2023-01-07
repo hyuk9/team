@@ -368,15 +368,25 @@ VALUES (SQ_MENU.nextval, '메뉴16', '가격16', '16', 'N', TO_CHAR(SYSDATE, 'YY
 -- Todo: 평점 테이블
 -- Todo: 리뷰 테이블이랑 조인 예정
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '1', '1', '1', '1', '1', '1', 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_SCORE.nextval, '2', '1', '3', '4', '1', '1', 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+INSERT INTO TB_SCORE
+VALUES (SQ_SCORE.nextval, '1', '4', '2', '3', '2', '1', 'female', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 INSERT INTO TB_SCORE
 VALUES (SQ_SCORE.nextval, '2', '2', '2', '2', '2', '2', 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '3', '3', '3', '3', '3', '3', 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_SCORE.nextval, '1', '4', '2', '3', '1', '2', 'female', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '4', '4', '4', '4', '4', '4', 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_SCORE.nextval, '3', '2', '3', '2', '1', '3', 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '5', '5', '5', '5', '5', '5', 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_SCORE.nextval, '3', '5', '1', '2', '4', '3', 'female', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+INSERT INTO TB_SCORE
+VALUES (SQ_SCORE.nextval, '2', '4', '4', '3', '5', '4', 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+INSERT INTO TB_SCORE
+VALUES (SQ_SCORE.nextval, '1', '2', '3', '1', '2', '4', 'female', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+INSERT INTO TB_SCORE
+VALUES (SQ_SCORE.nextval, '2', '3', '1', '5', '2', '5', 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+INSERT INTO TB_SCORE
+VALUES (SQ_SCORE.nextval, '3', '4', '2', '5', '3', '5', 'female', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 
 
 -- Todo:푸드컬럼 테이블

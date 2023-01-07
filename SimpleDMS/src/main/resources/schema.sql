@@ -240,7 +240,7 @@ CREATE TABLE TB_SCORE
     MOOD        NUMBER, -- 분위기
     COST        NUMBER, -- 가성비
     DNO         NUMBER, -- 조인용
-    GENDER      VARCHAR2(1000),
+    GENDER      VARCHAR2(1000), -- 성별
     DELETE_YN   VARCHAR2(1) DEFAULT 'N',
     INSERT_TIME VARCHAR2(255),
     UPDATE_TIME VARCHAR2(255),
