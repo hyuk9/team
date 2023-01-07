@@ -16,7 +16,7 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
                         <li class="dropdown">
-                            <router-link to="" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            <router-link to="" class="nav-link dropdown-toggle text-gradient" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 음식점 리스트
                             </router-link>
@@ -84,7 +84,7 @@
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <router-link to="" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            <router-link to="" class="nav-link dropdown-toggle text-gradient" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 게시판
                             </router-link>
@@ -109,7 +109,7 @@
 
                         <!-- 임시로 만든 예약 네비게이션 시작 -->
                         <li class="nav-item dropdown">
-                            <router-link to="" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            <router-link to="" class="nav-link dropdown-toggle text-gradient" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 예약(임시)
                             </router-link>
@@ -127,7 +127,7 @@
                         <!-- 관리자 전용 페이지 시작 -->
                         <!-- showAdminBoard가 동작하면 보이게 작동 -->
                         <li v-if="showAdminBoard" class="nav-item dropdown">
-                            <router-link to="" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            <router-link to="" class="nav-link dropdown-toggle text-gradient" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 관리자 전용(관리자만 보이게 설정)
                             </router-link>
@@ -161,28 +161,28 @@
                         <div v-if="!currentUser">
                             <!-- 회원가입 시작 -->
                             <router-link to="/termsOfService" class="btn btn-white text-yellow register">
-                                <i class="fas fa-user me-2"></i>회원가입
+                                <i class="bi bi-person-plus-fill"> 회원가입</i>
                             </router-link>
                             <!-- 회원가입 끝 -->
 
                             <!-- 로그인 시작 -->
                             <!-- 부트스트랩 뷰 의 모달 기능 사용하기 -->
-                            <b-button v-b-modal.modal-1 class="btn btn-white text-yellow ms-1 login" id="loginButton">
-                                <i class="fas fa-user me-2"></i>로그인
+                            <b-button v-b-modal.modal-1 class="btn btn-white text-yellow login" id="loginButton">
+                                <!-- <i class="fas fa-user me-2"></i>로그인 -->
+                                <i class="bi bi-door-closed-fill"> 로그인</i>
                             </b-button>
                             <!-- 로그인 끝 -->
                         </div>
                         <div v-if="currentUser">
                             <!-- 프로필 시작 -->
                             <a href="/profile" class="btn btn-white text-yellow login">
-                                <i class="fas fa-user me-2"></i>프로필
+                                <i class="bi bi-person-circle"> {{ this.currentUser.username }}</i>
                             </a>
                             <!-- 프로필 끝 -->
 
                             <!-- 로그아웃 시작 -->
-                            <a @click.prevent="logout" class="btn btn-white text-yellow ms-1 login">
-                                <i class="fas fa-user me-2"></i>
-                                로그아웃
+                            <a @click.prevent="logout" class="btn btn-white text-yellow login">
+                                <i class="bi bi-door-open-fill"> 로그아웃</i>
                             </a>
                             <!-- 로그아웃 끝 -->
                         </div>
