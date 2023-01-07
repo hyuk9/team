@@ -6,6 +6,7 @@ import com.example.simpledms.model.Role;
 import com.example.simpledms.model.User;
 import lombok.Builder;
 import lombok.Getter;
+import net.minidev.json.JSONObject;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -91,10 +92,14 @@ public class OAuthAttributes {
                                            Map<String, Object> attributes) {
         Map<String, Object> kakaoAccount = (Map<String, Object>) attributes.get("kakao_account");
 
+        // 이름 받을 수 없어서 대신 프로필 정보의 닉네일을 이름으로 쓰기
+        JSONObject jsonObject = new JSONObject((Map<String, ?>) kakaoAccount.get("profile"));
+        String nickname = (String) jsonObject.get("nickname");
+
         return OAuthAttributes.builder()
                 .username(((String) kakaoAccount.get("email")).split("@")[0])
                 .email((String) kakaoAccount.get("email"))
-                .name((String) kakaoAccount.get("name"))
+                .name(nickname)
                 .attributes(attributes)
                 .nameAttributeKey(userNameAttributeName)
                 .build();
