@@ -353,25 +353,6 @@ export default {
   },
   methods: {
     // axios , 모든 부서 정보 조회 요청 함수
-    retrieveReview() {
-      // getAll() ->(변경) getAll(dname, page, size)
-      ReviewDataService.getAll(this.searchRwriter, this.page - 1, this.pageSize)
-        // 성공하면 .then() 결과가 전송됨
-        .then((response) => {
-          // this.emp = response.data -> (변경) const { emp, totalItems } = response.data
-          // let(const) { 속성명1, 속성명2 } = 데이터 객체배열 (모던자바문법 구조분해할당)
-          const { review, totalItems } = response.data; // springboot 의 전송한 맵 정보
-          this.review = review; // 스프링부트에서 전송한 데이터
-          this.count = totalItems; // 스프링부트에서 전송한 페이지정보(총 건수)
-          // 디버깅 콘솔에 정보 출력
-          console.log(response.data);
-        })
-        // 실패하면 .catch() 에 에러가 전송됨
-        .catch((e) => {
-          console.log("현재 리뷰데이터 : ", e);
-        });
-    },
-    // axios , 모든 부서 정보 조회 요청 함수
     retrieveFavorite() {
       // getAll() ->(변경) getAll(dname, page, size)
       FavoriteDataService.get(this.currentUser.id, this.$route.params.dno)
@@ -445,7 +426,7 @@ export default {
           // springboot 결과를 리턴함(부서 객체)
           this.review = response.data;
           // 콘솔 로그 출력
-          console.log(response.data);
+          console.log("현재 리뷰 데이터 : ",response.data);
         })
         // 실패하면 .catch() 에러메세지가 리턴됨
         .catch((e) => {
@@ -589,7 +570,6 @@ export default {
     this.getDiner(this.$route.params.dno);
     this.getMenu(this.$route.params.dno); // 화면 로딩시 음식점번호(dno)로 메뉴조회하기
     this.getReview(this.$route.params.dno);
-    this.retrieveReview(); // 화면 로딩시 전체 조회함수 실행
     this.retrieveFavorite(); // 화면 로딩시 fid해당하는 조회함수 실행
 
   },
