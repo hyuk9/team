@@ -48,7 +48,6 @@ public class Profile extends BaseTimeEntity {
     private Integer pno;
 
 
-    @javax.persistence.Column
     private Integer id;
 
 
