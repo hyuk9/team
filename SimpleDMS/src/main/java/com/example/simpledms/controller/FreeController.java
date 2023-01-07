@@ -91,6 +91,26 @@ public class FreeController {
         }
     }
 
+//    @GetMapping("/free/{fno}")
+//    public ResponseEntity<Object> getFreeFno(@PathVariable int fno) {
+//
+//        try {
+//            Optional<Free> optionalFree = freeService.findById(fno);
+//
+//            if (optionalFree.isPresent() == true) {
+////                데이터 + 성공 메세지 전송
+//                return new ResponseEntity<>(optionalFree.get(), HttpStatus.OK);
+//            } else {
+////                데이터 없음 메세지 전송(클라이언트)
+//                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//            }
+//
+//        } catch (Exception e) {
+//            log.debug(e.getMessage());
+//            // 서버에러 발생 메세지 전송(클라이언트)
+//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
 
     @DeleteMapping("/free/all")
     public ResponseEntity<Object> removeAll() {
@@ -160,6 +180,7 @@ public class FreeController {
     //    생성 처리 : image update 포함
     @PostMapping("/free/create")
     public ResponseEntity<Object> createUploadFile(
+            @RequestParam("id") int id,
             @RequestParam("writer") String writer,
             @RequestParam("title") String title,
             @RequestParam("content") String content,
@@ -173,7 +194,7 @@ public class FreeController {
         log.info("blobFile {} : ", blobFile);
 
         try {
-            freeService.createUploadImage(writer, title, content, blobFile);
+            freeService.createUploadImage(id,writer, title, content, blobFile);
             if (blobFile != null) {
                 message = "Uploaded the file successfully: " + blobFile.getOriginalFilename();
             }
@@ -191,6 +212,7 @@ public class FreeController {
     @PutMapping("/free/update/{fno}")
     public ResponseEntity<Object> updateUploadFile(
             @PathVariable int fno,
+            @RequestParam("id") int id,
             @RequestParam("writer") String writer,
             @RequestParam("title") String title,
             @RequestParam("content") String content,
@@ -206,7 +228,7 @@ public class FreeController {
         try {
             Optional<Free> free = freeService.findId(fno);
             Integer views = free.get().getViews();
-            freeService.updateUploadFile(fno, writer, title, content, blobFile, views);
+            freeService.updateUploadFile(fno,id, writer, title, content, blobFile, views);
 
 
             if (blobFile != null) {

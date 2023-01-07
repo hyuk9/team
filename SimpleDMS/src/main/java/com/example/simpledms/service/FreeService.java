@@ -1,6 +1,7 @@
 package com.example.simpledms.service;
 
 import com.example.simpledms.model.Announce;
+import com.example.simpledms.model.Column;
 import com.example.simpledms.model.Free;
 import com.example.simpledms.repository.AnnounceRepository;
 import com.example.simpledms.repository.FreeRepository;
@@ -37,6 +38,15 @@ public class FreeService {
         Page<Free> page = freeRepository.findAll(pageable);
 
         return page;
+    }
+
+
+    //    ✅ id로 조회하는 함수
+    public Optional<Free> findById(int fno) {
+//        findById(기본키)
+        Optional<Free> optionalFree = freeRepository.findById(fno);
+
+        return optionalFree;
     }
 
     //    전체 삭제 함수
@@ -104,7 +114,7 @@ public class FreeService {
 //        return freeRepository.save(free);
 //    }
 
-    public Free createUploadImage(String writer, String title, String
+    public Free createUploadImage(int id, String writer, String title, String
             content, MultipartFile blobFile) throws IOException {
 
         String galleryFileName = "";
@@ -114,6 +124,7 @@ public class FreeService {
             galleryFileName = StringUtils.cleanPath(blobFile.getOriginalFilename());
 
              free = Free.builder()
+                     .id(id)
                     .writer(writer)
                     .title(title)
                     .content(content)
@@ -123,6 +134,7 @@ public class FreeService {
         }else {
 
              free = Free.builder()
+                     .id(id)
                     .writer(writer)
                     .title(title)
                     .content(content)
@@ -134,7 +146,7 @@ public class FreeService {
         return createFree;
     }
 
-    public Free updateUploadFile(int fno, String writer, String title, String
+    public Free updateUploadFile(int fno, int id, String writer, String title, String
             content, MultipartFile blobFile, int views) throws IOException {
 
         //            업로드 파일에서 파일명 얻기
@@ -145,6 +157,7 @@ public class FreeService {
 
             free = Free.builder()
                     .fno(fno)
+                    .id(id)
                     .writer(writer)
                     .title(title)
                     .content(content)
@@ -155,6 +168,7 @@ public class FreeService {
         }else{
             free = Free.builder()
                     .fno(fno)
+                    .id(id)
                     .writer(writer)
                     .title(title)
                     .content(content)

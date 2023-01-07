@@ -24,7 +24,7 @@
             <tr>
               <th scope="row">작성자</th>
               <td scope="row" v-text="currentFree.writer"></td>
-            </tr> 
+            </tr>
             <tr>
               <th scope="row">조회수</th>
               <td scope="row" v-text="currentfreeForViews.views"></td>
@@ -34,7 +34,7 @@
                 {{ currentFree.content }}
                 <!-- 미리보기 이미지 시작 -->
                 <div>
-                  <div >
+                  <div>
                     <img class="preview my-3" :src="currentFree.fileUrl" alt="" />
                   </div>
                 </div>
@@ -47,7 +47,7 @@
     </div>
 
     <div class="mb-3">
-      <router-link :to="'/free/' + currentFree.fno">
+      <router-link :to="'/free/' + currentFree.fno" v-if="showDetailBoard">
         <button class="btn btn-warning offset-5" type="button">
           수정&삭제
         </button>
@@ -77,14 +77,14 @@ export default {
       pageSizes: [3, 6, 9], // select box 에 넣을 기본 데이터
 
       // 조회수용 변수 추가
-      currentfreeForViews : null,
+      currentfreeForViews: null,
     };
   },
   methods: {
     // 부서번호(fno)로 조회 요청하는 함수
     getFree(fno) {
       // axios 공통함수 호출
-      FreeDataService.get(fno)
+      FreeDataService.getById(fno)
         // 성공하면 .then() 결과가 리턴됨
         .then((response) => {
           // springboot 결과를 리턴함(부서 객체)
@@ -96,7 +96,7 @@ export default {
         .catch((e) => {
           console.log(e);
         });
-           // axios 공통함수 호출
+      // axios 공통함수 호출
       FreeDataService.getById(fno)
         // 성공하면 .then() 결과가 리턴됨
         .then((response) => {
@@ -157,6 +157,15 @@ export default {
         // if ROLE_ADMIN 있으면 true
         //               없으면 false
         return this.currentUser.roles.includes("ROLE_ADMIN");
+      }
+      // currentUser 없으면 false (메뉴가 안보임)
+      return false;
+    },
+
+    showDetailBoard() {
+      if (this.currentUser && this.currentUser.roles) {
+        // if ROLE_ADMIN 있으면 true 없으면 false 이거나 현재로그인한id == 글쓴사람id
+        return this.currentUser.roles.includes("ROLE_ADMIN") || this.currentUser.id == this.currentFree.id;
       }
       // currentUser 없으면 false (메뉴가 안보임)
       return false;
