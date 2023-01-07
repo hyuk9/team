@@ -31,7 +31,7 @@ export default {
           // springboot 결과를 리턴함(부서 객체)
           this.currentDiner = response.data;
           // 콘솔 로그 출력
-          console.log("현재 음식점 데이터 : ", response.data);
+          console.log("지도에서 현재 음식점 데이터 : ", response.data);
           window.kakao && window.kakao.maps
             ? this.initMap()
             : this.addKakaoMapScript();
