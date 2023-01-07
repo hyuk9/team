@@ -1,167 +1,128 @@
 <template>
   <div>
-    <b-modal
-      id="modal-prevent-closing"
-      ref="modal"
-      title="리뷰를 작성해주세요!"
-      @show="resetModal"
-      @hidden="resetModal"
-      @ok="handleOk"
-      @click="saveReview"
-    >
-      <form ref="form" @submit.stop.prevent="handleSubmit">
-        <b-form-group
-          label="작성자"
-          label-for="rwriter-input"
-          invalid-feedback="Name is required"
-          :state="rwriterState"
-        >
-          <b-form-input
-            id="rwriter-input"
-            v-model="review.rwriter"
-            :state="rwriterState"
-            required
-          ></b-form-input>
-        </b-form-group>
+    <main class="main" id="top">
+      <div class="card mb-4">
+        <!-- AddDiner.vue -->
+        <div class="submit-form mt-5 mb-5 card-header">
+          <!-- 새 양식 폼 시작 -->
+          <div v-if="!submitted" class="card-body" style="width: 500px">
+            <!-- 식당이름 -->
+            <div class="form-group">
+              <label for="id">작성자</label>
+              <input
+                type="text"
+                class="form-control"
+                id="id"
+                required
+                v-model="currentUser.username"
+                v-bind:disabled="true"
+                name="id"
+              />
+            </div>
 
-        <b-form-group
-          label="평점"
-          label-for="rating-input"
-          invalid-feedback="Rating is required"
-          :state="ratingState"
-        >
-          <b-form-rating
-            v-model="review.rating"
-            show-value
-            required
-          ></b-form-rating>
-        </b-form-group>
+            <!-- 평점 -->
+            <div class="form-group">
+              <label for="rating">평점</label>
+              <select
+                class="form-select"
+                id="rating"
+                required
+                v-model="review.rating"
+                name="rating"
+                aria-label="Default select example"
+              >
+                <option selected>평점을 선택해주세요.</option>
+                <option value="1">1점</option>
+                <option value="2">2점</option>
+                <option value="3">3점</option>
+                <option value="4">4점</option>
+                <option value="5">5점</option>
+              </select>
+            </div>
 
-        <b-form-group
-          label="내용"
-          label-for="rcontent-input"
-          invalid-feedback="Content is required"
-          :state="rcontentState"
-        >
-          <b-form-input
-            id="rcontent-input"
-            v-model="review.rcontent"
-            :state="rcontentState"
-            required
-          ></b-form-input>
-        </b-form-group>
+            <div class="form-group">
+              <label for="rcontent">리뷰내용</label>
+              <textarea
+                class="form-control"
+                placeholder="리뷰를 작성해주세요."
+                id="rcontent"
+                v-model="review.rcontent"
+                style="height: 100px"
+              ></textarea>
+            </div>
 
-        <b-form-group
-          label="사진"
-          label-for="rphoto-input"
-          v-model="review.rphoto"
-          :state="rphotoState"
-        >
-          <b-form-file multiple>
-            <template slot="file-name" slot-scope="{ names }">
-              <b-badge variant="dark">{{ names[0] }}</b-badge>
-              <b-badge v-if="names.length > 1" variant="dark" class="ml-1">
-                + {{ names.length - 1 }} More files
-              </b-badge>
-            </template>
-          </b-form-file>
-        </b-form-group>
-      </form>
-    </b-modal>
+            <!-- 식당이름 -->
+            <div class="form-group">
+              <label for="rphoto">사진</label>
+              <input
+                type="text"
+                class="form-control"
+                id="rphoto"
+                v-model="review.rphoto"
+                name="rphoto"
+              />
+            </div>
+
+            <!-- 서버 에러 메세지가 있을 경우 아래 출력 시작 -->
+            <div v-if="message" class="alert alert-secondary" role="alert">
+              {{ message }}
+            </div>
+            <!-- 서버 에러 메세지가 있을 경우 아래 출력 끝 -->
+
+            <button @click="saveReview" class="btn btn-success mt-5 mb-3">
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
   </div>
 </template>
 
 <script>
 import ReviewDataService from "@/services/ReviewDataService";
+import DinerDataService from "@/services/DinerDataService";
 
 export default {
   data() {
     return {
-      review: [],
+      review: {
+        id: null,
+        // username: "",
+        dno: null,
+        rcontent: "",
+        rating: null,
+        rphoto: "",
+      },
 
-      rwriter: "",
-      rcontent: "",
-      rating: null,
-      rphoto: [],
-
-      rwriterState: null,
-      ratingState: null,
-      rcontentState: null,
-      rphotoState: null,
-
-      currentDiner: null,
-      currentReview: null,
-      message: "",
-      currentIndex: -1,
-      searchRwriter: "",
+      // submit 버튼을 클릭하면 true 가 되고, You submitted successfully! 화면에 출력됨
+      submitted: false,
     };
   },
   methods: {
-    // 목록을 클릭했을때 현재 부서객체, 인덱스번호를 저장하는 함수
-    setActiveReview(data, index) {
-      this.currentReview = data;
-      this.currentIndex = index;
-    },
-    // axios, 모든 부서 정보 삭제 요청 함수
-    removeAllReview() {
-      ReviewDataService.deleteAll()
-        // 성공하면 .then() 결과가 전송됨
+    // 부서번호(dno)로 조회 요청하는 함수
+    getDiner(dno) {
+      // axios 공통함수 호출
+      DinerDataService.get(dno)
+        // 성공하면 .then() 결과가 리턴됨
         .then((response) => {
-          // 디버깅 콘솔에 정보 출력
-          console.log(response.data);
-          // 전체 목록 재조회
-          this.retrieveReview();
-          // currentEmp, currentIndex 초기화
-          this.currentReview = null;
-          this.currentIndex = -1;
+          // springboot 결과를 리턴함(부서 객체)
+          this.currentDiner = response.data;
+          // 콘솔 로그 출력
+          console.log("현재 음식점 데이터 : ", response.data);
         })
-        // 실패하면 .catch() 에 에러가 전송됨
+        // 실패하면 .catch() 에러메세지가 리턴됨
         .catch((e) => {
           console.log(e);
         });
-    },
-    checkFormValidity() {
-      const valid = this.$refs.form.checkValidity();
-      this.rwriterState = valid;
-      this.ratingState = valid;
-      this.rcontentState = valid;
-      return valid;
-    },
-    resetModal() {
-      this.rwriter = "";
-      this.rwriterState = null;
-      this.rating = "";
-      this.ratingState = null;
-      this.rcontent = "";
-      this.rcontentState = null;
-    },
-    handleOk(bvModalEvent) {
-      // Prevent modal from closing
-      bvModalEvent.preventDefault();
-      // Trigger submit handler
-      this.handleSubmit();
-    },
-    handleSubmit() {
-      // Exit when the form isn't valid
-      if (!this.checkFormValidity()) {
-        return;
-      }
-      // Push the name to submitted names
-      this.review.push(this.review.rwriter);
-      this.review.push(this.review.rating);
-      this.review.push(this.review.rphoto);
-      this.review.push(this.review.rcontent);
-      // Hide the modal manually
-      this.$nextTick(() => {
-        this.$bvModal.hide("modal-prevent-closing");
-      });
     },
     // 리뷰 작성 form
     saveReview() {
       // 임시 객체 변수 -> springboot 전송
       // 부서번호는(no) 자동생성되므로 빼고 전송함
       let data = {
-        rwriter: this.review.rwriter,
+        id: this.currentUser.id,
+        dno: this.$route.params.dno,
         rcontent: this.review.rcontent,
         rating: this.review.rating,
         rphoto: this.review.rphoto,
@@ -174,26 +135,40 @@ export default {
           this.review.rno = response.data.rno;
           // 콘솔 로그 출력(response.data)
           console.log(response.data);
-          // 변수 submitted
-          this.submitted = true;
-          alert("성공했습니다.");
-          this.$router.push("/review");
+          alert("추가가 완료되었습니다!");
+          // 첫페이지(전체목록_조회_페이지) 강제 이동 : /diner
+          this.$router.push("/diner");
         })
         // 실패하면 .catch() 결과가 전송됨
         .catch((e) => {
           console.log(e);
         });
     },
-
-    mounted() {
-      this.message = "";
-      this.getReview(this.$route.params.dno);
-      // 화면 로딩시 전체 조회함수 실행
-      this.retrieveReview();
+    newReview() {
+      // 새양식 다시 보여주기 함수, 변수 초기화
+      this.submitted = false;
+      this.review = {};
     },
+  },
+  computed: {
+    // 현재 유저
+    currentUser() {
+      // 모듈 저장소 : this.$store.state.모듈명.state값
+      // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
+      return this.$store.state.auth.user;
+    },
+  },
+  mounted() {
+    this.getDiner(this.$route.params.dno);
+    // this.dno = this.$route.params.dno;
+    // alert(this.dno);
   },
 };
 </script>
 
 <style>
+.submit-form {
+  max-width: 700px;
+  margin: auto;
+}
 </style>

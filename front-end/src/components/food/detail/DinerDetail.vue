@@ -11,8 +11,8 @@
             <header class="mb-4">
               <!-- Post title-->
               <h1 class="fw-bolder mb-1">
-                 {{ currentDiner.dname }}
-                 <i class="bi bi-shop-window"></i>
+                {{ currentDiner.dname }}
+                <i class="bi bi-shop-window"></i>
                 <button
                   type="button"
                   class="btn text-danger btn-sm"
@@ -30,7 +30,7 @@
                   <i class="bi bi-heart-fill fs-4"></i>
                 </button>
                 <!-- 찜하기 숫자 표시 -->
-                <span class="me-4">{{fastshow}}</span>
+                <span class="me-4">{{ fastshow }}</span>
 
                 <router-link :to="'/diner/' + currentDiner.dno + '/edit'">
                   <button
@@ -90,7 +90,7 @@
                     <img
                       :src="currentDiner.photo1"
                       class="d-block w-100 img-fluid"
-                      style="width: auto; height:500px;"
+                      style="width: auto; height: 500px"
                       alt="..."
                     />
                   </div>
@@ -98,7 +98,7 @@
                     <img
                       :src="currentDiner.photo2"
                       class="d-block w-100 img-fluid"
-                      style="width: auto; height:500px;"
+                      style="width: auto; height: 500px"
                       alt="..."
                     />
                   </div>
@@ -106,7 +106,7 @@
                     <img
                       :src="currentDiner.photo3"
                       class="d-block w-100 img-fluid"
-                      style="width: auto; height:500px;"
+                      style="width: auto; height: 500px"
                       alt="..."
                     />
                   </div>
@@ -142,7 +142,9 @@
           <div class="row">
             <div class="col">
               <div class="card text-dark bg-light border-primary mb-6 mt-5">
-                <div class="card-header"><i class="bi bi-shop"></i> 식당정보</div>
+                <div class="card-header">
+                  <i class="bi bi-shop"></i> 식당정보
+                </div>
                 <div class="card-body">
                   <h5 class="card-title">메뉴</h5>
                   <p class="card-text">
@@ -193,7 +195,9 @@
             </div>
             <div class="col">
               <div class="card text-dark bg-light border-primary mb-6 mt-5">
-                <div class="card-header"><i class="bi bi-lamp-fill"></i> 메뉴판</div>
+                <div class="card-header">
+                  <i class="bi bi-lamp-fill"></i> 메뉴판
+                </div>
                 <!-- 메뉴 리스트 불러와서 v-for문으로 작동 -->
                 <div
                   class="card-body"
@@ -211,18 +215,16 @@
           </div>
 
           <!--식당정보 끝-->
-          <button
-              class="btn btn-warning float-right mb-5 text-white"
-            >
-              <router-link to="/add/menu">목록 추가</router-link>
-            </button>
+          <button class="btn btn-warning mb-5 text-white">
+            <router-link to="/add/menu">목록 추가</router-link>
+          </button>
 
-          <b-button
-            type="button"
-            v-b-modal.modal-prevent-closing
-            >리뷰 쓰기</b-button
-          >
-          <DinerCommentVue />
+          <div>
+            <button class="btn btn-warning mb-5 text-white">
+              <router-link :to="'/add/review/' + currentDiner.dno"> 리뷰 쓰기 </router-link>
+            </button>
+          </div>
+
           <!-- Comments section-->
           <div
             class="card mb-6 border-info"
@@ -238,7 +240,7 @@
                 />
               </div>
               <div class="d-flex flex-column">
-                <h5 class="ms-3 mt-2 mb-0">{{ data.rwriter }}</h5>
+                <!-- <h5 class="ms-3 mt-2 mb-0">{{ data.id }}</h5> -->
                 <div>
                   <p class="text-left">
                     <span class="fa fa-star star-active ml-3"></span>
@@ -267,7 +269,9 @@
         <div class="col-lg-4" v-if="mapNchart">
           <!-- Map widget-->
           <div class="card mb-4">
-            <div class="card-header"><i class="bi bi-geo-alt-fill"></i> 지도</div>
+            <div class="card-header">
+              <i class="bi bi-geo-alt-fill"></i> 지도
+            </div>
             <div class="card-body" style="height: 600px">
               <MakerDetail />
             </div>
@@ -277,7 +281,7 @@
           <div class="card mb-4">
             <div class="card-header">Chart</div>
             <div class="card-body">
-              <Canvas/>
+              <Canvas />
             </div>
           </div>
         </div>
@@ -303,7 +307,7 @@ import AddReservation from "@/components/reservation/AddReservation.vue";
 import FavoriteDataService from "@/services/FavoriteDataService";
 import MenuDataService from "@/services/MenuDataService"; // 메뉴 리스트를 불러오기 위한 서비스 임포트
 import MakerDetail from "@/components/food/detail/MakerDetail.vue";
-import Canvas from "@/components/food/detail/CanvasView.vue"
+import Canvas from "@/components/food/detail/CanvasView.vue";
 
 export default {
   data() {
@@ -340,37 +344,18 @@ export default {
       pageSizes: [3, 6, 9], // select box에 넣을 기본 데이터
 
       // favorite 정보 저장용
-      totalfavorite : null,
+      totalfavorite: null,
       // 찜하기 버튼에 따라 즉시 반응하기 위한 함수
-      fastshow:0
+      fastshow: 0,
     };
   },
   components: {
     DinerCommentVue,
     AddReservation,
     MakerDetail,
-    Canvas
+    Canvas,
   },
   methods: {
-    // axios , 모든 부서 정보 조회 요청 함수
-    retrieveReview() {
-      // getAll() ->(변경) getAll(dname, page, size)
-      ReviewDataService.getAll(this.searchRwriter, this.page - 1, this.pageSize)
-        // 성공하면 .then() 결과가 전송됨
-        .then((response) => {
-          // this.emp = response.data -> (변경) const { emp, totalItems } = response.data
-          // let(const) { 속성명1, 속성명2 } = 데이터 객체배열 (모던자바문법 구조분해할당)
-          const { review, totalItems } = response.data; // springboot 의 전송한 맵 정보
-          this.review = review; // 스프링부트에서 전송한 데이터
-          this.count = totalItems; // 스프링부트에서 전송한 페이지정보(총 건수)
-          // 디버깅 콘솔에 정보 출력
-          console.log(response.data);
-        })
-        // 실패하면 .catch() 에 에러가 전송됨
-        .catch((e) => {
-          console.log("현재 리뷰데이터 : ", e);
-        });
-    },
     // axios , 모든 부서 정보 조회 요청 함수
     retrieveFavorite() {
       // getAll() ->(변경) getAll(dname, page, size)
@@ -397,23 +382,21 @@ export default {
           // 콘솔 로그 출력
           console.log("현재 음식점 데이터 : ", response.data);
 
-          FavoriteDataService.getFavorite(
-          dno
-          )
-          // 성공하면 .then() 결과가 전송됨
-          .then((response) => {
-            // let(const) { 속성명1, 속성명2 } = 데이터 객체배열 (모던자바문법 구조 분해 할당)
-            this.totalfavorite = response.data; // 스프링부트에서 전송한 데이터 받고 조회수 내림차순으로 가공
-            // 디버깅 콘솔에 정보 출력
-            console.log(response.data);
-            // favorite dno_count 를 diner dno_count에 복사
-            this.currentDiner.dno_count = this.totalfavorite.dno_count
-            this.fastshow = this.currentDiner.dno_count;      
-          })
-          // 실패하면 .catch() 에 에러가 전송됨
-          .catch((e) => {
-            console.log(e);
-          });
+          FavoriteDataService.getFavorite(dno)
+            // 성공하면 .then() 결과가 전송됨
+            .then((response) => {
+              // let(const) { 속성명1, 속성명2 } = 데이터 객체배열 (모던자바문법 구조 분해 할당)
+              this.totalfavorite = response.data; // 스프링부트에서 전송한 데이터 받고 조회수 내림차순으로 가공
+              // 디버깅 콘솔에 정보 출력
+              console.log(response.data);
+              // favorite dno_count 를 diner dno_count에 복사
+              this.currentDiner.dno_count = this.totalfavorite.dno_count;
+              this.fastshow = this.currentDiner.dno_count;
+            })
+            // 실패하면 .catch() 에 에러가 전송됨
+            .catch((e) => {
+              console.log(e);
+            });
         })
         // 실패하면 .catch() 에러메세지가 리턴됨
         .catch((e) => {
@@ -445,7 +428,7 @@ export default {
           // springboot 결과를 리턴함(부서 객체)
           this.review = response.data;
           // 콘솔 로그 출력
-          console.log(response.data);
+          console.log("현재 리뷰 데이터 : ", response.data);
         })
         // 실패하면 .catch() 에러메세지가 리턴됨
         .catch((e) => {
@@ -544,7 +527,7 @@ export default {
           //   timer: 1000,
           // });
           // 찜하기 숫자 변화
-          this.fastshow++
+          this.fastshow++;
         })
         // 실패하면 .catch() 결과가 전송됨
         .catch((e) => {
@@ -567,7 +550,7 @@ export default {
           // this.$router.go();
           this.retrieveFavorite();
           // 찜하기 숫자 변화
-          this.fastshow--
+          this.fastshow--;
         })
         // 실패하면 .catch() 에러메세지가 전송됨
         .catch((e) => {
@@ -589,9 +572,7 @@ export default {
     this.getDiner(this.$route.params.dno);
     this.getMenu(this.$route.params.dno); // 화면 로딩시 음식점번호(dno)로 메뉴조회하기
     this.getReview(this.$route.params.dno);
-    this.retrieveReview(); // 화면 로딩시 전체 조회함수 실행
     this.retrieveFavorite(); // 화면 로딩시 fid해당하는 조회함수 실행
-
   },
   computed: {
     // 현재 유저
@@ -619,8 +600,8 @@ export default {
     },
   },
   update() {
-    getDiner()
-  }
+    getDiner();
+  },
 };
 </script>
 <style>
