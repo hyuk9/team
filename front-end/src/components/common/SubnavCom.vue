@@ -161,7 +161,8 @@
                         <div v-if="!currentUser">
                             <!-- 회원가입 시작 -->
                             <router-link to="/termsOfService" class="btn btn-white text-yellow register">
-                                <i class="bi bi-person-plus-fill"> 회원가입</i>
+                                <i class="bi bi-person-plus-fill fs-2 mr-2" />
+                                <span class="text-1000 fs-2 fw-bold text-yellow">회원가입</span>
                             </router-link>
                             <!-- 회원가입 끝 -->
 
@@ -169,20 +170,23 @@
                             <!-- 부트스트랩 뷰 의 모달 기능 사용하기 -->
                             <b-button v-b-modal.modal-1 class="btn btn-white text-yellow login" id="loginButton">
                                 <!-- <i class="fas fa-user me-2"></i>로그인 -->
-                                <i class="bi bi-door-closed-fill"> 로그인</i>
+                                <i class="bi bi-door-closed-fill fs-2 mr-2" /> 
+                                <span class="text-1000 fs-2 fw-bold text-yellow">로그인</span>
                             </b-button>
                             <!-- 로그인 끝 -->
                         </div>
                         <div v-if="currentUser">
                             <!-- 프로필 시작 -->
                             <a href="/profile" class="btn btn-white text-yellow login">
-                                <i class="bi bi-person-circle"> {{ this.currentUser.username }}</i>
+                                <i class="bi bi-person-circle fs-2 mr-2" /> 
+                                <span class="text-1000 fs-2 fw-bold text-yellow"> {{ this.currentUser.username }}</span>
                             </a>
                             <!-- 프로필 끝 -->
 
                             <!-- 로그아웃 시작 -->
                             <a @click.prevent="logout" class="btn btn-white text-yellow login">
-                                <i class="bi bi-door-open-fill"> 로그아웃</i>
+                                <i class="bi bi-door-open-fill fs-2 mr-2" /> 
+                                <span class="text-1000 fs-2 fw-bold text-yellow">로그아웃</span>
                             </a>
                             <!-- 로그아웃 끝 -->
                         </div>

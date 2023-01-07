@@ -44,12 +44,12 @@ public interface LastviewRepository extends JpaRepository<Lastview, Integer> {
 //            "where di.dno = la.dno " +
 //            "and id = :id",
 //    nativeQuery = true)
-@Query(value = "select di.* " +
+@Query(value = "select di.*, la.insert_time as it " +
         "from tb_diner di, tb_lastview la " +
         "where di.dno = la.dno " +
         "and id = :id " +
         "order by la.insert_time desc",
-        countQuery = "select di.* " +
+        countQuery = "select di.*, la.insert_time as it " +
                 "from tb_diner di, tb_lastview la " +
                 "where di.dno = la.dno " +
                 "and id = :id " +

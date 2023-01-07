@@ -27,7 +27,7 @@
                 <img :src="data.mainphoto" alt="" style="height: 100px" />
               </td>
               <td class="align-middle">{{ data.dno }}</td>
-              <td class="align-middle">{{ data.insertTime }}</td>
+              <td class="align-middle">{{ data.it }}</td>
               <td class="align-middle">
                 <router-link :to="'/diner/' + data.dno"
                   ><span class="badge rounded-pill bg-warning"
@@ -86,10 +86,10 @@ export default {
           this.lastview = lastview;
           this.count = totalItems;
 
-          console.log(response.data);
+          console.log("성공시 최근 본 가게 데이터 : ", response.data);
         })
         .catch((e) => {
-          console.log(e);
+          console.log("실패시", e);
         });
     },
 

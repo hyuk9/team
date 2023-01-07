@@ -20,5 +20,5 @@ public interface LastviewDto {
     Integer getDno();
 
 //    Lastview에서 가져올 속성
-    String getInsert_time();
+    String getIt();
 }
