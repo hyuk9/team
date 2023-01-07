@@ -31,6 +31,8 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
 
     List<Review> findAllByDnoEquals (Integer dno);
 
+    Optional<Review> findByRnoEquals (Integer rno);
+
     @Query(value = "select rv.*, di.dname, di.mainphoto " +
             "from tb_review rv, tb_diner di " +
             "where rv.dno = di.dno " +

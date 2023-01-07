@@ -221,7 +221,9 @@
 
           <div>
             <button class="btn btn-warning mb-5 text-white">
-              <router-link :to="'/add/review/' + currentDiner.dno"> 리뷰 쓰기 </router-link>
+              <router-link :to="'/add/review/' + currentDiner.dno">
+                리뷰 쓰기
+              </router-link>
             </button>
           </div>
 
@@ -233,6 +235,9 @@
             :key="index"
           >
             <div class="row d-flex">
+              <router-link :to="'/edit/review/' + data.rno ">
+                <button>수정하기</button>
+              </router-link>
               <div class="">
                 <img
                   class="profile-pic"
@@ -240,7 +245,8 @@
                 />
               </div>
               <div class="d-flex flex-column">
-                <!-- <h5 class="ms-3 mt-2 mb-0">{{ data.id }}</h5> -->
+                <h5 class="ms-3 mt-2 mb-0">{{ data.id }}</h5>
+                <h5 class="ms-3 mt-2 mb-0">리뷰아이디 {{ data.rno }}</h5>
                 <div>
                   <p class="text-left">
                     <span class="fa fa-star star-active ml-3"></span>
@@ -258,7 +264,7 @@
               </p>
             </div>
             <div class="row text-left">
-              <img class="pic" src="https://i.imgur.com/kjcZcfv.jpg" />
+              <img class="pic" :src="data.rphoto" />
               <img class="pic" src="https://i.imgur.com/SjBwAgs.jpg" />
               <img class="pic" src="https://i.imgur.com/IgHpsBh.jpg" />
             </div>

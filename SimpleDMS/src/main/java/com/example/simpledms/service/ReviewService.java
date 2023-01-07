@@ -51,6 +51,13 @@ public class ReviewService {
         return list;
     }
 
+    public Optional<Review> findByRnoEquals(Integer rno) {
+//        findById(기본키)
+        Optional<Review> optionalReview = reviewRepository.findByRnoEquals(rno);
+
+        return optionalReview;
+    }
+
 //    writer으로 조회하는 함수
 //    public Optional<Review> findByDno(int dno) {
 //        Optional<Review> optionalReview2 = reviewRepository.findByDno(dno);

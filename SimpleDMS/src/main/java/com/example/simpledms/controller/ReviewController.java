@@ -138,6 +138,27 @@ public class ReviewController {
         }
     }
 
+    @GetMapping("/review/rno/{rno}")
+    public ResponseEntity<Object> getReviewRno(@PathVariable Integer rno) {
+
+        try {
+            Optional<Review> optionalReview = reviewService.findByRnoEquals(rno);
+
+            if (optionalReview.isPresent() == true) {
+//                데이터 + 성공 메세지 전송
+                return new ResponseEntity<>(optionalReview, HttpStatus.OK);
+            } else {
+//                데이터 없음 메세지 전송(클라이언트)
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+
+        } catch (Exception e) {
+            log.debug(e.getMessage());
+            // 서버에러 발생 메세지 전송(클라이언트)
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @PutMapping("/review/{rno}")
     public ResponseEntity<Object> updateReview(@PathVariable int rno,
                                                @RequestBody Review review) {
