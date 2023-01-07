@@ -112,7 +112,7 @@
           <span class="badge bg-warning text-dark">추가</span>
         </router-link> -->
         <!-- TODO: badge를 버튼으로 교체 -->
-        <router-link class="offset-11" to="/add-free/">
+        <router-link class="offset-11" v-if="showAddBoard" to="/add-free/">
           <button type="button" class="btn btn-warning btn-sm">글쓰기</button>
         </router-link>
       </div>
@@ -256,6 +256,18 @@ export default {
       // currentUser 없으면 false (메뉴가 안보임)
       return false;
     },
+    showAddBoard() {
+      if (this.currentUser && this.currentUser.roles) {
+        // if (ROLE_ADMIN || ROLE_USER) 로그인이 되어있다면 관리자거나 일반유저이므로 푸드컬럼 페이지로 바로 이동
+        return (
+          (this.currentUser.roles.includes("ROLE_ADMIN") ||
+            this.currentUser.roles.includes("ROLE_USER"))
+        );
+      }
+      // 로그인이 되어있지 않다면 로그인이 필요한 항목이라고 표시
+      return false;
+    },
+    
   },
 
   // 화면이 뜨자마자 실행되는 이벤트(라이프 사이클 함수) : mounted(), created()

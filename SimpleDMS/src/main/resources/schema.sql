@@ -161,6 +161,7 @@ CREATE TABLE TB_ANNOUNCE
 CREATE TABLE TB_FREE
 (
     FNO               NUMBER NOT NULL PRIMARY KEY,
+    ID                NUMBER, -- 유저id컬럼
     WRITER            VARCHAR2(1000),
     TITLE             VARCHAR2(1000),
     CONTENT           VARCHAR2(4000),

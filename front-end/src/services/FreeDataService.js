@@ -17,14 +17,16 @@ class FreeDataService {
 
     // 부서정보 생성(insert) 요청 함수
     // post 방식 통신 요청 -> @PostMapping("/api/free"), @RequestBody
-    create(writer,title,content,blobFile) {
+    create(id,writer,title,content,blobFile) {
         let formData = new FormData(); 
 
+        console.log(id);
         console.log(writer);
         console.log(title);
         console.log(content);
         console.log(blobFile);
 
+        formData.append("id", id);
         formData.append("writer", writer);
         formData.append("title", title);
         formData.append("content", content);
@@ -40,15 +42,17 @@ class FreeDataService {
 
     // 부서정보 수정(update) 요청 함수
     // put 방식 통신 요청 -> @PutMapping("/api/free/{fno}"), @RequestBody
-    update(fno,writer,title,content,blobFile) {
+    update(fno,id,writer,title,content,blobFile) {
         let formData = new FormData();
 
         console.log(fno);
+        console.log(id);
         console.log(writer);
         console.log(title);
         console.log(content);
         console.log(blobFile);
 
+        formData.append("id", id);
         formData.append("writer", writer);
         formData.append("title", title);
         formData.append("content", content);
