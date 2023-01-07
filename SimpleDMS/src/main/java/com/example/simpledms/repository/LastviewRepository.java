@@ -3,6 +3,7 @@ package com.example.simpledms.repository;
 
 import com.example.simpledms.dto.LastviewDto;
 import com.example.simpledms.model.Diner;
+import com.example.simpledms.model.Favorite;
 import com.example.simpledms.model.Lastview;
 import com.example.simpledms.model.Menu;
 import org.springframework.data.domain.Page;
@@ -12,6 +13,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * packageName : com.example.jpaexam.repository
@@ -54,6 +56,8 @@ public interface LastviewRepository extends JpaRepository<Lastview, Integer> {
                 "order by la.insert_time desc",
         nativeQuery = true)
     Page<LastviewDto> findAllByIdOrderByInsertTimeDesc (Integer id, Pageable pageable);
+
+    Optional<Lastview> findByIdAndDno (Integer id, Integer dno);
 }
 
 

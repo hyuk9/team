@@ -38,11 +38,22 @@
             </tr>
           </tbody>
         </table>
-      </div>
-      <!-- todo -->
-      <!-- todo -->
 
-      <!-- todo -->
+        <!--    Todo : page 바 시작 -->
+        <div class="overflow-auto offset-5 mt-5">
+          <b-pagination
+            v-model="page"
+            :total-rows="count"
+            :per-page="pageSize"
+            first-text="<<"
+            last-text=">>"
+            prev-text="Prev"
+            next-text="Next"
+            @change="handlePageChange"
+          ></b-pagination>
+        </div>
+        <!--    Todo : page 바 끝 -->
+      </div>
     </div>
   </div>
 </template>

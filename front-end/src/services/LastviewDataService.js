@@ -17,10 +17,10 @@ class LastviewDataService {
     });
   }
 
-  // 음식점번호로 조회 요청 함수
-  get(dno) {
+  // id와 dno로 조회하는 함수
+  get(id, dno) {
     // get 방식 통신 요청 👉 @GetMapping("/api/menu/{dno}")
-    return http.get(`/lastview/${dno}`);
+    return http.get(`/lastview/${id}/${dno}`);
   }
 
   // 부서정보 생성(insert) 요청 함수
@@ -39,8 +39,8 @@ class LastviewDataService {
   // 부서정보 삭제(delete) 요청 함수
   // delete 방식 통신 요청 -> @DeleteMapping("/api/diner/deletion/{dno}")
   //                        , @PathVariable
-  delete(rno) {
-    return http.delete(`/lastview/deletion/${rno}`);
+  delete(lid) {
+    return http.delete(`/lastview/deletion/${lid}`);
   }
 }
 
