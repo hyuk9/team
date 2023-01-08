@@ -37,8 +37,8 @@ class FavoriteDataService {
   }
 
   // 찜갯수 가져오기용
-  getFavoriteAll( page, size) {
-    return http.get(`/favorite/desc?page=${page}&size=${size}`);
+  getFavoriteAll() {
+    return http.get(`/favorite/desc`);
   }  
   
   // 찜갯수 가져오기용(음식점 디테일)

@@ -57,11 +57,11 @@ public class DinerController {
 //            findAll() 생략해도 전체검색해야 됨:
 //            why? like 검색시 고객명 매개변수가 ==이더라도 전채 검색 됨.
             if (searchSelect.equals("지역")) {
-                dinerPage = dinerService.findAllByLocContaining(searchKeyword, pageable); // 지역검색
+                dinerPage = dinerService.findAllByLocContainingOrderByDno(searchKeyword, pageable); // 지역검색
             } else if (searchSelect.equals("메뉴")) {
-                dinerPage = dinerService.findAllByMenuContaining(searchKeyword, pageable); // 메뉴검색
+                dinerPage = dinerService.findAllByMenuContainingOrderByDno(searchKeyword, pageable); // 메뉴검색
             } else {
-                dinerPage = dinerService.findAllByThemeContaining(searchKeyword, pageable); // 테마검색
+                dinerPage = dinerService.findAllByThemeContainingOrderByDno(searchKeyword, pageable); // 테마검색
             }
 
 

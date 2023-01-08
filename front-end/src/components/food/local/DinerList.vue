@@ -65,7 +65,7 @@
                 <!-- Blog post-->
                 <div class="card mb-5">
                   <a @click="countViews(data.dno)">
-                    <router-link :to="'/diner/' + data.dno">
+                    <router-link :to="'/diner/' + data.dno" class="routerLink">
                       <img
                         class="img-fluid rounded-3 h-100 pt-2"
                         :src="data.mainphoto"
@@ -239,13 +239,10 @@ export default {
           // 디버깅 콘솔에 정보 출력
           console.log(response.data);
           // favorite 정보 받기
-          FavoriteDataService.getFavoriteAll(this.page - 1, this.pageSize)
+          FavoriteDataService.getFavoriteAll()
             // 성공하면 .then() 결과가 전송됨
             .then((response) => {
-              // let(const) { 속성명1, 속성명2 } = 데이터 객체배열 (모던자바문법 구조 분해 할당)
-              const { favorite, totalItems } = response.data; // springboot 의 전송한 맵 정보
-              this.favorite = favorite; // 스프링부트에서 전송한 데이터 받고 조회수 내림차순으로 가공
-              this.count = totalItems; // 스프링부트에서 전송한 페이지정보(총 건수)
+              this.favorite = response.data; // 스프링부트에서 전송한 데이터 받고 조회수 내림차순으로 가공
               // 디버깅 콘솔에 정보 출력
               console.log(response.data);
               // favorite dno_count 를 diner dno_count에 복사
@@ -377,4 +374,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+/* 이미지 오른쪽 치우침 개선 */
+.routerLink {
+  float: left;
+}
+</style>

@@ -98,8 +98,8 @@ public class FavoriteService {
     }
 
     //    ✅ username like 검색 함수 ( 페이징 처리 추가 )
-    public Page<FavoriteDto> findAllBy(Pageable pageable) {
-        Page<FavoriteDto> list = favoriteRepository.findAllBy(pageable);
+    public List<FavoriteDto> findAllBy( ) {
+        List<FavoriteDto> list = favoriteRepository.findAllBy();
 
         return list;
     }
