@@ -45,7 +45,7 @@ export default {
 //  5) 공유저장소에 loggedIn 변수 : true
     this.$store.commit('auth/loginSuccess', this.userData);
 //  6) 로그인 할 때의 페이지로 리다이렉트(강제 이동)
-    this.$router.push("/");
+    this.$router.go(-1);
   },
 };
 </script>
