@@ -218,7 +218,8 @@ export default {
       } 
     },
     close() {
-      this.$store.dispatch("clickButton");
+      // 모달 끄기 명령 함수
+      this.$store.commit("modalclose");
     },
   },
 };

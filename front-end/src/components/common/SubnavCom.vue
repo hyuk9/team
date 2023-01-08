@@ -200,8 +200,6 @@
         <b-modal id="modal-1" title="로그인" hide-footer="true">
             <!-- 로그인 모달 컴포넌트를 내용으로 가져오기 -->
             <LoginView />
-            <!-- 모달창 끄기용 가짜버튼(화면에 안보임) -->
-            <b-button @click="$bvModal.hide('modal-1')" ref="button" class="b-button"></b-button>
         </b-modal>
         <!-- 로그인 모달 내용 끝 -->
     </div>
@@ -265,18 +263,19 @@ export default {
         var ele = document.getElementById("loginButton");
         ele.classList.remove("btn-secondary");
 
-        this.$store.subscribeAction((action, state) => {
-            if (action.type === "clickButton") {
-                // Trigger the click event on the button element
-                this.$refs.button.click();
-            }
-        });
     },
     // 모달 적용시 로그인 버튼에 강제적으로 추가되어 css를 바꾸는 클래스 삭제하기
     updated() {
         var ele = document.getElementById("loginButton");
         ele.classList.remove("btn-secondary");
     },
+    // 모달 끄라는 명령 받아서 실행하는 함수
+    watch : {
+        '$store.state.modalclose' : function() {
+            this.$bvModal.hide('modal-1');
+            this.$store.commit("modalcloseReady");
+        }
+    }
 };
 </script>
   
