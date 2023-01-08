@@ -31,7 +31,7 @@ import java.util.Optional;
 @Slf4j
 // CORS 보안 : 기본적으로 한사이트에서 포트를 달리 사용못함
 // @CrossOrigin(허용할_사이트주소(Vue 사이트주소:포트)) : CORS 보안을 허용해주는 어노테이션
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "http://localhost")
 @RestController
 @RequestMapping("/api")
 public class QuestionController {

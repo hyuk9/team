@@ -97,6 +97,8 @@ export default {
           this.currentQuestion = response.data;
           // 콘솔 로그 출력
           console.log(response.data);
+    alert(this.$route.params.qno);
+
         })
         // 실패하면 .catch() 에러메세지가 리턴됨
         .catch((e) => {
@@ -183,7 +185,6 @@ export default {
   // 화면이 뜨자 마자 실행되는 이벤트
   mounted() {
     this.getQuestion(this.$route.params.qno);
-    alert(this.currentQuestion.views);
   },
 };
 </script>

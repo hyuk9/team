@@ -23,11 +23,10 @@ public interface CommentRepository extends JpaRepository<Comment, Integer> {
     //    like 검색 함수
 //    1) 쿼리메소드 방식으로 함수 정의
 //    Todo : 질문번호로 댓글 찾는 함수
-//    Page<Comment> findAllByQnoEqualsOrderByInsertTimeAsc (Integer qno, Pageable pageable);
+    Page<Comment> findAllByQnoEqualsOrderByInsertTimeAsc (Integer qno, Pageable pageable);
 
 //    Todo : 위에 코드 안되서 그냥 list 형식으로 만들어봄
-
-    List<Comment> findAllByQnoEqualsOrderByInsertTimeAsc (Integer qno);
+//    List<Comment> findAllByQnoEqualsOrderByInsertTimeAsc (Integer qno);
 }
 
 

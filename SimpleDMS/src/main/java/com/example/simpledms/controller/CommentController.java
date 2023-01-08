@@ -32,7 +32,7 @@ import java.util.Optional;
 @Slf4j
 // CORS 보안 : 기본적으로 한사이트에서 포트를 달리 사용못함
 // @CrossOrigin(허용할_사이트주소(Vue 사이트주소:포트)) : CORS 보안을 허용해주는 어노테이션
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "http://localhost")
 @RestController
 @RequestMapping("/api")
 public class CommentController {
@@ -132,55 +132,32 @@ public class CommentController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-//
-////  Todo : 질문번호로 조회해서 댓글 조회하는 함수 (페이징 처리)
-//    @GetMapping("/comment/{qno}")
-//    public ResponseEntity<Object> getQnoId(@PathVariable Integer qno,
-//                                           @RequestParam(defaultValue = "0") int page,
-//                                           @RequestParam(defaultValue = "3") int size) {
-//
-//        try {
-////            Pageable 객체 정의 ( page, size 값 설정 )
-//            Pageable pageable = PageRequest.of(page, size);
-//
-//            Page<Comment> commentPage;
-//
-//            commentPage = commentService.findAllByQnoEqualsOrderByInsertTimeAsc(qno,pageable);
-//
-//            //            맵 자료구조에 넣어서 전송
-//            Map<String, Object> response = new HashMap<>();
-//            response.put("comment", commentPage.getContent());
-//            response.put("currentPage", commentPage.getNumber());
-//            response.put("totalItems", commentPage.getTotalElements());
-//            response.put("totalPages", commentPage.getTotalPages());
-//
-//
-//            if (commentPage.isEmpty() == false) {
-////                데이터 + 성공 메세지 전송
-//                return new ResponseEntity<>(response, HttpStatus.OK);
-//            } else {
-////                데이터 없음 메세지 전송(클라이언트)
-//                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//            }
-//
-//        } catch (Exception e) {
-//            log.debug(e.getMessage());
-//            // 서버에러 발생 메세지 전송(클라이언트)
-//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//    }
 
-
-//    Todo : 위에거 안되서 테스트용도로 만듬
+//  Todo : 질문번호로 조회해서 댓글 조회하는 함수 (페이징 처리)
     @GetMapping("/comment/{qno}")
-    public ResponseEntity<Object> getCommentByQno(@PathVariable Integer qno) {
+    public ResponseEntity<Object> getQnoId(@PathVariable Integer qno,
+                                           @RequestParam(defaultValue = "0") int page,
+                                           @RequestParam(defaultValue = "3") int size) {
 
         try {
-            List<Comment> list = commentService.findAllByQnoEqualsOrderByInsertTimeAsc(qno);
+//            Pageable 객체 정의 ( page, size 값 설정 )
+            Pageable pageable = PageRequest.of(page, size);
 
-            if (list.isEmpty() == false) {
+            Page<Comment> commentPage;
+
+            commentPage = commentService.findAllByQnoEqualsOrderByInsertTimeAsc(qno,pageable);
+
+            //            맵 자료구조에 넣어서 전송
+            Map<String, Object> response = new HashMap<>();
+            response.put("comment", commentPage.getContent());
+            response.put("currentPage", commentPage.getNumber());
+            response.put("totalItems", commentPage.getTotalElements());
+            response.put("totalPages", commentPage.getTotalPages());
+
+
+            if (commentPage.isEmpty() == false) {
 //                데이터 + 성공 메세지 전송
-                return new ResponseEntity<>(list, HttpStatus.OK);
+                return new ResponseEntity<>(response, HttpStatus.OK);
             } else {
 //                데이터 없음 메세지 전송(클라이언트)
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -192,6 +169,29 @@ public class CommentController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+
+////    Todo : 위에거 안되서 테스트용도로 만듬
+//    @GetMapping("/comment/{qno}")
+//    public ResponseEntity<Object> getCommentByQno(@PathVariable Integer qno) {
+//
+//        try {
+//            List<Comment> list = commentService.findAllByQnoEqualsOrderByInsertTimeAsc(qno);
+//
+//            if (list.isEmpty() == false) {
+////                데이터 + 성공 메세지 전송
+//                return new ResponseEntity<>(list, HttpStatus.OK);
+//            } else {
+////                데이터 없음 메세지 전송(클라이언트)
+//                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//            }
+//
+//        } catch (Exception e) {
+//            log.debug(e.getMessage());
+//            // 서버에러 발생 메세지 전송(클라이언트)
+//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
 
 
 

@@ -76,14 +76,12 @@ export default {
           this.currentAnnounce = response.data;
           // 콘솔 로그 출력
           console.log("공지사항 조회 성공 : ", response.data);
-          alert(aid);
         })
         // 실패하면 .catch() 에러메세지가 리턴됨
         .catch((e) => {
           // /////////////////////////////////////////////////////
           console.log("공지사항 조회 실패 : ", e);
           //////////////////////////////////
-          alert(aid);
         });
     },
     // 부서정보를 수정 요청하는 함수
@@ -140,7 +138,7 @@ export default {
   // 화면이 뜨자 마자 실행되는 이벤트
   mounted() {
     this.message = "";
-    this.getAnnounce(this.$route.params.aid);
+    this.getAnnounce(this.$route.params.aid); 
   },
 };
 </script>

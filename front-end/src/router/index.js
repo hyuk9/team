@@ -81,14 +81,14 @@ const routes = [
 
   // AnnounceDetail
   {
-    path: "/announce/:ano",
+    path: "/announce/:aid",
     name: "announce-detail",
     component: () =>
       import("../components/board/announce/AnnounceDetailView.vue"),
   },
   // AnnounceView
   {
-    path: "/announceview/:ano",
+    path: "/announceview/:aid",
     name: "announce-view",
     component: () => import("../components/board/announce/AnnounceView.vue"),
   },

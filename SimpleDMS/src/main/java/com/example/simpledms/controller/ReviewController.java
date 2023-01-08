@@ -42,7 +42,7 @@ import java.util.*;
 @Slf4j
 // CORS 보안 : 한사이트레서 포트를 달리 사용 못함
 // @CrossOrigin(허용할 사이트주소(Vue 사이트주소:포트) : CORS 보안을 허용해주는 어노테이션
-//@CrossOrigin(origins = "http://localhost")
+@CrossOrigin(origins = "http://localhost")
 @RestController
 @RequestMapping("/api")
 public class ReviewController {

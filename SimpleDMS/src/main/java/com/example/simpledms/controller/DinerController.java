@@ -27,6 +27,7 @@ import java.util.Optional;
  * 2022-10-21         ds          최초 생성
  */
 @Slf4j
+@CrossOrigin(origins = "http://localhost")
 @RestController
 @RequestMapping("/api")
 public class DinerController {
