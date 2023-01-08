@@ -137,7 +137,7 @@
           <div class="col-2 pt-5">
             <a href="#favoriteList">
               <div class="col text-center">
-                <i class="bi bi-heart card-top"></i>
+                <i class="bi bi-heart"></i>
                 <p class="fs-1 mt-3">찜한 가게</p>
               </div>
             </a>
@@ -148,10 +148,31 @@
           <div class="col-2 pt-5">
             <a href="#myReview">
               <div class="col text-center">
-                <i class="bi bi-chat-dots card-top"></i>
+                <i class="bi bi-chat-dots"></i>
                 <p class="fs-1 mt-3">내가 쓴 리뷰</p>
               </div>
             </a>
+          </div>
+          <!-- 리뷰 관리 끝 -->
+
+          <!-- 리뷰 관리 시작 -->
+          <div class="col-2 pt-5">
+            <a
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasRight"
+              aria-controls="offcanvasRight"
+            >
+              <div class="col text-center">
+                <i class="bi bi-file-earmark-richtext"></i>
+                <p class="fs-1 mt-3">최근 본 페이지</p>
+              </div>
+            </a>
+            <!-- <a href="#latelyPage">
+              <div class="col text-center">
+                <i class="bi bi-file-earmark-richtext"></i>
+                <p class="fs-1 mt-3">최근 본 페이지</p>
+              </div>
+            </a> -->
           </div>
           <!-- 리뷰 관리 끝 -->
         </div>
@@ -172,7 +193,26 @@
     <!-- 내가 쓴 리뷰 목록 끝 -->
 
     <!-- 최근 본 가게 시작 -->
-    <LastviewCom />
+    <div
+      class="offcanvas offcanvas-end"
+      tabindex="-1"
+      id="offcanvasRight"
+      aria-labelledby="offcanvasRightLabel"
+    >
+      <div class="offcanvas-header">
+        <h3 id="offcanvasRightLabel">최근 본 가게</h3>
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <LastviewCom />
+      </div>
+    </div>
+
     <!-- 최근 본 가게 끝 -->
   </div>
 </template>

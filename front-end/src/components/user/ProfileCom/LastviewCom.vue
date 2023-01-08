@@ -1,59 +1,42 @@
 <template>
   <div>
-    <div class="pt-5 pb-5">
-      <div class="mx-auto text-center mb-5">
-        <h5 class="fw-bold fs-3 fs-lg-5 lh-sm">최근 본 가게</h5>
-      </div>
-      <!-- todo -->
-      <div>
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">가게</th>
-              <th scope="col">가게전화번호</th>
-              <th scope="col">위치</th>
-              <th scope="col">사진</th>
-              <th scope="col">가게dno</th>
-              <th scope="col">조회시간</th>
-              <th scope="col">더보기</th>
-            </tr>
-          </thead>
-          <tbody v-for="(data, index) in lastview" :key="index">
-            <tr>
-              <td class="align-middle">{{ data.dname }}</td>
-              <td class="align-middle">{{ data.phone }}</td>
-              <td class="align-middle">{{ data.loc }}</td>
-              <td>
-                <img :src="data.mainphoto" alt="" style="height: 100px" />
-              </td>
-              <td class="align-middle">{{ data.dno }}</td>
-              <td class="align-middle">{{ data.it }}</td>
-              <td class="align-middle">
-                <router-link :to="'/diner/' + data.dno"
-                  ><span class="badge rounded-pill bg-warning"
-                    >더보기</span
-                  ></router-link
-                >
-              </td>
-            </tr>
-          </tbody>
-        </table>
+    <div
+      v-for="(data, index) in lastview"
+      :key="index"
+      class="col-lg-6 p-1 d-inline-block"
+    >
+      <router-link :to="'/diner/' + data.dno">
+        <a @click="countViews(data.dno)">
+          <div class="">
+            <img class="img-fluid rounded-1" :src="data.mainphoto" alt="..." />
 
-        <!--    Todo : page 바 시작 -->
-        <!-- <div class="overflow-auto offset-5 mt-5">
-          <b-pagination
-            v-model="page"
-            :total-rows="count"
-            :per-page="pageSize"
-            first-text="<<"
-            last-text=">>"
-            prev-text="Prev"
-            next-text="Next"
-            @change="handlePageChange"
-          ></b-pagination>
-        </div> -->
-        <!--    Todo : page 바 끝 -->
-      </div>
+            <div class="d-flex align-items-center">
+              <div class="flex-1 ms-3 namescore">
+                <p class="mb-0 mt-1 dinername" style="font-size: 20px">
+                  {{ data.dname }}
+                </p>
+              </div>
+            </div>
+            <div class="ms-3">
+              <span
+                class="badge bg-success text-decoration-none link-light me-2"
+                href="#!"
+                >{{ data.menu }}</span
+              >
+              <span
+                class="badge bg-warning text-decoration-none link-light me-2"
+                href="#!"
+                >{{ data.theme }}</span
+              >
+              <span
+                class="badge bg-danger text-decoration-none link-light"
+                href="#!"
+                >{{ data.score }}</span
+              >
+            </div>
+          </div>
+        </a>
+      </router-link>
     </div>
   </div>
 </template>
@@ -71,7 +54,7 @@ export default {
 
       page: 1,
       count: 0,
-      pageSize: 5,
+      pageSize: 8,
     };
   },
   methods: {

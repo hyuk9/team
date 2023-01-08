@@ -28,7 +28,7 @@
                       <img :src="data.mainphoto" alt="" style="height: 100px" />
                     </td>
                     <td class="align-middle">
-                      <router-link to=""
+                      <router-link :to="'/edit/review/' + data.rno"
                         ><span class="badge rounded-pill bg-success"
                           >수정하기</span
                         ></router-link
@@ -48,6 +48,7 @@
                   last-text=">>"
                   prev-text="Prev"
                   next-text="Next"
+                  pills
                   @change="handlePageChange"
                 ></b-pagination>
               </div>
