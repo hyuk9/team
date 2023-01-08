@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -210,26 +211,17 @@ public class FavoriteController {
 //    Todo: 1.4 추가 currentUserId로 찜한목록 조회함수
 
     @GetMapping("/favorite/desc")
-    public ResponseEntity<Object> getFavorite(@RequestParam(defaultValue = "0") int page,
-                                             @RequestParam(defaultValue = "3") int size)
+    public ResponseEntity<Object> getFavorite()
     {
         try {
-//            페이지 변수 저장
-            Pageable pageable = PageRequest.of(page, size);
 
-            Page<FavoriteDto> favoritePage;
+            List<FavoriteDto> favoriteDtoList;
 
-            favoritePage = favoriteService.findAllBy(pageable);
+            favoriteDtoList = favoriteService.findAllBy();
 
-            Map<String, Object> response = new HashMap<>();
-            response.put("favorite", favoritePage.getContent());
-            response.put("currentPage", favoritePage.getNumber());
-            response.put("totalItems", favoritePage.getTotalElements());
-            response.put("totalPages", favoritePage.getTotalPages());
-
-            if (favoritePage.isEmpty() == false) {
+            if (favoriteDtoList.isEmpty() == false) {
 //                성공
-                return new ResponseEntity<>(response, HttpStatus.OK);
+                return new ResponseEntity<>(favoriteDtoList, HttpStatus.OK);
             } else {
 //                데이터 없음
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);

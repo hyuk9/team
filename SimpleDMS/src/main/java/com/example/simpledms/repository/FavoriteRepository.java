@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -59,7 +60,7 @@ public interface FavoriteRepository extends JpaRepository<Favorite, Integer> {
                                  "group by di.dno, di.dname " +
                                  "order by dno"
             ,nativeQuery = true)
-    Page<FavoriteDto> findAllBy (Pageable pageable);
+    List<FavoriteDto> findAllBy ();
 
     //    찜한 dno개수가 많은 컬럼 dno 오름차순으로 정렬하기
     @Query(value = "select di.dname, count(fa.dno) as dno_count " +

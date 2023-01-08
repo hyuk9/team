@@ -26,9 +26,9 @@ public interface DinerRepository extends JpaRepository<Diner, Integer> {
     Optional<Diner> findByDname(String dname);
 
 //    검색옵션 3가지
-    Page<Diner> findAllByLocContaining(String loc, Pageable pageable);
-    Page<Diner> findAllByMenuContaining(String menu, Pageable pageable);
-    Page<Diner> findAllByThemeContaining(String theme, Pageable pageable);
+    Page<Diner> findAllByLocContainingOrderByDno(String loc, Pageable pageable);
+    Page<Diner> findAllByMenuContainingOrderByDno(String menu, Pageable pageable);
+    Page<Diner> findAllByThemeContainingOrderByDno(String theme, Pageable pageable);
 
 
 //     g
