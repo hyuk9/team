@@ -114,6 +114,44 @@ public class FavoriteController {
         }
     }
 
+//    Todo : 페이징처리 테스트용
+@GetMapping("/favorite/{fid}")
+public ResponseEntity<Object> getQnoId(@PathVariable Integer fid,
+                                       @RequestParam(defaultValue = "0") int page,
+                                       @RequestParam(defaultValue = "3") int size) {
+
+    try {
+//            Pageable 객체 정의 ( page, size 값 설정 )
+        Pageable pageable = PageRequest.of(page, size);
+
+        Page<Favorite> favoritePage;
+
+        favoritePage = favoriteService.findAllByFidEquals(fid,pageable);
+
+        //            맵 자료구조에 넣어서 전송
+        Map<String, Object> response = new HashMap<>();
+        response.put("favorite", favoritePage.getContent());
+        response.put("currentPage", favoritePage.getNumber());
+        response.put("totalItems", favoritePage.getTotalElements());
+        response.put("totalPages", favoritePage.getTotalPages());
+
+
+        if (favoritePage.isEmpty() == false) {
+//                데이터 + 성공 메세지 전송
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } else {
+//                데이터 없음 메세지 전송(클라이언트)
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+    } catch (Exception e) {
+        log.debug(e.getMessage());
+        // 서버에러 발생 메세지 전송(클라이언트)
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
+
+
 
     @GetMapping("/favorite/{id}/{dno}")
     public ResponseEntity<Object> getFavoriteId(@PathVariable Integer id, @PathVariable Integer dno) {

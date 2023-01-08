@@ -30,7 +30,7 @@ public interface FavoriteRepository extends JpaRepository<Favorite, Integer> {
 //    1) 쿼리메소드 방식으로 함수 정의
 
 //    프로필페이지에서 사용할 함수
-    Page<Favorite> findAllByFidOrderByDno(Integer dno, Pageable pageable);
+    Page<Favorite> findAllByFidEquals(Integer fid, Pageable pageable);
 
 //    id랑 dno로 Fid찾는 함수
     Optional<Favorite> findByIdAndDno (Integer id, Integer dno);

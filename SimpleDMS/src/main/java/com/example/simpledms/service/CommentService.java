@@ -1,7 +1,10 @@
 package com.example.simpledms.service;
 
+import com.example.simpledms.dto.FavoriteDto;
 import com.example.simpledms.model.Comment;
+import com.example.simpledms.model.Favorite;
 import com.example.simpledms.repository.CommentRepository;
+import com.example.simpledms.repository.FavoriteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -47,19 +50,21 @@ public class CommentService {
         return comment2;
     }
 
-    //    질문번호로 조회하는 함수
-    public Optional<Comment> findById(int qno) {
+    //    부서번호로 조회하는 함수
+    public Optional<Comment> findById(int cno) {
 //        findById(기본키속성)
-        Optional<Comment> optionalAnswer = commentRepository.findById(qno);
+        Optional<Comment> optionalComment = commentRepository.findById(cno);
 
-        return optionalAnswer;
+        return optionalComment;
     }
 
     // 부서번호(no)로 삭제하는 함수
-    public boolean removeById(int cno) {
+    public boolean removeById(int dno) {
 //        existsById(기본키) 있으면 삭제 실행 + true 리턴
-        if(commentRepository.existsById(cno) == true) {
-            commentRepository.deleteById(cno);
+        if(commentRepository.existsById(dno) == true) {
+
+
+            commentRepository.deleteById(dno);
             return true;
         }
 
@@ -67,24 +72,18 @@ public class CommentService {
         return false;
     }
 
-//    Todo : 질문번호에 해당하는 댓글 조회하는 함수
+    //    question(질문) like 검색 함수 ( 페이징 처리 )
     public Page<Comment> findAllByQnoEqualsOrderByInsertTimeAsc(Integer qno, Pageable pageable) {
-//        findById(기본키속성)
-        Page<Comment> page = commentRepository.findAllByQnoEqualsOrderByInsertTimeAsc(qno ,pageable);
-
+        Page<Comment> page = commentRepository.findAllByQnoEqualsOrderByInsertTimeAsc(qno, pageable);
         return page;
     }
 
-//
-////    Todo : 위에거 안되서 테스트용도로 만들어봄
-//    public List<Comment> findAllByQnoEqualsOrderByInsertTimeAsc(Integer qno) {
-////        findById(기본키속성)
-//        List<Comment> list = commentRepository.findAllByQnoEqualsOrderByInsertTimeAsc(qno);
-//
-//        return list;
-//    }
+    //    ✅ dname like 검색 함수
+    public Page<Comment> findAllByFnoEqualsOrderByInsertTimeAsc(Integer fno, Pageable pageable) {
+        Page<Comment> page = commentRepository.findAllByFnoEqualsOrderByInsertTimeAsc(fno, pageable);
 
-
+        return page;
+    }
 
 
 }

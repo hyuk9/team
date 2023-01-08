@@ -1,11 +1,16 @@
 package com.example.simpledms.repository;
 
+import com.example.simpledms.dto.FavoriteDto;
 import com.example.simpledms.model.Comment;
+import com.example.simpledms.model.Favorite;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * packageName : com.example.jpaexam.repository
@@ -20,17 +25,16 @@ import java.util.List;
  */
 
 public interface CommentRepository extends JpaRepository<Comment, Integer> {
-    //    like 검색 함수
+//    question 조회하는 like 검색 함수
 //    1) 쿼리메소드 방식으로 함수 정의
-//    Todo : 질문번호로 댓글 찾는 함수
-    Page<Comment> findAllByQnoEqualsOrderByInsertTimeAsc (Integer qno, Pageable pageable);
 
-//    Todo : 위에 코드 안되서 그냥 list 형식으로 만들어봄
-//    List<Comment> findAllByQnoEqualsOrderByInsertTimeAsc (Integer qno);
+    //    프로필페이지에서 사용할 함수
+    Page<Comment> findAllByQnoEqualsOrderByInsertTimeAsc(Integer qno, Pageable pageable);
+
+    //    id랑 dno로 Fid찾는 함수
+    Page<Comment> findAllByFnoEqualsOrderByInsertTimeAsc(Integer fno, Pageable pageable);
+
 }
-
-
-
 
 
 

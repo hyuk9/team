@@ -35,25 +35,17 @@
               </td>
             </tr>
           </tbody>
-          <tbody>
-            <tr>
-              <th scope="col">작성자</th>
-              <td scope="col" v-text="currentQuestion.title"></td>
-            </tr>
-            <tr>
-              <th scope="row">작성자</th>
-              <td scope="row" v-text="currentQuestion.writer"></td>
-            </tr>
-            <tr>
-              <th scope="row">조회수</th>
-              <td scope="row" v-text="currentQuestion.views"></td>
-            </tr>
-            <tr>
-              <td colspan="2" scope="row" style="padding: 10px">
-                {{ currentQuestion.content }}
-              </td>
-            </tr>
-          </tbody>
+
+          <div>
+            <h1>확인</h1>
+          </div>
+          <!-- 댓글 창 만들어야 함 -->
+          <div v-for="(data, index) in comment" :key="index">
+            <div>{{ data.writer }} adsf</div>
+            <div>{{ data.content }}</div>
+          </div>
+
+          <!-- 댓글 창 -->
         </table>
       </div>
     </div>
@@ -78,12 +70,19 @@ export default {
       currentQuestion: null,
       currentQuestionForViews: null, // 이게 뭔지 모르겠음
 
-      comment:[],
+      currentComment: null,
+      currentIndex: -1,
+
+      comment: [],
       name: "",
 
-            // 조회수용 변수 추가
+      // 조회수용 변수 추가
       currentfreeForViews: null,
 
+      // 페이징을 위한 변수 정의
+      page: 1, // 현재 페이지
+      count: 0, // 전체 데이터 건수
+      pageSize: 8, // 한페이지당 몇개를 화면에 보여줄지 결정하는 변수
     };
   },
   methods: {
@@ -97,14 +96,14 @@ export default {
           this.currentQuestion = response.data;
           // 콘솔 로그 출력
           console.log(response.data);
-    alert(this.$route.params.qno);
-
+          // 댓글 조회함수 실행
+          this.getComment();
         })
         // 실패하면 .catch() 에러메세지가 리턴됨
         .catch((e) => {
           console.log(e);
         });
-        // Todo : 조회수 증가하는 함수인거 같음
+      // Todo : 조회수 증가하는 함수인거 같음
       QuestionDataService.getById(qno)
         // 성공하면 .then() 결과가 리턴됨
         .then((response) => {
@@ -119,17 +118,25 @@ export default {
         });
     },
 
-    getComment(qno) {
-      CommentDataService.get(qno)
-              .then((response) => {
+    // FIXME: 성공은 하는데 response.data에 아무것도 안들어감;
+    // Todo : 댓글 정보를 조회요청하는 함수
+    getComment() {
+      CommentDataService.getCommentByQno(
+        this.currentQuestion.qno,
+        this.page - 1,
+        this.pageSize
+      )
+        .then((response) => {
           // springboot 결과를 리턴함(질문 객체)
-          this.comment = response.data;
+          const { comment, totalItems } = response.data; // springboot 의 전송한 맵 정보
+          this.comment = comment; // 스프링부트에서 전송한 데이터
+          this.count = totalItems;
           // 콘솔 로그 출력
-          console.log(response.data);
+          console.log("댓글 정보 조회 성공 : ", response.data);
         })
         // 실패하면 .catch() 에러메세지가 리턴됨
         .catch((e) => {
-          console.log(e);
+          console.log("댓글 정보 조회 실패 : ", e);
         });
     },
     // Todo : 질문정보를 수정 요청하는 함수
@@ -161,7 +168,6 @@ export default {
           console.log(e);
         });
     },
-
   },
 
   computed: {
@@ -176,7 +182,10 @@ export default {
     showDetailBoard() {
       if (this.currentUser && this.currentUser.roles) {
         // if ROLE_ADMIN 있으면 true 없으면 false 이거나 현재로그인한id == 글쓴사람id
-        return this.currentUser.roles.includes("ROLE_ADMIN") || this.currentUser.id == this.currentQuestion.id;
+        return (
+          this.currentUser.roles.includes("ROLE_ADMIN") ||
+          this.currentUser.id == this.currentQuestion.id
+        );
       }
       // currentUser 없으면 false (메뉴가 안보임)
       return false;
@@ -190,5 +199,4 @@ export default {
 </script>
 
 <style>
-
 </style>

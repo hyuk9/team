@@ -1,8 +1,10 @@
 package com.example.simpledms.controller;
 
+import com.example.simpledms.dto.FavoriteDto;
 import com.example.simpledms.model.Comment;
-import com.example.simpledms.model.Menu;
+import com.example.simpledms.model.Favorite;
 import com.example.simpledms.service.CommentService;
+import com.example.simpledms.service.FavoriteService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,7 +21,7 @@ import java.util.Optional;
 
 /**
  * packageName : com.example.jpaexam.controller.exam07
- * fileName : Qna07Controller
+ * fileName : Announce07Controller
  * author : ds
  * date : 2022-10-21
  * description : 부서 컨트롤러 쿼리 메소드
@@ -40,47 +42,44 @@ public class CommentController {
     @Autowired
     CommentService commentService; // @Autowired : 스프링부트가 가동될때 생성된 객체를 하나 받아오기
 
-
     //    frontend url(쿼리스트링방식) : ? 매개변수 전송방식 사용했으면 ------> backend @RequestParam
 //    frontend url(파라메터방식) : /{} 매개변수 전송방식 사용했으면 ------> backend @PathVariable
-    @GetMapping("/comment")
-    public ResponseEntity<Object> getAnswerAll(@RequestParam String searchSelect,
-                                            @RequestParam(required = false) String searchKeyword,
-                                            @RequestParam(defaultValue = "0") int page,
-                                            @RequestParam(defaultValue = "3") int size)
-    {
-
-        try {
-//            Pageable 객체 정의 ( page, size 값 설정 )
-            Pageable pageable = PageRequest.of(page, size);
-
-            Page<Comment> commentPage;
-
-            commentPage = commentService.findAll(pageable);
-
-            //            맵 자료구조에 넣어서 전송
-            Map<String, Object> response = new HashMap<>();
-            response.put("comment", commentPage.getContent());
-            response.put("currentPage", commentPage.getNumber());
-            response.put("totalItems", commentPage.getTotalElements());
-            response.put("totalPages", commentPage.getTotalPages());
-
-            if (commentPage.isEmpty() == false) {
-//                데이터 + 성공 메세지 전송
-                return new ResponseEntity<>(response, HttpStatus.OK);
-            } else {
-//                데이터 없음 메세지 전송(클라이언트)
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            }
-
-        } catch (Exception e) {
-            log.debug(e.getMessage());
-            // 서버에러 발생 메세지 전송(클라이언트)
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+//    @GetMapping("/comment")
+//    public ResponseEntity<Object> getCommentAll(@RequestParam(required = false) Integer id,
+//                                                @RequestParam(defaultValue = "0") int page,
+//                                                @RequestParam(defaultValue = "3") int size
+//    ) {
+//
+//        try {
+//
+////            페이지 변수 저장
+//            Pageable pageable = PageRequest.of(page, size);
+//
+//            Page<Comment> commentPage;
+//
+//            commentPage = commentService.findAllById(id, pageable);
+//
+//            Map<String, Object> response = new HashMap<>();
+//            response.put("comment", commentPage.getContent());
+//            response.put("currentPage", commentPage.getNumber());
+//            response.put("totalItems", commentPage.getTotalElements());
+//            response.put("totalPages", commentPage.getTotalPages());
+//
+//            if (commentPage.isEmpty() == false) {
+////                성공
+//                return new ResponseEntity<>(response, HttpStatus.OK);
+//            } else {
+////                데이터 없음
+//                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//            }
+//        } catch (Exception e) {
+////            서버 에러
+//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
 
 
+//    Todo : 댓글 전체 삭제하는 함수
     @DeleteMapping("/comment/all")
     public ResponseEntity<Object> removeAll() {
 
@@ -95,8 +94,9 @@ public class CommentController {
         }
     }
 
+//    Todo : 댓글 수정하는 함수
     @PostMapping("/comment")
-    public ResponseEntity<Object> createAnswer(@RequestBody Comment comment) {
+    public ResponseEntity<Object> createComment(@RequestBody Comment comment) {
 
         try {
             Comment comment2 = commentService.save(comment);
@@ -109,18 +109,31 @@ public class CommentController {
         }
     }
 
-//  Todo : 유저 id로 검색해서 내가 쓴 댓글 모아보는 함수
-    @GetMapping("/comment/{id}")
-    public ResponseEntity<Object> getUserId(@PathVariable int id) {
+    //    Todo : 자유게시판 pk값에 해당하는 게시글 댓글 조회하는 함수 (페이징 처리)
+    @GetMapping("/comment/fno")
+    public ResponseEntity<Object> getFnoInFreeboard(@RequestParam Integer fno,
+                                           @RequestParam(defaultValue = "0") int page,
+                                           @RequestParam(defaultValue = "3") int size) {
 
         try {
-            Optional<Comment> optionalAnswer = commentService.findById(id);
+//            Pageable 객체 정의 ( page, size 값 설정 )
+            Pageable pageable = PageRequest.of(page, size);
+
+            Page<Comment> commentPage;
+
+            commentPage = commentService.findAllByFnoEqualsOrderByInsertTimeAsc(fno, pageable);
+
+            //            맵 자료구조에 넣어서 전송
+            Map<String, Object> response = new HashMap<>();
+            response.put("comment", commentPage.getContent());
+            response.put("currentPage", commentPage.getNumber());
+            response.put("totalItems", commentPage.getTotalElements());
+            response.put("totalPages", commentPage.getTotalPages());
 
 
-
-            if (optionalAnswer.isPresent() == true) {
+            if (commentPage.isEmpty() == false) {
 //                데이터 + 성공 메세지 전송
-                return new ResponseEntity<>(optionalAnswer.get(), HttpStatus.OK);
+                return new ResponseEntity<>(response, HttpStatus.OK);
             } else {
 //                데이터 없음 메세지 전송(클라이언트)
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -133,9 +146,9 @@ public class CommentController {
         }
     }
 
-//  Todo : 질문번호로 조회해서 댓글 조회하는 함수 (페이징 처리)
-    @GetMapping("/comment/{qno}")
-    public ResponseEntity<Object> getQnoId(@PathVariable Integer qno,
+    //    Todo : 질문게시판 pk값에 해당하는 게시글 댓글 조회하는 함수 (페이징 처리)
+    @GetMapping("/comment/qno")
+    public ResponseEntity<Object> getQnoInQuestionboard(@RequestParam Integer qno,
                                            @RequestParam(defaultValue = "0") int page,
                                            @RequestParam(defaultValue = "3") int size) {
 
@@ -145,7 +158,7 @@ public class CommentController {
 
             Page<Comment> commentPage;
 
-            commentPage = commentService.findAllByQnoEqualsOrderByInsertTimeAsc(qno,pageable);
+            commentPage = commentService.findAllByQnoEqualsOrderByInsertTimeAsc(qno, pageable);
 
             //            맵 자료구조에 넣어서 전송
             Map<String, Object> response = new HashMap<>();
@@ -171,16 +184,16 @@ public class CommentController {
     }
 
 
-////    Todo : 위에거 안되서 테스트용도로 만듬
-//    @GetMapping("/comment/{qno}")
-//    public ResponseEntity<Object> getCommentByQno(@PathVariable Integer qno) {
+//    @GetMapping("/comment/{id}/{dno}")
+//    public ResponseEntity<Object> getCommentId(@PathVariable Integer id) {
 //
 //        try {
-//            List<Comment> list = commentService.findAllByQnoEqualsOrderByInsertTimeAsc(qno);
+//            Optional<Comment> optionalComment = commentService.findAllByQnoEquals(id, dno);
 //
-//            if (list.isEmpty() == false) {
+//
+//            if (optionalComment.isPresent() == true) {
 ////                데이터 + 성공 메세지 전송
-//                return new ResponseEntity<>(list, HttpStatus.OK);
+//                return new ResponseEntity<>(optionalComment.get(), HttpStatus.OK);
 //            } else {
 ////                데이터 없음 메세지 전송(클라이언트)
 //                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -193,28 +206,27 @@ public class CommentController {
 //        }
 //    }
 
+//    @PutMapping("/comment/{fid}")
+//    public ResponseEntity<Object> updateComment(@PathVariable int fid,
+//                                                @RequestBody Comment comment) {
+//
+//        try {
+//            Comment comment2 = commentService.save(comment);
+//
+//            return new ResponseEntity<>(comment2, HttpStatus.OK);
+//
+//        } catch (Exception e) {
+//            log.debug(e.getMessage());
+//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
 
-
-    @PutMapping("/comment/{qno}")
-    public ResponseEntity<Object> updateAnswer(@PathVariable int qno,
-                                            @RequestBody Comment comment) {
+//    Todo : 댓글 삭제하는 함수
+    @DeleteMapping("/comment/deletion/{cno}")
+    public ResponseEntity<Object> deleteComment(@PathVariable int cno) {
 
         try {
-            Comment comment2 = commentService.save(comment);
-
-            return new ResponseEntity<>(comment2, HttpStatus.OK);
-
-        } catch (Exception e) {
-            log.debug(e.getMessage());
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    @DeleteMapping ("/comment/deletion/{qno}")
-    public ResponseEntity<Object> deleteAnswer(@PathVariable int qno) {
-
-        try {
-            boolean bSuccess = commentService.removeById(qno);
+            boolean bSuccess = commentService.removeById(cno);
 
             if (bSuccess == true) {
 //                데이터 + 성공 메세지 전송
@@ -232,11 +244,6 @@ public class CommentController {
     }
 
 }
-
-
-
-
-
 
 
 

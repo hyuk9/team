@@ -78,8 +78,8 @@ public class FavoriteService {
     }
 
     //    question(질문) like 검색 함수 ( 페이징 처리 )
-    public Page<Favorite> findAllByFidOrderByDno(Integer dno, Pageable pageable) {
-        Page<Favorite> page = favoriteRepository.findAllByFidOrderByDno(dno, pageable);
+    public Page<Favorite> findAllByFidEquals(Integer fid, Pageable pageable) {
+        Page<Favorite> page = favoriteRepository.findAllByFidEquals(fid, pageable);
         return page;
     }
 

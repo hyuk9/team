@@ -1,52 +1,52 @@
-// AnswerDataService.js
-// 목적 : Answer 정보를 axios 로 CRUD 를 하는 공통 함수들 정의
+// CommentDataService.js
 import http from "../http-common";
+import authHeader from "@/services/auth/auth-header";
 
-class AnswerDataService {
-    // 모든 답변정보 조회 요청 함수
-    // getAll(searchSelect, searchKeyword, page, size) {
-    //     // get 방식 통신 요청 -> @GetMapping("/api/answer")
-    //     return http.get(`/answer?searchSelect=${searchSelect}&searchKeyword=${searchKeyword}&page=${page}&size=${size}`); 
-    // }
+class CommentDataService {
+  getAll(id, page, size) {
+    return http.get(`/comment?id=${id}&page=${page}&size=${size}`, {
+      headers: authHeader(),
+    });
+  }
 
-    // 모든 답변정보 조회 요청 함수
-    getAll(searchSelect, searchKeyword, page, size) {
-        // get 방식 통신 요청 -> @GetMapping("/api/answer")
-        return http.get(`/answer?searchSelect=${searchSelect}&searchKeyword=${searchKeyword}&page=${page}&size=${size}`); 
-    }
+  // 음식점번호로 조회 요청 함수
+  get(qno) {
+    // get 방식 통신 요청 👉 @GetMapping("/api/menu/{dno}")
+    return http.get(`/comment/${qno}`);
+  }
+  // 
+  getCommentByQno(qno, page, size) {
+    return http.get(`/comment/qno?qno=${qno}&page=${page}&size=${size}`, {
+      headers: authHeader(),
+    });
+  }
 
-    // 부서번호로 조회 요청 함수
-    // get 방식 통신 요청 -> @GetMapping("/api/answer/{answerNo}"), @PathVariable
-    get(questionNo) {
-        return http.get(`/answer/${questionNo}`)
-    }
+  create(data) {
+    console.log(data);
+    return http.post("/comment", data);
+  }
 
-    // 부서정보 생성(insert) 요청 함수
-    // post 방식 통신 요청 -> @PostMapping("/api/answer"), @RequestBody
-    create(data) {
-        console.log(data);
-        return http.post("/answer", data);
-    }
+  update(cno, data) {
+    return http.put(`/comment/${cno}`, data);
+  }
 
-    // 부서정보 수정(update) 요청 함수
-    // put 방식 통신 요청 -> @PutMapping("/api/answer/{answerNo}"), @RequestBody
-    update(answerNo, data) {
-        return http.put(`/answer/${answerNo}`, data);
-    }
+  delete(cno) {
+    return http.delete(`/comment/deletion/${cno}`);
+  }
 
-    // 부서정보 삭제(delete) 요청 함수
-    // delete 방식 통신 요청 -> @DeleteMapping("/api/answer/deletion/{answerNo}")
-    //                        , @PathVariable  
-    delete(answerNo) {
-        return http.delete(`/answer/deletion/${answerNo}`);
-    }
+  deleteAll() {
+    return http.delete("/comment/all");
+  }
 
-    // 부서정보 전체 삭제 요청 함수
-    // delete 방식 통신 요청 -> @DeleteMapping("/api/answer/all")
-    deleteAll() {
-        return http.delete("/answer/all")
-    }
+  // 찜갯수 가져오기용
+  getCommentAll() {
+    return http.get(`/comment/desc`);
+  }
 
+  // 찜갯수 가져오기용(음식점 디테일)
+  getComment(dno) {
+    return http.get(`/comment/dno/${dno}`);
+  }
 }
 
-export default new AnswerDataService();
+export default new CommentDataService();
