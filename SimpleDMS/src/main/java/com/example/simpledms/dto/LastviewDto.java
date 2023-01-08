@@ -18,6 +18,9 @@ public interface LastviewDto {
     String getLoc();
     String getMainphoto();
     Integer getDno();
+    String getScore();
+    String getMenu();
+    String getTheme();
 
 //    Lastview에서 가져올 속성
     String getIt();

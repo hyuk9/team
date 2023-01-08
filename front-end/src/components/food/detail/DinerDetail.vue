@@ -235,7 +235,7 @@
             :key="index"
           >
             <div class="row d-flex">
-              <router-link :to="'/edit/review/' + data.rno ">
+              <router-link :to="'/edit/review/' + data.rno">
                 <button>수정하기</button>
               </router-link>
               <div class="">

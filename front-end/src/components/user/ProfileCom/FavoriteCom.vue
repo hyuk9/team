@@ -27,7 +27,11 @@
                   <tr>
                     <td>
                       <router-link :to="'/diner/' + data.dno">
-                        <img :src="data.mainphoto" alt="" style="height: 100px" />
+                        <img
+                          :src="data.mainphoto"
+                          alt=""
+                          style="height: 100px"
+                        />
                       </router-link>
                     </td>
                     <!-- <td>{{ data.fid }}</td>
@@ -71,6 +75,7 @@
                   last-text=">>"
                   prev-text="Prev"
                   next-text="Next"
+                  pills
                   @change="handlePageChange"
                 ></b-pagination>
               </div>

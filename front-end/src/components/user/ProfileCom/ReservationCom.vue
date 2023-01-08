@@ -53,6 +53,7 @@
                   last-text=">>"
                   prev-text="Prev"
                   next-text="Next"
+                  pills
                   @change="handlePageChange"
                 ></b-pagination>
               </div>

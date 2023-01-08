@@ -1,113 +1,113 @@
 <template>
   <div>
     <!-- Form -->
-    <section>
-      <div class="mx-auto text-center mb-5">
-        <h5 class="fw-bold fs-3 fs-lg-5 lh-sm">예약자 정보</h5>
-      </div>
-      <div class="form">
-        <div>
-          <!-- 가게 명 -->
-          <div class="input__block">
-            <h5>가게</h5>
+
+    <div class="mx-auto text-center mb-5">
+      <h5 class="fw-bold fs-3 fs-lg-5 lh-sm">예약자 정보</h5>
+    </div>
+    <div class="form">
+      <div>
+        <!-- 가게 명 -->
+        <div class="input__block">
+          <h5>가게</h5>
+          <input
+            v-model="currentDiner.dname"
+            v-bind:disabled="true"
+            required
+            type="text"
+            class="input"
+            id="dname"
+            name="dname"
+          />
+        </div>
+
+        <!-- 예약자 이름 -->
+        <div class="input__block">
+          <h5>예약자</h5>
+          <input
+            v-model="reservation.rname"
+            required
+            type="text"
+            class="input"
+            id="rname"
+            name="rname"
+          />
+        </div>
+
+        <!-- 인원수 -->
+        <div class="input__block">
+          <h5>인원수</h5>
+          <div class="rcountInput">
+            <select required v-model="reservation.rcount">
+              <option class="text-center">2</option>
+              <option class="text-center">3</option>
+              <option class="text-center">4</option>
+              <option class="text-center">5</option>
+              <option class="text-center">6</option>
+              <option class="text-center">7</option>
+              <option class="text-center">8</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 전화번호 -->
+        <div class="input__block">
+          <h5>전화번호</h5>
+          <div class="phoneInput">
             <input
-              v-model="currentDiner.dname"
-              v-bind:disabled="true"
-              required
+              v-model="phoneFirstPart"
               type="text"
               class="input"
-              id="dname"
-              name="dname"
+              id="phone1"
+              maxlength="3"
             />
-          </div>
-
-          <!-- 예약자 이름 -->
-          <div class="input__block">
-            <h5>예약자</h5>
+            <span class="minus">-</span>
             <input
-              v-model="reservation.rname"
-              required
+              v-model="phoneMiddlePart"
               type="text"
               class="input"
-              id="rname"
-              name="rname"
+              id="phone2"
+              maxlength="4"
             />
-          </div>
-
-          <!-- 인원수 -->
-          <div class="input__block">
-            <h5>인원수</h5>
-            <div class="rcountInput">
-              <select required v-model="reservation.rcount">
-                <option class="text-center">2</option>
-                <option class="text-center">3</option>
-                <option class="text-center">4</option>
-                <option class="text-center">5</option>
-                <option class="text-center">6</option>
-                <option class="text-center">7</option>
-                <option class="text-center">8</option>
-              </select>
-            </div>
-          </div>
-
-          <!-- 전화번호 -->
-          <div class="input__block">
-            <h5>전화번호</h5>
-            <div class="phoneInput">
-              <input
-                v-model="phoneFirstPart"
-                type="text"
-                class="input"
-                id="phone1"
-                maxlength="3"
-              />
-              <span class="minus">-</span>
-              <input
-                v-model="phoneMiddlePart"
-                type="text"
-                class="input"
-                id="phone2"
-                maxlength="4"
-              />
-              <span class="minus">-</span>
-              <input
-                v-model="phoneLastPart"
-                type="text"
-                class="input"
-                id="phone3"
-                maxlength="4"
-              />
-            </div>
-          </div>
-
-          <!-- 예약 날짜 -->
-          <div class="input__block">
-            <h5>예약 날짜</h5>
+            <span class="minus">-</span>
             <input
-              ref="rdate"
-              required
-              type="date"
+              v-model="phoneLastPart"
+              type="text"
               class="input"
-              id="rdate"
-              placeholder="날짜 선택"
+              id="phone3"
+              maxlength="4"
             />
           </div>
+        </div>
 
-          <!-- 예약 시간 -->
-          <div class="input__block">
-            <h5>예약 시간</h5>
-            <input
-              ref="rtime"
-              required
-              type="time"
-              class="input"
-              id="rtime"
-              placeholder="시간 선택"
-            />
-          </div>
+        <!-- 예약 날짜 -->
+        <div class="input__block">
+          <h5>예약 날짜</h5>
+          <input
+            ref="rdate"
+            required
+            type="date"
+            class="input"
+            id="rdate"
+            placeholder="날짜 선택"
+          />
+        </div>
 
-          <!-- 예약시간 -->
-          <!-- <div class="input__block">
+        <!-- 예약 시간 -->
+        <div class="input__block">
+          <h5>예약 시간</h5>
+          <input
+            ref="rtime"
+            required
+            type="time"
+            class="input"
+            id="rtime"
+            placeholder="시간 선택"
+          />
+        </div>
+
+        <!-- 예약시간 -->
+        <!-- <div class="input__block">
             <h5>예약 시간</h5>
             <div class="accordion" id="accordionExample">
               <div class="accordion-item">
@@ -197,13 +197,12 @@
             </div>
           </div> -->
 
-          <!-- sign in button -->
-          <button @click="saveReservation" class="reservation__btn mt-5">
-            예약하기
-          </button>
-        </div>
+        <!-- sign in button -->
+        <button @click="saveReservation" class="reservation__btn mt-5">
+          예약하기
+        </button>
       </div>
-    </section>
+    </div>
   </div>
 </template>
 
