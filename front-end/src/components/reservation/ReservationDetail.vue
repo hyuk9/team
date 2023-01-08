@@ -226,7 +226,7 @@ export default {
             timer: 1000,
           });
           // 첫페이지(전체목록_조회_페이지) 강제 이동 : /reservation
-          this.$router.push("/reservation");
+          this.$router.push("/profile");
         })
         // 실패하면 .catch() 에러메세지가 전송됨
         .catch((e) => {
