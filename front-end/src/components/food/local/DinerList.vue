@@ -361,6 +361,9 @@ export default {
       } else if (this.$route.path == "/getTogether") {
         this.searchSelect = "테마";
         this.searchKeyword = "회식";
+      } else if (this.$route.path == "/daily") {
+        this.searchSelect = "테마";
+        this.searchKeyword = "식사";
       }
       this.retrieveDiner();
     },

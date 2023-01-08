@@ -79,6 +79,7 @@
                                         <li><a href="/date">데이트</a></li>
                                         <li><a href="/meeting">모임</a></li>
                                         <li><a href="/getTogether">회식</a></li>
+                                        <li><a href="/daily">식사</a></li>
                                     </ul>
                                 </li>
                             </ul>

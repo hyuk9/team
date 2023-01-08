@@ -286,7 +286,8 @@ const routes = [
     path: "/western",
     name: "western",
     component: () => import("@/components/food/local/DinerList.vue"),
-  },  {
+  },  
+  {
     path: "/date",
     name: "date",
     component: () => import("@/components/food/local/DinerList.vue"),
@@ -299,6 +300,11 @@ const routes = [
   {
     path: "/getTogether",
     name: "getTogether",
+    component: () => import("@/components/food/local/DinerList.vue"),
+  },,  
+  {
+    path: "/daily",
+    name: "daily",
     component: () => import("@/components/food/local/DinerList.vue"),
   },
   {
