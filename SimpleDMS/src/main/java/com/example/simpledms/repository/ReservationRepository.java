@@ -45,11 +45,13 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
     @Query(value = "select di.dname, di.loc, re.* " +
             "from tb_diner di, tb_reservation re " +
             "where di.dno = re.dno " +
-            "and id = :id",
+            "and re.id = :id " +
+            "and re.delete_yn = 'N'",
             countQuery = "select di.dname, di.loc, re.* " +
                     "from tb_diner di, tb_reservation re " +
                     "where di.dno = re.dno " +
-                    "and id = :id"
+                    "and re.id = :id " +
+                    "and re.delete_yn = 'N'"
             , nativeQuery = true)
     Page<ReservationDto> findAllById(Integer id, Pageable pageable);
 

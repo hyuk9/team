@@ -41,9 +41,9 @@
                     </td>
                   </tr>
                 </tbody>
-                <tbody v-if="existReservation">
+                <!-- <tbody v-if="existReservation">
                   <h1>아직 예약한 기록이 없습니다.</h1>
-                </tbody>
+                </tbody> -->
               </table>
 
               <!--    Todo : page 바 시작 -->

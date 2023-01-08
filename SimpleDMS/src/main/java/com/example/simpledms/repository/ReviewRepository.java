@@ -36,11 +36,12 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
     @Query(value = "select rv.*, di.dname, di.mainphoto " +
             "from tb_review rv, tb_diner di " +
             "where rv.dno = di.dno " +
-            "and id = :id",
+            "and rv.id = :id " +
+            "and rv.delete_yn = 'N'",
             countQuery = "select rv.*, di.dname, di.mainphoto " +
                     "from tb_review rv, tb_diner di " +
                     "where rv.dno = di.dno " +
-                    "and id = :id"
+                    "and rv.delete_yn = 'N'"
             , nativeQuery = true)
     Page<ReviewDto> findAllById(Integer id, Pageable pageable);
 
