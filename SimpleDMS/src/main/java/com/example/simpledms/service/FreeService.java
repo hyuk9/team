@@ -76,15 +76,15 @@ public class FreeService {
     }
 
     //    question(질문) like 검색 함수 ( 페이징 처리 )
-    public Page<Free> findAllByWriterContainingOrderByInsertTimeDescFnoDesc(String writer, Pageable pageable) {
-        Page<Free> page = freeRepository.findAllByWriterContainingOrderByInsertTimeDescFnoDesc(writer, pageable);
+    public Page<Free> findAllByWriterContainingOrderByFnoDesc(String writer, Pageable pageable) {
+        Page<Free> page = freeRepository.findAllByWriterContainingOrderByFnoDesc(writer, pageable);
 
         return page;
     }
 
     //    questioner(질문자) like 검색 함수 ( 페이징 처리 )
-    public Page<Free> findAllByTitleContainingOrderByInsertTimeDescFnoDesc(String title, Pageable pageable) {
-        Page<Free> page = freeRepository.findAllByTitleContainingOrderByInsertTimeDescFnoDesc(title, pageable);
+    public Page<Free> findAllByTitleContainingOrderByFnoDesc(String title, Pageable pageable) {
+        Page<Free> page = freeRepository.findAllByTitleContainingOrderByFnoDesc(title, pageable);
 
         return page;
     }

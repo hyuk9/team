@@ -47,20 +47,20 @@ public class AnnounceService {
     }
 
     //    부서번호로 조회하는 함수
-    public Optional<Announce> findById(int qno) {
+    public Optional<Announce> findById(int aid) {
 //        findById(기본키속성)
-        Optional<Announce> optionalAnnounce = announceRepository.findById(qno);
+        Optional<Announce> optionalAnnounce = announceRepository.findById(aid);
 
         return optionalAnnounce;
     }
 
     // 부서번호(no)로 삭제하는 함수
-    public boolean removeById(int qno) {
+    public boolean removeById(int aid) {
 //        existsById(기본키) 있으면 삭제 실행 + true 리턴
-        if(announceRepository.existsById(qno) == true) {
+        if(announceRepository.existsById(aid) == true) {
 
 
-            announceRepository.deleteById(qno);
+            announceRepository.deleteById(aid);
             return true;
         }
 
@@ -69,15 +69,15 @@ public class AnnounceService {
     }
 
     //    question(질문) like 검색 함수 ( 페이징 처리 )
-    public Page<Announce> findAllByWriterContainingOrderByInsertTimeDescAnoDesc(String writer, Pageable pageable) {
-        Page<Announce> page = announceRepository.findAllByWriterContainingOrderByInsertTimeDescAnoDesc(writer, pageable);
+    public Page<Announce> findAllByWriterContainingOrderByAidDesc(String writer, Pageable pageable) {
+        Page<Announce> page = announceRepository.findAllByWriterContainingOrderByAidDesc(writer, pageable);
 
         return page;
     }
 
     //    questioner(질문자) like 검색 함수 ( 페이징 처리 )
-    public Page<Announce> findAllByTitleContainingOrderByInsertTimeDescAnoDesc(String title, Pageable pageable) {
-        Page<Announce> page = announceRepository.findAllByTitleContainingOrderByInsertTimeDescAnoDesc(title, pageable);
+    public Page<Announce> findAllByTitleContainingOrderByAidDesc(String title, Pageable pageable) {
+        Page<Announce> page = announceRepository.findAllByTitleContainingOrderByAidDesc(title, pageable);
 
         return page;
     }

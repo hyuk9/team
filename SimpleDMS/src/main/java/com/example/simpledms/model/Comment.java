@@ -35,7 +35,7 @@ import javax.persistence.*;
 @DynamicInsert
 @DynamicUpdate
 @Where(clause = "DELETE_YN = 'N'")
-@SQLDelete(sql="UPDATE TB_COMMENT SET DELETE_YN = 'Y', DELETE_TIME = TO_CHAR(SYSDATE, 'YYYY-MM-DD') WHERE COMMENT_NO = ?")
+@SQLDelete(sql="UPDATE TB_COMMENT SET DELETE_YN = 'Y', DELETE_TIME = TO_CHAR(SYSDATE, 'YYYY-MM-DD') WHERE CNO = ?")
 public class Comment extends BaseTimeEntity {
 
     @Id
@@ -46,15 +46,15 @@ public class Comment extends BaseTimeEntity {
 
 //    조인용 컬럼
     @javax.persistence.Column
-    private String qno;
+    private Integer qno;
 
 //    조인용 컬럼
     @javax.persistence.Column
-    private String id;
+    private Integer id;
 
 //    조인용 컬럼
     @javax.persistence.Column
-    private String fno;
+    private Integer fno;
 
     @javax.persistence.Column
     private String content;

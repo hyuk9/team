@@ -3402,7 +3402,7 @@ textarea.form-control-lg {
 
 .btn {
   display: inline-block;
-  font-weight: 500;
+  /* font-weight: 500; */
   line-height: 1.5;
   color: #4B5D68;
   text-align: center;

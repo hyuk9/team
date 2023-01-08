@@ -20,8 +20,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface QuestionRepository extends JpaRepository<Question, Integer> {
     //    question 조회하는 like 검색 함수
 //    1) 쿼리메소드 방식으로 함수 정의
-    Page<Question> findAllByTitleContainingOrderByInsertTimeDescQnoDesc(String title, Pageable pageable);
-    Page<Question> findAllByWriterContainingOrderByInsertTimeDescQnoDesc(String  writer, Pageable pageable);
+    Page<Question> findAllByTitleContainingOrderByQnoDesc(String title, Pageable pageable);
+    Page<Question> findAllByWriterContainingOrderByQnoDesc(String  writer, Pageable pageable);
 
 //    @Query(value = "select fa.*, di.dname, di.phone, di.loc, di.photo " +
 //            "from tb_diner di, tb_favorite fa " +

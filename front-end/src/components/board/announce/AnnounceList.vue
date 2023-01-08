@@ -7,29 +7,12 @@
       <div style="text-align: center">
         <div class="p-3 mb-2 bg-warning text-dark bg-opacity-25">
           <strong>"공지사항를 통해서 맛있는 토마토의 최신정보를 찾아보세요"
+            <h1>조회수 증가 함수 작동하면서 게시글 insertTime 정보도 같이 바뀌는 문제 있음</h1>
             <br />
             "맛있는 토마토의 최신 정보와 공지를 모아서 한번에 찾아볼 수 있습니다.
           </strong>
         </div>
       </div>
-
-      <!--    Todo : page 바 시작 주석 처리 -->
-      <!-- <div class="col-md-12 offset-2">
-                <div class="mb-3">
-                    Items per Page:
-                    <select v-model="pageSize" @change="handlePageSizeChange($event)">
-                        <option v-for="size in pageSizes" :key="size" :value="size">
-                               size : 3, 6, 9 
-                            {{ size }}
-                        </option>
-                    </select>
-                </div>
-
-                <b-pagination v-model="page" :total-rows="count" :per-page="pageSize" prev-text="Prev" next-text="Next"
-                    @change="handlePageChange"></b-pagination>
-            </div> -->
-
-      <!--    Todo : page 바 끝 주석처리 -->
       <div>
         <table class="table table-hover">
           <thead>
@@ -53,17 +36,17 @@
           </thead>
           <tbody v-for="(data, index) in announce" :key="index">
             <tr>
-              <td class="text-center"><i class="bi bi-hash"></i>{{ data.ano }}</td>
+              <td class="text-center"><i class="bi bi-hash"></i>{{ data.aid }}</td>
               <td class="text-center">
                 <!-- 기존 링크안에 조회수 증가용 함수 a 태그 추가 -->
-                <router-link :to="'/announceview/' + data.ano"><a @click="countViews(data.ano)"><span>{{ data.title }}</span></a></router-link>
+                <router-link :to="'/announceview/' + data.aid"><a @click="countViews(data.aid)"><span>{{ data.title }}</span></a></router-link>
               </td>
               <td class="text-center">{{ data.writer }}</td>
-              <td class="text-center"><i class="bi bi-calendar-date"></i> {{ data.insertTime }}</td>
+              <td class="text-center"><i class="bi bi-calendar-date"></i> {{ data.insertTime.split(" ")[0] }}</td>
               <!-- 조회수 보여주기 -->
               <td class="text-center">{{ data.views }}</td>
               <td v-if="showAdminBoard">
-                <router-link :to="'/announce/' + data.ano"><span
+                <router-link :to="'/announce/' + data.aid"><span
                     class="badge rounded-pill bg-warning text-dark">수정</span></router-link>
               </td>
             </tr>
@@ -81,7 +64,7 @@
       </div>
       </div>
       <div class="overflow-auto offset-5">
-        <b-pagination v-model="page" :total-rows="count" :per-page="pageSize" first-text="<<" last-text=">>"
+        <b-pagination v-model="page" :total-rows="count" pills :per-page="pageSize" first-text="<<" last-text=">>"
           prev-text="Prev" next-text="Next" @change="handlePageChange"></b-pagination>
       </div>
       <!-- search 관련 div 시작 -->
@@ -105,7 +88,6 @@
               page = 1;
             retrieveAnnounce();
             "><i class="bi bi-search"></i>
-              Search
             </button>
           </div>
           <!--            Todo : 수정 끝 -->
@@ -132,7 +114,6 @@ export default {
       count: 0, // 전체 데이터 건수
       pageSize: 10, // 한페이지당 몇개를 화면에 보여줄지 결정하는 변수
 
-      pageSizes: [3, 6, 9], // select box 에 넣을 기본 데이터
     };
   },
   methods: {
@@ -171,8 +152,8 @@ export default {
       this.retrieveAnnounce();
     },
     // 조회수 증가 함수
-    countViews (ano) {
-      AnnounceDataService.plusViews(ano)
+    countViews (aid) {
+      AnnounceDataService.plusViews(aid)
      .then((response) => {
           // 디버깅 콘솔에 정보 출력
           console.log(response.data);

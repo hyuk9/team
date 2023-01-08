@@ -6,6 +6,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * packageName : com.example.jpaexam.repository
  * fileName : DeptRepository
@@ -21,8 +23,9 @@ import org.springframework.stereotype.Repository;
 public interface AnnounceRepository extends JpaRepository<Announce, Integer> {
 //    question 조회하는 like 검색 함수
 //    1) 쿼리메소드 방식으로 함수 정의
-    Page<Announce> findAllByWriterContainingOrderByInsertTimeDescAnoDesc(String writer, Pageable pageable);
-    Page<Announce> findAllByTitleContainingOrderByInsertTimeDescAnoDesc(String title, Pageable pageable);
+    Page<Announce> findAllByWriterContainingOrderByAidDesc(String writer, Pageable pageable);
+    Page<Announce> findAllByTitleContainingOrderByAidDesc(String title, Pageable pageable);
+
 }
 
 

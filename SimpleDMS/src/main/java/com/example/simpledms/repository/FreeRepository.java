@@ -21,8 +21,8 @@ import org.springframework.stereotype.Repository;
 public interface FreeRepository extends JpaRepository<Free, Integer> {
 //    question 조회하는 like 검색 함수
 //    1) 쿼리메소드 방식으로 함수 정의
-    Page<Free> findAllByWriterContainingOrderByInsertTimeDescFnoDesc(String writer, Pageable pageable);
-    Page<Free> findAllByTitleContainingOrderByInsertTimeDescFnoDesc(String title, Pageable pageable);
+    Page<Free> findAllByWriterContainingOrderByFnoDesc(String writer, Pageable pageable);
+    Page<Free> findAllByTitleContainingOrderByFnoDesc(String title, Pageable pageable);
 
     public Page<Free> findAllByOrderByInsertTimeDesc(Pageable pageable);
 }

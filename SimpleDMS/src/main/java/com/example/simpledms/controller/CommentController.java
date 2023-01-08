@@ -1,6 +1,7 @@
 package com.example.simpledms.controller;
 
 import com.example.simpledms.model.Comment;
+import com.example.simpledms.model.Menu;
 import com.example.simpledms.service.CommentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -109,16 +111,76 @@ public class CommentController {
 
 //  Todo : 유저 id로 검색해서 내가 쓴 댓글 모아보는 함수
     @GetMapping("/comment/{id}")
-    public ResponseEntity<Object> getAnswerId(@PathVariable int qno) {
+    public ResponseEntity<Object> getUserId(@PathVariable int id) {
 
         try {
-            Optional<Comment> optionalAnswer = commentService.findById(qno);
+            Optional<Comment> optionalAnswer = commentService.findById(id);
 
 
 
             if (optionalAnswer.isPresent() == true) {
 //                데이터 + 성공 메세지 전송
                 return new ResponseEntity<>(optionalAnswer.get(), HttpStatus.OK);
+            } else {
+//                데이터 없음 메세지 전송(클라이언트)
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+
+        } catch (Exception e) {
+            log.debug(e.getMessage());
+            // 서버에러 발생 메세지 전송(클라이언트)
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+//
+////  Todo : 질문번호로 조회해서 댓글 조회하는 함수 (페이징 처리)
+//    @GetMapping("/comment/{qno}")
+//    public ResponseEntity<Object> getQnoId(@PathVariable Integer qno,
+//                                           @RequestParam(defaultValue = "0") int page,
+//                                           @RequestParam(defaultValue = "3") int size) {
+//
+//        try {
+////            Pageable 객체 정의 ( page, size 값 설정 )
+//            Pageable pageable = PageRequest.of(page, size);
+//
+//            Page<Comment> commentPage;
+//
+//            commentPage = commentService.findAllByQnoEqualsOrderByInsertTimeAsc(qno,pageable);
+//
+//            //            맵 자료구조에 넣어서 전송
+//            Map<String, Object> response = new HashMap<>();
+//            response.put("comment", commentPage.getContent());
+//            response.put("currentPage", commentPage.getNumber());
+//            response.put("totalItems", commentPage.getTotalElements());
+//            response.put("totalPages", commentPage.getTotalPages());
+//
+//
+//            if (commentPage.isEmpty() == false) {
+////                데이터 + 성공 메세지 전송
+//                return new ResponseEntity<>(response, HttpStatus.OK);
+//            } else {
+////                데이터 없음 메세지 전송(클라이언트)
+//                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//            }
+//
+//        } catch (Exception e) {
+//            log.debug(e.getMessage());
+//            // 서버에러 발생 메세지 전송(클라이언트)
+//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
+
+
+//    Todo : 위에거 안되서 테스트용도로 만듬
+    @GetMapping("/comment/{qno}")
+    public ResponseEntity<Object> getCommentByQno(@PathVariable Integer qno) {
+
+        try {
+            List<Comment> list = commentService.findAllByQnoEqualsOrderByInsertTimeAsc(qno);
+
+            if (list.isEmpty() == false) {
+//                데이터 + 성공 메세지 전송
+                return new ResponseEntity<>(list, HttpStatus.OK);
             } else {
 //                데이터 없음 메세지 전송(클라이언트)
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);

@@ -107,6 +107,7 @@
           v-model="page"
           :total-rows="count"
           :per-page="pageSize"
+          pills
           first-text="<<"
           last-text=">>"
           prev-text="Prev"
@@ -124,7 +125,7 @@
               <option>제목</option>
             </select>
           </div>
-
+          
           <!-- searchDname -> searchKeyword 변경 -->
           <div class="col-7">
             <input
@@ -145,7 +146,6 @@
               "
             >
               <i class="bi bi-search"></i>
-              Search
             </button>
           </div>
           <!--            Todo : 수정 끝 -->

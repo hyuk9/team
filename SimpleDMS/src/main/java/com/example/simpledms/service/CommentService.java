@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -65,6 +66,26 @@ public class CommentService {
 //        없으면 그냥 false 리턴
         return false;
     }
+//
+////    Todo : 질문번호에 해당하는 댓글 조회하는 함수
+//    public Page<Comment> findAllByQnoEqualsOrderByInsertTimeAsc(Integer qno, Pageable pageable) {
+////        findById(기본키속성)
+//        Page<Comment> page = commentRepository.findAllByQnoEqualsOrderByInsertTimeAsc(qno ,pageable);
+//
+//        return page;
+//    }
+
+
+//    Todo : 위에거 안되서 테스트용도로 만들어봄
+    public List<Comment> findAllByQnoEqualsOrderByInsertTimeAsc(Integer qno) {
+//        findById(기본키속성)
+        List<Comment> list = commentRepository.findAllByQnoEqualsOrderByInsertTimeAsc(qno);
+
+        return list;
+    }
+
+
+
 
 }
 

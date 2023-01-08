@@ -55,9 +55,9 @@ public class AnnounceController {
 
 //            Page 객체 정의
             if( searchSelect.equals("작성자")) {
-                announcePage = announceService.findAllByWriterContainingOrderByInsertTimeDescAnoDesc(searchKeyword, pageable);
+                announcePage = announceService.findAllByWriterContainingOrderByAidDesc(searchKeyword, pageable);
             } else {
-                announcePage = announceService.findAllByTitleContainingOrderByInsertTimeDescAnoDesc(searchKeyword, pageable);
+                announcePage = announceService.findAllByTitleContainingOrderByAidDesc(searchKeyword, pageable);
             }
 
             //            맵 자료구조에 넣어서 전송
@@ -112,11 +112,11 @@ public class AnnounceController {
     }
 
 
-    @GetMapping("/announce/{ano}")
-    public ResponseEntity<Object> getAnnounceId(@PathVariable int ano) {
+    @GetMapping("/announce/{aid}")
+    public ResponseEntity<Object> getAnnounceId(@PathVariable int aid) {
 
         try {
-            Optional<Announce> optionalAnnounce = announceService.findById(ano);
+            Optional<Announce> optionalAnnounce = announceService.findById(aid);
 
             
 
@@ -135,8 +135,8 @@ public class AnnounceController {
         }
     }
 
-    @PutMapping("/announce/{ano}")
-    public ResponseEntity<Object> updateAnnounce(@PathVariable int ano,
+    @PutMapping("/announce/{aid}")
+    public ResponseEntity<Object> updateAnnounce(@PathVariable int aid,
                                             @RequestBody Announce announce) {
 
         try {
@@ -150,11 +150,11 @@ public class AnnounceController {
         }
     }
 
-    @DeleteMapping ("/announce/deletion/{ano}")
-    public ResponseEntity<Object> deleteAnnounce(@PathVariable int ano) {
+    @DeleteMapping ("/announce/deletion/{aid}")
+    public ResponseEntity<Object> deleteAnnounce(@PathVariable int aid) {
 
         try {
-            boolean bSuccess = announceService.removeById(ano);
+            boolean bSuccess = announceService.removeById(aid);
 
             if (bSuccess == true) {
 //                데이터 + 성공 메세지 전송
@@ -172,14 +172,14 @@ public class AnnounceController {
     }
 
 //    조회수 추가 함수0104
-@PutMapping("/announce/plusviews/{ano}")
-public ResponseEntity<Object> updateAnnounceViews(@PathVariable int ano) {
+@PutMapping("/announce/plusviews/{aid}")
+public ResponseEntity<Object> updateAnnounceViews(@PathVariable int aid) {
 
     try {
 
 
 //       이메일에 맞는 유저 정보 들고와서
-        Optional<Announce> optionalAnnounce = announceService.findById(ano);
+        Optional<Announce> optionalAnnounce = announceService.findById(aid);
 
         Announce announceData = optionalAnnounce.get();
         Integer plusViews = announceData.getViews() +1;

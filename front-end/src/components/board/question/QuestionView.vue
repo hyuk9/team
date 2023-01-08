@@ -27,7 +27,7 @@
             </tr>
             <tr>
               <th scope="row">조회수</th>
-              <td scope="row" v-text="currentQuestion.views"></td>
+              <td scope="row" v-text="currentfreeForViews.views"></td>
             </tr>
             <tr>
               <td colspan="2" scope="row" style="padding: 10px">
@@ -81,6 +81,9 @@ export default {
       comment:[],
       name: "",
 
+            // 조회수용 변수 추가
+      currentfreeForViews: null,
+
     };
   },
   methods: {
@@ -100,11 +103,11 @@ export default {
           console.log(e);
         });
         // Todo : 조회수 증가하는 함수인거 같음
-      QuestionDataService.plusViews(qno)
+      QuestionDataService.getById(qno)
         // 성공하면 .then() 결과가 리턴됨
         .then((response) => {
           // springboot 결과를 리턴함(부서 객체)
-          this.currentQuestionForViews = response.data;
+          this.currentfreeForViews = response.data;
           // 콘솔 로그 출력
           console.log(response.data);
         })
@@ -180,6 +183,7 @@ export default {
   // 화면이 뜨자 마자 실행되는 이벤트
   mounted() {
     this.getQuestion(this.$route.params.qno);
+    alert(this.currentQuestion.views);
   },
 };
 </script>

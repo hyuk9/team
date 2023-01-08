@@ -128,6 +128,7 @@
           v-model="page"
           :total-rows="count"
           :per-page="pageSize"
+          pills
           first-text="<<"
           last-text=">>"
           prev-text="Prev"

@@ -57,9 +57,9 @@ public class QuestionController {
 
 //            Page 객체 정의
             if( searchSelect.equals("제목")) {
-                questionPage = questionService.findAllByTitleContainingOrderByInsertTimeDescQnoDesc(searchKeyword, pageable);
+                questionPage = questionService.findAllByTitleContainingOrderByQnoDesc(searchKeyword, pageable);
             } else {
-                questionPage = questionService.findAllByWriterContainingOrderByInsertTimeDescQnoDesc(searchKeyword, pageable);
+                questionPage = questionService.findAllByWriterContainingOrderByQnoDesc(searchKeyword, pageable);
             }
 
             //            맵 자료구조에 넣어서 전송
@@ -182,10 +182,9 @@ public class QuestionController {
 
             Question questionData = optionalQuestion.get();
             Integer plusViews = questionData.getViews() +1;
-
-
             questionData.setViews(plusViews);
 
+//            Todo : 여기서 조회수만 증가시켜서 저장시켜야하는데 questionData 에 있던 정보들에 덮어씌워지는듯
             questionService.save(questionData);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {

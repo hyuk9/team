@@ -14,24 +14,6 @@
         </div>
       </div>
 
-      <!--    Todo : page 바 시작 -->
-      <!-- <div class="col-md-12">
-        <div style="width: 11%" class="mb-3">
-          Items per Page:
-          <select style="vertical-align: middle; text-align-last: left;" class="form-select "
-            aria-label="Default select example" v-model="pageSize" @change="handlePageSizeChange($event)">
-            <option v-for="size in pageSizes" :key="size" :value="size">
-                          size : 3, 6, 9 
-              {{ size }}
-            </option>
-          </select>
-        </div>
-
-        <b-pagination v-model="page" :total-rows="count" :per-page="pageSize" prev-text="Prev" next-text="Next"
-          @change="handlePageChange"></b-pagination>
-      </div> -->
-      <!--    Todo : page 바 끝  -->
-
       <!-- TODO: 아코디언으로 FAQ 구현 -->
       <div class="accordion accordion-flush" id="accordionFlushExample">
         <div class="accordion-item" v-for="(data, index) in faq" :key="index">
@@ -78,6 +60,7 @@
           v-model="page"
           :total-rows="count"
           :per-page="pageSize"
+          pills
           first-text="<<"
           last-text=">>"
           prev-text="Prev"

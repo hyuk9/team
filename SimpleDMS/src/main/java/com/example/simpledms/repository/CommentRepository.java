@@ -1,7 +1,11 @@
 package com.example.simpledms.repository;
 
 import com.example.simpledms.model.Comment;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
 
 /**
  * packageName : com.example.jpaexam.repository
@@ -18,7 +22,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface CommentRepository extends JpaRepository<Comment, Integer> {
     //    like 검색 함수
 //    1) 쿼리메소드 방식으로 함수 정의
-//    Todo : 댓글 다는 용도라서 따로 like 검색함수 안만들어도 될듯??
+//    Todo : 질문번호로 댓글 찾는 함수
+//    Page<Comment> findAllByQnoEqualsOrderByInsertTimeAsc (Integer qno, Pageable pageable);
+
+//    Todo : 위에 코드 안되서 그냥 list 형식으로 만들어봄
+
+    List<Comment> findAllByQnoEqualsOrderByInsertTimeAsc (Integer qno);
 }
 
 

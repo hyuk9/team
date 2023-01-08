@@ -68,15 +68,15 @@ public class QuestionService {
     }
 
     //    question(질문) like 검색 함수 ( 페이징 처리 )
-    public Page<Question> findAllByWriterContainingOrderByInsertTimeDescQnoDesc(String  writer, Pageable pageable) {
-        Page<Question> page = questionRepository.findAllByWriterContainingOrderByInsertTimeDescQnoDesc(writer, pageable);
+    public Page<Question> findAllByWriterContainingOrderByQnoDesc(String  writer, Pageable pageable) {
+        Page<Question> page = questionRepository.findAllByWriterContainingOrderByQnoDesc(writer, pageable);
 
         return page;
     }
 
     //    questioner(질문자) like 검색 함수 ( 페이징 처리 )
-    public Page<Question> findAllByTitleContainingOrderByInsertTimeDescQnoDesc(String title, Pageable pageable) {
-        Page<Question> page = questionRepository.findAllByTitleContainingOrderByInsertTimeDescQnoDesc(title, pageable);
+    public Page<Question> findAllByTitleContainingOrderByQnoDesc(String title, Pageable pageable) {
+        Page<Question> page = questionRepository.findAllByTitleContainingOrderByQnoDesc(title, pageable);
 
         return page;
     }

@@ -64,9 +64,9 @@ public class FreeController {
 
 //            Page 객체 정의
             if (searchSelect.equals("작성자")) {
-                freePage = freeService.findAllByWriterContainingOrderByInsertTimeDescFnoDesc(searchKeyword, pageable);
+                freePage = freeService.findAllByWriterContainingOrderByFnoDesc(searchKeyword, pageable);
             } else {
-                freePage = freeService.findAllByTitleContainingOrderByInsertTimeDescFnoDesc(searchKeyword, pageable);
+                freePage = freeService.findAllByTitleContainingOrderByFnoDesc(searchKeyword, pageable);
             }
 
             //            맵 자료구조에 넣어서 전송

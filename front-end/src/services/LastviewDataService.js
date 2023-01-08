@@ -26,7 +26,7 @@ class LastviewDataService {
   // 부서정보 생성(insert) 요청 함수
   // post 방식 통신 요청 -> @PostMapping("/api/diner"), @RequestBody
   create(data) {
-    console.log(data);
+    // console.log(data);
     return http.post("/lastview", data);
   }
 

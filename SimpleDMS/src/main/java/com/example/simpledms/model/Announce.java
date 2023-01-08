@@ -35,14 +35,14 @@ import javax.persistence.*;
 @DynamicInsert
 @DynamicUpdate
 @Where(clause = "DELETE_YN = 'N'")
-@SQLDelete(sql="UPDATE TB_ANNOUNCE SET DELETE_YN = 'Y', DELETE_TIME = TO_CHAR(SYSDATE, 'YYYY-MM-DD') WHERE ANO = ?")
+@SQLDelete(sql="UPDATE TB_ANNOUNCE SET DELETE_YN = 'Y', DELETE_TIME = TO_CHAR(SYSDATE, 'YYYY-MM-DD') WHERE aid = ?")
 public class Announce extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE
                    , generator = "SQ_ANNOUNCE_GENERATOR"
     )
-    private Integer ano;
+    private Integer aid;
 
     @javax.persistence.Column(columnDefinition = "VARCHAR2(255)")
     private String writer;
@@ -57,8 +57,8 @@ public class Announce extends BaseTimeEntity {
     private Integer views;
     
 //  0104 조회수 위해서 추가
-    public Announce(Integer ano, String writer, String title, String content, Integer views) {
-        this.ano = ano;
+    public Announce(Integer aid, String writer, String title, String content, Integer views) {
+        this.aid = aid;
         this.writer = writer;
         this.title = title;
         this.content = content;

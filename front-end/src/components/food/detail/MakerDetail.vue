@@ -38,7 +38,7 @@ export default {
         })
         // 실패하면 .catch() 에러메세지가 리턴됨
         .catch((e) => {
-          console.log(e);
+          console.log("카카오 지도 에러 메시지 : ", e);
         });
     },
     link() {
