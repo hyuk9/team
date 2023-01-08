@@ -41,6 +41,9 @@
                     </td>
                   </tr>
                 </tbody>
+                <tbody v-if="existReservation">
+                  <h1>아직 예약한 기록이 없습니다.</h1>
+                </tbody>
               </table>
 
               <!--    Todo : page 바 시작 -->
@@ -58,30 +61,6 @@
               </div>
               <!--    Todo : page 바 끝 -->
 
-              <!-- search 관련 div 시작 -->
-              <!-- <div class="col-md-6 offset-3 pt-5">
-                <div class="input-group mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Search by Name"
-                    v-model="searchName"
-                  />
-                  <div class="input-group-append">
-                    <button
-                      class="btn btn-primary"
-                      type="button"
-                      @click="
-                        page = 1;
-                        retrieveReservation();
-                      "
-                    >
-                      Search
-                    </button>
-                  </div>
-                </div>
-              </div> -->
-              <!-- search 관련 div 끝 -->
             </div>
           </div>
         </div>
@@ -106,7 +85,6 @@ export default {
       count: 0,
       pageSize: 10,
 
-      // pageSizes: [3, 6, 9],
     };
   },
   methods: {
@@ -126,6 +104,13 @@ export default {
         .catch((e) => {
           console.log(e);
         });
+    },
+    existReservation(){
+      if (this.reservation != null) {
+        return false;
+      } else {
+        return true;
+      }
     },
 
     handlePageChange(value) {

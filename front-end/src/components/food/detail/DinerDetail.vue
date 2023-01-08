@@ -36,7 +36,7 @@
                   <button
                     type="button"
                     class="btn btn-success btn-sm"
-                    v-if="showAdminBoard"
+                    v-if="confirmAdmin"
                   >
                     수정하기
                   </button>
@@ -235,7 +235,7 @@
             :key="index"
           >
             <div class="row d-flex">
-              <router-link :to="'/edit/review/' + data.rno ">
+              <router-link :to="'/edit/review/' + data.rno">
                 <button>수정하기</button>
               </router-link>
               <div class="">
@@ -305,7 +305,6 @@
 
 <script>
 /* eslint-disable */
-
 import DinerDataService from "@/services/DinerDataService";
 import ReviewDataService from "@/services/ReviewDataService";
 import DinerCommentVue from "./DinerComment.vue";
@@ -315,6 +314,7 @@ import MenuDataService from "@/services/MenuDataService"; // 메뉴 리스트를
 import MakerDetail from "@/components/food/detail/MakerDetail.vue";
 import Canvas from "@/components/food/detail/CanvasView.vue";
 import LastviewDataService from "@/services/LastviewDataService";
+import User from "@/model/user";
 
 export default {
   data() {
@@ -325,11 +325,9 @@ export default {
       currentReview: null,
       currentIndex: -1,
       // dname: "", ->(변경) searchDname: "",
-      searchRwriter: "",
 
       currentDiner: null,
       currentMenu: null,
-      message: "",
 
       mapNchart: true,
       showReservation: false,
@@ -363,13 +361,13 @@ export default {
     };
   },
   components: {
-    DinerCommentVue,
-    AddReservation,
-    MakerDetail,
-    Canvas,
+    DinerCommentVue, // 식당 리뷰
+    AddReservation, // 예약 추가
+    MakerDetail, // 지도
+    Canvas, // 차트
   },
   methods: {
-    // axios , 모든 부서 정보 조회 요청 함수
+    // Todo : 찜한가게 조회하는 함수
     retrieveFavorite() {
       // getAll() ->(변경) getAll(dname, page, size)
       FavoriteDataService.get(this.currentUser.id, this.$route.params.dno)
@@ -377,14 +375,14 @@ export default {
         .then((response) => {
           this.favorite = response.data; // 스프링부트에서 전송한 데이터
           // 디버깅 콘솔에 정보 출력
-          console.log(response.data);
+          console.log("찜한가게 데이터 : ", response.data);
         })
         // 실패하면 .catch() 에 에러가 전송됨
         .catch((e) => {
-          console.log("찜한 목록 데이터 : ", e);
+          console.log("찜한가게 조회 에러 : ", e);
         });
     },
-    // 부서번호(dno)로 조회 요청하는 함수
+    // Todo : 음식점 데이터 조회하는 함수
     getDiner(dno) {
       // axios 공통함수 호출
       DinerDataService.get(dno)
@@ -393,7 +391,7 @@ export default {
           // springboot 결과를 리턴함(부서 객체)
           this.currentDiner = response.data;
           // 콘솔 로그 출력
-          console.log("현재 음식점 데이터 : ", response.data);
+          console.log("현재 음식점 조회 성공 : ", response.data);
 
           FavoriteDataService.getFavorite(dno)
             // 성공하면 .then() 결과가 전송됨
@@ -401,14 +399,14 @@ export default {
               // let(const) { 속성명1, 속성명2 } = 데이터 객체배열 (모던자바문법 구조 분해 할당)
               this.totalfavorite = response.data; // 스프링부트에서 전송한 데이터 받고 조회수 내림차순으로 가공
               // 디버깅 콘솔에 정보 출력
-              console.log(response.data);
+              console.log("찜한가게 조회 성공 : ", response.data);
               // favorite dno_count 를 diner dno_count에 복사
               this.currentDiner.dno_count = this.totalfavorite.dno_count;
               this.fastshow = this.currentDiner.dno_count;
             })
             // 실패하면 .catch() 에 에러가 전송됨
             .catch((e) => {
-              console.log(e);
+              console.log("찜한가게 조회 실패 : ", e);
             });
         })
         // 실패하면 .catch() 에러메세지가 리턴됨
@@ -416,7 +414,7 @@ export default {
           console.log(e);
         });
     },
-    // 부서번호(dno)로 메뉴조회 요청하는 함수
+    // Todo : dno로 메뉴 조회요청하는 함수
     getMenu(dno) {
       // axios 공통함수 호출
       MenuDataService.get(dno)
@@ -432,7 +430,7 @@ export default {
           console.log(e);
         });
     },
-    // dno로 리뷰 요청하는 함수
+    // Todo : dno로 리뷰 조회요청하는 함수
     getReview(dno) {
       // axios 공통함수 호출
       ReviewDataService.get(dno)
@@ -466,35 +464,36 @@ export default {
       this.currentReview = data;
       this.currentIndex = index;
     },
-    // 부서정보를 수정 요청하는 함수
+    // Todo : 음식점 정보 수정요청하는 함수
     updateDiner() {
       // axios 공통함수 호출
       DinerDataService.update(this.currentDiner.dno, this.currentDiner)
         // 성공하면 then() 결과가 전송됨
         .then((response) => {
-          console.log(response.data);
-          this.message = "The Diner was updated successfully!";
+          console.log("음식점 정보 수정 성공 : ", response.data);
         })
         // 실패하면 .catch() 에러메세지가 전송됨
         .catch((e) => {
-          console.log(e);
+          console.log("음식점 정보 수정 실패 : ", e);
         });
     },
-    // 부서정보를 삭제 요청하는 함수
+    // Todo : 음식점 정보 삭제요청하는 함수
     deleteDiner() {
       // axios 공통함수 호출
       DinerDataService.delete(this.currentDiner.dno)
         // 성공하면 then() 결과가 전송됨
         .then((response) => {
-          console.log(response.data);
+          console.log("음식점 정보 삭제 성공 : ", response.data);
           // 첫페이지(전체목록_조회_페이지) 강제 이동 : /diner
           this.$router.push("/diner");
         })
         // 실패하면 .catch() 에러메세지가 전송됨
         .catch((e) => {
-          console.log(e);
+          console.log("음식점 정보 삭제 실패 : ", e);
         });
     },
+
+    // Todo : 카카오 지도 관련 함수들 시작 ==================
     onLoad(vue) {
       this.map = vue;
     },
@@ -505,7 +504,9 @@ export default {
     onMarkerLoaded(vue) {
       this.marker = vue.marker.set;
     },
-    // 함수(메소드)
+    // Todo : 카카오 지도 관련 함수들 끝 ==================
+
+    // Todo : 버튼 클릭시 지도 데이터와 예약하기 컴포넌트를 교체하는 함수
     reservationToggle() {
       this.mapNchart = !this.mapNchart;
       // mapNchart == false 이면 예약폼을 보여주고
@@ -519,91 +520,99 @@ export default {
       }
     },
 
+    // Todo : 찜한가게 저장요청하는 함수
     saveFavorite() {
-      let data = {
-        // fid는 자동생성
-        dno: this.currentDiner.dno,
-        id: this.currentUser.id,
-      };
-      // insert 요청 함수 호출(axios 공통함수 호출)
-      FavoriteDataService.create(data)
-        // 성공하면 then() 결과가 전송됨
-        .then((response) => {
-          // this.favorite.fid = response.data.fid; --> 이거 처음에 이렇게 썼다가 오류났음. 이렇게 쓰면 안됨
-          this.favorite = response.data;
-          // 콘솔 로그 출력(response.data)
-          console.log("찜한 데이터 : ", this.favorite);
-          // this.$swal({
-          //   icon: "success",
-          //   title: "찜하기",
-          //   showConfirmButton: false,
-          //   timer: 1000,
-          // });
-          // 찜하기 숫자 변화
-          this.fastshow++;
-        })
-        // 실패하면 .catch() 결과가 전송됨
-        .catch((e) => {
-          console.log("테스트용");
-          console.log(e);
+      if (this.currentUser.id != null) {
+        let data = {
+          // fid는 자동생성
+          dno: this.currentDiner.dno,
+          id: this.currentUser.id,
+        };
+        // insert 요청 함수 호출(axios 공통함수 호출)
+        FavoriteDataService.create(data)
+          // 성공하면 then() 결과가 전송됨
+          .then((response) => {
+            // this.favorite.fid = response.data.fid; --> 이거 처음에 이렇게 썼다가 오류났음. 이렇게 쓰면 안됨
+            this.favorite = response.data;
+            // 콘솔 로그 출력(response.data)
+            console.log("찜한가게 저장 성공 : ", this.favorite);
+            // 찜하기 숫자 변화
+            this.fastshow++;
+          })
+          // 실패하면 .catch() 결과가 전송됨
+          .catch((e) => {
+            console.log("찜한가게 저장 실패 : ", e);
+          });
+      } else {
+        this.$swal({
+          icon: "error",
+          title: "로그인이 필요한 서비스입니다",
+          text: "로그인하시면 다양한 맞춤형 서비스를 이용할 수 있습니다",
+          confirmButtonColor: "#E1793D",
+          confirmButtonText: "확인",
         });
+      }
     },
+
+    // Todo : 찜한가게 삭제요청하는 함수
     deleteFavorite() {
       // axios 공통함수 호출
       FavoriteDataService.delete(this.favorite.fid)
         // 성공하면 then() 결과가 전송됨
         .then((response) => {
-          console.log(response.data);
-          // this.$swal({
-          //   icon: "error",
-          //   title: "찜 해제",
-          //   showConfirmButton: false,
-          //   timer: 1000,
-          // });
-          // this.$router.go();
+          console.log("찜한가게 삭제 성공 : ", response.data);
           this.retrieveFavorite();
           // 찜하기 숫자 변화
           this.fastshow--;
         })
         // 실패하면 .catch() 에러메세지가 전송됨
         .catch((e) => {
-          console.log(e);
+          console.log("찜한가게 삭제 실패 : ", e);
         });
     },
 
-    // axios , 모든 부서 정보 조회 요청 함수
+    // Todo : 최근본음식점 데이터 조회 요청하는 함수
     retrieveLastview() {
-      // getAll() ->(변경) getAll(dname, page, size)
-      LastviewDataService.get(this.currentUser.id, this.$route.params.dno)
-        // 성공하면 .then() 결과가 전송됨
-        .then((response) => {
-          this.lastview = response.data; // 스프링부트에서 전송한 데이터
-          // 디버깅 콘솔에 정보 출력
-          console.log(response.data);
-
-          if (this.lastview.lid != null) {
-            // axios 공통함수 호출
-            LastviewDataService.delete(this.lastview.lid)
-              // 성공하면 then() 결과가 전송됨
-              .then((response) => {
-                console.log(response.data);
-
-                this.saveLastview();
-              })
-              // 실패하면 .catch() 에러메세지가 전송됨
-              .catch((e) => {
-                console.log(e);
-              });
-          } else {
-            this.saveLastview();
-          }
-        })
-        // 실패하면 .catch() 에 에러가 전송됨
-        .catch((e) => {
-          console.log("찜한 목록 데이터 : ", e);
-        });
+      if (this.currentUser.id != null) {
+        LastviewDataService.get(this.currentUser.id, this.$route.params.dno)
+          // 성공하면 .then() 결과가 전송됨
+          .then((response) => {
+            this.lastview = response.data; // 스프링부트에서 전송한 데이터
+            // 디버깅 콘솔에 정보 출력
+            console.log("최근본 가게 조회 성공 : ", response.data);
+            // 현재 음식점이 최근본가게 테이블에 있으면
+            if (this.lastview.lid != null) {
+              // 최근본가게 테이블에서 삭제요청
+              LastviewDataService.delete(this.lastview.lid)
+                // 성공하면 then() 결과가 전송됨
+                .then((response) => {
+                  console.log(
+                    "최근본가게 데이터에서 현재 음식점 정보 삭제 성공(중복제거)",
+                    response.data
+                  );
+                  // 최근본가게 테이블에 새로 저장
+                  this.saveLastview();
+                })
+                // 실패하면 .catch() 에러메세지가 전송됨
+                .catch((e) => {
+                  console.log(
+                    "최근본가게 데이터에서 현재 음식점 정보 삭제 실패",
+                    e
+                  );
+                });
+            } else {
+              // 현재 음식점이 최근본가게 테이블에 없으면 저장
+              this.saveLastview();
+            }
+          })
+          // 실패하면 .catch() 에 에러가 전송됨
+          .catch((e) => {
+            console.log("최근본가게 조회 실패 : ", e);
+          });
+      }
     },
 
+    // Todo : 최근본가게 테이블에 저장요청하는 함수
     saveLastview() {
       let data = {
         // fid는 자동생성
@@ -616,25 +625,19 @@ export default {
         .then((response) => {
           // this.favorite.fid = response.data.fid; --> 이거 처음에 이렇게 썼다가 오류났음. 이렇게 쓰면 안됨
           this.lastview = response.data;
-          // 콘솔 로그 출력(response.data)
-          console.log("방문한 페이지 : ", this.lastview);
+          console.log("최근본가게 저장 성공 : ", this.lastview);
         })
         // 실패하면 .catch() 결과가 전송됨
         .catch((e) => {
-          console.log("테스트용");
-          console.log(e);
+          console.log("최근본가게 저장 실패 : ", e);
         });
     },
   },
 
   // 화면이 뜨자 마자 실행되는 이벤트
   mounted() {
-    // 클라이언트쪽 디버깅
-    // alert(this.$route.params.dno);
-    // console.log(this.$route.params.dno);
     this.retrieveLastview();
 
-    this.message = "";
     //  this.$route.params.dno : 이전페이지에서 전송한 매개변수는 $route.params 안에 있음
     // $route 객체 : 주로 url 매개변수 정보들이 있음
     // router/index.js 상세페이지 url의 매개변수명 : :dno
@@ -643,15 +646,23 @@ export default {
     this.getReview(this.$route.params.dno);
     this.retrieveFavorite(); // 화면 로딩시 fid해당하는 조회함수 실행
   },
+
   computed: {
-    // 현재 유저
+    // Todo : 로컬 스토리지에 저장된 현재 유저 정보 가져오는 함수
     currentUser() {
+      // 만약 로컬스토리지에 유저객체가 없으면 빈유저 생성
+      if (this.$store.state.auth.user == undefined) {
+        let notLoggedUser = new User();
+        return notLoggedUser;
+      } else {
+        return this.$store.state.auth.user;
+      }
       // 모듈 저장소 : this.$store.state.모듈명.state값
       // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
-      return this.$store.state.auth.user;
     },
-    // ROLE_ADMIN 만 보이는 메뉴(함수)
-    showAdminBoard() {
+
+    // Todo : 관리자 접속인지 아닌지 확인하는 함수
+    confirmAdmin() {
       if (this.currentUser && this.currentUser.roles) {
         // if ROLE_ADMIN 있으면 true
         //               없으면 false
@@ -660,10 +671,14 @@ export default {
       // currentUser 없으면 false (메뉴가 안보임)
       return false;
     },
+
+    // Todo : 찜한가게 테이블에 데이터 존재 여부 확인하는 함수
     existFid() {
       if (this.favorite.fid != null) {
+        // 데이터가 있으면
         return true;
       } else {
+        // 데이터가 없으면
         return false;
       }
     },

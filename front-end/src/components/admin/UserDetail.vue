@@ -218,7 +218,13 @@ export default {
             .then((response) => {
               console.log(response.data);
               alert("수정완료");
-              this.$router.push("/user");
+              if (this.currentUser.role[0] != "ROLE_USER") {
+                this.$router.push("/profile");
+                alert(this.currentUser.role[0]);
+              } else {
+                this.$router.push("/user");
+                alert(this.currentUser.role[0]);
+              }
             })
             .catch((e) => {
               console.log(e);
@@ -269,19 +275,19 @@ export default {
   },
   computed: {
     // 현재 유저
-    loginedUser() {
+    currentUser() {
       // 모듈 저장소 : this.$store.state.모듈명.state값
       // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
       return this.$store.state.auth.user;
     },
     // 관리자 접속인지 아닌지 확인하는 함수
     showAdminBoard() {
-      if (this.loginedUser && this.loginedUser.roles) {
+      if (this.currentUser && this.currentUser.roles) {
         // if ROLE_ADMIN 있으면 true
         //               없으면 false
-        return this.loginedUser.roles.includes("ROLE_ADMIN");
+        return this.currentUser.roles.includes("ROLE_ADMIN");
       }
-      // loginedUser 없으면 false (메뉴가 안보임)
+      // currentUser 없으면 false (메뉴가 안보임)
       return false;
     },
   },
