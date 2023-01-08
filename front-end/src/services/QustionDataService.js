@@ -10,9 +10,9 @@ class QuestionDataService {
     }
 
     // 부서번호로 조회 요청 함수
-    // get 방식 통신 요청 -> @GetMapping("/api/question/{questionNo}"), @PathVariable
-    get(questionNo) {
-        return http.get(`/question/${questionNo}`)
+    // get 방식 통신 요청 -> @GetMapping("/api/question/{qno}"), @PathVariable
+    get(qno) {
+        return http.get(`/question/${qno}`)
     }
 
     // 부서정보 생성(insert) 요청 함수
@@ -23,16 +23,16 @@ class QuestionDataService {
     }
 
     // 부서정보 수정(update) 요청 함수
-    // put 방식 통신 요청 -> @PutMapping("/api/question/{questionNo}"), @RequestBody
-    update(questionNo, data) {
-        return http.put(`/question/${questionNo}`, data);
+    // put 방식 통신 요청 -> @PutMapping("/api/question/{qno}"), @RequestBody
+    update(qno, data) {
+        return http.put(`/question/${qno}`, data);
     }
 
     // 부서정보 삭제(delete) 요청 함수
-    // delete 방식 통신 요청 -> @DeleteMapping("/api/question/deletion/{questionNo}")
+    // delete 방식 통신 요청 -> @DeleteMapping("/api/question/deletion/{qno}")
     //                        , @PathVariable  
-    delete(questionNo) {
-        return http.delete(`/question/deletion/${questionNo}`);
+    delete(qno) {
+        return http.delete(`/question/deletion/${qno}`);
     }
 
     // 부서정보 전체 삭제 요청 함수
@@ -41,8 +41,8 @@ class QuestionDataService {
         return http.delete("/question/all")
     }
     // 조회수 갱신 요청 함수
-    plusViews(questionNo) {
-        return http.put(`/question/plusviews/${questionNo}`);
+    plusViews(qno) {
+        return http.put(`/question/plusviews/${qno}`);
     }
 
 }

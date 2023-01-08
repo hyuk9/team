@@ -6,6 +6,7 @@
       <h1 class="offset-5">1:1 문의 게시판</h1>
       <div style="text-align: center">
         <div class="p-3 mb-2 bg-warning text-dark bg-opacity-25">
+          <h1>최근 본 게시글 기준으로 내림차순 정렬되는 문제가 있음</h1>
           <strong
             >"공지사항를 통해서 맛있는 토마토의 최신정보를 찾아보세요"
             <br />
@@ -14,26 +15,6 @@
           </strong>
         </div>
       </div>
-      <h1 class="text-danger">
-        질문테이블(TB_QUESTION), 답변테이블(TB_ANSWER)두개 조인해서 사용할 예정
-      </h1>
-      <!--    Todo : page 바 시작 주석 처리 -->
-      <!-- <div class="col-md-12 offset-2">
-                  <div class="mb-3">
-                      Items per Page:
-                      <select v-model="pageSize" @change="handlePageSizeChange($event)">
-                          <option v-for="size in pageSizes" :key="size" :value="size">
-                                 size : 3, 6, 9 
-                              {{ size }}
-                          </option>
-                      </select>
-                  </div>
-  
-                  <b-pagination v-model="page" :total-rows="count" :per-page="pageSize" prev-text="Prev" next-text="Next"
-                      @change="handlePageChange"></b-pagination>
-              </div> -->
-
-      <!--    Todo : page 바 끝 주석처리 -->
       <div>
         <table class="table table-hover">
           <thead>
@@ -65,7 +46,7 @@
                 scope="col"
               >
                 작성일
-              </th>  
+              </th>
               <th
                 class="table-active text-center"
                 style="width: 10%"
@@ -77,7 +58,7 @@
                 class="table-active"
                 style="width: 10%"
                 scope="col"
-                v-if="showAdminBoard"
+                v-if="confirmAdmin"
               >
                 수정/삭제
               </th>
@@ -86,21 +67,24 @@
           <tbody v-for="(data, index) in question" :key="index">
             <tr>
               <td class="text-center">
-                <i class="bi bi-hash"></i>{{ data.questionNo }}
+                <i class="bi bi-hash"></i>{{ data.qno }}
               </td>
               <td class="text-center">
-                <router-link :to="'/question/' + data.questionNo"
-                  ><a @click="countViews(data.questionNo)"><span>{{ data.title }}</span></a></router-link
+                <!-- QuestionView로 이동 -->
+                <router-link :to="'/questionview/' + data.qno"
+                  ><a @click="countViews(data.qno)"
+                    ><span>{{ data.title }}</span></a
+                  ></router-link
                 >
               </td>
               <td class="text-center">{{ data.writer }}</td>
               <td class="text-center">
-                <i class="bi bi-calendar-date">&nbsp;</i>{{ data.insertTime }}
+                <i class="bi bi-calendar-date">&nbsp;</i>{{ data.insertTime.split(" ")[0] }}
               </td>
-                 <!-- 조회수 보여주기 -->
+              <!-- 조회수 보여주기 -->
               <td class="text-center">{{ data.views }}</td>
-              <td v-if="showAdminBoard">
-                <router-link :to="'/question/' + data.questionNo"
+              <td v-if="confirmAdmin">
+                <router-link :to="'/question/' + data.qno"
                   ><span class="badge rounded-pill bg-warning text-dark"
                     >수정</span
                   ></router-link
@@ -187,12 +171,10 @@ export default {
       page: 1, // 현재 페이지
       count: 0, // 전체 데이터 건수
       pageSize: 10, // 한페이지당 몇개를 화면에 보여줄지 결정하는 변수
-
-      pageSizes: [3, 6, 9], // select box 에 넣을 기본 데이터
     };
   },
   methods: {
-    // axios , 모든 정보 조회 요청 함수
+    // Todo : axios , 모든 정보 조회 요청 함수
     retrieveQuestion() {
       QuestionDataService.getAll(
         this.searchSelect, // select box 선택된 값
@@ -200,7 +182,7 @@ export default {
         this.page - 1,
         this.pageSize
       )
-        // 성공하면 .then() 결과가 전송됨
+        // Todo : 성공하면 .then() 결과가 전송됨
         .then((response) => {
           const { question, totalItems } = response.data; // springboot 의 전송된 맵 정보
           this.question = question; // 스프링부트에서 전송한 데이터
@@ -213,23 +195,23 @@ export default {
           console.log(e);
         });
     },
-    // select box 값 변경시 실행되는 함수(재조회)
+    // Todo : select box 값 변경시 실행되는 함수(재조회)
     handlePageSizeChange(event) {
       this.pageSize = event.target.value; // 한페이지당 개수 저장(3, 6, 9)
       this.page = 1;
       // 재조회 함수 호출
       this.retrieveQuestion();
     },
-    // 페이지 번호 변경시 실행되는 함수(재조회)
+    // Todo : 페이지 번호 변경시 실행되는 함수(재조회)
     handlePageChange(value) {
       this.page = value; // 매개변수값으로 현재페이지 변경
       // 재조회 함수 호출
       this.retrieveQuestion();
     },
-        // 조회수 증가 함수
-    countViews (questionNo) {
-      QuestionDataService.plusViews(questionNo)
-     .then((response) => {
+    // Todo : 조회수 증가 함수
+    countViews(qno) {
+      QuestionDataService.plusViews(qno)
+        .then((response) => {
           // 디버깅 콘솔에 정보 출력
           console.log(response.data);
         })
@@ -237,18 +219,18 @@ export default {
         .catch((e) => {
           console.log(e);
         });
-    }
+    },
   },
 
   computed: {
-    // 현재 유저
+    // Todo : 로컬 스토리지에 저장된 현재 유저 정보 가져오는 함수
     currentUser() {
       // 모듈 저장소 : this.$store.state.모듈명.state값
       // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
       return this.$store.state.auth.user;
     },
-    // 관리자 접속인지 아닌지 확인하는 함수
-    showAdminBoard() {
+    // Todo : 관리자 접속인지 아닌지 확인하는 함수
+    confirmAdmin() {
       if (this.currentUser && this.currentUser.roles) {
         // if ROLE_ADMIN 있으면 true
         //               없으면 false

@@ -1,7 +1,7 @@
 package com.example.simpledms.controller;
 
-import com.example.simpledms.model.Qna;
-import com.example.simpledms.service.QnaService;
+import com.example.simpledms.model.Comment;
+import com.example.simpledms.service.CommentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -33,16 +33,16 @@ import java.util.Optional;
 @CrossOrigin(origins = "http://localhost:8081")
 @RestController
 @RequestMapping("/api")
-public class QnaController {
+public class CommentController {
 
     @Autowired
-    QnaService qnaService; // @Autowired : 스프링부트가 가동될때 생성된 객체를 하나 받아오기
+    CommentService commentService; // @Autowired : 스프링부트가 가동될때 생성된 객체를 하나 받아오기
 
 
     //    frontend url(쿼리스트링방식) : ? 매개변수 전송방식 사용했으면 ------> backend @RequestParam
 //    frontend url(파라메터방식) : /{} 매개변수 전송방식 사용했으면 ------> backend @PathVariable
-    @GetMapping("/qna")
-    public ResponseEntity<Object> getQnaAll(@RequestParam String searchSelect,
+    @GetMapping("/comment")
+    public ResponseEntity<Object> getAnswerAll(@RequestParam String searchSelect,
                                             @RequestParam(required = false) String searchKeyword,
                                             @RequestParam(defaultValue = "0") int page,
                                             @RequestParam(defaultValue = "3") int size)
@@ -52,23 +52,18 @@ public class QnaController {
 //            Pageable 객체 정의 ( page, size 값 설정 )
             Pageable pageable = PageRequest.of(page, size);
 
-            Page<Qna> qnaPage;
+            Page<Comment> commentPage;
 
-//            Page 객체 정의
-            if( searchSelect.equals("작성자")) {
-                qnaPage = qnaService.findAllByQuestionerContainingOrderByInsertTimeDescQnoDesc(searchKeyword, pageable);
-            } else {
-                qnaPage = qnaService.findAllByTitleContainingOrderByInsertTimeDescQnoDesc(searchKeyword, pageable);
-            }
+            commentPage = commentService.findAll(pageable);
 
             //            맵 자료구조에 넣어서 전송
             Map<String, Object> response = new HashMap<>();
-            response.put("qna", qnaPage.getContent());
-            response.put("currentPage", qnaPage.getNumber());
-            response.put("totalItems", qnaPage.getTotalElements());
-            response.put("totalPages", qnaPage.getTotalPages());
+            response.put("comment", commentPage.getContent());
+            response.put("currentPage", commentPage.getNumber());
+            response.put("totalItems", commentPage.getTotalElements());
+            response.put("totalPages", commentPage.getTotalPages());
 
-            if (qnaPage.isEmpty() == false) {
+            if (commentPage.isEmpty() == false) {
 //                데이터 + 성공 메세지 전송
                 return new ResponseEntity<>(response, HttpStatus.OK);
             } else {
@@ -84,11 +79,11 @@ public class QnaController {
     }
 
 
-    @DeleteMapping("/qna/all")
+    @DeleteMapping("/comment/all")
     public ResponseEntity<Object> removeAll() {
 
         try {
-            qnaService.removeAll();
+            commentService.removeAll();
 
             return new ResponseEntity<>(HttpStatus.OK);
 
@@ -98,13 +93,13 @@ public class QnaController {
         }
     }
 
-    @PostMapping("/qna")
-    public ResponseEntity<Object> createQna(@RequestBody Qna qna) {
+    @PostMapping("/comment")
+    public ResponseEntity<Object> createAnswer(@RequestBody Comment comment) {
 
         try {
-            Qna qna2 = qnaService.save(qna);
+            Comment comment2 = commentService.save(comment);
 
-            return new ResponseEntity<>(qna2, HttpStatus.OK);
+            return new ResponseEntity<>(comment2, HttpStatus.OK);
 
         } catch (Exception e) {
             log.debug(e.getMessage());
@@ -112,18 +107,18 @@ public class QnaController {
         }
     }
 
-
-    @GetMapping("/qna/{qno}")
-    public ResponseEntity<Object> getQnaId(@PathVariable int qno) {
+//  Todo : 유저 id로 검색해서 내가 쓴 댓글 모아보는 함수
+    @GetMapping("/comment/{id}")
+    public ResponseEntity<Object> getAnswerId(@PathVariable int qno) {
 
         try {
-            Optional<Qna> optionalQna = qnaService.findById(qno);
+            Optional<Comment> optionalAnswer = commentService.findById(qno);
 
 
 
-            if (optionalQna.isPresent() == true) {
+            if (optionalAnswer.isPresent() == true) {
 //                데이터 + 성공 메세지 전송
-                return new ResponseEntity<>(optionalQna.get(), HttpStatus.OK);
+                return new ResponseEntity<>(optionalAnswer.get(), HttpStatus.OK);
             } else {
 //                데이터 없음 메세지 전송(클라이언트)
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -136,14 +131,16 @@ public class QnaController {
         }
     }
 
-    @PutMapping("/qna/{qno}")
-    public ResponseEntity<Object> updateQna(@PathVariable int qno,
-                                            @RequestBody Qna qna) {
+
+
+    @PutMapping("/comment/{qno}")
+    public ResponseEntity<Object> updateAnswer(@PathVariable int qno,
+                                            @RequestBody Comment comment) {
 
         try {
-            Qna qna2 = qnaService.save(qna);
+            Comment comment2 = commentService.save(comment);
 
-            return new ResponseEntity<>(qna2, HttpStatus.OK);
+            return new ResponseEntity<>(comment2, HttpStatus.OK);
 
         } catch (Exception e) {
             log.debug(e.getMessage());
@@ -151,11 +148,11 @@ public class QnaController {
         }
     }
 
-    @DeleteMapping ("/qna/deletion/{qno}")
-    public ResponseEntity<Object> deleteQna(@PathVariable int qno) {
+    @DeleteMapping ("/comment/deletion/{qno}")
+    public ResponseEntity<Object> deleteAnswer(@PathVariable int qno) {
 
         try {
-            boolean bSuccess = qnaService.removeById(qno);
+            boolean bSuccess = commentService.removeById(qno);
 
             if (bSuccess == true) {
 //                데이터 + 성공 메세지 전송

@@ -351,7 +351,7 @@ export default {
       // }
     },
 
-    // '지역별 맛집'의 캐러셀 버튼의 왼쪽을 눌렀을때 작동하는 함수
+    // Todo : '지역별 맛집'의 캐러셀 버튼의 왼쪽을 눌렀을때 작동하는 함수
     countDown() {
       setTimeout(
         function () {
@@ -370,7 +370,7 @@ export default {
       );
     },
 
-    // 조회수 증가 함수
+    // Todo : 조회수 증가 함수
     countViews(dno) {
       DinerDataService.plusViews(dno)
         .then((response) => {

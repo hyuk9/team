@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- AddQna Start -->
+    <!-- Addquestion Start -->
     <div class="container" v-if="!submitted">
       <div class="mb-3">
         <label for="questioner" class="form-label">작성자</label>
@@ -10,7 +10,7 @@
           id="questioner"
           required
           name="questioner"
-          v-model="qna.questioner"
+          v-model="question.questioner"
         />
       </div>
       <div class="mb-3">
@@ -21,7 +21,7 @@
           id="title"
           required
           name="title"
-          v-model="qna.title"
+          v-model="question.title"
         />
       </div>
       <div class="mb-3">
@@ -32,24 +32,24 @@
           rows="8"
           required
           name="content"
-          v-model="qna.content"
+          v-model="question.content"
         ></textarea>
       </div>
       <div class="mb-3">
-        <button @click="saveQna" class="btn btn-primary">Submit</button>
+        <button @click="savequestion" class="btn btn-primary">Submit</button>
       </div>
     </div>
-    <!-- AddQna End -->
+    <!-- Addquestion End -->
   </div>
 </template>
 
 
 <script>
-import QnaDataService from "@/services/QnaDataService";
+import QuestionDataService from "@/services/QustionDataService";
 export default {
   data() {
     return {
-      qna: {
+      question: {
         qno: null,
         questioner: "",
         title: "",
@@ -60,40 +60,40 @@ export default {
     };
   },
   methods: {
-    saveQna() {
+    savequestion() {
       // 임시 객체 변수 -> springboot 전송
       // 부서번호는(no) 자동생성되므로 빼고 전송함
       let data = {
-        questioner: this.qna.questioner,
-        title: this.qna.title,
-        content: this.qna.content,
+        questioner: this.question.questioner,
+        title: this.question.title,
+        content: this.question.content,
       };
 
       // insert 요청 함수 호출(axios 공통함수 호출)
-      QnaDataService.create(data)
+      QuestionDataService.create(data)
         // 성공하면 then() 결과가 전송됨
         .then((response) => {
-          this.qna.qno = response.data.qno;
+          this.question.qno = response.data.qno;
           // 콘솔 로그 출력(response.data)
           console.log(response.data);
           // 변수 submitted
           this.submitted = true;
           alert("성공했습니다.");
-          this.$router.push("/qna");
+          this.$router.push("/question");
         })
         // 실패하면 .catch() 결과가 전송됨
         .catch((e) => {
           console.log(e);
         });
     },
-    newQna() {
+    newquestion() {
       // 새양식 다시 보여주기 함수, 변수 초기화
       this.submitted = false;
-      this.qna = {};
+      this.question = {};
     },
 
-    returnQna() {
-      this.$router.push("/qna");
+    returnquestion() {
+      this.$router.push("/question");
     },
   },
 };

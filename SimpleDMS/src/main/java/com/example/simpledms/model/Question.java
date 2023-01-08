@@ -37,23 +37,26 @@ import javax.persistence.*;
 @DynamicInsert
 @DynamicUpdate
 @Where(clause = "DELETE_YN = 'N'")
-@SQLDelete(sql="UPDATE TB_QUESTION SET DELETE_YN = 'Y', DELETE_TIME = TO_CHAR(SYSDATE, 'YYYY-MM-DD') WHERE QUESTION_NO = ?")
+@SQLDelete(sql="UPDATE TB_QUESTION SET DELETE_YN = 'Y', DELETE_TIME = TO_CHAR(SYSDATE, 'YYYY-MM-DD') WHERE QNO = ?")
 public class Question extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE
             , generator = "SQ_QUESTION_GENERATOR"
     )
-    private Integer questionNo;
+    private Integer qno;
 
     @javax.persistence.Column(columnDefinition = "VARCHAR2(255)")
     private String title;
 
     @javax.persistence.Column(columnDefinition = "VARCHAR2(255)")
-    private String qcontent;
+    private String content;
+
+    @javax.persistence.Column(columnDefinition = "NUMBER")
+    private Integer id;
 
     @javax.persistence.Column(columnDefinition = "VARCHAR2(255)")
-    private String qwriter;
+    private String writer;
 
     @javax.persistence.Column(columnDefinition = "NUMBER")
     private Integer views;

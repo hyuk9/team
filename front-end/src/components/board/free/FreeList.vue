@@ -14,24 +14,6 @@
           </strong>
         </div>
       </div>
-
-      <!--    Todo : page 바 시작 주석 처리 -->
-      <!-- <div class="col-md-12 offset-2">
-                <div class="mb-3">
-                    Items per Page:
-                    <select v-model="pageSize" @change="handlePageSizeChange($event)">
-                        <option v-for="size in pageSizes" :key="size" :value="size">
-                               size : 3, 6, 9 
-                            {{ size }}
-                        </option>
-                    </select>
-                </div>
-
-                <b-pagination v-model="page" :total-rows="count" :per-page="pageSize" prev-text="Prev" next-text="Next"
-                    @change="handlePageChange"></b-pagination>
-            </div> -->
-
-      <!--    Todo : page 바 끝 주석처리 -->
       <div>
         <table class="table table-hover">
           <thead>

@@ -97,7 +97,7 @@
 
 <script>
 import QuestionDataService from "@/services/QustionDataService";
-import AnswerDataService from "@/services/AnswerDataService";
+import CommentDataService from "@/services/CommentDataService";
 
 export default {
   data() {
@@ -110,10 +110,10 @@ export default {
     };
   },
   methods: {
-    // 질문번호(questionNo)로 질문조회 요청하는 함수
-    getQuestion(questionNo) {
+    // 질문번호(qno)로 질문조회 요청하는 함수
+    getQuestion(qno) {
       // axios 공통함수 호출
-      QuestionDataService.get(questionNo)
+      QuestionDataService.get(qno)
         // 성공하면 .then() 결과가 리턴됨
         .then((response) => {
           // springboot 결과를 리턴함(부서 객체)
@@ -126,10 +126,10 @@ export default {
           console.log(e);
         });
     },
-    // 질문번호(questionNo)로 답변조회 요청하는 함수
-    getAnswer(questionNo) {
+    // 질문번호(qno)로 답변조회 요청하는 함수
+    getAnswer(qno) {
       // axios 공통함수 호출
-      AnswerDataService.get(questionNo)
+      CommentDataService.get(qno)
         // 성공하면 .then() 결과가 리턴됨
         .then((response) => {
           // springboot 결과를 리턴함(부서 객체)
@@ -143,8 +143,8 @@ export default {
         });
     },
     // vfor를 위한 함수
-    retrieveAnswer(questionNo) {
-      AnswerDataService.get(questionNo)
+    retrieveAnswer(qno) {
+      CommentDataService.get(qno)
         // 성공하면 .then() 결과가 전송됨
         .then((response) => {
           const { answer, totalItems } = response.data; // springboot 의 전송된 맵 정보
@@ -162,14 +162,14 @@ export default {
     updateQuestion() {
       // axios 공통함수 호출
       QuestionDataService.update(
-        this.currentQuestion.questionNo,
+        this.currentQuestion.qno,
         this.currentQuestion
       )
         // 성공하면 then() 결과가 전송됨
         .then((response) => {
           console.log(response.data);
           this.message = "The Question was updated successfully!";
-          this.$router.push("/qna");
+          this.$router.push("/question");
         })
         // 실패하면 .catch() 에러메세지가 전송됨
         .catch((e) => {
@@ -179,12 +179,12 @@ export default {
     // 질문정보를 삭제 요청하는 함수
     deleteQuestion() {
       // axios 공통함수 호출
-      QuestionDataService.delete(this.currentQuestion.questionNo)
+      QuestionDataService.delete(this.currentQuestion.qno)
         // 성공하면 then() 결과가 전송됨
         .then((response) => {
           console.log(response.data);
-          // 첫페이지(전체목록_조회_페이지) 강제 이동 : /qna
-          this.$router.push("/qna");
+          // 첫페이지(전체목록_조회_페이지) 강제 이동 : /question
+          this.$router.push("/question");
         })
         // 실패하면 .catch() 에러메세지가 전송됨
         .catch((e) => {
@@ -217,8 +217,8 @@ export default {
   // 화면이 뜨자 마자 실행되는 이벤트
   mounted() {
     this.message = "";
-    this.getQuestion(this.$route.params.questionNo);
-    this.getAnswer(this.$route.params.questionNo);
+    this.getQuestion(this.$route.params.qno);
+    this.getAnswer(this.$route.params.qno);
     this.retrieveAnswer(); // 화면 로딩시 전체 조회함수 실행
   },
 };

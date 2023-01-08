@@ -22,10 +22,10 @@ import javax.persistence.*;
  * 2022-10-19         ds          최초 생성
  */
 @Entity
-@Table(name = "TB_ANSWER")
+@Table(name = "TB_COMMENT")
 @SequenceGenerator(
-        name= "SQ_ANSWER_GENERATOR"
-        , sequenceName = "SQ_ANSWER"
+        name= "SQ_COMMENT_GENERATOR"
+        , sequenceName = "SQ_COMMENT"
         , initialValue = 1
         , allocationSize = 1
 )
@@ -35,24 +35,32 @@ import javax.persistence.*;
 @DynamicInsert
 @DynamicUpdate
 @Where(clause = "DELETE_YN = 'N'")
-@SQLDelete(sql="UPDATE TB_ANSWER SET DELETE_YN = 'Y', DELETE_TIME = TO_CHAR(SYSDATE, 'YYYY-MM-DD') WHERE ANSWER_NO = ?")
-public class Answer extends BaseTimeEntity {
+@SQLDelete(sql="UPDATE TB_COMMENT SET DELETE_YN = 'Y', DELETE_TIME = TO_CHAR(SYSDATE, 'YYYY-MM-DD') WHERE COMMENT_NO = ?")
+public class Comment extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE
-            , generator = "SQ_ANSWER_GENERATOR"
+            , generator = "SQ_COMMENT_GENERATOR"
     )
-    private Integer answerNo;
+    private Integer cno;
 
 //    조인용 컬럼
     @javax.persistence.Column
-    private String questionNo;
+    private String qno;
+
+//    조인용 컬럼
+    @javax.persistence.Column
+    private String id;
+
+//    조인용 컬럼
+    @javax.persistence.Column
+    private String fno;
 
     @javax.persistence.Column
-    private String acontent;
+    private String content;
 
-//   조인용 컬럼
     @javax.persistence.Column
-    private String awriter;
+    private String writer;
+
 }
 

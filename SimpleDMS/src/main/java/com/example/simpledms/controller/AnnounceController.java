@@ -1,10 +1,7 @@
 package com.example.simpledms.controller;
 
 import com.example.simpledms.model.Announce;
-import com.example.simpledms.model.Qna;
-import com.example.simpledms.model.User;
 import com.example.simpledms.service.AnnounceService;
-import com.example.simpledms.service.QnaService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -14,7 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;

@@ -113,26 +113,26 @@ const routes = [
   {
     path: "/question",
     name: "question",
-    component: () => import("@/components/board/qna/QuestionList.vue"),
+    component: () => import("@/components/board/question/QuestionList.vue"),
   },
-  // TODO: qna 디테일,add 추가
-  // AddQna
+  // TODO: question 디테일,add 추가
+  // Addquestion
   {
-    path: "/add-qna",
-    name: "add-qna",
-    component: () => import("../components/board/qna/AddQnaView.vue"),
+    path: "/add-question",
+    name: "add-question",
+    component: () => import("../components/board/question/AddQuestionView.vue"),
   },
   // QnaDetail
   {
-    path: "/question/:questionNo",
+    path: "/question/:qno",
     name: "qna-detail",
-    component: () => import("../components/board/qna/QnaDetailView.vue"),
+    component: () => import("../components/board/question/QuestionDetailView.vue"),
   },
   // QnaView
   {
-    path: "/qnaview/:qno",
+    path: "/questionview/:qno",
     name: "qna-view",
-    component: () => import("../components/board/qna/QnaView.vue"),
+    component: () => import("../components/board/question/QuestionView.vue"),
   },
   // TODO: 로그인 메뉴 달기
   {

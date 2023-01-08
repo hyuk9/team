@@ -45,6 +45,9 @@ export default {
         } else if (this.$route.path == "/question"){
             this.title = "질문과 답변"
             this.heroTitle = "/assets/img/gallery/hero-tomato3.png";
+        } else if (this.$route.path == "/questionview"){
+            this.title = "질문과 답변"
+            this.heroTitle = "/assets/img/gallery/hero-tomato3.png";
         } else if (this.$route.path == "/free"){
             this.title = "자유게시판"
             this.heroTitle = "/assets/img/gallery/hero-tomato3.png";

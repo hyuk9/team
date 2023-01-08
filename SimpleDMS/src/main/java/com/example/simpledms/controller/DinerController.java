@@ -1,8 +1,6 @@
 package com.example.simpledms.controller;
 
 import com.example.simpledms.model.Diner;
-import com.example.simpledms.model.Qna;
-import com.example.simpledms.model.Question;
 import com.example.simpledms.service.DinerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

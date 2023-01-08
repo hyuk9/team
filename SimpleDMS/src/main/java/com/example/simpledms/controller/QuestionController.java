@@ -1,9 +1,7 @@
 package com.example.simpledms.controller;
 
-import com.example.simpledms.model.Announce;
-import com.example.simpledms.model.Qna;
+import com.example.simpledms.model.Free;
 import com.example.simpledms.model.Question;
-import com.example.simpledms.service.QnaService;
 import com.example.simpledms.service.QuestionService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,9 +57,9 @@ public class QuestionController {
 
 //            Page 객체 정의
             if( searchSelect.equals("제목")) {
-                questionPage = questionService.findAllByTitleContainingOrderByInsertTimeDescQuestionNoDesc(searchKeyword, pageable);
+                questionPage = questionService.findAllByTitleContainingOrderByInsertTimeDescQnoDesc(searchKeyword, pageable);
             } else {
-                questionPage = questionService.findAllByQwriterContainingOrderByInsertTimeDescQuestionNoDesc(searchKeyword, pageable);
+                questionPage = questionService.findAllByWriterContainingOrderByInsertTimeDescQnoDesc(searchKeyword, pageable);
             }
 
             //            맵 자료구조에 넣어서 전송
@@ -116,11 +114,11 @@ public class QuestionController {
     }
 
 
-    @GetMapping("/question/{questionNo}")
-    public ResponseEntity<Object> getQuestionId(@PathVariable int questionNo) {
+    @GetMapping("/question/{qno}")
+    public ResponseEntity<Object> getQuestionId(@PathVariable int qno) {
 
         try {
-            Optional<Question> optionalQuestion = questionService.findById(questionNo);
+            Optional<Question> optionalQuestion = questionService.findById(qno);
 
 
 
@@ -139,8 +137,8 @@ public class QuestionController {
         }
     }
 
-    @PutMapping("/question/{questionNo}")
-    public ResponseEntity<Object> updateQuestion(@PathVariable int questionNo,
+    @PutMapping("/question/{qno}")
+    public ResponseEntity<Object> updateQuestion(@PathVariable int qno,
                                             @RequestBody Question question) {
 
         try {
@@ -154,11 +152,11 @@ public class QuestionController {
         }
     }
 
-    @DeleteMapping ("/question/deletion/{questionNo}")
-    public ResponseEntity<Object> deleteQuestion(@PathVariable int questionNo) {
+    @DeleteMapping ("/question/deletion/{qno}")
+    public ResponseEntity<Object> deleteQuestion(@PathVariable int qno) {
 
         try {
-            boolean bSuccess = questionService.removeById(questionNo);
+            boolean bSuccess = questionService.removeById(qno);
 
             if (bSuccess == true) {
 //                데이터 + 성공 메세지 전송
@@ -176,14 +174,11 @@ public class QuestionController {
     }
 
     //    조회수 추가 함수0104
-    @PutMapping("/question/plusviews/{questionNo}")
-    public ResponseEntity<Object> updateQuestionViews(@PathVariable int questionNo) {
-
+    @PutMapping("/question/plusviews/{qno}")
+    public ResponseEntity<Object> updateQuestionViews(@PathVariable int qno) {
         try {
-
-
 //       이메일에 맞는 유저 정보 들고와서
-            Optional<Question> optionalQuestion = questionService.findById(questionNo);
+            Optional<Question> optionalQuestion = questionService.findById(qno);
 
             Question questionData = optionalQuestion.get();
             Integer plusViews = questionData.getViews() +1;
@@ -194,6 +189,28 @@ public class QuestionController {
             questionService.save(questionData);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    //    조회수 위해서 추가
+    @GetMapping("/question/findById/{qno}")
+    public ResponseEntity<Object> getFreeId(@PathVariable int qno) {
+
+        try {
+            Optional<Question> optionalQuestion = questionService.findId(qno);
+
+            if (optionalQuestion.isPresent() == true) {
+//                데이터 + 성공 메세지 전송
+                return new ResponseEntity<>(optionalQuestion.get(), HttpStatus.OK);
+            } else {
+//                데이터 없음 메세지 전송(클라이언트)
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+
+        } catch (Exception e) {
+            log.debug(e.getMessage());
+            // 서버에러 발생 메세지 전송(클라이언트)
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

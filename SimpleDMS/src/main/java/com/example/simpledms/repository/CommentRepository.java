@@ -1,10 +1,7 @@
 package com.example.simpledms.repository;
 
-import com.example.simpledms.model.Qna;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import com.example.simpledms.model.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 /**
  * packageName : com.example.jpaexam.repository
@@ -18,11 +15,10 @@ import org.springframework.stereotype.Repository;
  * 2022-10-20         ds          최초 생성
  */
 
-public interface QnaRepository extends JpaRepository<Qna, Integer> {
-    //    question 조회하는 like 검색 함수
+public interface CommentRepository extends JpaRepository<Comment, Integer> {
+    //    like 검색 함수
 //    1) 쿼리메소드 방식으로 함수 정의
-    Page<Qna> findAllByQuestionerContainingOrderByInsertTimeDescQnoDesc(String questioner, Pageable pageable);
-    Page<Qna> findAllByTitleContainingOrderByInsertTimeDescQnoDesc(String title, Pageable pageable);
+//    Todo : 댓글 다는 용도라서 따로 like 검색함수 안만들어도 될듯??
 }
 
 

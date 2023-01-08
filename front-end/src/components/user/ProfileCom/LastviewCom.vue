@@ -40,7 +40,7 @@
         </table>
 
         <!--    Todo : page 바 시작 -->
-        <div class="overflow-auto offset-5 mt-5">
+        <!-- <div class="overflow-auto offset-5 mt-5">
           <b-pagination
             v-model="page"
             :total-rows="count"
@@ -51,7 +51,7 @@
             next-text="Next"
             @change="handlePageChange"
           ></b-pagination>
-        </div>
+        </div> -->
         <!--    Todo : page 바 끝 -->
       </div>
     </div>

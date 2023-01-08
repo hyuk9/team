@@ -1,8 +1,7 @@
 package com.example.simpledms.service;
 
-import com.example.simpledms.model.Qna;
+import com.example.simpledms.model.Free;
 import com.example.simpledms.model.Question;
-import com.example.simpledms.repository.QnaRepository;
 import com.example.simpledms.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -49,18 +48,18 @@ public class QuestionService {
     }
 
     //    부서번호로 조회하는 함수
-    public Optional<Question> findById(int questionNo) {
+    public Optional<Question> findById(int qno) {
 //        findById(기본키속성)
-        Optional<Question> optionalQuestion = questionRepository.findById(questionNo);
+        Optional<Question> optionalQuestion = questionRepository.findById(qno);
 
         return optionalQuestion;
     }
 
     // 부서번호(no)로 삭제하는 함수
-    public boolean removeById(int questionNo) {
+    public boolean removeById(int qno) {
 //        existsById(기본키) 있으면 삭제 실행 + true 리턴
-        if(questionRepository.existsById(questionNo) == true) {
-            questionRepository.deleteById(questionNo);
+        if(questionRepository.existsById(qno) == true) {
+            questionRepository.deleteById(qno);
             return true;
         }
 
@@ -69,17 +68,24 @@ public class QuestionService {
     }
 
     //    question(질문) like 검색 함수 ( 페이징 처리 )
-    public Page<Question> findAllByQwriterContainingOrderByInsertTimeDescQuestionNoDesc(String qwriter, Pageable pageable) {
-        Page<Question> page = questionRepository.findAllByQwriterContainingOrderByInsertTimeDescQuestionNoDesc(qwriter, pageable);
+    public Page<Question> findAllByWriterContainingOrderByInsertTimeDescQnoDesc(String  writer, Pageable pageable) {
+        Page<Question> page = questionRepository.findAllByWriterContainingOrderByInsertTimeDescQnoDesc(writer, pageable);
 
         return page;
     }
 
     //    questioner(질문자) like 검색 함수 ( 페이징 처리 )
-    public Page<Question> findAllByTitleContainingOrderByInsertTimeDescQuestionNoDesc(String title, Pageable pageable) {
-        Page<Question> page = questionRepository.findAllByTitleContainingOrderByInsertTimeDescQuestionNoDesc(title, pageable);
+    public Page<Question> findAllByTitleContainingOrderByInsertTimeDescQnoDesc(String title, Pageable pageable) {
+        Page<Question> page = questionRepository.findAllByTitleContainingOrderByInsertTimeDescQnoDesc(title, pageable);
 
         return page;
+    }
+
+    public Optional<Question> findId(int qno) {
+        //            findById : parameter 값 - ID, return  값 - Optional
+        Optional<Question> courseOptional = questionRepository.findById(qno);
+
+        return courseOptional;
     }
 }
 

@@ -1,9 +1,7 @@
 package com.example.simpledms.service;
 
 import com.example.simpledms.model.Announce;
-import com.example.simpledms.model.Qna;
 import com.example.simpledms.repository.AnnounceRepository;
-import com.example.simpledms.repository.QnaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

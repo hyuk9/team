@@ -1,9 +1,7 @@
 package com.example.simpledms.service;
 
-import com.example.simpledms.model.Answer;
-import com.example.simpledms.model.Question;
-import com.example.simpledms.repository.AnswerRepository;
-import com.example.simpledms.repository.QuestionRepository;
+import com.example.simpledms.model.Comment;
+import com.example.simpledms.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,44 +21,44 @@ import java.util.Optional;
  * 2022-10-20         ds          최초 생성
  */
 @Service
-public class AnswerService {
+public class CommentService {
 
     @Autowired
-    AnswerRepository answerRepository; // JPA CRUD 함수가 있는 인터페이스
+    CommentRepository commentRepository; // JPA CRUD 함수가 있는 인터페이스
 
     //    전체 조회 함수( 페이징 처리 )
-    public Page<Answer> findAll(Pageable pageable) {
-        Page<Answer> page = answerRepository.findAll(pageable);
+    public Page<Comment> findAll(Pageable pageable) {
+        Page<Comment> page = commentRepository.findAll(pageable);
 
         return page;
     }
 
     //    전체 삭제 함수
     public void removeAll() {
-        answerRepository.deleteAll(); // 전체 삭제
+        commentRepository.deleteAll(); // 전체 삭제
     }
 
     //   부서 정보 저장/수정 함수
-    public Answer save(Answer answer) {
+    public Comment save(Comment comment) {
 
-        Answer answer2 = answerRepository.save(answer);
+        Comment comment2 = commentRepository.save(comment);
 
-        return answer2;
+        return comment2;
     }
 
     //    질문번호로 조회하는 함수
-    public Optional<Answer> findById(int questionNo) {
+    public Optional<Comment> findById(int qno) {
 //        findById(기본키속성)
-        Optional<Answer> optionalAnswer = answerRepository.findById(questionNo);
+        Optional<Comment> optionalAnswer = commentRepository.findById(qno);
 
         return optionalAnswer;
     }
 
     // 부서번호(no)로 삭제하는 함수
-    public boolean removeById(int answerNo) {
+    public boolean removeById(int cno) {
 //        existsById(기본키) 있으면 삭제 실행 + true 리턴
-        if(answerRepository.existsById(answerNo) == true) {
-            answerRepository.deleteById(answerNo);
+        if(commentRepository.existsById(cno) == true) {
+            commentRepository.deleteById(cno);
             return true;
         }
 

@@ -668,9 +668,9 @@ export default {
       }
     },
   },
-  update() {
-    getDiner();
-  },
+  // update() {
+  //   getDiner();
+  // },
 };
 </script>
 <style>
