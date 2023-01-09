@@ -2,7 +2,7 @@
   <div>
     <!-- TODO FAQ리스트 시작 -->
     <div class="container mt-3 mb-2">
-      <h1 class="offset-5">FAQ 게시판</h1>
+      <h1 class="offset-5"><i class="bi bi-chat-square-text-fill"> FAQ 게시판</i></h1>
       <div style="text-align: center">
         <div class="p-3 mb-2 bg-warning text-dark bg-opacity-25 mt-3">
           <strong
