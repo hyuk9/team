@@ -11,7 +11,6 @@
               <table class="table">
                 <thead>
                   <tr>
-                    <!-- <th scope="col">Last Name</th> -->
                     <th scope="col">가게</th>
                     <th scope="col">위치</th>
                     <th scope="col">예약자명</th>
@@ -23,7 +22,6 @@
                   </tr>
                 </thead>
                 <tbody v-for="(data, index) in reservation" :key="index">
-                  <!-- <tr @click="setActive(data, index)"> -->
                   <tr>
                     <td>{{ data.dname }}</td>
                     <td>{{ data.loc }}</td>
@@ -41,12 +39,11 @@
                     </td>
                   </tr>
                 </tbody>
-                <!-- <tbody v-if="existReservation">
-                  <h1>아직 예약한 기록이 없습니다.</h1>
-                </tbody> -->
               </table>
+              <div v-if="existReservation()">
+                <h4>아직 예약한 기록이 없습니다.</h4>
+              </div>
 
-              <!--    Todo : page 바 시작 -->
               <div class="overflow-auto offset-5 mt-5">
                 <b-pagination
                   v-model="page"
@@ -60,8 +57,6 @@
                   @change="handlePageChange"
                 ></b-pagination>
               </div>
-              <!--    Todo : page 바 끝 -->
-
             </div>
           </div>
         </div>
@@ -85,7 +80,6 @@ export default {
       page: 1,
       count: 0,
       pageSize: 10,
-
     };
   },
   methods: {
@@ -106,7 +100,8 @@ export default {
           console.log(e);
         });
     },
-    existReservation(){
+    
+    existReservation() {
       if (this.reservation != null) {
         return false;
       } else {

@@ -89,7 +89,7 @@ export default {
   // 화면이 뜨자 마자 실행되는 이벤트
   mounted() {
     this.message = "";
-    this.getAnnounce(this.$route.params.ano);
+    this.getAnnounce(this.$route.params.aid);
   },
 }
 </script>

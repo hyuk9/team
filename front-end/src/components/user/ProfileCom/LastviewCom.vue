@@ -38,6 +38,9 @@
         </a>
       </router-link>
     </div>
+    <div v-if="existLastView()">
+      <h5>최근 본 기록이 없습니다.</h5>
+    </div>
   </div>
 </template>
 
@@ -89,6 +92,14 @@ export default {
       console.log(data);
       this.currentData = data;
       this.currentIndex = index;
+    },
+    // 마지막에 본 거 없을때 글자띄우기
+    existLastView() {
+      if (this.lastview != null) {
+        return false;
+      } else {
+        return true;
+      }
     },
   },
   computed: {

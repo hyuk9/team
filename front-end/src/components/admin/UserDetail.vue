@@ -237,7 +237,7 @@ export default {
         //  성공하면 then안에 있는것이 실행
         .then((response) => {
           this.currentUser = response.data;
-          console.log(response.data);
+          console.log("유저 정보 조회 성공 : ", response.data);
         })
         //  실패하면 catch안에 있는것이 실행
         .catch((e) => {
@@ -315,20 +315,21 @@ export default {
   },
   computed: {
     // 현재 유저
-    currentUser() {
+    loggedUser() {
       // 모듈 저장소 : this.$store.state.모듈명.state값
       // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
       return this.$store.state.auth.user;
     },
     // 관리자 접속인지 아닌지 확인하는 함수
     showAdminBoard() {
-      if (this.currentUser && this.currentUser.roles) {
+      if (this.loggedUser && this.loggedUser.roles) {
         // if ROLE_ADMIN 있으면 true
         //               없으면 false
-        return this.currentUser.roles.includes("ROLE_ADMIN");
+        return this.loggedUser.roles.includes("ROLE_ADMIN");
+      } else {
+        // currentUser 없으면 false (메뉴가 안보임)
+        return false;
       }
-      // currentUser 없으면 false (메뉴가 안보임)
-      return false;
     },
   },
 
