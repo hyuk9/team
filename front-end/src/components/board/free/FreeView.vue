@@ -31,13 +31,13 @@
             </tr>
             <tr>
               <td colspan="2" scope="row" style="padding: 10px">
-                {{ currentFree.content }}
-                <!-- 미리보기 이미지 시작 -->
-                <div>
+                <div class="contentarea">
+                  {{ currentFree.content }}
                   <div>
-                    <img class="preview my-3" :src="currentFree.fileUrl" alt="" />
+                    <img id="imageSize" class="preview my-3 " :src="currentFree.fileUrl" alt="" />
                   </div>
                 </div>
+                <!-- 미리보기 이미지 시작 -->
                 <!-- 미리보기 이미지 끝 -->
               </td>
             </tr>
@@ -50,6 +50,12 @@
       <router-link :to="'/free/' + currentFree.fno" v-if="showDetailBoard">
         <button class="btn btn-warning offset-5" type="button">
           수정&삭제
+        </button>
+      </router-link>
+      
+      <router-link  :to="'/free'">
+        <button class="btn btn-warning offset-9" type="button">
+          돌아가기
         </button>
       </router-link>
     </div>
@@ -170,6 +176,12 @@ export default {
       // currentUser 없으면 false (메뉴가 안보임)
       return false;
     },
+    // showImage() {
+    //   if(this.currentFree.fileUrl) {
+    //     return true;
+    //   }
+    //   return false;
+    // }
   },
 
   // 화면이 뜨자 마자 실행되는 이벤트
@@ -181,5 +193,14 @@ export default {
 </script>
 
 <style>
+.contentarea {
+  width: 1240px;
+  height: 600px;
+  padding: 30px;
+}
 
+#imageSize {
+  width: 550px;
+  height: 500px;
+}
 </style>

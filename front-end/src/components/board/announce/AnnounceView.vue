@@ -1,11 +1,7 @@
 <template>
   <div>
     <div class="container col-8 mb-2 mt-2">
-      <h1 class="text-danger">
-        수정/삭제 버튼을 따로 분리해서 삭제는 바로 삭제되게 만들고 수정버튼만
-        넘어가게 변경
-      </h1>
-      <div class="AnnounceView-header">
+      <div class="AnnounceView-header mt-5">
         <h1><strong>공지사항 게시판</strong></h1>
       </div>
       <div class="AnnounceView-title">
@@ -34,22 +30,32 @@
               <td scope="col" v-text="currentAnnounce.views"></td>
             </tr>
             <tr>
-              <td
+              <!-- <td
                 colspan="2"
                 scope="row"
                 style="padding: 10px"
-                v-text="currentAnnounce.content"
-              ></td>
+              >{{ currentAnnounce.content }}</td> -->
+              <td colspan="2" scope="row">
+                <div class="contentarea">
+                  {{ currentAnnounce.content }}
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <div class="mb-3" v-if="showAdminBoard">
+    <div class="mb-3">
       <router-link :to="'/announce/' + currentAnnounce.aid">
-        <button class="btn btn-warning offset-5" type="button">
+        <button class="btn btn-warning offset-5" type="button"  v-if="showAdminBoard">
           수정&삭제
+        </button>
+      </router-link>
+      
+       <router-link  :to="'/announce'">
+        <button class="btn btn-warning offset-9" type="button">
+          돌아가기
         </button>
       </router-link>
     </div>
@@ -84,6 +90,7 @@ export default {
           //////////////////////////////////
         });
     },
+
     // 부서정보를 수정 요청하는 함수
     updateAnnounce() {
       // axios 공통함수 호출
@@ -138,10 +145,15 @@ export default {
   // 화면이 뜨자 마자 실행되는 이벤트
   mounted() {
     this.message = "";
-    this.getAnnounce(this.$route.params.aid); 
+    this.getAnnounce(this.$route.params.aid);
   },
 };
 </script>
 
 <style>
+.contentarea {
+  width: 1240px;
+  height: 500px;
+  padding: 30px;
+}
 </style>
