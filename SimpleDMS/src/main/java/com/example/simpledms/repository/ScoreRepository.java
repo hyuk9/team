@@ -3,6 +3,7 @@ package com.example.simpledms.repository;
 import com.example.simpledms.dto.FavoriteDto;
 import com.example.simpledms.dto.ScoreDto;
 import com.example.simpledms.model.Favorite;
+import com.example.simpledms.model.Menu;
 import com.example.simpledms.model.Score;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -39,6 +40,8 @@ public interface ScoreRepository extends JpaRepository<Score, Integer> {
                     "group by sc.gender"
             ,nativeQuery = true)
     List<ScoreDto> findByDnoScoreAvg (@Param("dno") Integer dno);
+
+    List<Score> findAllByRnoEquals (Integer rno);
 
 }
 

@@ -23,7 +23,7 @@ import javax.persistence.Column;
 @Entity
 @Table(name = "TB_REVIEW")
 @SequenceGenerator(
-        name= "SQ_REVIEW_GENERATOR"
+        name = "SQ_REVIEW_GENERATOR"
         , sequenceName = "SQ_REVIEW"
         , initialValue = 1
         , allocationSize = 1
@@ -37,7 +37,7 @@ import javax.persistence.Column;
 @DynamicUpdate
 @ToString
 @Where(clause = "DELETE_YN = 'N'")
-@SQLDelete(sql="UPDATE TB_REVIEW SET DELETE_YN = 'Y', DELETE_TIME = TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') WHERE RNO = ?")
+@SQLDelete(sql = "UPDATE TB_REVIEW SET DELETE_YN = 'Y', DELETE_TIME = TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') WHERE RNO = ?")
 public class Review extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE
@@ -54,11 +54,9 @@ public class Review extends BaseTimeEntity {
     @javax.persistence.Column
     private String rcontent;
 
-    @javax.persistence.Column
-    private Integer rating;
 
 //    @Lob
-    @javax.persistence.Column
-    private String rphoto;
+//    @javax.persistence.Column
+//    private String rphoto;
 
 }
