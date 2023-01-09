@@ -2,12 +2,11 @@
   <div>
     <!-- TODO: announce 시작 -->
     <!-- Contact Start -->
-    <div class="container mt-2 mb-2">
-      <h1 class="offset-5"><i class="bi bi-star-fill"></i>공지사항<i class="bi bi-star-fill"></i></h1>
+    <div class="container mt-3 mb-3">
+      <h1 class="offset-5"><i class="bi bi-megaphone-fill"> 공지사항</i></h1>
       <div style="text-align: center">
-        <div class="p-3 mb-2 bg-warning text-dark bg-opacity-25">
+        <div class="p-3 mb-2 bg-warning text-dark bg-opacity-25 mt-3">
           <strong>"공지사항를 통해서 맛있는 토마토의 최신정보를 찾아보세요"
-            <h1>조회수 증가 함수 작동하면서 게시글 insertTime 정보도 같이 바뀌는 문제 있음</h1>
             <br />
             "맛있는 토마토의 최신 정보와 공지를 모아서 한번에 찾아볼 수 있습니다.
           </strong>
