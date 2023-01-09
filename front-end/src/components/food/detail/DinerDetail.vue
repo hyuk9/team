@@ -344,7 +344,6 @@ import Canvas from "@/components/food/detail/CanvasView.vue";
 import LastviewDataService from "@/services/LastviewDataService";
 import User from "@/model/user";
 import ScoreDataService from "@/services/ScoreDataService";
-
 export default {
   data() {
     return {
@@ -471,6 +470,8 @@ export default {
           this.review = response.data;
           // 콘솔 로그 출력
           console.log("현재 리뷰 데이터 : ", response.data);
+
+          this.getScore();
         })
         // 실패하면 .catch() 에러메세지가 리턴됨
         .catch((e) => {
@@ -478,21 +479,21 @@ export default {
         });
     },
     // Todo : dno로 리뷰 조회요청하는 함수
-    // getScore(rno) {
-    //   // axios 공통함수 호출
-    //   ScoreDataService.get(rno)
-    //     // 성공하면 .then() 결과가 리턴됨
-    //     .then((response) => {
-    //       // springboot 결과를 리턴함(부서 객체)
-    //       this.score = response.data;
-    //       // 콘솔 로그 출력
-    //       console.log("현재 별점 데이터 : ", response.data);
-    //     })
-    //     // 실패하면 .catch() 에러메세지가 리턴됨
-    //     .catch((e) => {
-    //       console.log(e);
-    //     });
-    // },
+    getScore(rno) {
+      // axios 공통함수 호출
+      ScoreDataService.get(rno)
+        // 성공하면 .then() 결과가 리턴됨
+        .then((response) => {
+          // springboot 결과를 리턴함(부서 객체)
+          this.score = response.data;
+          // 콘솔 로그 출력
+          console.log("현재 평점 데이터 조회 성공 : ", response.data);
+        })
+        // 실패하면 .catch() 에러메세지가 리턴됨
+        .catch((e) => {
+          console.log("현재 평점 데이터 조회 실패 : ", e);
+        });
+    },
     // select box 값 변경시 실행되는 함수(재조회)
     handlePageSizeChange(event) {
       this.pageSize = event.target.value; // 한페이지당 개수 저장(3, 6, 9)
@@ -691,7 +692,7 @@ export default {
     this.getDiner(this.$route.params.dno);
     this.getMenu(this.$route.params.dno); // 화면 로딩시 음식점번호(dno)로 메뉴조회하기
     this.getReview(this.$route.params.dno);
-    // this.getScore(this.$route.params.dno);
+    // this.getScore(this.$route.params.rno);
     this.retrieveFavorite(); // 화면 로딩시 fid해당하는 조회함수 실행
   },
 
