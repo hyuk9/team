@@ -63,9 +63,6 @@ public class Diner extends BaseTimeEntity {
     private String theme;
 
     @javax.persistence.Column
-    private String review;
-
-    @javax.persistence.Column
     private String mainphoto;
 
     @javax.persistence.Column
@@ -88,6 +85,36 @@ public class Diner extends BaseTimeEntity {
 
     @javax.persistence.Column(columnDefinition = "NUMBER")
     private Integer dno_count;
+
+    @javax.persistence.Column
+    private String menu1;
+
+    @javax.persistence.Column
+    private Integer price1;
+
+    @javax.persistence.Column
+    private String menu2;
+
+    @javax.persistence.Column
+    private Integer price2;
+
+    @javax.persistence.Column
+    private String menu3;
+
+    @javax.persistence.Column
+    private Integer price3;
+
+    @javax.persistence.Column
+    private String menu4;
+
+    @javax.persistence.Column
+    private Integer price4;
+
+    @javax.persistence.Column
+    private String menu5;
+
+    @javax.persistence.Column
+    private Integer price5;
 
 }
 

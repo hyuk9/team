@@ -50,7 +50,8 @@
             <div>{{ data.writer }} 댓글:</div>
             <div>{{ data.content }}</div>
           </div> -->
-        <div class="card">
+          <!-- Todo: DB에서 데이터 받으면 아래 코드 사용 -->
+        <!-- <div class="card">
           <div class="card-header pb-4">댓글
             <ul class="list-group">
               <li class="list-group-item d-flex justify-content-between p-2" v-for="(data, index) in comment"
@@ -61,9 +62,24 @@
                   <div class="front-italic col-">작성일:{{ data.insertTime }}&nbsp;</div>
                   <span class="badge bg-primary p-2 mt-1 ms-3"><span class="fs-0">수정</span></span>
                   <span class="badge bg-danger p-2 mt-1 ms-3"><span class="fs-0">삭제</span></span>
-                  <!-- <span class="badge rounded-pill bg-danger text-dark col-2">삭제</span> -->
                 </div>
-                <!-- <h1>여기</h1> -->
+              </li>
+            </ul>
+          </div>
+        </div> --> 
+
+        <div class="card">
+          <div class="card-header pb-4">댓글
+            <ul class="list-group">
+              <li class="list-group-item d-flex justify-content-between p-2"
+                :key="index">
+                <h4 class="col-1"><span class="badge rounded-pill bg-primary  text-dark">{{ 작성자 }}</span></h4>
+                <p class="col-6">{{ 내용 }}</p>
+                <div class="d-flex">
+                  <div class="front-italic col-">작성일:{{ 대충날짜 }}&nbsp;</div>
+                  <span class="badge bg-primary p-2 mt-1 ms-3"><span class="fs-0">수정</span></span>
+                  <span class="badge bg-danger p-2 mt-1 ms-3"><span class="fs-0">삭제</span></span>
+                </div>
               </li>
             </ul>
           </div>

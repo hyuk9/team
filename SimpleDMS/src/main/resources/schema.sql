@@ -217,13 +217,14 @@ CREATE TABLE TB_REVIEW
     ID          NUMBER,
     DNO         NUMBER,
     WRITER      VARCHAR2(255),
-    RCONTENT    VARCHAR2(2000),
+    CONTENT    VARCHAR2(2000),
 --     RPHOTO      VARCHAR2(255)
     TASTE       NUMBER, -- 맛
     SERVICE     NUMBER, -- 서비스
     LOC         NUMBER, -- 접근성
     MOOD        NUMBER, -- 분위기
     COST        NUMBER, -- 가성비
+    GENDER      VARCHAR2(255), -- 성별
     DELETE_YN   VARCHAR2(1) DEFAULT 'N',
     INSERT_TIME VARCHAR2(255),
     UPDATE_TIME VARCHAR2(255),

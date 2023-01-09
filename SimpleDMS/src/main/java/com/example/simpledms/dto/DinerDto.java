@@ -28,6 +28,20 @@ public interface DinerDto {
     Integer getView();
     Integer getDno_count();
 
+    String getMenu1();
+    Integer getPrice1();
+    String getMenu2();
+
+    Integer getPrice2();
+    String getMenu3();
+
+    Integer getPrice3();
+    String getMenu4();
+
+    Integer getPrice4();
+    String getMenu5();
+    Integer getPrice5();
+
 //    review 테이블에서 가져올 속성
     String getRcontent();
     Integer getRating();

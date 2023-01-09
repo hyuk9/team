@@ -31,7 +31,7 @@ public interface DinerRepository extends JpaRepository<Diner, Integer> {
     Page<Diner> findAllByThemeContainingOrderByDno(String theme, Pageable pageable);
 
 
-//     g
+//
 
 }
 
