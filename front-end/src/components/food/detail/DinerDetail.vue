@@ -196,17 +196,29 @@
             <div class="col">
               <div class="card text-dark bg-light border-primary mb-6 mt-5">
                 <div class="card-header">
-                  <i class="bi bi-lamp-fill"></i> 메뉴판
+                  <i class="bi bi-lamp-fill"></i> 대표메뉴
                 </div>
                 <!-- 메뉴 리스트 불러와서 v-for문으로 작동 -->
-                <div
-                  class="card-body"
-                  v-for="(data, index) in menu"
-                  :key="index"
-                >
-                  <h5 class="card-title">{{ data.menuName }}</h5>
+                <div class="card-body">
+                  <h5 class="card-title">{{ currentDiner.menu1 }}</h5>
                   <p class="card-text">
-                    {{ data.menuPrice }}
+                    {{ currentDiner.price1 }}
+                  </p>
+                  <h5 class="card-title">{{ currentDiner.menu2 }}</h5>
+                  <p class="card-text">
+                    {{ currentDiner.price2 }}
+                  </p>
+                  <h5 class="card-title">{{ currentDiner.menu3 }}</h5>
+                  <p class="card-text">
+                    {{ currentDiner.price3 }}
+                  </p>
+                  <h5 class="card-title">{{ currentDiner.menu4 }}</h5>
+                  <p class="card-text">
+                    {{ currentDiner.price4 }}
+                  </p>
+                  <h5 class="card-title">{{ currentDiner.menu5 }}</h5>
+                  <p class="card-text">
+                    {{ currentDiner.price5 }}
                   </p>
                 </div>
                 <!--v-for 끝-->
@@ -215,20 +227,21 @@
           </div>
 
           <!--식당정보 끝-->
-          <button class="btn btn-warning mb-5 text-white">
-            <router-link to="/add/menu">메뉴 추가</router-link>
-          </button>
 
           <div class="my-3 row justify-content-around col">
             <h2>
               리뷰
-              <i class="bi bi-chat-left-text"></i>
+              <i class="bi bi-chat-dots"></i>
             </h2>
-            <button type="button" class="btn btn-lg btn-success output col-5">
-              <router-link :to="'/add/review/' + currentDiner.dno">
-                리뷰 쓰기
-                <i class="bi bi-brush"></i>
-              </router-link>
+            <button
+              type="button"
+              class="btn btn-lg btn-success output col-5"
+              @click="needToLogin"
+            >
+              <!-- <router-link :to="'/add/review/' + currentDiner.dno"> -->
+              리뷰 쓰기
+              <i class="bi bi-brush"></i>
+              <!-- </router-link> -->
             </button>
           </div>
 
@@ -239,57 +252,55 @@
             v-for="(data, index) in review"
             :key="index"
           >
-            <div class="row d-flex">
-              <router-link :to="'/edit/review/' + data.rno">
-                <span class="badge bg-success float-right" v-if="showAdminBoard"
-                  >수정하기</span
-                >
-              </router-link>
-              <div class="">
-                <img
-                  class="profile-pic"
-                  src="https://i.imgur.com/V3ICjlm.jpg"
-                />
+            <div class="row d-flex mt-1">
+              <div>
+                <!-- <router-link :to="'/edit/review/' + data.rno" v-if="showDetailBoard"> FIXME:고쳐야하는데 이유는 아직 모름--> 
+                <router-link :to="'/edit/review/' + data.rno">
+                  <span class="badge bg-success float-right">수정하기</span>
+                </router-link>
               </div>
-              <div
-                class="d-flex flex-column"
-                v-for="(star, index) in score"
-                :key="index"
-              >
-                <!-- <h5 class="ms-3 mt-2 mb-0">{{ this.currentReview.id }}</h5> -->
-                <div>
-                  <h5 class="text-left">
-                    <span class="fa fa-star star-active ml-3"></span>
-                    <span class="badge bg-primary"
-                      >맛 : {{ star.taste }}점</span
-                    >
-                    <span class="fa fa-star star-active ml-3"></span>
-                    <span class="badge bg-success"
-                      >서비스 : {{ star.service }}점</span
-                    >
-                    <span class="fa fa-star star-active ml-3"></span>
-                    <span class="badge bg-danger"
-                      >접근성 : {{ star.loc }}점</span
-                    >
-                    <span class="fa fa-star star-active ml-3"></span>
-                    <span class="badge bg-warning text-dark"
-                      >분위기 : {{ star.mood }}점</span
-                    >
-                    <span class="fa fa-star star-active ml-3"></span>
-                    <span class="badge bg-dark"
-                      >가성비 : {{ star.cost }}점</span
-                    >
-                  </h5>
+              <div class="row">
+                <div class="col">
+                  <!-- TODO: 프로필 사진 넣을 예정 -->
+
+                  <div class="d-flex flex-column">
+                    <!-- <h5 class="mt-2 mb-0">{{ data.writer }}</h5> -->
+                    <h5>내이름
+                      <span class="fa fa-star star-active ml-3"></span>
+                        <span class="badge bg-primary"
+                          >맛 : {{ data.taste }}점</span
+                        >
+                        <span class="fa fa-star star-active ml-3"></span>
+                        <span class="badge bg-success"
+                          >서비스 : {{ data.service }}점</span
+                        >
+                        <span class="fa fa-star star-active ml-3"></span>
+                        <span class="badge bg-danger"
+                          >접근성 : {{ data.loc }}점</span
+                        >
+                        <span class="fa fa-star star-active ml-3"></span>
+                        <span class="badge bg-warning text-dark"
+                          >분위기 : {{ data.mood }}점</span
+                        >
+                        <span class="fa fa-star star-active ml-3"></span>
+                        <span class="badge bg-dark"
+                          >가성비 : {{ data.cost }}점</span
+                        >
+                    </h5>
+                  </div>
                 </div>
               </div>
-              <div class="ml-auto">
-                <p class="text-muted pt-5 pt-sm-3">{{ data.insertTime }}</p>
-              </div>
             </div>
-            <div class="row text-left">
+            <div class="col mt-2">
               <p class="content">
-                {{ data.rcontent }}
+                <!-- {{ data.rcontent }} -->
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur odit aperiam reiciendis sint suscipit consectetur dolorum culpa animi at? Quis quaerat praesentium debitis ipsa ea aperiam maiores eligendi perspiciatis quia.
               </p>
+              <div>
+                <p class="text-muted pt-5 pt-sm-3 float-right">
+                  {{ data.insertTime }}
+                </p>
+              </div>
             </div>
             <!-- <div class="row text-left">
               <img class="pic" :src="data.rphoto" />
@@ -313,7 +324,8 @@
 
           <!-- Chart widget-->
           <div class="card mb-4">
-            <div class="card-header">Chart</div>
+            <div class="card-header">
+              Chart</div>
             <div class="card-body">
               <Canvas />
             </div>
@@ -343,7 +355,7 @@ import MakerDetail from "@/components/food/detail/MakerDetail.vue";
 import Canvas from "@/components/food/detail/CanvasView.vue";
 import LastviewDataService from "@/services/LastviewDataService";
 import User from "@/model/user";
-import ScoreDataService from "@/services/ScoreDataService";
+
 export default {
   data() {
     return {
@@ -478,22 +490,6 @@ export default {
           console.log(e);
         });
     },
-    // Todo : dno로 리뷰 조회요청하는 함수
-    getScore(rno) {
-      // axios 공통함수 호출
-      ScoreDataService.get(rno)
-        // 성공하면 .then() 결과가 리턴됨
-        .then((response) => {
-          // springboot 결과를 리턴함(부서 객체)
-          this.score = response.data;
-          // 콘솔 로그 출력
-          console.log("현재 평점 데이터 조회 성공 : ", response.data);
-        })
-        // 실패하면 .catch() 에러메세지가 리턴됨
-        .catch((e) => {
-          console.log("현재 평점 데이터 조회 실패 : ", e);
-        });
-    },
     // select box 값 변경시 실행되는 함수(재조회)
     handlePageSizeChange(event) {
       this.pageSize = event.target.value; // 한페이지당 개수 저장(3, 6, 9)
@@ -540,6 +536,19 @@ export default {
           console.log("음식점 정보 삭제 실패 : ", e);
         });
     },
+    needToLogin() {
+      if (this.currentUser.id == null) {
+        this.$swal({
+          icon: "error",
+          title: "로그인이 필요한 서비스입니다",
+          text: "로그인하시면 다양한 맞춤형 서비스를 이용할 수 있습니다",
+          confirmButtonColor: "#E1793D",
+          confirmButtonText: "확인",
+        });
+      } else {
+        this.$router.push("/add/review/ + currentDiner.dno");
+      }
+    },
 
     // Todo : 카카오 지도 관련 함수들 시작 ==================
     onLoad(vue) {
@@ -567,7 +576,6 @@ export default {
         this.showReservation = false;
       }
     },
-
     // Todo : 찜한가게 저장요청하는 함수
     saveFavorite() {
       if (this.currentUser.id != null) {
@@ -692,7 +700,6 @@ export default {
     this.getDiner(this.$route.params.dno);
     this.getMenu(this.$route.params.dno); // 화면 로딩시 음식점번호(dno)로 메뉴조회하기
     this.getReview(this.$route.params.dno);
-    // this.getScore(this.$route.params.rno);
     this.retrieveFavorite(); // 화면 로딩시 fid해당하는 조회함수 실행
   },
 
@@ -732,18 +739,14 @@ export default {
       }
     },
 
-    // 관리자 접속이거나 글쓴사람(id)가 동일하면 보이는 함수
-    showAdminBoard() {
-      if (this.currentUser && this.currentUser.roles) {
-        // if ROLE_ADMIN 있으면 true 없으면 false 이거나 현재로그인한id == 글쓴사람id
-        return (
-          this.currentUser.roles.includes("ROLE_ADMIN") ||
-          this.currentUser.id == this.currentReview.id
-        );
-      }
-      // currentUser 없으면 false (메뉴가 안보임)
-      return false;
-    },
+    // showDetailBoard() {
+    //   if (this.currentUser && this.currentUser.roles) {
+    //     // if ROLE_ADMIN 있으면 true 없으면 false 이거나 현재로그인한id == 글쓴사람id
+    //     return this.currentUser.roles.includes("ROLE_ADMIN") || this.currentUser.id == this.currentReview.id;
+    //   }
+    //   // currentUser 없으면 false (메뉴가 안보임)
+    //   return false;
+    // },
   },
   // update() {
   //   getDiner();
@@ -754,11 +757,11 @@ export default {
 #card1 {
   border-radius: 5px;
   background-color: #fff;
-  padding-left: 60px;
-  padding-right: 60px;
+  padding-left: 50px;
+  padding-right: 30px;
   margin-top: 30px;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .rating-box {
@@ -855,10 +858,11 @@ td {
 }
 
 .profile-pic {
-  width: 90px;
-  height: 90px;
+  width: 60px;
+  height: 60px;
   border-radius: 100%;
   margin-right: 30px;
+  margin-top: 10px;
 }
 
 .pic {

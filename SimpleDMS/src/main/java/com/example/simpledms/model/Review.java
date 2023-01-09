@@ -55,6 +55,9 @@ public class Review extends BaseTimeEntity {
 
 //    리뷰내용
     @javax.persistence.Column
+    private String rwriter;
+
+    @javax.persistence.Column
     private String rcontent;
 
 //    맛 평점
