@@ -4,6 +4,8 @@ import com.example.simpledms.dto.FavoriteDto;
 import com.example.simpledms.dto.ScoreDto;
 import com.example.simpledms.model.Favorite;
 
+import com.example.simpledms.model.Menu;
+import com.example.simpledms.model.Review;
 import com.example.simpledms.model.Score;
 import com.example.simpledms.repository.FavoriteRepository;
 import com.example.simpledms.repository.ScoreRepository;
@@ -38,6 +40,32 @@ public class ScoreService {
         List<ScoreDto> list = scoreRepository.findByDnoScoreAvg(dno);
 
         return list;
+    }
+
+    //    ✅ id로 조회하는 함수
+
+    public List<Score> findAllByRnoEquals(int rno) {
+//        findById(기본키)
+        List<Score> list = scoreRepository.findAllByRnoEquals(rno);
+
+        return list;
+    }
+
+    //       ✅ 부서 정보 저장 함수
+    public Score save(Score score) {
+        Score score2 = scoreRepository.save(score);
+        return score2;
+    }
+
+    //       ✅ 부서 정보 삭제 함수
+    public boolean removeById(int sid) {
+//        existById(기본키) 있으면 삭제 실행 + true 리턴
+        if (scoreRepository.existsById(sid) == true) {
+            scoreRepository.deleteById(sid);
+            return true;
+        }
+//        없으면 그냥 false 리턴
+        return false;
     }
 }
 

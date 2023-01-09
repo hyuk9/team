@@ -3,6 +3,9 @@ package com.example.simpledms.controller;
 import com.example.simpledms.dto.FavoriteDto;
 import com.example.simpledms.dto.ScoreDto;
 import com.example.simpledms.model.Favorite;
+import com.example.simpledms.model.Menu;
+import com.example.simpledms.model.Review;
+import com.example.simpledms.model.Score;
 import com.example.simpledms.service.FavoriteService;
 import com.example.simpledms.service.ScoreService;
 import lombok.extern.slf4j.Slf4j;
@@ -42,7 +45,7 @@ public class ScoreController {
     @Autowired
     ScoreService scoreService; // @Autowired : 스프링부트가 가동될때 생성된 객체를 하나 받아오기
 
-//    dno로 검색함수
+    //    dno로 검색함수
     @GetMapping("/score/dno/{dno}")
     public ResponseEntity<Object> findByDnoScoreAvg(@PathVariable Integer dno) {
 
@@ -63,6 +66,79 @@ public class ScoreController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @GetMapping("/score/{rno}")
+    public ResponseEntity<Object> getScoreId(@PathVariable Integer rno) {
+
+        try {
+            List<Score> list = scoreService.findAllByRnoEquals(rno);
+
+            if (list.isEmpty() == false) {
+//                데이터 + 성공 메세지 전송
+                return new ResponseEntity<>(list, HttpStatus.OK);
+            } else {
+//                데이터 없음 메세지 전송(클라이언트)
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+
+        } catch (Exception e) {
+            log.debug(e.getMessage());
+            // 서버에러 발생 메세지 전송(클라이언트)
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PostMapping("/score")
+    public ResponseEntity<Object> createScore(@RequestBody Score score) {
+
+        try {
+            Score score2 = scoreService.save(score);
+
+            return new ResponseEntity<>(score2, HttpStatus.OK);
+
+        } catch (Exception e) {
+            log.debug(e.getMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PutMapping("/score/{sid}")
+    public ResponseEntity<Object> updateScore(@PathVariable int sid,
+                                              @RequestBody Score score) {
+
+        try {
+            Score score2 = scoreService.save(score);
+
+            return new ResponseEntity<>(score2, HttpStatus.OK);
+
+        } catch (Exception e) {
+            log.debug(e.getMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
+    @DeleteMapping("/score/deletion/{sid}")
+    public ResponseEntity<Object> deleteScore(@PathVariable int sid) {
+
+        try {
+            boolean bSuccess = scoreService.removeById(sid);
+
+            if (bSuccess == true) {
+//                데이터 + 성공 메세지 전송
+                return new ResponseEntity<>(HttpStatus.OK);
+            } else {
+//                데이터 없음 메세지 전송(클라이언트에)
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+
+        } catch (Exception e) {
+            log.debug(e.getMessage());
+//           서버 에러 발생 메세지 전송(클라이언트)
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }
 
 

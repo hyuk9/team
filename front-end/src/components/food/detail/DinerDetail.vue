@@ -478,9 +478,9 @@ export default {
         });
     },
     // Todo : dno로 리뷰 조회요청하는 함수
-    getScore(dno) {
+    getScore(rno) {
       // axios 공통함수 호출
-      ScoreDataService.get(dno)
+      ScoreDataService.get(rno)
         // 성공하면 .then() 결과가 리턴됨
         .then((response) => {
           // springboot 결과를 리턴함(부서 객체)
@@ -691,7 +691,7 @@ export default {
     this.getDiner(this.$route.params.dno);
     this.getMenu(this.$route.params.dno); // 화면 로딩시 음식점번호(dno)로 메뉴조회하기
     this.getReview(this.$route.params.dno);
-    this.getScore(this.$route.params.dno);
+    this.getScore(this.$route.params.rno);
     this.retrieveFavorite(); // 화면 로딩시 fid해당하는 조회함수 실행
   },
 
