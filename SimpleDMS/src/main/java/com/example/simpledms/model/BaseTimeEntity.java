@@ -52,7 +52,7 @@ public abstract class BaseTimeEntity {
     void onPreUpdate() {
         this.updateTime = LocalDateTime.now()
                 .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        this.insertTime = this.updateTime;
+//        this.insertTime = this.updateTime; // FIXME: 원래는 주석처리 안되있는 코드인데 주석풀면 조회수 증가시킬때 게시판 생성시간으로 수정되는 문제가 있음
         this.deleteYn = "N"; // null 값이 들어가는 것을 방지하기 위한 초기화
     }
 }
