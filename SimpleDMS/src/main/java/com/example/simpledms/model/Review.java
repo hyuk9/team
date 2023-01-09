@@ -52,6 +52,9 @@ public class Review extends BaseTimeEntity {
     private Integer dno;
 
     @javax.persistence.Column
+    private String rwriter;
+
+    @javax.persistence.Column
     private String rcontent;
 
 

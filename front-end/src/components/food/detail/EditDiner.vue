@@ -1,176 +1,260 @@
 <template>
   <!-- DinerDetail.vue -->
-  <div>
+  <div class="form">
     <!-- 수정 양식 폼 시작 -->
-    <div v-if="currentDiner" class="edit-form mt-5 mb-5">
-      <h4>식당 정보</h4>
-      <form>
-        <div class="form-group">
-          <label for="dname">식당이름</label>
-          <input
-            type="text"
-            class="form-control"
-            id="dname"
-            v-model="currentDiner.dname"
-          />
-        </div>
+    <div v-if="currentDiner" class="mt-5 mb-5">
+      <h1>음식점 정보 수정하기</h1>
+      <!-- 식당이름 -->
+      <div class="input__block">
+        <h5>식당이름</h5>
+        <input
+          type="text"
+          class="form-control"
+          id="dname"
+          required
+          v-model="currentDiner.dname"
+          name="dname"
+        />
+      </div>
 
-        <!-- 평점 -->
-        <div class="form-group">
-          <label for="score">평점</label>
-          <select
-            class="form-select"
-            id="score"
-            required
-            v-model="currentDiner.score"
-            name="score"
-            aria-label="Default select example"
-          >
-            <option selected>평점을 선택해주세요.</option>
-            <option value="1">1점</option>
-            <option value="2">2점</option>
-            <option value="3">3점</option>
-            <option value="4">4점</option>
-            <option value="5">5점</option>
-          </select>
-        </div>
+      <!-- 평점 -->
+      <div class="input__block">
+        <h5>평점</h5>
+        <b-form-rating
+          v-model="currentDiner.score"
+          variant="warning"
+        ></b-form-rating>
+      </div>
 
-        <!-- 지역 -->
-        <div class="form-group">
-          <label for="loc">주소</label>
-          <input
-            class="form-control"
-            id="loc"
-            required
-            v-model="currentDiner.loc"
-            name="loc"
-          />
-        </div>
+      <!-- 지역 -->
+      <div class="input__block">
+        <h5>주소</h5>
+        <input
+          class="form-control"
+          id="loc"
+          required
+          v-model="currentDiner.loc"
+          name="loc"
+        />
+      </div>
 
-        <!-- 전화번호 -->
-        <div class="form-group">
-          <label for="phone">전화번호</label>
-          <input
-            type="text"
-            class="form-control"
-            id="phone"
-            required
-            v-model="currentDiner.phone"
-            name="phone"
-          />
-        </div>
+      <!-- 전화번호 -->
+      <div class="input__block">
+        <h5>전화번호</h5>
+        <input
+          type="text"
+          class="form-control"
+          id="phone"
+          required
+          v-model="currentDiner.phone"
+          name="phone"
+        />
+      </div>
 
-        <!-- 메뉴 -->
-        <div class="form-group">
-          <label for="score">메뉴</label>
-          <select
-            class="form-select"
-            id="menu"
-            required
-            v-model="currentDiner.menu"
-            name="menu"
-            aria-label="Default select example"
-          >
-            <option selected>메뉴을 선택해주세요.</option>
-            <option value="한식">한식</option>
-            <option value="중식">중식</option>
-            <option value="일식">일식</option>
-            <option value="양식">양식</option>
-          </select>
-        </div>
+      <!-- 메뉴 -->
+      <div class="input__block">
+        <h5>메뉴</h5>
+        <select
+          class="form-select"
+          id="menu"
+          required
+          v-model="currentDiner.menu"
+          name="menu"
+          aria-label="Default select example"
+        >
+          <option selected>메뉴을 선택해주세요.</option>
+          <option value="한식">한식</option>
+          <option value="중식">중식</option>
+          <option value="일식">일식</option>
+          <option value="양식">양식</option>
+        </select>
+      </div>
 
-        <!-- 테마 -->
-        <div class="form-group">
-          <label for="score">테마</label>
-          <select
-            class="form-select"
-            id="theme"
-            required
-            v-model="currentDiner.theme"
-            name="theme"
-            aria-label="Default select example"
-          >
-            <option selected>테마를 선택해주세요.</option>
-            <option value="데이트">데이트</option>
-            <option value="모임">모임</option>
-            <option value="회식">회식</option>
-            <option value="식사">식사</option>
-          </select>
-        </div>
+      <!-- 테마 -->
+      <div class="input__block">
+        <h5>테마</h5>
+        <select
+          class="form-select"
+          id="theme"
+          required
+          v-model="currentDiner.theme"
+          name="theme"
+          aria-label="Default select example"
+        >
+          <option selected>테마를 선택해주세요.</option>
+          <option value="데이트">데이트</option>
+          <option value="모임">모임</option>
+          <option value="회식">회식</option>
+          <option value="식사">식사</option>
+        </select>
+      </div>
 
-        <!-- 주소로 지도 좌표찾는 사이트 링크 추가 -->
-        <button type="button" class="btn btn-info" @click="findL()">
+      <!-- 주소로 지도 좌표찾는 사이트 링크 추가 -->
+      <div class="text-center">
+        <button type="button" class="reservation__btn2" @click="findL()">
           주소 -> 좌표 전환 사이트
         </button>
+      </div>
 
-        <!-- 지도 좌표추가 -->
-        <div class="form-group">
-          <label for="lat">식당 좌표값 -> 위도</label>
-          <input
-            type="number"
-            class="form-control"
-            id="lat"
-            v-model="currentDiner.lat"
-            name="lat"
-          />
-          <label for="lng">식당 좌표값 -> 경도</label>
-          <input
-            type="number"
-            class="form-control"
-            id="lng"
-            v-model="currentDiner.lng"
-            name="lng"
-          />
-        </div>
+      <!-- 지도 좌표추가 -->
+      <div class="input__block">
+        <h5>식당 좌표값 -> 위도</h5>
+        <input
+          type="number"
+          class="form-control"
+          id="lat"
+          v-model="currentDiner.lat"
+          name="lat"
+        />
+        <h5>식당 좌표값 -> 경도</h5>
+        <input
+          type="number"
+          class="form-control"
+          id="lng"
+          v-model="currentDiner.lng"
+          name="lng"
+        />
+      </div>
 
-        <!-- 메인 사진넣기 -->
-        <div class="form-group">
-          <label for="mainphoto">메인 사진</label>
-          <input
-            type="text"
-            class="form-control"
-            id="mainphoto"
-            v-model="currentDiner.mainphoto"
-            name="mainphoto"
-          />
-        </div>
+      <!-- 메인 사진넣기 -->
+      <div class="input__block">
+        <h5>메인 사진</h5>
+        <input
+          type="text"
+          class="form-control"
+          id="mainphoto"
+          v-model="currentDiner.mainphoto"
+          name="mainphoto"
+        />
+      </div>
 
-        <!-- 슬라이드 사진넣기 -->
-        <div class="form-group">
-          <label for="photo">슬라이드 사진</label>
-          <input
-            type="text"
-            class="form-control"
-            id="photo1"
-            v-model="currentDiner.photo1"
-            name="photo1"
-          />
-          <input
-            type="text"
-            class="form-control"
-            id="photo2"
-            v-model="currentDiner.photo2"
-            name="photo2"
-          />
-          <input
-            type="text"
-            class="form-control"
-            id="photo3"
-            v-model="currentDiner.photo3"
-            name="photo3"
-          />
-        </div>
-      </form>
+      <!-- 슬라이드 사진넣기 -->
+      <div class="input__block">
+        <h5>슬라이드 사진</h5>
+        <input
+          type="text"
+          class="form-control mb-1"
+          id="photo1"
+          v-model="currentDiner.photo1"
+          name="photo1"
+        />
+        <input
+          type="text"
+          class="form-control mb-1"
+          id="photo2"
+          v-model="currentDiner.photo2"
+          name="photo2"
+        />
+        <input
+          type="text"
+          class="form-control mb-1"
+          id="photo3"
+          v-model="currentDiner.photo3"
+          name="photo3"
+        />
+      </div>
+      <br />
 
-      <button class="mt-3 btn btn-danger" @click="deleteDiner">삭제</button>
+      <!-- 대표 메뉴 추가하기 -->
+      <div class="input__block">
+        <h4 class="text-center">대표메뉴 5가지를 추가해주세요!</h4>
+        <h5>메뉴1</h5>
+        <input
+          type="number"
+          class="form-control"
+          id="menu1"
+          v-model="currentDiner.menu1"
+          name="menu1"
+        />
+        <h5>메뉴1가격</h5>
+        <input
+          type="number"
+          class="form-control"
+          id="price1"
+          v-model="currentDiner.price1"
+          name="price1"
+        />
+        <h5>메뉴2</h5>
+        <input
+          type="number"
+          class="form-control"
+          id="menu2"
+          v-model="currentDiner.menu2"
+          name="menu2"
+        />
+        <h5>메뉴2가격</h5>
+        <input
+          type="number"
+          class="form-control"
+          id="price2"
+          v-model="currentDiner.price2"
+          name="price2"
+        />
+        <h5>메뉴3</h5>
+        <input
+          type="number"
+          class="form-control"
+          id="menu3"
+          v-model="currentDiner.menu3"
+          name="menu3"
+        />
+        <h5>메뉴3가격</h5>
+        <input
+          type="number"
+          class="form-control"
+          id="price3"
+          v-model="currentDiner.price3"
+          name="price3"
+        />
+        <h5>메뉴4</h5>
+        <input
+          type="number"
+          class="form-control"
+          id="menu4"
+          v-model="currentDiner.menu4"
+          name="menu4"
+        />
+        <h5>메뉴4가격</h5>
+        <input
+          type="number"
+          class="form-control"
+          id="price4"
+          v-model="currentDiner.price4"
+          name="price4"
+        />
+        <h5>메뉴5</h5>
+        <input
+          type="number"
+          class="form-control"
+          id="menu5"
+          v-model="currentDiner.menu5"
+          name="menu5"
+        />
+        <h5>메뉴5가격</h5>
+        <input
+          type="number"
+          class="form-control"
+          id="price5"
+          v-model="currentDiner.price5"
+          name="price5"
+        />
+      </div>
 
-      <button
-        type="submit"
-        class="ms-3 mt-3 btn btn-success"
-        @click="updateDiner"
-      >
-        수정
-      </button>
+      <!-- 서버 에러 메세지가 있을 경우 아래 출력 시작 -->
+      <div v-if="message" class="alert alert-secondary" role="alert">
+        {{ message }}
+      </div>
+      <!-- 서버 에러 메세지가 있을 경우 아래 출력 끝 -->
+
+      <div class="mt-5 mb-5 text-center">
+        <button class="reservation__btn1 me-5" @click="deleteDiner">
+          삭제
+        </button>
+
+        <button type="submit" class="reservation__btn2" @click="updateDiner">
+          수정
+        </button>
+      </div>
     </div>
     <!-- 수정 양식 폼 끝 -->
 
@@ -255,9 +339,96 @@ export default {
 };
 </script>
 
-<style>
-.edit-form {
-  max-width: 500px;
-  margin: auto;
+<style lang="scss" scoped>
+h1 {
+  color: #ffb30e;
+  font-size: 48px;
+  letter-spacing: -3px;
+  text-align: center;
+  margin-bottom: 80px;
+  transition: 0.2s linear;
+}
+
+h5 {
+  display: inline-block;
+  color: #ffb30e;
+  margin: 30px 0 30px 30px;
+  transition: 0.2s linear;
+}
+
+.form {
+  width: 100%;
+  max-width: 680px;
+  margin: 40px auto 10px;
+}
+
+.input__block {
+  margin: 20px auto;
+  display: block;
+  position: relative;
+}
+
+.input__block input {
+  display: block;
+  width: 90%;
+  max-width: 680px;
+  height: 50px;
+  margin: 0 auto;
+  border-radius: 8px;
+  border: none;
+  background: rgba(15, 19, 42, 0.1);
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+  padding: 0 10px;
+}
+
+.gender {
+  margin: 0 0 0 30px;
+}
+
+.gender h5 {
+  margin: 30px 0 30px 0px;
+}
+
+.gender input {
+  width: 50%;
+  max-width: 680px;
+  height: 30px;
+  margin: 0 auto;
+  padding: 0 0 0 15px;
+  vertical-align: middle;
+}
+.reservation__btn1 {
+  background: tomato;
+  color: white;
+  display: inline;
+  width: 140px;
+  height: 50px;
+  border-radius: 8px;
+  margin: 0 auto;
+  border: none;
+  font-size: 18px;
+  box-shadow: 0 10px 20px rgba(170, 71, 54, 0.377);
+  transition: 0.2s linear;
+}
+.reservation__btn2 {
+  background: rgba(76, 184, 43, 0.993);
+  color: white;
+  display: inline;
+  width: 140px;
+  height: 50px;
+  border-radius: 8px;
+  margin: 0 auto;
+  border: none;
+  font-size: 18px;
+  box-shadow: 0 10px 20px rgba(59, 138, 35, 0.493);
+  transition: 0.2s linear;
+}
+.reservation__btn1:hover,
+.reservation__btn2:hover {
+  box-shadow: 0 0 0 rgba(233, 30, 99, 0);
+}
+button {
+  font-family: ONE-Mobile-POP !important;
 }
 </style>

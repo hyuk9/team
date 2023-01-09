@@ -307,11 +307,6 @@ const routes = [
     name: "daily",
     component: () => import("@/components/food/local/DinerList.vue"),
   },
-  {
-    path: "/add/menu",
-    name: "menu-add",
-    component: () => import("@/components/food/detail/AddMenu.vue"),
-  },
 ];
 
 const router = new VueRouter({
