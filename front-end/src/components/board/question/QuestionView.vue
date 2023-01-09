@@ -51,7 +51,7 @@
     </div>
 
     <div class="mb-3">
-      <router-link :to="'/free/' + currentQuestion.qno" v-if="showDetailBoard">
+      <router-link :to="'/question/' + currentQuestion.qno" v-if="showDetailBoard">
         <button class="btn btn-warning offset-5" type="button">
           수정&삭제
         </button>

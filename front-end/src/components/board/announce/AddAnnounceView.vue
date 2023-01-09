@@ -32,7 +32,7 @@ export default {
     data() {
         return {
             announce: {
-                ano: null,
+                aid: null,
                 writer: "",
                 title: "",
                 content:""
@@ -56,7 +56,7 @@ export default {
             AnnounceDataService.create(data)
                 // 성공하면 then() 결과가 전송됨
                 .then((response) => {
-                    this.announce.ano = response.data.ano;
+                    this.announce.aid = response.data.aid;
                     // 콘솔 로그 출력(response.data)
                     console.log(response.data);
                     // 변수 submitted

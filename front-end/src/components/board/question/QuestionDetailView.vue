@@ -21,7 +21,7 @@
           id="questioner"
           required
           name="questioner"
-          v-model="currentQuestion.qwriter"
+          v-model="currentQuestion.writer"
         />
       </div>
       <div class="mb-3">
@@ -32,33 +32,8 @@
           rows="8"
           required
           name="content"
-          v-model="currentQuestion.qcontent"
+          v-model="currentQuestion.content"
         ></textarea>
-      </div>
-
-      <div>
-        <div class="mb-3">
-          <label for="answerer" class="form-label">답변 작성자</label>
-          <input
-            type="answerer"
-            class="form-control"
-            id="answerer"
-            required
-            name="answerer"
-            v-model="currentAnswer.awriter"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="content" class="form-label">답변</label>
-          <textarea
-            class="form-control form-control-lg"
-            id="content"
-            rows="8"
-            required
-            name="content"
-            v-model="currentAnswer.acontent"
-          ></textarea>
-        </div>
       </div>
 
       <!-- vfor로 답변 다 가져오기 쓸려고 하는데 작동이 안됨 -->
@@ -97,7 +72,7 @@
 
 <script>
 import QuestionDataService from "@/services/QustionDataService";
-import CommentDataService from "@/services/CommentDataService";
+// import CommentDataService from "@/services/CommentDataService";
 
 export default {
   data() {
@@ -127,37 +102,37 @@ export default {
         });
     },
     // 질문번호(qno)로 답변조회 요청하는 함수
-    getAnswer(qno) {
-      // axios 공통함수 호출
-      CommentDataService.get(qno)
-        // 성공하면 .then() 결과가 리턴됨
-        .then((response) => {
-          // springboot 결과를 리턴함(부서 객체)
-          this.currentAnswer = response.data;
-          // 콘솔 로그 출력
-          console.log(response.data);
-        })
-        // 실패하면 .catch() 에러메세지가 리턴됨
-        .catch((e) => {
-          console.log(e);
-        });
-    },
+    // getAnswer(qno) {
+    //   // axios 공통함수 호출
+    //   CommentDataService.get(qno)
+    //     // 성공하면 .then() 결과가 리턴됨
+    //     .then((response) => {
+    //       // springboot 결과를 리턴함(부서 객체)
+    //       this.currentAnswer = response.data;
+    //       // 콘솔 로그 출력
+    //       console.log(response.data);
+    //     })
+    //     // 실패하면 .catch() 에러메세지가 리턴됨
+    //     .catch((e) => {
+    //       console.log(e);
+    //     });
+    // },
     // vfor를 위한 함수
-    retrieveAnswer(qno) {
-      CommentDataService.get(qno)
-        // 성공하면 .then() 결과가 전송됨
-        .then((response) => {
-          const { answer, totalItems } = response.data; // springboot 의 전송된 맵 정보
-          this.answer = answer; // 스프링부트에서 전송한 데이터
-          this.count = totalItems; // 스프링부트에서 전송한 페이지정보(총 건수)
-          // 디버깅 콘솔에 정보 출력
-          console.log(response.data);
-        })
-        // 실패하면 .catch() 에 에러가 전송됨
-        .catch((e) => {
-          console.log(e);
-        });
-    },
+    // retrieveAnswer(qno) {
+    //   CommentDataService.get(qno)
+    //     // 성공하면 .then() 결과가 전송됨
+    //     .then((response) => {
+    //       const { answer, totalItems } = response.data; // springboot 의 전송된 맵 정보
+    //       this.answer = answer; // 스프링부트에서 전송한 데이터
+    //       this.count = totalItems; // 스프링부트에서 전송한 페이지정보(총 건수)
+    //       // 디버깅 콘솔에 정보 출력
+    //       console.log(response.data);
+    //     })
+    //     // 실패하면 .catch() 에 에러가 전송됨
+    //     .catch((e) => {
+    //       console.log(e);
+    //     });
+    // },
     // 질문정보를 수정 요청하는 함수
     updateQuestion() {
       // axios 공통함수 호출
@@ -218,7 +193,7 @@ export default {
   mounted() {
     this.message = "";
     this.getQuestion(this.$route.params.qno);
-    this.getAnswer(this.$route.params.qno);
+    // this.getAnswer(this.$route.params.qno);
     this.retrieveAnswer(); // 화면 로딩시 전체 조회함수 실행
   },
 };
