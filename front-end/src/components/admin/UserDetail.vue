@@ -258,12 +258,10 @@ export default {
             .then((response) => {
               console.log(response.data);
               alert("수정완료");
-              if (this.currentUser.role[0] != "ROLE_USER") {
+              if (this.loggedUser.roles.includes("ROLE_USER")) {
                 this.$router.push("/profile");
-                alert(this.currentUser.role[0]);
               } else {
                 this.$router.push("/user");
-                alert(this.currentUser.role[0]);
               }
             })
             .catch((e) => {
