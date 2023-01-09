@@ -78,7 +78,7 @@
                         <div class="card-body ps-0">
                           <div class="d-flex align-items-center mb-3">
                             <div class="flex-1 ms-3 namescore">
-                              <h4 class="mb-0 fw-bold text-1000 dinername">
+                              <h4 class="mb-0 fw-bold text-900 dinername">
                                 {{ data.dname }}
                               </h4>
                             </div>
@@ -91,15 +91,15 @@
                           </div>
                           <div class="ms-3">
                             <i
-                              class="fas fa-eye text-dark text-800 me-2 fs-0"
+                              class="fas fa-eye text-dark text-500 me-2 fs-0"
                             ></i>
-                            <span class="mb-0 text-dark text-800 fs-0 me-3">
+                            <span class="mb-0 text-dark text-600 fs-0 me-3">
                               {{ data.views }}
                             </span>
                             <i
-                              class="fas fa-heart text-dark text-800 me-2 fs-0"
+                              class="fas fa-heart text-dark text-600 me-2 fs-0"
                             ></i>
-                            <span class="mb-0 text-dark text-800 fs-0 me-3">
+                            <span class="mb-0 text-dark text-600 fs-0 me-3">
                               {{ data.dno_count }}
                             </span>
                           </div>
