@@ -216,27 +216,34 @@
 
           <!--식당정보 끝-->
           <button class="btn btn-warning mb-5 text-white">
-            <router-link to="/add/menu">목록 추가</router-link>
+            <router-link to="/add/menu">메뉴 추가</router-link>
           </button>
 
-          <div>
-            <button class="btn btn-warning mb-5 text-white">
+          <div class="my-3 row justify-content-around col">
+            <h2>
+              리뷰
+              <i class="bi bi-chat-left-text"></i>
+            </h2>
+            <button type="button" class="btn btn-lg btn-success output col-5">
               <router-link :to="'/add/review/' + currentDiner.dno">
                 리뷰 쓰기
+                <i class="bi bi-brush"></i>
               </router-link>
             </button>
           </div>
 
           <!-- Comments section-->
           <div
-            class="card mb-6 border-info"
+            class="card mb-4 border-success"
             id="card1"
             v-for="(data, index) in review"
             :key="index"
           >
             <div class="row d-flex">
               <router-link :to="'/edit/review/' + data.rno">
-                <button>수정하기</button>
+                <span class="badge bg-success float-right" v-if="showAdminBoard"
+                  >수정하기</span
+                >
               </router-link>
               <div class="">
                 <img
@@ -244,14 +251,35 @@
                   src="https://i.imgur.com/V3ICjlm.jpg"
                 />
               </div>
-              <div class="d-flex flex-column">
-                <h5 class="ms-3 mt-2 mb-0">{{ data.id }}</h5>
-                <h5 class="ms-3 mt-2 mb-0">리뷰아이디 {{ data.rno }}</h5>
+              <div
+                class="d-flex flex-column"
+                v-for="(star, index) in score"
+                :key="index"
+              >
+                <!-- <h5 class="ms-3 mt-2 mb-0">{{ this.currentReview.id }}</h5> -->
                 <div>
-                  <p class="text-left">
+                  <h5 class="text-left">
                     <span class="fa fa-star star-active ml-3"></span>
-                    <span>{{ data.rating }}점</span>
-                  </p>
+                    <span class="badge bg-primary"
+                      >맛 : {{ star.taste }}점</span
+                    >
+                    <span class="fa fa-star star-active ml-3"></span>
+                    <span class="badge bg-success"
+                      >서비스 : {{ star.service }}점</span
+                    >
+                    <span class="fa fa-star star-active ml-3"></span>
+                    <span class="badge bg-danger"
+                      >접근성 : {{ star.loc }}점</span
+                    >
+                    <span class="fa fa-star star-active ml-3"></span>
+                    <span class="badge bg-warning text-dark"
+                      >분위기 : {{ star.mood }}점</span
+                    >
+                    <span class="fa fa-star star-active ml-3"></span>
+                    <span class="badge bg-dark"
+                      >가성비 : {{ star.cost }}점</span
+                    >
+                  </h5>
                 </div>
               </div>
               <div class="ml-auto">
@@ -263,11 +291,11 @@
                 {{ data.rcontent }}
               </p>
             </div>
-            <div class="row text-left">
+            <!-- <div class="row text-left">
               <img class="pic" :src="data.rphoto" />
               <img class="pic" src="https://i.imgur.com/SjBwAgs.jpg" />
               <img class="pic" src="https://i.imgur.com/IgHpsBh.jpg" />
-            </div>
+            </div> -->
           </div>
         </div>
 
@@ -315,6 +343,7 @@ import MakerDetail from "@/components/food/detail/MakerDetail.vue";
 import Canvas from "@/components/food/detail/CanvasView.vue";
 import LastviewDataService from "@/services/LastviewDataService";
 import User from "@/model/user";
+import ScoreDataService from "@/services/ScoreDataService";
 
 export default {
   data() {
@@ -322,12 +351,14 @@ export default {
       menu: [], // 메뉴 리스트 불러오기 위한 배열
       review: [],
       diner: [],
+      score: [],
       currentReview: null,
       currentIndex: -1,
       // dname: "", ->(변경) searchDname: "",
 
       currentDiner: null,
       currentMenu: null,
+      currentScore: null,
 
       mapNchart: true,
       showReservation: false,
@@ -440,6 +471,22 @@ export default {
           this.review = response.data;
           // 콘솔 로그 출력
           console.log("현재 리뷰 데이터 : ", response.data);
+        })
+        // 실패하면 .catch() 에러메세지가 리턴됨
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+    // Todo : dno로 리뷰 조회요청하는 함수
+    getScore(dno) {
+      // axios 공통함수 호출
+      ScoreDataService.get(dno)
+        // 성공하면 .then() 결과가 리턴됨
+        .then((response) => {
+          // springboot 결과를 리턴함(부서 객체)
+          this.score = response.data;
+          // 콘솔 로그 출력
+          console.log("현재 별점 데이터 : ", response.data);
         })
         // 실패하면 .catch() 에러메세지가 리턴됨
         .catch((e) => {
@@ -644,6 +691,7 @@ export default {
     this.getDiner(this.$route.params.dno);
     this.getMenu(this.$route.params.dno); // 화면 로딩시 음식점번호(dno)로 메뉴조회하기
     this.getReview(this.$route.params.dno);
+    this.getScore(this.$route.params.dno);
     this.retrieveFavorite(); // 화면 로딩시 fid해당하는 조회함수 실행
   },
 
@@ -681,6 +729,19 @@ export default {
         // 데이터가 없으면
         return false;
       }
+    },
+
+    // 관리자 접속이거나 글쓴사람(id)가 동일하면 보이는 함수
+    showAdminBoard() {
+      if (this.currentUser && this.currentUser.roles) {
+        // if ROLE_ADMIN 있으면 true 없으면 false 이거나 현재로그인한id == 글쓴사람id
+        return (
+          this.currentUser.roles.includes("ROLE_ADMIN") ||
+          this.currentUser.id == this.currentReview.id
+        );
+      }
+      // currentUser 없으면 false (메뉴가 안보임)
+      return false;
     },
   },
   // update() {
