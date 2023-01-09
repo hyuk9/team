@@ -59,7 +59,7 @@
           class="form-control"
           placeholder="리뷰를 작성해주세요."
           id="rcontent"
-          v-model="currentReview.rcontent"
+          v-model="currentReview.content"
           style="height: 200px"
         ></textarea>
       </div>

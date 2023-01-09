@@ -14,13 +14,12 @@ package com.example.simpledms.dto;
 public interface ReviewDto {
 //    diner 테이블에서 가져올 속성
     String getDname();
-    String getMainphoto();
 
 //    review 테이블에서 가져올 속성
-    Integer getRno();
-    Integer getId();
-    Integer getDno();
-    String getRcontent();
-    Integer getRating();
-    String  getRphoto(); // 나중에(버전2) 이사진이 진짜 리뷰 사진
+
+    String getContent();
+
+    Double getSumscore();
+
+    String getIt(); // 리뷰생성시간
 }

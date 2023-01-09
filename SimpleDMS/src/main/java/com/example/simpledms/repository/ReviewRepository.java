@@ -33,15 +33,18 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
 
     Optional<Review> findByRnoEquals (Integer rno);
 
-    @Query(value = "select rv.*, di.dname, di.mainphoto " +
+    @Query(value = "select di.dname, rv. content, rv.insert_time as it, sum(rv.taste+rv.service+rv.loc+rv.mood+rv.cost)/5 as sumscore " +
             "from tb_review rv, tb_diner di " +
             "where rv.dno = di.dno " +
             "and rv.id = :id " +
-            "and rv.delete_yn = 'N'",
-            countQuery = "select rv.*, di.dname, di.mainphoto " +
+            "and rv.delete_yn = 'N'" +
+            "group by di.dname, rv.content, rv.insert_time",
+            countQuery = "select di.dname, rv. content, rv.insert_time as it, sum(rv.taste+rv.service+rv.loc+rv.mood+rv.cost)/5 as sumscore " +
                     "from tb_review rv, tb_diner di " +
                     "where rv.dno = di.dno " +
-                    "and rv.delete_yn = 'N'"
+                    "and rv.id = :id " +
+                    "and rv.delete_yn = 'N'" +
+                    "group by di.dname, rv.content, rv.insert_time"
             , nativeQuery = true)
     Page<ReviewDto> findAllById(Integer id, Pageable pageable);
 

@@ -61,8 +61,8 @@
               <textarea
                 class="form-control"
                 placeholder="리뷰를 작성해주세요."
-                id="rcontent"
-                v-model="review.rcontent"
+                id="content"
+                v-model="review.content"
                 style="height: 200px"
               ></textarea>
             </div>
@@ -110,9 +110,15 @@ export default {
     return {
       review: {
         id: null,
-        rwriter: "",
+        writer: "",
         dno: null,
-        rcontent: "",
+        content: "",
+        taste: null,
+        service: null,
+        loc: null,
+        mood: null,
+        cost: null,
+        gender: "male"
       },
 
       // submit 버튼을 클릭하면 true 가 되고, You submitted successfully! 화면에 출력됨
@@ -142,9 +148,15 @@ export default {
       // 부서번호는(no) 자동생성되므로 빼고 전송함
       let data = {
         id: this.currentUser.id,
-        rwriter: this.currentUser.username,
+        writer: this.currentUser.username,
         dno: this.$route.params.dno,
-        rcontent: this.review.rcontent,
+        content: this.review.content,
+        taste: this.review.taste,
+        service: this.review.service,
+        loc: this.review.loc,
+        mood: this.review.mood,
+        cost: this.review.cost,
+        gender: this.review.gender
       };
 
       // insert 요청 함수 호출(axios 공통함수 호출)
@@ -160,7 +172,7 @@ export default {
         })
         // 실패하면 .catch() 결과가 전송됨
         .catch((e) => {
-          console.log(e);
+          console.log("리뷰저장 실패", e);
         });
     },
     newReview() {

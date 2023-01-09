@@ -254,9 +254,10 @@
           >
             <div class="row d-flex mt-1">
               <div>
-                <!-- <router-link :to="'/edit/review/' + data.rno" v-if="showDetailBoard"> FIXME:고쳐야하는데 이유는 아직 모름--> 
+                <!-- FIXME:고쳐야하는데 이유는 아직 모름 -->
+                <!-- <router-link :to="'/edit/review/' + data.rno" v-if="showDetailBoard"> --> 
                 <router-link :to="'/edit/review/' + data.rno">
-                  <span class="badge bg-success float-right">수정하기</span>
+                  <span class="badge bg-success float-right" >수정하기</span>
                 </router-link>
               </div>
               <div class="row">
@@ -264,8 +265,8 @@
                   <!-- TODO: 프로필 사진 넣을 예정 -->
 
                   <div class="d-flex flex-column">
-                    <!-- <h5 class="mt-2 mb-0">{{ data.writer }}</h5> -->
-                    <h5>내이름
+                    <h5 class="mt-2 mb-0">{{ data.writer }}</h5>
+                    <h5>
                       <span class="fa fa-star star-active ml-3"></span>
                         <span class="badge bg-primary"
                           >맛 : {{ data.taste }}점</span
@@ -293,8 +294,7 @@
             </div>
             <div class="col mt-2">
               <p class="content">
-                <!-- {{ data.rcontent }} -->
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur odit aperiam reiciendis sint suscipit consectetur dolorum culpa animi at? Quis quaerat praesentium debitis ipsa ea aperiam maiores eligendi perspiciatis quia.
+                {{ data.content }}
               </p>
               <div>
                 <p class="text-muted pt-5 pt-sm-3 float-right">
@@ -546,7 +546,7 @@ export default {
           confirmButtonText: "확인",
         });
       } else {
-        this.$router.push("/add/review/ + currentDiner.dno");
+        this.$router.push("/add/review/" + this.currentDiner.dno);
       }
     },
 
@@ -739,14 +739,14 @@ export default {
       }
     },
 
-    // showDetailBoard() {
-    //   if (this.currentUser && this.currentUser.roles) {
-    //     // if ROLE_ADMIN 있으면 true 없으면 false 이거나 현재로그인한id == 글쓴사람id
-    //     return this.currentUser.roles.includes("ROLE_ADMIN") || this.currentUser.id == this.currentReview.id;
-    //   }
-    //   // currentUser 없으면 false (메뉴가 안보임)
-    //   return false;
-    // },
+    showDetailBoard() {
+      if (this.currentUser && this.currentUser.roles) {
+        // if ROLE_ADMIN 있으면 true 없으면 false 이거나 현재로그인한id == 글쓴사람id
+        return this.currentUser.roles.includes("ROLE_ADMIN") || this.currentUser.id == this.currentReview.id;
+      }
+      // currentUser 없으면 false (메뉴가 안보임)
+      return false;
+    },
   },
   // update() {
   //   getDiner();

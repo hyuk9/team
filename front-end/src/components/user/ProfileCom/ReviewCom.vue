@@ -15,18 +15,16 @@
                     <th scope="col">가게</th>
                     <th scope="col">리뷰</th>
                     <th scope="col">평점</th>
-                    <th scope="col">사진</th>
+                    <th scope="col">작성일자</th>
                     <th scope="col">수정하기</th>
                   </tr>
                 </thead>
                 <tbody v-for="(data, index) in review" :key="index">
                   <tr>
                     <td class="align-middle">{{ data.dname }}</td>
-                    <td class="align-middle">{{ data.rcontent }}</td>
-                    <td class="align-middle">{{ data.rating }}</td>
-                    <td>
-                      <img :src="data.mainphoto" alt="" style="height: 100px" />
-                    </td>
+                    <td class="align-middle">{{ data.content }}</td>
+                    <td class="align-middle">{{ data.sumscore }}</td>
+                    <td class="align-middle">{{ data.it }}</td>
                     <td class="align-middle">
                       <router-link :to="'/edit/review/' + data.rno"
                         ><span class="badge rounded-pill bg-success"
