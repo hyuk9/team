@@ -6,31 +6,19 @@
         <div class="container">
           <div class="row flex-center">
             <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0">
-              <a class="img-landing-banner" href="#!"
-                ><img
-                  class="img-fluid"
-                  src="assets/img/gallery/hero-tomato.png"
-                  alt="hero-header"
-              /></a>
+              <a class="img-landing-banner" href="#!"><img class="img-fluid" src="assets/img/gallery/hero-tomato.png"
+                  alt="hero-header" /></a>
             </div>
-            <div
-              class="col-md-7 col-lg-6 py-8 text-md-start text-center"
-              id="typed"
-            >
-              <span
-                class="
+            <div class="col-md-7 col-lg-6 py-8 text-md-start text-center" id="typed">
+              <span class="
                   typed-words
                   fs-md-5 fs-lg-6 fs-xl-8
                   text-light
                   font-italic
                   fw-900
-                "
-              ></span>
+                "></span>
               <br />
-              <span
-                class="fs-md-5 fs-lg-6 fs-xl-8 text-light font-italic fw-900"
-                >쉽고 빠르게😋</span
-              >
+              <span class="fs-md-5 fs-lg-6 fs-xl-8 text-light font-italic fw-900">쉽고 빠르게😋</span>
             </div>
           </div>
         </div>
@@ -83,7 +71,7 @@
       <!-- ============================================-->
       <!-- 인기 순 정렬 시작 ============================-->
       <!-- 조회수 기준으로 정렬하는게 좋을 거 같은데 방법을 아직 모르니 일단 하드코딩으로 데이터 집어넣어야할듯 -->
-     
+
       <!-- 인기 순 정렬 끝 ============================-->
       <!-- ============================================-->
 
@@ -134,14 +122,11 @@
       <!-- ============================================-->
       <!-- 광고배너? 시작 ============================-->
       <section class="py-0">
-        <div
-          class="bg-holder"
-          style="
+        <div class="bg-holder" style="
             background-image: url(assets/img/gallery/cta-two-bg.png);
             background-position: center;
             background-size: cover;
-          "
-        ></div>
+          "></div>
         <!--/.bg-holder-->
 
         <div class="container">

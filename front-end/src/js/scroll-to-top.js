@@ -1,24 +1,27 @@
-import utils from './utils';
-/* -------------------------------------------------------------------------- */
-/*                                Scroll To Top                               */
-/* -------------------------------------------------------------------------- */
-const scrollToTop = () => {
-  document
-    .querySelectorAll('[data-anchor] > a, [data-scroll-to]')
-    .forEach((anchor) => {
-      anchor.addEventListener('click', (e) => {
-        e.preventDefault();
-        const el = e.target;
-        const id = utils.getData(el, 'scroll-to') || el.getAttribute('href');
-        window.scroll({
-          top:
-            utils.getData(el, 'offset-top') ??
-            utils.getOffset(document.querySelector(id)).top - 100,
-          left: 0,
-          behavior: 'smooth',
-        });
-        window.location.hash = id;
-      });
-    });
-};
-export default scrollToTop;
+/* eslint-disable */
+export default function ScollCom() {
+  // Get the button:
+  let mybutton = document.getElementById("myBtn");
+
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function () {
+    scrollFunction();
+  };
+
+  function scrollFunction() {
+    if (
+      document.body.scrollTop > 20 ||
+      document.documentElement.scrollTop > 20
+    ) {
+      mybutton.style.display = "block";
+    } else {
+      mybutton.style.display = "none";
+    }
+  }
+
+  // When the user clicks on the button, scroll to the top of the document
+  function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
+}

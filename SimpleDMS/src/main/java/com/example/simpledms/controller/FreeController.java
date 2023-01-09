@@ -404,7 +404,7 @@ public class FreeController {
 
 //    조회수 위해서 추가
 @GetMapping("/free/findById/{fno}")
-public ResponseEntity<Object> getFreeId(@PathVariable int fno) {
+public ResponseEntity<Object> getFreeId2(@PathVariable int fno) {
 
     try {
         Optional<Free> optionalFree = freeService.findId(fno);

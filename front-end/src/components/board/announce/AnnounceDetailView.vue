@@ -38,10 +38,10 @@ export default {
     };
   },
   methods: {
-    // 부서번호(ano)로 조회 요청하는 함수
-    getAnnounce(ano) {
+    // 부서번호(aid)로 조회 요청하는 함수
+    getAnnounce(aid) {
       // axios 공통함수 호출
-      AnnounceDataService.get(ano)
+      AnnounceDataService.get(aid)
         // 성공하면 .then() 결과가 리턴됨
         .then((response) => {
           // springboot 결과를 리턴함(부서 객체)
@@ -57,7 +57,7 @@ export default {
     // 부서정보를 수정 요청하는 함수
     updateAnnounce() {
       // axios 공통함수 호출
-      AnnounceDataService.update(this.currentAnnounce.ano, this.currentAnnounce)
+      AnnounceDataService.update(this.currentAnnounce.aid, this.currentAnnounce)
         // 성공하면 then() 결과가 전송됨
         .then((response) => {
           console.log(response.data);
@@ -73,7 +73,7 @@ export default {
     // 부서정보를 삭제 요청하는 함수
     deleteAnnounce() {
       // axios 공통함수 호출
-      AnnounceDataService.delete(this.currentAnnounce.ano)
+      AnnounceDataService.delete(this.currentAnnounce.aid)
         // 성공하면 then() 결과가 전송됨
         .then((response) => {
           console.log(response.data);

@@ -84,7 +84,7 @@ export default {
     // 부서번호(fno)로 조회 요청하는 함수
     getFree(fno) {
       // axios 공통함수 호출
-      FreeDataService.getById(fno)
+      FreeDataService.get(fno)
         // 성공하면 .then() 결과가 리턴됨
         .then((response) => {
           // springboot 결과를 리턴함(부서 객체)
@@ -97,7 +97,7 @@ export default {
           console.log(e);
         });
       // axios 공통함수 호출
-      FreeDataService.getById(fno)
+      FreeDataService.get(fno)
         // 성공하면 .then() 결과가 리턴됨
         .then((response) => {
           // springboot 결과를 리턴함(부서 객체)
