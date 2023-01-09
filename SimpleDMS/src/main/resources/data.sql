@@ -270,15 +270,57 @@ VALUES (SQ_DINER.nextval, '대저할매국수', '2.7', '부산 강서구 대저�
 
 -- Todo:리뷰 테이블 // ID / DNO 순서
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '1', '1', '유저1번', '리뷰내용', 1, 2, 3, 4, 5, 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_REVIEW.nextval, '2', '1', '장동혁', '유저2번', 'N',
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+        NULL, NULL);
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '2', '1', '유저2번', '리뷰내용', 1, 2, 3, 4, 5, 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_REVIEW.nextval, '3', '1', '조성모', '유저3번', 'N',
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+        NULL, NULL);
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '3', '1', '유저3번', '리뷰내용', 1, 2, 3, 4, 5, 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_REVIEW.nextval, '3', '2', '조성모', '유저3번', 'N',
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+        NULL, NULL);
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '4', '1', '유저4번', '리뷰내용', 1, 2, 3, 4, 5, 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_REVIEW.nextval, '5', '3', '권태현', '유저5번', 'N',
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+        NULL, NULL);
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '5', '1', '유저5번', '리뷰내용', 1, 2, 3, 4, 5, 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_REVIEW.nextval, '4', '4', '전성혜', '유저4번', 'N',
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+        NULL, NULL);
+INSERT INTO TB_REVIEW
+VALUES (SQ_REVIEW.nextval, '6', '5', '박선영', '유저6번', 'N',
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+        NULL, NULL);
+INSERT INTO TB_REVIEW
+VALUES (SQ_REVIEW.nextval, '6', '6', '박선영', '유저6번', 'N',
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+        NULL, NULL);
+INSERT INTO TB_REVIEW
+VALUES (SQ_REVIEW.nextval, '4', '7', '전성혜', '유저4번', 'N',
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+        NULL, NULL);
+INSERT INTO TB_REVIEW
+VALUES (SQ_REVIEW.nextval, '2', '8', '장동혁', '유저2번', 'N',
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+        NULL, NULL);
+INSERT INTO TB_REVIEW
+VALUES (SQ_REVIEW.nextval, '3', '9', '조성모', '유저3번', 'N',
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+        NULL, NULL);
+INSERT INTO TB_REVIEW
+VALUES (SQ_REVIEW.nextval, '3', '10', '조성모', '유저3번', 'N',
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+        NULL, NULL);
+INSERT INTO TB_REVIEW
+VALUES (SQ_REVIEW.nextval, '4', '11', '전성혜', '유저4번', 'N',
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+        NULL, NULL);
+INSERT INTO TB_REVIEW
+VALUES (SQ_REVIEW.nextval, '2', '12', '장동혁', '유저2번', 'N',
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+        NULL, NULL);
 
 
 

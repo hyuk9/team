@@ -3,12 +3,13 @@
     <main class="main" id="top">
       <div class="card mb-4">
         <!-- AddDiner.vue -->
-        <div class="submit-form mt-5 mb-5 card-header">
+        <div class="form mt-5 mb-5 card-header">
           <!-- 새 양식 폼 시작 -->
-          <div v-if="!submitted" class="card-body" style="width: 500px">
+          <div v-if="!submitted" class="card-body">
+            <h1>음식점 추가하기</h1>
             <!-- 식당이름 -->
-            <div class="form-group">
-              <label for="dname">식당이름</label>
+            <div class="input__block">
+              <h5>식당이름</h5>
               <input
                 type="text"
                 class="form-control"
@@ -20,28 +21,17 @@
             </div>
 
             <!-- 평점 -->
-            <div class="form-group">
-              <label for="score">평점</label>
-              <select
-                class="form-select"
-                id="score"
-                required
+            <div class="input__block">
+              <h5>평점</h5>
+              <b-form-rating
                 v-model="diner.score"
-                name="score"
-                aria-label="Default select example"
-              >
-                <option selected>평점을 선택해주세요.</option>
-                <option value="1">1점</option>
-                <option value="2">2점</option>
-                <option value="3">3점</option>
-                <option value="4">4점</option>
-                <option value="5">5점</option>
-              </select>
+                variant="warning"
+              ></b-form-rating>
             </div>
 
             <!-- 지역 -->
-            <div class="form-group">
-              <label for="loc">주소</label>
+            <div class="input__block">
+              <h5>주소</h5>
               <input
                 class="form-control"
                 id="loc"
@@ -52,8 +42,8 @@
             </div>
 
             <!-- 전화번호 -->
-            <div class="form-group">
-              <label for="phone">전화번호</label>
+            <div class="input__block">
+              <h5>전화번호</h5>
               <input
                 type="text"
                 class="form-control"
@@ -65,8 +55,8 @@
             </div>
 
             <!-- 메뉴 -->
-            <div class="form-group">
-              <label for="score">메뉴</label>
+            <div class="input__block">
+              <h5>메뉴</h5>
               <select
                 class="form-select"
                 id="menu"
@@ -84,8 +74,8 @@
             </div>
 
             <!-- 테마 -->
-            <div class="form-group">
-              <label for="score">테마</label>
+            <div class="input__block">
+              <h5>테마</h5>
               <select
                 class="form-select"
                 id="theme"
@@ -103,69 +93,153 @@
             </div>
 
             <!-- 주소로 지도 좌표찾는 사이트 링크 추가 -->
-            <button type="button" class="btn btn-info" @click="findL()">주소 -> 좌표 전환 사이트</button>
+            <div class="text-center">
+              <button type="button" class="reservation__btn2" @click="findL()">
+                주소 -> 좌표 전환 사이트
+              </button>
+            </div>
 
             <!-- 지도 좌표추가 -->
-            <div class="form-group">
-              <label for="lat">식당 좌표값 -> 위도</label>
+            <div class="input__block">
+              <h5>식당 좌표값 -> 위도</h5>
               <input
                 type="number"
                 class="form-control"
                 id="lat"
-               
                 v-model="diner.lat"
                 name="lat"
               />
-              <label for="lng">식당 좌표값 -> 경도</label>
+              <h5>식당 좌표값 -> 경도</h5>
               <input
                 type="number"
                 class="form-control"
                 id="lng"
-                
                 v-model="diner.lng"
                 name="lng"
               />
             </div>
 
             <!-- 메인 사진넣기 -->
-            <div class="form-group">
-              <label for="mainphoto">메인 사진</label>
+            <div class="input__block">
+              <h5>메인 사진</h5>
               <input
                 type="text"
                 class="form-control"
                 id="mainphoto"
-              
                 v-model="diner.mainphoto"
                 name="mainphoto"
               />
             </div>
 
             <!-- 슬라이드 사진넣기 -->
-            <div class="form-group">
-              <label for="photo">슬라이드 사진</label>
+            <div class="input__block">
+              <h5>슬라이드 사진</h5>
               <input
                 type="text"
-                class="form-control"
+                class="form-control mb-1"
                 id="photo1"
-               
                 v-model="diner.photo1"
                 name="photo1"
               />
               <input
                 type="text"
-                class="form-control"
+                class="form-control mb-1"
                 id="photo2"
-             
                 v-model="diner.photo2"
                 name="photo2"
               />
               <input
                 type="text"
-                class="form-control"
+                class="form-control mb-1"
                 id="photo3"
-                
                 v-model="diner.photo3"
                 name="photo3"
+              />
+            </div>
+            <br />
+
+            <!-- 대표 메뉴 추가하기 -->
+            <div class="input__block">
+              <h4 class="text-center">대표메뉴 5가지를 추가해주세요!</h4>
+              <h5>메뉴1</h5>
+              <input
+                type="number"
+                class="form-control"
+                id="menu1"
+                v-model="diner.menu1"
+                name="menu1"
+              />
+              <h5>메뉴1가격</h5>
+              <input
+                type="number"
+                class="form-control"
+                id="price1"
+                v-model="diner.price1"
+                name="price1"
+              />
+              <h5>메뉴2</h5>
+              <input
+                type="number"
+                class="form-control"
+                id="menu2"
+                v-model="diner.menu2"
+                name="menu2"
+              />
+              <h5>메뉴2가격</h5>
+              <input
+                type="number"
+                class="form-control"
+                id="price2"
+                v-model="diner.price2"
+                name="price2"
+              />
+              <h5>메뉴3</h5>
+              <input
+                type="number"
+                class="form-control"
+                id="menu3"
+                v-model="diner.menu3"
+                name="menu3"
+              />
+              <h5>메뉴3가격</h5>
+              <input
+                type="number"
+                class="form-control"
+                id="price3"
+                v-model="diner.price3"
+                name="price3"
+              />
+              <h5>메뉴4</h5>
+              <input
+                type="number"
+                class="form-control"
+                id="menu4"
+                v-model="diner.menu4"
+                name="menu4"
+              />
+              <h5>메뉴4가격</h5>
+              <input
+                type="number"
+                class="form-control"
+                id="price4"
+                v-model="diner.price4"
+                name="price4"
+              />
+              <h5>메뉴5</h5>
+              <input
+                type="number"
+                class="form-control"
+                id="menu5"
+                v-model="diner.menu5"
+                name="menu5"
+              />
+              <h5>메뉴5가격</h5>
+              <input
+                type="number"
+                class="form-control"
+                id="price5"
+                v-model="diner.price5"
+                name="price5"
               />
             </div>
 
@@ -175,9 +249,11 @@
             </div>
             <!-- 서버 에러 메세지가 있을 경우 아래 출력 끝 -->
 
-            <button @click="saveDiner" class="btn btn-success mt-5 mb-3">
-              Submit
-            </button>
+            <div class="mt-5 mb-3 text-center">
+              <button @click="saveDiner" class="reservation__btn2">
+                Submit
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -211,6 +287,18 @@ export default {
         photo1: "",
         photo2: "",
         photo3: "",
+
+        // 메뉴추가
+        menu1: "",
+        price1: null,
+        menu2: "",
+        price2: null,
+        menu3: "",
+        price3: null,
+        menu4: "",
+        price4: null,
+        menu5: "",
+        price5: null,
       },
       // submit 버튼을 클릭하면 true 가 되고, You submitted successfully! 화면에 출력됨
       submitted: false,
@@ -232,7 +320,17 @@ export default {
         mainphoto: this.diner.mainphoto,
         photo1: this.diner.photo1,
         photo2: this.diner.photo2,
-        photo3: this.diner.photo3
+        photo3: this.diner.photo3,
+
+        // 메뉴추가
+        menu1: this.diner.menu1,
+        price1: this.diner.price1,
+        menu2: this.diner.menu2,
+        price2: this.diner.price2,
+        menu3: this.diner.menu3,
+        price3: this.diner.price3,
+        menu4: this.diner.menu4,
+        price4: this.diner.price4,
       };
 
       // insert 요청 함수 호출(axios 공통함수 호출)
@@ -257,17 +355,103 @@ export default {
       this.diner = {};
     },
     findL() {
-      window.open(
-        "https://deveapp.com/map.php"
-      );
+      window.open("https://deveapp.com/map.php");
     },
   },
 };
 </script>
 
-<style>
-.submit-form {
-  max-width: 700px;
-  margin: auto;
+<style lang="scss" scoped>
+h1 {
+  color: #ffb30e;
+  font-size: 48px;
+  letter-spacing: -3px;
+  text-align: center;
+  margin-bottom: 80px;
+  transition: 0.2s linear;
+}
+
+h5 {
+  display: inline-block;
+  color: #ffb30e;
+  margin: 30px 0 30px 30px;
+  transition: 0.2s linear;
+}
+
+.form {
+  width: 100%;
+  max-width: 680px;
+  margin: 40px auto 10px;
+}
+
+.input__block {
+  margin: 20px auto;
+  display: block;
+  position: relative;
+}
+
+.input__block input {
+  display: block;
+  width: 90%;
+  max-width: 680px;
+  height: 50px;
+  margin: 0 auto;
+  border-radius: 8px;
+  border: none;
+  background: rgba(15, 19, 42, 0.1);
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+  padding: 0 10px;
+}
+
+.gender {
+  margin: 0 0 0 30px;
+}
+
+.gender h5 {
+  margin: 30px 0 30px 0px;
+}
+
+.gender input {
+  width: 50%;
+  max-width: 680px;
+  height: 30px;
+  margin: 0 auto;
+  padding: 0 0 0 15px;
+  vertical-align: middle;
+}
+.reservation__btn1 {
+  background: tomato;
+  color: white;
+  display: inline;
+  width: 140px;
+  height: 50px;
+  border-radius: 8px;
+  margin: 0 auto;
+  border: none;
+  font-size: 18px;
+  box-shadow: 0 10px 20px rgba(170, 71, 54, 0.377);
+  transition: 0.2s linear;
+}
+.reservation__btn2 {
+  background: rgba(76, 184, 43, 0.993);
+  color: white;
+  display: inline;
+  width: 140px;
+  height: 50px;
+  border-radius: 8px;
+  margin: 0 auto;
+  border: none;
+  font-size: 18px;
+  box-shadow: 0 10px 20px rgba(59, 138, 35, 0.493);
+  transition: 0.2s linear;
+}
+.reservation__btn1:hover,
+.reservation__btn2:hover {
+  box-shadow: 0 0 0 rgba(233, 30, 99, 0);
+}
+button {
+  font-family: ONE-Mobile-POP !important;
 }
 </style>
+

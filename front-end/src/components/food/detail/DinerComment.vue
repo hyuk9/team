@@ -3,56 +3,72 @@
     <main class="main" id="top">
       <div class="card mb-4">
         <!-- AddDiner.vue -->
-        <div class="submit-form mt-5 mb-5 card-header">
+        <div class="form mt-5 mb-5 card-header">
           <!-- 새 양식 폼 시작 -->
-          <div v-if="!submitted" class="card-body" style="width: 500px">
-            <!-- 식당이름 -->
-            <div class="form-group">
-              <label for="id">작성자</label>
+          <div v-if="!submitted" class="card-body">
+            <h1>리뷰쓰기</h1>
+            <!-- 이름 -->
+            <div class="input__block">
+              <h5>작성자</h5>
               <input
                 type="text"
                 class="form-control"
-                id="id"
+                id="writer"
                 required
                 v-model="currentUser.username"
                 v-bind:disabled="true"
-                name="id"
+                name="writer"
               />
             </div>
 
             <!-- 평점 -->
-            <div class="form-group">
-              <label for="rating">평점</label>
-              <select
-                class="form-select"
-                id="rating"
-                required
-                v-model="review.rating"
-                name="rating"
-                aria-label="Default select example"
-              >
-                <option selected>평점을 선택해주세요.</option>
-                <option value="1">1점</option>
-                <option value="2">2점</option>
-                <option value="3">3점</option>
-                <option value="4">4점</option>
-                <option value="5">5점</option>
-              </select>
+            <div class="input__block">
+              <h4 class="text-center">평점 5가지를 선택해주세요!</h4>
+              <br />
+              <h5>맛</h5>
+              <b-form-rating
+                v-model="review.taste"
+                variant="warning"
+              ></b-form-rating>
+
+              <h5>서비스</h5>
+              <b-form-rating
+                v-model="review.service"
+                variant="warning"
+              ></b-form-rating>
+
+              <h5>접근성</h5>
+              <b-form-rating
+                v-model="review.loc"
+                variant="warning"
+              ></b-form-rating>
+
+              <h5>분위기</h5>
+              <b-form-rating
+                v-model="review.mood"
+                variant="warning"
+              ></b-form-rating>
+
+              <h5>가성비</h5>
+              <b-form-rating
+                v-model="review.cost"
+                variant="warning"
+              ></b-form-rating>
             </div>
 
-            <div class="form-group">
-              <label for="rcontent">리뷰내용</label>
+            <div class="input__block">
+              <h5>리뷰내용</h5>
               <textarea
                 class="form-control"
                 placeholder="리뷰를 작성해주세요."
                 id="rcontent"
                 v-model="review.rcontent"
-                style="height: 100px"
+                style="height: 200px"
               ></textarea>
             </div>
 
             <!-- 식당이름 -->
-            <div class="form-group">
+            <!-- <div class="form-group">
               <label for="rphoto">사진</label>
               <input
                 type="text"
@@ -61,7 +77,7 @@
                 v-model="review.rphoto"
                 name="rphoto"
               />
-            </div>
+            </div> -->
 
             <!-- 서버 에러 메세지가 있을 경우 아래 출력 시작 -->
             <div v-if="message" class="alert alert-secondary" role="alert">
@@ -69,9 +85,15 @@
             </div>
             <!-- 서버 에러 메세지가 있을 경우 아래 출력 끝 -->
 
-            <button @click="saveReview" class="btn btn-success mt-5 mb-3">
-              Submit
-            </button>
+            <div class="mt-5 mb-3 text-center">
+              <button
+                type="submit"
+                @click="saveReview"
+                class="reservation__btn2"
+              >
+                Submit
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -88,7 +110,7 @@ export default {
     return {
       review: {
         id: null,
-        // username: "",
+        rwriter: "",
         dno: null,
         rcontent: "",
       },
@@ -120,6 +142,7 @@ export default {
       // 부서번호는(no) 자동생성되므로 빼고 전송함
       let data = {
         id: this.currentUser.id,
+        rwriter: this.currentUser.username,
         dno: this.$route.params.dno,
         rcontent: this.review.rcontent,
       };
@@ -162,9 +185,96 @@ export default {
 };
 </script>
 
-<style>
-.submit-form {
-  max-width: 700px;
-  margin: auto;
+<style lang="scss" scoped>
+h1 {
+  color: #ffb30e;
+  font-size: 48px;
+  letter-spacing: -3px;
+  text-align: center;
+  margin-bottom: 80px;
+  transition: 0.2s linear;
+}
+
+h5 {
+  display: inline-block;
+  color: #ffb30e;
+  margin: 30px 0 30px 30px;
+  transition: 0.2s linear;
+}
+
+.form {
+  width: 100%;
+  max-width: 680px;
+  margin: 40px auto 10px;
+}
+
+.input__block {
+  margin: 20px auto;
+  display: block;
+  position: relative;
+}
+
+.input__block input {
+  display: block;
+  width: 90%;
+  max-width: 680px;
+  height: 50px;
+  margin: 0 auto;
+  border-radius: 8px;
+  border: none;
+  background: rgba(15, 19, 42, 0.1);
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+  padding: 0 10px;
+}
+
+.gender {
+  margin: 0 0 0 30px;
+}
+
+.gender h5 {
+  margin: 30px 0 30px 0px;
+}
+
+.gender input {
+  width: 50%;
+  max-width: 680px;
+  height: 30px;
+  margin: 0 auto;
+  padding: 0 0 0 15px;
+  vertical-align: middle;
+}
+.reservation__btn1 {
+  background: tomato;
+  color: white;
+  display: inline;
+  width: 140px;
+  height: 50px;
+  border-radius: 8px;
+  margin: 0 auto;
+  border: none;
+  font-size: 18px;
+  box-shadow: 0 10px 20px rgba(170, 71, 54, 0.377);
+  transition: 0.2s linear;
+}
+.reservation__btn2 {
+  background: rgba(76, 184, 43, 0.993);
+  color: white;
+  display: inline;
+  width: 140px;
+  height: 50px;
+  border-radius: 8px;
+  margin: 0 auto;
+  border: none;
+  font-size: 18px;
+  box-shadow: 0 10px 20px rgba(59, 138, 35, 0.493);
+  transition: 0.2s linear;
+}
+.reservation__btn1:hover,
+.reservation__btn2:hover {
+  box-shadow: 0 0 0 rgba(233, 30, 99, 0);
+}
+button {
+  font-family: ONE-Mobile-POP !important;
 }
 </style>
