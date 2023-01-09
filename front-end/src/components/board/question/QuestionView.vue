@@ -46,12 +46,12 @@
             <div>{{ data.content }}</div>
           </div> -->
         <div class="card">
-          <div class="card-header pb-4">댓글 리스트
+          <div class="card-header pb-4">댓글 
             <ul class="list-group">
               <li class="list-group-item d-flex justify-content-between p-2" v-for="(data, index) in comment" :key="index">
-                <div>{{ data.writer }}:{{ data.content }}</div>
+                <p class="text-start col-2">{{ data.writer }} </p><p class="col-8">{{ data.content }}</p>
                 <div class="d-flex">
-                  <div class="front-italic">작성일:{{ data.insertTime.split(" ")[0] }}&nbsp;</div>
+                  <div class="front-italic">작성일:{{ data.insertTime }}&nbsp;</div>
                   <button class="badge bg-warning">수정</button>
                   <button class="badge bg-danger">삭제</button>
                 </div>
