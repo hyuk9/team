@@ -3,6 +3,11 @@
     <div class="container col-8 mb-2 mt-2">
       <div class="FreeView-header mt-5">
         <h1><strong>자유 게시판</strong></h1>
+        <!-- <router-link :to="'/free'">
+            <button class="btn btn-warning offset-8" type="button">
+              돌아가기
+            </button>
+          </router-link> -->
       </div>
       <div class="FreeView-title">
         <table class="table">
@@ -51,12 +56,12 @@
         <div class="card">
           <div class="card-header pb-4">댓글
             <ul class="list-group">
-              <li class="list-group-item d-flex justify-content-between p-2" v-for="(data, index) in comment" 
+              <li class="list-group-item d-flex justify-content-between p-2" v-for="(data, index) in comment"
                 :key="index">
                 <h4 class="col-1"><span class="badge rounded-pill bg-primary  text-dark">{{ data.writer }}</span></h4>
                 <p class="col-6">{{ data.content }}</p>
                 <div class="d-flex">
-                  <div class="front-italic col-">작성일:{{ data.insertTime  }}&nbsp;</div>
+                  <div class="front-italic col-">작성일:{{ data.insertTime }}&nbsp;</div>
                   <span class="badge bg-primary p-2 mt-1 ms-3"><span class="fs-0">수정</span></span>
                   <span class="badge bg-danger p-2 mt-1 ms-3"><span class="fs-0">삭제</span></span>
                   <!-- <span class="badge rounded-pill bg-danger text-dark col-2">삭제</span> -->
@@ -80,12 +85,6 @@
       <router-link :to="'/free/' + currentFree.fno" v-if="showDetailBoard">
         <button class="btn btn-warning offset-5" type="button">
           수정&삭제
-        </button>
-      </router-link>
-
-      <router-link :to="'/free'">
-        <button class="btn btn-warning offset-9" type="button">
-          돌아가기
         </button>
       </router-link>
     </div>

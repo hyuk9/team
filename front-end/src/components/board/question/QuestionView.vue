@@ -3,6 +3,11 @@
     <div class="container col-8 mb-2 mt-2">
       <div class="FreeView-header mt-5">
         <h1><strong>질문 게시판</strong></h1>
+        <!-- <router-link :to="'/question'">
+            <button class="btn btn-warning offset-8" type="button">
+              돌아가기
+            </button>
+          </router-link> -->
       </div>
       <div class="FreeView-title">
         <table class="table">
@@ -50,14 +55,12 @@
             <ul class="list-group">
               <li class="list-group-item d-flex justify-content-between p-2" v-for="(data, index) in comment"
                 :key="index">
-                  <h4 class="col-1"><span class="badge rounded-pill bg-primary  text-dark">{{ data.writer }}</span></h4>
+                <h4 class="col-1"><span class="badge rounded-pill bg-primary  text-dark">{{ data.writer }}</span></h4>
                 <p class="col-6">{{ data.content }}</p>
                 <div class="d-flex">
                   <div class="front-italic col-">작성일:{{ data.insertTime }}&nbsp;</div>
-                  <span class="badge bg-primary p-2 mt-1 ms-3"><span
-                      class="fs-0">수정</span></span>
-                  <span class="badge bg-danger p-2 mt-1 ms-3"><span
-                      class="fs-0">삭제</span></span>
+                  <span class="badge bg-primary p-2 mt-1 ms-3"><span class="fs-0">수정</span></span>
+                  <span class="badge bg-danger p-2 mt-1 ms-3"><span class="fs-0">삭제</span></span>
                   <!-- <span class="badge rounded-pill bg-danger text-dark col-2">삭제</span> -->
                 </div>
                 <!-- <h1>여기</h1> -->
