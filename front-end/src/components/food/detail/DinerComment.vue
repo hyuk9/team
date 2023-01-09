@@ -91,8 +91,6 @@ export default {
         // username: "",
         dno: null,
         rcontent: "",
-        rating: null,
-        rphoto: "",
       },
 
       // submit 버튼을 클릭하면 true 가 되고, You submitted successfully! 화면에 출력됨
@@ -124,8 +122,6 @@ export default {
         id: this.currentUser.id,
         dno: this.$route.params.dno,
         rcontent: this.review.rcontent,
-        rating: this.review.rating,
-        rphoto: this.review.rphoto,
       };
 
       // insert 요청 함수 호출(axios 공통함수 호출)

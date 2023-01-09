@@ -270,51 +270,55 @@ VALUES (SQ_DINER.nextval, '대저할매국수', '2.7', '부산 강서구 대저�
 
 -- Todo:리뷰 테이블
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '2', '1', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', 'N',
+VALUES (SQ_REVIEW.nextval, '2', '1', '유저2번', 'N',
         TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL, NULL);
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '3', '2', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', 'N',
+VALUES (SQ_REVIEW.nextval, '3', '1', '유저3번', 'N',
         TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL, NULL);
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '5', '3', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', 'N',
+VALUES (SQ_REVIEW.nextval, '3', '2', '유저3번', 'N',
         TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL, NULL);
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '4', '4', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', 'N',
+VALUES (SQ_REVIEW.nextval, '5', '3', '유저5번', 'N',
         TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL, NULL);
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '6', '5', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', 'N',
+VALUES (SQ_REVIEW.nextval, '4', '4', '유저4번', 'N',
         TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL, NULL);
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '6', '6', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', 'N',
+VALUES (SQ_REVIEW.nextval, '6', '5', '유저6번', 'N',
         TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL, NULL);
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '4', '7', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', 'N',
+VALUES (SQ_REVIEW.nextval, '6', '6', '유저6번', 'N',
         TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL, NULL);
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '2', '8', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', 'N',
+VALUES (SQ_REVIEW.nextval, '4', '7', '유저4번', 'N',
         TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL, NULL);
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '3', '9', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', 'N',
+VALUES (SQ_REVIEW.nextval, '2', '8', '유저2번', 'N',
         TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL, NULL);
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '3', '10', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', 'N',
+VALUES (SQ_REVIEW.nextval, '3', '9', '유저3번', 'N',
         TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL, NULL);
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '4', '11', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', 'N',
+VALUES (SQ_REVIEW.nextval, '3', '10', '유저3번', 'N',
         TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL, NULL);
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '2', '12', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', 'N',
+VALUES (SQ_REVIEW.nextval, '4', '11', '유저4번', 'N',
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+        NULL, NULL);
+INSERT INTO TB_REVIEW
+VALUES (SQ_REVIEW.nextval, '2', '12', '유저2번', 'N',
         TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL, NULL);
 
@@ -479,51 +483,51 @@ VALUES (SQ_MENU.nextval, '메뉴16', '가격16', '16', 'N', TO_CHAR(SYSDATE, 'YY
 -- Todo: 평점 테이블
 -- Todo: 리뷰 테이블이랑 조인 예정
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '2', '1', '3', '4', '1', '1', '1', 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+VALUES (SQ_SCORE.nextval, '2', '1', '3', '4', '1', '1', '5', 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL,
         NULL);
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '1', '4', '2', '3', '2', '1', '2', 'female', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+VALUES (SQ_SCORE.nextval, '1', '4', '2', '3', '2', '2', '2', 'female', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL,
         NULL);
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '2', '2', '2', '2', '2', '2', '3', 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+VALUES (SQ_SCORE.nextval, '2', '2', '2', '2', '2', '3', '3', 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL,
         NULL);
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '1', '4', '2', '3', '1', '2', '4', 'female', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+VALUES (SQ_SCORE.nextval, '1', '4', '2', '3', '1', '4', '4', 'female', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL,
         NULL);
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '3', '2', '3', '2', '1', '3', '5', 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+VALUES (SQ_SCORE.nextval, '3', '2', '3', '2', '1', '5', '1', 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL,
         NULL);
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '3', '5', '1', '2', '4', '3', '6', 'female', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+VALUES (SQ_SCORE.nextval, '3', '5', '1', '2', '4', '6', '6', 'female', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL,
         NULL);
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '2', '4', '4', '3', '5', '4', '7', 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+VALUES (SQ_SCORE.nextval, '2', '4', '4', '3', '5', '7', '7', 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL,
         NULL);
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '1', '2', '3', '1', '2', '4', '8', 'female', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+VALUES (SQ_SCORE.nextval, '1', '2', '3', '1', '2', '8', '8', 'female', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL,
         NULL);
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '2', '3', '1', '5', '2', '5', '9', 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+VALUES (SQ_SCORE.nextval, '2', '3', '1', '5', '2', '9', '9', 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL,
         NULL);
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '3', '4', '2', '5', '3', '5', '10', 'female', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+VALUES (SQ_SCORE.nextval, '3', '4', '2', '5', '3', '10', '10', 'female', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL,
         NULL);
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '3', '4', '3', '5', '3', '5', '11', 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+VALUES (SQ_SCORE.nextval, '3', '4', '3', '5', '3', '11', '11', 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL,
         NULL);
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '3', '3', '2', '5', '3', '5', '12', 'female', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+VALUES (SQ_SCORE.nextval, '3', '3', '2', '5', '3', '12', '12', 'female', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL,
         NULL);
 
