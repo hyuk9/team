@@ -164,6 +164,7 @@ export default {
               });
               // 모달창 닫기
               this.close();
+              this.$router.go();
             })
             // 참고) if/else 문 대신에 -> or(||) and(&&) 연산자를 사용할때도 있음
             // 로직체크 순서 : true || false, false && true
