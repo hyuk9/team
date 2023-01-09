@@ -42,14 +42,8 @@
               </td>
             </tr>
           </tbody>
-
-          <!-- 댓글 창 -->
         </table>
-        <!-- 댓글 창 만들어야 함
-          <div v-for="(data, index) in comment" :key="index">
-            <div>{{ data.writer }} 댓글:</div>
-            <div>{{ data.content }}</div>
-          </div> -->
+
         <div class="card">
           <div class="card-header pb-4">댓글
             <ul class="list-group">
@@ -61,9 +55,10 @@
                   <div class="front-italic col-">작성일:{{ data.insertTime }}&nbsp;</div>
                   <span class="badge bg-primary p-2 mt-1 ms-3"><span class="fs-0">수정</span></span>
                   <span class="badge bg-danger p-2 mt-1 ms-3"><span class="fs-0">삭제</span></span>
-                  <!-- <span class="badge rounded-pill bg-danger text-dark col-2">삭제</span> -->
                 </div>
-                <!-- <h1>여기</h1> -->
+              </li>
+              <li class="list-group-item d-flex justify-content-between p-2" v-if="existComment()">
+                <div class="pt-4"></div>
               </li>
             </ul>
           </div>
@@ -147,8 +142,7 @@ export default {
         });
     },
 
-    // FIXME: 성공은 하는데 response.data에 아무것도 안들어감;
-    // Todo : 댓글 정보를 조회요청하는 함수
+    // TODO: 댓글 정보를 조회요청하는 함수
     getComment() {
       CommentDataService.getCommentByQno(
         this.currentQuestion.qno,
@@ -197,6 +191,14 @@ export default {
           console.log(e);
         });
     },
+    // TODO: 댓글정보가 있는지 확인하는 함수
+    existComment(){
+      if (this.comment != null) {
+        return false;
+      } else {
+        return true;
+      }
+    }
   },
 
   computed: {

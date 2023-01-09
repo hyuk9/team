@@ -79,7 +79,7 @@ public class CommentController {
 //    }
 
 
-//    Todo : 댓글 전체 삭제하는 함수
+//    Todo : 댓글 전체 삭제하는 함수 // 정상작동확인
     @DeleteMapping("/comment/all")
     public ResponseEntity<Object> removeAll() {
 
@@ -109,11 +109,83 @@ public class CommentController {
         }
     }
 
-    //    Todo : 자유게시판 pk값에 해당하는 게시글 댓글 조회하는 함수 (페이징 처리)
-    @GetMapping("/comment/fno")
-    public ResponseEntity<Object> getFnoInFreeboard(@RequestParam Integer fno,
+    // Todo : 현재 로그인한 유저pk값으로 쓴 댓글 조회하는 함수 (페이징 처리)
+    @GetMapping("/comment/id")
+    public ResponseEntity<Object> getCommentById(@RequestParam Integer id,
+                                                 @RequestParam(defaultValue = "0") int page,
+                                                 @RequestParam(defaultValue = "3") int size)
+    {
+        try {
+
+//            페이지 변수 저장
+            Pageable pageable = PageRequest.of(page, size);
+
+            Page<Comment> commentPage;
+
+            commentPage = commentService.findAllByIdEquals(id, pageable);
+
+            Map<String, Object> response = new HashMap<>();
+            response.put("comment", commentPage.getContent());
+            response.put("currentPage", commentPage.getNumber());
+            response.put("totalItems", commentPage.getTotalElements());
+            response.put("totalPages", commentPage.getTotalPages());
+
+            if (commentPage.isEmpty() == false) {
+//                성공
+                return new ResponseEntity<>(response, HttpStatus.OK);
+            } else {
+//                데이터 없음
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+        } catch (Exception e) {
+//            서버 에러
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    //    Todo : 질문게시판 pk값에 해당하는 게시글 댓글 조회하는 함수 (페이징 처리) // 정상작동확인
+    @GetMapping("/comment/qno")
+    public ResponseEntity<Object> getQnoInQuestionboard(@RequestParam Integer qno,
                                            @RequestParam(defaultValue = "0") int page,
                                            @RequestParam(defaultValue = "3") int size) {
+
+        try {
+//            Pageable 객체 정의 ( page, size 값 설정 )
+            Pageable pageable = PageRequest.of(page, size);
+
+            Page<Comment> commentPage;
+
+            commentPage = commentService.findAllByQnoEqualsOrderByInsertTimeAsc(qno, pageable);
+
+            //            맵 자료구조에 넣어서 전송
+            Map<String, Object> response = new HashMap<>();
+            response.put("comment", commentPage.getContent());
+            response.put("currentPage", commentPage.getNumber());
+            response.put("totalItems", commentPage.getTotalElements());
+            response.put("totalPages", commentPage.getTotalPages());
+
+
+            if (commentPage.isEmpty() == false) {
+//                데이터 + 성공 메세지 전송
+                return new ResponseEntity<>(response, HttpStatus.OK);
+            } else {
+//                데이터 없음 메세지 전송(클라이언트)
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+
+        } catch (Exception e) {
+            log.debug(e.getMessage());
+            // 서버에러 발생 메세지 전송(클라이언트)
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
+    //    Todo : 자유게시판 pk값에 해당하는 게시글 댓글 조회하는 함수 (페이징 처리) // 정상작동확인
+    @GetMapping("/comment/fno")
+    public ResponseEntity<Object> getFnoInFreeboard(@RequestParam Integer fno,
+                                                    @RequestParam(defaultValue = "0") int page,
+                                                    @RequestParam(defaultValue = "3") int size) {
 
         try {
 //            Pageable 객체 정의 ( page, size 값 설정 )
@@ -146,9 +218,10 @@ public class CommentController {
         }
     }
 
-    //    Todo : 질문게시판 pk값에 해당하는 게시글 댓글 조회하는 함수 (페이징 처리)
-    @GetMapping("/comment/qno")
-    public ResponseEntity<Object> getQnoInQuestionboard(@RequestParam Integer qno,
+
+    //    Todo : 공지사항 pk값에 해당하는 게시글 댓글 조회하는 함수 (페이징 처리) // 정상작동확인
+    @GetMapping("/comment/aid")
+    public ResponseEntity<Object> getAidInAnnouceboard(@RequestParam Integer aid,
                                            @RequestParam(defaultValue = "0") int page,
                                            @RequestParam(defaultValue = "3") int size) {
 
@@ -158,7 +231,44 @@ public class CommentController {
 
             Page<Comment> commentPage;
 
-            commentPage = commentService.findAllByQnoEqualsOrderByInsertTimeAsc(qno, pageable);
+            commentPage = commentService.findAllByAidEqualsOrderByInsertTimeAsc(aid, pageable);
+
+            //            맵 자료구조에 넣어서 전송
+            Map<String, Object> response = new HashMap<>();
+            response.put("comment", commentPage.getContent());
+            response.put("currentPage", commentPage.getNumber());
+            response.put("totalItems", commentPage.getTotalElements());
+            response.put("totalPages", commentPage.getTotalPages());
+
+
+            if (commentPage.isEmpty() == false) {
+//                데이터 + 성공 메세지 전송
+                return new ResponseEntity<>(response, HttpStatus.OK);
+            } else {
+//                데이터 없음 메세지 전송(클라이언트)
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+
+        } catch (Exception e) {
+            log.debug(e.getMessage());
+            // 서버에러 발생 메세지 전송(클라이언트)
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    //    Todo : 푸드컬럼 pk값에 해당하는 게시글 댓글 조회하는 함수 (페이징 처리) // 정상작동확인함
+    @GetMapping("/comment/cid")
+    public ResponseEntity<Object> getCidInColumnboard(@RequestParam Integer cid,
+                                           @RequestParam(defaultValue = "0") int page,
+                                           @RequestParam(defaultValue = "3") int size) {
+
+        try {
+//            Pageable 객체 정의 ( page, size 값 설정 )
+            Pageable pageable = PageRequest.of(page, size);
+
+            Page<Comment> commentPage;
+
+            commentPage = commentService.findAllByCidEqualsOrderByInsertTimeAsc(cid, pageable);
 
             //            맵 자료구조에 넣어서 전송
             Map<String, Object> response = new HashMap<>();
@@ -221,7 +331,7 @@ public class CommentController {
 //        }
 //    }
 
-//    Todo : 댓글 삭제하는 함수
+//    Todo : 댓글 삭제하는 함수 // 정상작동확인함
     @DeleteMapping("/comment/deletion/{cno}")
     public ResponseEntity<Object> deleteComment(@PathVariable int cno) {
 

@@ -3,6 +3,7 @@ package com.example.simpledms.controller;
 
 import com.example.simpledms.dto.ReservationDto;
 import com.example.simpledms.dto.ReviewDto;
+import com.example.simpledms.dto.ScoreDto;
 import com.example.simpledms.model.Menu;
 import com.example.simpledms.model.Review;
 import com.example.simpledms.service.ReviewService;
@@ -226,6 +227,28 @@ public class ReviewController {
             }
         } catch (Exception e) {
 //            서버 에러
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    // Todo : dno에 해당하는 평균 평점 조회하는 함수
+    @GetMapping("/review/dno/{dno}")
+    public ResponseEntity<Object> findByDnoScoreAvg(@PathVariable Integer dno) {
+
+        try {
+            List<ScoreDto> reviewDtoList = reviewService.findByDnoScoreAvg(dno);
+
+            if (reviewDtoList.isEmpty() == false) {
+//                데이터 + 성공 메세지 전송
+                return new ResponseEntity<>(reviewDtoList, HttpStatus.OK);
+            } else {
+//                데이터 없음 메세지 전송(클라이언트)
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+
+        } catch (Exception e) {
+            log.debug(e.getMessage());
+            // 서버에러 발생 메세지 전송(클라이언트)
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

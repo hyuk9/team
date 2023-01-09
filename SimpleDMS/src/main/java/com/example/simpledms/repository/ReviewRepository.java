@@ -3,12 +3,14 @@ package com.example.simpledms.repository;
 
 import com.example.simpledms.dto.ReservationDto;
 import com.example.simpledms.dto.ReviewDto;
+import com.example.simpledms.dto.ScoreDto;
 import com.example.simpledms.model.Menu;
 import com.example.simpledms.model.Review;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
@@ -47,6 +49,18 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
                     "group by di.dname, rv.content, rv.insert_time"
             , nativeQuery = true)
     Page<ReviewDto> findAllById(Integer id, Pageable pageable);
+
+    //    Todo: 평점 항목별 평균 점수를 성별로 그룹화 해서 찍는 함수
+    @Query(value = "select re.gender, avg(re.taste) as avgtaste,avg(re.service) as avgservice ,avg(re.loc) as avgloc,avg(re.mood) as avgmood,avg(re.cost) as avgcost " +
+            "from tb_review re " +
+            "where re.dno = :dno " +
+            "group by re.gender",
+            countQuery = "select re.gender, avg(re.taste) as avgtaste,avg(re.service) as avgservice ,avg(re.loc) as avgloc,avg(re.mood) as avgmood,avg(re.cost) as avgcost " +
+                    "from tb_review re " +
+                    "where re.dno = :dno " +
+                    "group by re.gender"
+            ,nativeQuery = true)
+    List<ScoreDto> findByDnoScoreAvg (@Param("dno") Integer dno);
 
 }
 

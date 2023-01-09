@@ -255,9 +255,9 @@
             <div class="row d-flex mt-1">
               <div>
                 <!-- FIXME:고쳐야하는데 이유는 아직 모름 -->
-                <!-- <router-link :to="'/edit/review/' + data.rno" v-if="showDetailBoard"> --> 
+                <!-- <router-link :to="'/edit/review/' + data.rno" v-if="showDetailBoard"> -->
                 <router-link :to="'/edit/review/' + data.rno">
-                  <span class="badge bg-success float-right" >수정하기</span>
+                  <span class="badge bg-success float-right">수정하기</span>
                 </router-link>
               </div>
               <div class="row">
@@ -268,25 +268,25 @@
                     <h5 class="mt-2 mb-0">{{ data.writer }}</h5>
                     <h5>
                       <span class="fa fa-star star-active ml-3"></span>
-                        <span class="badge bg-primary"
-                          >맛 : {{ data.taste }}점</span
-                        >
-                        <span class="fa fa-star star-active ml-3"></span>
-                        <span class="badge bg-success"
-                          >서비스 : {{ data.service }}점</span
-                        >
-                        <span class="fa fa-star star-active ml-3"></span>
-                        <span class="badge bg-danger"
-                          >접근성 : {{ data.loc }}점</span
-                        >
-                        <span class="fa fa-star star-active ml-3"></span>
-                        <span class="badge bg-warning text-dark"
-                          >분위기 : {{ data.mood }}점</span
-                        >
-                        <span class="fa fa-star star-active ml-3"></span>
-                        <span class="badge bg-dark"
-                          >가성비 : {{ data.cost }}점</span
-                        >
+                      <span class="badge bg-primary"
+                        >맛 : {{ data.taste }}점</span
+                      >
+                      <span class="fa fa-star star-active ml-3"></span>
+                      <span class="badge bg-success"
+                        >서비스 : {{ data.service }}점</span
+                      >
+                      <span class="fa fa-star star-active ml-3"></span>
+                      <span class="badge bg-danger"
+                        >접근성 : {{ data.loc }}점</span
+                      >
+                      <span class="fa fa-star star-active ml-3"></span>
+                      <span class="badge bg-warning text-dark"
+                        >분위기 : {{ data.mood }}점</span
+                      >
+                      <span class="fa fa-star star-active ml-3"></span>
+                      <span class="badge bg-dark"
+                        >가성비 : {{ data.cost }}점</span
+                      >
                     </h5>
                   </div>
                 </div>
@@ -298,7 +298,8 @@
               </p>
               <div>
                 <p class="text-muted pt-5 pt-sm-3 float-right">
-                  {{ data.insertTime }}
+                  <!-- FIXME: 일단 이렇게 문자열 자르기를 사용했는데 더 좋은 방법이 있으면 써야할듯? -->
+                  {{ data.insertTime.substring(0, 16) }}
                 </p>
               </div>
             </div>
@@ -324,8 +325,7 @@
 
           <!-- Chart widget-->
           <div class="card mb-4">
-            <div class="card-header">
-              Chart</div>
+            <div class="card-header">Chart</div>
             <div class="card-body">
               <Canvas />
             </div>
@@ -359,13 +359,12 @@ import User from "@/model/user";
 export default {
   data() {
     return {
-      menu: [], // 메뉴 리스트 불러오기 위한 배열
+      menu: [], 
       review: [],
       diner: [],
       score: [],
       currentReview: null,
       currentIndex: -1,
-      // dname: "", ->(변경) searchDname: "",
 
       currentDiner: null,
       currentMenu: null,
@@ -394,8 +393,6 @@ export default {
       count: 0, // 전체 데이터 건수
       pageSize: 8, // 한페이지당 몇개를 화면에 보여줄지 결정하는 변수
 
-      pageSizes: [3, 6, 9], // select box에 넣을 기본 데이터
-
       // favorite 정보 저장용
       totalfavorite: null,
       // 찜하기 버튼에 따라 즉시 반응하기 위한 함수
@@ -409,7 +406,7 @@ export default {
     Canvas, // 차트
   },
   methods: {
-    // Todo : 찜한가게 조회하는 함수
+    // TODO: 찜한가게 조회하는 함수
     retrieveFavorite() {
       // getAll() ->(변경) getAll(dname, page, size)
       FavoriteDataService.get(this.currentUser.id, this.$route.params.dno)
@@ -417,14 +414,14 @@ export default {
         .then((response) => {
           this.favorite = response.data; // 스프링부트에서 전송한 데이터
           // 디버깅 콘솔에 정보 출력
-          console.log("찜한가게 데이터 : ", response.data);
+          console.log("찜한가게 데이터 조회 성공 : ", response.data);
         })
         // 실패하면 .catch() 에 에러가 전송됨
         .catch((e) => {
           console.log("찜한가게 조회 에러 : ", e);
         });
     },
-    // Todo : 음식점 데이터 조회하는 함수
+    // TODO: 음식점 데이터 조회하는 함수
     getDiner(dno) {
       // axios 공통함수 호출
       DinerDataService.get(dno)
@@ -453,10 +450,10 @@ export default {
         })
         // 실패하면 .catch() 에러메세지가 리턴됨
         .catch((e) => {
-          console.log(e);
+          console.log("현재 음식점 조회 실패 : ", e);
         });
     },
-    // Todo : dno로 메뉴 조회요청하는 함수
+    // TODO: dno로 메뉴 조회요청하는 함수
     getMenu(dno) {
       // axios 공통함수 호출
       MenuDataService.get(dno)
@@ -508,7 +505,7 @@ export default {
       this.currentReview = data;
       this.currentIndex = index;
     },
-    // Todo : 음식점 정보 수정요청하는 함수
+    // TODO: 음식점 정보 수정요청하는 함수
     updateDiner() {
       // axios 공통함수 호출
       DinerDataService.update(this.currentDiner.dno, this.currentDiner)
@@ -521,7 +518,7 @@ export default {
           console.log("음식점 정보 수정 실패 : ", e);
         });
     },
-    // Todo : 음식점 정보 삭제요청하는 함수
+    // TODO: 음식점 정보 삭제요청하는 함수
     deleteDiner() {
       // axios 공통함수 호출
       DinerDataService.delete(this.currentDiner.dno)
@@ -536,6 +533,7 @@ export default {
           console.log("음식점 정보 삭제 실패 : ", e);
         });
     },
+    // TODO: 로그인이 필요한 항목에 대한 확인함수
     needToLogin() {
       if (this.currentUser.id == null) {
         this.$swal({
@@ -610,7 +608,7 @@ export default {
       }
     },
 
-    // Todo : 찜한가게 삭제요청하는 함수
+    // TODO: 찜한가게 삭제요청하는 함수
     deleteFavorite() {
       // axios 공통함수 호출
       FavoriteDataService.delete(this.favorite.fid)
@@ -627,7 +625,7 @@ export default {
         });
     },
 
-    // Todo : 최근본음식점 데이터 조회 요청하는 함수
+    // TODO: 최근본음식점 데이터 조회 요청하는 함수
     retrieveLastview() {
       if (this.currentUser.id != null) {
         LastviewDataService.get(this.currentUser.id, this.$route.params.dno)
@@ -668,10 +666,10 @@ export default {
       }
     },
 
-    // Todo : 최근본가게 테이블에 저장요청하는 함수
+    // TODO: 최근본가게 테이블에 저장요청하는 함수
     saveLastview() {
       let data = {
-        // fid는 자동생성
+        // fid(pk)는 자동생성
         dno: this.$route.params.dno,
         id: this.currentUser.id,
       };
@@ -694,7 +692,7 @@ export default {
   mounted() {
     this.retrieveLastview();
 
-    //  this.$route.params.dno : 이전페이지에서 전송한 매개변수는 $route.params 안에 있음
+    // this.$route.params.dno : 이전페이지에서 전송한 매개변수는 $route.params 안에 있음
     // $route 객체 : 주로 url 매개변수 정보들이 있음
     // router/index.js 상세페이지 url의 매개변수명 : :dno
     this.getDiner(this.$route.params.dno);
@@ -704,20 +702,20 @@ export default {
   },
 
   computed: {
-    // Todo : 로컬 스토리지에 저장된 현재 유저 정보 가져오는 함수
+    // TODO: 로컬 스토리지에 저장된 현재 유저 정보 가져오는 함수
     currentUser() {
       // 만약 로컬스토리지에 유저객체가 없으면 빈유저 생성
       if (this.$store.state.auth.user == undefined) {
         let notLoggedUser = new User();
         return notLoggedUser;
       } else {
+        // 모듈 저장소 : this.$store.state.모듈명.state값
+        // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
         return this.$store.state.auth.user;
       }
-      // 모듈 저장소 : this.$store.state.모듈명.state값
-      // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
     },
 
-    // Todo : 관리자 접속인지 아닌지 확인하는 함수
+    // TODO: 관리자 접속인지 아닌지 확인하는 함수
     confirmAdmin() {
       if (this.currentUser && this.currentUser.roles) {
         // if ROLE_ADMIN 있으면 true
@@ -728,7 +726,7 @@ export default {
       return false;
     },
 
-    // Todo : 찜한가게 테이블에 데이터 존재 여부 확인하는 함수
+    // TODO: 찜한가게 테이블에 데이터 존재 여부 확인하는 함수
     existFid() {
       if (this.favorite.fid != null) {
         // 데이터가 있으면
@@ -739,18 +737,19 @@ export default {
       }
     },
 
+    // TODO: 관리자거나 작성자라면 버튼 보이게하는 함수
     showDetailBoard() {
       if (this.currentUser && this.currentUser.roles) {
         // if ROLE_ADMIN 있으면 true 없으면 false 이거나 현재로그인한id == 글쓴사람id
-        return this.currentUser.roles.includes("ROLE_ADMIN") || this.currentUser.id == this.currentReview.id;
+        return (
+          this.currentUser.roles.includes("ROLE_ADMIN") ||
+          this.currentUser.id == this.currentReview.id
+        );
       }
       // currentUser 없으면 false (메뉴가 안보임)
       return false;
     },
   },
-  // update() {
-  //   getDiner();
-  // },
 };
 </script>
 <style>

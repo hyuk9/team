@@ -51,7 +51,7 @@
             <div>{{ data.content }}</div>
           </div> -->
           <!-- Todo: DB에서 데이터 받으면 아래 코드 사용 -->
-        <!-- <div class="card">
+        <div class="card">
           <div class="card-header pb-4">댓글
             <ul class="list-group">
               <li class="list-group-item d-flex justify-content-between p-2" v-for="(data, index) in comment"
@@ -66,9 +66,9 @@
               </li>
             </ul>
           </div>
-        </div> --> 
+        </div> 
 
-        <div class="card">
+        <!-- <div class="card">
           <div class="card-header pb-4">댓글
             <ul class="list-group">
               <li class="list-group-item d-flex justify-content-between p-2"
@@ -83,7 +83,7 @@
               </li>
             </ul>
           </div>
-        </div>
+        </div> -->
 
         <br />
 

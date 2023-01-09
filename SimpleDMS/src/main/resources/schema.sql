@@ -130,8 +130,10 @@ CREATE TABLE TB_QUESTION
 CREATE TABLE TB_COMMENT
 (
     CNO         NUMBER NOT NULL PRIMARY KEY,
-    QNO         NUMBER, -- 질문테이블 조인용 공통 컬럼
-    FNO         NUMBER, -- 자유게시판 조인용 공통 컬럼
+    QNO         NUMBER DEFAULT 0, -- 질문테이블 조인용 공통 컬럼
+    FNO         NUMBER DEFAULT 0, -- 자유게시판 조인용 공통 컬럼
+    AID         NUMBER DEFAULT 0, -- 공지사항 게시판 조인용 공통 컬럼
+    CID         NUMBER DEFAULT 0, -- 푸드컬럼 게시판 조인용 공통 컬럼
     ID          NUMBER, -- 유저 id 컬럼
     WRITER      VARCHAR2(255),
     CONTENT     VARCHAR2(255),

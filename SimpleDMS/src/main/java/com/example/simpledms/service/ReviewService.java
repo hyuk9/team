@@ -2,6 +2,7 @@ package com.example.simpledms.service;
 
 import com.example.simpledms.dto.ReservationDto;
 import com.example.simpledms.dto.ReviewDto;
+import com.example.simpledms.dto.ScoreDto;
 import com.example.simpledms.model.Menu;
 import com.example.simpledms.model.Review;
 import com.example.simpledms.repository.ReviewRepository;
@@ -98,6 +99,13 @@ public class ReviewService {
     //    ✅ username like 검색 함수 ( 페이징 처리 추가 )
     public Page<ReviewDto> findAllById(Integer id, Pageable pageable) {
         Page<ReviewDto> list = reviewRepository.findAllById(id, pageable);
+
+        return list;
+    }
+
+    // Todo : dno에 해당하는 평균 평점 조회하는 함수
+    public List<ScoreDto> findByDnoScoreAvg(Integer dno) {
+        List<ScoreDto> list = reviewRepository.findByDnoScoreAvg(dno);
 
         return list;
     }

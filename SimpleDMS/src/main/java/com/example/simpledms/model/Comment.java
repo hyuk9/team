@@ -44,21 +44,31 @@ public class Comment extends BaseTimeEntity {
     )
     private Integer cno;
 
-//    조인용 컬럼
+//    질문게시판 pk
     @javax.persistence.Column
     private Integer qno;
 
-//    조인용 컬럼
+//    유저 pk
     @javax.persistence.Column
     private Integer id;
 
-//    조인용 컬럼
+//    자유게시판 ㅔk
     @javax.persistence.Column
     private Integer fno;
 
+//    공지사항 pk
+    @javax.persistence.Column
+    private Integer aid;
+
+//    푸드컬럼 pk
+    @javax.persistence.Column
+    private Integer cid;
+
+//    댓글 내용
     @javax.persistence.Column
     private String content;
 
+//    댓글 작성자
     @javax.persistence.Column
     private String writer;
 

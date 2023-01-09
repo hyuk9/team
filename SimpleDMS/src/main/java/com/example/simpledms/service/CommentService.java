@@ -1,16 +1,24 @@
 package com.example.simpledms.service;
 
 import com.example.simpledms.dto.FavoriteDto;
+import com.example.simpledms.dto.ReviewDto;
 import com.example.simpledms.model.Comment;
 import com.example.simpledms.model.Favorite;
 import com.example.simpledms.repository.CommentRepository;
 import com.example.simpledms.repository.FavoriteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -72,19 +80,39 @@ public class CommentService {
         return false;
     }
 
-    //    question(질문) like 검색 함수 ( 페이징 처리 )
+    // Todo : 현재 로그인한 유저pk값으로 쓴 댓글 조회하는 함수 (페이징 처리)
+    public Page<Comment> findAllByIdEquals(Integer id, Pageable pageable) {
+        Page<Comment> page = commentRepository.findAllByIdEquals(id, pageable);
+
+        return page;
+    }
+
+    // Todo : 질문게시판 pk값에 해당하는 게시글 댓글 조회하는 함수 (페이징 처리)
     public Page<Comment> findAllByQnoEqualsOrderByInsertTimeAsc(Integer qno, Pageable pageable) {
         Page<Comment> page = commentRepository.findAllByQnoEqualsOrderByInsertTimeAsc(qno, pageable);
         return page;
     }
 
-    //    ✅ dname like 검색 함수
+    // Todo : 자유게시판 pk값에 해당하는 게시글 댓글 조회하는 함수 (페이징 처리)
     public Page<Comment> findAllByFnoEqualsOrderByInsertTimeAsc(Integer fno, Pageable pageable) {
         Page<Comment> page = commentRepository.findAllByFnoEqualsOrderByInsertTimeAsc(fno, pageable);
 
         return page;
     }
 
+    // Todo : 공지사항 pk값에 해당하는 게시글 댓글 조회하는 함수 (페이징 처리)
+    public Page<Comment> findAllByAidEqualsOrderByInsertTimeAsc(Integer aid, Pageable pageable) {
+        Page<Comment> page = commentRepository.findAllByAidEqualsOrderByInsertTimeAsc(aid, pageable);
+
+        return page;
+    }
+
+    // Todo : 푸드컬럼 pk값에 해당하는 게시글 댓글 조회하는 함수 (페이징 처리)
+    public Page<Comment> findAllByCidEqualsOrderByInsertTimeAsc(Integer cid, Pageable pageable) {
+        Page<Comment> page = commentRepository.findAllByCidEqualsOrderByInsertTimeAsc(cid, pageable);
+
+        return page;
+    }
 
 }
 

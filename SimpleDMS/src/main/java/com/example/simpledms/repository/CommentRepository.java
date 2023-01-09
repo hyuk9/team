@@ -25,14 +25,21 @@ import java.util.Optional;
  */
 
 public interface CommentRepository extends JpaRepository<Comment, Integer> {
-//    question 조회하는 like 검색 함수
-//    1) 쿼리메소드 방식으로 함수 정의
+    // Todo : 모든 댓글 조회하는 함수 (페이징 처리)
+    Page<Comment> findAllByIdEquals (Integer id, Pageable pageable);
 
-    //    프로필페이지에서 사용할 함수
+    // Todo : 질문게시판 pk값에 해당하는 게시글 댓글 조회하는 함수 (페이징 처리)
     Page<Comment> findAllByQnoEqualsOrderByInsertTimeAsc(Integer qno, Pageable pageable);
 
-    //    id랑 dno로 Fid찾는 함수
+    // Todo : 자유게시판 pk값에 해당하는 게시글 댓글 조회하는 함수 (페이징 처리)
     Page<Comment> findAllByFnoEqualsOrderByInsertTimeAsc(Integer fno, Pageable pageable);
+
+    // Todo : 공지사항 pk값에 해당하는 게시글 댓글 조회하는 함수 (페이징 처리)
+    Page<Comment> findAllByAidEqualsOrderByInsertTimeAsc(Integer aid, Pageable pageable);
+
+    // Todo : 푸드컬럼 pk값에 해당하는 게시글 댓글 조회하는 함수 (페이징 처리)
+    Page<Comment> findAllByCidEqualsOrderByInsertTimeAsc(Integer cid, Pageable pageable);
+
 
 }
 

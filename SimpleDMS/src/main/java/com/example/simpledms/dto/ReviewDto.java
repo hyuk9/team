@@ -22,4 +22,15 @@ public interface ReviewDto {
     Double getSumscore();
 
     String getIt(); // 리뷰생성시간
+
+
+//    평균 점수 성별 구분으로 그룹화해서 찍는 함수
+
+    String getGender();
+
+    double getAvgtaste();
+    double getAvgservice();
+    double getAvgloc();
+    double getAvgmood();
+    double getAvgcost();
 }
