@@ -52,7 +52,7 @@
           </div> -->
         <div class="card">
           <div class="card-header pb-4">댓글
-            <ul class="list-group">
+            <ul class="list-group" v-if="showSpan">
               <li class="list-group-item d-flex justify-content-between p-2" v-for="(data, index) in comment"
                 :key="index">
                 <h4 class="col-1"><span class="badge rounded-pill bg-primary  text-dark">{{ data.writer }}</span></h4>
@@ -219,6 +219,14 @@ export default {
       // currentUser 없으면 false (메뉴가 안보임)
       return false;
     },
+
+    showSpan() {
+      if (this.currentQuestion != null) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   },
   // 화면이 뜨자 마자 실행되는 이벤트
   mounted() {

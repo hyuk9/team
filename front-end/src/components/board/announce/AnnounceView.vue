@@ -58,13 +58,12 @@
           </div> -->
       <div class="card">
         <div class="card-header pb-4">댓글
-          <ul class="list-group">
-            <li class="list-group-item d-flex justify-content-between p-2"
-              :key="index">
-              <h4 class="col-1"><span class="badge rounded-pill bg-primary  text-dark">{{  }}</span></h4>
-              <p class="col-6">{{  }}</p>
+          <ul class="list-group" v-if="showSpan">
+            <li class="list-group-item d-flex justify-content-between p-2" >
+              <h4 class="col-1"><span class="badge rounded-pill bg-primary  text-dark">{{}}</span></h4>
+              <p class="col-6">{{}}</p>
               <div class="d-flex">
-                <div class="front-italic col-">작성일:{{  }}&nbsp;</div>
+                <div class="front-italic col-">작성일:{{}}&nbsp;</div>
                 <span class="badge bg-primary p-2 mt-1 ms-3"><span class="fs-0">수정</span></span>
                 <span class="badge bg-danger p-2 mt-1 ms-3"><span class="fs-0">삭제</span></span>
                 <!-- <span class="badge rounded-pill bg-danger text-dark col-2">삭제</span> -->
@@ -95,9 +94,11 @@
 
 <script>
 import AnnounceDataService from "@/services/AnnounceDataService";
+import CommentDataService from "@/services/CommentDataService";
 export default {
   data() {
     return {
+      currentColumn:null,
       currentAnnounce: null,
       message: "",
     };
@@ -152,6 +153,28 @@ export default {
           console.log(e);
         });
     },
+
+    // FIXME: 성공은 하는데 response.data에 아무것도 안들어감;
+    // Todo : 댓글 정보를 조회요청하는 함수
+    getComment() {
+      CommentDataService.getCommentByQno(
+        this.currentColumn.cid,
+        this.page - 1,
+        this.pageSize
+      )
+        .then((response) => {
+          // springboot 결과를 리턴함(질문 객체)
+          const { comment, totalItems } = response.data; // springboot 의 전송한 맵 정보
+          this.comment = comment; // 스프링부트에서 전송한 데이터
+          this.count = totalItems;
+          // 콘솔 로그 출력
+          console.log("댓글 정보 조회 성공 : ", response.data);
+        })
+        // 실패하면 .catch() 에러메세지가 리턴됨
+        .catch((e) => {
+          console.log("댓글 정보 조회 실패 : ", e);
+        });
+    },
   },
 
   computed: {
@@ -172,6 +195,14 @@ export default {
       // currentUser 없으면 false (메뉴가 안보임)
       return false;
     },
+
+    showSpan() {
+      if (this.currentColumn != null) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   },
   // 화면이 뜨자 마자 실행되는 이벤트
   mounted() {

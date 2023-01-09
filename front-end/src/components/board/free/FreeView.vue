@@ -55,13 +55,13 @@
           </div> -->
         <div class="card">
           <div class="card-header pb-4">댓글
-            <ul class="list-group">
-              <li class="list-group-item d-flex justify-content-between p-2" v-for="(data, index) in comment"
+            <ul class="list-group" v-if="showSpan">
+              <li class="list-group-item d-flex justify-content-between p-2" 
                 :key="index">
-                <h4 class="col-1"><span class="badge rounded-pill bg-primary  text-dark">{{ data.writer }}</span></h4>
-                <p class="col-6">{{ data.content }}</p>
+                <h4 class="col-1"><span class="badge rounded-pill bg-primary  text-dark">{{  }}</span></h4>
+                <p class="col-6">{{  }}</p>
                 <div class="d-flex">
-                  <div class="front-italic col-">작성일:{{ data.insertTime }}&nbsp;</div>
+                  <div class="front-italic col-">작성일:{{  }}&nbsp;</div>
                   <span class="badge bg-primary p-2 mt-1 ms-3"><span class="fs-0">수정</span></span>
                   <span class="badge bg-danger p-2 mt-1 ms-3"><span class="fs-0">삭제</span></span>
                   <!-- <span class="badge rounded-pill bg-danger text-dark col-2">삭제</span> -->
@@ -211,6 +211,14 @@ export default {
     //   }
     //   return false;
     // }
+
+    showSpan() {
+      if (this.currentColumn != null) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   },
 
   // 화면이 뜨자 마자 실행되는 이벤트
