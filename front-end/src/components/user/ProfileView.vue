@@ -73,9 +73,9 @@
               aria-labelledby="offcanvasExampleLabel"
             >
               <div class="offcanvas-header container">
-                <h5 class="offcanvas-title" id="offcanvasExampleLabel">
-                  이미지 수정
-                </h5>
+                <h3 class="offcanvas-title" id="offcanvasExampleLabel">
+                  프로필 이미지 설정
+                </h3>
                 <button
                   type="button"
                   class="btn-close text-reset"
@@ -84,21 +84,61 @@
                 ></button>
               </div>
               <div class="offcanvas-body">
-                <div>
-                  <img :src="previewImage" class="card-img-top" alt="" />
+                <!-- 프로필 이미지 선택하기 시작 -->
+                <!-- 첫째줄 -->
+                <div class="col-12 mb-3">
+                  <div class="col-6 d-inline-block">
+                    <div>
+                      <img src="@/../public/assets/img/profile/gosimperson1.jpg" class="profileImage" /> 
+                    </div>
+                    <div class="text-center mt-1">
+                      <input type="radio" name="profileImage">
+                    </div>
+                  </div>                
+                  <div class="col-6 d-inline-block">
+                    <div>
+                      <img src="@/../public/assets/img/profile/gosimperson2.jpg" class="profileImage" /> 
+                    </div>
+                    <div class="text-center mt-1">
+                      <input type="radio" name="profileImage">    
+                    </div>
+                  </div>                
                 </div>
+                <!-- 둘째줄 -->
+                <div class="col-12 mb-3">
+                  <div class="col-6 d-inline-block">
+                    <div>
+                      <img src="@/../public/assets/img/profile/gosimperson3.jpg" class="profileImage" /> 
+                    </div>
+                    <div class="text-center mt-1">
+                      <input type="radio" name="profileImage">
+                    </div>
+                  </div>                
+                  <div class="col-6 d-inline-block">
+                    <div>
+                      <img src="@/../public/assets/img/profile/gosimperson4.jpg" class="profileImage" /> 
+                    </div>
+                    <div class="text-center mt-1">
+                      <input type="radio" name="profileImage">    
+                    </div>
+                  </div>                
+                </div>
+                <!-- 셋째줄 -->
+                <div class="col-12 mb-3">
+                  <div class="col-6 d-inline-block">
+                    <div>
+                      <img src="@/../public/assets/img/profile/gosimperson5.jpg" class="profileImage" /> 
+                    </div>
+                    <div class="text-center">
+                      <input type="radio" name="profileImage">
+                    </div>
+                  </div>                             
+                </div>
+                <!-- 프로필 이미지 선택하기 끝 -->
                 <div>
-                  <label class="btn btn-default p-0">
-                    <!-- 파일 선택상자 -->
-                    <input
-                      type="file"
-                      class="col-5"
-                      accept="image/*"
-                      ref="file"
-                      @change="selectImage"
-                    />
-                    <button @click="saveProfile" class="btn btn-primary col-5">
-                      수정하기
+                  <label class="btn btn-default col-12">
+                    <button @click="saveProfile" class="btn btn-primary">
+                      확인
                     </button>
                   </label>
                 </div>
@@ -366,5 +406,9 @@ li {
 
 .profile {
   border-radius: 70%;
+}
+.profileImage {
+  width: 8rem;
+  height: 8rem;
 }
 </style>
