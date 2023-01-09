@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="container mb-2 mt-2">
-      <div class="FreeView-header">
+    <div class="container col-8 mb-2 mt-2">
+      <div class="FreeView-header mt-5">
         <h1><strong>자유 게시판</strong></h1>
       </div>
       <div class="FreeView-title">
@@ -43,6 +43,36 @@
             </tr>
           </tbody>
         </table>
+        <!-- 댓글 창 만들어야 함
+          <div v-for="(data, index) in comment" :key="index">
+            <div>{{ data.writer }} 댓글:</div>
+            <div>{{ data.content }}</div>
+          </div> -->
+        <div class="card">
+          <div class="card-header pb-4">댓글
+            <ul class="list-group">
+              <li class="list-group-item d-flex justify-content-between p-2" v-for="(data, index) in comment" 
+                :key="index">
+                <h4 class="col-1"><span class="badge rounded-pill bg-primary  text-dark">{{ data.writer }}</span></h4>
+                <p class="col-6">{{ data.content }}</p>
+                <div class="d-flex">
+                  <div class="front-italic col-">작성일:{{ data.insertTime  }}&nbsp;</div>
+                  <span class="badge bg-primary p-2 mt-1 ms-3"><span class="fs-0">수정</span></span>
+                  <span class="badge bg-danger p-2 mt-1 ms-3"><span class="fs-0">삭제</span></span>
+                  <!-- <span class="badge rounded-pill bg-danger text-dark col-2">삭제</span> -->
+                </div>
+                <!-- <h1>여기</h1> -->
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <br />
+
+        <div class="card">
+          <div class="card-body input-group"><span class="input-group-text">댓글창</span><textarea class="form-control"
+              row="1"></textarea><button type="button" class="btn btn-danger">등록</button></div>
+        </div>
       </div>
     </div>
 
@@ -52,8 +82,8 @@
           수정&삭제
         </button>
       </router-link>
-      
-      <router-link  :to="'/free'">
+
+      <router-link :to="'/free'">
         <button class="btn btn-warning offset-9" type="button">
           돌아가기
         </button>
@@ -90,7 +120,7 @@ export default {
     // 부서번호(fno)로 조회 요청하는 함수
     getFree(fno) {
       // axios 공통함수 호출
-      FreeDataService.get(fno)
+      FreeDataService.getById(fno)
         // 성공하면 .then() 결과가 리턴됨
         .then((response) => {
           // springboot 결과를 리턴함(부서 객체)
@@ -157,16 +187,16 @@ export default {
       return this.$store.state.auth.user;
     },
 
-    // 관리자 접속인지 아닌지 확인하는 함수
-    showAdminBoard() {
-      if (this.currentUser && this.currentUser.roles) {
-        // if ROLE_ADMIN 있으면 true
-        //               없으면 false
-        return this.currentUser.roles.includes("ROLE_ADMIN");
-      }
-      // currentUser 없으면 false (메뉴가 안보임)
-      return false;
-    },
+    // // 관리자 접속인지 아닌지 확인하는 함수
+    // showAdminBoard() {
+    //   if (this.currentUser && this.currentUser.roles) {
+    //     // if ROLE_ADMIN 있으면 true
+    //     //               없으면 false
+    //     return this.currentUser.roles.includes("ROLE_ADMIN");
+    //   }
+    //   // currentUser 없으면 false (메뉴가 안보임)
+    //   return false;
+    // },
 
     showDetailBoard() {
       if (this.currentUser && this.currentUser.roles) {

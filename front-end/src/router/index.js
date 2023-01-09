@@ -219,6 +219,12 @@ const routes = [
     name: "add-column",
     component: () => import('../components/foodcolumn/AddColumn.vue')
   },
+  //TODO: QnaView 생성
+  {
+    path: "/columnview/:cid",
+    name: "qna-view",
+    component: () => import("../components/foodcolumn/ColumnView.vue"),
+  },
   // 회원가입 전 약관 동의 페이지
   {
     path: '/termsOfService',

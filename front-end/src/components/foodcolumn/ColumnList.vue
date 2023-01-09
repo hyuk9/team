@@ -88,7 +88,7 @@
                 <i class="bi bi-hash"></i>{{ data.cid }}
               </td>
               <td class="text-center">
-                <router-link :to="'/column/' + data.cid"
+                <router-link :to="'/columnview/' + data.cid"
                   ><a @click="countViews(data.cid)"><span>{{ data.title }}</span></a></router-link
                 >
               </td>
