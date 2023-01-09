@@ -40,8 +40,8 @@
                   </tr>
                 </tbody>
               </table>
-              <div v-if="existReservation">
-                <h1>아직 예약한 기록이 없습니다.</h1>
+              <div v-if="existReservation()">
+                <h4>아직 예약한 기록이 없습니다.</h4>
               </div>
 
               <div class="overflow-auto offset-5 mt-5">

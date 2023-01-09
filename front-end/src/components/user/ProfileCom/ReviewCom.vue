@@ -37,6 +37,9 @@
                   </tr>
                 </tbody>
               </table>
+              <div v-if="existReview()">
+                <h4>아직 리뷰한 기록이 없습니다.</h4>
+              </div>
 
               <!--    Todo : page 바 시작 -->
               <div class="overflow-auto offset-5 mt-5">
@@ -106,6 +109,14 @@ export default {
       console.log(data);
       this.currentData = data;
       this.currentIndex = index;
+    },
+    // 리뷰 한 거 없을때 글자띄우기
+    existReview() {
+      if (this.review != null) {
+        return false;
+      } else {
+        return true;
+      }
     },
   },
 
