@@ -72,7 +72,8 @@ INSERT INTO TB_ANNOUNCE
 VALUES (SQ_ANNOUNCE.nextval, '사이트 제작에 대해', '5명이서 협업해서 제작한 사이트로 Vue.js와 Springboot를 이용해서 작업했습니다.', '마루치', 0, 'N',
         TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 INSERT INTO TB_ANNOUNCE
-VALUES (SQ_ANNOUNCE.nextval, '질문사항에 대해', '질문게시판을 이용해주세요.', '아라치', 0, 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL,
+VALUES (SQ_ANNOUNCE.nextval, '질문사항에 대해', '질문게시판을 이용해주세요.', '아라치', 0, 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+        NULL,
         NULL);
 
 -- Todo:자유게시판 테이블
@@ -269,40 +270,56 @@ VALUES (SQ_DINER.nextval, '대저할매국수', '2.7', '부산 강서구 대저�
 
 -- Todo:리뷰 테이블
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '2', '1', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', '4', '사진', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+VALUES (SQ_REVIEW.nextval, '2', '1', '유저2번', 'N',
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL, NULL);
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '3', '2', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', '3', '사진', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+VALUES (SQ_REVIEW.nextval, '3', '1', '유저3번', 'N',
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL, NULL);
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '5', '3', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', '5', '사진', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+VALUES (SQ_REVIEW.nextval, '3', '2', '유저3번', 'N',
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL, NULL);
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '4', '4', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', '5', '사진', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+VALUES (SQ_REVIEW.nextval, '5', '3', '유저5번', 'N',
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL, NULL);
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '6', '5', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', '1', '사진', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+VALUES (SQ_REVIEW.nextval, '4', '4', '유저4번', 'N',
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL, NULL);
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '6', '6', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', '2', '사진', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+VALUES (SQ_REVIEW.nextval, '6', '5', '유저6번', 'N',
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL, NULL);
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '4', '1', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', '2', '사진', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+VALUES (SQ_REVIEW.nextval, '6', '6', '유저6번', 'N',
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL, NULL);
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '2', '2', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', '1', '사진', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+VALUES (SQ_REVIEW.nextval, '4', '7', '유저4번', 'N',
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL, NULL);
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '3', '3', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', '5', '사진', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+VALUES (SQ_REVIEW.nextval, '2', '8', '유저2번', 'N',
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL, NULL);
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '3', '4', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', '4', '사진', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+VALUES (SQ_REVIEW.nextval, '3', '9', '유저3번', 'N',
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL, NULL);
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '4', '5', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', '5', '사진', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+VALUES (SQ_REVIEW.nextval, '3', '10', '유저3번', 'N',
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL, NULL);
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, '2', '6', '리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰', '3', '사진', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+VALUES (SQ_REVIEW.nextval, '4', '11', '유저4번', 'N',
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+        NULL, NULL);
+INSERT INTO TB_REVIEW
+VALUES (SQ_REVIEW.nextval, '2', '12', '유저2번', 'N',
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL, NULL);
 
 
@@ -466,25 +483,53 @@ VALUES (SQ_MENU.nextval, '메뉴16', '가격16', '16', 'N', TO_CHAR(SYSDATE, 'YY
 -- Todo: 평점 테이블
 -- Todo: 리뷰 테이블이랑 조인 예정
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '2', '1', '3', '4', '1', '1', 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_SCORE.nextval, '2', '1', '3', '4', '1', '1', '5', 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+        NULL,
+        NULL);
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '1', '4', '2', '3', '2', '1', 'female', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_SCORE.nextval, '1', '4', '2', '3', '2', '2', '2', 'female', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+        NULL,
+        NULL);
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '2', '2', '2', '2', '2', '2', 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_SCORE.nextval, '2', '2', '2', '2', '2', '3', '3', 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+        NULL,
+        NULL);
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '1', '4', '2', '3', '1', '2', 'female', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_SCORE.nextval, '1', '4', '2', '3', '1', '4', '4', 'female', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+        NULL,
+        NULL);
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '3', '2', '3', '2', '1', '3', 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_SCORE.nextval, '3', '2', '3', '2', '1', '5', '1', 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+        NULL,
+        NULL);
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '3', '5', '1', '2', '4', '3', 'female', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_SCORE.nextval, '3', '5', '1', '2', '4', '6', '6', 'female', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+        NULL,
+        NULL);
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '2', '4', '4', '3', '5', '4', 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_SCORE.nextval, '2', '4', '4', '3', '5', '7', '7', 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+        NULL,
+        NULL);
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '1', '2', '3', '1', '2', '4', 'female', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_SCORE.nextval, '1', '2', '3', '1', '2', '8', '8', 'female', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+        NULL,
+        NULL);
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '2', '3', '1', '5', '2', '5', 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_SCORE.nextval, '2', '3', '1', '5', '2', '9', '9', 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+        NULL,
+        NULL);
 INSERT INTO TB_SCORE
-VALUES (SQ_SCORE.nextval, '3', '4', '2', '5', '3', '5', 'female', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_SCORE.nextval, '3', '4', '2', '5', '3', '10', '10', 'female', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+        NULL,
+        NULL);
+INSERT INTO TB_SCORE
+VALUES (SQ_SCORE.nextval, '3', '4', '3', '5', '3', '11', '11', 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+        NULL,
+        NULL);
+INSERT INTO TB_SCORE
+VALUES (SQ_SCORE.nextval, '3', '3', '2', '5', '3', '12', '12', 'female', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+        NULL,
+        NULL);
 
 
 -- Todo:푸드컬럼 테이블
@@ -492,7 +537,8 @@ INSERT INTO TB_COLUMN
 VALUES (SQ_COLUMN.nextval, '연말연시 맛집 추천', '한 해의 마지막과 새해의 시작을 이곳에서', '사진', '장동혁', '2', 0, 'N',
         TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 INSERT INTO TB_COLUMN
-VALUES (SQ_COLUMN.nextval, '서면 맛집 Best5', '부산토박이가 알려주는 로컬맛집', '사진2', '전성혜', '4', 0, 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+VALUES (SQ_COLUMN.nextval, '서면 맛집 Best5', '부산토박이가 알려주는 로컬맛집', '사진2', '전성혜', '4', 0, 'N',
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
         NULL, NULL);
 INSERT INTO TB_COLUMN
 VALUES (SQ_COLUMN.nextval, '여기가 바로 가성비 맛집', '서비스는 필요없다. 오로지 가성비로만 승부', '사진3', '조성모', '3', 0, 'N',

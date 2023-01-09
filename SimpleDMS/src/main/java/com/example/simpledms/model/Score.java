@@ -37,7 +37,7 @@ public class Score {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE
-                   , generator = "SQ_SCORE_GENERATOR"
+            , generator = "SQ_SCORE_GENERATOR"
     )
     private Integer sid;
 
@@ -55,6 +55,8 @@ public class Score {
     private Integer cost;
     @Column
     private Integer dno;
+    @Column
+    private Integer rno;
     @Column
     private String gender;
 }
