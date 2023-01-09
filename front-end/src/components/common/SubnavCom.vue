@@ -254,7 +254,9 @@ export default {
             // 홈으로 보내기 함수(프로필에 있거나 유저관련 페이지일 경우)
             if(this.$route.path == "/profile" || this.$route.path == "/user") {
                 this.$router.push("/")
-            }  
+            } else {
+                this.$router.go();
+            }
         },
         busanNav(){
             alert("클릭성공");
