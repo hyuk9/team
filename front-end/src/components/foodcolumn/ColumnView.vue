@@ -19,11 +19,11 @@
           <tbody>
             <tr>
               <th scope="col">제목</th>
-              <td scope="col" v-text="currentQuestion.title"></td>
+              <td scope="col" v-text="currentColumn.title"></td>
             </tr>
             <tr>
               <th scope="row">작성자</th>
-              <td scope="row" v-text="currentQuestion.writer"></td>
+              <td scope="row" v-text="currentColumn.writer"></td>
             </tr>
             <tr>
               <th scope="row">조회수</th>
@@ -32,7 +32,7 @@
             <tr>
               <td colspan="2" scope="row">
                 <div class="contentarea">
-                  {{ currentQuestion.content }}
+                  {{ currentColumn.content }}
                 </div>
               </td>
             </tr>
@@ -77,7 +77,7 @@
     </div>
 
     <div class="mb-3">
-      <router-link :to="'/question/' + currentQuestion.qno" v-if="showDetailBoard">
+      <router-link :to="'/column/' + currentColumn.cid" v-if="showDetailBoard">
         <button class="btn btn-warning offset-5" type="button">
           수정&삭제
         </button>
@@ -87,14 +87,14 @@
 </template>
 
 <script>
-import QuestionDataService from "@/services/QustionDataService";
+import ColumnDataService from "@/services/QustionDataService";
 import CommentDataService from "@/services/CommentDataService";
 
 export default {
   data() {
     return {
-      currentQuestion: null,
-      currentQuestionForViews: null, // 이게 뭔지 모르겠음
+      currentColumn: null,
+      currentColumnForViews: null, // 이게 뭔지 모르겠음
 
       currentComment: null,
       currentIndex: -1,
@@ -113,13 +113,13 @@ export default {
   },
   methods: {
     // Todo : 질문번호로 조회 요청하는 함수
-    getQuestion(qno) {
+    getColumn(cid) {
       // axios 공통함수 호출
-      QuestionDataService.get(qno)
+      ColumnDataService.get(cid)
         // 성공하면 .then() 결과가 리턴됨
         .then((response) => {
           // springboot 결과를 리턴함(질문 객체)
-          this.currentQuestion = response.data;
+          this.currentColumn = response.data;
           // 콘솔 로그 출력
           console.log(response.data);
           // 댓글 조회함수 실행
@@ -130,7 +130,7 @@ export default {
           console.log(e);
         });
       // Todo : 조회수 증가하는 함수인거 같음
-      QuestionDataService.getById(qno)
+      ColumnDataService.getById(cid)
         // 성공하면 .then() 결과가 리턴됨
         .then((response) => {
           // springboot 결과를 리턴함(부서 객체)
@@ -148,7 +148,7 @@ export default {
     // Todo : 댓글 정보를 조회요청하는 함수
     getComment() {
       CommentDataService.getCommentByQno(
-        this.currentQuestion.qno,
+        this.currentColumn.cid,
         this.page - 1,
         this.pageSize
       )
@@ -168,11 +168,11 @@ export default {
     // Todo : 질문정보를 수정 요청하는 함수
     updateFree() {
       // axios 공통함수 호출
-      QuestionDataService.update(this.currentQuestion.qno, this.currentQuestion)
+      ColumnDataService.update(this.currentColumn.cid, this.currentColumn)
         // 성공하면 then() 결과가 전송됨
         .then((response) => {
           console.log(response.data);
-          this.$router.push("/question" + this.currentQuestion.qno);
+          this.$router.push("/column" + this.currentColumn.cid);
         })
         // 실패하면 .catch() 에러메세지가 전송됨
         .catch((e) => {
@@ -180,14 +180,14 @@ export default {
         });
     },
     // Todo : 질문정보를 삭제 요청하는 함수
-    deleteQuestion() {
+    deleteColumn() {
       // axios 공통함수 호출
-      QuestionDataService.delete(this.currentQuestion.qno)
+      ColumnDataService.delete(this.currentColumn.cid)
         // 성공하면 then() 결과가 전송됨
         .then((response) => {
           console.log(response.data);
           // 첫페이지(전체목록_조회_페이지) 강제 이동 : /free
-          this.$router.push("/question");
+          this.$router.push("/column");
         })
         // 실패하면 .catch() 에러메세지가 전송됨
         .catch((e) => {
@@ -210,7 +210,7 @@ export default {
         // if ROLE_ADMIN 있으면 true 없으면 false 이거나 현재로그인한id == 글쓴사람id
         return (
           this.currentUser.roles.includes("ROLE_ADMIN") ||
-          this.currentUser.id == this.currentQuestion.id
+          this.currentUser.id == this.currentColumn.id
         );
       }
       // currentUser 없으면 false (메뉴가 안보임)
@@ -219,7 +219,7 @@ export default {
   },
   // 화면이 뜨자 마자 실행되는 이벤트
   mounted() {
-    this.getQuestion(this.$route.params.qno);
+    this.getColumn(this.$route.params.cid);
   },
 };
 </script>
