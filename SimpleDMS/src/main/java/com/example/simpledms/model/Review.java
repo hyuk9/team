@@ -45,15 +45,41 @@ public class Review extends BaseTimeEntity {
     )
     private Integer rno;
 
+//    유저 id
     @javax.persistence.Column
     private Integer id;
 
+//    식당 id
     @javax.persistence.Column
     private Integer dno;
 
+//    리뷰내용
     @javax.persistence.Column
     private String rcontent;
 
+//    맛 평점
+    @Column
+    private Integer taste;
+
+//    서비스 평점
+    @Column
+    private Integer service;
+
+//    접근성 평점
+    @Column
+    private Integer loc;
+
+//    분위기 평점
+    @Column
+    private Integer mood;
+
+//    가성비 평점
+    @Column
+    private Integer cost;
+
+//    성별
+    @Column
+    private String gender;
 
 //    @Lob
 //    @javax.persistence.Column
