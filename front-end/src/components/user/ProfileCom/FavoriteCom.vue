@@ -64,6 +64,9 @@
                   </tr>
                 </tbody>
               </table>
+              <div v-if="existFavorite()">
+                <h4>아직 찜한 기록이 없습니다.</h4>
+              </div>
 
               <!--    Todo : page 바 시작 -->
               <div class="overflow-auto offset-5 mt-5">
@@ -196,6 +199,14 @@ export default {
       this.previewImage = URL.createObjectURL(this.currentImage);
       this.progress = 0;
       this.message = "";
+    },
+    // 찜한 거 없을때 글자띄우기
+    existFavorite() {
+      if (this.favorite != null) {
+        return false;
+      } else {
+        return true;
+      }
     },
   },
   computed: {
