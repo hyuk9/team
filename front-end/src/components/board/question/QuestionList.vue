@@ -2,11 +2,10 @@
   <div>
     <!-- TODO: question 시작 -->
     <!-- Contact Start -->
-    <div class="container mt-2 mb-2">
-      <h1 class="offset-5">1:1 문의 게시판</h1>
+    <div class="container mt-3 mb-2">
+      <h1 class="offset-5"><i class="bi bi-patch-question-fill"> 질문 답변 게시판</i></h1>
       <div style="text-align: center">
-        <div class="p-3 mb-2 bg-warning text-dark bg-opacity-25">
-          <h1>최근 본 게시글 기준으로 내림차순 정렬되는 문제가 있음</h1>
+        <div class="p-3 mb-3 bg-warning text-dark bg-opacity-25 mt-3">
           <strong
             >"공지사항를 통해서 맛있는 토마토의 최신정보를 찾아보세요"
             <br />

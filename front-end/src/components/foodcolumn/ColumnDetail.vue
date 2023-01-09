@@ -1,8 +1,8 @@
 <template>
   <div>
     <!-- detali Start -->
-    <div class="container">
-      <div class="mb-3">
+    <div class="container ">
+      <div class="mt-3 mb-3">
         <label for="title" class="form-label">제목</label>
         <input
           type="text"

@@ -4,7 +4,7 @@
     <!-- Contact Start -->
     <div class="container mt-2 mb-2">
       <h1 class="offset-5">
-        <i class="bi bi-star-fill"></i>푸드컬럼<i class="bi bi-star-fill"></i>
+        푸드컬럼
       </h1>
       <div style="text-align: center">
         <div class="p-3 mb-2 bg-warning text-dark bg-opacity-25">
@@ -88,7 +88,7 @@
                 <i class="bi bi-hash"></i>{{ data.cid }}
               </td>
               <td class="text-center">
-                <router-link :to="'/column/' + data.cid"
+                <router-link :to="'/columnview/' + data.cid"
                   ><a @click="countViews(data.cid)"><span>{{ data.title }}</span></a></router-link
                 >
               </td>

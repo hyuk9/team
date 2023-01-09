@@ -2,10 +2,10 @@
   <div>
     <!-- TODO: free 시작 -->
     <!-- Contact Start -->
-    <div class="container mt-2 mb-2">
-      <h1 class="offset-5">자유게시판</h1>
+    <div class="container mt-3 mb-2">
+      <h1 class="offset-5"><i class="bi bi-chat-left-dots-fill"> 자유게시판</i></h1>
       <div style="text-align: center">
-        <div class="p-3 mb-2 bg-warning text-dark bg-opacity-25">
+        <div class="p-3 mb-2 bg-warning text-dark bg-opacity-25 mt-3">
           <strong
             >"공지사항를 통해서 맛있는 토마토의 최신정보를 찾아보세요"
             <br />
