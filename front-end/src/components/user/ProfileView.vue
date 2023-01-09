@@ -1,34 +1,5 @@
 <template>
   <div>
-    <!-- <div class="container">
-      <header class="jumbotron">
-        <h3>
-          <strong>{{ currentUser.username }}</strong> Profile
-        </h3>
-      </header>
-      <p>
-        <strong>Token:</strong>
-        {{ currentUser.accessToken.substring(0, 20) }} …
-        {{
-          currentUser.accessToken.substr(currentUser.accessToken.length - 20)
-        }}
-      </p>
-      <p>
-        <strong>Id:</strong>
-        {{ currentUser.id }}
-      </p>
-      <p>
-        <strong>Email:</strong>
-        {{ currentUser.email }}
-      </p>
-      <strong>Authorities:</strong>
-      <ul>
-        <li v-for="(role, index) in currentUser.roles" :key="index">
-          {{ role }}
-        </li>
-      </ul>
-    </div> -->
-
     <!-- 프로필, 예약, 찜, 리뷰 시작 -->
     <div class="pt-5 pb-5">
       <div class="container">
@@ -164,15 +135,9 @@
             >
               <div class="col text-center">
                 <i class="bi bi-file-earmark-richtext"></i>
-                <p class="fs-1 mt-3">최근 본 페이지</p>
+                <p class="fs-1 mt-3">최근 본 가게</p>
               </div>
             </a>
-            <!-- <a href="#latelyPage">
-              <div class="col text-center">
-                <i class="bi bi-file-earmark-richtext"></i>
-                <p class="fs-1 mt-3">최근 본 페이지</p>
-              </div>
-            </a> -->
           </div>
           <!-- 리뷰 관리 끝 -->
         </div>
@@ -318,17 +283,6 @@ export default {
     if (!this.currentUser) {
       this.$router.push("/login"); // user 키가 없으면 강제 /login 페이지 이동
     }
-
-    // this.saveProfile();
-
-    // 캐러셀 초기화 실행
-    $(".testimonial-carousel").owlCarousel({
-      autoplay: true, // 자동으로 이미지가 돌아가게 할 것인지?
-      smartSpeed: 1000, // 이미지가 변경될때 변경 속도
-      nav: true,
-      items: 4, // 초기 화면에 표시할 이미지 개수
-      loop: true, // 마지막 사진이 오면 처음사진으로 돌아가게 할 것인지?
-    });
   },
 };
 </script>
