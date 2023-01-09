@@ -37,7 +37,7 @@
       </div>
       <div class="mb-3">
         <label for="content" class="form-label">이미지</label><br />
-        <img :src="currentFree.fileUrl" class="preview my-3" alt="" />
+        <img id="imageSize" :src="currentFree.fileUrl" class="preview my-3" alt="" />
         <!-- <a style="color: inherit" @click="updateFree(currentFree.fno)">
            <span class="badge bg-danger">수정</span>
          </a> -->
@@ -154,4 +154,8 @@ export default {
 </script>
 
 <style>
+#imageSize {
+  width: 550px;
+  height: 500px;
+}
 </style>

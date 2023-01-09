@@ -30,23 +30,43 @@
               <td scope="row" v-text="currentfreeForViews.views"></td>
             </tr>
             <tr>
-              <td colspan="2" scope="row" style="padding: 10px">
-                {{ currentQuestion.content }}
+              <td colspan="2" scope="row">
+                <div class="contentarea">
+                  {{ currentQuestion.content }}
+                </div>
               </td>
             </tr>
           </tbody>
 
-          <div>
-            <h1>확인</h1>
-          </div>
-          <!-- 댓글 창 만들어야 함 -->
-          <div v-for="(data, index) in comment" :key="index">
-            <div>{{ data.writer }} adsf</div>
-            <div>{{ data.content }}</div>
-          </div>
-
           <!-- 댓글 창 -->
         </table>
+        <!-- 댓글 창 만들어야 함
+          <div v-for="(data, index) in comment" :key="index">
+            <div>{{ data.writer }} 댓글:</div>
+            <div>{{ data.content }}</div>
+          </div> -->
+        <div class="card">
+          <div class="card-header pb-4">댓글 리스트
+            <ul class="list-group">
+              <li class="list-group-item d-flex justify-content-between p-2" v-for="(data, index) in comment" :key="index">
+                <div>{{ data.writer }}:{{ data.content }}</div>
+                <div class="d-flex">
+                  <div class="front-italic">작성일:{{ data.insertTime.split(" ")[0] }}&nbsp;</div>
+                  <button class="badge bg-warning">수정</button>
+                  <button class="badge bg-danger">삭제</button>
+                </div>
+                <!-- <h1>여기</h1> -->
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <br />
+
+        <div class="card">
+          <div class="card-body input-group"><span class="input-group-text">댓글창</span><textarea class="form-control" row="1"></textarea><button type="button" class="btn btn-danger">등록</button></div>
+        </div>
+
       </div>
     </div>
 
@@ -199,4 +219,9 @@ export default {
 </script>
 
 <style>
+.contentarea {
+  width: 1240px;
+  height: 500px;
+  padding: 30px;
+}
 </style>
