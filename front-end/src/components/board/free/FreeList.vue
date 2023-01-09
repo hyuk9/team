@@ -3,7 +3,7 @@
     <!-- TODO: free 시작 -->
     <!-- Contact Start -->
     <div class="container mt-3 mb-2">
-      <h1 class="offset-5"><i class="bi bi-chat-left-dots-fill"> 자유게시판</i></h1>
+      <h1 class="text-center"><i class="bi bi-chat-left-dots-fill"> 자유게시판</i></h1>
       <div style="text-align: center">
         <div class="p-3 mb-2 bg-warning text-dark bg-opacity-25 mt-3">
           <strong

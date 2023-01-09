@@ -79,27 +79,27 @@ VALUES (SQ_ANNOUNCE.nextval, '질문사항에 대해', '질문게시판을 이�
 -- Todo:자유게시판 테이블
 INSERT INTO TB_FREE
 VALUES (SQ_FREE.nextval, '1', '강태경', '수업이 어렵나요?', '모두들 표정이 왜그래요', '', '', '', '', 0, 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD'),
         NULL, NULL);
 INSERT INTO TB_FREE
 VALUES (SQ_FREE.nextval, '2', '장동혁', '코로나 확진이 되었어요', '솔직히 걸릴 줄 몰랐는데 막상 걸리니까 힘들고 아프네요', '', '', '', '', 0, 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD'),
         NULL, NULL);
 INSERT INTO TB_FREE
 VALUES (SQ_FREE.nextval, '3', '조성모', '팀프로젝트 하는데 조장이 탈주했어요', '갑자기 코로나 걸렸다고 사라졌어요 어떡하죠', '', '', '', '', 0, 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD'),
         NULL, NULL);
 INSERT INTO TB_FREE
 VALUES (SQ_FREE.nextval, '4', '전성혜', '고양이가 너무 귀여워요', '제 고양이 봐주세요', '', '', '', '', 0, 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 
 INSERT INTO TB_FREE
 VALUES (SQ_FREE.nextval, '5', '권태현', '이번 4090 그래픽카드 어떤가요', '가격이 너무 비싸서 고민되요', '', '', '', '', 0, 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL,
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL,
         NULL);
 INSERT INTO TB_FREE
 VALUES (SQ_FREE.nextval, '6', '박선영', '겨울에 듣기 좋은 노래 추천해주세요', '추운날씨에 듣기 좋은 곡이 있을까요', '', '', '', '', 0, 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL,
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL,
         NULL);
 
 
@@ -458,14 +458,14 @@ VALUES (SQ_REVIEW.nextval, '5', '1', '유저5번', '리뷰내용', 1, 2, 3, 4, 5
 -- Todo:푸드컬럼 테이블
 INSERT INTO TB_COLUMN
 VALUES (SQ_COLUMN.nextval, '연말연시 맛집 추천', '한 해의 마지막과 새해의 시작을 이곳에서', '사진', '장동혁', '2', 0, 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 INSERT INTO TB_COLUMN
 VALUES (SQ_COLUMN.nextval, '서면 맛집 Best5', '부산토박이가 알려주는 로컬맛집', '사진2', '전성혜', '4', 0, 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD'),
         NULL, NULL);
 INSERT INTO TB_COLUMN
 VALUES (SQ_COLUMN.nextval, '여기가 바로 가성비 맛집', '서비스는 필요없다. 오로지 가성비로만 승부', '사진3', '조성모', '3', 0, 'N',
-        TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+        TO_CHAR(SYSDATE, 'YYYY-MM-DD'), NULL, NULL);
 
 
 -- Todo:찜한 음식점 테이블
