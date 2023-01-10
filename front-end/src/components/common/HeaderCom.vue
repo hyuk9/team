@@ -54,6 +54,9 @@ export default {
         } else if (this.$route.path == "/column"){
             this.title = "푸드컬럼"
             this.heroTitle = "/assets/img/gallery/hero-tomato4.png";
+        } else if (this.$route.path == "/columnview/"){
+            this.title = "푸드컬럼"
+            this.heroTitle = "/assets/img/gallery/hero-tomato4.png";
         } else if (this.$route.path == "/reservation"){
             this.title = "예약 조회 및 수정하기"
             this.heroTitle = "/assets/img/gallery/hero-tomato6.png";

@@ -28,6 +28,7 @@
                         </span>
                         <br />
                         {{ data.content }}
+                        {{ data.cid }}
                       </p>
                       <div class="d-grid bottom-0">
                         <!-- <a class="btn btn-lg btn-primary mt-xl-6" href="/"
@@ -35,7 +36,7 @@
                           class="fas fa-chevron-right ms-2"
                         ></i>
                       </a> -->
-                        <router-link :to="'/column/' + data.cid" class="btn btn-lg btn-primary mt-xl-6">자세히
+                        <router-link :to="'/columnview/' + data.cid" class="btn btn-lg btn-primary mt-xl-6">자세히
                           알아보기</router-link>
                       </div>
                     </div>

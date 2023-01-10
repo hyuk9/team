@@ -28,7 +28,7 @@
                                         <li><a href="/geumjeong">금정구</a></li>
                                         <li><a href="/gijang">기장군</a></li>
                                         <li><a href="/namgu">남구</a></li>
-                                        <li><a href="/donggu">동구/</a></li>
+                                        <li><a href="/donggu">동구</a></li>
                                         <li><a href="/dongnae">동래구</a></li>
                                         <li><a href="/busanjin">부산진구</a></li>
                                         <li><a href="/bukgu">북구</a></li>
