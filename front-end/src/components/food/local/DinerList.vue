@@ -163,7 +163,6 @@
 import DinerDataService from "@/services/DinerDataService";
 import CurrentMap from "@/components/food/detail/CurrentMap.vue";
 import FavoriteDataService from "@/services/FavoriteDataService";
-import ReviewDataService from '@/services/ReviewDataService';
 
 export default {
   // 변수 정의하는 곳 : data(), 초기화
@@ -215,8 +214,6 @@ export default {
 
       // favorite 정보 저장용
       favorite: [],
-      // 평점 조회 변수(전체검색용)
-      scoreAll : [],
     };
   },
   // 함수 정의하는 곳 : methods:
@@ -256,22 +253,6 @@ export default {
                   }
                 }
               }
-              // 평점 조회 (전체)
-              ReviewDataService.findByDnoDinerScoreAll()
-              .then ((response) => {
-                this.scoreAll = response.data;
-                // findByDnoDinerScoreAll의 평점을  diner socret에 복사
-                for (let i = 0; i < this.diner.length; i++) {
-                  for (let j = 0; j < this.scoreAll.length; j++) {
-                    if (this.diner[i].dno == this.scoreAll[j].dno) {
-                      this.diner[i].score = this.scoreAll[j].score.toFixed(1);
-                    }
-                  }
-              }
-              }) 
-              .catch ((e) => {
-                console.log(e);
-              })
             })
             // 실패하면 .catch() 에 에러가 전송됨
             .catch((e) => {

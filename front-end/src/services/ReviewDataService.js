@@ -54,17 +54,6 @@ class ReviewDataService {
   findByDnoScoreAvg(dno) {
     return http.get(`/review/dno/${dno}`);
   }
-
-  // 스코어 디너 집어넣기 함수
-  findByDnoDinerScore(dno) {
-    return http.get(`/reviewdiner/${dno}`);
-  }
-
-  
-  // 스코어 디너 집어넣기 함수(전체)
-  findByDnoDinerScoreAll() {
-    return http.get(`/reviewdiner`);
-  }
 }
 
 export default new ReviewDataService();

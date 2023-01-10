@@ -1,6 +1,8 @@
 package com.example.simpledms.service;
 
-import com.example.simpledms.dto.*;
+import com.example.simpledms.dto.ReservationDto;
+import com.example.simpledms.dto.ReviewDto;
+import com.example.simpledms.dto.ScoreDto;
 import com.example.simpledms.model.Menu;
 import com.example.simpledms.model.Review;
 import com.example.simpledms.repository.ReviewRepository;
@@ -108,18 +110,6 @@ public class ReviewService {
         return list;
     }
 
-    // Todo : 디너에 값 집어넣기 함수
-    public List<ScoreAvgDto> findByDnoDinerScore(Integer dno) {
-        List<ScoreAvgDto> list = reviewRepository.findByDnoDinerScore(dno);
-
-        return list;
-    }
-    // Todo : 디너에 값 집어넣기 함수 전체검색
-    public List<ScoreAvgAllDto> findByDnoDinerScoreAll() {
-        List<ScoreAvgAllDto> list = reviewRepository.findByDnoDinerScoreAll();
-
-        return list;
-    }
 
 }
 

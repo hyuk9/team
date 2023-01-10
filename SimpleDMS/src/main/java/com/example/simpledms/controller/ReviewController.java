@@ -1,7 +1,9 @@
 package com.example.simpledms.controller;
 
 
-import com.example.simpledms.dto.*;
+import com.example.simpledms.dto.ReservationDto;
+import com.example.simpledms.dto.ReviewDto;
+import com.example.simpledms.dto.ScoreDto;
 import com.example.simpledms.model.Menu;
 import com.example.simpledms.model.Review;
 import com.example.simpledms.service.ReviewService;
@@ -250,53 +252,6 @@ public class ReviewController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-    // Todo : 디너에 스코어 값 넣기 함수
-    @GetMapping("/reviewdiner/{dno}")
-    public ResponseEntity<Object> findByDnoDinerScore(@PathVariable Integer dno) {
-
-        try {
-
-            List<ScoreAvgDto> reviewDtoList = reviewService.findByDnoDinerScore(dno);
-
-            if (reviewDtoList.isEmpty() == false) {
-//                데이터 + 성공 메세지 전송
-                return new ResponseEntity<>(reviewDtoList, HttpStatus.OK);
-            } else {
-//                데이터 없음 메세지 전송(클라이언트)
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            }
-
-        } catch (Exception e) {
-            log.debug(e.getMessage());
-            // 서버에러 발생 메세지 전송(클라이언트)
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    // Todo : 디너에 스코어 값 넣기 함수(전체)
-    @GetMapping("/reviewdiner")
-    public ResponseEntity<Object> findByDnoDinerScore() {
-
-        try {
-
-            List<ScoreAvgAllDto> reviewDtoList = reviewService.findByDnoDinerScoreAll();
-
-            if (reviewDtoList.isEmpty() == false) {
-//                데이터 + 성공 메세지 전송
-                return new ResponseEntity<>(reviewDtoList, HttpStatus.OK);
-            } else {
-//                데이터 없음 메세지 전송(클라이언트)
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            }
-
-        } catch (Exception e) {
-            log.debug(e.getMessage());
-            // 서버에러 발생 메세지 전송(클라이언트)
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
 
 
 }
