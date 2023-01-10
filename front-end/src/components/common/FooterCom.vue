@@ -7,16 +7,16 @@
             <h5 class="lh-lg fw-bold text-white">메뉴별</h5>
             <ul class="list-unstyled mb-md-4 mb-lg-0">
               <li class="lh-lg">
-                <a href = "" class="text-200 text-decoration-none" >한식</a>
+                <a href = "/korean" class="text-200 text-decoration-none" >한식</a>
               </li>
               <li class="lh-lg">
-                <a href = "" class="text-200 text-decoration-none" >중식</a>
+                <a href = "/chinese" class="text-200 text-decoration-none" >중식</a>
               </li>
               <li class="lh-lg">
-                <a href = "" class="text-200 text-decoration-none" >일식</a>
+                <a href = "/japanese" class="text-200 text-decoration-none" >일식</a>
               </li>
               <li class="lh-lg">
-                <a href = "" class="text-200 text-decoration-none" >양식</a>
+                <a href = "/western" class="text-200 text-decoration-none" >양식</a>
               </li>
             </ul>
           </div>
@@ -36,22 +36,38 @@
                 <a href = "" class="text-200 text-decoration-none" 
                   >부산</a>
               </li>
+              <li class="lh-lg">
+                <a href = "" class="text-200 text-decoration-none" 
+                  >부산</a>
+              </li>
+              <li class="lh-lg">
+                <a href = "" class="text-200 text-decoration-none" 
+                  >부산</a>
+              </li>
+              <li class="lh-lg">
+                <a href = "" class="text-200 text-decoration-none" 
+                  >부산</a>
+              </li>
             </ul>
           </div>
           <div class="col-6 col-md-4 col-lg-3 col-xxl-2 mb-3">
             <h5 class="lh-lg fw-bold text-white">테마별</h5>
             <ul class="list-unstyled mb-md-4 mb-lg-0">
               <li class="lh-lg">
-                <a href = "" class="text-200 text-decoration-none" 
+                <a href = "/date" class="text-200 text-decoration-none" 
                   >데이트</a>
               </li>
               <li class="lh-lg">
-                <a href = "" class="text-200 text-decoration-none" 
+                <a href = "/meeting" class="text-200 text-decoration-none" 
                   >모임</a>
               </li>
               <li class="lh-lg">
-                <a href = "" class="text-200 text-decoration-none" 
+                <a href = "/getTogether" class="text-200 text-decoration-none" 
                   >회식</a>
+              </li>
+              <li class="lh-lg">
+                <a href = "/daily" class="text-200 text-decoration-none" 
+                  >모임</a>
               </li>
             </ul>
           </div>

@@ -246,36 +246,42 @@ export default {
       count: 0,
       pageSize: 10,
 
-      // pageSizes: [3, 6, 9],
     };
   },
   methods: {
+    // FIXME: 이미지 저장은 버전2
     saveProfile() {
-      // 임시 객체 변수 -> springboot 전송
-      // 부서번호는(no) 자동생성되므로 빼고 전송함
-      this.progress = 0;
-      // insert 요청 함수 호출(axios 공통함수 호출)
-      ProfileDataService.create(
-        this.currentUser.id,
-        this.currentImage
-        // (eve) => {
-        //   // 파일이 업로드될때 진척상황이 저장됨(%)
-        //   this.progress = Math.round((100 * eve.loaded) / eve.total);
-        // }
-      )
-        // 성공하면 then() 결과가 전송됨
-        .then((response) => {
-          this.message = response.data;
-          this.profiles = false;
-          // 변수 submitted
-          alert("성공했습니다.");
-          this.getProfile(this.currentUser.id);
-        })
-        // 실패하면 .catch() 결과가 전송됨
-        .catch((err) => {
-          this.progress = 0;
-          this.message = "Could not upload the image! " + err;
-          this.currentImage = undefined;
+      // // 임시 객체 변수 -> springboot 전송
+      // // 부서번호는(no) 자동생성되므로 빼고 전송함
+      // this.progress = 0;
+      // // insert 요청 함수 호출(axios 공통함수 호출)
+      // ProfileDataService.create(
+      //   this.currentUser.id,
+      //   this.currentImage
+      //   // (eve) => {
+      //   //   // 파일이 업로드될때 진척상황이 저장됨(%)
+      //   //   this.progress = Math.round((100 * eve.loaded) / eve.total);
+      //   // }
+      // )
+      //   // 성공하면 then() 결과가 전송됨
+      //   .then((response) => {
+      //     this.message = response.data;
+      //     this.profiles = false;
+      //     // 변수 submitted
+      //     alert("성공했습니다.");
+      //     this.getProfile(this.currentUser.id);
+      //   })
+      //   // 실패하면 .catch() 결과가 전송됨
+      //   .catch((err) => {
+      //     this.progress = 0;
+      //     this.message = "Could not upload the image! " + err;
+      //     this.currentImage = undefined;
+      //   });
+      this.$swal({
+          icon: "info",
+          title: "프로필 이미지 서비스는 \n 현재 준비중입니다",
+          confirmButtonColor: "#fcbb03",
+          confirmButtonText: "확인",
         });
     },
 

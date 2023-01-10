@@ -56,15 +56,19 @@ export default {
             this.heroTitle = "/assets/img/gallery/hero-tomato4.png";
         } else if (this.$route.path == "/reservation"){
             this.title = "예약 조회 및 수정하기"
+            this.heroTitle = "/assets/img/gallery/hero-tomato6.png";
         } else if (this.$route.path == "/add-reservation"){
             this.title = "예약하기"
+            this.heroTitle = "/assets/img/gallery/hero-tomato6.png";
         } else if (this.$route.path == "/profile"){
             this.title = "프로필"
             this.heroTitle = "/assets/img/gallery/hero-tomato5.png";
         } else if (this.$route.path == "/user"){
             this.title = "유저목록 조회 및 수정하기"
+            this.heroTitle = "/assets/img/gallery/hero-tomato6.png";
         } else if (this.$route.path == "/team"){
             this.title = "팀원 소개"
+            
         } else {
           this.title = "음식점 리스트"
           this.heroTitle = "/assets/img/gallery/hero-tomato2.png";

@@ -236,7 +236,7 @@ export default {
                 timer: 1000,
             });
             // 홈으로 보내기 함수(프로필에 있거나 유저관련 페이지일 경우)
-            if(this.$route.path == "/profile" || this.$route.path == "/user") {
+            if(this.$route.path == "/profile" || this.$route.path == "/user" || this.$route.path == "/add/diner"  || this.$route.path == "/add-column" || this.$route.path == "/add-faq" || this.$route.path == "/add-question" || this.$route.path == "/add-user" || this.$route.path == "/add-reservation"  || this.$route.path == "/add-free/"   || this.$route.path == "/add-announce/" || this.$route.path == "/add-faq/"  || this.$route.path == "/add-column/"  ) {
                 this.$router.push("/")
             } else {
                 this.$router.go();

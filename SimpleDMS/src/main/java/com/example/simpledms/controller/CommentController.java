@@ -1,6 +1,7 @@
 package com.example.simpledms.controller;
 
 import com.example.simpledms.dto.FavoriteDto;
+import com.example.simpledms.model.Announce;
 import com.example.simpledms.model.Comment;
 import com.example.simpledms.model.Favorite;
 import com.example.simpledms.service.CommentService;
@@ -79,6 +80,29 @@ public class CommentController {
 //        }
 //    }
 
+//    TODO: 댓글 번호로 조회하는 함수
+    @GetMapping("/comment/cno/{cno}")
+    public ResponseEntity<Object> getCommentId(@PathVariable int cno) {
+
+        try {
+            Optional<Comment> optionalComment = commentService.findById(cno);
+
+
+
+            if (optionalComment.isPresent() == true) {
+//                데이터 + 성공 메세지 전송
+                return new ResponseEntity<>(optionalComment.get(), HttpStatus.OK);
+            } else {
+//                데이터 없음 메세지 전송(클라이언트)
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+
+        } catch (Exception e) {
+            log.debug(e.getMessage());
+            // 서버에러 발생 메세지 전송(클라이언트)
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
 //    Todo : 댓글 전체 삭제하는 함수 // 정상작동확인
     @DeleteMapping("/comment/all")
@@ -95,7 +119,7 @@ public class CommentController {
         }
     }
 
-//    Todo : 댓글 수정하는 함수
+//    Todo : 댓글 추가하는 함수
     @PostMapping("/comment")
     public ResponseEntity<Object> createComment(@RequestBody Comment comment) {
 
@@ -317,20 +341,20 @@ public class CommentController {
 //        }
 //    }
 
-//    @PutMapping("/comment/{fid}")
-//    public ResponseEntity<Object> updateComment(@PathVariable int fid,
-//                                                @RequestBody Comment comment) {
-//
-//        try {
-//            Comment comment2 = commentService.save(comment);
-//
-//            return new ResponseEntity<>(comment2, HttpStatus.OK);
-//
-//        } catch (Exception e) {
-//            log.debug(e.getMessage());
-//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//    }
+    @PutMapping("/comment/{cno}")
+    public ResponseEntity<Object> updateComment(@PathVariable int cno,
+                                                @RequestBody Comment comment) {
+
+        try {
+            Comment comment2 = commentService.save(comment);
+
+            return new ResponseEntity<>(comment2, HttpStatus.OK);
+
+        } catch (Exception e) {
+            log.debug(e.getMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
 //    Todo : 댓글 삭제하는 함수 // 정상작동확인함
     @DeleteMapping("/comment/deletion/{cno}")

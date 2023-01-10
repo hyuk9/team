@@ -3,7 +3,9 @@
     <!-- TODO: question 시작 -->
     <!-- Contact Start -->
     <div class="container mt-3 mb-2">
-      <h1 class="text-center"><i class="bi bi-patch-question-fill"> 질문 게시판</i></h1>
+      <h1 class="text-center">
+        <i class="bi bi-patch-question-fill"> 질문 게시판</i>
+      </h1>
       <div style="text-align: center">
         <div class="p-3 mb-3 bg-warning text-dark bg-opacity-25 mt-3">
           <strong
@@ -78,7 +80,8 @@
               </td>
               <td class="text-center">{{ data.writer }}</td>
               <td class="text-center">
-                <i class="bi bi-calendar-date">&nbsp;</i>{{ data.insertTime.split(" ")[0] }}
+                <i class="bi bi-calendar-date">&nbsp;</i
+                >{{ data.insertTime.split(" ")[0] }}
               </td>
               <!-- 조회수 보여주기 -->
               <td class="text-center">{{ data.views }}</td>
@@ -97,9 +100,15 @@
             <span class="badge bg-warning text-dark">추가</span>
           </router-link> -->
         <!-- TODO: badge를 버튼으로 교체 -->
-        <router-link class="offset-11" to="/add-question/">
-          <button type="button" class="btn btn-warning btn-sm">글쓰기</button>
-        </router-link>
+        <div class="offset-11">
+          <button
+          type="button"
+          class="btn btn-warning btn-sm"
+          @click="ConfirmLoggedUser"
+        >
+          글쓰기
+        </button>
+        </div>
       </div>
       <div class="overflow-auto offset-5">
         <b-pagination
@@ -124,7 +133,7 @@
               <option>제목</option>
             </select>
           </div>
-          
+
           <!-- searchDname -> searchKeyword 변경 -->
           <div class="col-7">
             <input
@@ -193,6 +202,18 @@ export default {
         .catch((e) => {
           console.log(e);
         });
+    },
+    ConfirmLoggedUser() {
+      if (this.currentUser && this.currentUser.roles) {
+        // if (ROLE_ADMIN || ROLE_USER) 로그인이 되어있다면 관리자거나 일반유저이므로 푸드컬럼 페이지로 바로 이동
+        return (
+          (this.currentUser.roles.includes("ROLE_ADMIN") ||
+            this.currentUser.roles.includes("ROLE_USER")) &&
+          this.$router.push("/add-question/")
+        );
+      }
+      // 로그인이 되어있지 않다면 로그인이 필요한 항목이라고 표시
+      return alert("로그인이 필요한 항목입니다.");
     },
     // Todo : select box 값 변경시 실행되는 함수(재조회)
     handlePageSizeChange(event) {
