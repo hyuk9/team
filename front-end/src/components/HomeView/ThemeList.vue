@@ -27,6 +27,7 @@
           <option value="데이트">데이트</option>
           <option value="모임">모임</option>
           <option value="회식">회식</option>
+          <option value="식사">식사</option>
         </select>
         <a class="btn btn-lg btn-primary float-right" href="/diner"
           >전체보기 <i class="fas fa-chevron-right ms-2"> </i
