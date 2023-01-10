@@ -266,7 +266,7 @@
               <div>
                 <!-- FIXME:고쳐야하는데 이유는 아직 모름 -->
                 <!-- <router-link :to="'/edit/review/' + data.rno" v-if="showDetailBoard"> -->
-                <router-link :to="'/edit/review/' + data.rno">
+                <router-link :to="'/edit/review/' + data.rno" v-if="showDetailBoard(data)">
                   <span class="badge bg-success float-right">수정하기</span>
                 </router-link>
               </div>
@@ -696,6 +696,19 @@ export default {
           console.log("최근본가게 저장 실패 : ", e);
         });
     },
+    // TODO: 관리자거나 작성자라면 리뷰 수정하기 버튼 보이게하는 함수
+    showDetailBoard(data) {
+      if (this.currentUser.roles) {
+        if(this.currentUser.roles.includes("ROLE_ADMIN") || this.currentUser.id == data.id ) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return false;
+      }
+
+    },
   },
 
   // 화면이 뜨자 마자 실행되는 이벤트
@@ -747,18 +760,6 @@ export default {
       }
     },
 
-    // TODO: 관리자거나 작성자라면 버튼 보이게하는 함수
-    showDetailBoard() {
-      if (this.currentUser && this.currentUser.roles) {
-        // if ROLE_ADMIN 있으면 true 없으면 false 이거나 현재로그인한id == 글쓴사람id
-        return (
-          this.currentUser.roles.includes("ROLE_ADMIN") ||
-          this.currentUser.id == this.currentReview.id
-        );
-      }
-      // currentUser 없으면 false (메뉴가 안보임)
-      return false;
-    },
   },
 };
 </script>
