@@ -143,7 +143,7 @@
             <!-- Map widget-->
             <div class="card mb-4 mt-5">
               <div class="card-header">
-                <i class="bi bi-geo-alt-fill"></i> 내 근처 맛집
+                <i class="bi bi-geo-alt-fill"></i> 현재 위치
               </div>
               <div class="card-body" style="height: 550px; width: 100%">
                 <CurrentMap />

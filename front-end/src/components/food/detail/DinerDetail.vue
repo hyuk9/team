@@ -281,44 +281,39 @@
                 <div class="col">
                   <!-- TODO: 프로필 사진 넣을 예정 -->
 
-                  <div class="d-flex flex-column">
-                    <h5 class="mt-2 mb-0">{{ data.writer }}</h5>
+                  <div class="d-flex flex-column mt-2 ms-3">
                     <h5>
-                      <span class="fa fa-star star-active ml-3"></span>
-                      <span class="badge bg-primary"
-                        >맛 : {{ data.taste }}점</span
+                      <span class="badge bg-primary me-3"
+                        >맛 {{ data.taste }}점</span
                       >
-                      <span class="fa fa-star star-active ml-3"></span>
-                      <span class="badge bg-success"
-                        >서비스 : {{ data.service }}점</span
+                      <span class="badge bg-success me-3"
+                        >서비스 {{ data.service }}점</span
                       >
-                      <span class="fa fa-star star-active ml-3"></span>
-                      <span class="badge bg-danger"
-                        >접근성 : {{ data.loc }}점</span
+                      <span class="badge bg-danger me-3"
+                        >접근성 {{ data.loc }}점</span
                       >
-                      <span class="fa fa-star star-active ml-3"></span>
-                      <span class="badge bg-warning text-dark"
-                        >분위기 : {{ data.mood }}점</span
+                      <span class="badge bg-warning text-dark me-3"
+                        >분위기 {{ data.mood }}점</span
                       >
-                      <span class="fa fa-star star-active ml-3"></span>
-                      <span class="badge bg-dark"
-                        >가성비 : {{ data.cost }}점</span
+                      <span class="badge bg-dark me-3"
+                        >가성비 {{ data.cost }}점</span
                       >
                     </h5>
+                    <h5 class="mt-2 mb-0"><i class="bi bi-pencil-square"></i> {{ data.writer }}</h5>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col mt-2">
-              <p class="content">
-                {{ data.content }}
-              </p>
-              <div>
-                <p class="text-muted pt-5 pt-sm-3 float-right">
-                  <!-- FIXME: 일단 이렇게 문자열 자르기를 사용했는데 더 좋은 방법이 있으면 써야할듯? -->
-                  {{ data.insertTime.substring(0, 16) }}
+            <div class="card-body mt-3 bg-light">
+                <p class="content">
+                  {{ data.content }}
                 </p>
-              </div>
+            </div>
+            <div>
+              <p class="text-muted pt-5 pt-sm-3 float-right">
+                <!-- FIXME: 일단 이렇게 문자열 자르기를 사용했는데 더 좋은 방법이 있으면 써야할듯? -->
+                {{ data.insertTime.substring(0, 16) }}
+              </p>
             </div>
             <!-- <div class="row text-left">
               <img class="pic" :src="data.rphoto" />
@@ -334,6 +329,7 @@
                 v-model="page"
                 :total-rows="count"
                 :per-page="pageSize"
+                pills
                 first-text="<<"
                 last-text=">>"
                 prev-text="Prev"
@@ -359,7 +355,7 @@
           <!-- Chart widget-->
           <div class="card mb-4">
             <div class="card-header">
-              <i class="bi bi-bar-chart-line-fill"></i> Chart
+              <i class="bi bi-bar-chart-line-fill"></i> 평점
             </div>
             <div class="card-body">
               <Canvas />
