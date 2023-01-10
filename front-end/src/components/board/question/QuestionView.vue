@@ -2,9 +2,11 @@
   <div>
     <div class="container col-8 mb-2 mt-2">
       <div class="FreeView-header mt-5">
-        <h1><strong>질문 게시판</strong></h1>
+        <h1 class="text-900">질문 게시판</h1>
       </div>
+
       <div class="FreeView-title">
+        
         <table class="table">
           <colgroup>
             <col style="width: 15%" />
@@ -40,7 +42,7 @@
         </table>
 
         <!-- FIXME: 댓글보이는 창 -->
-        <div class="card">
+        <div class="card mb-2">
           <div class="card-header pb-4">
             댓글
             <ul class="list-group">
@@ -61,7 +63,7 @@
                   </div>
                   <!-- ============================================= -->
                   <div v-if="showEditDelete(data)">
-                  <!-- <div> -->
+                    <!-- <div> -->
                     <button
                       class="badge bg-primary p-2 mt-1 ms-3"
                       @click="toggleComment(data.cno)"
@@ -74,38 +76,39 @@
                     >
                       <span class="fs-0">삭제</span>
                     </button>
-                  <!-- ============================================= -->
-
+                    <!-- ============================================= -->
                   </div>
                 </div>
               </li>
+              <!-- 댓글이 없을 때 보여주는 창 -->
               <li
                 class="list-group-item d-flex justify-content-between p-2"
                 v-if="existComment()"
               >
-                <div class="pt-4"></div>
+                <div> <p class="fs-1">댓글이 없습니다</p>  </div>
               </li>
+              <!-- 댓글이 없을 때 보여주는 창 -->
             </ul>
             <b-pagination
-          v-model="page"
-          :total-rows="count"
-          :per-page="pageSize"
-          first-text="<<"
-          last-text=">>"
-          prev-text="Prev"
-          next-text="Next"
-          @change="handlePageChange"
-          class="justify-content-center mt-2"
-        ></b-pagination>
+              v-model="page"
+              :total-rows="count"
+              :per-page="pageSize"
+              first-text="<<"
+              last-text=">>"
+              prev-text="Prev"
+              next-text="Next"
+              @change="handlePageChange"
+              class="justify-content-center mt-2"
+            ></b-pagination>
           </div>
         </div>
-        
+
         <!-- FIXME: 댓글보이는 창 -->
 
         <br />
 
         <!-- FIXME: 댓글 수정 창 -->
-        <div class="card" v-if="showUpdateComment">
+        <div class="card mb-3" v-if="showUpdateComment">
           <div class="card-body input-group">
             <span class="input-group-text"
               >{{ this.currentUser.username }} </span
@@ -127,7 +130,7 @@
         <!-- FIXME: 댓글 수정 창 -->
 
         <!-- 댓글 입력 창 -->
-        <div class="card" v-if="showInsertComment">
+        <div class="card mb-5" v-if="showInsertComment">
           <div class="card-body input-group">
             <span class="input-group-text"> 댓글달기 </span
             ><textarea
@@ -145,18 +148,16 @@
           </div>
         </div>
         <!-- 댓글 입력 창 -->
-      </div>
-    </div>
 
-    <div class="mb-3">
-      <router-link
-        :to="'/question/' + currentQuestion.qno"
-        v-if="showDetailBoard"
-      >
-        <button class="btn btn-warning offset-5" type="button">
-          수정&삭제
-        </button>
-      </router-link>
+        <div class="mb-3">
+          <router-link
+            :to="'/question/' + currentQuestion.qno"
+            v-if="showDetailBoard"
+          >
+            <button class="btn btn-warning offset-5" type="button">수정</button>
+          </router-link>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -254,7 +255,10 @@ export default {
           this.comment = comment; // 스프링부트에서 전송한 데이터
           this.count = totalItems; // 스프링부트에서 전송한 페이지정보(총 건수)
           // 콘솔 로그 출력
-          console.log("질문번호에 해당하는 댓글 정보 조회요청 성공", response.data);
+          console.log(
+            "질문번호에 해당하는 댓글 정보 조회요청 성공",
+            response.data
+          );
           // this.getCommentAll();
         })
         // 실패하면 .catch() 에러메세지가 리턴됨
@@ -390,9 +394,8 @@ export default {
         });
     },
 
-
     // TODO: 관리자 접속인지 아닌지 확인하는 함수
-    showEditDelete(data){
+    showEditDelete(data) {
       if (this.currentUser.roles) {
         if (
           this.currentUser.roles.includes("ROLE_ADMIN") ||
@@ -406,7 +409,6 @@ export default {
         return false;
       }
     },
-    
   },
 
   computed: {
@@ -422,7 +424,6 @@ export default {
         return this.$store.state.auth.user;
       }
     },
-    
 
     // TODO: 글작성자 or 관리자일 경우 버튼이 보이게 하는 함수
     showDetailBoard() {
@@ -436,7 +437,6 @@ export default {
       // currentUser 없으면 false (메뉴가 안보임)
       return false;
     },
-
   },
   // 화면이 뜨자 마자 실행되는 이벤트
   mounted() {

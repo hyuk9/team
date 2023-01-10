@@ -96,9 +96,6 @@
           <button @click="deleteQuestion" class="btn btn-danger me-3">
             삭제하기
           </button>
-          <button @click="replyAnswer" class="btn btn-primary me-3">
-            답글달기
-          </button>
         </div>
         <div class="alert alert-success" role="alert" v-if="message">
           {{ message }}
