@@ -1,8 +1,6 @@
 package com.example.simpledms.service;
 
-import com.example.simpledms.model.Free;
 import com.example.simpledms.model.Profile;
-import com.example.simpledms.repository.FreeRepository;
 import com.example.simpledms.repository.ProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

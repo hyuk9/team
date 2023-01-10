@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- detali Start -->
-    <div class="container" v-if="currentFaq">
+    <div class="container col-6" v-if="currentFaq">
       <div class="mb-3">
         <label for="title" class="form-label">title</label>
         <input
@@ -25,8 +25,8 @@
         ></textarea>
       </div>
       <div class="mb-3">
-        <button @click="updateFaq" class="btn btn-primary me-3">Update</button>
-        <button @click="deleteFaq" class="btn btn-danger">Delete</button>
+        <button @click="updateFaq" class="btn btn-primary me-3 ">수정</button>
+        <button @click="deleteFaq" class="btn btn-danger ">삭제</button>
       </div>
       <div class="alert alert-success" role="alert" v-if="message">
         {{ message }}

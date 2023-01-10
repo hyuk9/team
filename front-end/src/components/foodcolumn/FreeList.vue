@@ -1,17 +1,18 @@
 <template>
   <div>
-    <!-- TODO: column 시작 -->
+    <!-- TODO: free 시작 -->
     <!-- Contact Start -->
     <div class="container mt-3 mb-2">
       <h1 class="text-center">
-        <i class="bi bi-columns"> 푸드컬럼</i>
+        <i class="bi bi-chat-left-dots-fill">자유게시판</i>
       </h1>
       <div style="text-align: center">
         <div class="p-3 mb-2 bg-warning text-dark bg-opacity-25">
           <strong
-            >푸드컬럼 리스트
+            >"공지사항를 통해서 맛있는 토마토의 최신정보를 찾아보세요"
             <br />
-            대충 푸드컬럼 있다는 내용
+            "맛있는 토마토의 최신 정보와 공지를 모아서 한번에 찾아볼 수
+            있습니다.
           </strong>
         </div>
       </div>
@@ -64,14 +65,14 @@
               </th>
             </tr>
           </thead>
-          <tbody v-for="(data, index) in column" :key="index">
+          <tbody v-for="(data, index) in free" :key="index">
             <tr>
               <td class="text-center">
-                <i class="bi bi-hash"></i>{{ data.cid }}
+                <i class="bi bi-hash"></i>{{ data.fno }}
               </td>
               <td class="text-center">
-                <router-link :to="'/columnview/' + data.cid"
-                  ><a @click="countViews(data.cid)"><span>{{ data.title }}</span></a></router-link
+                <router-link :to="'/freeview/' + data.fno"
+                  ><a @click="countViews(data.fno)"><span>{{ data.title }}</span></a></router-link
                 >
               </td>
               <td class="text-center">{{ data.writer }}</td>
@@ -81,7 +82,7 @@
                  <!-- 조회수 보여주기 -->
               <td class="text-center">{{ data.views }}</td>
               <td v-if="showAdminBoard">
-                <router-link :to="'/column/' + data.cid"
+                <router-link :to="'/free/' + data.fno"
                   ><span class="badge rounded-pill bg-warning text-dark"
                     >수정</span
                   ></router-link
@@ -91,7 +92,7 @@
           </tbody>
         </table>
 
-        <!-- <router-link to="/add-column/">
+        <!-- <router-link to="/add-free/">
           <span class="badge bg-warning text-dark">추가</span>
         </router-link> -->
         <!-- TODO: badge를 버튼으로 교체 -->
@@ -145,7 +146,7 @@
               type="button"
               @click="
                 page = 1;
-                retrieveColumn();
+                retrieveFree();
               "
             >
               <i class="bi bi-search"></i>
@@ -157,24 +158,24 @@
       <!-- search 관련 div 끝 -->
     </div>
     <!-- Contact End -->
-    <!-- TODO: column 끝 -->
+    <!-- TODO: free 끝 -->
   </div>
 </template>
 
 <script>
-import ColumnDataService from "@/services/ColumnDataService";
+import FreeDataService from "@/services/FreeDataService";
 
 export default {
   data() {
     return {
-      column: [],
+      free: [],
       searchKeyword: "",
       searchSelect: "제목",
 
       // 페이징을 위한 변수 정의
       page: 1, // 현재 페이지
       count: 0, // 전체 데이터 건수
-      pageSize: 10, // 한페이지당 몇개를 화면에 보여줄지 결정하는 변수
+      pageSize: 3, // 한페이지당 몇개를 화면에 보여줄지 결정하는 변수
 
       pageSizes: [3, 6, 9], // select box 에 넣을 기본 데이터
     };
@@ -186,7 +187,7 @@ export default {
         return (
           (this.currentUser.roles.includes("ROLE_ADMIN") ||
             this.currentUser.roles.includes("ROLE_USER")) &&
-          this.$router.push("/add-column/")
+          this.$router.push("/add-free/")
         );
       }
       // 로그인이 되어있지 않다면 로그인이 필요한 항목이라고 표시
@@ -194,8 +195,8 @@ export default {
     },
 
     // axios , 모든 정보 조회 요청 함수
-    retrieveColumn() {
-      ColumnDataService.getAll(
+    retrieveFree() {
+      FreeDataService.getAll(
         this.searchSelect, // select box 선택된 값
         this.searchKeyword, // 검색어
         this.page - 1,
@@ -203,8 +204,8 @@ export default {
       )
         // 성공하면 .then() 결과가 전송됨
         .then((response) => {
-          const { column, totalItems } = response.data; // springboot 의 전송된 맵 정보
-          this.column = column; // 스프링부트에서 전송한 데이터
+          const { free, totalItems } = response.data; // springboot 의 전송된 맵 정보
+          this.free = free; // 스프링부트에서 전송한 데이터
           this.count = totalItems; // 스프링부트에서 전송한 페이지정보(총 건수)
           // 디버깅 콘솔에 정보 출력
           console.log(response.data);
@@ -219,17 +220,17 @@ export default {
       this.pageSize = event.target.value; // 한페이지당 개수 저장(3, 6, 9)
       this.page = 1;
       // 재조회 함수 호출
-      this.retrieveColumn();
+      this.retrieveFree();
     },
     // 페이지 번호 변경시 실행되는 함수(재조회)
     handlePageChange(value) {
       this.page = value; // 매개변수값으로 현재페이지 변경
       // 재조회 함수 호출
-      this.retrieveColumn();
+      this.retrieveFree();
     },
         // 조회수 증가 함수
-    countViews (cid) {
-      ColumnDataService.plusViews(cid)
+    countViews (fno) {
+      FreeDataService.plusViews(fno)
      .then((response) => {
           // 디버깅 콘솔에 정보 출력
           console.log(response.data);
@@ -262,7 +263,7 @@ export default {
 
   // 화면이 뜨자마자 실행되는 이벤트(라이프 사이클 함수) : mounted(), created()
   mounted() {
-    this.retrieveColumn(); // 화면 로딩시 전체 조회함수 실행
+    this.retrieveFree(); // 화면 로딩시 전체 조회함수 실행
   },
 };
 </script>

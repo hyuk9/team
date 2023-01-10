@@ -1,6 +1,5 @@
 package com.example.simpledms.controller;
 
-import com.example.simpledms.model.Free;
 import com.example.simpledms.model.Question;
 import com.example.simpledms.service.QuestionService;
 import lombok.extern.slf4j.Slf4j;

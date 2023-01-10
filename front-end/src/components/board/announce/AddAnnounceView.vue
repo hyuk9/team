@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- AddAnnounce Start -->
-        <div class="container" v-if="!submitted">
+        <!-- <div class="container" v-if="!submitted">
             <div class="mb-3">
                 <label for="writer" class="form-label">작성자</label>
                 <input type="writer" class="form-control" id="writer" required name="writer"
@@ -20,8 +20,47 @@
             <div class="mb-3">
                 <button @click="saveAnnounce" class="btn btn-primary">Submit</button>
             </div>
-        </div>
+        </div> -->
         <!-- AddAnnounce End -->
+
+        <div>
+            <div class="container col-6 mb-2 mt-2">
+                <div class="AnnounceView-header mt-5">
+                    <h1>
+                        <strong>공지사항 등록</strong>
+                    </h1>
+                </div>
+                <div class="AnnounceView-title">
+
+
+                    <div class="input-group mt-3 mb-4">
+                        <span class="input-group-text">제목</span>
+                        <input type="text" class="form-control" style="height:50px" id="title" required name="title"
+                            v-model="announce.title" />
+                    </div>
+                    <div class="input-group mb-4">
+                        <span class="input-group-text">작성자</span>
+                        <input type="text" class="form-control" style="height:50px" id="title" required name="title"
+                            v-model="announce.writer" />
+                    </div>
+                    <!-- <td
+                colspan="2"
+                scope="row"
+                style="padding: 10px"
+              >{{ currentAnnounce.content }}</td> -->
+                    <div class="mb-5">
+                        <textarea class="form-control form-control-lg" id="content" rows="8" required name="content"
+                            v-model="announce.content"></textarea>
+                    </div>
+
+                </div>
+
+
+                <div class="mb-3">
+                    <button @click="saveAnnounce" class="btn btn-primary">등록</button>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -35,7 +74,7 @@ export default {
                 aid: null,
                 writer: "",
                 title: "",
-                content:""
+                content: ""
             },
             // submit 버튼을 클릭하면 true 가 되고, You submitted successfully! 화면에 출력됨
             submitted: false,
@@ -46,7 +85,7 @@ export default {
             // 임시 객체 변수 -> springboot 전송
             // 부서번호는(no) 자동생성되므로 빼고 전송함
             let data = {
-                
+
                 writer: this.announce.writer,
                 title: this.announce.title,
                 content: this.announce.content
@@ -78,7 +117,7 @@ export default {
         returnAnnounce() {
             this.$router.push("/announce");
         }
-     
+
     },
 
 };

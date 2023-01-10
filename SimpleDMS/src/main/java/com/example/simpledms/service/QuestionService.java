@@ -1,6 +1,5 @@
 package com.example.simpledms.service;
 
-import com.example.simpledms.model.Free;
 import com.example.simpledms.model.Question;
 import com.example.simpledms.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;

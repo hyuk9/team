@@ -20,7 +20,7 @@ import lombok.*;
 @ToString
 public class ResponseGalleryDto {
 
-    private Integer fno;
+    private Integer cid;
     private String writer;
     private String title;
     private String content;
