@@ -23,4 +23,6 @@ public interface ReviewOriginDto {
 
     String getIt(); // 리뷰생성시간
 
+    Integer getRno();
+
 }
