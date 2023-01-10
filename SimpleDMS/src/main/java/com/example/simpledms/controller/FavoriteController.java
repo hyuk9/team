@@ -1,25 +1,16 @@
 package com.example.simpledms.controller;
 
 import com.example.simpledms.dto.FavoriteDto;
-import com.example.simpledms.dto.ResponseMessageDto;
-import com.example.simpledms.dto.gallery.ResponseGalleryDto;
-import com.example.simpledms.dto.response.UserRoleDto;
 import com.example.simpledms.model.Favorite;
-import com.example.simpledms.model.Free;
 import com.example.simpledms.service.FavoriteService;
-import com.example.simpledms.service.FreeService;
 import lombok.extern.slf4j.Slf4j;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.HashMap;
 import java.util.List;

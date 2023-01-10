@@ -11,8 +11,7 @@
                 <div class="card-body py-0">
                   <div class="row justify-content-center">
                     <div class="col-md-5 col-xl-7 col-xxl-8 g-0 order-0 order-md-1">
-
-                      <img class="img-fluid w-100 fit-cover h-100 rounded-top rounded-md-end rounded-md-top-0"
+                      <img class="img-fluid fit-cover rounded-top rounded-md-end rounded-md-top-0"
                         :src="'http://localhost:8000/api/free/file/' + data.fno "  alt="..." />
 
                       <!-- <img class="img-fluid w-100 fit-cover h-100 rounded-top rounded-md-end rounded-md-top-0"

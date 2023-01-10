@@ -3,9 +3,11 @@
     <!-- TODO: free 시작 -->
     <!-- Contact Start -->
     <div class="container mt-3 mb-2">
-      <h1 class="text-center"><i class="bi bi-chat-left-dots-fill"> 자유게시판</i></h1>
+      <h1 class="text-center">
+        <i class="bi bi-chat-left-dots-fill">자유게시판</i>
+      </h1>
       <div style="text-align: center">
-        <div class="p-3 mb-2 bg-warning text-dark bg-opacity-25 mt-3">
+        <div class="p-3 mb-2 bg-warning text-dark bg-opacity-25">
           <strong
             >"공지사항를 통해서 맛있는 토마토의 최신정보를 찾아보세요"
             <br />
@@ -23,7 +25,7 @@
                 style="width: 10%"
                 scope="col"
               >
-                #
+                번호
               </th>
               <th
                 class="table-active text-center"
@@ -45,8 +47,8 @@
                 scope="col"
               >
                 작성일
-              </th>
-                <th
+              </th> 
+              <th
                 class="table-active text-center"
                 style="width: 10%"
                 scope="col"
@@ -54,10 +56,10 @@
                 조회수
               </th>
               <th
+                v-if="showAdminBoard"
                 class="table-active"
                 style="width: 10%"
                 scope="col"
-                v-if="showAdminBoard"
               >
                 수정/삭제
               </th>
@@ -75,7 +77,7 @@
               </td>
               <td class="text-center">{{ data.writer }}</td>
               <td class="text-center">
-                <i class="bi bi-calendar-date"></i>&nbsp;{{ data.insertTime }}
+                <i class="bi bi-calendar-date"></i> {{ data.insertTime }}
               </td>
                  <!-- 조회수 보여주기 -->
               <td class="text-center">{{ data.views }}</td>
@@ -94,9 +96,15 @@
           <span class="badge bg-warning text-dark">추가</span>
         </router-link> -->
         <!-- TODO: badge를 버튼으로 교체 -->
-        <router-link class="offset-11" v-if="showAddBoard" to="/add-free/">
-          <button type="button" class="btn btn-warning btn-sm">글쓰기</button>
-        </router-link>
+        <div class="offset-11">
+          <button
+            type="button"
+            class="btn btn-warning btn-sm"
+            @click="ConfirmLoggedUser"
+          >
+            글쓰기
+          </button>
+        </div>
       </div>
       <div class="overflow-auto offset-5">
         <b-pagination
@@ -117,8 +125,8 @@
           <!-- select box 추가 : v-model="searchSelect" -->
           <div class="col-3">
             <select class="form-select" v-model="searchSelect">
-              <option>작성자</option>
               <option>제목</option>
+              <option>작성자</option>
             </select>
           </div>
 
@@ -127,7 +135,7 @@
             <input
               type="text"
               class="form-control"
-              placeholder="Search by Question"
+              placeholder="검색어를 입력해주세요"
               v-model="searchKeyword"
             />
           </div>
@@ -156,22 +164,36 @@
 
 <script>
 import FreeDataService from "@/services/FreeDataService";
+
 export default {
   data() {
     return {
       free: [],
       searchKeyword: "",
-      searchSelect: "작성자",
+      searchSelect: "제목",
 
       // 페이징을 위한 변수 정의
       page: 1, // 현재 페이지
       count: 0, // 전체 데이터 건수
-      pageSize: 10, // 한페이지당 몇개를 화면에 보여줄지 결정하는 변수
+      pageSize: 3, // 한페이지당 몇개를 화면에 보여줄지 결정하는 변수
 
       pageSizes: [3, 6, 9], // select box 에 넣을 기본 데이터
     };
   },
   methods: {
+    ConfirmLoggedUser() {
+      if (this.currentUser && this.currentUser.roles) {
+        // if (ROLE_ADMIN || ROLE_USER) 로그인이 되어있다면 관리자거나 일반유저이므로 푸드컬럼 페이지로 바로 이동
+        return (
+          (this.currentUser.roles.includes("ROLE_ADMIN") ||
+            this.currentUser.roles.includes("ROLE_USER")) &&
+          this.$router.push("/add-free/")
+        );
+      }
+      // 로그인이 되어있지 않다면 로그인이 필요한 항목이라고 표시
+      return alert("로그인이 필요한 항목입니다.");
+    },
+
     // axios , 모든 정보 조회 요청 함수
     retrieveFree() {
       FreeDataService.getAll(
@@ -206,7 +228,7 @@ export default {
       // 재조회 함수 호출
       this.retrieveFree();
     },
-       // 조회수 증가 함수
+        // 조회수 증가 함수
     countViews (fno) {
       FreeDataService.plusViews(fno)
      .then((response) => {
@@ -217,7 +239,7 @@ export default {
         .catch((e) => {
           console.log(e);
         });
-    }
+    },
   },
 
   computed: {
@@ -227,7 +249,6 @@ export default {
       // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
       return this.$store.state.auth.user;
     },
-
     // 관리자 접속인지 아닌지 확인하는 함수
     showAdminBoard() {
       if (this.currentUser && this.currentUser.roles) {
@@ -235,21 +256,9 @@ export default {
         //               없으면 false
         return this.currentUser.roles.includes("ROLE_ADMIN");
       }
-      // currentUser 없으면 false (메뉴가 안보임)
+      // 관리자가 아니라면 안보임
       return false;
     },
-    showAddBoard() {
-      if (this.currentUser && this.currentUser.roles) {
-        // if (ROLE_ADMIN || ROLE_USER) 로그인이 되어있다면 관리자거나 일반유저이므로 푸드컬럼 페이지로 바로 이동
-        return (
-          (this.currentUser.roles.includes("ROLE_ADMIN") ||
-            this.currentUser.roles.includes("ROLE_USER"))
-        );
-      }
-      // 로그인이 되어있지 않다면 로그인이 필요한 항목이라고 표시
-      return false;
-    },
-    
   },
 
   // 화면이 뜨자마자 실행되는 이벤트(라이프 사이클 함수) : mounted(), created()

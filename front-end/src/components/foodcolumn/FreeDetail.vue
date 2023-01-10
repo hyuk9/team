@@ -10,7 +10,7 @@
           id="title"
           required
           name="title"
-          v-model="currentColumn.title"
+          v-model="currentFree.title"
         />
       </div>
       <div class="mb-3">
@@ -21,7 +21,7 @@
           id="writer"
           required
           name="writer"
-          v-model="currentColumn.writer"
+          v-model="currentFree.writer"
         />
       </div>
       <div class="mb-3">
@@ -32,16 +32,16 @@
           rows="8"
           required
           name="content"
-          v-model="currentColumn.content"
+          v-model="currentFree.content"
         ></textarea>
       </div>
       <!-- 게시글 작성자 id == 현재 로그인한 유저 id 이면 보이거나 관리자 계정이면 보이게 설정해야함 -->
       <div class="mb-3" v-if="showAdminBoard">
-        <button @click="updateColumn" class="btn btn-primary me-3">수정</button>
-        <button @click="deleteColumn" class="btn btn-danger me-3">삭제</button>
+        <button @click="updateFree" class="btn btn-primary me-3">수정</button>
+        <button @click="deleteFree" class="btn btn-danger me-3">삭제</button>
       </div>
       <div>
-        <button @click="goColumnList" class="btn btn-danger me-3">목록보기</button>
+        <button @click="goFreeList" class="btn btn-danger me-3">목록보기</button>
       </div>
       <div class="alert alert-success" role="alert" v-if="message">
         {{ message }}
@@ -52,23 +52,23 @@
 </template>
 
 <script>
-import ColumnDataService from "@/services/ColumnDataService";
+import FreeDataService from "@/services/FreeDataService";
 export default {
   data() {
     return {
-      currentColumn: null,
+      currentFree: null,
       message: "",
     };
   },
   methods: {
-    // 부서번호(cid)로 조회 요청하는 함수
-    getColumn(cid) {
+    // 부서번호(fno)로 조회 요청하는 함수
+    getFree(fno) {
       // axios 공통함수 호출
-      ColumnDataService.get(cid)
+      FreeDataService.get(fno)
         // 성공하면 .then() 결과가 리턴됨
         .then((response) => {
           // springboot 결과를 리턴함(부서 객체)
-          this.currentColumn = response.data;
+          this.currentFree = response.data;
           // 콘솔 로그 출력
           console.log(response.data);
         })
@@ -78,14 +78,14 @@ export default {
         });
     },
     // 부서정보를 수정 요청하는 함수
-    updateColumn() {
+    updateFree() {
       // axios 공통함수 호출
-      ColumnDataService.update(this.currentColumn.cid, this.currentColumn)
+      FreeDataService.update(this.currentFree.fno, this.currentFree)
         // 성공하면 then() 결과가 전송됨
         .then((response) => {
           console.log(response.data);
           this.message = "The Announce was updated successfully!";
-          this.$router.push("/column");
+          this.$router.push("/free");
         })
         // 실패하면 .catch() 에러메세지가 전송됨
         .catch((e) => {
@@ -93,14 +93,14 @@ export default {
         });
     },
     // 부서정보를 삭제 요청하는 함수
-    deleteColumn() {
+    deleteFree() {
       // axios 공통함수 호출
-      ColumnDataService.delete(this.currentColumn.cid)
+      FreeDataService.delete(this.currentFree.fno)
         // 성공하면 then() 결과가 전송됨
         .then((response) => {
           console.log(response.data);
           // 첫페이지(전체목록_조회_페이지) 강제 이동 : /announce
-          this.$router.push("/column");
+          this.$router.push("/free");
         })
         // 실패하면 .catch() 에러메세지가 전송됨
         .catch((e) => {
@@ -108,8 +108,8 @@ export default {
         });
     },
     // 푸드컬럼리스트로 페이지 이동하는 함수
-    goColumnList(){
-      this.$router.push("/column");
+    goFreeList(){
+      this.$router.push("/free");
     }
   },
   computed: {
@@ -123,7 +123,7 @@ export default {
     showAdminBoard() {
       if (this.currentUser && this.currentUser.roles) {
         // if ROLE_ADMIN 있으면 true 없으면 false 이거나 현재로그인한id == 글쓴사람id
-        return this.currentUser.roles.includes("ROLE_ADMIN") || this.currentUser.id == this.currentColumn.id;
+        return this.currentUser.roles.includes("ROLE_ADMIN") || this.currentUser.id == this.currentFree.id;
       }
       // currentUser 없으면 false (메뉴가 안보임)
       return false;
@@ -132,7 +132,7 @@ export default {
   // 화면이 뜨자 마자 실행되는 이벤트
   mounted() {
     this.message = "";
-    this.getColumn(this.$route.params.cid);
+    this.getFree(this.$route.params.fno);
   },
 };
 </script>

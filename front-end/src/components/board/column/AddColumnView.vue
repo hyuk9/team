@@ -1,32 +1,32 @@
 <template>
   <div>
-    <!-- AddFree Start -->
+    <!-- AddColumn Start -->
     <div class="container" v-if="!submitted">
       <div class="mb-3">
         <label for="writer" class="form-label">작성자</label>
-        <input type="writer" class="form-control" id="writer"  required name="writer" v-model="free.writer" />
+        <input type="writer" class="form-control" id="writer"  required name="writer" v-model="column.writer" />
       </div>
       <div class="mb-3">
         <label for="title" class="form-label">제목</label>
-        <input type="title" class="form-control" id="title" required name="title" v-model="free.title" />
+        <input type="title" class="form-control" id="title" required name="title" v-model="column.title" />
       </div>
       <div class="mb-3">
         <label for="content" class="form-label">내용</label>
         <textarea class="form-control form-control-lg" id="content" rows="8" required name="content"
-          v-model="free.content"></textarea>
+          v-model="column.content"></textarea>
       </div>
       <div class="mb-3">
         <!-- <!— v-for 시작 —> -->
         <div class="row">
-          <!-- <div class="col-sm-4" v-for="(data, index) in free" :key="index">
+          <!-- <div class="col-sm-4" v-for="(data, index) in column" :key="index">
             <img :src="data.galleryUrl" class="card-img-top" alt="강의" />
-            <a style="color: inherit" @click="deleteImage(data.fno)">
+            <a style="color: inherit" @click="deleteImage(data.cid)">
               <span class="badge bg-danger">Delete</span>
             </a>
           </div> -->
           <div class="col-sm-4">
             <img :src="previewImage" class="card-img-top" alt="" />
-            <!-- <a style="color: inherit" @click="deleteImage(free.fno)">
+            <!-- <a style="color: inherit" @click="deleteImage(column.cid)">
               <span class="badge bg-danger">Delete</span>
             </a> -->
           </div>
@@ -50,21 +50,21 @@
         </div>
       </div>
       <div class="mb-3">
-        <button @click="saveFree" class="btn btn-primary">Submit</button>
+        <button @click="saveColumn" class="btn btn-primary">Submit</button>
       </div>
     </div>
-    <!-- AddFree End -->
+    <!-- AddColumn End -->
   </div>
 </template>
 
 
 <script>
-import FreeDataService from "@/services/FreeDataService";
+import ColumnDataService from "@/services/ColumnDataService";
 export default {
   data() {
     return {
-      free: {
-        fno: null,
+      column: {
+        cid: null,
         id: null,
         writer: "",
         title: "",
@@ -87,16 +87,16 @@ export default {
     };
   },
   methods: {
-    saveFree() {
+    saveColumn() {
       // 임시 객체 변수 -> springboot 전송
       // 부서번호는(no) 자동생성되므로 빼고 전송함
       this.progress = 0;
       // insert 요청 함수 호출(axios 공통함수 호출)
-      FreeDataService.create(
-        this.free.id = this.currentUser.id,
-        this.free.writer,
-        this.free.title,
-        this.free.content,
+      ColumnDataService.create(
+        this.column.id = this.currentUser.id,
+        this.column.writer,
+        this.column.title,
+        this.column.content,
         this.currentImage,
         // (eve) => {
         //   // 파일이 업로드될때 진척상황이 저장됨(%)
@@ -110,7 +110,7 @@ export default {
           // 변수 submitted
           this.submitted = true;
           alert("성공했습니다.");
-          location.href = "/free";
+          location.href = "/column";
         })
         // 실패하면 .catch() 결과가 전송됨
         .catch((err) => {
@@ -119,7 +119,7 @@ export default {
           this.currentImage = undefined;
         });
       // 서버에 이미지 업로드 요청(insert 문 실행)
-      // FreeDataService.createImage(
+      // ColumnDataService.createImage(
       //   this.currentImage,
       //   (eve) => {
       //     // 파일이 업로드될때 진척상황이 저장됨(%)
@@ -139,14 +139,14 @@ export default {
       //     this.currentImage = undefined;
       //   });
     },
-    newFree() {
+    newColumn() {
       // 새양식 다시 보여주기 함수, 변수 초기화
       this.submitted = false;
-      this.free2 = {};
+      this.column2 = {};
     },
 
-    returnFree() {
-      location.href = "/free";
+    returnColumn() {
+      location.href = "/column";
     },
 
     // TODO: 이미지 삽입 시작
@@ -164,7 +164,7 @@ export default {
 
     //   this.progress = 0;
     //   // 서버에 이미지 업로드 요청(insert 문 실행)
-    //   FreeDataService.createImage(
+    //   ColumnDataService.createImage(
     //     this.currentImage,
     //     (eve) => {
     //       // 파일이 업로드될때 진척상황이 저장됨(%)

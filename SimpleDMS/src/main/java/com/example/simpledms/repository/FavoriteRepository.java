@@ -1,9 +1,7 @@
 package com.example.simpledms.repository;
 
 import com.example.simpledms.dto.FavoriteDto;
-import com.example.simpledms.dto.response.UserRoleDto;
 import com.example.simpledms.model.Favorite;
-import com.example.simpledms.model.Free;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

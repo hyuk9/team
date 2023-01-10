@@ -2,12 +2,10 @@ package com.example.simpledms.repository;
 
 
 import com.example.simpledms.model.Column;
-import com.example.simpledms.model.Diner;
+import com.example.simpledms.model.Free;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.Optional;
 
 /**
  * packageName : com.example.jpaexam.repository
@@ -22,8 +20,10 @@ import java.util.Optional;
  */
 
 public interface ColumnRepository extends JpaRepository<Column, Integer> {
-    Page<Column> findAllByTitleContainingOrderByCidDesc (String title, Pageable pageable);
-    Page<Column> findAllByWriterContainingOrderByCidDesc (String writer, Pageable pageable);
+Page<Column> findAllByWriterContainingOrderByCidDesc(String writer, Pageable pageable);
+    Page<Column> findAllByTitleContainingOrderByCidDesc(String title, Pageable pageable);
+
+    public Page<Column> findAllByOrderByInsertTimeDesc(Pageable pageable);
 }
 
 
