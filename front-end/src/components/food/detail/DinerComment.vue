@@ -6,7 +6,7 @@
         <div class="form mt-5 mb-5 card-header">
           <!-- 새 양식 폼 시작 -->
           <div v-if="!submitted" class="card-body">
-            <h1>리뷰쓰기</h1>
+            <h1 class="mt-5"><i class="bi bi-journal-plus"></i> 리뷰쓰기</h1>
             <!-- 이름 -->
             <div class="input__block">
               <h5>작성자</h5>
@@ -23,34 +23,38 @@
 
             <!-- 평점 -->
             <div class="input__block">
-              <h4 class="text-center">평점 5가지를 선택해주세요!</h4>
-              <br />
+              <h4 class="text-center mt-6 text-900"><i class="bi bi-bookmark-star"></i> 평점 5가지를 선택해주세요!</h4>
               <h5>맛</h5>
               <b-form-rating
+                class="wd"
                 v-model="review.taste"
                 variant="warning"
               ></b-form-rating>
 
               <h5>서비스</h5>
               <b-form-rating
+                class="wd"
                 v-model="review.service"
                 variant="warning"
               ></b-form-rating>
 
               <h5>접근성</h5>
               <b-form-rating
+                class="wd"
                 v-model="review.loc"
                 variant="warning"
               ></b-form-rating>
 
               <h5>분위기</h5>
               <b-form-rating
+                class="wd"
                 v-model="review.mood"
                 variant="warning"
               ></b-form-rating>
 
               <h5>가성비</h5>
               <b-form-rating
+                class="wd"
                 v-model="review.cost"
                 variant="warning"
               ></b-form-rating>
@@ -59,11 +63,10 @@
             <div class="input__block">
               <h5>리뷰내용</h5>
               <textarea
-                class="form-control"
+                class="form-control wd1"
                 placeholder="리뷰를 작성해주세요."
                 id="content"
                 v-model="review.content"
-                style="height: 200px"
               ></textarea>
             </div>
 
@@ -91,7 +94,7 @@
                 @click="saveReview"
                 class="reservation__btn2"
               >
-                Submit
+                추가하기
               </button>
             </div>
           </div>
@@ -118,7 +121,7 @@ export default {
         loc: null,
         mood: null,
         cost: null,
-        gender: "male"
+        gender: "male",
       },
 
       // submit 버튼을 클릭하면 true 가 되고, You submitted successfully! 화면에 출력됨
@@ -156,7 +159,7 @@ export default {
         loc: this.review.loc,
         mood: this.review.mood,
         cost: this.review.cost,
-        gender: this.review.gender
+        gender: this.review.gender,
       };
 
       // insert 요청 함수 호출(axios 공통함수 호출)
@@ -219,7 +222,17 @@ h5 {
   max-width: 680px;
   margin: 40px auto 10px;
 }
-
+.wd {
+  margin: 0 auto;
+  width: 90%;
+  padding: 0 10px;
+}
+.wd1 {
+  margin: 0 auto;
+  height: 200px;
+  width: 90%;
+  padding: 0 10px;
+}
 .input__block {
   margin: 20px auto;
   display: block;
