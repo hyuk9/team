@@ -298,27 +298,27 @@ public class ColumnController {
         }
     }
 
-//    @GetMapping("/column/{cid}")
-//    public ResponseEntity<Object> getColumnId(@PathVariable int cid) {
-//
-//        try {
-//            Optional<Column> optionalColumn = columnService.findId(cid);
-//
-//
-//            if (optionalColumn.isPresent() == true) {
-////                데이터 + 성공 메세지 전송
-//                return new ResponseEntity<>(optionalColumn.get(), HttpStatus.OK);
-//            } else {
-////                데이터 없음 메세지 전송(클라이언트)
-//                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//            }
-//
-//        } catch (Exception e) {
-//            log.debug(e.getMessage());
-//            // 서버에러 발생 메세지 전송(클라이언트)
-//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//    }
+    @GetMapping("/column/findId/{cid}")
+    public ResponseEntity<Object> getColumnId(@PathVariable int cid) {
+
+        try {
+            Optional<Column> optionalColumn = columnService.findId(cid);
+
+
+            if (optionalColumn.isPresent() == true) {
+//                데이터 + 성공 메세지 전송
+                return new ResponseEntity<>(optionalColumn.get(), HttpStatus.OK);
+            } else {
+//                데이터 없음 메세지 전송(클라이언트)
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+
+        } catch (Exception e) {
+            log.debug(e.getMessage());
+            // 서버에러 발생 메세지 전송(클라이언트)
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
     //    과목 id로 조회
     @GetMapping("/column/{cid}")
@@ -327,7 +327,7 @@ public class ColumnController {
             //            Vue에서 전송한 매개변수 데이터 확인
             log.info("cid {}", cid);
 
-            Optional<Column> columnOptional = columnService.findId(cid);
+            Optional<Column> columnOptional = columnService.findById(cid);
 
             String fileDownloadUri = ServletUriComponentsBuilder
                     .fromCurrentContextPath()
