@@ -3,7 +3,7 @@
   <div class="form">
     <!-- 수정 양식 폼 시작 -->
     <div v-if="currentDiner" class="mt-5 mb-5">
-      <h1>음식점 정보 수정하기</h1>
+      <h1 class="mt-6"><i class="bi bi-journal-plus"></i> 음식점 수정하기</h1>
       <!-- 식당이름 -->
       <div class="input__block">
         <h5>식당이름</h5>
@@ -15,15 +15,6 @@
           v-model="currentDiner.dname"
           name="dname"
         />
-      </div>
-
-      <!-- 평점 -->
-      <div class="input__block">
-        <h5>평점</h5>
-        <b-form-rating
-          v-model="currentDiner.score"
-          variant="warning"
-        ></b-form-rating>
       </div>
 
       <!-- 지역 -->
@@ -91,29 +82,35 @@
 
       <!-- 주소로 지도 좌표찾는 사이트 링크 추가 -->
       <div class="text-center">
-        <button type="button" class="reservation__btn2" @click="findL()">
-          주소 -> 좌표 전환 사이트
+        <button type="button" class="reservation__btn22 mt-4" @click="findL()">
+          주소 <i class="bi bi-arrow-right-circle"></i> 좌표 전환 사이트
         </button>
       </div>
 
-      <!-- 지도 좌표추가 -->
-      <div class="input__block">
-        <h5>식당 좌표값 -> 위도</h5>
-        <input
-          type="number"
-          class="form-control"
-          id="lat"
-          v-model="currentDiner.lat"
-          name="lat"
-        />
-        <h5>식당 좌표값 -> 경도</h5>
-        <input
-          type="number"
-          class="form-control"
-          id="lng"
-          v-model="currentDiner.lng"
-          name="lng"
-        />
+      <!-- 지도 좌표 추가 -->
+      <div class="wd">
+        <div class="row">
+          <div class="col">
+            <h5>식당 좌표값 <i class="bi bi-arrow-right-circle"></i> 위도</h5>
+            <input
+              type="number"
+              class="form-control"
+              id="lat"
+              v-model="currentDiner.lat"
+              name="lat"
+            />
+          </div>
+          <div class="col">
+            <h5>식당 좌표값 <i class="bi bi-arrow-right-circle"></i> 경도</h5>
+            <input
+              type="number"
+              class="form-control"
+              id="lng"
+              v-model="currentDiner.lng"
+              name="lng"
+            />
+          </div>
+        </div>
       </div>
 
       <!-- 메인 사진넣기 -->
@@ -156,90 +153,132 @@
       <br />
 
       <!-- 대표 메뉴 추가하기 -->
-      <div class="input__block">
-        <h4 class="text-center">대표메뉴 5가지를 추가해주세요!</h4>
-        <h5>메뉴1</h5>
-        <input
-          type="number"
-          class="form-control"
-          id="menu1"
-          v-model="currentDiner.menu1"
-          name="menu1"
-        />
-        <h5>메뉴1가격</h5>
-        <input
-          type="number"
-          class="form-control"
-          id="price1"
-          v-model="currentDiner.price1"
-          name="price1"
-        />
-        <h5>메뉴2</h5>
-        <input
-          type="number"
-          class="form-control"
-          id="menu2"
-          v-model="currentDiner.menu2"
-          name="menu2"
-        />
-        <h5>메뉴2가격</h5>
-        <input
-          type="number"
-          class="form-control"
-          id="price2"
-          v-model="currentDiner.price2"
-          name="price2"
-        />
-        <h5>메뉴3</h5>
-        <input
-          type="number"
-          class="form-control"
-          id="menu3"
-          v-model="currentDiner.menu3"
-          name="menu3"
-        />
-        <h5>메뉴3가격</h5>
-        <input
-          type="number"
-          class="form-control"
-          id="price3"
-          v-model="currentDiner.price3"
-          name="price3"
-        />
-        <h5>메뉴4</h5>
-        <input
-          type="number"
-          class="form-control"
-          id="menu4"
-          v-model="currentDiner.menu4"
-          name="menu4"
-        />
-        <h5>메뉴4가격</h5>
-        <input
-          type="number"
-          class="form-control"
-          id="price4"
-          v-model="currentDiner.price4"
-          name="price4"
-        />
-        <h5>메뉴5</h5>
-        <input
-          type="number"
-          class="form-control"
-          id="menu5"
-          v-model="currentDiner.menu5"
-          name="menu5"
-        />
-        <h5>메뉴5가격</h5>
-        <input
-          type="number"
-          class="form-control"
-          id="price5"
-          v-model="currentDiner.price5"
-          name="price5"
-        />
+      <div class="wd">
+        <h4 class="text-center mt-2 text-900">
+          <i class="bi bi-clipboard-plus"></i>
+          대표메뉴 5가지를 추가해주세요!
+        </h4>
+        <div class="row">
+          <div class="col">
+            <h5>메뉴1</h5>
+            <input
+              type="text"
+              class="form-control"
+              id="menu1"
+              v-model="currentDiner.menu1"
+              name="menu1"
+              required
+            />
+          </div>
+          <div class="col">
+            <h5>메뉴1 가격</h5>
+            <input
+              type="number"
+              class="form-control"
+              id="price1"
+              v-model="currentDiner.price1"
+              name="price1"
+              required
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <h5>메뉴2</h5>
+            <input
+              type="text"
+              class="form-control"
+              id="menu2"
+              v-model="currentDiner.menu2"
+              name="menu2"
+              required
+            />
+          </div>
+          <div class="col">
+            <h5>메뉴2 가격</h5>
+            <input
+              type="number"
+              class="form-control"
+              id="price2"
+              v-model="currentDiner.price2"
+              name="price2"
+              required
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <h5>메뉴3</h5>
+            <input
+              type="text"
+              class="form-control"
+              id="menu3"
+              v-model="currentDiner.menu3"
+              name="menu3"
+              required
+            />
+          </div>
+          <div class="col">
+            <h5>메뉴3 가격</h5>
+            <input
+              type="number"
+              class="form-control"
+              id="price3"
+              v-model="currentDiner.price3"
+              name="price3"
+              required
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <h5>메뉴4</h5>
+            <input
+              type="text"
+              class="form-control"
+              id="menu4"
+              v-model="currentDiner.menu4"
+              name="menu4"
+              required
+            />
+          </div>
+          <div class="col">
+            <h5>메뉴4 가격</h5>
+            <input
+              type="number"
+              class="form-control"
+              id="price4"
+              v-model="currentDiner.price4"
+              name="price4"
+              required
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <h5>메뉴5</h5>
+            <input
+              type="text"
+              class="form-control"
+              id="menu5"
+              v-model="currentDiner.menu5"
+              name="menu5"
+              required
+            />
+          </div>
+          <div class="col">
+            <h5>메뉴5 가격</h5>
+            <input
+              type="number"
+              class="form-control"
+              id="price5"
+              v-model="currentDiner.price5"
+              name="price5"
+              required
+            />
+          </div>
+        </div>
       </div>
-
       <!-- 서버 에러 메세지가 있을 경우 아래 출력 시작 -->
       <div v-if="message" class="alert alert-secondary" role="alert">
         {{ message }}
@@ -362,12 +401,21 @@ h5 {
   margin: 40px auto 10px;
 }
 
+.form-select {
+  width: 90%;
+  margin: 0 auto;
+}
+
 .input__block {
   margin: 20px auto;
   display: block;
   position: relative;
 }
-
+.wd {
+  margin: 0 auto;
+  width: 90%;
+  padding: 0 10px;
+}
 .input__block input {
   display: block;
   width: 90%;
@@ -416,6 +464,19 @@ h5 {
   color: white;
   display: inline;
   width: 140px;
+  height: 50px;
+  border-radius: 8px;
+  margin: 0 auto;
+  border: none;
+  font-size: 18px;
+  box-shadow: 0 10px 20px rgba(59, 138, 35, 0.493);
+  transition: 0.2s linear;
+}
+.reservation__btn22 {
+  background: rgba(76, 184, 43, 0.993);
+  color: white;
+  display: inline;
+  width: 250px;
   height: 50px;
   border-radius: 8px;
   margin: 0 auto;

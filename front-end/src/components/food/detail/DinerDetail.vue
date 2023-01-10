@@ -10,7 +10,7 @@
             <!-- Post header-->
             <header class="mb-4">
               <!-- Post title-->
-              <h1 class="fw-bolder mb-1">
+              <h1 class="fw-bolder text-900">
                 {{ currentDiner.dname }}
                 <i class="bi bi-shop-window"></i>
                 <button
@@ -29,9 +29,6 @@
                 >
                   <i class="bi bi-heart-fill fs-4"></i>
                 </button>
-                <!-- 찜하기 숫자 표시 -->
-                <span class="me-4">{{ fastshow }}</span>
-
                 <router-link :to="'/diner/' + currentDiner.dno + '/edit'">
                   <button
                     type="button"
@@ -41,7 +38,6 @@
                     수정하기
                   </button>
                 </router-link>
-
                 <button
                   type="button"
                   class="btn btn-primary float-right"
@@ -50,6 +46,14 @@
                   예약
                 </button>
               </h1>
+              <!-- 찜하기 숫자 표시 -->
+              <!-- <span class="me-4">{{ fastshow }}</span> -->
+              <p class="card-text text-800">
+                <i class="fas fa-eye text-dark text-800 me-2 fs-0"></i>
+                {{ currentDiner.views }}
+                <i class="fas fa-heart text-dark text-800 ms-3 me-2 fs-0"></i>
+                {{ fastshow }}
+              </p>
             </header>
             <!-- Preview image figure-->
             <figure class="mb-4">
@@ -203,31 +207,31 @@
                   <div class="card-body">
                     <h5 class="card-title">{{ currentDiner.menu1 }}</h5>
                     <p class="card-text">
-                      {{ currentDiner.price1 }}
+                      {{ currentDiner.price1 | currency }}
                     </p>
                   </div>
                   <div class="card-body">
                     <h5 class="card-title">{{ currentDiner.menu2 }}</h5>
                     <p class="card-text">
-                      {{ currentDiner.price2 }}
+                      {{ currentDiner.price2 | currency }}
                     </p>
                   </div>
                   <div class="card-body">
                     <h5 class="card-title">{{ currentDiner.menu3 }}</h5>
                     <p class="card-text">
-                      {{ currentDiner.price3 }}
+                      {{ currentDiner.price3 | currency }}
                     </p>
                   </div>
                   <div class="card-body">
                     <h5 class="card-title">{{ currentDiner.menu4 }}</h5>
                     <p class="card-text">
-                      {{ currentDiner.price4 }}
+                      {{ currentDiner.price4 | currency }}
                     </p>
                   </div>
                   <div class="card-body">
                     <h5 class="card-title">{{ currentDiner.menu5 }}</h5>
                     <p class="card-text">
-                      {{ currentDiner.price5 }}
+                      {{ currentDiner.price5 | currency }}
                     </p>
                   </div>
                 </div>
@@ -249,8 +253,8 @@
               @click="needToLogin"
             >
               <!-- <router-link :to="'/add/review/' + currentDiner.dno"> -->
+              <i class="bi bi-pencil"></i>
               리뷰 쓰기
-              <i class="bi bi-brush"></i>
               <!-- </router-link> -->
             </button>
           </div>
@@ -319,6 +323,22 @@
               <img class="pic" src="https://i.imgur.com/IgHpsBh.jpg" />
             </div> -->
           </div>
+          <!-- Pagination-->
+          <nav aria-label="Pagination mb-4">
+            <hr class="my-0" />
+            <ul class="pagination justify-content-center my-4">
+              <b-pagination
+                v-model="page"
+                :total-rows="count"
+                :per-page="pageSize"
+                first-text="<<"
+                last-text=">>"
+                prev-text="Prev"
+                next-text="Next"
+                @change="handlePageChange"
+              ></b-pagination>
+            </ul>
+          </nav>
         </div>
 
         <!-- Side widgets Map&Chart 시작 -->
@@ -335,7 +355,9 @@
 
           <!-- Chart widget-->
           <div class="card mb-4">
-            <div class="card-header">Chart</div>
+            <div class="card-header">
+              <i class="bi bi-bar-chart-line-fill"></i> Chart
+            </div>
             <div class="card-body">
               <Canvas />
             </div>
@@ -408,6 +430,12 @@ export default {
       // 찜하기 버튼에 따라 즉시 반응하기 위한 함수
       fastshow: 0,
     };
+  },
+  filters: {
+    currency: function (value) {
+      var num = new Number(value);
+      return num.toFixed(0).replace(/(\d)(?=(\d{3})+(?:\.\d+)?$)/g, "$1,");
+    },
   },
   components: {
     DinerCommentVue, // 식당 리뷰
@@ -497,18 +525,11 @@ export default {
           console.log(e);
         });
     },
-    // select box 값 변경시 실행되는 함수(재조회)
-    handlePageSizeChange(event) {
-      this.pageSize = event.target.value; // 한페이지당 개수 저장(3, 6, 9)
-      this.page = 1;
-      // 재조회함수 호출
-      this.retrieveDiner();
-    },
     // 페이지 번호 변경시 실행되는 함수(재조회)
     handlePageChange(value) {
       this.page = value; // 매개변수값으로 현재페이지 변경
       // 재조회함수 호출
-      this.retrieveReview();
+      this.getReview(dno);
     },
     // 목록을 클릭했을때 현재 부서객체, 인덱스번호를 저장하는 함수
     setActiveReview(data, index) {

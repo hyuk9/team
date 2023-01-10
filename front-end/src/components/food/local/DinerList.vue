@@ -25,16 +25,16 @@
                 />
               </div>
               <!--  검색어 버튼 -->
-              <div class="input-group-append col-1">
+              <div class="input-group-append col-2">
                 <button
-                  class="btn btn-secondary"
+                  class="btn btn-danger"
                   type="button"
                   @click="
                     page = 1;
                     retrieveDiner();
                   "
                 >
-                  Search
+                  검색
                 </button>
               </div>
             </div>
@@ -84,7 +84,7 @@
                           >{{ data.theme }}</a
                         >
 
-                        <h2 class="card-title h4 mt-1">
+                        <h2 class="card-title h4 mt-1 text-900">
                           <span>
                             {{ data.dname }}
                           </span>
@@ -94,7 +94,7 @@
                             >{{ data.score }}</a
                           >
                         </h2>
-                        <p class="card-text fw-bolder">
+                        <p class="card-text fw-bolder text-900">
                           {{ data.loc }}
                         </p>
                         <p class="card-text text-800 fw-bolder">
@@ -135,7 +135,7 @@
               class="btn btn-warning float-right mb-5 text-white"
               v-if="showAdminBoard"
             >
-              <router-link to="/add/diner">목록 추가</router-link>
+              <router-link to="/add/diner">음식점 추가</router-link>
             </button>
           </div>
           <!-- Side widgets-->
