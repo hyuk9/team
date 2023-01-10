@@ -1,8 +1,7 @@
 <template>
   <div>
     <!-- AddFree Start -->
-    <div class="container" v-if="!submitted">
-      <!-- 작성자 -->
+    <!-- <div class="container" v-if="!submitted">
       <div class="mb-3">
         <label for="writer" class="form-label">작성자</label>
         <input
@@ -15,7 +14,6 @@
           v-model="currentUser.username"
         />
       </div>
-      <!-- 제목 -->
       <div class="mb-3">
         <label for="title" class="form-label">제목</label>
         <input
@@ -27,10 +25,8 @@
           v-model="free.title"
         />
       </div>
-      <!-- 이미지 선택 -->
       <div class="mb-3 col-md-5">
         <label class="btn btn-default p-0">
-          <!-- 파일 선택상자 -->
           <input
             type="file"
             accept="image/*"
@@ -39,9 +35,7 @@
           />
         </label>
       </div>
-      <!-- 업로드버튼 -->
       <div class="mb-3">
-        <!-- 서버에 insert 문 호출 -->
         <button
           class="btn btn-success btn-sm float-left"
           :disabled="!currentImage"
@@ -50,14 +44,11 @@
           Upload
         </button>
       </div>
-      <!-- 미리보기 이미지 시작 -->
       <div v-if="previewImage">
         <div>
           <img class="preview my-3" :src="previewImage" alt="" />
         </div>
       </div>
-      <!-- 미리보기 이미지 끝 -->
-      <!-- 내용 -->
       <div class="mb-3">
         <label for="content" class="form-label">내용</label>
         <textarea
@@ -73,8 +64,43 @@
       <div class="mb-3">
         <button @click="saveFree" class="btn btn-primary">작성완료</button>
       </div>
-    </div>
+    </div> -->
     <!-- AddFree End -->
+
+    <div>
+      <div class="container col-6 mb-2 mt-2">
+        <div class="AnnounceView-header mt-5">
+          <h1>
+            <strong>자유게시판 등록</strong>
+          </h1>
+        </div>
+        <div class="AnnounceView-title">
+
+
+          <div class="input-group mt-3 mb-4">
+            <span class="input-group-text">제목</span>
+            <input type="text" class="form-control" style="height:50px" id="title" required name="title"
+              v-model="free.title" />
+          </div>
+          <div class="input-group mb-4">
+            <span class="input-group-text">작성자</span>
+            <input type="writer" class="form-control" style="height:50px" id="writer" required name="writer" v-bind:disabled="true"
+              v-model="currentUser.username" />
+          </div>
+
+          <div class="mb-5">
+            <textarea class="form-control form-control-lg" id="content" rows="8" required name="content"
+              v-model="free.content"></textarea>
+          </div>
+
+        </div>
+
+
+        <div class="mb-3">
+        <button @click="saveFree" class="btn btn-primary">글쓰기</button>
+      </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -147,7 +173,7 @@ export default {
       this.$router.push("/free");
     },
 
-        // 조회 함수
+    // 조회 함수
     retrieveGallery() {
       GalleryDataService.getFiles(this.searchTitle, this.page - 1, this.pageSize)
         // 성공하면 .then() 결과가 전송됨
@@ -215,4 +241,5 @@ export default {
 </script>
 
 <style>
+
 </style>

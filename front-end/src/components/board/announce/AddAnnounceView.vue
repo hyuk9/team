@@ -43,11 +43,7 @@
                         <input type="text" class="form-control" style="height:50px" id="title" required name="title"
                             v-model="announce.writer" />
                     </div>
-                    <!-- <td
-                colspan="2"
-                scope="row"
-                style="padding: 10px"
-              >{{ currentAnnounce.content }}</td> -->
+
                     <div class="mb-5">
                         <textarea class="form-control form-control-lg" id="content" rows="8" required name="content"
                             v-model="announce.content"></textarea>
@@ -100,7 +96,6 @@ export default {
                     console.log(response.data);
                     // 변수 submitted
                     this.submitted = true;
-                    alert("성공했습니다.")
                     this.$router.push("/announce");
                 })
                 // 실패하면 .catch() 결과가 전송됨

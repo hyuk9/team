@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Addquestion Start -->
-    <div class="container" v-if="!submitted">
+    <!-- <div class="container" v-if="!submitted">
       <div class="mb-3">
         <label for="questioner" class="form-label">작성자</label>
         <input
@@ -38,8 +38,43 @@
       <div class="mb-3">
         <button @click="savequestion" class="btn btn-primary">Submit</button>
       </div>
-    </div>
+    </div> -->
     <!-- Addquestion End -->
+
+    <div>
+      <div class="container col-6 mb-2 mt-2">
+        <div class="AnnounceView-header mt-5">
+          <h1>
+            <strong>질문 등록</strong>
+          </h1>
+        </div>
+        <div class="AnnounceView-title">
+
+
+          <div class="input-group mt-3 mb-4">
+            <span class="input-group-text">제목</span>
+            <input type="text" class="form-control" style="height:50px" id="title" required name="title"
+              v-model="question.title" />
+          </div>
+          <div class="input-group mb-4">
+            <span class="input-group-text">작성자</span>
+            <input type="text" class="form-control" style="height:50px" id="title" required name="title"
+              v-model="question.questioner" />
+          </div>
+
+          <div class="mb-5">
+            <textarea class="form-control form-control-lg" id="content" rows="8" required name="content"
+              v-model="question.content"></textarea>
+          </div>
+
+        </div>
+
+
+        <div class="mb-3">
+          <button @click="savequestion" class="btn btn-primary">글쓰기</button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -100,4 +135,5 @@ export default {
 </script>
 
 <style>
+
 </style>

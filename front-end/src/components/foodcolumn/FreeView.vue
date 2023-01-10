@@ -2,7 +2,7 @@
   <div>
     <div class="container col-8 mb-2 mt-2">
       <div class="FreeView-header mt-5">
-        <h1><strong>푸드 컬럼</strong></h1>
+        <h1><strong>자유 게시판</strong></h1>
         <!-- <router-link :to="'/free'">
             <button class="btn btn-warning offset-8" type="button">
               돌아가기
@@ -106,14 +106,14 @@
 </template>
 
 <script>
-import FreeDataService from "@/services/QustionDataService";
+import FreeDataService from "@/services/FreeDataService";
 import CommentDataService from "@/services/CommentDataService";
 
 export default {
   data() {
     return {
       currentFree: null,
-      currentFreeForViews: null, // 이게 뭔지 모르겠음
+      // currentFreeForViews: null, // 이게 뭔지 모르겠음
 
       currentComment: null,
       currentIndex: -1,
@@ -149,7 +149,7 @@ export default {
           console.log(e);
         });
       // Todo : 조회수 증가하는 함수인거 같음
-      FreeDataService.getById(fno)
+      FreeDataService.get(fno)
         // 성공하면 .then() 결과가 리턴됨
         .then((response) => {
           // springboot 결과를 리턴함(부서 객체)
@@ -166,7 +166,7 @@ export default {
     // FIXME: 성공은 하는데 response.data에 아무것도 안들어감;
     // Todo : 댓글 정보를 조회요청하는 함수
     getComment() {
-      CommentDataService.getCommentByQno(
+      CommentDataService.getCommentByFno(
         this.currentFree.fno,
         this.page - 1,
         this.pageSize

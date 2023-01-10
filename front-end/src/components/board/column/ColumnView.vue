@@ -2,7 +2,7 @@
   <div>
     <div class="container col-8 mb-2 mt-2">
       <div class="ColumnView-header mt-5">
-        <h1><strong>자유 게시판</strong></h1>
+        <h1><strong>푸드 컬럼</strong></h1>
         <!-- <router-link :to="'/column'">
             <button class="btn btn-warning offset-8" type="button">
               돌아가기

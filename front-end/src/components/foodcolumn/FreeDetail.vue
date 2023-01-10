@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- detali Start -->
-    <div class="container ">
+    <!-- <div class="container ">
       <div class="mt-3 mb-3">
         <label for="title" class="form-label">제목</label>
         <input
@@ -35,7 +35,7 @@
           v-model="currentFree.content"
         ></textarea>
       </div>
-      <!-- 게시글 작성자 id == 현재 로그인한 유저 id 이면 보이거나 관리자 계정이면 보이게 설정해야함 -->
+   
       <div class="mb-3" v-if="showAdminBoard">
         <button @click="updateFree" class="btn btn-primary me-3">수정</button>
         <button @click="deleteFree" class="btn btn-danger me-3">삭제</button>
@@ -46,8 +46,50 @@
       <div class="alert alert-success" role="alert" v-if="message">
         {{ message }}
       </div>
-    </div>
+    </div> -->
     <!-- detail End -->
+
+    <div>
+      <div class="container col-6 mb-2 mt-2">
+        <div class="AnnounceView-header mt-5">
+          <h1>
+            <strong>자유게시판 등록</strong>
+          </h1>
+        </div>
+        <div class="AnnounceView-title">
+
+
+          <div class="input-group mt-3 mb-4">
+            <span class="input-group-text">제목</span>
+            <input type="text" class="form-control" style="height:50px" id="title" required name="title"
+              v-model="currentFree.title" />
+          </div>
+          <div class="input-group mb-4">
+            <span class="input-group-text">작성자</span>
+            <input type="writer" class="form-control" style="height:50px" id="writer" required name="writer"
+              v-bind:disabled="true" v-model="currentUser.username" />
+          </div>
+
+          <div class="mb-5">
+            <textarea class="form-control form-control-lg" id="content" rows="8" required name="content"
+              v-model="currentFree.content"></textarea>
+          </div>
+
+        </div>
+
+
+        <div class="mb-3" v-if="showAdminBoard">
+          <button @click="updateFree" class="btn btn-primary me-3">수정</button>
+          <button @click="deleteFree" class="btn btn-danger me-3">삭제</button>
+        </div>
+        <div>
+          <button @click="goFreeList" class="btn btn-danger me-3">목록보기</button>
+        </div>
+        <div class="alert alert-success" role="alert" v-if="message">
+          {{ message }}
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -108,7 +150,7 @@ export default {
         });
     },
     // 푸드컬럼리스트로 페이지 이동하는 함수
-    goFreeList(){
+    goFreeList() {
       this.$router.push("/free");
     }
   },
@@ -138,4 +180,5 @@ export default {
 </script>
 
 <style>
+
 </style>

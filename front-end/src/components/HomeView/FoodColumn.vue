@@ -9,15 +9,11 @@
             <div class="col-12">
               <div class="card card-span mb-3 shadow-lg">
                 <div class="card-body py-0">
-                  <div class="row justify-content-center">
-                    <div
-                      class="col-md-5 col-xl-7 col-xxl-8 g-0 order-0 order-md-1"
-                    >
-                      <img
-                        class="img-fluid w-100 fit-cover h-100 rounded-top rounded-md-end rounded-md-top-0"
-                        :src="'http://localhost:8000/api/column/file/' + data.cid "
-                        alt="..."
-                      />
+                  <div class="row justify-content-center" style="height:400px; width: 1450px;">
+                    <div class="col-md-5 col-xl-7 col-xxl-8 g-0 order-0 order-md-1">
+                      <img id="imageSize"
+                        class="rounded float-end"
+                        :src="'http://localhost:8000/api/column/file/' + data.cid" alt="..." />
                       <!-- <div class="img-fluid w-100 fit-cover h-100 rounded-top rounded-md-end rounded-md-top-0">
                         {{ data.photo }}
                       </div> -->
@@ -39,11 +35,8 @@
                           class="fas fa-chevron-right ms-2"
                         ></i>
                       </a> -->
-                        <router-link
-                          :to="'/column/' + data.cid"
-                          class="btn btn-lg btn-primary mt-xl-6"
-                          >자세히 알아보기</router-link
-                        >
+                        <router-link :to="'/column/' + data.cid" class="btn btn-lg btn-primary mt-xl-6">자세히
+                          알아보기</router-link>
                       </div>
                     </div>
                   </div>
@@ -119,4 +112,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+#imageSize {
+  width:800px;
+  height: 400px;
+}
+</style>

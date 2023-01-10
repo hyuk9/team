@@ -1,10 +1,10 @@
 <template>
   <div>
     <!-- AddColumn Start -->
-    <div class="container" v-if="!submitted">
+    <!-- <div class="container" v-if="!submitted">
       <div class="mb-3">
         <label for="writer" class="form-label">작성자</label>
-        <input type="writer" class="form-control" id="writer"  required name="writer" v-model="column.writer" />
+        <input type="writer" class="form-control" id="writer" required name="writer" v-model="column.writer" />
       </div>
       <div class="mb-3">
         <label for="title" class="form-label">제목</label>
@@ -16,44 +16,110 @@
           v-model="column.content"></textarea>
       </div>
       <div class="mb-3">
-        <!-- <!— v-for 시작 —> -->
         <div class="row">
-          <!-- <div class="col-sm-4" v-for="(data, index) in column" :key="index">
-            <img :src="data.galleryUrl" class="card-img-top" alt="강의" />
-            <a style="color: inherit" @click="deleteImage(data.cid)">
-              <span class="badge bg-danger">Delete</span>
-            </a>
-          </div> -->
           <div class="col-sm-4">
             <img :src="previewImage" class="card-img-top" alt="" />
-            <!-- <a style="color: inherit" @click="deleteImage(column.cid)">
-              <span class="badge bg-danger">Delete</span>
-            </a> -->
           </div>
         </div>
         <div class="mb-3">
           <label class="btn btn-default p-0">
-            <!-- 파일 선택상자 -->
             <input type="file" accept="image/*" ref="file" @change="selectImage" />
           </label>
         </div>
 
-        <!-- <div class="mb-3">
-          <button class="btn btn-success btn-sm float-left" :disabled="!currentImage" @click="upload">
-            Upload
-          </button>
-        </div> -->
-
-        <!-- 서버 에러 메세지가 있을경우 아래 출력 -->
         <div v-if="message" class="alert alert-secondary" role="alert">
           {{ message }}
         </div>
       </div>
       <div class="mb-3">
-        <button @click="saveColumn" class="btn btn-primary">Submit</button>
+        <div v-if="checkImage2">
+          <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+              <path
+                d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+            </symbol>
+          </svg>
+          <div class="alert alert-danger d-flex align-items-center" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+              <use xlink:href="#exclamation-triangle-fill" />
+            </svg>
+            <div>
+              이미지를 넣어주세요!
+            </div>
+          </div>
+        </div>
+        <button v-if="checkImage" @click="saveColumn" class="btn btn-primary">글쓰기</button>
+        <button v-else @click="saveColumn" class="btn btn-primary" disabled>글쓰기</button>
+      </div>
+    </div> -->
+    <!-- AddColumn End -->
+
+    <div>
+      <div class="container col-6 mb-2 mt-2">
+        <div class="AnnounceView-header mt-5">
+          <h1>
+            <strong>푸드컬럼 등록</strong>
+          </h1>
+        </div>
+        <div class="AnnounceView-title">
+
+
+          <div class="input-group mt-3 mb-4">
+            <span class="input-group-text">제목</span>
+            <input type="text" class="form-control" style="height:50px" id="title" required name="title"
+              v-model="column.title" />
+          </div>
+          <div class="input-group mb-4">
+            <span class="input-group-text">작성자</span>
+            <input type="text" class="form-control" style="height:50px" id="title" required name="title"
+              v-model="column.writer" />
+          </div>
+
+          <div class="mb-5">
+            <textarea class="form-control form-control-lg" id="content" rows="8" required name="content"
+              v-model="column.content"></textarea>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <div class="row">
+            <div class="col-sm-4">
+              <img :src="previewImage" class="card-img-top" alt="" />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="btn btn-default p-0">
+              <input type="file" accept="image/*" ref="file" @change="selectImage" />
+            </label>
+          </div>
+
+          <div v-if="message" class="alert alert-secondary" role="alert">
+            {{ message }}
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <div v-if="checkImage2">
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+              <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                <path
+                  d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+              </symbol>
+            </svg>
+            <div class="alert alert-danger d-flex align-items-center" role="alert">
+              <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                <use xlink:href="#exclamation-triangle-fill" />
+              </svg>
+              <div>
+                이미지를 넣어주세요!
+              </div>
+            </div>
+          </div>
+          <button v-if="checkImage" @click="saveColumn" class="btn btn-primary">글쓰기</button>
+          <button v-else @click="saveColumn" class="btn btn-primary" disabled>글쓰기</button>
+        </div>
       </div>
     </div>
-    <!-- AddColumn End -->
   </div>
 </template>
 
@@ -184,6 +250,7 @@ export default {
     //       this.currentImage = undefined;
     //     });
     // },
+
   },
 
   computed: {
@@ -192,6 +259,22 @@ export default {
       // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
       return this.$store.state.auth.user;
     },
+
+    checkImage() {
+      if (this.previewImage != null) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+
+    checkImage2() {
+      if (this.previewImage != null) {
+        return false;
+      } else {
+        return true;
+      }
+    }
   },
 
 }
