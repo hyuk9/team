@@ -172,7 +172,7 @@ public class ReviewController {
 
             Page<Review> reviewPage;
 
-            reviewPage = reviewService.findAllByDnoEqualsOrderByInsertTimeAsc(dno, pageable);
+            reviewPage = reviewService.findAllByDnoEqualsOrderByInsertTimeDesc(dno, pageable);
 
             //            맵 자료구조에 넣어서 전송
             Map<String, Object> response = new HashMap<>();

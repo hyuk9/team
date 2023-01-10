@@ -60,8 +60,8 @@ public class ReviewService {
         return optionalReview;
     }
 
-    public Page<Review> findAllByDnoEqualsOrderByInsertTimeAsc(Integer dno, Pageable pageable) {
-        Page<Review> page = reviewRepository.findAllByDnoEqualsOrderByInsertTimeAsc(dno, pageable);
+    public Page<Review> findAllByDnoEqualsOrderByInsertTimeDesc(Integer dno, Pageable pageable) {
+        Page<Review> page = reviewRepository.findAllByDnoEqualsOrderByInsertTimeDesc(dno, pageable);
         return page;
     }
 

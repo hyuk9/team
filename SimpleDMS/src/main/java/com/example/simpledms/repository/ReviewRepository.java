@@ -36,7 +36,7 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
 
     Optional<Review> findByRnoEquals (Integer rno);
 
-    Page<Review> findAllByDnoEqualsOrderByInsertTimeAsc(Integer dno, Pageable pageable);
+    Page<Review> findAllByDnoEqualsOrderByInsertTimeDesc(Integer dno, Pageable pageable);
 
     @Query(value = "select di.dname, rv. content, rv.insert_time as it, sum(rv.taste+rv.service+rv.loc+rv.mood+rv.cost)/5 as sumscore " +
             "from tb_review rv, tb_diner di " +
