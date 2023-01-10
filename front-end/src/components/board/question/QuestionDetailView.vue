@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- detali Start -->
-    <div class="container col-6 mb-2 mt-2" v-if="currentQuestion">
+    <!-- <div class="container col-6 mb-2 mt-2" v-if="currentQuestion">
       <h1 class="mt-5">
         <strong>질문 수정</strong>
       </h1>
@@ -20,7 +20,7 @@
           v-model="currentQuestion.content"></textarea>
       </div>
 
-      <!-- vfor로 답변 다 가져오기 쓸려고 하는데 작동이 안됨 -->
+      vfor로 답변 다 가져오기 쓸려고 하는데 작동이 안됨
       <div v-for="(data, index) in answer" :key="index">
         <div class="mb-3">
           <label for="answerer" class="form-label">답변 작성자</label>
@@ -31,9 +31,9 @@
           <p>{{ data.acontent }}</p>
         </div>
       </div>
-      <!-- vfor끝 -->
+      vfor끝
 
-      <!-- 버튼 시작 -->
+      버튼 시작
       <div class="mb-3">
         <button @click="updateQuestion" class="btn btn-primary me-3">
           수정하기
@@ -45,12 +45,66 @@
           답글달기
         </button>
       </div>
-      <!-- 버튼 끝 -->
+      버튼 끝
       <div class="alert alert-success" role="alert" v-if="message">
         {{ message }}
       </div>
-    </div>
+    </div> -->
     <!-- detail End -->
+
+    <div>
+      <div class="container col-6 mb-2 mt-2">
+        <div class="AnnounceView-header mt-5">
+          <h1>
+            <strong>질문 수정</strong>
+            <!-- <router-link :to="'/announce'">
+            <button class="btn btn-warning offset-8" type="button">
+              돌아가기
+            </button>
+          </router-link> -->
+          </h1>
+        </div>
+        <div class="AnnounceView-title">
+
+
+          <div class="input-group mt-3 mb-4">
+            <span class="input-group-text">제목</span>
+            <input type="text" class="form-control" style="height:50px" id="title" required name="title"
+              v-model="currentQuestion.title" />
+          </div>
+          <div class="input-group mb-4">
+            <span class="input-group-text">작성자</span>
+            <input type="text" class="form-control" style="height:50px" id="title" required name="title"
+              v-model="currentQuestion.writer" />
+          </div>
+          <!-- <td
+                colspan="2"
+                scope="row"
+                style="padding: 10px"
+              >{{ currentAnnounce.content }}</td> -->
+          <div class="mb-5">
+            <textarea class="form-control form-control-lg" id="content" rows="8" required name="content"
+              v-model="currentQuestion.content"></textarea>
+          </div>
+
+        </div>
+
+        <div class="mb-3">
+          <button @click="updateQuestion" class="btn btn-primary me-3">
+            수정하기
+          </button>
+          <button @click="deleteQuestion" class="btn btn-danger me-3">
+            삭제하기
+          </button>
+          <button @click="replyAnswer" class="btn btn-primary me-3">
+            답글달기
+          </button>
+        </div>
+        <div class="alert alert-success" role="alert" v-if="message">
+          {{ message }}
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
