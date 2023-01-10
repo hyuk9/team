@@ -21,6 +21,7 @@
                                 음식점 리스트
                             </router-link>
                             <ul class="dropdown-menu">
+                                <!-- FIXME: 지역별 맛집은 버전2222 -->
                                 <!-- <li class="has-children subdropmenu">
                                     <router-link to="/diner" class="dropdown-item">서울</router-link>
                                     <ul class="dropdown-menu">
@@ -107,23 +108,6 @@
                                 </li>
                             </ul>
                         </li>
-
-                        <!-- 임시로 만든 예약 네비게이션 시작 -->
-                        <li class="nav-item dropdown">
-                            <router-link to="" class="nav-link dropdown-toggle text-gradient" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                예약(임시)
-                            </router-link>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="/reservation" class="dropdown-item">예약 조회하기</a>
-                                </li>
-                                <li>
-                                    <a href="/add-reservation" class="dropdown-item">예약하기</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <!-- 임시로 만든 예약 네비게이션 끝 -->
 
                         <!-- 관리자 전용 페이지 시작 -->
                         <!-- showAdminBoard가 동작하면 보이게 작동 -->
