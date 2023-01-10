@@ -44,28 +44,28 @@ const routes = [
   },
   // TODO: 분류별 게시판 구현
   {
-    path: '/column',
-    name: 'column',
-    component: () => import('@/components/board/column/ColumnList.vue')
+    path: "/column",
+    name: "column",
+    component: () => import("@/components/board/column/ColumnList.vue")
   },
   // AddFree 
   {
-    path: '/add-column',
-    name: 'add-column',
-    component: () => import('../components/board/column/AddColumnView.vue')
+    path: "/add-column",
+    name: "add-column",
+    component: () => import("../components/board/column/AddColumnView.vue")
   },
 
   // FreeDetail 
   {
-    path: '/column/:cid',
-    name: 'column-detail',
-    component: () => import('../components/board/column/ColumnDetailView.vue')
+    path: "/column/:cid",
+    name: "column-detail",
+    component: () => import("../components/board/column/ColumnDetailView.vue")
   },
   // FreeView
   {
-    path: '/columnview/:cid',
-    name: 'column-view',
-    component: () => import('../components/board/column/ColumnView.vue')
+    path: "/columnview/:cid",
+    name: "column-view",
+    component: () => import("../components/board/column/ColumnView.vue")
   },
   {
     path: "/announce",
@@ -188,36 +188,36 @@ const routes = [
     component: () => import("../components/introduce/IntroduceView.vue"),
   },
   {
-    path: '/findIdPw',
-    name: 'findIdPw',
-    component: () => import('../components/user/FindIdPw.vue')
+    path: "/findIdPw",
+    name: "findIdPw",
+    component: () => import("../components/user/FindIdPw.vue")
   },
   // 아이디 찾기 버튼 눌렀을 때 아아디 보여주는 화면
   {
-    path: '/findId',
-    name: 'findId',
-    component: () => import('../components/user/FindId.vue')
+    path: "/findId",
+    name: "findId",
+    component: () => import("../components/user/FindId.vue")
   },
   // 비번 찾기 버튼 눌렀을 때 비번 재설정 화면
   {
-    path: '/findPw',
-    name: 'findPw',
-    component: () => import('../components/user/FindPw.vue')
+    path: "/findPw",
+    name: "findPw",
+    component: () => import("../components/user/FindPw.vue")
   },
   {
-    path: '/free',
-    name: 'free',
-    component: () => import('../components/foodcolumn/FreeList.vue')
+    path: "/free",
+    name: "free",
+    component: () => import("../components/foodcolumn/FreeList.vue")
   },
   {
     path: "/free/:fno",
     name: "free-detail",
-    component: () => import('../components/foodcolumn/FreeDetail.vue')
+    component: () => import("../components/foodcolumn/FreeDetail.vue")
   },
   {
     path: "/add-free",
     name: "add-free",
-    component: () => import('../components/foodcolumn/AddFree.vue')
+    component: () => import("../components/foodcolumn/AddFree.vue")
   },
   //TODO: QnaView 생성
   {
@@ -227,15 +227,15 @@ const routes = [
   },
   // 회원가입 전 약관 동의 페이지
   {
-    path: '/termsOfService',
-    name: 'termsOfService',
-    component: () => import('../components/user/TermsOfService.vue')
+    path: "/termsOfService",
+    name: "termsOfService",
+    component: () => import("../components/user/TermsOfService.vue")
   },
   // TODO 3) : 간편 로그인 추가 /auth-redirect
   {
-      path: '/auth-redirect',
-      name: 'auth-redirect',
-      component: () => import('../views/Auth2View.vue')
+      path: "/auth-redirect",
+      name: "auth-redirect",
+      component: () => import("../views/Auth2View.vue")
   },
   // 음식점 조건별(지역,테마 등등) 이동
   {

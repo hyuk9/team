@@ -21,42 +21,25 @@
                                 음식점 리스트
                             </router-link>
                             <ul class="dropdown-menu">
-                                <!-- FIXME: 지역별 맛집은 버전2222 -->
-                                <!-- <li class="has-children subdropmenu">
-                                    <router-link to="/diner" class="dropdown-item">서울</router-link>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">강남구</a></li>
-                                        <li><a href="#">서초구</a></li>
-                                        <li><a href="#">송파구</a></li>
-                                        <li><a href="#">서대문구</a></li>
-                                        <li><a href="#">영등포구</a></li>
-                                        <li><a href="#">마포구</a></li>
-                                        <li><a href="#">종로구</a></li>
-                                    </ul>
-                                </li>
-                                <li class="has-children subdropmenu">
-                                    <router-link to="/diner" class="dropdown-item">경기</router-link>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">인천</a></li>
-                                        <li><a href="#">세종시</a></li>
-                                        <li><a href="#">평택</a></li>
-                                        <li><a href="#">용인</a></li>
-                                        <li><a href="#">이천</a></li>
-                                        <li><a href="#">화성</a></li>
-                                        <li><a href="#">김포</a></li>
-                                    </ul>
-                                </li> -->
                                 <li class="has-children subdropmenu">
                                     <a href="/diner" class="dropdown-item">부산광역시</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="/haeundae">해운대구</a></li>
-                                        <li><a href="/namgu">남구</a></li>
+                                        <li><a href="/gangseo">강서구</a></li>
                                         <li><a href="/geumjeong">금정구</a></li>
-                                        <li><a href="/gijang">기장구</a></li>
+                                        <li><a href="/gijang">기장군</a></li>
+                                        <li><a href="/namgu">남구</a></li>
+                                        <li><a href="/donggu">동구/</a></li>
                                         <li><a href="/dongnae">동래구</a></li>
                                         <li><a href="/busanjin">부산진구</a></li>
-                                        <li><a href="/yeongdo">영도구</a></li>
-                                        <li><a href="/gangseo">강서구</a></li>
+                                        <li><a href="/bukgu">북구/</a></li>
+                                        <li><a href="/sasang">사상구/</a></li>
+                                        <li><a href="/saha">사하구/</a></li>
+                                        <li><a href="/seo">서구/</a></li>
+                                        <li><a href="/suyoung">수영구/</a></li>
+                                        <li><a href="/yeonje">연제구/</a></li>
+                                        <li><a href="/young">영도구/</a></li>
+                                        <li><a href="/jung">중구/</a></li>
+                                        <li><a href="/haeundae">해운대구</a></li>
                                     </ul>
                                 </li>
                                 <li>
