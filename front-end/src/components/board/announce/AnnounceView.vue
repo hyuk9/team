@@ -149,7 +149,7 @@
         <!-- 디테일 버튼 -->
         <div class="mb-3">
           <router-link
-            :to="'/question/' + currentQuestion.qno"
+            :to="'/question/' + currentAnnounce.aid"
             v-if="showDetailBoard"
           >
             <button class="btn btn-warning offset-5" type="button">수정</button>
@@ -198,7 +198,7 @@ export default {
 
       // 조회수용 변수 추가
       // currentAnnounceForViews: null,
-      currentQuestionForViews: null,
+      currentAnnounceForViews: null,
 
       // 페이징을 위한 변수 정의
       page: 1, // 현재 페이지
