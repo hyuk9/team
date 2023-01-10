@@ -294,19 +294,19 @@
                   <div class="d-flex flex-column mt-2 ms-3">
                     <h5>
                       <span class="badge bg-primary me-3"
-                        >맛 {{ data.taste }}점</span
+                        >맛 {{ data.taste }}</span
                       >
                       <span class="badge bg-success me-3"
-                        >서비스 {{ data.service }}점</span
+                        >서비스 {{ data.service }}</span
                       >
                       <span class="badge bg-danger me-3"
-                        >접근성 {{ data.loc }}점</span
+                        >접근성 {{ data.loc }}</span
                       >
                       <span class="badge bg-warning text-dark me-3"
-                        >분위기 {{ data.mood }}점</span
+                        >분위기 {{ data.mood }}</span
                       >
                       <span class="badge bg-dark me-3"
-                        >가성비 {{ data.cost }}점</span
+                        >가성비 {{ data.cost }}</span
                       >
                     </h5>
                     <h5 class="mt-2 mb-0"><i class="bi bi-pencil-square"></i> {{ data.writer }}</h5>
