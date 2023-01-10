@@ -1,67 +1,127 @@
 <template>
   <div>
     <!-- detali Start -->
-    <div class="container" v-if="currentColumn">
+    <!-- <div class="container" v-if="currentColumn">
       <div class="mb-3">
         <label for="writer" class="form-label">작성자</label>
-        <input
-          type="writer"
-          class="form-control"
-          id="writer"
-          required
-          name="writer"
-          v-model="currentColumn.writer"
-        />
+        <input type="writer" class="form-control" id="writer" required name="writer" v-model="currentColumn.writer" />
       </div>
       <div class="mb-3">
         <label for="title" class="form-label">제목</label>
-        <input
-          type="text"
-          class="form-control"
-          id="title"
-          required
-          name="title"
-          v-model="currentColumn.title"
-        />
+        <input type="text" class="form-control" id="title" required name="title" v-model="currentColumn.title" />
       </div>
       <div class="mb-3">
         <label for="content" class="form-label">내용</label>
-        <textarea
-          class="form-control form-control-lg"
-          id="content"
-          rows="8"
-          required
-          name="content"
-          v-model="currentColumn.content"
-        ></textarea>
+        <textarea class="form-control form-control-lg" id="content" rows="8" required name="content"
+          v-model="currentColumn.content"></textarea>
       </div>
       <div class="mb-3">
         <label for="content" class="form-label">이미지</label><br />
         <img v-if="existImage" id="imageSize" :src="currentColumn.fileUrl" class="preview my-3" alt="" />
-        <!-- <a style="color: inherit" @click="updateColumn(currentColumn.cid)">
-           <span class="badge bg-danger">수정</span>
-         </a> -->
       </div>
       <div class="mb-3">
         <label class="btn btn-default p-0">
-          <!-- 파일 선택상자 -->
-          <input
-            type="file"
-            accept="image/*"
-            ref="file"
-            @change="selectImage"
-          />
+          <input type="file" accept="image/*" ref="file" @change="selectImage" />
         </label>
       </div>
       <div class="mb-3">
-        <button @click="updateColumn" class="btn btn-primary me-3">수정</button>
+        <div v-if="checkImage2">
+          <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+              <path
+                d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+            </symbol>
+          </svg>
+          <div class="alert alert-danger d-flex align-items-center" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+              <use xlink:href="#exclamation-triangle-fill" />
+            </svg>
+            <div>
+              이미지를 넣어주세요!
+            </div>
+          </div>
+        </div>
+        <button v-if="checkImage" @click="updateColumn" class="btn btn-primary me-3">수정</button>
+        <button v-else @click="updateColumn" class="btn btn-primary me-3" disabled>수정</button>
         <button @click="deleteColumn" class="btn btn-danger">삭제</button>
       </div>
       <div class="alert alert-success" role="alert" v-if="message">
         {{ message }}
       </div>
-    </div>
+    </div> -->
     <!-- detail End -->
+
+
+    <div>
+      <div class="container col-6 mb-2 mt-2">
+        <div class="AnnounceView-header mt-5">
+          <h1>
+            <strong>푸드컬럼 수정</strong>
+          </h1>
+        </div>
+        <div class="AnnounceView-title">
+
+
+          <div class="input-group mt-3 mb-4">
+            <span class="input-group-text">제목</span>
+            <input type="text" class="form-control" style="height:50px" id="title" required name="title"
+              v-model="currentColumn.title" />
+          </div>
+          <div class="input-group mb-4">
+            <span class="input-group-text">작성자</span>
+            <input type="text" class="form-control" style="height:50px" id="title" required name="title"
+              v-model="currentColumn.writer" />
+          </div>
+
+          <div class="mb-5">
+            <textarea class="form-control form-control-lg" id="content" rows="8" required name="content"
+              v-model="currentColumn.content"></textarea>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <div class="row">
+            <div class="col-sm-4">
+              <img :src="currentColumn.fileUrl" class="card-img-top" alt="" />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="btn btn-default p-0">
+              <input type="file" accept="image/*" ref="file" @change="selectImage" />
+            </label>
+          </div>
+
+          <div v-if="message" class="alert alert-secondary" role="alert">
+            {{ message }}
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <div v-if="checkImage2">
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+              <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                <path
+                  d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+              </symbol>
+            </svg>
+            <div class="alert alert-danger d-flex align-items-center" role="alert">
+              <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                <use xlink:href="#exclamation-triangle-fill" />
+              </svg>
+              <div>
+                이미지를 넣어주세요!
+              </div>
+            </div>
+          </div>
+          <button v-if="checkImage" @click="updateColumn" class="btn btn-primary me-3">수정</button>
+          <button v-else @click="updateColumn" class="btn btn-primary me-3" disabled>수정</button>
+          <button @click="deleteColumn" class="btn btn-danger">삭제</button>
+        </div>
+        <div class="alert alert-success" role="alert" v-if="message">
+          {{ message }}
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -71,6 +131,7 @@ export default {
   data() {
     return {
       currentColumn: null,
+      previewImage: null,
       message: "",
     };
   },
@@ -150,13 +211,29 @@ export default {
       return this.$store.state.auth.user;
     },
 
-    existImage(){
+    existImage() {
       if (this.currentColumn.fileUrl != null) {
-        console.log("로그는:" ,this.currentColumn);
+        console.log("로그는:", this.currentColumn);
         return true;
       } else {
-        console.log("else:" ,this.currentColumn);
+        console.log("else:", this.currentColumn);
         return false;
+      }
+    },
+
+    checkImage() {
+      if (this.previewImage != null) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+
+    checkImage2() {
+      if (this.previewImage != null) {
+        return false;
+      } else {
+        return true;
       }
     }
   },

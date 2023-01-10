@@ -1,39 +1,23 @@
 <template>
   <div>
     <!-- detali Start -->
-    <div class="container" v-if="currentQuestion">
-      <div class="mb-3">
+    <div class="container col-6 mb-2 mt-2" v-if="currentQuestion">
+      <h1 class="mt-5">
+        <strong>질문 수정</strong>
+      </h1>
+      <div class="mb-4">
         <label for="title" class="form-label">제목</label>
-        <input
-          type="text"
-          class="form-control"
-          id="title"
-          required
-          name="title"
-          v-model="currentQuestion.title"
-        />
+        <input type="text" class="form-control" id="title" required name="title" v-model="currentQuestion.title" />
       </div>
       <div class="mb-3">
         <label for="questioner" class="form-label">질문 작성자</label>
-        <input
-          type="questioner"
-          class="form-control"
-          id="questioner"
-          required
-          name="questioner"
-          v-model="currentQuestion.writer"
-        />
+        <input type="questioner" class="form-control" id="questioner" required name="questioner"
+          v-model="currentQuestion.writer" />
       </div>
       <div class="mb-3">
         <label for="content" class="form-label">내용</label>
-        <textarea
-          class="form-control form-control-lg"
-          id="content"
-          rows="8"
-          required
-          name="content"
-          v-model="currentQuestion.content"
-        ></textarea>
+        <textarea class="form-control form-control-lg" id="content" rows="8" required name="content"
+          v-model="currentQuestion.content"></textarea>
       </div>
 
       <!-- vfor로 답변 다 가져오기 쓸려고 하는데 작동이 안됨 -->
@@ -167,7 +151,7 @@ export default {
         });
     },
     // 답글다는 함수 - 아직 안만듦
-    replyAnswer() {},
+    replyAnswer() { },
   },
   computed: {
     // 현재 유저
@@ -200,4 +184,5 @@ export default {
 </script>
 
 <style>
+
 </style>
