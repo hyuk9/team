@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Addquestion Start -->
-    <!-- <div class="container" v-if="!submitted">
+    <div class="container" v-if="!submitted">
       <div class="mb-3">
         <label for="questioner" class="form-label">작성자</label>
         <input
@@ -10,7 +10,7 @@
           id="questioner"
           required
           name="questioner"
-          v-model="question.questioner"
+          v-model="question.writer"
         />
       </div>
       <div class="mb-3">
@@ -38,43 +38,8 @@
       <div class="mb-3">
         <button @click="savequestion" class="btn btn-primary">Submit</button>
       </div>
-    </div> -->
-    <!-- Addquestion End -->
-
-    <div>
-      <div class="container col-6 mb-2 mt-2">
-        <div class="AnnounceView-header mt-5">
-          <h1>
-            <strong>질문 등록</strong>
-          </h1>
-        </div>
-        <div class="AnnounceView-title">
-
-
-          <div class="input-group mt-3 mb-4">
-            <span class="input-group-text">제목</span>
-            <input type="text" class="form-control" style="height:50px" id="title" required name="title"
-              v-model="question.title" />
-          </div>
-          <div class="input-group mb-4">
-            <span class="input-group-text">작성자</span>
-            <input type="text" class="form-control" style="height:50px" id="title" required name="title"
-              v-model="question.questioner" />
-          </div>
-
-          <div class="mb-5">
-            <textarea class="form-control form-control-lg" id="content" rows="8" required name="content"
-              v-model="question.content"></textarea>
-          </div>
-
-        </div>
-
-
-        <div class="mb-3">
-          <button @click="savequestion" class="btn btn-primary">글쓰기</button>
-        </div>
-      </div>
     </div>
+    <!-- Addquestion End -->
   </div>
 </template>
 
@@ -85,8 +50,9 @@ export default {
   data() {
     return {
       question: {
+        id : 0,
         qno: null,
-        questioner: "",
+        writer: "",
         title: "",
         content: "",
       },
@@ -99,7 +65,9 @@ export default {
       // 임시 객체 변수 -> springboot 전송
       // 부서번호는(no) 자동생성되므로 빼고 전송함
       let data = {
-        questioner: this.question.questioner,
+        // id ,wirter 추가
+        id : this.currentUser.id,
+        writer: this.question.writer,
         title: this.question.title,
         content: this.question.content,
       };
@@ -131,9 +99,16 @@ export default {
       this.$router.push("/question");
     },
   },
+  // id 가져오기
+  computed: {
+    currentUser() {
+      // 모듈 저장소 : this.$store.state.모듈명.state값
+      // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
+      return this.$store.state.auth.user;
+    },
+  },
 };
 </script>
 
 <style>
-
 </style>
