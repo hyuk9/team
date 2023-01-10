@@ -277,7 +277,7 @@ public class UserController {
             Optional<User> optionalUser = userService.findByEmail(email);
             if (optionalUser.isPresent()) {
 //                성공
-                return new ResponseEntity<>(optionalUser.get().getEmail().charAt(0) + "**" + optionalUser.get().getEmail().substring(3) , HttpStatus.OK);
+                return new ResponseEntity<>(optionalUser.get().getUsername().charAt(0) + "**" + optionalUser.get().getUsername().substring(3) , HttpStatus.OK);
             } else {
 //                데이터 없음
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
