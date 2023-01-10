@@ -53,7 +53,7 @@
       <div class="container col-6 mb-2 mt-2">
         <div class="AnnounceView-header mt-5">
           <h1>
-            <strong>자유게시판 등록</strong>
+            <strong>자유게시판 수정</strong>
           </h1>
         </div>
         <div class="AnnounceView-title">
