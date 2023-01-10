@@ -206,7 +206,7 @@ public class ReviewController {
 //            페이지 변수 저장
             Pageable pageable = PageRequest.of(page, size);
 
-            Page<ReviewDto> reviewPage;
+            Page<ReviewOriginDto> reviewPage;
 
             reviewPage = reviewService.findAllById(id, pageable);
 

@@ -46,7 +46,7 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
                     "and rv.delete_yn = 'N'" +
                     "group by di.dname, rv.content, rv.insert_time"
             , nativeQuery = true)
-    Page<ReviewDto> findAllById(Integer id, Pageable pageable);
+    Page<ReviewOriginDto> findAllById(Integer id, Pageable pageable);
 
     //    Todo: 평점 항목별 평균 점수를 성별로 그룹화 해서 찍는 함수
     @Query(value = "select re.gender, avg(re.taste) as avgtaste,avg(re.service) as avgservice ,avg(re.loc) as avgloc,avg(re.mood) as avgmood,avg(re.cost) as avgcost " +

@@ -95,8 +95,8 @@ public class ReviewService {
     }
 
     //    ✅ username like 검색 함수 ( 페이징 처리 추가 )
-    public Page<ReviewDto> findAllById(Integer id, Pageable pageable) {
-        Page<ReviewDto> list = reviewRepository.findAllById(id, pageable);
+    public Page<ReviewOriginDto> findAllById(Integer id, Pageable pageable) {
+        Page<ReviewOriginDto> list = reviewRepository.findAllById(id, pageable);
 
         return list;
     }
