@@ -149,7 +149,7 @@
         <!-- 디테일 버튼 -->
         <div class="mb-3">
           <router-link
-            :to="'/question/' + currentAnnounce.aid"
+            :to="'/announce/' + currentAnnounce.aid"
             v-if="showDetailBoard"
           >
             <button class="btn btn-warning offset-5" type="button">수정</button>
