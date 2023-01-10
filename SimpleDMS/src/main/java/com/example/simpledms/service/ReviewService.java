@@ -1,6 +1,10 @@
 package com.example.simpledms.service;
 
-import com.example.simpledms.dto.*;
+
+import com.example.simpledms.dto.ReservationDto;
+import com.example.simpledms.dto.ReviewDto;
+import com.example.simpledms.dto.ScoreDto;
+import com.example.simpledms.model.Comment;
 import com.example.simpledms.model.Menu;
 import com.example.simpledms.model.Review;
 import com.example.simpledms.repository.ReviewRepository;
@@ -55,6 +59,11 @@ public class ReviewService {
         Optional<Review> optionalReview = reviewRepository.findByRnoEquals(rno);
 
         return optionalReview;
+    }
+
+    public Page<Review> findAllByDnoEqualsOrderByInsertTimeDesc(Integer dno, Pageable pageable) {
+        Page<Review> page = reviewRepository.findAllByDnoEqualsOrderByInsertTimeDesc(dno, pageable);
+        return page;
     }
 
 //    writer으로 조회하는 함수

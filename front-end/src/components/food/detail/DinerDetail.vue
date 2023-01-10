@@ -280,7 +280,10 @@
               <div>
                 <!-- FIXME:고쳐야하는데 이유는 아직 모름 -->
                 <!-- <router-link :to="'/edit/review/' + data.rno" v-if="showDetailBoard"> -->
-                <router-link :to="'/edit/review/' + data.rno" v-if="showDetailBoard(data)">
+                <router-link
+                  :to="'/edit/review/' + data.rno"
+                  v-if="showDetailBoard(data)"
+                >
                   <span class="badge bg-success float-right">수정하기</span>
                 </router-link>
               </div>
@@ -433,7 +436,7 @@ export default {
       // 페이징을 위한 변수 정의
       page: 1, // 현재 페이지
       count: 0, // 전체 데이터 건수
-      pageSize: 8, // 한페이지당 몇개를 화면에 보여줄지 결정하는 변수
+      pageSize: 4, // 한페이지당 몇개를 화면에 보여줄지 결정하는 변수
 
       // favorite 정보 저장용
       totalfavorite: null,
@@ -520,32 +523,51 @@ export default {
         });
     },
     // Todo : dno로 리뷰 조회요청하는 함수
-    getReview(dno) {
-      // axios 공통함수 호출
-      ReviewDataService.get(dno)
-        // 성공하면 .then() 결과가 리턴됨
-        .then((response) => {
-          // springboot 결과를 리턴함(부서 객체)
-          this.review = response.data;
-          // 콘솔 로그 출력
-          console.log("현재 리뷰 데이터 : ", response.data);
+    // getReview(dno) {
+    //   // axios 공통함수 호출
+    //   ReviewDataService.get(dno)
+    //     // 성공하면 .then() 결과가 리턴됨
+    //     .then((response) => {
+    //       // springboot 결과를 리턴함(부서 객체)
+    //       this.review = response.data;
+    //       // 콘솔 로그 출력
+    //       console.log("현재 리뷰 데이터 : ", response.data);
 
-          this.getScore();
+    //       this.getScore();
+    //     })
+    //     // 실패하면 .catch() 에러메세지가 리턴됨
+    //     .catch((e) => {
+    //       console.log(e);
+    //     });
+    // },
+    // TODO: 댓글 정보를 조회요청하는 함수
+    getReview(dno) {
+      ReviewDataService.getReviewByDno(dno, this.page - 1, this.pageSize)
+        .then((response) => {
+          // springboot 결과를 리턴함(질문 객체)
+          const { review, totalItems } = response.data; // springboot 의 전송한 맵 정보
+          this.review = review; // 스프링부트에서 전송한 데이터
+          this.count = totalItems;
+          // 콘솔 로그 출력
+          console.log("리뷰 정보 조회 성공 : ", response.data);
         })
         // 실패하면 .catch() 에러메세지가 리턴됨
         .catch((e) => {
-          console.log(e);
+          console.log("리뷰 정보 조회 실패 : ", e);
         });
     },
-    // 페이지 번호 변경시 실행되는 함수(재조회)
     handlePageChange(value) {
-      this.page = value; // 매개변수값으로 현재페이지 변경
-      // 재조회함수 호출
-      this.getReview(dno);
+      this.page = value;
+      this.getReview(this.$route.params.dno);
     },
-    // 목록을 클릭했을때 현재 부서객체, 인덱스번호를 저장하는 함수
-    setActiveReview(data, index) {
-      this.currentReview = data;
+    handlePageSizeChange(event) {
+      this.pageSize = event.target.value;
+      this.page = 1;
+      this.getReview(this.$route.params.dno);
+    },
+    setActive(data, index) {
+      console.log(data);
+      this.currentData = data;
       this.currentIndex = index;
     },
     // TODO: 음식점 정보 수정요청하는 함수
@@ -732,7 +754,10 @@ export default {
     // TODO: 관리자거나 작성자라면 리뷰 수정하기 버튼 보이게하는 함수
     showDetailBoard(data) {
       if (this.currentUser.roles) {
-        if(this.currentUser.roles.includes("ROLE_ADMIN") || this.currentUser.id == data.id ) {
+        if (
+          this.currentUser.roles.includes("ROLE_ADMIN") ||
+          this.currentUser.id == data.id
+        ) {
           return true;
         } else {
           return false;
@@ -740,7 +765,6 @@ export default {
       } else {
         return false;
       }
-
     },
     // todo 백엔드에서 리뷰컨트롤러에서 평점을 가져와서 디너테이블에 스코어에 찍기 위한 함수
     findByDnoDinerScore (dno) {
@@ -763,7 +787,6 @@ export default {
     // $route 객체 : 주로 url 매개변수 정보들이 있음
     // router/index.js 상세페이지 url의 매개변수명 : :dno
     this.getDiner(this.$route.params.dno);
-    this.getMenu(this.$route.params.dno); // 화면 로딩시 음식점번호(dno)로 메뉴조회하기
     this.getReview(this.$route.params.dno);
     this.retrieveFavorite(); // 화면 로딩시 fid해당하는 조회함수 실행
     this.findByDnoDinerScore(this.$route.params.dno)// 리뷰에서 평점 평균 가져오기
@@ -804,7 +827,6 @@ export default {
         return false;
       }
     },
-
   },
 };
 </script>

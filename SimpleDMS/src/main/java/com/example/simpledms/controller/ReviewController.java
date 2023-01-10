@@ -1,7 +1,11 @@
 package com.example.simpledms.controller;
 
 
-import com.example.simpledms.dto.*;
+
+import com.example.simpledms.dto.ReservationDto;
+import com.example.simpledms.dto.ReviewDto;
+import com.example.simpledms.dto.ScoreDto;
+import com.example.simpledms.model.Comment;
 import com.example.simpledms.model.Menu;
 import com.example.simpledms.model.Review;
 import com.example.simpledms.service.ReviewService;
@@ -158,6 +162,42 @@ public class ReviewController {
         }
     }
 
+    @GetMapping("/review/dno")
+    public ResponseEntity<Object> getReviewDno(@RequestParam Integer dno,
+                                               @RequestParam(defaultValue = "0") int page,
+                                               @RequestParam(defaultValue = "3") int size) {
+
+        try {
+//            Pageable 객체 정의 ( page, size 값 설정 )
+            Pageable pageable = PageRequest.of(page, size);
+
+            Page<Review> reviewPage;
+
+            reviewPage = reviewService.findAllByDnoEqualsOrderByInsertTimeDesc(dno, pageable);
+
+            //            맵 자료구조에 넣어서 전송
+            Map<String, Object> response = new HashMap<>();
+            response.put("review", reviewPage.getContent());
+            response.put("currentPage", reviewPage.getNumber());
+            response.put("totalItems", reviewPage.getTotalElements());
+            response.put("totalPages", reviewPage.getTotalPages());
+
+
+            if (reviewPage.isEmpty() == false) {
+//                데이터 + 성공 메세지 전송
+                return new ResponseEntity<>(response, HttpStatus.OK);
+            } else {
+//                데이터 없음 메세지 전송(클라이언트)
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+
+        } catch (Exception e) {
+            log.debug(e.getMessage());
+            // 서버에러 발생 메세지 전송(클라이언트)
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @PutMapping("/review/{rno}")
     public ResponseEntity<Object> updateReview(@PathVariable int rno,
                                                @RequestBody Review review) {
@@ -199,8 +239,7 @@ public class ReviewController {
     @GetMapping("/review/id")
     public ResponseEntity<Object> getUserId(@RequestParam Integer id,
                                             @RequestParam(defaultValue = "0") int page,
-                                            @RequestParam(defaultValue = "3") int size)
-    {
+                                            @RequestParam(defaultValue = "3") int size) {
         try {
 
 //            페이지 변수 저장

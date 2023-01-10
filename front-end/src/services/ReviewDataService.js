@@ -23,12 +23,18 @@ class ReviewDataService {
     return http.get(`/review/${dno}`);
   }
 
-    // 리뷰번호로 조회 요청 함수
-    getRno(rno) {
-      // get 방식 통신 요청 👉 @GetMapping("/api/menu/{dno}")
-      return http.get(`/review/rno/${rno}`);
-    }
+  // 리뷰번호로 조회 요청 함수
+  getRno(rno) {
+    // get 방식 통신 요청 👉 @GetMapping("/api/menu/{dno}")
+    return http.get(`/review/rno/${rno}`);
+  }
 
+  //
+  getReviewByDno(dno, page, size) {
+    return http.get(`/review/dno?dno=${dno}&page=${page}&size=${size}`, {
+      headers: authHeader(),
+    });
+  }
 
   // 부서정보 생성(insert) 요청 함수
   // post 방식 통신 요청 -> @PostMapping("/api/diner"), @RequestBody
