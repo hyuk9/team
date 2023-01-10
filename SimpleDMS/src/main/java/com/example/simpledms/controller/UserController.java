@@ -41,6 +41,7 @@ import java.util.*;
 @Slf4j
 @RestController
 @CrossOrigin(origins = "http://localhost")
+//@CrossOrigin(origins = "http://192.168.0.166")
 @RequestMapping("/api")
 public class UserController {
 

@@ -28,6 +28,7 @@ import java.util.Optional;
  */
 @Slf4j
 @CrossOrigin(origins = "http://localhost")
+//@CrossOrigin(origins = "http://192.168.0.166")
 @RestController
 @RequestMapping("/api")
 public class DinerController {

@@ -40,6 +40,8 @@ import java.util.stream.Collectors;
 //  origins = "*" : all url core 통과
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
+//@CrossOrigin(origins = "http://localhost")
+//@CrossOrigin(origins = "http://192.168.0.166")
 @RequestMapping("/api/auth")
 public class AuthController {
 

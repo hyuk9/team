@@ -2,6 +2,7 @@ package com.example.simpledms.controller;
 
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.GetMapping;
  * 2022/06/14         kangtaegyung          최초 생성
  */
 @Controller
+@CrossOrigin(origins = "http://localhost")
+//@CrossOrigin(origins = "http://192.168.0.166")
 public class RootController implements ErrorController {
 
     @GetMapping("/error")
