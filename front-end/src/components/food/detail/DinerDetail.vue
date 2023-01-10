@@ -199,27 +199,37 @@
                   <i class="bi bi-lamp-fill"></i> 대표메뉴
                 </div>
                 <!-- 메뉴 리스트 불러와서 v-for문으로 작동 -->
-                <div class="card-body">
-                  <h5 class="card-title">{{ currentDiner.menu1 }}</h5>
-                  <p class="card-text">
-                    {{ currentDiner.price1 }}
-                  </p>
-                  <h5 class="card-title">{{ currentDiner.menu2 }}</h5>
-                  <p class="card-text">
-                    {{ currentDiner.price2 }}
-                  </p>
-                  <h5 class="card-title">{{ currentDiner.menu3 }}</h5>
-                  <p class="card-text">
-                    {{ currentDiner.price3 }}
-                  </p>
-                  <h5 class="card-title">{{ currentDiner.menu4 }}</h5>
-                  <p class="card-text">
-                    {{ currentDiner.price4 }}
-                  </p>
-                  <h5 class="card-title">{{ currentDiner.menu5 }}</h5>
-                  <p class="card-text">
-                    {{ currentDiner.price5 }}
-                  </p>
+                <div>
+                  <div class="card-body">
+                    <h5 class="card-title">{{ currentDiner.menu1 }}</h5>
+                    <p class="card-text">
+                      {{ currentDiner.price1 }}
+                    </p>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">{{ currentDiner.menu2 }}</h5>
+                    <p class="card-text">
+                      {{ currentDiner.price2 }}
+                    </p>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">{{ currentDiner.menu3 }}</h5>
+                    <p class="card-text">
+                      {{ currentDiner.price3 }}
+                    </p>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">{{ currentDiner.menu4 }}</h5>
+                    <p class="card-text">
+                      {{ currentDiner.price4 }}
+                    </p>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">{{ currentDiner.menu5 }}</h5>
+                    <p class="card-text">
+                      {{ currentDiner.price5 }}
+                    </p>
+                  </div>
                 </div>
                 <!--v-for 끝-->
               </div>
@@ -359,7 +369,7 @@ import User from "@/model/user";
 export default {
   data() {
     return {
-      menu: [], 
+      menu: [],
       review: [],
       diner: [],
       score: [],
