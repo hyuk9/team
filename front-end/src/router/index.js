@@ -207,23 +207,23 @@ const routes = [
   {
     path: "/free",
     name: "free",
-    component: () => import("../components/foodcolumn/FreeList.vue")
+    component: () => import("../components/board/free/FreeList.vue")
   },
   {
     path: "/free/:fno",
     name: "free-detail",
-    component: () => import("../components/foodcolumn/FreeDetail.vue")
+    component: () => import("../components/board/free/FreeDetail.vue")
   },
   {
     path: "/add-free",
     name: "add-free",
-    component: () => import("../components/foodcolumn/AddFree.vue")
+    component: () => import("../components/board/free/AddFree.vue")
   },
   //TODO: QnaView 생성
   {
     path: "/freeview/:fno",
     name: "free-view",
-    component: () => import("../components/foodcolumn/FreeView.vue"),
+    component: () => import("../components/board/free/FreeView.vue"),
   },
   // 회원가입 전 약관 동의 페이지
   {

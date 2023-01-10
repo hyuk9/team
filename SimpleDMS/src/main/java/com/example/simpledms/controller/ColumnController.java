@@ -181,6 +181,7 @@ public class ColumnController {
             @RequestParam("id") int id,
             @RequestParam("writer") String writer,
             @RequestParam("title") String title,
+            @RequestParam("subtitle") String subtitle,
             @RequestParam("content") String content,
             @RequestParam(required = false) MultipartFile blobFile
     ) {
@@ -188,11 +189,12 @@ public class ColumnController {
 
         log.info("writer {} : ", writer);
         log.info("title {} : ", title);
+        log.info("subtitle {} : ", subtitle);
         log.info("content {} : ", content);
         log.info("blobFile {} : ", blobFile);
 
         try {
-            columnService.createUploadImage(id,writer, title, content, blobFile);
+            columnService.createUploadImage(id,writer, title, subtitle, content, blobFile);
             if (blobFile != null) {
                 message = "Uploaded the file successfully: " + blobFile.getOriginalFilename();
             }
@@ -213,6 +215,7 @@ public class ColumnController {
             @RequestParam("id") int id,
             @RequestParam("writer") String writer,
             @RequestParam("title") String title,
+            @RequestParam("subtitle") String subtitle,
             @RequestParam("content") String content,
             @RequestParam(required = false) MultipartFile blobFile
     ) {
@@ -221,12 +224,13 @@ public class ColumnController {
         log.info("cid {} : ", cid);
         log.info("writer {} : ", writer);
         log.info("title {} : ", title);
+        log.info("subtitle {} : ", subtitle);
         log.info("content {} : ", content);
 
         try {
             Optional<Column> column = columnService.findId(cid);
             Integer views = column.get().getViews();
-            columnService.updateUploadFile(cid,id, writer, title, content, blobFile, views);
+            columnService.updateUploadFile(cid,id, writer, title, subtitle, content, blobFile, views);
 
 
             if (blobFile != null) {

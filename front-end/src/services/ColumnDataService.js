@@ -21,18 +21,20 @@ class ColumnDataService {
 
     // Todo : 자유게시판정보 생성(insert) 요청 함수
     // post 방식 통신 요청 -> @PostMapping("/api/column"), @RequestBody
-    create(id,writer,title,content,blobFile) {
+    create(id,writer,title,subtitle,content,blobFile) {
         let formData = new FormData(); 
 
         console.log(id);
         console.log(writer);
         console.log(title);
+        console.log(subtitle);
         console.log(content);
         console.log(blobFile);
 
         formData.append("id", id);
         formData.append("writer", writer);
         formData.append("title", title);
+        formData.append("subtitle", subtitle);
         formData.append("content", content);
         formData.append("blobFile", blobFile);
         
@@ -46,13 +48,14 @@ class ColumnDataService {
 
     // Todo : 자유게시판정보 수정(update) 요청 함수
     // put 방식 통신 요청 -> @PutMapping("/api/column/{cid}"), @RequestBody
-    update(cid,id,writer,title,content,blobFile) {
+    update(cid,id,writer,title,subtitle,content,blobFile) {
         let formData = new FormData();
 
         console.log(cid);
         console.log(id);
         console.log(writer);
         console.log(title);
+        console.log(subtitle);
         console.log(content);
         console.log(blobFile);
     
@@ -60,6 +63,7 @@ class ColumnDataService {
         formData.append("id", id);
         formData.append("writer", writer);
         formData.append("title", title);
+        formData.append("subtitle", subtitle);
         formData.append("content", content);
         formData.append("blobFile", blobFile);
 

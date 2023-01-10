@@ -69,6 +69,11 @@
             <input type="text" class="form-control" style="height:50px" id="title" required name="title"
               v-model="column.title" />
           </div>
+          <div class="input-group mt-3 mb-4">
+            <span class="input-group-text">부제목</span>
+            <input type="text" class="form-control" style="height:50px" id="subtitle" required name="subtitle"
+              v-model="column.subtitle" />
+          </div>
           <div class="input-group mb-4">
             <span class="input-group-text">작성자</span>
             <input type="text" class="form-control" style="height:50px" id="writer" required name="writer"
@@ -135,6 +140,7 @@ export default {
         id: null,
         writer: "",
         title: "",
+        subtitle: "",
         content: "",
       },
       currentImage: undefined, // 현재 이미지 변수
@@ -163,6 +169,7 @@ export default {
         this.column.id = this.currentUser.id,
         this.column.writer,
         this.column.title,
+        this.column.subtitle,
         this.column.content,
         this.currentImage,
         // (eve) => {

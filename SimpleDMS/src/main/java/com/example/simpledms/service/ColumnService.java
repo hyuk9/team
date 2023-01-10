@@ -110,7 +110,7 @@ public class ColumnService {
 //        return columnRepository.save(column);
 //    }
 
-    public Column createUploadImage(int id, String writer, String title, String
+    public Column createUploadImage(int id, String writer, String title, String subtitle, String
             content, MultipartFile blobFile) throws IOException {
 
         String galleryFileName = "";
@@ -123,6 +123,7 @@ public class ColumnService {
                      .id(id)
                     .writer(writer)
                     .title(title)
+                     .subtitle(subtitle)
                     .content(content)
                     .galleryFileName(galleryFileName)
                     .blobFile(blobFile.getBytes())
@@ -133,6 +134,7 @@ public class ColumnService {
                      .id(id)
                     .writer(writer)
                     .title(title)
+                    .subtitle(subtitle)
                     .content(content)
                     .galleryFileName(galleryFileName)
                     .build();
@@ -142,7 +144,7 @@ public class ColumnService {
         return createColumn;
     }
 
-    public Column updateUploadFile(int cid, int id, String writer, String title, String
+    public Column updateUploadFile(int cid, int id, String writer, String title, String subtitle, String
             content, MultipartFile blobFile, int views) throws IOException {
 
         //            업로드 파일에서 파일명 얻기
@@ -156,6 +158,7 @@ public class ColumnService {
                     .id(id)
                     .writer(writer)
                     .title(title)
+                    .title(subtitle)
                     .content(content)
                     .galleryFileName(galleryFileName)
                     .blobFile(blobFile.getBytes())
@@ -167,6 +170,7 @@ public class ColumnService {
                     .id(id)
                     .writer(writer)
                     .title(title)
+                    .subtitle(subtitle)
                     .content(content)
                     .galleryFileName(galleryFileName)
                     .views(views)

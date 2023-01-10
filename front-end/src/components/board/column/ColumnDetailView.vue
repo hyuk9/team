@@ -67,6 +67,11 @@
             <input type="text" class="form-control" style="height:50px" id="title" required name="title"
               v-model="currentColumn.title" />
           </div>
+          <div class="input-group mt-3 mb-4">
+            <span class="input-group-text">부제목</span>
+            <input type="text" class="form-control" style="height:50px" id="subtitle" required name="subtitle"
+              v-model="currentColumn.subtitle" />
+          </div>
           <div class="input-group mb-4">
             <span class="input-group-text">작성자</span>
             <input type="text" class="form-control" style="height:50px" id="writer" required name="writer"

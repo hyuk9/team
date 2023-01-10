@@ -27,6 +27,10 @@
               <td scope="col" v-text="currentColumn.title"></td>
             </tr>
             <tr>
+              <th scope="col">부제목</th>
+              <td scope="col" v-text="currentColumn.subtitle"></td>
+            </tr>
+            <tr>
               <th scope="row">작성자</th>
               <td scope="row" v-text="currentColumn.writer"></td>
             </tr>
