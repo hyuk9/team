@@ -37,18 +37,18 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
 
     Page<Review> findAllByDnoEqualsOrderByInsertTimeDesc(Integer dno, Pageable pageable);
 
-    @Query(value = "select di.dname, rv. content, rv.insert_time as it, sum(rv.taste+rv.service+rv.loc+rv.mood+rv.cost)/5 as sumscore " +
+    @Query(value = "select di.dname, rv. content, rv.insert_time as it, sum(rv.taste+rv.service+rv.loc+rv.mood+rv.cost)/5 as sumscore, rv.rno " +
             "from tb_review rv, tb_diner di " +
             "where rv.dno = di.dno " +
             "and rv.id = :id " +
             "and rv.delete_yn = 'N'" +
-            "group by di.dname, rv.content, rv.insert_time",
-            countQuery = "select di.dname, rv. content, rv.insert_time as it, sum(rv.taste+rv.service+rv.loc+rv.mood+rv.cost)/5 as sumscore " +
+            "group by di.dname, rv.content, rv.insert_time, rv.rno",
+            countQuery = "select di.dname, rv. content, rv.insert_time as it, sum(rv.taste+rv.service+rv.loc+rv.mood+rv.cost)/5 as sumscore, rv.rno " +
                     "from tb_review rv, tb_diner di " +
                     "where rv.dno = di.dno " +
                     "and rv.id = :id " +
                     "and rv.delete_yn = 'N'" +
-                    "group by di.dname, rv.content, rv.insert_time"
+                    "group by di.dname, rv.content, rv.insert_time, rv.rno"
             , nativeQuery = true)
     Page<ReviewOriginDto> findAllById(Integer id, Pageable pageable);
 
