@@ -155,11 +155,11 @@ export default {
       AnnounceDataService.plusViews(aid)
      .then((response) => {
           // 디버깅 콘솔에 정보 출력
-          console.log(response.data);
+          console.log("조회수 증가 성공 : ", response.data);
         })
         // 실패하면 .catch() 에 에러가 전송됨
         .catch((e) => {
-          console.log(e);
+          console.log("조회수 증가 실패 : ", e);
         });
     }
   },

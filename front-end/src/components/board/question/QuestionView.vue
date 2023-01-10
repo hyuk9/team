@@ -29,7 +29,7 @@
             </tr>
             <tr>
               <th scope="row">조회수</th>
-              <td scope="row" v-text="currentfreeForViews.views"></td>
+              <td scope="row" v-text="currentQuestionForViews.views"></td>
             </tr>
             <tr>
               <td colspan="2" scope="row">
@@ -102,7 +102,6 @@
             ></b-pagination>
           </div>
         </div>
-
         <!-- FIXME: 댓글보이는 창 -->
 
         <br />
@@ -149,6 +148,7 @@
         </div>
         <!-- 댓글 입력 창 -->
 
+        <!-- 디테일 버튼 -->
         <div class="mb-3">
           <router-link
             :to="'/question/' + currentQuestion.qno"
@@ -157,6 +157,8 @@
             <button class="btn btn-warning offset-5" type="button">수정</button>
           </router-link>
         </div>
+        <!-- 디테일 버튼 -->
+
       </div>
     </div>
   </div>
@@ -171,8 +173,6 @@ export default {
   data() {
     return {
       currentQuestion: null,
-      currentQuestionForViews: null, // 이게 뭔지 모르겠음
-
       currentComment: null,
       currentIndex: -1,
 
@@ -198,7 +198,7 @@ export default {
       showInsertComment: true,
 
       // 조회수용 변수 추가
-      currentfreeForViews: null,
+      currentQuestionForViews: null,
 
       // 페이징을 위한 변수 정의
       page: 1, // 현재 페이지
@@ -230,7 +230,7 @@ export default {
         // 성공하면 .then() 결과가 리턴됨
         .then((response) => {
           // springboot 결과를 리턴함(부서 객체)
-          this.currentfreeForViews = response.data;
+          this.currentQuestionForViews = response.data;
           // 콘솔 로그 출력
           console.log("뭔지모르겠지만 성공함 : ", response.data);
         })
@@ -314,7 +314,13 @@ export default {
             console.log(e);
           });
       } else {
-        alert("로그인이 필요한 항목입니다.");
+        this.$swal({
+          icon: "error",
+          title: "로그인이 필요한 서비스입니다",
+          text: "로그인하시면 다양한 서비스를 이용할 수 있습니다",
+          confirmButtonColor: "#E1793D",
+          confirmButtonText: "확인",
+        });
       }
     },
     // TODO: 댓글 정보를 수정 요청하는 함수
@@ -352,6 +358,23 @@ export default {
         return true;
       }
     },
+
+    // TODO: 관리자 또는 댓글 작성자인지 확인하는 함수
+    showEditDelete(data) {
+      if (this.currentUser.roles) {
+        if (
+          this.currentUser.roles.includes("ROLE_ADMIN") ||
+          this.currentUser.id == data.id
+        ) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    },
+
     // TODO: 수정버튼을 클릭시 댓글 입력창과 댓글 수정창이 바뀌는 버튼
     toggleComment(cno) {
       this.showInsertComment = !this.showInsertComment;
@@ -376,6 +399,8 @@ export default {
       // 재조회 함수 호출
       this.getCommentByQno();
     },
+
+
     // ==================================== 댓글 관련 ======================================= //
 
     // TODO: 질문정보를 삭제 요청하는 함수
@@ -394,21 +419,6 @@ export default {
         });
     },
 
-    // TODO: 관리자 접속인지 아닌지 확인하는 함수
-    showEditDelete(data) {
-      if (this.currentUser.roles) {
-        if (
-          this.currentUser.roles.includes("ROLE_ADMIN") ||
-          this.currentUser.id == data.id
-        ) {
-          return true;
-        } else {
-          return false;
-        }
-      } else {
-        return false;
-      }
-    },
   },
 
   computed: {
