@@ -67,6 +67,7 @@ export default {
             this.title = "팀원 소개"
         } else {
           this.title = "음식점 리스트"
+          this.heroTitle = "/assets/img/gallery/hero-tomato2.png";
         }
     },
 }
