@@ -53,9 +53,6 @@ public class Free extends BaseTimeEntity {
     private String content;
 
     @javax.persistence.Column
-    private String photo;
-
-    @javax.persistence.Column
     private String writer;
 
 //    글쓴사람 id값

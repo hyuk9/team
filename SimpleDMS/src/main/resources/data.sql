@@ -282,19 +282,19 @@ VALUES (SQ_FREE.nextval, '코로나 확진이 되었어요', '솔직히 걸릴 �
         TO_CHAR(SYSDATE, 'YYYY-MM-DD'),
         NULL, NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '조성모', '팀프로젝트 하는데 조장이 탈주했어요', '갑자기 코로나 걸렸다고 사라졌어요 어떡하죠', 3, 0, 'N',
+VALUES (SQ_FREE.nextval, '팀프로젝트 하는데 조장이 탈주했어요', '갑자기 코로나 걸렸다고 사라졌어요 어떡하죠', '조성모', 3, 0, 'N',
         TO_CHAR(SYSDATE, 'YYYY-MM-DD'),
         NULL, NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '전성혜', '고양이가 너무 귀여워요', '제 고양이들 봐주세요', 4, 0, 'N',
+VALUES (SQ_FREE.nextval, '고양이가 너무 귀여워요', '제 고양이들 봐주세요', '전성혜', 4, 0, 'N',
         TO_CHAR(SYSDATE, 'YYYY-MM-DD'),
         NULL, NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '권태현', '이번 4090 그래픽카드 어떤가요', '가격이 너무 비싸서 고민되요', 5, 0, 'N',
+VALUES (SQ_FREE.nextval, '이번 4090 그래픽카드 어떤가요', '가격이 너무 비싸서 고민되요', '권태현', 5, 0, 'N',
         TO_CHAR(SYSDATE, 'YYYY-MM-DD'),
         NULL, NULL);
 INSERT INTO TB_FREE
-VALUES (SQ_FREE.nextval, '박선영', '겨울에 듣기 좋은 노래 추천해주세요', '추운날씨에 듣기 좋은 곡이 있을까요', 6, 0, 'N',
+VALUES (SQ_FREE.nextval, '겨울에 듣기 좋은 노래 추천해주세요', '추운날씨에 듣기 좋은 곡이 있을까요', '박선영', 6, 0, 'N',
         TO_CHAR(SYSDATE, 'YYYY-MM-DD'),
         NULL, NULL);
 

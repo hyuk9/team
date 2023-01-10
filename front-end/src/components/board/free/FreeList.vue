@@ -77,7 +77,7 @@
               </td>
               <td class="text-center">{{ data.writer }}</td>
               <td class="text-center">
-                <i class="bi bi-calendar-date"></i> {{ data.insertTime }}
+                <i class="bi bi-calendar-date"></i> {{ data.insertTime.split(" ")[0] }}
               </td>
                  <!-- 조회수 보여주기 -->
               <td class="text-center">{{ data.views }}</td>
@@ -176,25 +176,9 @@ export default {
       page: 1, // 현재 페이지
       count: 0, // 전체 데이터 건수
       pageSize: 10, // 한페이지당 몇개를 화면에 보여줄지 결정하는 변수
-
-      pageSizes: [3, 6, 9], // select box 에 넣을 기본 데이터
     };
   },
   methods: {
-    ConfirmLoggedUser() {
-      if (this.currentUser && this.currentUser.roles) {
-        // if (ROLE_ADMIN || ROLE_USER) 로그인이 되어있다면 관리자거나 일반유저이므로 푸드컬럼 페이지로 바로 이동
-        return (
-          (this.currentUser.roles.includes("ROLE_ADMIN") ||
-            this.currentUser.roles.includes("ROLE_USER")) &&
-          this.$router.push("/add-free/")
-        );
-      }
-      // 로그인이 되어있지 않다면 로그인이 필요한 항목이라고 표시
-      return alert("로그인이 필요한 항목입니다.");
-    },
-
-    // axios , 모든 정보 조회 요청 함수
     retrieveFree() {
       FreeDataService.getAll(
         this.searchSelect, // select box 선택된 값
@@ -208,13 +192,28 @@ export default {
           this.free = free; // 스프링부트에서 전송한 데이터
           this.count = totalItems; // 스프링부트에서 전송한 페이지정보(총 건수)
           // 디버깅 콘솔에 정보 출력
-          console.log(response.data);
+          console.log("자유게시판 전체 조회 성공 : ", response.data);
         })
         // 실패하면 .catch() 에 에러가 전송됨
         .catch((e) => {
-          console.log(e);
+          console.log("자유게시판 전체 조회 실패 : ", e);
         });
     },
+
+    ConfirmLoggedUser() {
+      if (this.currentUser && this.currentUser.roles) {
+        return (
+          (this.currentUser.roles.includes("ROLE_ADMIN") ||
+            this.currentUser.roles.includes("ROLE_USER")) &&
+          this.$router.push("/add-free/")
+        );
+      }
+      // 로그인이 되어있지 않다면 로그인이 필요한 항목이라고 표시
+      return alert("로그인이 필요한 항목입니다.");
+    },
+
+    // axios , 모든 정보 조회 요청 함수
+
     // select box 값 변경시 실행되는 함수(재조회)
     handlePageSizeChange(event) {
       this.pageSize = event.target.value; // 한페이지당 개수 저장(3, 6, 9)
@@ -233,11 +232,11 @@ export default {
       FreeDataService.plusViews(fno)
      .then((response) => {
           // 디버깅 콘솔에 정보 출력
-          console.log(response.data);
+          console.log("조회수 증가 성공 : ", response.data);
         })
         // 실패하면 .catch() 에 에러가 전송됨
         .catch((e) => {
-          console.log(e);
+          console.log("조회수 증가 실패 : ", e);
         });
     },
   },
