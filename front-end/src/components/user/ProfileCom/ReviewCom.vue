@@ -24,7 +24,7 @@
                     <td class="align-middle">{{ data.dname }}</td>
                     <td class="align-middle">{{ data.content }}</td>
                     <td class="align-middle">{{ data.sumscore }}</td>
-                    <td class="align-middle">{{ data.it }}</td>
+                    <td class="align-middle">{{ data.it.substring(0, 16) }}</td>
                     <td class="align-middle">
                       <router-link :to="'/edit/review/' + data.rno"
                         ><span class="badge rounded-pill bg-success"
