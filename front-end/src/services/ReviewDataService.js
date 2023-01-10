@@ -49,6 +49,11 @@ class ReviewDataService {
   delete(rno) {
     return http.delete(`/review/deletion/${rno}`);
   }
+
+  // 스코어 조회 함수
+  findByDnoScoreAvg(dno) {
+    return http.get(`/review/dno/${dno}`);
+  }
 }
 
 export default new ReviewDataService();
