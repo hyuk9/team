@@ -66,7 +66,7 @@
                   >연제구</a>
               </li>
               <li class="lh-lg">
-                <a href = "/young" class="text-200 text-decoration-none" 
+                <a href = "/yeongdo" class="text-200 text-decoration-none" 
                   >영도구</a>
               </li>
               <li class="lh-lg">

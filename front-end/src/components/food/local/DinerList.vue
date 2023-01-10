@@ -336,6 +336,7 @@ export default {
     },
     // 나브바에서 무엇을 선택했냐에 따라서 보여주는 음식점을 바꾸는 함수
     whatSelectDinerList() {
+      // 지역 리다이렉트
       if (this.$route.path == "/haeundae") {
         this.searchSelect = "지역";
         this.searchKeyword = "해운대구";
@@ -360,7 +361,27 @@ export default {
       } else if (this.$route.path == "/gangseo") {
         this.searchSelect = "지역";
         this.searchKeyword = "강서구";
-      } else if (this.$route.path == "/korean") {
+      } else if (this.$route.path == "/bukgu") {
+        this.searchSelect = "지역";
+        this.searchKeyword = "북구";
+      } else if (this.$route.path == "/sasang") {
+        this.searchSelect = "지역";
+        this.searchKeyword = "사상구";
+      } else if (this.$route.path == "/saha") {
+        this.searchSelect = "지역";
+        this.searchKeyword = "사하구";
+      } else if (this.$route.path == "/seo") {
+        this.searchSelect = "지역";
+        this.searchKeyword = "서구";
+      } else if (this.$route.path == "/yeonje") {
+        this.searchSelect = "지역";
+        this.searchKeyword = "연제구";
+      } else if (this.$route.path == "/jung") {
+        this.searchSelect = "지역";
+        this.searchKeyword = "중구";
+      } 
+      // 메뉴 리다이렉트
+      else if (this.$route.path == "/korean") {
         this.searchSelect = "메뉴";
         this.searchKeyword = "한식";
       } else if (this.$route.path == "/chinese") {
@@ -372,7 +393,9 @@ export default {
       } else if (this.$route.path == "/western") {
         this.searchSelect = "메뉴";
         this.searchKeyword = "양식";
-      } else if (this.$route.path == "/date") {
+      } 
+      // 테마 리다이렉트
+      else if (this.$route.path == "/date") {
         this.searchSelect = "테마";
         this.searchKeyword = "데이트";
       } else if (this.$route.path == "/meeting") {
