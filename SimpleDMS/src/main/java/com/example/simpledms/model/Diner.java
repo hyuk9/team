@@ -48,7 +48,7 @@ public class Diner extends BaseTimeEntity {
     private String dname;
 
     @javax.persistence.Column
-    private String score;
+    private double score;
 
     @javax.persistence.Column
     private String loc;
