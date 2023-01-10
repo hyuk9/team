@@ -1,45 +1,38 @@
 <template>
   <div id="app">
-    <!-- <NavCom /> -->
+    <!-- 네비게이션 -->
     <SubnavCom />
     <!-- 특정 조건에서만 보여주는 함수 추가 -->
     <HeaderCom v-if="wantToShow()" />
     <router-view />
+    <!-- 푸터 -->
     <FooterCom />
+    <!-- 버튼 클릭시 최상단으로 이동 -->
     <button @click="topFunction()" id="myBtn" title="Go to top"><i class="bi bi-triangle-fill"></i></button>
   </div>
 </template>
 
 <script>
 /* eslint-disable */
-// import NavCom from "@/components/common/NavCom.vue";
+
+// 네비게이션 컴포넌트화
 import SubnavCom from "@/components/common/SubnavCom.vue";
-import FooterCom from "@/components/common/FooterCom.vue";
+// 헤더 컴포넌트화
 import HeaderCom from "@/components/common/HeaderCom.vue";
+// 푸터 컴포넌트화
+import FooterCom from "@/components/common/FooterCom.vue";
+// 버튼 클릭시 최상단으로 이동하기
 import ScollCom from "@/js/scroll-to-top";
-import Darkmode from "darkmode-js";
 
 
 export default {
   data() {
     return {
-      options: {
-        bottom: "64px", // default: '32px'
-        right: "unset", // default: '32px'
-        left: "32px", // default: 'unset'
-        time: "0.5s", // default: '0.3s'
-        mixColor: "#fff", // default: '#fff'
-        backgroundColor: "#fff", // default: '#fff'
-        buttonColorDark: "#100f2c", // default: '#100f2c'
-        buttonColorLight: "#fff", // default: '#fff'
-        saveInCookies: false, // default: true,
-        label: "🍅", // default: ''
-        autoMatchOsTheme: true, // default: true
-      },
+      
     };
   },
   methods: {
-    // 특정 페이지를 제외하고 최상단 보여주는 함수
+    // TODO: 특정 페이지를 제외하고 최상단 보여주는 함수
     wantToShow() {
       if (
         // 제외할 페이지 경로
@@ -73,14 +66,11 @@ export default {
   // },
 
   components: {
-    // NavCom,
     SubnavCom,
     FooterCom,
     HeaderCom,
   },
   mounted() {
-    const darkmode = new Darkmode(this.options);
-    darkmode.showWidget();
     ScollCom();
   },
 };
@@ -107,16 +97,12 @@ span,
   font-family: ONE-Mobile-POP;
 }
 
+// 외부 폰트 불러오기
 @font-face {
   font-family: "ONE-Mobile-POP";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff") format("woff");
   font-weight: lighter;
   font-style: normal;
-}
-
-// 네이버 지도 확대 축소 깨지는 현상 수정
-#vue-naver-maps a {
-  padding: 0;
 }
 
 #myBtn {

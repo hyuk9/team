@@ -3,11 +3,6 @@
     <div class="container col-8 mb-2 mt-2">
       <div class="FreeView-header mt-5">
         <h1><strong>질문 게시판</strong></h1>
-        <!-- <router-link :to="'/question'">
-            <button class="btn btn-warning offset-8" type="button">
-              돌아가기
-            </button>
-          </router-link> -->
       </div>
       <div class="FreeView-title">
         <table class="table">
@@ -44,6 +39,7 @@
           </tbody>
         </table>
 
+        <!-- FIXME: 댓글보이는 창 -->
         <div class="card">
           <div class="card-header pb-4">
             댓글
@@ -63,7 +59,6 @@
                   <div class="front-italic col-">
                     작성일:{{ data.insertTime.substring(0, 16) }}
                   </div>
-                  <!-- ============================ -->
                   <div v-if="showDetailBoard">
                     <button
                       class="badge bg-primary p-2 mt-1 ms-3"
@@ -78,7 +73,6 @@
                       <span class="fs-0">삭제</span>
                     </button>
                   </div>
-                  <!-- ============================ -->
                 </div>
               </li>
               <li
@@ -90,6 +84,7 @@
             </ul>
           </div>
         </div>
+        <!-- FIXME: 댓글보이는 창 -->
 
         <br />
 
