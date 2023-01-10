@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- detali Start -->
-    <div class="container" v-if="currentAnnounce">
+    <!-- <div class="container" v-if="currentAnnounce">
       <div class="mb-3">
         <label for="writer" class="form-label">작성자</label>
         <input type="writer" class="form-control" id="writer" required name="writer"
@@ -23,8 +23,56 @@
       <div class="alert alert-success" role="alert" v-if="message">
         {{ message }}
       </div>
-    </div>
+    </div> -->
     <!-- detail End -->
+
+
+    <div>
+      <div class="container col-6 mb-2 mt-2">
+        <div class="AnnounceView-header mt-5">
+          <h1>
+            <strong>공지사항 게시판</strong>
+            <!-- <router-link :to="'/announce'">
+            <button class="btn btn-warning offset-8" type="button">
+              돌아가기
+            </button>
+          </router-link> -->
+          </h1>
+        </div>
+        <div class="AnnounceView-title">
+
+
+          <div class="input-group mt-3 mb-4">
+            <span class="input-group-text">제목</span>
+            <input type="text" class="form-control" style="height:50px" id="title" required name="title"
+              v-model="currentAnnounce.title" />
+          </div>
+          <div class="input-group mb-4">
+            <span class="input-group-text">작성자</span>
+            <input type="text" class="form-control" style="height:50px" id="title" required name="title"
+              v-model="currentAnnounce.writer" />
+          </div>
+          <!-- <td
+                colspan="2"
+                scope="row"
+                style="padding: 10px"
+              >{{ currentAnnounce.content }}</td> -->
+          <div class="mb-5">
+            <textarea class="form-control form-control-lg" id="content" rows="8" required name="content"
+              v-model="currentAnnounce.content"></textarea>
+          </div>
+
+        </div>
+
+        <div class="mb-3">
+          <button @click="updateAnnounce" class="btn btn-primary me-3">수정</button>
+          <button @click="deleteAnnounce" class="btn btn-danger">삭제</button>
+        </div>
+        <div class="alert alert-success" role="alert" v-if="message">
+          {{ message }}
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

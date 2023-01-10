@@ -1,6 +1,5 @@
 package com.example.simpledms.repository;
 
-import com.example.simpledms.model.Free;
 import com.example.simpledms.model.Profile;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

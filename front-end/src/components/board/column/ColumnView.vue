@@ -1,15 +1,15 @@
 <template>
   <div>
     <div class="container col-8 mb-2 mt-2">
-      <div class="FreeView-header mt-5">
-        <h1><strong>푸드 컬럼</strong></h1>
+      <div class="ColumnView-header mt-5">
+        <h1><strong>자유 게시판</strong></h1>
         <!-- <router-link :to="'/column'">
             <button class="btn btn-warning offset-8" type="button">
               돌아가기
             </button>
           </router-link> -->
       </div>
-      <div class="FreeView-title">
+      <div class="ColumnView-title">
         <table class="table">
           <colgroup>
             <col style="width: 15%" />
@@ -32,25 +32,27 @@
             </tr>
             <tr>
               <th scope="row">조회수</th>
-              <td scope="row" v-text="currentfreeForViews.views"></td>
+              <td scope="row" v-text="currentcolumnForViews.views"></td>
             </tr>
             <tr>
-              <td colspan="2" scope="row">
+              <td colspan="2" scope="row" style="padding: 10px">
                 <div class="contentarea">
+                  <div>
+                    <img v-if="existImage" id="imageSize" class="preview my-3 " :src="currentColumn.fileUrl" alt="" />
+                  </div>
                   {{ currentColumn.content }}
                 </div>
+                <!-- 미리보기 이미지 시작 -->
+                <!-- 미리보기 이미지 끝 -->
               </td>
             </tr>
           </tbody>
-
-          <!-- 댓글 창 -->
         </table>
         <!-- 댓글 창 만들어야 함
           <div v-for="(data, index) in comment" :key="index">
             <div>{{ data.writer }} 댓글:</div>
             <div>{{ data.content }}</div>
           </div> -->
-          <!-- Todo: DB에서 데이터 받으면 아래 코드 사용 -->
         <div class="card">
           <div class="card-header pb-4">댓글
             <ul class="list-group">
@@ -62,28 +64,13 @@
                   <div class="front-italic col-">작성일:{{ data.insertTime }}&nbsp;</div>
                   <span class="badge bg-primary p-2 mt-1 ms-3"><span class="fs-0">수정</span></span>
                   <span class="badge bg-danger p-2 mt-1 ms-3"><span class="fs-0">삭제</span></span>
+                  <!-- <span class="badge rounded-pill bg-danger text-dark col-2">삭제</span> -->
                 </div>
+                <!-- <h1>여기</h1> -->
               </li>
             </ul>
           </div>
-        </div> 
-
-        <!-- <div class="card">
-          <div class="card-header pb-4">댓글
-            <ul class="list-group">
-              <li class="list-group-item d-flex justify-content-between p-2"
-                :key="index">
-                <h4 class="col-1"><span class="badge rounded-pill bg-primary  text-dark">{{ 작성자 }}</span></h4>
-                <p class="col-6">{{ 내용 }}</p>
-                <div class="d-flex">
-                  <div class="front-italic col-">작성일:{{ 대충날짜 }}&nbsp;</div>
-                  <span class="badge bg-primary p-2 mt-1 ms-3"><span class="fs-0">수정</span></span>
-                  <span class="badge bg-danger p-2 mt-1 ms-3"><span class="fs-0">삭제</span></span>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div> -->
+        </div>
 
         <br />
 
@@ -91,7 +78,6 @@
           <div class="card-body input-group"><span class="input-group-text">댓글창</span><textarea class="form-control"
               row="1"></textarea><button type="button" class="btn btn-danger">등록</button></div>
         </div>
-
       </div>
     </div>
 
@@ -106,54 +92,51 @@
 </template>
 
 <script>
-import ColumnDataService from "@/services/QustionDataService";
-import CommentDataService from "@/services/CommentDataService";
-
+import ColumnDataService from "@/services/ColumnDataService";
 export default {
   data() {
     return {
       currentColumn: null,
-      currentColumnForViews: null, // 이게 뭔지 모르겠음
-
-      currentComment: null,
+      message2: "",
+      currentImage: undefined, // 현재 이미지 변수
+      previewImage: undefined, // 미리보기 이미지 변수
+      message: "", // 서버쪽 메세지를 저장할 변수
       currentIndex: -1,
-
-      comment: [],
       name: "",
-
-      // 조회수용 변수 추가
-      currentfreeForViews: null,
 
       // 페이징을 위한 변수 정의
       page: 1, // 현재 페이지
       count: 0, // 전체 데이터 건수
-      pageSize: 8, // 한페이지당 몇개를 화면에 보여줄지 결정하는 변수
+      pageSize: 3, // 한페이지당 몇개를 화면에 보여줄지 결정하는 변수
+
+      pageSizes: [3, 6, 9], // select box 에 넣을 기본 데이터
+
+      // 조회수용 변수 추가
+      currentcolumnForViews: null,
     };
   },
   methods: {
-    // Todo : 질문번호로 조회 요청하는 함수
+    // 부서번호(cid)로 조회 요청하는 함수
     getColumn(cid) {
       // axios 공통함수 호출
       ColumnDataService.get(cid)
         // 성공하면 .then() 결과가 리턴됨
         .then((response) => {
-          // springboot 결과를 리턴함(질문 객체)
+          // springboot 결과를 리턴함(부서 객체)
           this.currentColumn = response.data;
           // 콘솔 로그 출력
           console.log(response.data);
-          // 댓글 조회함수 실행
-          this.getComment();
         })
         // 실패하면 .catch() 에러메세지가 리턴됨
         .catch((e) => {
           console.log(e);
         });
-      // Todo : 조회수 증가하는 함수인거 같음
+      // axios 공통함수 호출
       ColumnDataService.getById(cid)
         // 성공하면 .then() 결과가 리턴됨
         .then((response) => {
           // springboot 결과를 리턴함(부서 객체)
-          this.currentfreeForViews = response.data;
+          this.currentcolumnForViews = response.data;
           // 콘솔 로그 출력
           console.log(response.data);
         })
@@ -162,50 +145,14 @@ export default {
           console.log(e);
         });
     },
-
-    // FIXME: 성공은 하는데 response.data에 아무것도 안들어감;
-    // Todo : 댓글 정보를 조회요청하는 함수
-    getComment() {
-      CommentDataService.getCommentByQno(
-        this.currentColumn.cid,
-        this.page - 1,
-        this.pageSize
-      )
-        .then((response) => {
-          // springboot 결과를 리턴함(질문 객체)
-          const { comment, totalItems } = response.data; // springboot 의 전송한 맵 정보
-          this.comment = comment; // 스프링부트에서 전송한 데이터
-          this.count = totalItems;
-          // 콘솔 로그 출력
-          console.log("댓글 정보 조회 성공 : ", response.data);
-        })
-        // 실패하면 .catch() 에러메세지가 리턴됨
-        .catch((e) => {
-          console.log("댓글 정보 조회 실패 : ", e);
-        });
-    },
-    // Todo : 질문정보를 수정 요청하는 함수
-    updateFree() {
+    // 부서정보를 수정 요청하는 함수
+    updateColumn() {
       // axios 공통함수 호출
       ColumnDataService.update(this.currentColumn.cid, this.currentColumn)
         // 성공하면 then() 결과가 전송됨
         .then((response) => {
           console.log(response.data);
-          this.$router.push("/column" + this.currentColumn.cid);
-        })
-        // 실패하면 .catch() 에러메세지가 전송됨
-        .catch((e) => {
-          console.log(e);
-        });
-    },
-    // Todo : 질문정보를 삭제 요청하는 함수
-    deleteColumn() {
-      // axios 공통함수 호출
-      ColumnDataService.delete(this.currentColumn.cid)
-        // 성공하면 then() 결과가 전송됨
-        .then((response) => {
-          console.log(response.data);
-          // 첫페이지(전체목록_조회_페이지) 강제 이동 : /free
+          this.message2 = "The Column was updated successfully!";
           this.$router.push("/column");
         })
         // 실패하면 .catch() 에러메세지가 전송됨
@@ -213,31 +160,72 @@ export default {
           console.log(e);
         });
     },
+    // 부서정보를 삭제 요청하는 함수
+    deleteColumn() {
+      // axios 공통함수 호출
+      ColumnDataService.delete(this.currentColumn.cid)
+        // 성공하면 then() 결과가 전송됨
+        .then((response) => {
+          console.log(response.data);
+          // 첫페이지(전체목록_조회_페이지) 강제 이동 : /column
+          this.$router.push("/column");
+        })
+        // 실패하면 .catch() 에러메세지가 전송됨
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+
   },
 
   computed: {
-    // Todo : 로컬 스토리지에 저장된 현재 유저 정보 가져오는 함수
+    // 현재 유저
     currentUser() {
       // 모듈 저장소 : this.$store.state.모듈명.state값
       // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
       return this.$store.state.auth.user;
     },
 
-    // Todo : 글작성자 or 관리자일 경우 버튼이 보이게 하는 함수
+    // // 관리자 접속인지 아닌지 확인하는 함수
+    // showAdminBoard() {
+    //   if (this.currentUser && this.currentUser.roles) {
+    //     // if ROLE_ADMIN 있으면 true
+    //     //               없으면 false
+    //     return this.currentUser.roles.includes("ROLE_ADMIN");
+    //   }
+    //   // currentUser 없으면 false (메뉴가 안보임)
+    //   return false;
+    // },
+
     showDetailBoard() {
       if (this.currentUser && this.currentUser.roles) {
         // if ROLE_ADMIN 있으면 true 없으면 false 이거나 현재로그인한id == 글쓴사람id
-        return (
-          this.currentUser.roles.includes("ROLE_ADMIN") ||
-          this.currentUser.id == this.currentColumn.id
-        );
+        return this.currentUser.roles.includes("ROLE_ADMIN") || this.currentUser.id == this.currentColumn.id;
       }
       // currentUser 없으면 false (메뉴가 안보임)
       return false;
     },
+    // showImage() {
+    //   if(this.currentColumn.fileUrl) {
+    //     return true;
+    //   }
+    //   return false;
+    // }
+
+    existImage() {
+      if (this.currentColumn.fileUrl != null) {
+        console.log("로그는:", this.currentColumn);
+        return true;
+      } else {
+        console.log("else:", this.currentColumn);
+        return false;
+      }
+    }
   },
+
   // 화면이 뜨자 마자 실행되는 이벤트
   mounted() {
+    this.message2 = "";
     this.getColumn(this.$route.params.cid);
   },
 };
@@ -246,7 +234,12 @@ export default {
 <style>
 .contentarea {
   width: 1240px;
-  height: 500px;
+  height: 600px;
   padding: 30px;
+}
+
+#imageSize {
+  width: 550px;
+  height: 500px;
 }
 </style>

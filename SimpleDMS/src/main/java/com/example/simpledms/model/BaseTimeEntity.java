@@ -1,6 +1,7 @@
 package com.example.simpledms.model;
 
 import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.EntityListeners;
@@ -24,6 +25,7 @@ import java.time.format.DateTimeFormatter;
  * 2022-10-20         ds          최초 생성
  */
 @Getter
+@Setter
 // 모델을 감시하다가 생성일자/수정일자를 자동으로 포함시키는 어노테이션
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- AddColumn Start -->
+    <!-- AddFree Start -->
     <div class="container" v-if="!submitted">
       <!-- 작성자 -->
       <div class="mb-3">
@@ -24,7 +24,7 @@
           id="title"
           required
           name="title"
-          v-model="column.title"
+          v-model="free.title"
         />
       </div>
       <!-- 이미지 선택 -->
@@ -66,28 +66,28 @@
           rows="8"
           required
           name="content"
-          v-model="column.content"
+          v-model="free.content"
         ></textarea>
       </div>
 
       <div class="mb-3">
-        <button @click="saveColumn" class="btn btn-primary">작성완료</button>
+        <button @click="saveFree" class="btn btn-primary">작성완료</button>
       </div>
     </div>
-    <!-- AddColumn End -->
+    <!-- AddFree End -->
   </div>
 </template>
 
 
 <script>
-import ColumnDataService from "@/services/ColumnDataService";
+import FreeDataService from "@/services/FreeDataService";
 import GalleryDataService from "@/services/GalleryDataService";
 
 export default {
   data() {
     return {
-      column: {
-        cid: null,
+      free: {
+        fno: null,
         writer: "",
         title: "",
         content: "",
@@ -109,42 +109,42 @@ export default {
     };
   },
   methods: {
-    saveColumn() {
+    saveFree() {
       // 임시 객체 변수 -> springboot 전송
       // 부서번호는(no) 자동생성되므로 빼고 전송함
       let data = {
         writer: this.currentUser.username,
-        title: this.column.title,
-        content: this.column.content,
+        title: this.free.title,
+        content: this.free.content,
         photo: this.selectImage.currentImage,
         id: this.currentUser.id,
       };
 
       // insert 요청 함수 호출(axios 공통함수 호출)
-      ColumnDataService.create(data)
+      FreeDataService.create(data)
         // 성공하면 then() 결과가 전송됨
         .then((response) => {
-          this.column.cid = response.data.ano;
+          this.free.fno = response.data.ano;
           // 콘솔 로그 출력(response.data)
           console.log(response.data);
           // 변수 submitted
           this.submitted = true;
           alert("성공했습니다.");
-          this.$router.push("/column");
+          this.$router.push("/free");
         })
         // 실패하면 .catch() 결과가 전송됨
         .catch((e) => {
           console.log(e);
         });
     },
-    newColumn() {
+    newFree() {
       // 새양식 다시 보여주기 함수, 변수 초기화
       this.submitted = false;
-      this.column = {};
+      this.free = {};
     },
 
-    returnColumn() {
-      this.$router.push("/column");
+    returnFree() {
+      this.$router.push("/free");
     },
 
         // 조회 함수

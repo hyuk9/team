@@ -15,7 +15,7 @@
                     >
                       <img
                         class="img-fluid w-100 fit-cover h-100 rounded-top rounded-md-end rounded-md-top-0"
-                        src="assets/img/gallery/crispy-sandwiches.png"
+                        :src="'http://localhost:8000/api/column/file/' + data.cid "
                         alt="..."
                       />
                       <!-- <div class="img-fluid w-100 fit-cover h-100 rounded-top rounded-md-end rounded-md-top-0">
