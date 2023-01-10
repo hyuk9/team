@@ -163,7 +163,7 @@
               <h4 class="text-center">대표메뉴 5가지를 추가해주세요!</h4>
               <h5>메뉴1</h5>
               <input
-                type="number"
+                type="text"
                 class="form-control"
                 id="menu1"
                 v-model="diner.menu1"
@@ -179,7 +179,7 @@
               />
               <h5>메뉴2</h5>
               <input
-                type="number"
+                type="text"
                 class="form-control"
                 id="menu2"
                 v-model="diner.menu2"
@@ -195,7 +195,7 @@
               />
               <h5>메뉴3</h5>
               <input
-                type="number"
+                type="text"
                 class="form-control"
                 id="menu3"
                 v-model="diner.menu3"
@@ -211,7 +211,7 @@
               />
               <h5>메뉴4</h5>
               <input
-                type="number"
+                type="text"
                 class="form-control"
                 id="menu4"
                 v-model="diner.menu4"
@@ -227,7 +227,7 @@
               />
               <h5>메뉴5</h5>
               <input
-                type="number"
+                type="text"
                 class="form-control"
                 id="menu5"
                 v-model="diner.menu5"
@@ -331,6 +331,8 @@ export default {
         price3: this.diner.price3,
         menu4: this.diner.menu4,
         price4: this.diner.price4,
+        menu5: this.diner.menu5,
+        price5: this.diner.price5,
       };
 
       // insert 요청 함수 호출(axios 공통함수 호출)
