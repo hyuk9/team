@@ -2,9 +2,7 @@ package com.example.simpledms.repository;
 
 
 
-import com.example.simpledms.dto.ReservationDto;
-import com.example.simpledms.dto.ReviewDto;
-import com.example.simpledms.dto.ScoreDto;
+import com.example.simpledms.dto.*;
 import com.example.simpledms.model.Comment;
 import com.example.simpledms.model.Menu;
 import com.example.simpledms.model.Review;
