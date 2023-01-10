@@ -59,7 +59,9 @@
                   <div class="front-italic col-">
                     작성일:{{ data.insertTime.substring(0, 16) }}
                   </div>
-                  <div v-if="showDetailBoard">
+                  <!-- ============================================= -->
+                  <div v-if="showEditDelete(data)">
+                  <!-- <div> -->
                     <button
                       class="badge bg-primary p-2 mt-1 ms-3"
                       @click="toggleComment(data.cno)"
@@ -72,6 +74,8 @@
                     >
                       <span class="fs-0">삭제</span>
                     </button>
+                  <!-- ============================================= -->
+
                   </div>
                 </div>
               </li>
@@ -82,8 +86,20 @@
                 <div class="pt-4"></div>
               </li>
             </ul>
+            <b-pagination
+          v-model="page"
+          :total-rows="count"
+          :per-page="pageSize"
+          first-text="<<"
+          last-text=">>"
+          prev-text="Prev"
+          next-text="Next"
+          @change="handlePageChange"
+          class="justify-content-center mt-2"
+        ></b-pagination>
           </div>
         </div>
+        
         <!-- FIXME: 댓글보이는 창 -->
 
         <br />
@@ -199,13 +215,13 @@ export default {
           // springboot 결과를 리턴함(질문 객체)
           this.currentQuestion = response.data;
           // 콘솔 로그 출력
-          console.log(response.data);
+          console.log("질문번호로 조회요청 성공 : ", response.data);
           // 댓글 조회함수 실행
           // this.getCommentAll();
         })
         // 실패하면 .catch() 에러메세지가 리턴됨
         .catch((e) => {
-          console.log(e);
+          console.log("질문번호로 조회요청 실패 : ", e);
         });
 
       // Todo : 조회수 증가하는 함수인거 같음
@@ -238,7 +254,7 @@ export default {
           this.comment = comment; // 스프링부트에서 전송한 데이터
           this.count = totalItems; // 스프링부트에서 전송한 페이지정보(총 건수)
           // 콘솔 로그 출력
-          console.log(response.data);
+          console.log("질문번호에 해당하는 댓글 정보 조회요청 성공", response.data);
           // this.getCommentAll();
         })
         // 실패하면 .catch() 에러메세지가 리턴됨
@@ -342,6 +358,20 @@ export default {
         this.showUpdateComment = false;
       }
     },
+    // TODO: 댓글 페이징 처리 함수들
+    // select box 값 변경시 실행되는 함수(재조회)
+    handlePageSizeChange(event) {
+      this.pageSize = event.target.value; // 한페이지당 개수 저장(3, 6, 9)
+      this.page = 1;
+      // 재조회 함수 호출
+      this.getCommentByQno();
+    },
+    // 페이지 번호 변경시 실행되는 함수(재조회)
+    handlePageChange(value) {
+      this.page = value; // 매개변수값으로 현재페이지 변경
+      // 재조회 함수 호출
+      this.getCommentByQno();
+    },
     // ==================================== 댓글 관련 ======================================= //
 
     // TODO: 질문정보를 삭제 요청하는 함수
@@ -359,6 +389,23 @@ export default {
           console.log(e);
         });
     },
+
+
+    // TODO: 관리자 접속인지 아닌지 확인하는 함수
+    showEditDelete(data){
+      if (this.currentUser.roles) {
+        if (
+          this.currentUser.roles.includes("ROLE_ADMIN") ||
+          this.currentUser.id == data.id
+        ) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    },
     
   },
 
@@ -375,8 +422,9 @@ export default {
         return this.$store.state.auth.user;
       }
     },
+    
 
-    // Todo : 글작성자 or 관리자일 경우 버튼이 보이게 하는 함수
+    // TODO: 글작성자 or 관리자일 경우 버튼이 보이게 하는 함수
     showDetailBoard() {
       if (this.currentUser && this.currentUser.roles) {
         // if ROLE_ADMIN 있으면 true 없으면 false 이거나 현재로그인한id == 글쓴사람id
@@ -388,6 +436,7 @@ export default {
       // currentUser 없으면 false (메뉴가 안보임)
       return false;
     },
+
   },
   // 화면이 뜨자 마자 실행되는 이벤트
   mounted() {
