@@ -79,7 +79,7 @@
 
           <!-- searchDname -> searchKeyword 변경 -->
           <div class="col-7">
-            <input type="text" class="form-control" placeholder="Search by Question" v-model="searchKeyword" />
+            <input type="text" class="form-control" placeholder="검색어를 입력해주세요" v-model="searchKeyword" />
           </div>
 
           <div class="input-group-append col-2">
@@ -106,7 +106,7 @@ export default {
     return {
       announce: [],
       searchKeyword: "",
-      searchSelect: "작성자",
+      searchSelect: "제목",
 
       // 페이징을 위한 변수 정의
       page: 1, // 현재 페이지

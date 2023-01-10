@@ -84,7 +84,7 @@
             <input
               type="text"
               class="form-control"
-              placeholder="Search by Question"
+              placeholder="검색어를 입력해주세요"
               v-model="searchKeyword"
             />
           </div>

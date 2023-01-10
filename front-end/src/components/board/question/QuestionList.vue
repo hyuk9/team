@@ -3,7 +3,7 @@
     <!-- TODO: question 시작 -->
     <!-- Contact Start -->
     <div class="container mt-3 mb-2">
-      <h1 class="text-center">
+      <h1 class="text-center text-900">
         <i class="bi bi-patch-question-fill"> 질문 게시판</i>
       </h1>
       <div style="text-align: center">
@@ -139,7 +139,7 @@
             <input
               type="text"
               class="form-control"
-              placeholder="Search by Question"
+              placeholder="검색어를 입력해주세요"
               v-model="searchKeyword"
             />
           </div>
@@ -173,7 +173,7 @@ export default {
     return {
       question: [],
       searchKeyword: "",
-      searchSelect: "작성자",
+      searchSelect: "제목",
 
       // 페이징을 위한 변수 정의
       page: 1, // 현재 페이지

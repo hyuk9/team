@@ -39,8 +39,8 @@
           </tbody>
         </table>
 
-         <!-- FIXME: 댓글보이는 창 -->
-         <div class="card mb-2">
+        <!-- FIXME: 댓글보이는 창 -->
+        <div class="card mb-2">
           <div class="card-header pb-4">
             댓글
             <ul class="list-group">
@@ -83,7 +83,7 @@
                 class="list-group-item d-flex justify-content-between p-2"
                 v-if="existComment()"
               >
-                <div> <p class="fs-1">댓글이 없습니다</p>  </div>
+                <div><p class="fs-1">댓글이 없습니다</p></div>
               </li>
               <!-- 댓글이 없을 때 보여주는 창 -->
             </ul>
@@ -157,7 +157,6 @@
         </div>
         <!-- 디테일 버튼 -->
 
-        
       </div>
     </div>
   </div>
@@ -197,14 +196,12 @@ export default {
       showInsertComment: true,
 
       // 조회수용 변수 추가
-      // currentAnnounceForViews: null,
       currentAnnounceForViews: null,
 
       // 페이징을 위한 변수 정의
       page: 1, // 현재 페이지
       count: 0, // 전체 데이터 건수
       pageSize: 8, // 한페이지당 몇개를 화면에 보여줄지 결정하는 변수
-
     };
   },
 
@@ -226,37 +223,6 @@ export default {
         });
     },
 
-    // TODO: 공지사항 정보를 수정 요청하는 함수
-    updateAnnounce() {
-      // axios 공통함수 호출
-      AnnounceDataService.update(this.currentAnnounce.aid, this.currentAnnounce)
-        // 성공하면 then() 결과가 전송됨
-        .then((response) => {
-          console.log("공지사항 수정 성공 : ", response.data);
-          this.$router.push("/announce");
-        })
-        // 실패하면 .catch() 에러메세지가 전송됨
-        .catch((e) => {
-          console.log("공지사항 수정 실패 : ", e);
-        });
-    },
-
-    // TODO: 공지사항 정보를 삭제 요청하는 함수
-    deleteAnnounce() {
-      // axios 공통함수 호출
-      AnnounceDataService.delete(this.currentAnnounce.aid)
-        // 성공하면 then() 결과가 전송됨
-        .then((response) => {
-          console.log("공지사항 삭제 성공 : ", response.data);
-          // 첫페이지(전체목록_조회_페이지) 강제 이동 : /announce
-          this.$router.push("/announce");
-        })
-        // 실패하면 .catch() 에러메세지가 전송됨
-        .catch((e) => {
-          console.log("공지사항 삭제 실패 : ", e);
-        });
-    },
-
     // ==================================== 댓글 관련 ======================================= //
     // TODO: 질문 번호에 해당하는 댓글 정보를 조회요청하는 함수
     getCommentByAid() {
@@ -274,10 +240,9 @@ export default {
           this.count = totalItems; // 스프링부트에서 전송한 페이지정보(총 건수)
           // 콘솔 로그 출력
           console.log(
-            "질문번호에 해당하는 댓글 정보 조회요청 성공 : ",
+            "공지사항 번호에 해당하는 댓글 정보 조회요청 성공 : ",
             response.data
           );
-          // this.getCommentAll();
         })
         // 실패하면 .catch() 에러메세지가 리턴됨
         .catch((e) => {
@@ -295,8 +260,6 @@ export default {
             "댓글번호에 해당하는 댓글 정보 조회 성공 : ",
             response.data
           );
-          // 댓글 조회함수 실행
-          // this.getCommentAll();
         })
         // 실패하면 .catch() 에러메세지가 리턴됨
         .catch((e) => {
@@ -377,7 +340,6 @@ export default {
       }
     },
 
-
     // TODO: 관리자 또는 댓글 작성자인지 확인하는 함수
     showEditDelete(data) {
       if (this.currentUser.roles) {
@@ -422,7 +384,7 @@ export default {
   },
 
   computed: {
-    // Todo : 로컬 스토리지에 저장된 현재 유저 정보 가져오는 함수
+    // TODO: 로컬 스토리지에 저장된 현재 유저 정보 가져오는 함수
     currentUser() {
       // 만약 로컬스토리지에 유저객체가 없으면 빈유저 생성
       if (this.$store.state.auth.user == undefined) {
@@ -434,7 +396,6 @@ export default {
         return this.$store.state.auth.user;
       }
     },
-
 
     // TODO: 글작성자 or 관리자일 경우 버튼이 보이게 하는 함수
     showDetailBoard() {
