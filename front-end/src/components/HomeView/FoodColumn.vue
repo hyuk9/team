@@ -28,7 +28,6 @@
                         </span>
                         <br />
                         {{ data.content }}
-                        {{ data.cid }}
                       </p>
                       <div class="d-grid bottom-0">
                         <!-- <a class="btn btn-lg btn-primary mt-xl-6" href="/"

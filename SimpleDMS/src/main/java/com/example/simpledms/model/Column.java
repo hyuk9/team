@@ -54,6 +54,9 @@ public class Column extends BaseTimeEntity {
     @javax.persistence.Column(columnDefinition = "VARCHAR2(255)")
     private String title;
 
+    @javax.persistence.Column(columnDefinition = "VARCHAR2(255)")
+    private String subtitle;
+
     @javax.persistence.Column(columnDefinition = "VARCHAR2(4000)")
     private String content;
 
