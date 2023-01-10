@@ -1,20 +1,13 @@
 package com.example.simpledms.service;
 
 import com.example.simpledms.dto.FavoriteDto;
-import com.example.simpledms.dto.response.UserRoleDto;
 import com.example.simpledms.model.Favorite;
-import com.example.simpledms.model.Free;
-import com.example.simpledms.model.Menu;
 import com.example.simpledms.repository.FavoriteRepository;
-import com.example.simpledms.repository.FreeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 

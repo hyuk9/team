@@ -44,28 +44,28 @@ const routes = [
   },
   // TODO: 분류별 게시판 구현
   {
-    path: '/free',
-    name: 'free',
-    component: () => import('@/components/board/free/FreeList.vue')
+    path: '/column',
+    name: 'column',
+    component: () => import('@/components/board/column/ColumnList.vue')
   },
   // AddFree 
   {
-    path: '/add-free',
-    name: 'add-free',
-    component: () => import('../components/board/free/AddFreeView.vue')
+    path: '/add-column',
+    name: 'add-column',
+    component: () => import('../components/board/column/AddColumnView.vue')
   },
 
   // FreeDetail 
   {
-    path: '/free/:fno',
-    name: 'free-detail',
-    component: () => import('../components/board/free/FreeDetailView.vue')
+    path: '/column/:cid',
+    name: 'column-detail',
+    component: () => import('../components/board/column/ColumnDetailView.vue')
   },
   // FreeView
   {
-    path: '/freeview/:fno',
-    name: 'free-view',
-    component: () => import('../components/board/free/FreeView.vue')
+    path: '/columnview/:cid',
+    name: 'column-view',
+    component: () => import('../components/board/column/ColumnView.vue')
   },
   {
     path: "/announce",
@@ -205,25 +205,25 @@ const routes = [
     component: () => import('../components/user/FindPw.vue')
   },
   {
-    path: '/column',
-    name: 'column',
-    component: () => import('../components/foodcolumn/ColumnList.vue')
+    path: '/free',
+    name: 'free',
+    component: () => import('../components/foodcolumn/FreeList.vue')
   },
   {
-    path: "/column/:cid",
-    name: "column-detail",
-    component: () => import('../components/foodcolumn/ColumnDetail.vue')
+    path: "/free/:fno",
+    name: "free-detail",
+    component: () => import('../components/foodcolumn/FreeDetail.vue')
   },
   {
-    path: "/add-column",
-    name: "add-column",
-    component: () => import('../components/foodcolumn/AddColumn.vue')
+    path: "/add-free",
+    name: "add-free",
+    component: () => import('../components/foodcolumn/AddFree.vue')
   },
   //TODO: QnaView 생성
   {
-    path: "/columnview/:cid",
-    name: "qna-view",
-    component: () => import("../components/foodcolumn/ColumnView.vue"),
+    path: "/freeview/:fno",
+    name: "free-view",
+    component: () => import("../components/foodcolumn/FreeView.vue"),
   },
   // 회원가입 전 약관 동의 페이지
   {

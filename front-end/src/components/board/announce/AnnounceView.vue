@@ -52,7 +52,7 @@
         </table>
       </div>
 
-          <div class="card">
+      <div class="card">
           <div class="card-header pb-4">댓글
             <ul class="list-group">
               <li class="list-group-item d-flex justify-content-between p-2" v-for="(data, index) in comment"
@@ -63,23 +63,21 @@
                   <div class="front-italic col-">작성일:{{ data.insertTime }}&nbsp;</div>
                   <span class="badge bg-primary p-2 mt-1 ms-3"><span class="fs-0">수정</span></span>
                   <span class="badge bg-danger p-2 mt-1 ms-3"><span class="fs-0">삭제</span></span>
-                  <!-- <span class="badge rounded-pill bg-danger text-dark col-2">삭제</span> -->
                 </div>
-                <!-- <h1>여기</h1> -->
+              </li>
+              <li class="list-group-item d-flex justify-content-between p-2" v-if="existComment()">
+                <div class="pt-4"></div>
               </li>
             </ul>
           </div>
         </div>
 
-      <br />
+        <br />
 
-      <div class="card">
-        <div class="card-body input-group">
-          <span class="input-group-text">댓글창</span
-          ><textarea class="form-control" row="1"></textarea
-          ><button type="button" class="btn btn-danger">등록</button>
+        <div class="card">
+          <div class="card-body input-group"><span class="input-group-text">댓글창</span><textarea class="form-control"
+              row="1"></textarea><button type="button" class="btn btn-danger">등록</button></div>
         </div>
-      </div>
     </div>
 
     <div class="mb-3">
@@ -183,6 +181,14 @@ export default {
           console.log(e);
         });
     },
+
+    existComment(){
+      if (this.comment != null) {
+        return false;
+      } else {
+        return true;
+      }
+    }
   },
 
   computed: {

@@ -174,10 +174,20 @@
                 <div class="card-body">
                   <h5 class="card-title">평점</h5>
                   <p class="card-text">
+                    <!-- 평점이 있다면 -->
                     <a
                       class="badge bg-danger text-decoration-none link-light"
                       href="#!"
-                      >{{ currentDiner.score }}</a
+                      v-if="reviewScoreAvg[0] != null"
+                      >{{ (reviewScoreAvg[0].score).toFixed(1) 
+                        }}
+                    </a>  
+                    <!-- 평점이 없다면 -->
+                    <a
+                      class="badge bg-danger text-decoration-none link-light"
+                      href="#!"
+                      v-else
+                      >평점 없음</a
                     >
                   </p>
                 </div>
@@ -428,6 +438,8 @@ export default {
       totalfavorite: null,
       // 찜하기 버튼에 따라 즉시 반응하기 위한 함수
       fastshow: 0,
+      // 리뷰 평점 가져온 값을 디너에 넣기위한 변수
+      reviewScoreAvg : [],
     };
   },
   filters: {
@@ -750,6 +762,17 @@ export default {
         return false;
       }
     },
+    // todo 백엔드에서 리뷰컨트롤러에서 평점을 가져와서 디너테이블에 스코어에 찍기 위한 함수
+    findByDnoDinerScore (dno) {
+
+      ReviewDataService.findByDnoDinerScore(dno)
+        .then((response) => {
+          this.reviewScoreAvg = response.data;
+          console.log("안녕", this.reviewScoreAvg)
+        }) .catch ((e)=> {
+          console.log(e);
+        })
+    }
   },
 
   // 화면이 뜨자 마자 실행되는 이벤트
@@ -762,6 +785,7 @@ export default {
     this.getDiner(this.$route.params.dno);
     this.getReview(this.$route.params.dno);
     this.retrieveFavorite(); // 화면 로딩시 fid해당하는 조회함수 실행
+    this.findByDnoDinerScore(this.$route.params.dno)// 리뷰에서 평점 평균 가져오기
   },
 
   computed: {

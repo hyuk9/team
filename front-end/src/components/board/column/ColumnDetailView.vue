@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- detali Start -->
-    <div class="container" v-if="currentFree">
+    <div class="container" v-if="currentColumn">
       <div class="mb-3">
         <label for="writer" class="form-label">작성자</label>
         <input
@@ -10,7 +10,7 @@
           id="writer"
           required
           name="writer"
-          v-model="currentFree.writer"
+          v-model="currentColumn.writer"
         />
       </div>
       <div class="mb-3">
@@ -21,7 +21,7 @@
           id="title"
           required
           name="title"
-          v-model="currentFree.title"
+          v-model="currentColumn.title"
         />
       </div>
       <div class="mb-3">
@@ -32,13 +32,13 @@
           rows="8"
           required
           name="content"
-          v-model="currentFree.content"
+          v-model="currentColumn.content"
         ></textarea>
       </div>
       <div class="mb-3">
         <label for="content" class="form-label">이미지</label><br />
-        <img id="imageSize" :src="currentFree.fileUrl" class="preview my-3" alt="" />
-        <!-- <a style="color: inherit" @click="updateFree(currentFree.fno)">
+        <img v-if="existImage" id="imageSize" :src="currentColumn.fileUrl" class="preview my-3" alt="" />
+        <!-- <a style="color: inherit" @click="updateColumn(currentColumn.cid)">
            <span class="badge bg-danger">수정</span>
          </a> -->
       </div>
@@ -54,8 +54,8 @@
         </label>
       </div>
       <div class="mb-3">
-        <button @click="updateFree" class="btn btn-primary me-3">Update</button>
-        <button @click="deleteFree" class="btn btn-danger">Delete</button>
+        <button @click="updateColumn" class="btn btn-primary me-3">수정</button>
+        <button @click="deleteColumn" class="btn btn-danger">삭제</button>
       </div>
       <div class="alert alert-success" role="alert" v-if="message">
         {{ message }}
@@ -66,23 +66,23 @@
 </template>
 
 <script>
-import FreeDataService from "@/services/FreeDataService";
+import ColumnDataService from "@/services/ColumnDataService";
 export default {
   data() {
     return {
-      currentFree: null,
+      currentColumn: null,
       message: "",
     };
   },
   methods: {
-    // 부서번호(fno)로 조회 요청하는 함수
-    getFree(fno) {
+    // 부서번호(cid)로 조회 요청하는 함수
+    getColumn(cid) {
       // axios 공통함수 호출
-      FreeDataService.get(fno)
+      ColumnDataService.get(cid)
         // 성공하면 .then() 결과가 리턴됨
         .then((response) => {
           // springboot 결과를 리턴함(부서 객체)
-          this.currentFree = response.data;
+          this.currentColumn = response.data;
           // 콘솔 로그 출력
           console.log(response.data);
         })
@@ -92,21 +92,21 @@ export default {
         });
     },
     // 부서정보를 수정 요청하는 함수
-    updateFree() {
+    updateColumn() {
       // axios 공통함수 호출
-      FreeDataService.update(
-        this.currentFree.fno,
+      ColumnDataService.update(
+        this.currentColumn.cid,
         this.currentUser.id,
-        this.currentFree.writer,
-        this.currentFree.title,
-        this.currentFree.content,
+        this.currentColumn.writer,
+        this.currentColumn.title,
+        this.currentColumn.content,
         this.currentImage
       )
         // 성공하면 then() 결과가 전송됨
         .then((response) => {
           console.log(response.data);
-          this.message = "The Free was updated successfully!";
-          this.$router.push("/free");
+          this.message = "The Column was updated successfully!";
+          this.$router.push("/column");
         })
         // 실패하면 .catch() 에러메세지가 전송됨
         .catch((e) => {
@@ -122,14 +122,14 @@ export default {
       this.message = "";
     },
     // 부서정보를 삭제 요청하는 함수
-    deleteFree() {
+    deleteColumn() {
       // axios 공통함수 호출
-      FreeDataService.delete(this.currentFree.fno)
+      ColumnDataService.delete(this.currentColumn.cid)
         // 성공하면 then() 결과가 전송됨
         .then((response) => {
           console.log(response.data);
-          // 첫페이지(전체목록_조회_페이지) 강제 이동 : /free
-          this.$router.push("/free");
+          // 첫페이지(전체목록_조회_페이지) 강제 이동 : /column
+          this.$router.push("/column");
         })
         // 실패하면 .catch() 에러메세지가 전송됨
         .catch((e) => {
@@ -140,7 +140,7 @@ export default {
   // 화면이 뜨자 마자 실행되는 이벤트
   mounted() {
     this.message = "";
-    this.getFree(this.$route.params.fno);
+    this.getColumn(this.$route.params.cid);
   },
 
   computed: {
@@ -149,6 +149,16 @@ export default {
       // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
       return this.$store.state.auth.user;
     },
+
+    existImage(){
+      if (this.currentColumn.fileUrl != null) {
+        console.log("로그는:" ,this.currentColumn);
+        return true;
+      } else {
+        console.log("else:" ,this.currentColumn);
+        return false;
+      }
+    }
   },
 };
 </script>

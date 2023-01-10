@@ -1,6 +1,7 @@
 package com.example.simpledms.repository;
 
 
+
 import com.example.simpledms.dto.ReservationDto;
 import com.example.simpledms.dto.ReviewDto;
 import com.example.simpledms.dto.ScoreDto;
@@ -51,7 +52,7 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
                     "and rv.delete_yn = 'N'" +
                     "group by di.dname, rv.content, rv.insert_time"
             , nativeQuery = true)
-    Page<ReviewDto> findAllById(Integer id, Pageable pageable);
+    Page<ReviewOriginDto> findAllById(Integer id, Pageable pageable);
 
     //    Todo: 평점 항목별 평균 점수를 성별로 그룹화 해서 찍는 함수
     @Query(value = "select re.gender, avg(re.taste) as avgtaste,avg(re.service) as avgservice ,avg(re.loc) as avgloc,avg(re.mood) as avgmood,avg(re.cost) as avgcost " +
@@ -64,6 +65,18 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
                     "group by re.gender"
             ,nativeQuery = true)
     List<ScoreDto> findByDnoScoreAvg (@Param("dno") Integer dno);
+
+    //    Todo: 디너에 스코어 값으로 집어넣기위해 값 가져오는 함수
+    @Query(value = "select  (avg(re.taste)+ avg(re.service)+avg(re.loc)+avg(re.mood) + avg(re.cost))/5 as score from tb_review re where re.dno = :dno",
+            countQuery = "select  (avg(re.taste)+ avg(re.service)+avg(re.loc)+avg(re.mood) + avg(re.cost))/5 as score from tb_review re where re.dno = :dno"
+            ,nativeQuery = true)
+    List<ScoreAvgDto> findByDnoDinerScore (@Param("dno") Integer dno);
+
+    //    Todo: 디너에 스코어 값으로 집어넣기위해 값 가져오는 함수(전체)
+    @Query(value = "select re.dno, (avg(re.taste)+ avg(re.service)+avg(re.loc)+avg(re.mood) + avg(re.cost))/5 as score from tb_review re GROUP by re.dno",
+            countQuery = "select re.dno, (avg(re.taste)+ avg(re.service)+avg(re.loc)+avg(re.mood) + avg(re.cost))/5 as score from tb_review re GROUP by re.dno"
+            ,nativeQuery = true)
+    List<ScoreAvgAllDto> findByDnoDinerScoreAll ();
 
 }
 
