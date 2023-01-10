@@ -51,12 +51,14 @@ class FreeDataService {
         console.log(title);
         console.log(content);
         console.log(blobFile);
+    
 
         formData.append("id", id);
         formData.append("writer", writer);
         formData.append("title", title);
         formData.append("content", content);
         formData.append("blobFile", blobFile);
+
 
         return http.put(`/free/update/${fno}`, formData, {
             headers: {

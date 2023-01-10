@@ -142,7 +142,6 @@
               "
             >
               <i class="bi bi-search"></i>
-              Search
             </button>
           </div>
           <!--            Todo : 수정 끝 -->

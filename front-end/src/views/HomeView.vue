@@ -117,7 +117,7 @@
       <!-- 어플 안내창 끝 ============================-->
       <!-- ============================================-->
 
-      <FoodColumn />
+      <FoodColumn2 />
 
       <!-- ============================================-->
       <!-- 광고배너? 시작 ============================-->
@@ -160,7 +160,7 @@ import ThemeList from "../components/HomeView/ThemeList.vue";
 // '메뉴별 맛집' component 화
 import MenuList from "../components/HomeView/MenuList.vue";
 // '푸드컬럼' component 화
-import FoodColumn from "../components/HomeView/FoodColumn.vue";
+import FoodColumn2 from "../components/HomeView/FoodColumn2.vue";
 // '인기순 정렬' component 화
 import PopularList from "../components/HomeView/PopularList.vue";
 // '원하는 음식' component 화
@@ -175,7 +175,7 @@ export default {
     MenuList,
     PopularList,
     ChooseList,
-    FoodColumn
+    FoodColumn2
   },
   data() {
     return {

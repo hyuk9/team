@@ -37,10 +37,10 @@
             <tr>
               <td colspan="2" scope="row" style="padding: 10px">
                 <div class="contentarea">
-                  {{ currentFree.content }}
                   <div>
-                    <img id="imageSize" class="preview my-3 " :src="currentFree.fileUrl" alt="" />
+                    <img v-if="existImage" id="imageSize" class="preview my-3 " :src="currentFree.fileUrl" alt="" />
                   </div>
+                  {{ currentFree.content }}
                 </div>
                 <!-- 미리보기 이미지 시작 -->
                 <!-- 미리보기 이미지 끝 -->
@@ -119,7 +119,7 @@ export default {
     // 부서번호(fno)로 조회 요청하는 함수
     getFree(fno) {
       // axios 공통함수 호출
-      FreeDataService.getById(fno)
+      FreeDataService.get(fno)
         // 성공하면 .then() 결과가 리턴됨
         .then((response) => {
           // springboot 결과를 리턴함(부서 객체)
@@ -132,7 +132,7 @@ export default {
           console.log(e);
         });
       // axios 공통함수 호출
-      FreeDataService.get(fno)
+      FreeDataService.getById(fno)
         // 성공하면 .then() 결과가 리턴됨
         .then((response) => {
           // springboot 결과를 리턴함(부서 객체)
@@ -211,6 +211,16 @@ export default {
     //   }
     //   return false;
     // }
+
+    existImage() {
+      if (this.currentFree.fileUrl != null) {
+        console.log("로그는:", this.currentFree);
+        return true;
+      } else {
+        console.log("else:", this.currentFree);
+        return false;
+      }
+    }
   },
 
   // 화면이 뜨자 마자 실행되는 이벤트

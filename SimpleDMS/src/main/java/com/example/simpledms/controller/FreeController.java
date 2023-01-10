@@ -276,9 +276,9 @@ public class FreeController {
 //                아래 2개 속성은 가공된 데이터 이므로 setter 를 이용해 저장
                 if (free.getBlobFile() != null) {
                     freeDto.setFileSize(free.getBlobFile().length);
+                    freeDto.setFileUrl(fileDownloadUri);
                 }
-                freeDto.setFileUrl(fileDownloadUri);
-
+//                freeDto.setFileUrl(fileDownloadUri);
                 return freeDto;
             });
 
@@ -343,8 +343,10 @@ public class FreeController {
 
 //                아래 2개 속성은 가공된 데이터 이므로 setter 를 이용해 저장
             int fileSize = (freeOptional.get().getBlobFile() != null) ? freeOptional.get().getBlobFile().length : 0;
-            courseDto.setFileSize(fileSize);
-            courseDto.setFileUrl(fileDownloadUri);
+            if (freeOptional.get().getBlobFile() != null) {
+                courseDto.setFileSize(freeOptional.get().getBlobFile().length);
+                courseDto.setFileUrl(fileDownloadUri);
+            }
 
 
             if (freeOptional.isPresent()) {

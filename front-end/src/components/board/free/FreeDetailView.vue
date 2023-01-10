@@ -37,7 +37,7 @@
       </div>
       <div class="mb-3">
         <label for="content" class="form-label">이미지</label><br />
-        <img id="imageSize" :src="currentFree.fileUrl" class="preview my-3" alt="" />
+        <img v-if="existImage" id="imageSize" :src="currentFree.fileUrl" class="preview my-3" alt="" />
         <!-- <a style="color: inherit" @click="updateFree(currentFree.fno)">
            <span class="badge bg-danger">수정</span>
          </a> -->
@@ -54,8 +54,8 @@
         </label>
       </div>
       <div class="mb-3">
-        <button @click="updateFree" class="btn btn-primary me-3">Update</button>
-        <button @click="deleteFree" class="btn btn-danger">Delete</button>
+        <button @click="updateFree" class="btn btn-primary me-3">수정</button>
+        <button @click="deleteFree" class="btn btn-danger">삭제</button>
       </div>
       <div class="alert alert-success" role="alert" v-if="message">
         {{ message }}
@@ -149,6 +149,16 @@ export default {
       // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
       return this.$store.state.auth.user;
     },
+
+    existImage(){
+      if (this.currentFree.fileUrl != null) {
+        console.log("로그는:" ,this.currentFree);
+        return true;
+      } else {
+        console.log("else:" ,this.currentFree);
+        return false;
+      }
+    }
   },
 };
 </script>
