@@ -55,11 +55,11 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
     //    Todo: 평점 항목별 평균 점수를 성별로 그룹화 해서 찍는 함수
     @Query(value = "select re.gender, avg(re.taste) as avgtaste,avg(re.service) as avgservice ,avg(re.loc) as avgloc,avg(re.mood) as avgmood,avg(re.cost) as avgcost " +
             "from tb_review re " +
-            "where re.dno = :dno " +
+            "where re.dno = :dno and re.delete_yn = 'N' " +
             "group by re.gender",
             countQuery = "select re.gender, avg(re.taste) as avgtaste,avg(re.service) as avgservice ,avg(re.loc) as avgloc,avg(re.mood) as avgmood,avg(re.cost) as avgcost " +
                     "from tb_review re " +
-                    "where re.dno = :dno " +
+                    "where re.dno = :dno and re.delete_yn = 'N' " +
                     "group by re.gender"
             ,nativeQuery = true)
     List<ScoreDto> findByDnoScoreAvg (@Param("dno") Integer dno);
