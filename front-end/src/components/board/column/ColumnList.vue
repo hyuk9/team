@@ -74,7 +74,7 @@
               </td>
               <td class="text-center">{{ data.writer }}</td>
               <td class="text-center">
-                <i class="bi bi-calendar-date"></i>&nbsp;{{ data.insertTime }}
+                <i class="bi bi-calendar-date"></i>&nbsp;{{ data.insertTime.split(" ")[0] }}
               </td>
                  <!-- 조회수 보여주기 -->
               <td class="text-center">{{ data.views }}</td>
@@ -93,9 +93,9 @@
           <span class="badge bg-warning text-dark">추가</span>
         </router-link> -->
         <!-- TODO: badge를 버튼으로 교체 -->
-        <router-link class="offset-11" v-if="showAddBoard" to="/add-column/">
-          <button type="button" class="btn btn-warning btn-sm">글쓰기</button>
-        </router-link>
+        <div class="offset-11">
+          <button type="button" class="btn btn-warning btn-sm" @click="ConfirmLoggedUser">글쓰기</button>
+        </div>
       </div>
       <div class="overflow-auto offset-5">
         <b-pagination
@@ -126,7 +126,7 @@
             <input
               type="text"
               class="form-control"
-              placeholder="Search by Question"
+              placeholder="검색어를 입력해주세요"
               v-model="searchKeyword"
             />
           </div>
@@ -160,14 +160,12 @@ export default {
     return {
       column: [],
       searchKeyword: "",
-      searchSelect: "작성자",
+      searchSelect: "제목",
 
       // 페이징을 위한 변수 정의
       page: 1, // 현재 페이지
       count: 0, // 전체 데이터 건수
       pageSize: 10, // 한페이지당 몇개를 화면에 보여줄지 결정하는 변수
-
-      pageSizes: [3, 6, 9], // select box 에 넣을 기본 데이터
     };
   },
   methods: {
@@ -185,11 +183,11 @@ export default {
           this.column = column; // 스프링부트에서 전송한 데이터
           this.count = totalItems; // 스프링부트에서 전송한 페이지정보(총 건수)
           // 디버깅 콘솔에 정보 출력
-          console.log(response.data);
+          console.log("푸드컬럼 조회 요청 성공 : ", response.data);
         })
         // 실패하면 .catch() 에 에러가 전송됨
         .catch((e) => {
-          console.log(e);
+          console.log("푸드컬럼 조회 요청 실패 : ", e);
         });
     },
     // select box 값 변경시 실행되는 함수(재조회)
@@ -216,7 +214,18 @@ export default {
         .catch((e) => {
           console.log(e);
         });
-    }
+    },
+    ConfirmLoggedUser() {
+      if (this.currentUser && this.currentUser.roles) {
+        return (
+          (this.currentUser.roles.includes("ROLE_ADMIN") ||
+            this.currentUser.roles.includes("ROLE_USER")) &&
+          this.$router.push("/add-column/")
+        );
+      }
+      // 로그인이 되어있지 않다면 로그인이 필요한 항목이라고 표시
+      return alert("로그인이 필요한 항목입니다.");
+    },
   },
 
   computed: {
@@ -234,18 +243,7 @@ export default {
         //               없으면 false
         return this.currentUser.roles.includes("ROLE_ADMIN");
       }
-      // currentUser 없으면 false (메뉴가 안보임)
-      return false;
-    },
-    showAddBoard() {
-      if (this.currentUser && this.currentUser.roles) {
-        // if (ROLE_ADMIN || ROLE_USER) 로그인이 되어있다면 관리자거나 일반유저이므로 푸드컬럼 페이지로 바로 이동
-        return (
-          (this.currentUser.roles.includes("ROLE_ADMIN") ||
-            this.currentUser.roles.includes("ROLE_USER"))
-        );
-      }
-      // 로그인이 되어있지 않다면 로그인이 필요한 항목이라고 표시
+      // 관리자가 아니라면 안보임
       return false;
     },
     

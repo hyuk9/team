@@ -398,7 +398,7 @@ export default {
       }
     },
 
-    // Todo : 글작성자 or 관리자일 경우 버튼이 보이게 하는 함수
+    // TODO: 글작성자 or 관리자일 경우 버튼이 보이게 하는 함수
     showDetailBoard() {
       if (this.currentUser && this.currentUser.roles) {
         // if ROLE_ADMIN 있으면 true 없으면 false 이거나 현재로그인한id == 글쓴사람id

@@ -57,8 +57,8 @@
     <div>
       <div class="container col-6 mb-2 mt-2">
         <div class="AnnounceView-header mt-5">
-          <h1>
-            <strong>푸드컬럼 등록</strong>
+          <h1 class="text-900">
+            푸드컬럼 등록
           </h1>
         </div>
         <div class="AnnounceView-title">
@@ -167,7 +167,7 @@ export default {
       // insert 요청 함수 호출(axios 공통함수 호출)
       ColumnDataService.create(
         this.column.id = this.currentUser.id,
-        this.column.writer,
+        this.currentUser.username,
         this.column.title,
         this.column.subtitle,
         this.column.content,

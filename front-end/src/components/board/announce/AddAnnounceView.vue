@@ -40,7 +40,7 @@
                     </div>
                     <div class="input-group mb-4">
                         <span class="input-group-text">작성자</span>
-                        <input type="text" class="form-control" style="height:50px" id="title" required name="title"
+                        <input type="text" class="form-control" style="height:50px" id="writer" required name="writer"
                         v-bind:disabled="true"
               v-model="currentUser.username" />
                     </div>
@@ -83,7 +83,8 @@ export default {
             // 부서번호는(no) 자동생성되므로 빼고 전송함
             let data = {
 
-                writer: this.announce.writer,
+                // writer: this.announce.writer,
+                writer: this.currentUser.username,
                 title: this.announce.title,
                 content: this.announce.content
             };
@@ -104,15 +105,15 @@ export default {
                     console.log(e);
                 });
         },
-        newAnnounce() {
-            // 새양식 다시 보여주기 함수, 변수 초기화
-            this.submitted = false;
-            this.announce = {};
-        },
+        // newAnnounce() {
+        //     // 새양식 다시 보여주기 함수, 변수 초기화
+        //     this.submitted = false;
+        //     this.announce = {};
+        // },
 
-        returnAnnounce() {
-            this.$router.push("/announce");
-        }
+        // returnAnnounce() {
+        //     this.$router.push("/announce");
+        // }
 
     },
     computed: {
