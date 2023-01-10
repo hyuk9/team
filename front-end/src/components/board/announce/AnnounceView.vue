@@ -3,7 +3,7 @@
     <div class="container col-8 mb-2 mt-2">
       <div class="AnnounceView-header mt-5">
         <h1>
-          <strong>공지사항 게시판</strong>
+          <strong>공지사항</strong>
           <!-- <router-link :to="'/announce'">
             <button class="btn btn-warning offset-8" type="button">
               돌아가기

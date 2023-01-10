@@ -12,6 +12,10 @@ class ColumnDataService {
     // Todo : 자유게시판번호로 조회 요청 함수
     // get 방식 통신 요청 -> @GetMapping("/api/column/{cid}"), @PathVariable
     get(cid) {
+        return http.get(`/column/findId/${cid}`)
+    }
+
+    getImage(cid) {
         return http.get(`/column/${cid}`)
     }
 

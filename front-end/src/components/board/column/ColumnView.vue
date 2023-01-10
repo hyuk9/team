@@ -38,7 +38,7 @@
               <td colspan="2" scope="row" style="padding: 10px">
                 <div class="contentarea">
                   <div>
-                    <img v-if="existImage" id="imageSize" class="preview my-3 " :src="currentColumn.fileUrl" alt="" />
+                    <img v-if="existImage" id="imageSize" class="preview my-3 " :src="currentColumn2.fileUrl" alt="" />
                   </div>
                   {{ currentColumn.content }}
                 </div>
@@ -97,6 +97,7 @@ export default {
   data() {
     return {
       currentColumn: null,
+      currentColumn2: null,
       message2: "",
       currentImage: undefined, // 현재 이미지 변수
       previewImage: undefined, // 미리보기 이미지 변수
@@ -141,6 +142,16 @@ export default {
           console.log(response.data);
         })
         // 실패하면 .catch() 에러메세지가 리턴됨
+        .catch((e) => {
+          console.log(e);
+        });
+
+      ColumnDataService.getImage(cid)
+        .then((response) => {
+
+          this.currentColumn2 = response.data;
+          console.log(response.data);
+        })
         .catch((e) => {
           console.log(e);
         });
@@ -213,7 +224,7 @@ export default {
     // }
 
     existImage() {
-      if (this.currentColumn.fileUrl != null) {
+      if (this.currentColumn2.fileUrl != null) {
         console.log("로그는:", this.currentColumn);
         return true;
       } else {
