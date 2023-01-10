@@ -65,7 +65,8 @@
           <div class="input-group mb-4">
             <span class="input-group-text">작성자</span>
             <input type="text" class="form-control" style="height:50px" id="title" required name="title"
-              v-model="question.writer" />
+            v-bind:disabled="true"
+              v-model="currentUser.username" />
           </div>
           <!-- <td
                 colspan="2"

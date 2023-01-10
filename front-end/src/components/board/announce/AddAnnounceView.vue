@@ -41,7 +41,8 @@
                     <div class="input-group mb-4">
                         <span class="input-group-text">작성자</span>
                         <input type="text" class="form-control" style="height:50px" id="title" required name="title"
-                            v-model="announce.writer" />
+                        v-bind:disabled="true"
+              v-model="currentUser.username" />
                     </div>
 
                     <div class="mb-5">
@@ -114,6 +115,13 @@ export default {
         }
 
     },
+    computed: {
+    currentUser() {
+      // 모듈 저장소 : this.$store.state.모듈명.state값
+      // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
+      return this.$store.state.auth.user;
+    },
+  },
 
 };
 </script>

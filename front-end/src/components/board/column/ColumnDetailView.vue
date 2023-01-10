@@ -69,7 +69,7 @@
           </div>
           <div class="input-group mb-4">
             <span class="input-group-text">작성자</span>
-            <input type="text" class="form-control" style="height:50px" id="title" required name="title"
+            <input type="text" class="form-control" style="height:50px" id="writer" required name="writer"
               v-model="currentColumn.writer" />
           </div>
 
