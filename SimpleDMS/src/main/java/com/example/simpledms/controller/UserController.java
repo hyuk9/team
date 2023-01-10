@@ -41,6 +41,7 @@ import java.util.*;
 @Slf4j
 @RestController
 @CrossOrigin(origins = "http://localhost")
+//@CrossOrigin(origins = "http://192.168.0.166")
 @RequestMapping("/api")
 public class UserController {
 
@@ -275,7 +276,7 @@ public class UserController {
 
         try {
             Optional<User> optionalUser = userService.findByEmail(email);
-            if (optionalUser.isPresent()) {
+            if (!optionalUser.get().getUsername().isEmpty() ) {
 //                성공
                 return new ResponseEntity<>(optionalUser.get().getUsername().charAt(0) + "**" + optionalUser.get().getUsername().substring(3) , HttpStatus.OK);
             } else {
