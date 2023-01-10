@@ -4,6 +4,7 @@ package com.example.simpledms.repository;
 import com.example.simpledms.dto.ReservationDto;
 import com.example.simpledms.dto.ReviewDto;
 import com.example.simpledms.dto.ScoreDto;
+import com.example.simpledms.model.Comment;
 import com.example.simpledms.model.Menu;
 import com.example.simpledms.model.Review;
 import org.springframework.data.domain.Page;
@@ -34,6 +35,8 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
     List<Review> findAllByDnoEquals (Integer dno);
 
     Optional<Review> findByRnoEquals (Integer rno);
+
+    Page<Review> findAllByDnoEqualsOrderByInsertTimeAsc(Integer dno, Pageable pageable);
 
     @Query(value = "select di.dname, rv. content, rv.insert_time as it, sum(rv.taste+rv.service+rv.loc+rv.mood+rv.cost)/5 as sumscore " +
             "from tb_review rv, tb_diner di " +
