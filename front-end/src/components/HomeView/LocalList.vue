@@ -245,6 +245,7 @@
 /* eslint-disable */
 import DinerDataService from "../../services/DinerDataService.js";
 import FavoriteDataService from "@/services/FavoriteDataService";
+import ReviewDataService from '@/services/ReviewDataService';
 
 export default {
   data() {
@@ -300,6 +301,22 @@ export default {
                   }
                 }
               }
+              // 평점 조회 (전체)
+              ReviewDataService.findByDnoDinerScoreAll()
+              .then ((response) => {
+                this.scoreAll = response.data;
+                // findByDnoDinerScoreAll의 평점을  diner socret에 복사
+                for (let i = 0; i < this.diner.length; i++) {
+                  for (let j = 0; j < this.scoreAll.length; j++) {
+                    if (this.diner[i].dno == this.scoreAll[j].dno) {
+                      this.diner[i].score = this.scoreAll[j].score.toFixed(1);
+                    }
+                  }
+                }
+              }) 
+              .catch ((e) => {
+                console.log(e);
+              })     
             })
             // 실패하면 .catch() 에 에러가 전송됨
             .catch((e) => {

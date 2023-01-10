@@ -155,14 +155,14 @@ VALUES (SQ_RESERVATION.nextval, '박선영', '3', '010-1234-5678', '16', '6', '2
 
 -- Todo:음식점 테이블
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, '해목', '4.5', '부산광역시 해운대구 구남로24번길 8', '0507-1385-3730', '일식', '식사',
+VALUES (SQ_DINER.nextval, '해목', '4.5', '부산광역시 해운대구 구남로24번길 8', '0507-1385-3730', '일식', '데이트',
         'https://mp-seoul-image-production-s3.mangoplate.com/1129699_1620482534399327.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',
         'https://mp-seoul-image-production-s3.mangoplate.com/2417783_1671374230283185.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',
         'https://mp-seoul-image-production-s3.mangoplate.com/2417783_1671374233187333.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',
         'https://mp-seoul-image-production-s3.mangoplate.com/2215830_1669806572053505.jpg', 35.161820360403,
         129.159655134617, 1111, 0, '메뉴1', 10000, '메뉴2', 20000, '메뉴3', 30000, '메뉴4', 40000, '메뉴5', 50000, 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 INSERT INTO TB_DINER
-VALUES (SQ_DINER.nextval, '합천국밥집', '4.6', '부산광역시 남구 용호로 235', '051-628-4898', '한식', '식사',
+VALUES (SQ_DINER.nextval, '합천국밥집', '4.6', '부산광역시 남구 용호로 235', '051-628-4898', '한식', '데이트',
         'https://mp-seoul-image-production-s3.mangoplate.com/25551/j7nkzmgyxpmqqa.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',
         'https://mp-seoul-image-production-s3.mangoplate.com/25551/j7nkzmgyxpmqqa.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',
         'https://mp-seoul-image-production-s3.mangoplate.com/766789_1668128508465239.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',
@@ -276,7 +276,7 @@ VALUES (SQ_REVIEW.nextval, 2, 1, '유저2번', '리뷰내용', 1, 2, 3, 4, 5, 'm
 INSERT INTO TB_REVIEW
 VALUES (SQ_REVIEW.nextval, 3, 1, '유저3번', '리뷰내용', 1, 2, 3, 4, 5, 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 INSERT INTO TB_REVIEW
-VALUES (SQ_REVIEW.nextval, 4, 1, '유저4번', '리뷰내용', 1, 2, 3, 4, 5, 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
+VALUES (SQ_REVIEW.nextval, 4, 2, '유저4번', '리뷰내용', 1, 3, 3, 4, 5, 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 INSERT INTO TB_REVIEW
 VALUES (SQ_REVIEW.nextval, 5, 1, '유저5번', '리뷰내용', 1, 2, 3, 4, 5, 'male', 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 
