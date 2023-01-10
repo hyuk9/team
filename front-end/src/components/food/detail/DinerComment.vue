@@ -107,6 +107,7 @@
 <script>
 import ReviewDataService from "@/services/ReviewDataService";
 import DinerDataService from "@/services/DinerDataService";
+import UserDataService from '@/services/UserDataService';
 
 export default {
   data() {
@@ -121,11 +122,14 @@ export default {
         loc: null,
         mood: null,
         cost: null,
-        gender: "male",
+        gender: "",
       },
 
       // submit 버튼을 클릭하면 true 가 되고, You submitted successfully! 화면에 출력됨
       submitted: false,
+
+      // todo 성별 저장용 유저 정보
+      findgender : [],
     };
   },
   methods: {
@@ -147,6 +151,11 @@ export default {
     },
     // 리뷰 작성 form
     saveReview() {
+      // todo : 성별 정보 가져오기 추가 0110
+      UserDataService.get(this.currentUser.id)
+        .then((response) => {
+          this.findgender = response.data;
+          this.review.gender = this.findgender.gender;
       // 임시 객체 변수 -> springboot 전송
       // 부서번호는(no) 자동생성되므로 빼고 전송함
       let data = {
@@ -177,6 +186,10 @@ export default {
         .catch((e) => {
           console.log("리뷰저장 실패", e);
         });
+        })
+        .catch ((e) => {
+          console.log(e);
+        })
     },
     newReview() {
       // 새양식 다시 보여주기 함수, 변수 초기화
