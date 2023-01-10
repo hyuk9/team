@@ -5,10 +5,10 @@
 <script>
 /* eslint-disable */
 import Chart from "chart.js/auto";
-import ScoreDataService from "@/services/ScoreDataService"
+import ReviewDataService from "@/services/ReviewDataService"
 export default {
-  data() {
-    return {
+    data() {
+      return {
     //   name: "HelloWorld",
     //   width: 500,
     //   height: 600,
@@ -43,7 +43,7 @@ export default {
     };
   },
   mounted() {
-    ScoreDataService.getScoreById(this.$route.params.dno)
+    ReviewDataService.findByDnoScoreAvg(this.$route.params.dno)
     .then((Response) => {
         this.scoreDto=Response.data;
         for(let i=0; i<this.scoreDto.length; i++) {
