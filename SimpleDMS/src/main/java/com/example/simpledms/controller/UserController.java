@@ -275,7 +275,7 @@ public class UserController {
 
         try {
             Optional<User> optionalUser = userService.findByEmail(email);
-            if (optionalUser.isPresent()) {
+            if (!optionalUser.get().getUsername().isEmpty() ) {
 //                성공
                 return new ResponseEntity<>(optionalUser.get().getUsername().charAt(0) + "**" + optionalUser.get().getUsername().substring(3) , HttpStatus.OK);
             } else {
