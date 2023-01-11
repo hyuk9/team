@@ -213,7 +213,13 @@ export default {
         );
       }
       // 로그인이 되어있지 않다면 로그인이 필요한 항목이라고 표시
-      return alert("로그인이 필요한 항목입니다.");
+      return  this.$swal({
+          icon: "error",
+          title: "로그인이 필요한 서비스입니다",
+          text: "로그인하시면 다양한 맞춤형 서비스를 이용할 수 있습니다",
+          confirmButtonColor: "#E1793D",
+          confirmButtonText: "확인",
+        });
     },
     // Todo : select box 값 변경시 실행되는 함수(재조회)
     handlePageSizeChange(event) {
