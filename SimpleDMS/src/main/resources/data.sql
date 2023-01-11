@@ -63,13 +63,13 @@
 -- VALUES (SQ_ANNOUNCE.nextval, '음식점 정보에 관해', '사실과 다른 내용이 기재될 경우 통보없이 삭제될 수 있습니다.', '관리자', 0, 'N',
 --         TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 -- INSERT INTO TB_ANNOUNCE
--- VALUES (SQ_ANNOUNCE.nextval, '회원정보 관리에 대해', '보안을 강화하여 회원정보 유출이 안되게 신경쓰고 있습니다.', '관리자', 0, 'N',
+-- VALUES (SQ_ANNOUNCE.nextval, '회원정보 관리에 대해', 'ㅊ.', '관리자', 0, 'N',
 --         TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 -- INSERT INTO TB_ANNOUNCE
--- VALUES (SQ_ANNOUNCE.nextval, '이용약관에 대해', '불만이 있는 부분이 있다면 관리자에게 문의해주세요.', '관리자', 0, 'N',
+-- VALUES (SQ_ANNOUNCE.nextval, '이용약관에 대해', 'ㅊ.', '관리자', 0, 'N',
 --         TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 -- INSERT INTO TB_ANNOUNCE
--- VALUES (SQ_ANNOUNCE.nextval, '사이트 제작에 대해', '5명이서 협업해서 제작한 사이트로 Vue.js와 Springboot를 이용해서 작업했습니다.', '관리자', 0, 'N',
+-- VALUES (SQ_ANNOUNCE.nextval, 'ㅊ', '5명이서 협업해서 제작한 사이트로 Vue.js와 Springboot를 이용해서 작업했습니다.', '관리자', 0, 'N',
 --         TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 -- INSERT INTO TB_ANNOUNCE
 -- VALUES (SQ_ANNOUNCE.nextval, '질문사항에 대해', '질문게시판을 이용해주세요.', '관리자', 0, 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'),
@@ -388,15 +388,5 @@ VALUES (SQ_USER.NEXTVAL, 'admin', 'tomato@admin.com', '$2a$10$QrX8ZL/Z.VCfw..fuT
 -- TODO: (첫번째 : 유저id(시퀀스), 두번째 : 1(일반유저) 2(관리자) )
 INSERT INTO TB_USER_ROLE
 VALUES (1, 2);
--- INSERT INTO TB_USER_ROLE
--- VALUES (2, 1);
--- INSERT INTO TB_USER_ROLE
--- VALUES (3, 1);
--- INSERT INTO TB_USER_ROLE
--- VALUES (4, 1);
--- INSERT INTO TB_USER_ROLE
--- VALUES (5, 1);
--- INSERT INTO TB_USER_ROLE
--- VALUES (6, 1);
 
 COMMIT;
