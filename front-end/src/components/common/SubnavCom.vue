@@ -84,7 +84,7 @@
                                     <a href="/question" class="dropdown-item">질문과답변</a>
                                 </li>
                                 <li>
-                                    <a href="/column" class="dropdown-item">푸드컬럼</a>
+                                    <!-- <a href="/column" class="dropdown-item">푸드컬럼</a> -->
                                 </li>
                                 <li>
                                     <a href="/free" class="dropdown-item">자유게시판</a>
