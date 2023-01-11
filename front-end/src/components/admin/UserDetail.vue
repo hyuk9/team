@@ -71,7 +71,6 @@
             <input
               v-model="currentUser.name"
               v-validate="'required|name|max:10'"
-              v-bind:disabled="true"
               type="text"
               class="form-control"
               name="name"
@@ -135,7 +134,6 @@
             <h5>전화번호</h5>
             <input
               v-model="currentUser.phone"
-              v-bind:disabled="true"
               type="text"
               class="form-control"
               name="phone"
