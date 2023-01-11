@@ -21,6 +21,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 export default {
     data() {
         return {
@@ -71,7 +72,78 @@ export default {
             this.heroTitle = "/assets/img/gallery/hero-tomato6.png";
         } else if (this.$route.path == "/team"){
             this.title = "팀원 소개"
-            
+  
+        } else if (this.$route.path == "/add-free"){
+            this.title = "자유게시판"
+            this.heroTitle = "/assets/img/gallery/hero-tomato3.png";
+  
+        } else if (this.$route.path == "/add-user"){
+            this.title = "회원 추가"
+            this.heroTitle = "/assets/img/gallery/hero-tomato3.png";
+  
+        } else if (this.$route.path == "/add-question"){
+            this.title = "질문과 답변"
+            this.heroTitle = "/assets/img/gallery/hero-tomato3.png";
+  
+        }else if (this.$route.path == "/add-announce"){
+            this.title = "공지사항"
+            this.heroTitle = "/assets/img/gallery/hero-tomato3.png";
+  
+        } else if (this.$route.path == "/add-column"){
+            this.title = "푸드컬럼"
+            this.heroTitle = "/assets/img/gallery/hero-tomato4.png";
+  
+        }else if (this.$route.path == "/freeview" && this.$route.params.fno){
+          this.title = "자유게시판"
+            this.heroTitle = "/assets/img/gallery/hero-tomato3.png";
+  
+        }else if (this.$route.path == "/free" && this.$route.params.fno){
+             this.title = "자유게시판"
+            this.heroTitle = "/assets/img/gallery/hero-tomato3.png";
+  
+        } else if (this.$route.path == "/reservation" && this.$route.params.rid){
+               this.title = "예약하기"
+            this.heroTitle = "/assets/img/gallery/hero-tomato6.png";
+  
+        }else if (this.$route.path == "/user" && this.$route.params.id){
+               this.title = "회원정보"
+            this.heroTitle = "/assets/img/gallery/hero-tomato6.png";
+  
+        } else if (this.$route.path == "/question" && this.$route.params.qno){
+            this.title = "질문과 답변"
+            this.heroTitle = "/assets/img/gallery/hero-tomato3.png";
+  
+        } else if (this.$route.path == "/faq" && this.$route.params.no){
+            this.title = "자주 묻는 질문"
+            this.heroTitle = "/assets/img/gallery/hero-tomato3.png";
+        } else if (this.$route.path == "/faq" && this.$route.params.no){
+            this.title = "질문과 답변"
+            this.heroTitle = "/assets/img/gallery/hero-tomato3.png";
+  
+        }else if (this.$route.path == "/announceview" && this.$route.params.aid){
+            this.title = "공지사항"
+            this.heroTitle = "/assets/img/gallery/hero-tomato3.png";
+        }else if (this.$route.path == "/announce" && this.$route.params.aid){
+            this.title = "공지사항"
+            this.heroTitle = "/assets/img/gallery/hero-tomato3.png";
+        }else if (this.$route.path == "/columnview" && this.$route.params.cid){
+            this.title = "푸드컬럼"
+            this.heroTitle = "/assets/img/gallery/hero-tomato4.png";
+        }else if (this.$route.path == "/column" && this.$route.params.cid){
+            this.title = "푸드컬럼"
+            this.heroTitle = "/assets/img/gallery/hero-tomato4.png";
+        } else if (this.$route.path == "/edit/review" && this.$route.params.rno){
+            this.title = "리뷰페이지"
+            this.heroTitle = "/assets/img/gallery/hero-tomato4.png";
+        } else if (this.$route.path == "/add/review/" && this.$route.params.dno){
+            this.title = "리뷰페이지"
+            this.heroTitle = "/assets/img/gallery/hero-tomato4.png";
+        } else if (this.$route.path == "/diner" && this.$route.params.dno){
+            this.title = "리뷰페이지"
+            this.heroTitle = "/assets/img/gallery/hero-tomato4.png";
+        } else if (this.$route.path == "/diner" && this.$route.params.dno){
+            this.title = "리뷰페이지"
+            this.heroTitle = "/assets/img/gallery/hero-tomato4.png";
         } else {
           this.title = "음식점 리스트"
           this.heroTitle = "/assets/img/gallery/hero-tomato2.png";
