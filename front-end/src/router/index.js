@@ -238,6 +238,47 @@ const routes = [
       component: () => import("../views/Auth2View.vue")
   },
   // 음식점 조건별(지역,테마 등등) 이동
+  
+    {
+    path: "/jung",
+    name: "jung",
+    component: () => import("@/components/food/local/DinerList.vue"),
+  },   
+    {
+    path: "/sasang",
+    name: "sasang",
+    component: () => import("@/components/food/local/DinerList.vue"),
+  },   
+  {
+    path: "/seo",
+    name: "seo",
+    component: () => import("@/components/food/local/DinerList.vue"),
+  },  
+    {
+    path: "/yeonje",
+    name: "yeonje",
+    component: () => import("@/components/food/local/DinerList.vue"),
+  },  
+    {
+    path: "/suyoung",
+    name: "suyoung",
+    component: () => import("@/components/food/local/DinerList.vue"),
+  },   
+    {
+    path: "/saha",
+    name: "saha",
+    component: () => import("@/components/food/local/DinerList.vue"),
+  },   
+    {
+    path: "/bukgu",
+    name: "bukgu",
+    component: () => import("@/components/food/local/DinerList.vue"),
+  },     
+   {
+    path: "/donggu",
+    name: "donggu",
+    component: () => import("@/components/food/local/DinerList.vue"),
+  },  
   {
     path: "/haeundae",
     name: "haeundae",
