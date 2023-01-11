@@ -337,7 +337,12 @@ export default {
         // 성공하면 then() 결과가 전송됨
         .then((response) => {
           console.log(response.data);
-          alert("수정이 완료되었습니다!");
+            this.$swal({
+            icon: "success",
+            title: "수정이 완료되었습니다",
+            showConfirmButton: false,
+            timer: 1000,
+          });
           // 첫페이지(전체목록_조회_페이지) 강제 이동 : /diner
           this.$router.push("/diner");
         })
@@ -353,7 +358,12 @@ export default {
         // 성공하면 then() 결과가 전송됨
         .then((response) => {
           console.log(response.data);
-          alert("삭제가 완료되었습니다!");
+            this.$swal({
+            icon: "success",
+            title: "삭제가 완료되었습니다",
+            showConfirmButton: false,
+            timer: 1000,
+          });
           // 첫페이지(전체목록_조회_페이지) 강제 이동 : /diner
           this.$router.push("/diner");
         })

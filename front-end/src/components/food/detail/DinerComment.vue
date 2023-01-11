@@ -178,7 +178,12 @@ export default {
           this.review.rno = response.data.rno;
           // 콘솔 로그 출력(response.data)
           console.log(response.data);
-          alert("추가가 완료되었습니다!");
+            this.$swal({
+            icon: "success",
+            title: "추가가 완료되었습니다",
+            showConfirmButton: false,
+            timer: 1000,
+          });
           // 첫페이지(전체목록_조회_페이지) 강제 이동 : /diner
           this.$router.push("/diner/" + this.$route.params.dno);
         })

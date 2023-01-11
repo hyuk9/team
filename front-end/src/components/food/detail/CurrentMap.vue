@@ -36,7 +36,12 @@ export default {
         }
       },
       (err) => {
-        alert(err.message);
+          this.$swal({
+            icon: "error",
+            title: "실패",
+            showConfirmButton: false,
+            timer: 1000,
+          });
       }
     );
   },

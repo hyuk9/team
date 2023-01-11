@@ -226,7 +226,12 @@ export default {
             }
         },
         busanNav(){
-            alert("클릭성공");
+              this.$swal({
+            icon: "success",
+            title: "클릭 성공",
+            showConfirmButton: false,
+            timer: 1000,
+          });
         }
     },
 
