@@ -257,7 +257,12 @@ export default {
           UserDataService.update(id, changePwd, user)
             .then((response) => {
               console.log(response.data);
-              alert("수정완료");
+                 this.$swal({
+                icon: "success",
+                title: "수정 성공",
+                showConfirmButton: false,
+                timer: 1000,
+              });
               if (this.loggedUser.roles.includes("ROLE_USER")) {
                 this.$router.push("/profile");
               } else {
@@ -266,7 +271,12 @@ export default {
             })
             .catch((e) => {
               console.log(e);
-              alert(e, "수정실패");
+                 this.$swal({
+                icon: "error",
+                title: "수정 실패",
+                showConfirmButton: false,
+                timer: 1000,
+              });
               this.$router.push("/user");
             });
         }
