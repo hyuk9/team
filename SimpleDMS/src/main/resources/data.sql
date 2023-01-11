@@ -5,7 +5,7 @@
 --         '저희 사이트는 Vue.js와 Springboot를 이용하여 제작되었으며 bootstrap5를 적용하여 반응형 웹사이트로 구현되었습니다.', 'N',
 --         TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 -- INSERT INTO TB_FAQ
--- VALUES (SQ_FAQ.nextval, '회원정보는 어떻게 저장되나요?', '저희 사이트는 jwt토큰 방식을 사용한 로그인 방식으로 안전하게 저장 및 보관됩니다.', 'N',
+-- VALUES (SQ_FAQ.nextval, '회원정보는 어떻게 저장되나요?', '저희회원정보는 어떻게 저장되나 사이트는 jwt토큰 방식을 사용한 로그인 방식으로 안전하게 저장 및 보관됩니다.', 'N',
 --         TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 -- INSERT INTO TB_FAQ
 -- VALUES (SQ_FAQ.nextval, '회원만 사이트를 이용할 수 있나요?', '비회원으로도 사이트 대부분의 기능을 이용가능하지만 로그인 시 다양한 개인 맞춤형 서비스 제공이 가능합니다.', 'N',

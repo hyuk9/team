@@ -140,7 +140,8 @@
               type="text"
               class="input"
               id="date"
-              placeholder="연도 선택"
+              maxlength="4"
+              placeholder="네자리 연도"
               name="연도 "
             />
             <select v-model="month">
@@ -195,6 +196,7 @@
               type="text"
               class="input"
               id="phone1"
+              maxlength="3"
             />
             <span class="minus">-</span>
             <input
@@ -202,6 +204,7 @@
               type="text"
               class="input"
               id="phone2"
+              maxlength="4"
             />
             <span class="minus">-</span>
             <input
@@ -209,6 +212,7 @@
               type="text"
               class="input"
               id="phone3"
+              maxlength="4"
             />
           </div>
         </div>

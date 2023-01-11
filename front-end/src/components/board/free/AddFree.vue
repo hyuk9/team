@@ -155,7 +155,7 @@ export default {
           console.log(response.data);
           // 변수 submitted
           this.submitted = true;
-          alert("성공했습니다.");
+          // alert("성공했습니다.");
           this.$router.push("/free");
         })
         // 실패하면 .catch() 결과가 전송됨

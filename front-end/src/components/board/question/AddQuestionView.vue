@@ -113,7 +113,7 @@ export default {
       let data = {
         // id ,wirter 추가
         id : this.currentUser.id,
-        writer: this.question.writer,
+        writer: this.currentUser.username,
         title: this.question.title,
         content: this.question.content,
       };
