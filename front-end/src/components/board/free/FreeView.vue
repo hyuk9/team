@@ -118,7 +118,7 @@
             <button
               type="button"
               class="btn btn-danger"
-              @click="updateAidComment(currentComment.cno)"
+              @click="updateCnoComment(currentComment.cno)"
             >
               수정
             </button>
@@ -306,7 +306,7 @@ export default {
       }
     },
     // TODO: 댓글 정보를 수정 요청하는 함수
-    updateFnoComment() {
+    updateCnoComment() {
       CommentDataService.update(this.currentComment.cno, this.currentComment)
         // 성공하면 then() 결과가 전송됨
         .then((response) => {

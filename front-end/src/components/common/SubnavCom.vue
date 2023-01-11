@@ -34,7 +34,7 @@
                                         <li><a href="/bukgu">북구</a></li>
                                         <li><a href="/sasang">사상구</a></li>
                                         <li><a href="/saha">사하구</a></li>
-                                        <li><a href="/seo">서구</a></li>
+                                        <!-- <li><a href="/seo">서구</a></li> -->
                                         <li><a href="/suyoung">수영구</a></li>
                                         <li><a href="/yeonje">연제구</a></li>
                                         <li><a href="/yeongdo">영도구</a></li>

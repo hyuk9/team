@@ -370,15 +370,23 @@ export default {
       } else if (this.$route.path == "/saha") {
         this.searchSelect = "지역";
         this.searchKeyword = "사하구";
-      } else if (this.$route.path == "/seo") {
-        this.searchSelect = "지역";
-        this.searchKeyword = "서구";
-      } else if (this.$route.path == "/yeonje") {
+      } 
+      // else if (this.$route.path == "/seo") {
+      //   this.searchSelect = "지역";
+      //   this.searchKeyword = "서구";
+      // } 
+      else if (this.$route.path == "/yeonje") {
         this.searchSelect = "지역";
         this.searchKeyword = "연제구";
       } else if (this.$route.path == "/jung") {
         this.searchSelect = "지역";
         this.searchKeyword = "중구";
+      } else if (this.$route.path == "/donggu") {
+        this.searchSelect = "지역";
+        this.searchKeyword = "동구";
+      } else if (this.$route.path == "/suyoung") {
+        this.searchSelect = "지역";
+        this.searchKeyword = "수영구";
       } 
       // 메뉴 리다이렉트
       else if (this.$route.path == "/korean") {

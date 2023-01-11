@@ -35,7 +35,7 @@
           <option value="북구">북구</option>
           <option value="사상구">사상구</option>
           <option value="사하구">사하구</option>
-          <option value="서구">서구</option>
+          <!-- <option value="서구">서구</option> -->
           <option value="수영구">수영구</option>
           <option value="연제구">연제구</option>
           <option value="영도구">영도구</option>
