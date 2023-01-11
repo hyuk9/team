@@ -95,7 +95,13 @@ export default {
           console.log(response.data);
           // 변수 submitted
           this.submitted = true;
-          alert("성공했습니다.");
+           this.$swal({
+          icon: "error",
+          title: "로그인이 필요한 서비스입니다",
+          text: "로그인하시면 다양한 맞춤형 서비스를 이용할 수 있습니다",
+          confirmButtonColor: "#E1793D",
+          confirmButtonText: "확인",
+        });
           this.$router.push("/faq");
         })
         // 실패하면 .catch() 결과가 전송됨

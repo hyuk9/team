@@ -127,7 +127,12 @@ export default {
           console.log(response.data);
           // 변수 submitted
           this.submitted = true;
-          alert("성공했습니다.");
+            this.$swal({
+            icon: "success",
+            title: "성공 했습니다",
+            showConfirmButton: false,
+            timer: 1000,
+          });
           this.$router.push("/question");
         })
         // 실패하면 .catch() 결과가 전송됨

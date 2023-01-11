@@ -165,7 +165,12 @@ export default {
           this.message = response.data;
           this.profiles = false;
           // 변수 submitted
-          alert("성공했습니다.");
+            this.$swal({
+            icon: "success",
+            title: "성공했습니다",
+            showConfirmButton: false,
+            timer: 1000,
+          });
           this.getProfile(1);
         })
         // 실패하면 .catch() 결과가 전송됨
