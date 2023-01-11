@@ -178,6 +178,7 @@ export default {
           this.review.rno = response.data.rno;
           // 콘솔 로그 출력(response.data)
           console.log(response.data);
+
             this.$swal({
             icon: "success",
             title: "추가가 완료되었습니다",
