@@ -97,7 +97,7 @@
                         <li v-if="showAdminBoard" class="nav-item dropdown">
                             <router-link to="" class="nav-link dropdown-toggle text-gradient" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
-                                관리자 전용(관리자만 보이게 설정)
+                                관리자 전용
                             </router-link>
                             <ul class="dropdown-menu">
                                 <li>
