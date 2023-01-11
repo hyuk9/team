@@ -379,6 +379,12 @@ export default {
       } else if (this.$route.path == "/jung") {
         this.searchSelect = "지역";
         this.searchKeyword = "중구";
+      } else if (this.$route.path == "/donggu") {
+        this.searchSelect = "지역";
+        this.searchKeyword = "동구";
+      } else if (this.$route.path == "/suyoung") {
+        this.searchSelect = "지역";
+        this.searchKeyword = "수영구";
       } 
       // 메뉴 리다이렉트
       else if (this.$route.path == "/korean") {
