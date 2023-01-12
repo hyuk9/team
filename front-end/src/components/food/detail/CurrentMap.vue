@@ -35,7 +35,7 @@ export default {
           document.head.appendChild(script);
         }
       },
-      (err) => {
+      () => {
           this.$swal({
             icon: "error",
             title: "실패",
