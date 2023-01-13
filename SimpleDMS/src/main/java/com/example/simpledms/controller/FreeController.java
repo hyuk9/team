@@ -28,8 +28,8 @@ import java.util.Optional;
  */
 @Slf4j
 @RestController
-//@CrossOrigin(origins = "http://localhost")
-@CrossOrigin(origins = "http://192.168.0.166")
+@CrossOrigin(origins = "http://localhost")
+//@CrossOrigin(origins = "http://192.168.0.166")
 @RequestMapping("/api")
 public class FreeController {
     //    스프링부트 : DI(의존성 주입) ( @Autowired )
