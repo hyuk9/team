@@ -113,6 +113,7 @@ export default {
     };
   },
   methods: {
+    // TODO: 유저 정보 저장하는 함수
     saveUser() {
       (this.message = ""), (this.submitted = true); // 저장 버튼 누를 때 true 변경
       // 유효성 체크
@@ -128,6 +129,7 @@ export default {
         }
       });
     },
+    // TODO: 새로운 유저 정보 저장하는 함수
     newUser() {
       this.submitted = false;
       this.user = ("", "", "", "ROLE_USER");

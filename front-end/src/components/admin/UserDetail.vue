@@ -159,7 +159,7 @@
           </div>
 
           <!-- 권한 -->
-          <!-- <div class="input__block" v-if="showAdminBoard">
+          <!-- <div class="input__block" v-if="confirmAdmin">
             <h5>권한</h5>
             <select class="form-select" v-model="currentUser.role[0].rname">
               <option>ROLE_USER</option>
@@ -168,7 +168,7 @@
           </div> -->
 
           <!-- 권한 -->
-          <div class="input__block gender" v-if="showAdminBoard">
+          <div class="input__block gender" v-if="confirmAdmin">
             <h5 class="d-block">권한</h5>
             <div class="col-6 d-inline-block">
               <p class="d-inline col-6 mb-0 p-0">회원</p>
@@ -229,6 +229,7 @@ export default {
     };
   },
   methods: {
+    //TODO: id로 유저정보 조회요청하는 함수
     getUser(id) {
       UserDataService.get(id) // spring 요청
         //  성공/실패 모르겠지만
@@ -242,6 +243,7 @@ export default {
           console.log(e);
         });
     },
+    // TODO: 유저정보 수정요청하는 함수
     updateUser(id, changePwd, user) {
       this.message = "";
       this.submitted = true;
@@ -261,7 +263,7 @@ export default {
                 showConfirmButton: false,
                 timer: 1000,
               });
-              if (this.loggedUser.roles.includes("ROLE_USER")) {
+              if (this.currentUser.roles.includes("ROLE_USER")) {
                 this.$router.push("/profile");
               } else {
                 this.$router.push("/user");
@@ -280,6 +282,7 @@ export default {
         }
       });
     },
+    // TODO: 유저정보 삭제요청하는 함수
     deleteUser() {
       UserDataService.delete(this.currentUser.id)
         .then((response) => {
@@ -300,12 +303,13 @@ export default {
         });
     },
 
+    // TODO: 비밀번호 변경하는 함수
     changePassword() {
       this.currentUser.password = "";
       this.changePwd = true;
     },
 
-    // 클릭시 카카오 주소 api 띄우고 주소검색 데이터를 가져오는 함수
+    // TODO: 클릭시 카카오 주소 api 띄우고 주소검색 데이터를 가져오는 함수
     popupaddress() {
       let currentUser = this.currentUser;
       new daum.Postcode({
@@ -320,18 +324,18 @@ export default {
     },
   },
   computed: {
-    // 현재 유저
-    loggedUser() {
+    // TODO: 현재 로그인한 유저
+    currentUser() {
       // 모듈 저장소 : this.$store.state.모듈명.state값
       // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
       return this.$store.state.auth.user;
     },
-    // 관리자 접속인지 아닌지 확인하는 함수
-    showAdminBoard() {
-      if (this.loggedUser && this.loggedUser.roles) {
+    // TODO: 관리자 접속인지 아닌지 확인하는 함수
+    confirmAdmin() {
+      if (this.currentUser && this.currentUser.roles) {
         // if ROLE_ADMIN 있으면 true
         //               없으면 false
-        return this.loggedUser.roles.includes("ROLE_ADMIN");
+        return this.currentUser.roles.includes("ROLE_ADMIN");
       } else {
         // currentUser 없으면 false (메뉴가 안보임)
         return false;

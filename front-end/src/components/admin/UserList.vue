@@ -9,7 +9,7 @@
             <th scope="col">이름</th>
             <th scope="col">이메일</th>
             <th scope="col">권한</th>
-            <th scope="col" v-if="showAdminBoard">편집</th>
+            <th scope="col" v-if="confirmAdmin">편집</th>
           </tr>
         </thead>
         <tbody v-for="(data, index) in user" :key="index">
@@ -19,7 +19,7 @@
             <td>{{ data.name }}</td>
             <td>{{ data.email }}</td>
             <td>{{ data.rname }}</td>
-            <td v-if="showAdminBoard">
+            <td v-if="confirmAdmin">
               <router-link :to="'/user/' + data.id"
                 ><span class="badge bg-success">수정하기</span></router-link
               >
@@ -63,7 +63,7 @@
           <input
             type="text"
             class="form-control"
-            placeholder="Search by Username"
+            placeholder="검색어를 입력해주세요"
             v-model="searchUsername"
           />
         </div>
@@ -93,7 +93,6 @@ export default {
   data() {
     return {
       user: [],
-      // dname: "", ->(변경) searchUsername: "",
       searchUsername: "", // 부서명
 
       // 페이징을 위한 변수 정의
@@ -105,17 +104,17 @@ export default {
     };
   },
   methods: {
+    // TODO: 전체 유저정보 조회요청하는 함수
     retrieveUser() {
       UserDataService.getAll(this.searchUsername, this.page - 1, this.pageSize)
         .then((response) => {
           const { user, totalItems } = response.data;
           this.user = user;
           this.count = totalItems;
-
-          console.log(response.data);
+          console.log("전체 유저정보 조회 성공 : ", response.data);
         })
         .catch((e) => {
-          console.log(e);
+          console.log("전체 유저정보 조회 실패 : ", e);
         });
     },
 
@@ -132,15 +131,15 @@ export default {
   },
 
   computed: {
-    // 현재 유저
+    // TODO: 현재 유저
     currentUser() {
       // 모듈 저장소 : this.$store.state.모듈명.state값
       // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
       return this.$store.state.auth.user;
     },
 
-    // 관리자 접속인지 아닌지 확인하는 함수
-    showAdminBoard() {
+    // TODO: 관리자 접속인지 아닌지 확인하는 함수
+    confirmAdmin() {
       if (this.currentUser && this.currentUser.roles) {
         // if ROLE_ADMIN 있으면 true
         //               없으면 false
