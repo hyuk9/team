@@ -160,12 +160,14 @@ public class UserController {
                         roles.add(adminRole);
 
                         break;
-//        case "mod":
-//          Role modRole = roleRepository.findByName(ERole.ROLE_MODERATOR)
-//              .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-//          roles.add(modRole);
-//
-//          break;
+
+                    case "manager":
+                      Role managerRole = roleService.findByRname(ERole.ROLE_MANAGER)
+                          .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+                      roles.add(managerRole);
+
+                      break;
+
                     default:
                         Role userRole = roleService.findByRname(ERole.ROLE_USER)
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
@@ -220,6 +222,14 @@ public class UserController {
                         roles.add(adminRole);
 
                         break;
+
+                    case "ROLE_MANAGER":
+                        Role managerRole = roleService.findByRname(ERole.ROLE_MANAGER)
+                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+                        roles.add(managerRole);
+
+                        break;
+
                     default:
                         Role userRole = roleService.findByRname(ERole.ROLE_USER)
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));

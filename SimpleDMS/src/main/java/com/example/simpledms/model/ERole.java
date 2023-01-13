@@ -15,6 +15,8 @@ package com.example.simpledms.model;
 public enum ERole {
     ROLE_USER, // 일반 유저
     ROLE_ADMIN, // 관리자 전용
+
+    ROLE_MANAGER, // 점주 전용
 }
 
 
