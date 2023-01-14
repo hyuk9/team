@@ -1,89 +1,58 @@
 <template>
   <div>
-    <!-- AddColumn Start -->
-    <!-- <div class="container" v-if="!submitted">
-      <div class="mb-3">
-        <label for="writer" class="form-label">작성자</label>
-        <input type="writer" class="form-control" id="writer" required name="writer" v-model="column.writer" />
-      </div>
-      <div class="mb-3">
-        <label for="title" class="form-label">제목</label>
-        <input type="title" class="form-control" id="title" required name="title" v-model="column.title" />
-      </div>
-      <div class="mb-3">
-        <label for="content" class="form-label">내용</label>
-        <textarea class="form-control form-control-lg" id="content" rows="8" required name="content"
-          v-model="column.content"></textarea>
-      </div>
-      <div class="mb-3">
-        <div class="row">
-          <div class="col-sm-4">
-            <img :src="previewImage" class="card-img-top" alt="" />
-          </div>
-        </div>
-        <div class="mb-3">
-          <label class="btn btn-default p-0">
-            <input type="file" accept="image/*" ref="file" @change="selectImage" />
-          </label>
-        </div>
-
-        <div v-if="message" class="alert alert-secondary" role="alert">
-          {{ message }}
-        </div>
-      </div>
-      <div class="mb-3">
-        <div v-if="checkImage2">
-          <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-            <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
-              <path
-                d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-            </symbol>
-          </svg>
-          <div class="alert alert-danger d-flex align-items-center" role="alert">
-            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
-              <use xlink:href="#exclamation-triangle-fill" />
-            </svg>
-            <div>
-              이미지를 넣어주세요!
-            </div>
-          </div>
-        </div>
-        <button v-if="checkImage" @click="saveColumn" class="btn btn-primary">글쓰기</button>
-        <button v-else @click="saveColumn" class="btn btn-primary" disabled>글쓰기</button>
-      </div>
-    </div> -->
-    <!-- AddColumn End -->
-
     <div>
       <div class="container col-6 mb-2 mt-2">
         <div class="AnnounceView-header mt-5">
-          <h1 class="text-900">
-            푸드컬럼 등록
-          </h1>
+          <h1 class="text-900">푸드컬럼 등록</h1>
         </div>
         <div class="AnnounceView-title">
-
-
           <div class="input-group mt-3 mb-4">
             <span class="input-group-text">제목</span>
-            <input type="text" class="form-control" style="height:50px" id="title" required name="title"
-              v-model="column.title" />
+            <input
+              type="text"
+              class="form-control"
+              style="height: 50px"
+              id="title"
+              required
+              name="title"
+              v-model="column.title"
+            />
           </div>
           <div class="input-group mt-3 mb-4">
             <span class="input-group-text">부제목</span>
-            <input type="text" class="form-control" style="height:50px" id="subtitle" required name="subtitle"
-              v-model="column.subtitle" />
+            <input
+              type="text"
+              class="form-control"
+              style="height: 50px"
+              id="subtitle"
+              required
+              name="subtitle"
+              v-model="column.subtitle"
+            />
           </div>
           <div class="input-group mb-4">
             <span class="input-group-text">작성자</span>
-            <input type="text" class="form-control" style="height:50px" id="writer" required name="writer"
-            v-bind:disabled="true"
-              v-model="currentUser.username" />
+            <input
+              type="text"
+              class="form-control"
+              style="height: 50px"
+              id="writer"
+              required
+              name="writer"
+              v-bind:disabled="true"
+              v-model="currentUser.username"
+            />
           </div>
 
           <div class="mb-5">
-            <textarea class="form-control form-control-lg" id="content" rows="8" required name="content"
-              v-model="column.content"></textarea>
+            <textarea
+              class="form-control form-control-lg"
+              id="content"
+              rows="8"
+              required
+              name="content"
+              v-model="column.content"
+            ></textarea>
           </div>
         </div>
 
@@ -95,7 +64,12 @@
           </div>
           <div class="mb-3">
             <label class="btn btn-default p-0">
-              <input type="file" accept="image/*" ref="file" @change="selectImage" />
+              <input
+                type="file"
+                accept="image/*"
+                ref="file"
+                @change="selectImage"
+              />
             </label>
           </div>
 
@@ -106,23 +80,39 @@
 
         <div class="mb-3">
           <div v-if="checkImage2">
-            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-              <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+              <symbol
+                id="exclamation-triangle-fill"
+                fill="currentColor"
+                viewBox="0 0 16 16"
+              >
                 <path
-                  d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                  d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+                />
               </symbol>
             </svg>
-            <div class="alert alert-danger d-flex align-items-center" role="alert">
-              <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+            <div
+              class="alert alert-danger d-flex align-items-center"
+              role="alert"
+            >
+              <svg
+                class="bi flex-shrink-0 me-2"
+                width="24"
+                height="24"
+                role="img"
+                aria-label="Danger:"
+              >
                 <use xlink:href="#exclamation-triangle-fill" />
               </svg>
-              <div>
-                이미지를 넣어주세요!
-              </div>
+              <div>이미지를 넣어주세요!</div>
             </div>
           </div>
-          <button v-if="checkImage" @click="saveColumn" class="btn btn-primary">글쓰기</button>
-          <button v-else @click="saveColumn" class="btn btn-primary" disabled>글쓰기</button>
+          <button v-if="checkImage" @click="saveColumn" class="btn btn-primary">
+            글쓰기
+          </button>
+          <button v-else @click="saveColumn" class="btn btn-primary" disabled>
+            글쓰기
+          </button>
         </div>
       </div>
     </div>
@@ -160,18 +150,19 @@ export default {
     };
   },
   methods: {
+    // TODO: 푸드컬럼 정보를 저장요청하는 함수
     saveColumn() {
       // 임시 객체 변수 -> springboot 전송
       // 부서번호는(no) 자동생성되므로 빼고 전송함
       this.progress = 0;
       // insert 요청 함수 호출(axios 공통함수 호출)
       ColumnDataService.create(
-        this.column.id = this.currentUser.id,
+        (this.column.id = this.currentUser.id),
         this.currentUser.username,
         this.column.title,
         this.column.subtitle,
         this.column.content,
-        this.currentImage,
+        this.currentImage
         // (eve) => {
         //   // 파일이 업로드될때 진척상황이 저장됨(%)
         //   this.progress = Math.round((100 * eve.loaded) / eve.total);
@@ -213,15 +204,6 @@ export default {
       //     this.currentImage = undefined;
       //   });
     },
-    newColumn() {
-      // 새양식 다시 보여주기 함수, 변수 초기화
-      this.submitted = false;
-      this.column2 = {};
-    },
-
-    returnColumn() {
-      location.href = "/column";
-    },
 
     // TODO: 이미지 삽입 시작
     // 이미지를 선택하면 변수에 저장하는 메소드
@@ -258,16 +240,17 @@ export default {
     //       this.currentImage = undefined;
     //     });
     // },
-
   },
 
   computed: {
+    // TODO: 로컬 스토리지에 저장된 현재 유저 정보 가져오는 함수
     currentUser() {
       // 모듈 저장소 : this.$store.state.모듈명.state값
       // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
       return this.$store.state.auth.user;
     },
 
+    // TODO: 이미지 존재여부 확인함수
     checkImage() {
       if (this.previewImage != null) {
         return true;
@@ -276,20 +259,18 @@ export default {
       }
     },
 
+    // TODO: 이미지 존재여부 확인함수 
+    // FIXME: 왜 함수가 2개 존재하는지??
     checkImage2() {
       if (this.previewImage != null) {
         return false;
       } else {
         return true;
       }
-    }
+    },
   },
-
-}
-
-
+};
 </script>
 
 <style>
-
 </style>

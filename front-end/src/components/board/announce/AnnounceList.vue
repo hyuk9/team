@@ -94,10 +94,6 @@
             </tr>
           </tbody>
         </table>
-
-        <!-- <router-link to="/add-announce/">
-          <span class="badge bg-warning text-dark">추가</span>
-        </router-link> -->
         <!-- TODO: badge를 버튼으로 교체 -->
         <div v-if="showAdminBoard">
           <router-link class="offset-11" to="/add-announce/">

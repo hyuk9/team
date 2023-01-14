@@ -45,7 +45,7 @@
               >
                 작성일
               </th>
-                <th
+              <th
                 class="table-active text-center"
                 style="width: 10%"
                 scope="col"
@@ -69,14 +69,18 @@
               </td>
               <td class="text-center">
                 <router-link :to="'/columnview/' + data.cid"
-                  ><a @click="countViews(data.cid)"><span>{{ data.title }}</span></a></router-link
+                  ><a @click="countViews(data.cid)"
+                    ><span>{{ data.title }}</span></a
+                  ></router-link
                 >
               </td>
               <td class="text-center">{{ data.writer }}</td>
               <td class="text-center">
-                <i class="bi bi-calendar-date"></i>&nbsp;{{ data.insertTime.split(" ")[0] }}
+                <i class="bi bi-calendar-date"></i>&nbsp;{{
+                  data.insertTime.split(" ")[0]
+                }}
               </td>
-                 <!-- 조회수 보여주기 -->
+              <!-- 조회수 보여주기 -->
               <td class="text-center">{{ data.views }}</td>
               <td v-if="showAdminBoard">
                 <router-link :to="'/column/' + data.cid"
@@ -88,13 +92,15 @@
             </tr>
           </tbody>
         </table>
-
-        <!-- <router-link to="/add-column/">
-          <span class="badge bg-warning text-dark">추가</span>
-        </router-link> -->
         <!-- TODO: badge를 버튼으로 교체 -->
         <div class="offset-11">
-          <button type="button" class="btn btn-warning btn-sm" @click="ConfirmLoggedUser">글쓰기</button>
+          <button
+            type="button"
+            class="btn btn-warning btn-sm"
+            @click="ConfirmLoggedUser"
+          >
+            글쓰기
+          </button>
         </div>
       </div>
       <div class="overflow-auto offset-5">
@@ -169,7 +175,7 @@ export default {
     };
   },
   methods: {
-    // axios , 모든 정보 조회 요청 함수
+    // TODO: 모든 푸드컬럼 정보 조회요청하는 함수
     retrieveColumn() {
       ColumnDataService.getAll(
         this.searchSelect, // select box 선택된 값
@@ -203,10 +209,10 @@ export default {
       // 재조회 함수 호출
       this.retrieveColumn();
     },
-       // 조회수 증가 함수
-    countViews (cid) {
+    // TODO: 조회수 증가 함수
+    countViews(cid) {
       ColumnDataService.plusViews(cid)
-     .then((response) => {
+        .then((response) => {
           // 디버깅 콘솔에 정보 출력
           console.log(response.data);
         })
@@ -215,6 +221,7 @@ export default {
           console.log(e);
         });
     },
+    // FIXME: 
     ConfirmLoggedUser() {
       if (this.currentUser && this.currentUser.roles) {
         return (
@@ -224,25 +231,24 @@ export default {
         );
       }
       // 로그인이 되어있지 않다면 로그인이 필요한 항목이라고 표시
-      return  this.$swal({
-          icon: "error",
-          title: "로그인이 필요한 서비스입니다",
-          text: "로그인하시면 다양한 맞춤형 서비스를 이용할 수 있습니다",
-          confirmButtonColor: "#E1793D",
-          confirmButtonText: "확인",
-        });
+      return this.$swal({
+        icon: "error",
+        title: "로그인이 필요한 서비스입니다",
+        text: "로그인하시면 다양한 맞춤형 서비스를 이용할 수 있습니다",
+        confirmButtonColor: "#E1793D",
+        confirmButtonText: "확인",
+      });
     },
   },
 
   computed: {
-    // 현재 유저
+    // TODO: 현재 유저정보 조회
     currentUser() {
       // 모듈 저장소 : this.$store.state.모듈명.state값
       // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
       return this.$store.state.auth.user;
     },
-
-    // 관리자 접속인지 아닌지 확인하는 함수
+    // TODO: 관리자 접속인지 아닌지 확인하는 함수
     showAdminBoard() {
       if (this.currentUser && this.currentUser.roles) {
         // if ROLE_ADMIN 있으면 true
@@ -252,7 +258,6 @@ export default {
       // 관리자가 아니라면 안보임
       return false;
     },
-    
   },
 
   // 화면이 뜨자마자 실행되는 이벤트(라이프 사이클 함수) : mounted(), created()

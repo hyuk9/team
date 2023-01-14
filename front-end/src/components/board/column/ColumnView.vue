@@ -131,7 +131,7 @@ export default {
     };
   },
   methods: {
-    // 부서번호(cid)로 조회 요청하는 함수
+    // TODO: 푸드컬럼 pk로 조회 요청하는 함수
     getColumn(cid) {
       // axios 공통함수 호출
       ColumnDataService.get(cid)
@@ -140,13 +140,12 @@ export default {
           // springboot 결과를 리턴함(부서 객체)
           this.currentColumn = response.data;
           // 콘솔 로그 출력
-          console.log(response.data);
+          console.log("댓글정보 조회 성공 : ", response.data);
         })
         // 실패하면 .catch() 에러메세지가 리턴됨
         .catch((e) => {
-          console.log(e);
+          console.log("댓글정보 조회 실패 : ", e);
         });
-      // axios 공통함수 호출
       ColumnDataService.getById(cid)
         // 성공하면 .then() 결과가 리턴됨
         .then((response) => {
@@ -159,7 +158,6 @@ export default {
         .catch((e) => {
           console.log(e);
         });
-
       ColumnDataService.getImage(cid)
         .then((response) => {
           this.currentColumn2 = response.data;

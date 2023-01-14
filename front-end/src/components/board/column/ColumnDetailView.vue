@@ -1,57 +1,5 @@
 <template>
   <div>
-    <!-- detali Start -->
-    <!-- <div class="container" v-if="currentColumn">
-      <div class="mb-3">
-        <label for="writer" class="form-label">작성자</label>
-        <input type="writer" class="form-control" id="writer" required name="writer" v-model="currentColumn.writer" />
-      </div>
-      <div class="mb-3">
-        <label for="title" class="form-label">제목</label>
-        <input type="text" class="form-control" id="title" required name="title" v-model="currentColumn.title" />
-      </div>
-      <div class="mb-3">
-        <label for="content" class="form-label">내용</label>
-        <textarea class="form-control form-control-lg" id="content" rows="8" required name="content"
-          v-model="currentColumn.content"></textarea>
-      </div>
-      <div class="mb-3">
-        <label for="content" class="form-label">이미지</label><br />
-        <img v-if="existImage" id="imageSize" :src="currentColumn.fileUrl" class="preview my-3" alt="" />
-      </div>
-      <div class="mb-3">
-        <label class="btn btn-default p-0">
-          <input type="file" accept="image/*" ref="file" @change="selectImage" />
-        </label>
-      </div>
-      <div class="mb-3">
-        <div v-if="checkImage2">
-          <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-            <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
-              <path
-                d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-            </symbol>
-          </svg>
-          <div class="alert alert-danger d-flex align-items-center" role="alert">
-            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
-              <use xlink:href="#exclamation-triangle-fill" />
-            </svg>
-            <div>
-              이미지를 넣어주세요!
-            </div>
-          </div>
-        </div>
-        <button v-if="checkImage" @click="updateColumn" class="btn btn-primary me-3">수정</button>
-        <button v-else @click="updateColumn" class="btn btn-primary me-3" disabled>수정</button>
-        <button @click="deleteColumn" class="btn btn-danger">삭제</button>
-      </div>
-      <div class="alert alert-success" role="alert" v-if="message">
-        {{ message }}
-      </div>
-    </div> -->
-    <!-- detail End -->
-
-
     <div>
       <div class="container col-6 mb-2 mt-2">
         <div class="AnnounceView-header mt-5">
@@ -141,7 +89,7 @@ export default {
     };
   },
   methods: {
-    // 부서번호(cid)로 조회 요청하는 함수
+    // TODO: 푸드컬럼 pk로 조회 요청하는 함수
     getColumn(cid) {
       // axios 공통함수 호출
       ColumnDataService.get(cid)
@@ -150,14 +98,14 @@ export default {
           // springboot 결과를 리턴함(부서 객체)
           this.currentColumn = response.data;
           // 콘솔 로그 출력
-          console.log(response.data);
+          console.log("푸드컬럼 정보 조회 성공 : ", response.data);
         })
         // 실패하면 .catch() 에러메세지가 리턴됨
         .catch((e) => {
-          console.log(e);
+          console.log("푸드컬럼 정보 조회 실패 : ", e);
         });
     },
-    // 부서정보를 수정 요청하는 함수
+    // TODO: 푸드컬럼 정보를 수정 요청하는 함수
     updateColumn() {
       // axios 공통함수 호출
       ColumnDataService.update(
@@ -170,15 +118,16 @@ export default {
       )
         // 성공하면 then() 결과가 전송됨
         .then((response) => {
-          console.log(response.data);
+          console.log("푸드컬럼 정보 수정 성공 : ", response.data);
           this.message = "The Column was updated successfully!";
           this.$router.push("/column");
         })
         // 실패하면 .catch() 에러메세지가 전송됨
         .catch((e) => {
-          console.log(e);
+          console.log("푸드컬럼 정보 수정 실패 : ", e);
         });
     },
+    // TODO: 이미지 정보 저장 함수
     selectImage() {
       // 파일선택상자에서 첫번째로 선택한 이미지가 저장됨
       this.currentImage = this.$refs.file.files.item(0);
@@ -187,19 +136,19 @@ export default {
       this.progress = 0;
       this.message = "";
     },
-    // 부서정보를 삭제 요청하는 함수
+    // TODO: 푸드컬럼 정보를 삭제요청하는 함수
     deleteColumn() {
       // axios 공통함수 호출
       ColumnDataService.delete(this.currentColumn.cid)
         // 성공하면 then() 결과가 전송됨
         .then((response) => {
-          console.log(response.data);
+          console.log("푸드컬럼 정보 삭제 성공 : ", response.data);
           // 첫페이지(전체목록_조회_페이지) 강제 이동 : /column
           this.$router.push("/column");
         })
         // 실패하면 .catch() 에러메세지가 전송됨
         .catch((e) => {
-          console.log(e);
+          console.log("푸드컬럼 정보 삭제 실패 : ", e);
         });
     },
   },
