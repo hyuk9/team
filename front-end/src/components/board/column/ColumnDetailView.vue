@@ -8,27 +8,52 @@
           </h1>
         </div>
         <div class="AnnounceView-title">
-
-
           <div class="input-group mt-3 mb-4">
             <span class="input-group-text">제목</span>
-            <input type="text" class="form-control" style="height:50px" id="title" required name="title"
-              v-model="currentColumn.title" />
+            <input
+              type="text"
+              class="form-control"
+              style="height: 50px"
+              id="title"
+              required
+              name="title"
+              v-model="currentColumn.title"
+            />
           </div>
           <div class="input-group mt-3 mb-4">
             <span class="input-group-text">부제목</span>
-            <input type="text" class="form-control" style="height:50px" id="subtitle" required name="subtitle"
-              v-model="currentColumn.subtitle" />
+            <input
+              type="text"
+              class="form-control"
+              style="height: 50px"
+              id="subtitle"
+              required
+              name="subtitle"
+              v-model="currentColumn.subtitle"
+            />
           </div>
           <div class="input-group mb-4">
             <span class="input-group-text">작성자</span>
-            <input type="text" class="form-control" style="height:50px" id="writer" required name="writer"
-              v-model="currentColumn.writer" />
+            <input
+              type="text"
+              class="form-control"
+              style="height: 50px"
+              id="writer"
+              required
+              name="writer"
+              v-model="currentColumn.writer"
+            />
           </div>
 
           <div class="mb-5">
-            <textarea class="form-control form-control-lg" id="content" rows="8" required name="content"
-              v-model="currentColumn.content"></textarea>
+            <textarea
+              class="form-control form-control-lg"
+              id="content"
+              rows="8"
+              required
+              name="content"
+              v-model="currentColumn.content"
+            ></textarea>
           </div>
         </div>
 
@@ -40,7 +65,12 @@
           </div>
           <div class="mb-3">
             <label class="btn btn-default p-0">
-              <input type="file" accept="image/*" ref="file" @change="selectImage" />
+              <input
+                type="file"
+                accept="image/*"
+                ref="file"
+                @change="selectImage"
+              />
             </label>
           </div>
 
@@ -51,23 +81,48 @@
 
         <div class="mb-3">
           <div v-if="checkImage2">
-            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-              <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+              <symbol
+                id="exclamation-triangle-fill"
+                fill="currentColor"
+                viewBox="0 0 16 16"
+              >
                 <path
-                  d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                  d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+                />
               </symbol>
             </svg>
-            <div class="alert alert-danger d-flex align-items-center" role="alert">
-              <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+            <div
+              class="alert alert-danger d-flex align-items-center"
+              role="alert"
+            >
+              <svg
+                class="bi flex-shrink-0 me-2"
+                width="24"
+                height="24"
+                role="img"
+                aria-label="Danger:"
+              >
                 <use xlink:href="#exclamation-triangle-fill" />
               </svg>
-              <div>
-                이미지를 넣어주세요!
-              </div>
+              <div>이미지를 넣어주세요!</div>
             </div>
           </div>
-          <button v-if="checkImage" @click="updateColumn" class="btn btn-primary me-3">수정</button>
-          <button v-else @click="updateColumn" class="btn btn-primary me-3" disabled>수정</button>
+          <button
+            v-if="checkImage"
+            @click="updateColumn"
+            class="btn btn-primary me-3"
+          >
+            수정
+          </button>
+          <button
+            v-else
+            @click="updateColumn"
+            class="btn btn-primary me-3"
+            disabled
+          >
+            수정
+          </button>
           <button @click="deleteColumn" class="btn btn-danger">삭제</button>
         </div>
         <div class="alert alert-success" role="alert" v-if="message">
@@ -159,6 +214,7 @@ export default {
   },
 
   computed: {
+    // TODO: 로컬 스토리지에 저장된 현재 유저 정보 가져오는 함수
     currentUser() {
       // 모듈 저장소 : this.$store.state.모듈명.state값
       // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
@@ -189,7 +245,7 @@ export default {
       } else {
         return true;
       }
-    }
+    },
   },
 };
 </script>

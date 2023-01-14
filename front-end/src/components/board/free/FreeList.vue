@@ -47,7 +47,7 @@
                 scope="col"
               >
                 작성일
-              </th> 
+              </th>
               <th
                 class="table-active text-center"
                 style="width: 10%"
@@ -72,14 +72,17 @@
               </td>
               <td class="text-center">
                 <router-link :to="'/freeview/' + data.fno"
-                  ><a @click="countViews(data.fno)"><span>{{ data.title }}</span></a></router-link
+                  ><a @click="countViews(data.fno)"
+                    ><span>{{ data.title }}</span></a
+                  ></router-link
                 >
               </td>
               <td class="text-center">{{ data.writer }}</td>
               <td class="text-center">
-                <i class="bi bi-calendar-date"></i> {{ data.insertTime.split(" ")[0] }}
+                <i class="bi bi-calendar-date"></i>
+                {{ data.insertTime.split(" ")[0] }}
               </td>
-                 <!-- 조회수 보여주기 -->
+              <!-- 조회수 보여주기 -->
               <td class="text-center">{{ data.views }}</td>
               <td v-if="showAdminBoard">
                 <router-link :to="'/free/' + data.fno"
@@ -91,10 +94,6 @@
             </tr>
           </tbody>
         </table>
-
-        <!-- <router-link to="/add-free/">
-          <span class="badge bg-warning text-dark">추가</span>
-        </router-link> -->
         <!-- TODO: badge를 버튼으로 교체 -->
         <div class="offset-11">
           <button
@@ -179,6 +178,7 @@ export default {
     };
   },
   methods: {
+    // TODO: 모든 자유게시판 정보 조회요청하는 함수
     retrieveFree() {
       FreeDataService.getAll(
         this.searchSelect, // select box 선택된 값
@@ -210,12 +210,12 @@ export default {
       }
       // 로그인이 되어있지 않다면 로그인이 필요한 항목이라고 표시
       return this.$swal({
-          icon: "error",
-          title: "로그인이 필요한 서비스입니다",
-          text: "로그인하시면 다양한 맞춤형 서비스를 이용할 수 있습니다",
-          confirmButtonColor: "#E1793D",
-          confirmButtonText: "확인",
-        });
+        icon: "error",
+        title: "로그인이 필요한 서비스입니다",
+        text: "로그인하시면 다양한 맞춤형 서비스를 이용할 수 있습니다",
+        confirmButtonColor: "#E1793D",
+        confirmButtonText: "확인",
+      });
     },
 
     // axios , 모든 정보 조회 요청 함수
@@ -233,10 +233,10 @@ export default {
       // 재조회 함수 호출
       this.retrieveFree();
     },
-        // 조회수 증가 함수
-    countViews (fno) {
+    // TODO: 조회수 증가 함수
+    countViews(fno) {
       FreeDataService.plusViews(fno)
-     .then((response) => {
+        .then((response) => {
           // 디버깅 콘솔에 정보 출력
           console.log("조회수 증가 성공 : ", response.data);
         })
@@ -248,13 +248,13 @@ export default {
   },
 
   computed: {
-    // 현재 유저
+    // TODO: 현재 유저정보 조회
     currentUser() {
       // 모듈 저장소 : this.$store.state.모듈명.state값
       // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
       return this.$store.state.auth.user;
     },
-    // 관리자 접속인지 아닌지 확인하는 함수
+    // TODO: 관리자 접속인지 아닌지 확인하는 함수
     showAdminBoard() {
       if (this.currentUser && this.currentUser.roles) {
         // if ROLE_ADMIN 있으면 true

@@ -358,6 +358,7 @@ export default {
       return false;
     },
 
+    // TODO: 이미지가 존재하는지 여부 확인하는 함수
     existImage() {
       if (this.currentColumn2.fileUrl != null) {
         console.log("로그는:", this.currentColumn);

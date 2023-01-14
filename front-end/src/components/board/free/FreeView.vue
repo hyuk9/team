@@ -205,7 +205,7 @@ export default {
     };
   },
   methods: {
-    // Todo : 질문번호로 조회 요청하는 함수
+    // TODO: 질문번호로 조회 요청하는 함수
     getFree(fno) {
       // axios 공통함수 호출
       FreeDataService.get(fno)

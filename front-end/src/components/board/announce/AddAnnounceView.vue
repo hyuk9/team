@@ -91,7 +91,7 @@ export default {
         })
         // 실패하면 .catch() 결과가 전송됨
         .catch((e) => {
-          console.log("공지사항 정보 저장요청 실패 : ", e);
+          console.log("공지사항 정보 저장요청  : ", e);
         });
     },
   },
