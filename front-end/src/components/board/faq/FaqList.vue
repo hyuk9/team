@@ -128,7 +128,7 @@ export default {
     };
   },
   methods: {
-    // axios , 모든 정보 조회 요청 함수
+    // TODO: 모든 FAQ 정보 조회요청하는 함수
     retrieveFaq() {
       FaqDataService.getAll(
         this.searchSelect, // select box 선택된 값
@@ -142,11 +142,11 @@ export default {
           this.faq = faq; // 스프링부트에서 전송한 데이터
           this.count = totalItems; // 스프링부트에서 전송한 페이지정보(총 건수)
           // 디버깅 콘솔에 정보 출력
-          console.log(response.data);
+          console.log("모든 FAQ 정보 조회요청 성공 : ", response.data);
         })
         // 실패하면 .catch() 에 에러가 전송됨
         .catch((e) => {
-          console.log(e);
+          console.log("모든 FAQ 정보 조회요청 실패 : ", e);
         });
     },
     // select box 값 변경시 실행되는 함수(재조회)
@@ -165,14 +165,14 @@ export default {
   },
 
   computed: {
-    // 현재 유저
+    // TODO: 현재 유저정보 조회
     currentUser() {
       // 모듈 저장소 : this.$store.state.모듈명.state값
       // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
       return this.$store.state.auth.user;
     },
 
-    // 관리자 접속인지 아닌지 확인하는 함수
+    // TODO: 관리자 접속인지 아닌지 확인하는 함수
     showAdminBoard() {
       if (this.currentUser && this.currentUser.roles) {
         // if ROLE_ADMIN 있으면 true

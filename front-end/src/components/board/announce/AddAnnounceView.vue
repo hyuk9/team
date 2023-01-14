@@ -84,14 +84,14 @@ export default {
         .then((response) => {
           this.announce.aid = response.data.aid;
           // 콘솔 로그 출력(response.data)
-          console.log(response.data);
+          console.log("공지사항 정보 저장요청 성공 : ", response.data);
           // 변수 submitted
           this.submitted = true;
           this.$router.push("/announce");
         })
         // 실패하면 .catch() 결과가 전송됨
         .catch((e) => {
-          console.log(e);
+          console.log("공지사항 정보 저장요청 실패 : ", e);
         });
     },
   },

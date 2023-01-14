@@ -10,23 +10,44 @@
         <div class="AnnounceView-title">
           <div class="input-group mt-3 mb-4">
             <span class="input-group-text">제목</span>
-            <input type="text" class="form-control" style="height:50px" id="title" required name="title"
-              v-model="currentAnnounce.title" />
+            <input
+              type="text"
+              class="form-control"
+              style="height: 50px"
+              id="title"
+              required
+              name="title"
+              v-model="currentAnnounce.title"
+            />
           </div>
           <div class="input-group mb-4">
             <span class="input-group-text">작성자</span>
-            <input type="text" class="form-control" style="height:50px" id="title" required name="title"
-              v-model="currentAnnounce.writer" />
+            <input
+              type="text"
+              class="form-control"
+              style="height: 50px"
+              id="title"
+              required
+              name="title"
+              v-model="currentAnnounce.writer"
+            />
           </div>
           <div class="mb-5">
-            <textarea class="form-control form-control-lg" id="content" rows="8" required name="content"
-              v-model="currentAnnounce.content"></textarea>
+            <textarea
+              class="form-control form-control-lg"
+              id="content"
+              rows="8"
+              required
+              name="content"
+              v-model="currentAnnounce.content"
+            ></textarea>
           </div>
-
         </div>
 
         <div class="mb-3">
-          <button @click="updateAnnounce" class="btn btn-primary me-3">수정</button>
+          <button @click="updateAnnounce" class="btn btn-primary me-3">
+            수정
+          </button>
           <button @click="deleteAnnounce" class="btn btn-danger">삭제</button>
         </div>
         <div class="alert alert-success" role="alert" v-if="message">
@@ -56,11 +77,11 @@ export default {
           // springboot 결과를 리턴함(부서 객체)
           this.currentAnnounce = response.data;
           // 콘솔 로그 출력
-          console.log(response.data);
+          console.log("공지사항 조회요청 성공 : ", response.data);
         })
         // 실패하면 .catch() 에러메세지가 리턴됨
         .catch((e) => {
-          console.log(e);
+          console.log("공지사항 조회요청 실패 : ", e);
         });
     },
     // TODO: 공지사항 정보를 수정 요청하는 함수
@@ -69,15 +90,14 @@ export default {
       AnnounceDataService.update(this.currentAnnounce.aid, this.currentAnnounce)
         // 성공하면 then() 결과가 전송됨
         .then((response) => {
-          console.log(response.data);
+          console.log("공지사항 수정요청 성공 : ", response.data);
           this.message = "The Announce was updated successfully!";
           this.$router.push("/announce");
         })
         // 실패하면 .catch() 에러메세지가 전송됨
         .catch((e) => {
-          console.log(e);
+          console.log("공지사항 수정요청 실패 : ", e);
         });
-
     },
     // TODO: 공지사항정보를 삭제요청하는 함수
     deleteAnnounce() {
@@ -85,13 +105,13 @@ export default {
       AnnounceDataService.delete(this.currentAnnounce.aid)
         // 성공하면 then() 결과가 전송됨
         .then((response) => {
-          console.log(response.data);
+          console.log("공지사항 삭제요청 성공 : ", response.data);
           // 첫페이지(전체목록_조회_페이지) 강제 이동 : /announce
           this.$router.push("/announce");
         })
         // 실패하면 .catch() 에러메세지가 전송됨
         .catch((e) => {
-          console.log(e);
+          console.log("공지사항 삭제요청 실패 : ", e);
         });
     },
   },
@@ -100,9 +120,8 @@ export default {
     this.message = "";
     this.getAnnounce(this.$route.params.aid);
   },
-}
+};
 </script>
 
 <style>
-
 </style>
