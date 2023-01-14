@@ -206,7 +206,7 @@ export default {
   },
 
   methods: {
-    // 부서번호(aid)로 조회 요청하는 함수
+    // TODO: 공지사항 pk로 조회 요청하는 함수
     getAnnounce(aid) {
       // axios 공통함수 호출
       AnnounceDataService.get(aid)

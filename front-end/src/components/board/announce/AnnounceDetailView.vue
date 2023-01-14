@@ -1,47 +1,13 @@
 <template>
   <div>
-    <!-- detali Start -->
-    <!-- <div class="container" v-if="currentAnnounce">
-      <div class="mb-3">
-        <label for="writer" class="form-label">작성자</label>
-        <input type="writer" class="form-control" id="writer" required name="writer"
-          v-model="currentAnnounce.writer" />
-      </div>
-      <div class="mb-3">
-        <label for="title" class="form-label">제목</label>
-        <input type="text" class="form-control" id="title" required name="title" v-model="currentAnnounce.title" />
-      </div>
-      <div class="mb-3">
-        <label for="content" class="form-label">내용</label>
-        <textarea class="form-control form-control-lg " id="content" rows="8" required name="content"
-          v-model="currentAnnounce.content"></textarea>
-      </div>
-      <div class="mb-3">
-        <button @click="updateAnnounce" class="btn btn-primary me-3">수정</button>
-        <button @click="deleteAnnounce" class="btn btn-danger">삭제</button>
-      </div>
-      <div class="alert alert-success" role="alert" v-if="message">
-        {{ message }}
-      </div>
-    </div> -->
-    <!-- detail End -->
-
-
     <div>
       <div class="container col-6 mb-2 mt-2">
         <div class="AnnounceView-header mt-5">
           <h1>
             <strong>공지사항 수정</strong>
-            <!-- <router-link :to="'/announce'">
-            <button class="btn btn-warning offset-8" type="button">
-              돌아가기
-            </button>
-          </router-link> -->
           </h1>
         </div>
         <div class="AnnounceView-title">
-
-
           <div class="input-group mt-3 mb-4">
             <span class="input-group-text">제목</span>
             <input type="text" class="form-control" style="height:50px" id="title" required name="title"
@@ -52,11 +18,6 @@
             <input type="text" class="form-control" style="height:50px" id="title" required name="title"
               v-model="currentAnnounce.writer" />
           </div>
-          <!-- <td
-                colspan="2"
-                scope="row"
-                style="padding: 10px"
-              >{{ currentAnnounce.content }}</td> -->
           <div class="mb-5">
             <textarea class="form-control form-control-lg" id="content" rows="8" required name="content"
               v-model="currentAnnounce.content"></textarea>
@@ -86,7 +47,7 @@ export default {
     };
   },
   methods: {
-    // 부서번호(aid)로 조회 요청하는 함수
+    // TODO: 공지사항 pk로 조회 요청하는 함수
     getAnnounce(aid) {
       // axios 공통함수 호출
       AnnounceDataService.get(aid)
@@ -102,7 +63,7 @@ export default {
           console.log(e);
         });
     },
-    // 부서정보를 수정 요청하는 함수
+    // TODO: 공지사항 정보를 수정 요청하는 함수
     updateAnnounce() {
       // axios 공통함수 호출
       AnnounceDataService.update(this.currentAnnounce.aid, this.currentAnnounce)
@@ -118,7 +79,7 @@ export default {
         });
 
     },
-    // 부서정보를 삭제 요청하는 함수
+    // TODO: 공지사항정보를 삭제요청하는 함수
     deleteAnnounce() {
       // axios 공통함수 호출
       AnnounceDataService.delete(this.currentAnnounce.aid)
