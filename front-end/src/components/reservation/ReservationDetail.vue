@@ -143,14 +143,16 @@ export default {
   data() {
     return {
       currentReservation: null,
-      phoneFirstPart: null,
+
+      // 휴대폰 번호 입력을 위한 변수
+      phoneFirstPart: null, // FIXME: 이거 그냥 010으로 받은 다음 고정시키는 방식이 좋은거 같음
       phoneMiddlePart: null,
       phoneLastPart: null,
       phoneArr: [],
     };
   },
   methods: {
-    // 고객번호(rid)로 조회 요청하는 함수
+    // TODO: 고객번호(pk)로 조회 요청하는 함수
     getReservation(rid) {
       // axios 공통함수 호출
       ReservationDataService.get(rid)
@@ -159,16 +161,16 @@ export default {
           // springboot 결과를 리턴함(부서 객체)
           this.currentReservation = response.data;
           // 콘솔 로그 출력
-          console.log(response.data);
+          console.log("고객번호로 예약정보 조회 요청 성공 : ", response.data);
           this.separatePhone();
         })
         // 실패하면 .catch() 에러메세지가 리턴됨
         .catch((e) => {
-          console.log(e);
+          console.log("고객번호로 예약정보 조회 요청 실패 : ", e);
         });
     },
 
-    //  예약정보에 있는 휴대폰번호를 3개로 나누는 함수
+    //  TODO: 예약정보에 있는 휴대폰번호를 3개로 나누는 함수
     separatePhone() {
       this.phoneArr = this.currentReservation.phone.split("-");
       this.phoneFirstPart = this.phoneArr[0];
@@ -176,7 +178,7 @@ export default {
       this.phoneLastPart = this.phoneArr[2];
     },
 
-    // 예약정보에서 수정한 전화번호를 합치는 함수
+    // TODO: 예약정보에서 수정한 전화번호를 합치는 함수
     phoneInputCombine() {
       //  전화번호 부분들 합쳐서 완성된 전화번호 형식 만들기
       this.currentReservation.phone =
@@ -187,6 +189,7 @@ export default {
         this.phoneLastPart;
     },
 
+    // TODO: 예약 수정요청하는 함수
     updateReservation() {
       this.phoneInputCombine();
       // axios 공통함수 호출
@@ -196,7 +199,7 @@ export default {
       )
         // 성공하면 then() 결과가 전송됨
         .then((response) => {
-          console.log(response.data);
+          console.log("예약 수정 요청 성공 : ", response.data);
           // alert 라이브러리 효과
           this.$swal({
             icon: "success",
@@ -209,15 +212,17 @@ export default {
         })
         // 실패하면 .catch() 에러메세지가 전송됨
         .catch((e) => {
-          console.log(e);
+          console.log("예약 수정 요청 실패 : ", e);
         });
     },
+
+    // TODO: 예약 삭제요청하는 함수
     deleteReservation() {
       // axios 공통함수 호출
       ReservationDataService.delete(this.currentReservation.rid)
         // 성공하면 then() 결과가 전송됨
         .then((response) => {
-          console.log(response.data);
+          console.log("예약 삭제 요청 성공 : ", response.data);
           // alert 라이브러리 효과
           this.$swal({
             icon: "success",
@@ -230,7 +235,7 @@ export default {
         })
         // 실패하면 .catch() 에러메세지가 전송됨
         .catch((e) => {
-          console.log(e);
+          console.log("예약 삭제 요청 실패 : ", e);
         });
     },
   },
@@ -238,8 +243,7 @@ export default {
   mounted() {
     this.getReservation(this.$route.params.rid);
 
-    // TODO: 데이트피커 타임피커 충돌로 인해 임시로 막아놓음
-
+    // FIXME: 데이트피커 타임피커 충돌로 인해 임시로 막아놓음
     // TODO: 데이트피커
     // $(function () {
     //   $("#rdate").datepicker({

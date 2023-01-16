@@ -5,27 +5,9 @@
         <div class="container" data-aos="fade-left" data-aos-delay="200">
           <div class="row">
             <div class="col-lg-10 mx-auto text-center">
-              <!--    Todo : page 바 시작 -->
-              <!-- <div class="col-md-8 offset-4">
-              <div class="mb-3">
-                Items per Page:
-                <select
-                  v-model="pageSize"
-                  @change="handlePageSizeChange($event)"
-                >
-                  <option v-for="size in pageSizes" :key="size" :value="size"> -->
-              <!--            size : 3, 6, 9 -->
-              <!-- {{ size }}
-                  </option>
-                </select>
-              </div>
-             </div> -->
-              <!--    Todo : page 바 끝 -->
-
               <table class="table">
                 <thead>
                   <tr>
-                    <!-- <th scope="col">Last Name</th> -->
                     <th scope="col">번호</th>
                     <th scope="col">식당</th>
                     <th scope="col">위치</th>
@@ -38,7 +20,6 @@
                   </tr>
                 </thead>
                 <tbody v-for="(data, index) in reservation" :key="index">
-                  <!-- <tr @click="setActive(data, index)"> -->
                   <tr>
                     <td>{{ data.rid }}</td>
                     <td>{{ data.dname }}</td>
@@ -120,11 +101,10 @@ export default {
       page: 1,
       count: 0,
       pageSize: 10,
-
-      // pageSizes: [3, 6, 9],
     };
   },
   methods: {
+    // TODO: 전체 예약 조회 함수요청
     retrieveReservation() {
       ReservationDataService.getAll(
         this.searchName,
@@ -135,12 +115,14 @@ export default {
           const { reservation, totalItems } = response.data;
           this.reservation = reservation;
           this.count = totalItems;
-          console.log(response.data);
+          console.log("전체 예약 조회 성공 : ", response.data);
         })
         .catch((e) => {
-          console.log(e);
+          console.log("전체 예약 조회 실패 : ", e);
         });
     },
+
+    // TODO: 페이지 관련 함수 시작
     handlePageChange(value) {
       this.page = value;
       this.retrieveReservation();
@@ -155,6 +137,7 @@ export default {
       this.currentData = data;
       this.currentIndex = index;
     },
+    // TODO: 페이지 관련 함수 끝
   },
   mounted() {
     this.retrieveReservation();

@@ -235,8 +235,9 @@ export default {
     };
   },
   methods: {
+    // TODO: 나눠진 전화번호 하나로 합쳐서 저장
+    // FIXME: 이거 phoneFirstPart 이부분 010으로 고정시켜놓고 나머지랑 합치는게 좋을듯?
     InputCombine() {
-      //  전화번호 부분들 합쳐서 완성된 전화번호 형식 만들기
       if (this.phoneFirstPart && this.phoneMiddlePart && this.phoneLastPart) {
         this.reservation.phone =
           this.phoneFirstPart +
@@ -246,7 +247,7 @@ export default {
           this.phoneLastPart;
       }
     },
-    // 부서번호(dno)로 조회 요청하는 함수
+    // TODO: 음식점 pk로 조회 요청하는 함수
     getDiner(dno) {
       // axios 공통함수 호출
       DinerDataService.get(dno)
@@ -255,13 +256,14 @@ export default {
           // springboot 결과를 리턴함(부서 객체)
           this.currentDiner = response.data;
           // 콘솔 로그 출력
-          console.log("현재 음식점 데이터 : ", response.data);
+          console.log("현재 음식점 데이터 조회 성공 : ", response.data);
         })
         // 실패하면 .catch() 에러메세지가 리턴됨
         .catch((e) => {
-          console.log(e);
+          console.log("현재 음식점 데이터 조회 실패 : ", e);
         });
     },
+    // TODO: 예약 정보를 저장 요청하는 함수
     saveReservation() {
       this.InputCombine();
       let data = {
@@ -278,7 +280,7 @@ export default {
       ReservationDataService.create(data)
         .then((response) => {
           this.reservation.rid = response.data.rid;
-          console.log(response.data);
+          console.log("예약 정보 저장 성공 : ", response.data);
           // alert 라이브러리 효과
           this.$swal({
             icon: "success",
@@ -290,7 +292,7 @@ export default {
           // this.submitted = true;
         })
         .catch((e) => {
-          console.log(e);
+          console.log("예약 정보 저장 실패 : ", e);
         });
     },
 
@@ -300,6 +302,7 @@ export default {
     },
   },
   computed: {
+    // TODO: 현재 유저정보 조회
     currentUser() {
       // 모듈 저장소 : this.$store.state.모듈명.state값
       // user 객체 의 속성 : username, password, email, accesToken, roles(배열)
@@ -310,7 +313,7 @@ export default {
   mounted() {
     this.getDiner(this.$route.params.dno);
 
-    // TODO: 데이트피커 타임피커 충돌로 인해 임시로 막아놓음
+    // FIXME: 데이트피커 타임피커 충돌로 인해 임시로 막아놓음
 
     // TODO: 데이트피커
     // $(function () {
