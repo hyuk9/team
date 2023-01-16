@@ -260,7 +260,6 @@ export default {
     return {
       // TODO: test
       diner: [],
-      // dname: "", ->(변경) searchUsername: "",
       searchSelect: "지역",
       searchKeyword: "해운대구",
 
@@ -279,6 +278,7 @@ export default {
     };
   },
   methods: {
+    // TODO: 음식점 전체 조회요청하는 함수
     retrieveDiner() {
       DinerDataService.getAll(
         this.searchSelect, // select box 선택된 값
@@ -293,14 +293,14 @@ export default {
           this.diner = diner; // 스프링부트에서 전송한 데이터
           this.count = totalItems; // 스프링부트에서 전송한 페이지정보(총 건수)
           // 디버깅 콘솔에 정보 출력
-          console.log(response.data);
+          console.log("음식점 전체 조회 요청 성공 : ", response.data);
           // favorite 정보 받기
           FavoriteDataService.getFavoriteAll()
             // 성공하면 .then() 결과가 전송됨
             .then((response) => {
               this.favorite = response.data; // 스프링부트에서 전송한 데이터 받고 조회수 내림차순으로 가공
               // 디버깅 콘솔에 정보 출력
-              console.log(response.data);
+              console.log("마음에 든 음식점 조회요청 성공 : ", response.data);
               // favorite dno_count 를 diner dno_count에 복사
               for (let i = 0; i < this.diner.length; i++) {
                 for (let j = 0; j < this.favorite.length; j++) {
@@ -309,10 +309,11 @@ export default {
                   }
                 }
               }
-              // 평점 조회 (전체)
+              // TODO: 음식점 별 평점 조회요청하는 함수
               ReviewDataService.findByDnoDinerScoreAll()
               .then ((response) => {
                 this.scoreAll = response.data;
+                console.log("음식점 별 평점 조회요청 성공", response.data);
                 // findByDnoDinerScoreAll의 평점을  diner socret에 복사
                 for (let i = 0; i < this.diner.length; i++) {
                   for (let j = 0; j < this.scoreAll.length; j++) {
@@ -323,19 +324,19 @@ export default {
                 }
               }) 
               .catch ((e) => {
-                console.log(e);
+                console.log("음식점 별 평점 조회요청 실패", e);
               })     
             })
             // 실패하면 .catch() 에 에러가 전송됨
             .catch((e) => {
-              console.log(e);
+              console.log("마음에 든 음식점 조회요청 실패 : ", e);
             });
         })
         // 실패하면 .catch() 에 에러가 전송됨
         .catch((e) => {
-          console.log(e);
+          console.log("음식점 전체 조회 요청 실패 : ", e);
         });
-      // favorite 정보 받기
+      // TODO: 마음에 든 음식점 전체 조회요청하는 함수
       FavoriteDataService.getFavoriteAll(this.page - 1, this.pageSize)
         // 성공하면 .then() 결과가 전송됨
         .then((response) => {
@@ -344,15 +345,15 @@ export default {
           this.favorite = favorite; // 스프링부트에서 전송한 데이터 받고 조회수 내림차순으로 가공
           this.count = totalItems; // 스프링부트에서 전송한 페이지정보(총 건수)
           // 디버깅 콘솔에 정보 출력
-          console.log(response.data);
+          console.log("마음에 든 음식점 전체 조회요청 성공 : ", response.data);
         })
         // 실패하면 .catch() 에 에러가 전송됨
         .catch((e) => {
-          console.log(e);
+          console.log("마음에 든 음식점 전체 조회요청 실패 : ", e);
         });
     },
 
-    // '지역별 맛집'의 캐러셀 버튼의 오른쪽을 눌렀을때 작동하는 함수
+    // TODO: '지역별 맛집'의 캐러셀 버튼의 오른쪽을 눌렀을때 작동하는 함수
     countUp() {
       setTimeout(
         function () {
@@ -371,7 +372,7 @@ export default {
       // }
     },
 
-    // Todo : '지역별 맛집'의 캐러셀 버튼의 왼쪽을 눌렀을때 작동하는 함수
+    // TODO: '지역별 맛집'의 캐러셀 버튼의 왼쪽을 눌렀을때 작동하는 함수
     countDown() {
       setTimeout(
         function () {
@@ -389,8 +390,7 @@ export default {
         600
       );
     },
-
-    // Todo : 조회수 증가 함수
+    // TODO: 조회수 증가 함수
     countViews(dno) {
       DinerDataService.plusViews(dno)
         .then((response) => {
@@ -416,24 +416,6 @@ export default {
   // },
 
   mounted() {
-    // $(function () {
-    //   let typed2 = new Typed(".typed-words", {
-    //     strings: [
-    //       "지금 찾고있는 맛집을",
-    //       "송년회 하기 좋은 맛집을",
-    //       "크리스마스 파티 맛집을",
-    //       "데이트코스로 딱인 맛집을",
-    //       "가성비 좋은 맛집을",
-    //     ],
-    //     typeSpeed: 80,
-    //     backSpeed: 80,
-    //     backDelay: 4000,
-    //     startDelay: 1000,
-    //     loop: true,
-    //     showCursor: true,
-    //   });
-    // });
-
     this.retrieveDiner();
   },
   watch: {

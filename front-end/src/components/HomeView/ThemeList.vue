@@ -68,7 +68,9 @@
                           <div>
                             <span class="badge bg-danger p-2 mt-1 ms-3"
                               ><i class="fas fa-map-marker-alt me-2 fs-0"></i
-                              ><span class="fs-0">{{ data.loc.split(" ")[1] }}</span></span
+                              ><span class="fs-0">{{
+                                data.loc.split(" ")[1]
+                              }}</span></span
                             >
                             <span class="badge bg-primary p-2 mt-1 ms-3"
                               ><i class="fas fa-tag me-2 fs-0"></i
@@ -145,7 +147,9 @@
                           <div>
                             <span class="badge bg-danger p-2 mt-1 ms-3"
                               ><i class="fas fa-map-marker-alt me-2 fs-0"></i
-                              ><span class="fs-0">{{ data.loc.split(" ")[1]  }}</span></span
+                              ><span class="fs-0">{{
+                                data.loc.split(" ")[1]
+                              }}</span></span
                             >
                             <span class="badge bg-primary p-2 mt-1 ms-3"
                               ><i class="fas fa-tag me-2 fs-0"></i
@@ -229,7 +233,7 @@
 /* eslint-disable */
 import DinerDataService from "@/services/DinerDataService";
 import FavoriteDataService from "@/services/FavoriteDataService";
-import ReviewDataService from '@/services/ReviewDataService';
+import ReviewDataService from "@/services/ReviewDataService";
 
 export default {
   data() {
@@ -249,11 +253,12 @@ export default {
       pageSizes: [3, 6, 9], // select box 에 넣을 기본 데이터
       countCarouselNum: 0, //'지역별 맛집'의 캐러셀 작동을 위한 변수
 
-         // favorite 정보 저장용
-      favorite : [],
+      // favorite 정보 저장용
+      favorite: [],
     };
   },
   methods: {
+    // TODO: 음식점 전체 조회요청하는 함수
     retrieveDiner() {
       DinerDataService.getAll(
         this.searchSelect, // select box 선택된 값
@@ -268,87 +273,88 @@ export default {
           this.diner = diner; // 스프링부트에서 전송한 데이터
           this.count = totalItems; // 스프링부트에서 전송한 페이지정보(총 건수)
           // 디버깅 콘솔에 정보 출력
-          console.log(response.data);
-          
-          // favorite 정보 받기
+          console.log("음식점 전체 조회 요청 성공 : ", response.data);
+          // TODO: 마음에 든 음식점 조회요청하는 함수
           FavoriteDataService.getFavoriteAll()
-          // 성공하면 .then() 결과가 전송됨
-          .then((response) => {
-            this.favorite = response.data; // 스프링부트에서 전송한 데이터 받고 조회수 내림차순으로 가공
-            // 디버깅 콘솔에 정보 출력
-            console.log(response.data);   
-                  // favorite dno_count 를 diner dno_count에 복사
-            for(let i= 0; i<this.diner.length; i++) {
-              for(let j=0; j<this.favorite.length; j++) {
-                if(this.diner[i].dname ==this.favorite[j].dname) {
-                  this.diner[i].dno_count = this.favorite[j].dno_count        
-                }
-              }              
-            }
-            // 평점 조회 (전체)
-            ReviewDataService.findByDnoDinerScoreAll()
-            .then ((response) => {
-              this.scoreAll = response.data;
-              // findByDnoDinerScoreAll의 평점을  diner socret에 복사
+            // 성공하면 .then() 결과가 전송됨
+            .then((response) => {
+              this.favorite = response.data; // 스프링부트에서 전송한 데이터 받고 조회수 내림차순으로 가공
+              // 디버깅 콘솔에 정보 출력
+              console.log("마음에 든 음식점 조회요청 성공 : ", response.data);
+              // favorite dno_count 를 diner dno_count에 복사
               for (let i = 0; i < this.diner.length; i++) {
-                for (let j = 0; j < this.scoreAll.length; j++) {
-                  if (this.diner[i].dno == this.scoreAll[j].dno) {
-                    this.diner[i].score = this.scoreAll[j].score.toFixed(1);
+                for (let j = 0; j < this.favorite.length; j++) {
+                  if (this.diner[i].dname == this.favorite[j].dname) {
+                    this.diner[i].dno_count = this.favorite[j].dno_count;
                   }
                 }
               }
-            }) 
-            .catch ((e) => {
-              console.log(e);
-            })     
-          })
-          // 실패하면 .catch() 에 에러가 전송됨
-          .catch((e) => {
-            console.log(e);
-          });
+              // TODO: 음식점 별 평점 조회요청하는 함수
+              ReviewDataService.findByDnoDinerScoreAll()
+                .then((response) => {
+                  this.scoreAll = response.data;
+                  console.log("음식점 별 평점 조회요청 성공", response.data);
+                  // findByDnoDinerScoreAll의 평점을  diner socret에 복사
+                  for (let i = 0; i < this.diner.length; i++) {
+                    for (let j = 0; j < this.scoreAll.length; j++) {
+                      if (this.diner[i].dno == this.scoreAll[j].dno) {
+                        this.diner[i].score = this.scoreAll[j].score.toFixed(1);
+                      }
+                    }
+                  }
+                })
+                .catch((e) => {
+                  console.log("음식점 별 평점 조회요청 실패 : ", e);
+                });
+            })
+            // 실패하면 .catch() 에 에러가 전송됨
+            .catch((e) => {
+              console.log("마음에 든 음식점 조회요청 실패 : ", e);
+            });
         })
         // 실패하면 .catch() 에 에러가 전송됨
         .catch((e) => {
-          console.log(e);
+          console.log("음식점 전체 조회 요청 실패 : ", e);
         });
     },
 
-    // '지역별 맛집'의 캐러셀 버튼의 오른쪽을 눌렀을때 작동하는 함수
+    // TODO: '지역별 맛집'의 캐러셀 버튼의 오른쪽을 눌렀을때 작동하는 함수
     countUp() {
-      setTimeout(function() {
-       if (this.countCarouselNum + 4 < this.diner.length) {
-        this.countCarouselNum = this.countCarouselNum + 4;
-      } else {
-        this.countCarouselNum = 0;
-      }
-}.bind(this), 600);
-      // if (this.countCarouselNum + 4 < this.diner.length) {
-      //   this.countCarouselNum = this.countCarouselNum + 4;
-      // } else {
-      //   this.countCarouselNum = 0;
-      // }
+      setTimeout(
+        function () {
+          if (this.countCarouselNum + 4 < this.diner.length) {
+            this.countCarouselNum = this.countCarouselNum + 4;
+          } else {
+            this.countCarouselNum = 0;
+          }
+        }.bind(this),
+        600
+      );
     },
 
-    // '지역별 맛집'의 캐러셀 버튼의 왼쪽을 눌렀을때 작동하는 함수
+    // TODO: '지역별 맛집'의 캐러셀 버튼의 왼쪽을 눌렀을때 작동하는 함수
     countDown() {
-         setTimeout(function() {
-   if (this.countCarouselNum >= 4) {
-        this.countCarouselNum = this.countCarouselNum - 4;
-      } else {
-        if (this.diner.length % 4 == 0) {
-          this.countCarouselNum = this.diner.length - 4;
-        } else {
-          this.countCarouselNum = this.diner.length - (this.diner.length % 4);
-        }
-      }
-}.bind(this), 600);
-   
+      setTimeout(
+        function () {
+          if (this.countCarouselNum >= 4) {
+            this.countCarouselNum = this.countCarouselNum - 4;
+          } else {
+            if (this.diner.length % 4 == 0) {
+              this.countCarouselNum = this.diner.length - 4;
+            } else {
+              this.countCarouselNum =
+                this.diner.length - (this.diner.length % 4);
+            }
+          }
+        }.bind(this),
+        600
+      );
     },
 
-      // 조회수 증가 함수
-    countViews (dno) {
+    // TODO: 조회수 증가 함수
+    countViews(dno) {
       DinerDataService.plusViews(dno)
-     .then((response) => {
+        .then((response) => {
           // 디버깅 콘솔에 정보 출력
           console.log(response.data);
         })
@@ -356,45 +362,16 @@ export default {
         .catch((e) => {
           console.log(e);
         });
-    }
+    },
   },
-
-  // handlePageSizeChange(event) {
-  //   this.pageSize = event.target.value;
-  //   this.page = 1;
-  //   this.retrieveDiner();
-  // },
-
-  // handlePageChange(value) {
-  //   this.page = value;
-  //   this.retrieveDiner();
-  // },
 
   mounted() {
-    // $(function () {
-    //   let typed2 = new Typed(".typed-words", {
-    //     strings: [
-    //       "지금 찾고있는 맛집을",
-    //       "송년회 하기 좋은 맛집을",
-    //       "크리스마스 파티 맛집을",
-    //       "데이트코스로 딱인 맛집을",
-    //       "가성비 좋은 맛집을",
-    //     ],
-    //     typeSpeed: 80,
-    //     backSpeed: 80,
-    //     backDelay: 4000,
-    //     startDelay: 1000,
-    //     loop: true,
-    //     showCursor: true,
-    //   });
-    // });
-
     this.retrieveDiner();
   },
-  watch : {
+  watch: {
     searchKeyword() {
       this.countCarouselNum = 0;
-      $('#carouselLocationItemsInThemeList').carousel(0).removeData();
+      $("#carouselLocationItemsInThemeList").carousel(0).removeData();
       this.retrieveDiner();
     },
   },

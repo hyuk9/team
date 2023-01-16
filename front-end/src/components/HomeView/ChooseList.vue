@@ -298,7 +298,7 @@ export default {
                   }
                 })
                 .catch((e) => {
-                  console.log("음식점 별 평점 조회요청 실패", e);
+                  console.log("음식점 별 평점 조회요청 실패 : ", e);
                 });
               // 내림차순 정렬
               this.diner = this.diner.sort((a, b) => b.dno_count - a.dno_count);
@@ -326,11 +326,6 @@ export default {
         }.bind(this),
         600
       );
-      // if (this.countCarouselNum + 4 < this.diner.length) {
-      //   this.countCarouselNum = this.countCarouselNum + 4;
-      // } else {
-      //   this.countCarouselNum = 0;
-      // }
     },
 
     // TODO: '지역별 맛집'의 캐러셀 버튼의 왼쪽을 눌렀을때 작동하는 함수

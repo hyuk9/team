@@ -122,17 +122,6 @@
           </div>
           <!-- 일식 끝 -->
 
-          <!-- 카페 시작 -->
-          <!-- <div class="col-sm-6 col-lg-2 mb-3 mb-md-0 h-100 pb-4"> <div class="card
-                        card-span h-100"> <div class="position-relative"> <img class="img-fluid
-                        rounded-3 w-100" src="assets/img/species/dessert.jpg" alt="..." /> <div
-                        class="card-actions"> <div class="badge badge-foodwagon bg-primary p-4"> <div
-                        class="d-flex flex-between-center"> <div class="text-white fs-7">디저트</div>
-                        </div> </div> </div> </div> <div class="card-body px-0"> <h5 class="fw-bold
-                        text-1000 text-truncate">카페에 대한 설명</h5><span class="badge bg-soft-danger py-2
-                        px-3"><span class="fs-1 text-danger">지금 바로 알아보기</span></span> </div><a
-                        class="stretched-link" href="#"></a> </div> </div> -->
-          <!-- 카페 끝 -->
         </div>
       </div>
     </section>
