@@ -159,16 +159,18 @@
           </div>
 
           <!-- 권한 -->
-          <!-- <div class="input__block" v-if="confirmAdmin">
+          <!-- <div class="input__block" v-if="confirmAdmin"> -->
+          <div class="input__block" v-if="true">
             <h5>권한</h5>
             <select class="form-select" v-model="currentUser.role[0].rname">
               <option>ROLE_USER</option>
               <option>ROLE_ADMIN</option>
+              <option>ROLE_MANAGER</option>
             </select>
-          </div> -->
+          </div>
 
-          <!-- 권한 -->
-          <div class="input__block gender" v-if="confirmAdmin">
+          <!-- 권한 시작 -->
+          <!-- <div class="input__block gender" v-if="confirmAdmin">
             <h5 class="d-block">권한</h5>
             <div class="col-6 d-inline-block">
               <p class="d-inline col-6 mb-0 p-0">회원</p>
@@ -190,7 +192,9 @@
                 value="ROLE_ADMIN"
               />
             </div>
-          </div>
+          </div> -->
+          <!-- 권한 끝 -->
+
           <div class="mt-5 mb-3 text-center">
             <button class="reservation__btn1 me-5" @click="deleteUser">
               회원탈퇴
