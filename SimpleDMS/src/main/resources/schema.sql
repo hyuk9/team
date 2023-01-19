@@ -265,11 +265,7 @@ CREATE TABLE TB_FAVORITE
 (
     FID         NUMBER NOT NULL PRIMARY KEY,
     ID          NUMBER, -- 유저id컬럼
-    DNO         NUMBER, -- 식당id컬럼
-    DELETE_YN   VARCHAR2(1) DEFAULT 'N',
-    INSERT_TIME VARCHAR2(255),
-    UPDATE_TIME VARCHAR2(255),
-    DELETE_TIME VARCHAR2(255)
+    DNO         NUMBER -- 식당id컬럼
 );
 
 -- Todo: 찜목록 테이블
