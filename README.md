@@ -39,7 +39,7 @@
     - `Gradle`
     - `JPA`
 - DataBase
-    - `MySQL`
+    - `Oracle`
     - `ORACLE DATABASE`
 - Configuration Management
     - `GitHub`
