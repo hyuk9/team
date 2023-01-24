@@ -8,6 +8,7 @@
   - 박선영 (https://github.com/julysy)
   - 전성혜 (https://github.com/eodalzh)
   - 조성모 (https://github.com/JoSeongmo)
+ - 자세히 알아보기 (https://gelatinous-crab-f1c.notion.site/3fc7f47bbbdf459da1a9bce1dc5fd6d5)
 ---
 > **프로젝트 소개**
 > 
